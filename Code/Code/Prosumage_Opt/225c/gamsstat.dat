@@ -1,0 +1,355 @@
+=0PATH             24.2.1 r43572 Released Dec  9, 2013 WEI x86_64/MS Windows    
+=1
+43802 row/cols, 78734 non-zeros, 0.00% dense.
+
+=2
+convergence_tolerance 1e-006
+major_iteration_limit 500
+minor_iteration_limit 87604
+crash_iteration_limit 50
+cumulative_iteration_limit 2000000000
+time_limit 1e+007
+interrupt_limit 5
+chen_lambda 0.8
+output yes
+output_errors yes
+output_warnings no
+output_major_iterations yes
+output_major_iterations_frequency 1
+output_minor_iterations yes
+output_minor_iterations_frequency 500
+output_crash_iterations yes
+output_crash_iterations_frequency 1
+output_initial_point no
+output_initial_statistics no
+output_initial_point_statistics yes
+output_initial_scaling_statistics yes
+output_final_point no
+output_final_statistics yes
+output_final_point_statistics yes
+output_final_scaling_statistics no
+output_final_degeneracy_statistics no
+output_final_summary yes
+output_maximum_zero_log 10
+output_maximum_zero_listing 1000
+output_restart_log yes
+output_preprocess_level 1
+output_options no
+preprocess yes
+gradient_step_limit 5
+gradient_searchtype arc
+crash_method pnewton
+crash_perturb yes
+crash_searchtype line
+crash_minimum_dimension 1
+crash_nbchange_limit 1
+nms yes
+nms_memory_size 10
+nms_mstep_frequency 10
+nms_initial_reference_factor 20
+nms_searchtype line
+nms_maximum_watchdogs 5
+proximal_perturbation 0
+merit_function fischer
+crash_merit_function fischer
+lemke_start automatic
+lemke_start_type slack
+lemke_rank_deficiency_iterations 10
+output_linear_model no
+=1
+Path 4.7.02 (Mon Dec 09 08:54:09 2013)
+Written by Todd Munson, Steven Dirkse, and Michael Ferris
+=2
+MCP modified basis.
+  ** WARNING **
+Basis modifications: 43801
+
+INITIAL STATISTICS
+Inf-Norm of Complementarity . .  3.8277e+000 eqn: (hh_energy_balance(h332))
+Inf-Norm of Normal Map. . . . .  3.8277e+000 eqn: (hh_energy_balance(h332))
+Inf-Norm of Minimum Map . . . .  3.8277e+000 eqn: (hh_energy_balance(h332))
+Inf-Norm of Fischer Function. .  3.8277e+000 eqn: (hh_energy_balance(h332))
+Inf-Norm of Grad Fischer Fcn. .  4.4277e+000 eqn: (KKTEB(h332))
+Two-Norm of Grad Fischer Fcn. .  1.8865e+002
+=1
+
+INITIAL POINT STATISTICS
+=2
+=1
+Maximum of X. . . . . . . . . .  0.0000e+000 var: (N_PV)
+=2
+=1
+Maximum of F. . . . . . . . . .  6.0527e+001 eqn: (KKTN)
+=2
+=1
+Maximum of Grad F . . . . . . .  1.0000e+000 eqn: (hh_energy_balance(h1))
+                                            var: (G_PV(h1))
+=2
+=1
+
+INITIAL JACOBIAN NORM STATISTICS
+=2
+=1
+Maximum Row Norm. . . . . . . .  1.1282e+003 eqn: (KKTN)
+=2
+=1
+Minimum Row Norm. . . . . . . .  1.0000e+000 eqn: (KKTEB(h1))
+=2
+=1
+Maximum Column Norm . . . . . .  1.1282e+003 var: (N_PV)
+=2
+=1
+Minimum Column Norm . . . . . .  1.0000e+000 var: (E_buy(h1))
+=2
+
+Crash Log
+major  func  diff  size  residual    step       prox   (label)
+    0     0             9.7185e+001             0.0e+000 (hh_energy_balance(h332))
+Factorization: number of singularities 64(34976)
+Crash: Factor: 64 singularities.
+Crash: Factor: singular constraint: pv_generation(h27)
+Crash: Factor: singular constraint: pv_generation(h1106)
+Crash: Factor: singular constraint: pv_generation(h1110)
+Crash: Factor: singular constraint: pv_generation(h1111)
+Crash: Factor: singular constraint: pv_generation(h1776)
+Crash: Factor: singular constraint: pv_generation(h1777)
+Crash: Factor: singular constraint: pv_generation(h1778)
+Crash: Factor: singular constraint: pv_generation(h1779)
+Crash: Factor: singular constraint: pv_generation(h1780)
+Crash: Factor: singular constraint: pv_generation(h1781)
+Crash: Factor: singular constraint: pv_generation(h1782)
+Crash: Factor: singular constraint: pv_generation(h1783)
+Crash: Factor: singular constraint: pv_generation(h1790)
+Crash: Factor: singular constraint: pv_generation(h1791)
+Crash: Factor: singular constraint: pv_generation(h1801)
+Crash: Factor: singular constraint: pv_generation(h1802)
+Crash: Factor: singular constraint: pv_generation(h1803)
+Crash: Factor: singular constraint: pv_generation(h2461)
+Crash: Factor: singular constraint: pv_generation(h2462)
+Crash: Factor: singular constraint: pv_generation(h2463)
+Crash: Factor: singular constraint: pv_generation(h3125)
+Crash: Factor: singular constraint: pv_generation(h3126)
+Crash: Factor: singular constraint: pv_generation(h3128)
+Crash: Factor: singular constraint: pv_generation(h3129)
+Crash: Factor: singular constraint: pv_generation(h3130)
+Crash: Factor: singular constraint: pv_generation(h3131)
+Crash: Factor: singular constraint: pv_generation(h3132)
+Crash: Factor: singular constraint: pv_generation(h3133)
+Crash: Factor: singular constraint: pv_generation(h3134)
+Crash: Factor: singular constraint: pv_generation(h3135)
+Crash: Factor: singular constraint: pv_generation(h5481)
+Crash: Factor: singular constraint: pv_generation(h5483)
+Crash: Factor: singular constraint: pv_generation(h5484)
+Crash: Factor: singular constraint: pv_generation(h5485)
+Crash: Factor: singular constraint: pv_generation(h5486)
+Crash: Factor: singular constraint: pv_generation(h5487)
+Crash: Factor: singular constraint: pv_generation(h8474)
+Crash: Factor: singular constraint: pv_generation(h8475)
+Crash: Factor: singular constraint: pv_generation(h8476)
+Crash: Factor: singular constraint: pv_generation(h8477)
+Crash: Factor: singular constraint: pv_generation(h8478)
+Crash: Factor: singular constraint: pv_generation(h8519)
+Crash: Factor: singular constraint: pv_generation(h8520)
+Crash: Factor: singular constraint: pv_generation(h8521)
+Crash: Factor: singular constraint: pv_generation(h8522)
+Crash: Factor: singular constraint: pv_generation(h8523)
+Crash: Factor: singular constraint: pv_generation(h8524)
+Crash: Factor: singular constraint: pv_generation(h8525)
+Crash: Factor: singular constraint: pv_generation(h8526)
+Crash: Factor: singular constraint: pv_generation(h8543)
+Crash: Factor: singular constraint: pv_generation(h8544)
+Crash: Factor: singular constraint: pv_generation(h8545)
+Crash: Factor: singular constraint: pv_generation(h8546)
+Crash: Factor: singular constraint: pv_generation(h8547)
+Crash: Factor: singular constraint: pv_generation(h8548)
+Crash: Factor: singular constraint: pv_generation(h8549)
+Crash: Factor: singular constraint: pv_generation(h8569)
+Crash: Factor: singular constraint: pv_generation(h8570)
+Crash: Factor: singular constraint: pv_generation(h8571)
+Crash: Factor: singular constraint: pv_generation(h8572)
+Crash: Factor: singular constraint: pv_generation(h8573)
+Crash: Factor: singular constraint: pv_generation(h8574)
+Crash: Factor: singular constraint: pv_generation(h8598)
+Crash: Factor: singular constraint: pv_generation(h8599)
+    1     9 12487 34976 9.5916e+001  1.2e-002    9.7e-001 (hh_energy_balance(h332))
+    2    13 15535 41085 8.8856e+001  4.1e-001    8.7e-001 (KKTN)
+    3    15  3564 31649 8.5823e+001  8.0e-001    7.9e-001 (KKTN)
+pn_search terminated: no progress.
+  ** WARNING **
+Basis modifications: 10583
+
+Major Iteration Log
+major minor  func  grad  residual    step  type prox    inorm  (label)
+    0     0    28     4 8.5823e+001           I 7.1e-001 1.7e+001 (KKTN)
+  ** WARNING **
+Residual scaled (3.628719e+001).
+Basis: update  1: LU: 135215 z: 0 dmin: 0.00418569
+  ** WARNING **
+Cycle: Detected.
+Basis: Resize: refactorization: 0, storage allocated for basis: 337422 elements (279991 min)
+Basis: update  1: LU: 109447 z: 0 dmin: 0.283393
+    1     8    29     5 2.3661e+002  1.0e+000 RM 2.8e-001 7.9e+000 (pv_generation(h)
+  ** WARNING **
+Residual scaled (7.890000e+000).
+Basis: update  1: LU: 96272 z: 0 dmin: 0.0194812
+  ** WARNING **
+Cycle: Detected.
+    2    19    30     6 2.3661e+002  1.0e+000 CO 1.1e-001 7.9e+000 (pv_generation(h)
+  ** WARNING **
+Residual scaled (7.890000e+000).
+Basis: update  1: LU: 96274 z: 0 dmin: 0.000872286
+  ** WARNING **
+Cycle: Detected.
+    3    19    31     7 2.3661e+002  1.0e+000 CO 4.5e-002 7.9e+000 (pv_generation(h)
+  ** WARNING **
+Residual scaled (7.890000e+000).
+Basis: update  1: LU: 96277 z: 0 dmin: 0.000345553
+  ** WARNING **
+Cycle: Detected.
+    4    19    32     8 2.3661e+002  1.0e+000 CO 1.8e-002 7.9e+000 (pv_generation(h)
+  ** WARNING **
+Residual scaled (7.890000e+000).
+Basis: update  1: LU: 96296 z: 0 dmin: 0.000142387
+  ** WARNING **
+Cycle: Detected.
+    5    20    33     9 2.3661e+002  1.0e+000 CO 7.3e-003 7.9e+000 (pv_generation(h)
+Basis: update  1: LU: 109447 z: 0 dmin: 0.00290194
+    6    12    43    10 8.4589e+001  1.2e-002 RG 2.8e-001 1.6e+001 (KKTN)
+  ** WARNING **
+Basis modifications: 16946
+  ** WARNING **
+Residual scaled (4.009579e+001).
+Basis: update  1: LU: 143867 z: 0 dmin: 0.00418867
+Basis: update 21: LU: 144336 z: 0 dmin: 0.00418867
+Basis: update 41: LU: 144721 z: 0 dmin: 0.00418867
+Basis: Resize: refactorization: 0, storage allocated for basis: 359682 elements (286178 min)
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 143880 z: 0 dmin: 0.0130788
+Basis: update 21: LU: 144201 z: 0 dmin: 0.0130788
+Basis: update 41: LU: 144564 z: 0 dmin: 0.0130788
+Basis: Resize: refactorization: 0, storage allocated for basis: 359695 elements (319079 min)
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 143885 z: 0 dmin: 0.0115912
+Basis: update 21: LU: 144299 z: 0 dmin: 0.0115912
+Basis: update 41: LU: 144412 z: 0 dmin: 0.0115912
+Basis: Resize: refactorization: 0, storage allocated for basis: 359720 elements (319084 min)
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 143890 z: 0 dmin: 0.011911
+Basis: update 21: LU: 144324 z: 0 dmin: 0.011911
+Basis: update 41: LU: 144880 z: 0 dmin: 0.011911
+Basis: Resize: refactorization: 0, storage allocated for basis: 359732 elements (319094 min)
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 143897 z: 0 dmin: 0.00420204
+Basis: update 21: LU: 144053 z: 0 dmin: 0.00420204
+  ** WARNING **
+Cycle: Detected.
+    7   241    44    11 8.4589e+001  1.0e+000 CO 1.1e-001 1.6e+001 (KKTN)
+  ** WARNING **
+Residual scaled (4.009579e+001).
+Basis: update  1: LU: 158020 z: 0 dmin: 0.0220261
+Basis: update 21: LU: 158476 z: 0 dmin: 0.0220261
+Basis: update 41: LU: 159527 z: 0 dmin: 0.0220261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 158443 z: 0 dmin: 0.00798926
+Basis: update 21: LU: 158883 z: 0 dmin: 0.00798926
+Basis: update 41: LU: 159999 z: 0 dmin: 0.00798926
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 158247 z: 0 dmin: 0.00673396
+Basis: update 21: LU: 158687 z: 0 dmin: 0.00673396
+Basis: update 41: LU: 159927 z: 0 dmin: 0.00673396
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 158051 z: 0 dmin: 0.00423233
+Basis: update 21: LU: 158470 z: 0 dmin: 0.00423233
+Basis: update 41: LU: 159608 z: 0 dmin: 0.00423233
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 157853 z: 0 dmin: 0.00750366
+Basis: update 21: LU: 158239 z: 0 dmin: 0.00750366
+Basis: update 41: LU: 159368 z: 0 dmin: 0.00750366
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 157650 z: 0 dmin: 0.00558042
+Basis: update 21: LU: 158090 z: 0 dmin: 0.00558042
+Basis: update 41: LU: 159259 z: 0 dmin: 0.00558042
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 157444 z: 0 dmin: 0.00206186
+Basis: update 21: LU: 157884 z: 0 dmin: 0.00206186
+Basis: update 41: LU: 158980 z: 0 dmin: 0.00206186
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 157251 z: 0 dmin: 0.00567305
+Basis: update 21: LU: 157633 z: 0 dmin: 0.00567305
+Basis: update 41: LU: 158791 z: 0 dmin: 0.00567305
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 157056 z: 0 dmin: 0.00531861
+Basis: update 21: LU: 157128 z: 0 dmin: 0.00531861
+Basis: update 41: LU: 157931 z: 0 dmin: 0.00531861
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 156894 z: 0 dmin: 0.0045677
+Basis: update 21: LU: 157338 z: 0 dmin: 0.0045677
+
+Minor Iteration Log
+minor      t          z     w     v   art ckpts  enter    leave
+  500  1.8449e-003 34060  9740     0     0     9 z[ 2322] z[25353]
+Basis: update 41: LU: 157532 z: 0 dmin: 0.0045677
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 156891 z: 0 dmin: 0.00799942
+Basis: update 21: LU: 157395 z: 0 dmin: 0.00799942
+Basis: update 41: LU: 157991 z: 0 dmin: 0.00799942
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 157054 z: 0 dmin: 0.00753909
+Basis: update 21: LU: 157597 z: 0 dmin: 0.00753909
+Basis: update 41: LU: 158884 z: 0 dmin: 0.00753909
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 157247 z: 0 dmin: 0.00632361
+Basis: update 21: LU: 157523 z: 0 dmin: 0.00632361
+Basis: update 41: LU: 158526 z: 0 dmin: 0.00632361
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 157085 z: 0 dmin: 0.00841492
+Basis: update 21: LU: 157200 z: 0 dmin: 0.00841492
+Basis: update 41: LU: 157831 z: 0 dmin: 0.00841492
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 156914 z: 0 dmin: 0.00790974
+Basis: update 21: LU: 157359 z: 0 dmin: 0.00790974
+Basis: update 41: LU: 158523 z: 0 dmin: 0.00790974
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 156728 z: 0 dmin: 0.00382187
+Basis: update 21: LU: 157144 z: 0 dmin: 0.00382187
+Basis: update 41: LU: 158115 z: 0 dmin: 0.00382187
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 156555 z: 0 dmin: 0.00392146
+Basis: update 21: LU: 156781 z: 0 dmin: 0.00392146
+Basis: update 41: LU: 157218 z: 0 dmin: 0.00392146
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 156609 z: 0 dmin: 0.0175193
+Basis: update 21: LU: 157065 z: 0 dmin: 0.0175193
+Basis: update 41: LU: 157478 z: 0 dmin: 0.0175193
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 156651 z: 0 dmin: 0.00366922
+Basis: update 21: LU: 157001 z: 0 dmin: 0.00366922
+Basis: update 41: LU: 157966 z: 0 dmin: 0.00366922
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 156481 z: 0 dmin: 0.0038657
+Basis: update 21: LU: 156690 z: 0 dmin: 0.0038657
+ 1000  3.0797e-003 33985  9815     0     0    19 z[ 3009] w[ 5321]
+Basis: update 41: LU: 157544 z: 0 dmin: 0.0038657

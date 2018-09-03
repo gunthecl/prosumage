@@ -275,17 +275,15 @@ KKTG.G_PV
 KKTEB.E_buy
 KKTES.E_sell
 hh_energy_balance.lambda1
-pv_generation.lambda2
-pv_install_max.mu
 
 $ontext
-stolev_no_freelunch
-stolevel
-stolev_max_energy
-stoin_max_power
-stoout_max_power
-pv_install_max
-*foresight_24h
+KKTN.N_PV
+KKTG.G_PV
+KKTEB.E_buy
+KKTES.E_sell
+hh_energy_balance.lambda1
+pv_generation.lambda2
+pv_install_max.mu
 $offtext
 /
 
@@ -317,6 +315,8 @@ $offecho
 solve   prosumodmcp using mcp;
 display d , N_PV.l , E_buy.l , E_sell.l ,
         price_market, hh_energy_balance.m
+
+
 
 
 ***************************** Set up reporting *********************************

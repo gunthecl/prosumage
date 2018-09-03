@@ -1,0 +1,25 @@
+
+--- Job Test_MCP2.gms Start 09/03/18 16:02:15 24.2.1 r43572 WEX-WEI x86_64/MS Windows
+GAMS 24.2.1   Copyright (C) 1987-2013 GAMS Development. All rights reserved
+Licensee: Abteilung Energie, Verkehr, Umwelt, 5 User     S131220:0515AN-GEN
+          Deutsches Institut fuer Wirtschaftsforschung DIW           DC3975
+          License for teaching and research at degree granting institutions
+--- Starting compilation
+--- Test_MCP2.gms(137) 3 Mb
+--- GDXin=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Code\Prosumage_Opt\data\input_data.gdx
+--- Test_MCP2.gms(315) 28 Mb 1 Error
+*** Error 483 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Code\Prosumage_Opt\Test_MCP2.gms
+    Mapped variables have to appear in the model
+--- Test_MCP2.gms(316) 28 Mb 3 Errors
+*** Error 141 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Code\Prosumage_Opt\Test_MCP2.gms
+    Symbol neither initialized nor assigned
+       A wild shot: You may have spurious commas in the explanatory
+       text of a declaration. Check symbol reference list.
+*** Error 141 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Code\Prosumage_Opt\Test_MCP2.gms
+    Symbol neither initialized nor assigned
+       A wild shot: You may have spurious commas in the explanatory
+       text of a declaration. Check symbol reference list.
+--- Test_MCP2.gms(322) 28 Mb 3 Errors
+*** Status: Compilation error(s)
+--- Job Test_MCP2.gms Stop 09/03/18 16:02:16 elapsed 0:00:00.148
+Exit code = 2

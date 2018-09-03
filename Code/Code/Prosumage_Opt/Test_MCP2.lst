@@ -1,4 +1,4 @@
-GAMS 24.2.1  r43572 Released Dec  9, 2013 WEX-WEI x86_64/MS Windows 09/03/18 14:12:30 Page 1
+GAMS 24.2.1  r43572 Released Dec  9, 2013 WEX-WEI x86_64/MS Windows 09/03/18 16:02:15 Page 1
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
@@ -208,13 +208,13 @@ GDXIN   C:\Users\cguenther\Documents\GitHub\prosumage\Code\Code\Prosumage_Opt\da
  199  *** Restrict PV capacity
  200  pv_install_max..
  201   
- 202           N_PV - pv_cap_max =L= 0
+ 202             pv_cap_max =G= N_PV
  203  ;
  204   
  205  *** Restrict PV capacity
  206  KKTN..
  207   
- 208          c_i_pv - sum( h , lambda2(h)*  avail_solar(h))  =E= 0
+ 208          c_i_pv - sum( h , lambda2(h)*  avail_solar(h)) + mu =E= 0
  209  ;
  210   
  211  KKTG(h)..
@@ -285,46 +285,60 @@ GDXIN   C:\Users\cguenther\Documents\GitHub\prosumage\Code\Code\Prosumage_Opt\da
  275  KKTEB.E_buy
  276  KKTES.E_sell
  277  hh_energy_balance.lambda1
- 278  pv_generation.lambda2
- 279   
- 280   
-      stolev_no_freelunch
-      stolevel
-      stolev_max_energy
-      stoin_max_power
-      stoout_max_power
-      pv_install_max
-      *foresight_24h
- 290  /
- 291   
- 292   
- 293  options
- 294  optcr = 0.00
- 295  reslim = 10000000
- 296  lp = cplex
- 297  mcp = path
- 298  nlp = conopt
- 299  dispwidth = 15
- 300  limrow = 0
- 301  limcol = 0
- 302  solprint = off
- 303  sysout = off
- 304  optcr = 1e-3
- 305  optca = 10
- 306  ;
- 307   
- 315   
- 316   
- 317  solve   prosumodmcp using mcp;
- 318  display d , N_PV.l , E_buy.l , E_sell.l ,
- 319          price_market, hh_energy_balance.m
- 320   
- 321   
- 322  ***************************** Set up reporting ***************************
+ 278   
+      KKTN.N_PV
+      KKTG.G_PV
+      KKTEB.E_buy
+      KKTES.E_sell
+      hh_energy_balance.lambda1
+      pv_generation.lambda2
+      pv_install_max.mu
+ 288  /
+ 289   
+ 290   
+ 291  options
+ 292  optcr = 0.00
+ 293  reslim = 10000000
+ 294  lp = cplex
+ 295  mcp = path
+ 296  nlp = conopt
+ 297  dispwidth = 15
+ 298  limrow = 0
+ 299  limcol = 0
+ 300  solprint = off
+ 301  sysout = off
+ 302  optcr = 1e-3
+ 303  optca = 10
+ 304  ;
+ 305   
+ 313   
+ 314   
+ 315  solve   prosumodmcp using mcp;
+****                               $483
+**** The following MCP errors were detected in model prosumodmcp:
+**** 483 N_PV no ref to var in equ.var
+**** 483 E_sell no ref to var in equ.var
+ 316  display d , N_PV.l , E_buy.l , E_sell.l
+****                   $141                 $141
+ 317   
+ 318   
+ 319   
+ 320  ***************************** Set up reporting ***************************
       ******
- 323   
- 324   
-GAMS 24.2.1  r43572 Released Dec  9, 2013 WEX-WEI x86_64/MS Windows 09/03/18 14:12:30 Page 2
+ 321   
+ 322   
+GAMS 24.2.1  r43572 Released Dec  9, 2013 WEX-WEI x86_64/MS Windows 09/03/18 16:02:15 Page 2
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Error Messages
+
+
+141  Symbol neither initialized nor assigned
+        A wild shot: You may have spurious commas in the explanatory
+        text of a declaration. Check symbol reference list.
+483  Mapped variables have to appear in the model
+
+**** 3 ERROR(S)   0 WARNING(S)
+GAMS 24.2.1  r43572 Released Dec  9, 2013 WEX-WEI x86_64/MS Windows 09/03/18 16:02:15 Page 3
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Include File Summary
 
@@ -339,22 +353,19 @@ Include File Summary
                                           nput_data.gdx
 
 
-COMPILATION TIME     =        0.109 SECONDS     28 MB  24.2.1 r43572 WEX-WEI
-GAMS 24.2.1  r43572 Released Dec  9, 2013 WEX-WEI x86_64/MS Windows 09/03/18 14:12:30 Page 3
-G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
-Model Statistics    SOLVE prosumodmcp Using MCP From line 317
+COMPILATION TIME     =        0.141 SECONDS     28 MB  24.2.1 r43572 WEX-WEI
 
 
-MODEL STATISTICS
-
-BLOCKS OF EQUATIONS           6     SINGLE EQUATIONS       43,801
-BLOCKS OF VARIABLES           6     SINGLE VARIABLES       43,801
-NON ZERO ELEMENTS        78,732     NON LINEAR N-Z              0
-DERIVATIVE POOL              10     CONSTANT POOL              16
-CODE LENGTH                   0
+USER: Abteilung Energie, Verkehr, Umwelt, 5 User     S131220:0515AN-GEN
+      Deutsches Institut fuer Wirtschaftsforschung DIW           DC3975
+      License for teaching and research at degree granting institutions
 
 
-GENERATION TIME      =        0.078 SECONDS     39 MB  24.2.1 r43572 WEX-WEI
+**** FILE SUMMARY
 
+Input      C:\Users\cguenther\Documents\GitHub\prosumage\Code\Code\Prosumage_Opt
+           \Test_MCP2.gms
+Output     C:\Users\cguenther\Documents\GitHub\prosumage\Code\Code\Prosumage_Opt
+           \Test_MCP2.lst
 
-EXECUTION TIME       =        0.078 SECONDS     39 MB  24.2.1 r43572 WEX-WEI
+**** USER ERROR(S) ENCOUNTERED
