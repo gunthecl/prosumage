@@ -1,0 +1,86 @@
+par=eta_con              rng=Conventionals!c5:d12        rdim=1 cdim=0
+par=carbon_content       rng=Conventionals!c15:d22       rdim=1 cdim=0
+par=c_up                 rng=Conventionals!c105:d112     rdim=1 cdim=0
+par=c_do                 rng=Conventionals!c115:d122     rdim=1 cdim=0
+par=c_fix_con            rng=Conventionals!c25:d32       rdim=1 cdim=0
+par=c_var_con            rng=Conventionals!c35:d42       rdim=1 cdim=0
+par=c_inv_overnight_con  rng=Conventionals!c45:d52       rdim=1 cdim=0
+par=inv_lifetime_con     rng=Conventionals!c55:d62       rdim=1 cdim=0
+par=inv_recovery_con     rng=Conventionals!c65:d72       rdim=1 cdim=0
+par=inv_interest_con     rng=Conventionals!c75:d82       rdim=1 cdim=0
+par=m_con                rng=Conventionals!c85:d92       rdim=1 cdim=0
+par=m_con_e              rng=Conventionals!c95:d102      rdim=1 cdim=0
+par=grad_per_min         rng=Conventionals!c125:d132     rdim=1 cdim=0
+
+par=c_cu                 rng=Renewables!c4:d6            rdim=1 cdim=0
+par=c_fix_res            rng=Renewables!c9:d11           rdim=1 cdim=0
+par=c_inv_overnight_res  rng=Renewables!c15:d17          rdim=1 cdim=0
+par=inv_lifetime_res     rng=Renewables!c20:d22          rdim=1 cdim=0
+par=inv_recovery_res     rng=Renewables!c25:d27          rdim=1 cdim=0
+par=inv_interest_res     rng=Renewables!c30:d32          rdim=1 cdim=0
+par=m_res                rng=Renewables!c35:d37          rdim=1 cdim=0
+par=m_res_e              rng=Renewables!c40:d42          rdim=1 cdim=0
+
+par=con_fuelprice        rng=Fuel_CO2!a4:b12             rdim=1 cdim=0
+par=con_CO2price         rng=Fuel_CO2!b18:b18            rdim=0 cdim=0
+
+par=d_y                  rng=Time_Data!c48:lya52         rdim=1 cdim=1
+par=phi_res_y            rng=Time_Data!b55:lya67         rdim=2 cdim=1
+par=phi_ror              rng=Time_Data!d30:lya31         rdim=0 cdim=1
+
+par=n_ev_p               rng=Time_Data!c75:lya103        rdim=1 cdim=1
+par=ev_ed                rng=Time_Data!c109:lya137       rdim=1 cdim=1
+par=ev_ged_exog          rng=Time_Data!c144:lya172       rdim=1 cdim=1
+
+par=c_m_dsm_shift                rng=DSM!c10:d14         rdim=1 cdim=0
+par=c_fix_dsm_shift              rng=DSM!c20:d24         rdim=1 cdim=0
+par=c_inv_overnight_dsm_shift    rng=DSM!c33:d37         rdim=1 cdim=0
+par=inv_recovery_dsm_shift       rng=DSM!c43:d47         rdim=1 cdim=0
+par=inv_interest_dsm_shift       rng=DSM!c52:d56         rdim=1 cdim=0
+par=m_dsm_shift                  rng=DSM!c64:d68         rdim=1 cdim=0
+par=t_dur_dsm_shift              rng=DSM!c74:d78         rdim=1 cdim=0
+par=t_off_dsm_shift              rng=DSM!c83:d87         rdim=1 cdim=0
+par=eta_dsm_shift                rng=DSM!c92:d96         rdim=1 cdim=0
+
+par=c_m_dsm_cu                   rng=DSM!c5:d7           rdim=1 cdim=0
+par=c_fix_dsm_cu                 rng=DSM!c17:d19         rdim=1 cdim=0
+par=c_inv_overnight_dsm_cu       rng=DSM!c28:d30         rdim=1 cdim=0
+par=inv_recovery_dsm_cu          rng=DSM!c40:d42         rdim=1 cdim=0
+par=inv_interest_dsm_cu          rng=DSM!c49:d51         rdim=1 cdim=0
+par=m_dsm_cu                     rng=DSM!c59:d61         rdim=1 cdim=0
+par=t_dur_dsm_cu                 rng=DSM!c71:d73         rdim=1 cdim=0
+par=t_off_dsm_cu                 rng=DSM!c80:d82         rdim=1 cdim=0
+
+par=c_m_sto                      rng=Storage!c4:d10      rdim=1 cdim=0
+par=eta_sto                      rng=Storage!c13:d19     rdim=1 cdim=0
+par=c_fix_sto                    rng=Storage!c22:d28     rdim=1 cdim=0
+par=c_inv_overnight_sto_e        rng=Storage!c31:d37     rdim=1 cdim=0
+par=c_inv_overnight_sto_p        rng=Storage!c40:d46     rdim=1 cdim=0
+par=inv_lifetime_sto             rng=Storage!c48:d54     rdim=1 cdim=0
+par=inv_recovery_sto             rng=Storage!c32:d34     rdim=1 cdim=0
+par=inv_interest_sto             rng=Storage!c60:d66     rdim=1 cdim=0
+par=m_sto_e                      rng=Storage!c69:d75     rdim=1 cdim=0
+par=m_sto_p                      rng=Storage!c77:d83     rdim=1 cdim=0
+par=phi_sto_ini                  rng=Storage!c85:d91     rdim=1 cdim=0
+par=etop_max                     rng=Storage!c93:d99     rdim=1 cdim=0
+
+par=c_m_ev               rng=EV!c4:d31           rdim=1 cdim=0
+par=pen_phevfuel         rng=EV!d34:d34          rdim=0 cdim=0
+par=eta_ev_in            rng=EV!c37:d64          rdim=1 cdim=0
+par=eta_ev_out           rng=EV!c67:d94          rdim=1 cdim=0
+par=phi_ev_ini           rng=EV!c97:d124         rdim=1 cdim=0
+par=n_ev_e               rng=EV!c127:d154        rdim=1 cdim=0
+par=phi_ev               rng=EV!c157:d184        rdim=1 cdim=0
+par=ev_phev              rng=EV!c187:d214        rdim=1 cdim=0
+
+par=phi_reserves_share           rng=Reserves!e13:f16    rdim=1 cdim=0
+par=reserves_intercept           rng=Reserves!e2:f5      rdim=1 cdim=0
+par=reserves_slope               rng=Reserves!d6:g10     rdim=1 cdim=1
+par=reserves_reaction            rng=Reserves!d79:e85    rdim=1 cdim=0
+par=phi_reserves_call_y          rng=Reserves!b49:lya73  rdim=2 cdim=1
+par=phi_reserves_pr              rng=Reserves!d87:d87    rdim=0 cdim=0
+
+par=m_res_pro          rng=Prosumage!c5:d7     rdim=1 cdim=0
+par=m_sto_pro_e        rng=Prosumage!c10:d16   rdim=1 cdim=0
+par=m_sto_pro_p        rng=Prosumage!c19:d25   rdim=1 cdim=0
+par=phi_sto_pro_ini    rng=Prosumage!c28:d34   rdim=1 cdim=0

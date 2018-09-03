@@ -1,0 +1,334 @@
+GAMS 25.1.2  r67455 Released Aug  1, 2018 WEX-WEI x86 64bit/MS Windows - 08/13/18 19:45:11 Page 1
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+C o m p i l a t i o n
+
+
+   1  ********************************************************************************
+   2  ********************************************************************************
+   3  *   This model is a dispatch and investment model for PROSUMAGE households
+   4  *   PROSUMAGE households PROduce, conSUMe electricity and usage storAGE
+   5  *
+   6  *   Date of this version: August 6, 2018
+   7  *
+   8  ********************************************************************************
+   9  ********************************************************************************
+  10   
+  11   
+  12  ******************* Format and model run specifications ************************
+  13   
+  14  * ------------- household selection---------------------------------------------
+  15  * Select a household profile between V1 and V74:
+  16   
+  18   
+  19   
+  20  * ------------- Base year selection---------------------------------------------
+  21  * Select year between 2010 and 2016:
+  22   
+  24   
+  25   
+  26   
+  27  * ------------- Set data import and export options -----------------------------
+  28   
+  29  * mark offXcel with a star to turn off excel import and import gdx file
+  30  * mark modelkill to create a gdx file only without model run
+  31   
+  34   
+  35  * Set column index (alphabetic) in excel file furthest to the right
+  36  * to speed up data import
+  37   
+  39   
+  40  * Name input file suffix other than "input data"
+  42   
+  43  * Auto set of input file (do not change)
+  45   
+  46  * Auto set of output file (do not change)
+  48   
+  49   
+  50  **************** Sets, variables, parameters declaration ***********************
+  51   
+  52   
+  53  Sets
+  54  h                Hours                                   /h1*h8760/
+  55  res              Renewable technologies                  /solar/
+  56  *sto              Storage technolgies                     /storage/
+  57  year             Base years                              /2010*2016/
+  58  hh_profile       Household load data                     /V1*V74/
+  59   
+  60  ;
+  61   
+  62  Variables
+  63  Z                        Objective
+  64  lambda1(h)
+  65  lambda2(h)
+  66  ;
+  67   
+  68  Positive variables
+  69  G_PV(h)              Generation of pv plant
+  70  CU(h)                Curtailment of pv energy
+  71  N_PV                PV generation capacities
+  72  *N_STO_E(sto)             Capacities: storage energy
+  73  *N_STO_P(sto)             Capacities: storage power
+  74  *STO_L(sto,h)             Storage level
+  75  *STO_IN(sto,h)            Storage intake
+  76  *STO_OUT(sto,h)           Storage generation
+  77  E_buy(h)                 Energy purchased from market
+  78  E_sell(h)                Energy sold to market
+  79  mu(h)
+  80   
+  81  ;
+  82   
+  83  Parameters
+  84  *sto_ini_last(sto)           Level of storage in initial and last period
+  85  *eta_sto_in(sto)             Efficiency: storage in
+  86  *eta_sto_out(sto)            Efficiency: storage out
+  87  d(h)                        Household load
+  88  d_upload(h,hh_profile)      Household load - upload parameter
+  89  avail_solar(h)              Hourly capacity factor for pv
+  90  avail_solar_upload(h,year)  Hourly capacity factor pv - upload parameter
+  91  pv_cap_max             PV capacity maximum
+  92  price_market(h)             Price for selling energy per kWh
+  93  price_market_upload(h,year) Price for selling energy per MWh - upload parameter
+  94  price_buy(h)                   Price for energy consumption per kWh
+  95  *c_i_sto_e(sto)              Cost: investment into storage energy
+  96  *c_i_sto_p(sto)              Cost: investment into storage power
+  97  c_i_pv                      Cost: investment into renewable capacity
+  98  *c_var_sto(sto)              Cost: variable generation costs storage
+  99  penalty                     Penalty term
+ 100   
+ 101   
+ 102   
+ 103  ;
+ 104   
+ 105   
+ 106  * Declare efficiency parameters
+ 107  *sto_ini_last(sto)  =  0.5 ;
+ 108  *eta_sto_in(sto)    =  0.81 ;
+ 109  *eta_sto_out(sto)   =  0.926 ;
+ 110  penalty = 0 ;
+ 111   
+ 112   
+ 113  * Declare cost parameters
+ 114  *c_i_sto_e(sto)  =  5418.14/1000 ;
+ 115  *c_i_sto_p(sto)  = 50995.48/1000 ;
+ 116  c_i_pv = 60526.64/1000 ;
+ 117  *c_var_sto(sto)  =     0.5/1000 ;
+ 118  price_buy(h)       =     0.30 ;
+ 119   
+ 120  * Declare further restrictions
+ 121  pv_cap_max = 10;
+ 122   
+ 123   
+ 124  ***************************** Upload data **************************************
+ 125   
+ 133   
+ 134   
+ 135  *$call "gdxxrw data\input_data.xlsx squeeze=N @data\input_data.tmp  o=data\input_data.gdx  ";
+GDXIN   C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Prosumage_Opt\data\input_data.gdx
+--- LOAD  d_upload = 1:d_upload
+--- LOAD  avail_solar_upload = 2:avail_solar_upload
+--- LOAD  price_market_upload = 3:price_market_upload
+ 138  ;
+ 139   
+ 140  * Load data for specific household and base year
+ 141  d(h)                   = d_upload(h,'V17') ;
+ 142  avail_solar(h)         = avail_solar_upload(h,'2014') ;
+ 143   
+ 144  *Load market price as price per kWh
+ 145  price_market(h)        = price_market_upload(h,'2014')/1000 ;
+ 146  *price_market(h)        = 0.12 ;
+ 147   
+ 149   
+ 150  ****************************** Model setup *************************************
+ 151   
+ 152  Equations
+ 153  objective                  Objective function
+ 154  hh_energy_balance          Household energy balance
+ 155  pv_generation              Household use of pv energy generation
+ 156  pv_install_max        PV capacity constraint
+ 157  energy_tomarket            Amount of energy sold to market
+ 158  energy_frommarket          Amount of energy purchased from market
+ 159  h1
+ 160  h2
+ 161  h3
+ 162  h4
+ 163  *stolev_no_freelunch        Storage level in initial and last period
+ 164  *stolevel                   Storage level dynamics
+ 165  *stolev_max_energy          Storage capacity constraint on maximum energy
+ 166  *stoin_max_power            Storage capacity constraint on maximum power - storing in
+ 167  *stoout_max_power           Storage capacity constraint on maximum power - storing out
+ 168  *foresight_24h              Perfect foresight only for next 24h
+ 169  ;
+ 170   
+ 171   
+ 172  *** Objective function: Minimize total system costs
+ 173  h1(h)..
+ 174   
+ 175     0 =E=
+ 176     c_i_pv + lambda2(h)* avail_solar(h) + mu(h)
+ 177  ;
+ 178   
+ 179  *** Household energy balance: Satisfy load with own generation, storage and grid
+ 180  h2(h)..
+ 181   
+ 182     price_buy(h) - lambda1(h) =E= 0
+ 183   
+ 184  ;
+ 185   
+ 186  h3(h)..
+ 187   
+ 188     - price_market(h) - lambda2(h) =E= 0
+ 189   
+ 190  ;
+ 191   
+ 192   
+ 193  pv_install_max..
+ 194   
+ 195           N_PV =L= pv_cap_max
+ 196  ;
+ 197   
+ 198  hh_energy_balance(h)..
+ 199   
+ 200    d(h)         -   G_PV(h)
+ 201  *         + sum( sto , STO_OUT(sto,h))
+ 202           - E_buy(h)  =E= 0
+ 203  ;
+ 204   
+ 205  pv_generation(h)..
+ 206   
+ 207        avail_solar(h) * N_PV
+ 208        -  G_PV(h)
+ 209        - CU(h)
+ 210  *      + sum( sto , STO_IN(sto,h))
+ 211        - E_sell(h)  =E= 0
+ 212  ;
+ 213   
+      *** Technical constraints on storage
+      *Storage level in first and last period must be the same
+      stolev_no_freelunch(sto)..
+       
+               STO_L(sto,'h1') =E= STO_L(sto,'h8760')
+      ;
+       
+      *Storage level for all hours except first: Prio level plus intake minus outflow
+      stolevel(sto,h)$( ord(h) > 1 )..
+       
+               STO_L(sto,h) =E=
+               STO_L(sto,h-1)
+               + STO_IN(sto,h) * eta_sto_in(sto)
+               - STO_OUT(sto,h)/eta_sto_out(sto)
+      ;
+       
+      * Restrict foresight to 24h: Fix restriction -> should only apply to every 24th hour
+      foresight_24h(sto,h)$( ord(h) > 24 )..
+       
+               STO_L(sto,h) =E=
+               STO_L(sto,h-24)
+      ;
+       
+       
+       
+      * Storage maximum energy capacity
+      stolev_max_energy(sto,h)..
+       
+               STO_L(sto,h) =L= N_STO_E(sto)
+      ;
+       
+      * Storage maximum charging capacity (power in)
+      stoin_max_power(sto,h)..
+       
+               STO_IN(sto,h) =L= N_STO_P(sto)
+      ;
+       
+      * Storage maximum discharging capacity (power out)
+      stoout_max_power(sto,h)..
+       
+               STO_OUT(sto,h) =L= N_STO_P(sto)
+      ;
+ 258   
+ 259  ***************************** Initialize model *********************************
+ 260  Model prosumodmcp /
+ 261  h1.N_PV
+ 262  h2.E_buy
+ 263  h3.E_sell
+ 264  hh_energy_balance.lambda2
+ 265  pv_generation.lambda1
+ 266  pv_install_max.mu
+ 267   
+      stolev_no_freelunch
+      stolevel
+      stolev_max_energy
+      stoin_max_power
+      stoout_max_power
+      pv_install_max
+      *foresight_24h
+ 277  /
+ 278   
+ 279   
+ 280  options
+ 281  optcr = 0.00
+ 282  reslim = 10000000
+ 283  lp = cplex
+ 284  mcp = path
+ 285  nlp = conopt
+ 286  dispwidth = 15
+ 287  limrow = 0
+ 288  limcol = 0
+ 289  solprint = off
+ 290  sysout = off
+ 291  optcr = 1e-3
+ 292  optca = 10
+ 293  ;
+ 294   
+ 302   
+ 303   
+ 304  solve   prosumod using mcp;
+****                 $140,241   $257
+**** 140  Unknown symbol
+**** 241  Model has not been defined
+**** 257  Solve statement not checked because of previous errors
+ 305  display d , N_PV.l , Z.l, E_buy.l , E_sell.l ,
+****                   $141  $141     $141       $141
+**** 141  Symbol declared but no values have been assigned. Check for missing
+****         data definition, assignment, data loading or implicit assignment
+****         via a solve statement.
+****         A wild shot: You may have spurious commas in the explanatory
+****         text of a declaration. Check symbol reference list.
+ 306          price_market, hh_energy_balance.m
+****                                          $141
+**** 141  Symbol declared but no values have been assigned. Check for missing
+****         data definition, assignment, data loading or implicit assignment
+****         via a solve statement.
+****         A wild shot: You may have spurious commas in the explanatory
+****         text of a declaration. Check symbol reference list.
+ 307   
+ 308   
+ 309  ***************************** Set up reporting *********************************
+ 310   
+ 311   
+
+**** 8 ERROR(S)   0 WARNING(S)
+GAMS 25.1.2  r67455 Released Aug  1, 2018 WEX-WEI x86 64bit/MS Windows - 08/13/18 19:45:11 Page 2
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Include File Summary
+
+
+   SEQ   GLOBAL TYPE      PARENT   LOCAL  FILENAME
+
+     1        1 INPUT          0       0  C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Prosumage_Opt\Test_MCP2.gms
+     2      136 GDXIN          1     136  C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Prosumage_Opt\data\input_data.gdx
+
+
+COMPILATION TIME     =        0.125 SECONDS     28 MB  25.1.2 r67455 WEX-WEI
+
+
+USER: Course License Energy Informatics Computer BaseS180601:0449AO-GEN
+      Humboldt-Universitaet zu Berlin, WirtschaftswissenschaftliDC14161
+      License for teaching and research at degree granting institutions
+
+
+**** FILE SUMMARY
+
+Input      C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Prosumage_Opt\Test_MCP2.gms
+Output     C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Prosumage_Opt\Test_MCP2.lst
+
+**** USER ERROR(S) ENCOUNTERED

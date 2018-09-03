@@ -1,0 +1,475 @@
+GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 08/04/18 18:34:26 Page 1
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+C o m p i l a t i o n
+
+
+   1   
+   2  **************************************************************************
+      ******
+      The Dispatch and Investment Evaluation Tool with Endogenous Renewables (DI
+      ETER).
+      Version 1.2.0, February 2017.
+      Written by Alexander Zerrahn and Wolf-Peter Schill.
+      This work is licensed under the MIT License (MIT).
+      For more information on this license, visit http://opensource.org/licenses
+      /mit-license.php.
+      Whenever you use this code, please refer to http://www.diw.de/dieter.
+      We are happy to receive feedback under azerrahn@diw.de and wschill@diw.de.
+  12  **************************************************************************
+      ******
+  13   
+  14   
+  15  *********************************************
+  16  **** Defines and uploads parameters      ****
+  17  *********************************************
+  18   
+  19   
+  20  Parameters
+  21   
+  22  ***** Conventionals *****
+  23   
+  24  *--- Generation and fixed ---*
+  25  eta_con(ct)              Efficiency of conventional technologies
+****           $120
+  26  carbon_content(ct)       CO2 emissions per fuel unit used
+  27  c_up(ct)                 Load change costs UP in EUR per MW
+  28  c_do(ct)                 Load change costs DOWN in EUR per MW
+  29  c_fix_con(ct)            Annual fixed costs per MW
+  30  c_var_con(ct)            Variable O&M costs per MWh
+  31   
+  32  *--- Investment ---*
+  33  c_inv_overnight_con(ct)  Investment costs: Overnight
+  34  inv_lifetime_con(ct)     Investment costs: technical lifetime
+  35  inv_recovery_con(ct)     Investment costs: Recovery period according to de
+      preciation tables
+  36  inv_interest_con(ct)     Investment costs: Interest rate
+  37  m_con(ct)                Investment: maximum installable capacity per tech
+      nology
+  38  m_con_e(ct)              Investment: maximum installable energy in TWh per
+       a
+  39   
+  40  *--- Flexibility ---*
+  41  grad_per_min(ct)         Maximum load change per minute relative to instal
+      led capacity
+  42   
+  43   
+  44  ***** Fuel and CO2 costs *****
+  45   
+  46  con_fuelprice(ct)        Fuel price conventionals in Euro per MWth
+  47  con_CO2price             CO2 price
+  48   
+  49   
+  50  ***** Renewables *****
+  51   
+  52  *--- Generation and fixed costs ---*
+  53  c_cu(res)                Hourly Curtailment costs for renewables per MW
+****         $120
+  54  c_fix_res(res)           Annual fixed costs per MW
+  55  phi_min_res              Upload parameter: Minimum required renewables gen
+      eration
+  56   
+  57  *--- Investment ---*
+  58  c_inv_overnight_res(res) Investment costs: Overnight
+  59  inv_lifetime_res(res)    Investment costs: technical lifetime
+  60  inv_recovery_res(res)    Investment costs: Recovery period
+  61  inv_interest_res(res)    Investment costs: Interest rate
+  62  m_res(res)               Investment: maximum installable capacity
+  63  m_res_e(res)             Investment: maximum installable energy in TWh per
+       a
+  64   
+  65   
+  66  ***** Time Data *****
+  67  d_y(year,h)              Demand hour h for cost minimization for different
+****         $120,120
+       years
+  68  d(h)                     Demand hour h for cost minimization
+  69  phi_res_y(year,res,h)    Renewables availability technology res in hour h 
+      for different years
+  70  phi_res(res,h)           Renewables availability technology res in hour h
+  71  phi_ror(h)               Run-of-river availability in hour h
+  72  n_ev_p(ev,h)             Power rating of the charging connection in MW in 
+****          $120
+      hour h (0 when car is in use or parked without grid connection)
+  73  ev_ed(ev,h)              Electricity demand for mobility vehicle profile e
+      v in hour h in MW
+  74  ev_ged_exog(ev,h)        Electricity demand for mobility in case of uncont
+      rolled charging vehicle profile ev in hour h in MW
+  75   
+  76   
+  77  ***** Storage *****
+  78   
+  79  *--- Generation and fixed costs ---*
+  80  c_m_sto(sto)             Marginal costs of storing in or out
+****            $120
+  81  eta_sto(sto)             Storage efficiency
+  82  eta_sto_in(sto)          Storage loading efficiency
+  83  eta_sto_out(sto)         Storage discharging efficiency
+  84  phi_sto_ini(sto)         Initial storage level
+  85  etop_max(sto)            Maximum E to P ratio of storage types
+  86  c_fix_sto(sto)           Annual fixed costs per MW
+  87   
+  88  *--- Investment ---*
+  89  c_inv_overnight_sto_e(sto)       Investment costs for storage energy in MW
+      h: Overnight
+  90  c_inv_overnight_sto_p(sto)       Investment costs for storage capacity in 
+      MW: Overnight
+  91  inv_lifetime_sto(sto)            Investment costs for storage: technical l
+      ifetime
+  92  inv_recovery_sto(sto)            Investment costs for storage: Recovery pe
+      riod
+  93  inv_interest_sto(sto)            Investment costs for storage: Interest ra
+      te
+  94  m_sto_e(sto)                     Investment into storage: maximum installa
+      ble energy in MWh
+  95  m_sto_p(sto)                     Investment into storage: maximum installa
+      ble capacity in MW
+  96   
+  97   
+  98  ***** Electric vehicles *****
+  99  c_m_ev(ev)               Marginal costs of discharging V2G
+ 100  pen_phevfuel             Penalty for non-electric PHEV operation mode
+ 101  eta_ev_in(ev)            Electric vehicle efficiency of charging (G2V)
+ 102  eta_ev_out(ev)           Electric vehicle efficiency of discharging (V2G)
+ 103  phi_ev_ini(ev)           Electric vehicle charging level in initial period
+ 104   
+ 105  n_ev_e(ev)               Electric vehicle battery capacity in MWh
+ 106  ev_quant                 Overall number of electirc vehicles
+ 107  phi_ev(ev)               Share of electric vehicles per load profile in ac
+      tual scenario
+ 108  ev_phev(ev)              Defines whether an electric vehicle is a PHEV REE
+      V (1 if yes 0 otherwise)
+ 109   
+ 110   
+ 111  ***** DSM *****
+ 112   
+ 113  *--- Generation and fixed costs ---*
+ 114  c_m_dsm_cu(dsm_curt)             DSM: hourly costs of load curtailment
+****                    $120
+ 115  c_m_dsm_shift(dsm_shift)         DSM: costs for load shifting
+****                        $120
+ 116  c_fix_dsm_cu(dsm_curt)           Annual fixed costs per MW load curtailmen
+      t capacity
+ 117  c_fix_dsm_shift(dsm_shift)       Annual fixed costs per MW load shifting c
+      apacity
+ 118   
+ 119  *--- Flexibility, efficiency, recovery ---*
+ 120  t_dur_dsm_cu(dsm_curt)           DSM: Maximum duration load curtailment
+ 121  t_off_dsm_cu(dsm_curt)           DSM: Minimum recovery time between two lo
+      ad curtailment instances
+ 122   
+ 123  t_dur_dsm_shift(dsm_shift)       DSM: Maximum duration load shifting
+ 124  t_off_dsm_shift(dsm_shift)       DSM: Minimum recovery time between two gr
+      anular load upshift instances
+ 125  eta_dsm_shift(dsm_shift)         DSM: Efficiency of load shifting technolo
+      gies
+ 126   
+ 127  *--- Investment ---*
+ 128  c_inv_overnight_dsm_cu(dsm_curt)         Investment costs for DSM load cur
+      tailment: Overnight
+ 129  c_inv_overnight_dsm_shift(dsm_shift)     Investment costs for DSM load shi
+      fting: Overnight
+ 130  inv_recovery_dsm_cu(dsm_curt)            Investment costs for DSM load cur
+      tailment: Recovery period
+ 131  inv_recovery_dsm_shift(dsm_shift)        Investment costs for DSM load shi
+      fting: Recovery period
+ 132  inv_interest_dsm_cu(dsm_curt)            Investment costs for DSM load cur
+      tailment: Interest rate
+ 133  inv_interest_dsm_shift(dsm_shift)        Investment costs for DSM load shi
+      fting: Interest rate
+ 134  m_dsm_cu(dsm_curt)                       DSM: Maximum installable capacity
+       load curtailment
+ 135  m_dsm_shift(dsm_shift)                   DSM: Maximum installable capacity
+       load shifting
+ 136   
+ 137   
+ 138  ***** Reserves *****
+ 139  phi_reserves_share(reserves)             Shares of SRL and MRL up and down
+****                            $120
+ 140  reserves_intercept(reserves)
+ 141  reserves_slope(reserves,res)
+ 142  reserves_reaction(reserves)              Activation reaction time for rese
+      rves qualities in minutes
+ 143  phi_reserves_call_y(year,reserves,h)     Hourly share of reserve provision
+       that is actually activated
+ 144  phi_reserves_call(reserves,h)            Hourly share of reserve provision
+       that is actually activated
+ 145  phi_reserves_pr                          Primary reserves demand as fracti
+      on of sum of all secondary and tertiary reserves demand
+ 146   
+ 147   
+ 148  ***** Prosumage *****
+ 149  phi_pro_load                             Share of prosumagers among total 
+      load
+ 150  phi_pro_self                             Minimum self-generation shares fo
+      r prosumagers
+ 151  m_res_pro(res)                           Maximum installable: renewables c
+      apacity
+ 152  m_sto_pro_e(sto)                         Maximum installable: storage ener
+      gy
+ 153  m_sto_pro_p(sto)                         Maximum installable: storage capa
+      city
+ 154  phi_sto_pro_ini                          Prosumagers' initial storage load
+      ing
+ 155  ;
+ 156   
+ 157  **************************************************************************
+      ******
+ 158   
+ 159   
+ 248   
+ 249  %skip_Excel$call "gdxxrw Data_Input_2035.xlsx @temp.tmp o=Data_input";
+****  $409
+ 250   
+GDXIN   C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\D
+        ata_input.gdx
+--- LOAD  d_y = 24:d_y
+--- LOAD  phi_ror = 26:phi_ror
+--- LOAD  phi_res_y = 25:phi_res_y
+--- LOAD  n_ev_p = 27:n_ev_p
+--- LOAD  ev_ed = 28:ev_ed
+--- LOAD  ev_ged_exog = 29:ev_ged_exog
+ 252  $load d_y phi_ror phi_res_y n_ev_p ev_ed ev_ged_exog
+****                   $361      $361,362,363 $361,362   $361,362
+--- LOAD  eta_con = 1:eta_con
+--- LOAD  carbon_content = 2:carbon_content
+--- LOAD  c_up = 3:c_up
+--- LOAD  c_do = 4:c_do
+--- LOAD  c_fix_con = 5:c_fix_con
+--- LOAD  c_var_con = 6:c_var_con
+--- LOAD  c_inv_overnight_con = 7:c_inv_overnight_con
+--- LOAD  inv_lifetime_con = 8:inv_lifetime_con
+--- LOAD  inv_recovery_con = 9:inv_recovery_con
+--- LOAD  inv_interest_con = 10:inv_interest_con
+--- LOAD  m_con = 11:m_con
+--- LOAD  m_con_e = 12:m_con_e
+--- LOAD  grad_per_min = 13:grad_per_min
+ 253  $load eta_con carbon_content c_up c_do c_fix_con c_var_con c_inv_overnight
+****                              $361 $361 $361      $361      $361            
+      _con inv_lifetime_con inv_recovery_con inv_interest_con m_con m_con_e grad
+          $361             $361             $361             $361  $300
+      _per_min
+--- LOAD  con_fuelprice = 22:con_fuelprice
+--- LOAD  con_CO2price = 23:con_CO2price
+ 254  $load con_fuelprice con_CO2price
+****                     $361
+--- LOAD  c_cu = 14:c_cu
+--- LOAD  c_fix_res = 15:c_fix_res
+--- LOAD  c_inv_overnight_res = 16:c_inv_overnight_res
+--- LOAD  inv_lifetime_res = 17:inv_lifetime_res
+--- LOAD  inv_recovery_res = 18:inv_recovery_res
+--- LOAD  inv_interest_res = 19:inv_interest_res
+--- LOAD  m_res = 20:m_res
+--- LOAD  m_res_e = 21:m_res_e
+ 255  $load c_cu c_fix_res c_inv_overnight_res inv_lifetime_res inv_recovery_res
+****                      $361                $361             $361             
+       inv_interest_res m_res m_res_e
+      $361             $361  $361   $361
+--- LOAD  c_m_sto = 47:c_m_sto
+--- LOAD  eta_sto = 48:eta_sto
+--- LOAD  c_fix_sto = 49:c_fix_sto
+--- LOAD  c_inv_overnight_sto_e = 50:c_inv_overnight_sto_e
+--- LOAD  c_inv_overnight_sto_p = 51:c_inv_overnight_sto_p
+--- LOAD  inv_lifetime_sto = 52:inv_lifetime_sto
+--- LOAD  inv_interest_sto = 54:inv_interest_sto
+--- LOAD  m_sto_e = 55:m_sto_e
+--- LOAD  m_sto_p = 56:m_sto_p
+--- LOAD  phi_sto_ini = 57:phi_sto_ini
+--- LOAD  etop_max = 58:etop_max
+ 256  $load c_m_sto eta_sto c_fix_sto c_inv_overnight_sto_e c_inv_overnight_sto_
+****                       $361      $361                  $361                 
+      p inv_lifetime_sto inv_interest_sto m_sto_e m_sto_p phi_sto_ini etop_max
+       $361             $361             $361    $361    $361        $361    $30
+0
+--- LOAD  c_m_dsm_shift = 30:c_m_dsm_shift
+--- LOAD  c_fix_dsm_shift = 31:c_fix_dsm_shift
+--- LOAD  c_inv_overnight_dsm_shift = 32:c_inv_overnight_dsm_shift
+--- LOAD  inv_recovery_dsm_shift = 33:inv_recovery_dsm_shift
+--- LOAD  inv_interest_dsm_shift = 34:inv_interest_dsm_shift
+--- LOAD  m_dsm_shift = 35:m_dsm_shift
+--- LOAD  t_dur_dsm_shift = 36:t_dur_dsm_shift
+--- LOAD  eta_dsm_shift = 38:eta_dsm_shift
+--- LOAD  t_off_dsm_shift = 37:t_off_dsm_shift
+ 257  $load c_m_dsm_shift c_fix_dsm_shift c_inv_overnight_dsm_shift inv_recovery
+****                                     $361                      $361         
+      _dsm_shift inv_interest_dsm_shift m_dsm_shift t_dur_dsm_shift eta_dsm_shif
+                $361                   $361        $361            $361         
+      t t_off_dsm_shift
+       $361           $361
+--- LOAD  c_m_dsm_cu = 39:c_m_dsm_cu
+--- LOAD  c_fix_dsm_cu = 40:c_fix_dsm_cu
+--- LOAD  c_inv_overnight_dsm_cu = 41:c_inv_overnight_dsm_cu
+--- LOAD  inv_recovery_dsm_cu = 42:inv_recovery_dsm_cu
+--- LOAD  inv_interest_dsm_cu = 43:inv_interest_dsm_cu
+--- LOAD  m_dsm_cu = 44:m_dsm_cu
+--- LOAD  t_dur_dsm_cu = 45:t_dur_dsm_cu
+--- LOAD  t_off_dsm_cu = 46:t_off_dsm_cu
+ 258  $load c_m_dsm_cu c_fix_dsm_cu c_inv_overnight_dsm_cu inv_recovery_dsm_cu i
+****                               $361                   $361                $3
+      nv_interest_dsm_cu m_dsm_cu t_dur_dsm_cu t_off_dsm_cu
+      61                $361     $361         $361        $361
+--- LOAD  c_m_ev = 59:c_m_ev
+--- LOAD  eta_ev_in = 61:eta_ev_in
+--- LOAD  eta_ev_out = 62:eta_ev_out
+--- LOAD  pen_phevfuel = 60:pen_phevfuel
+--- LOAD  phi_ev_ini = 63:phi_ev_ini
+--- LOAD  n_ev_e = 64:n_ev_e
+--- LOAD  phi_ev = 65:phi_ev
+--- LOAD  ev_phev = 66:ev_phev
+ 259  $load c_m_ev eta_ev_in eta_ev_out pen_phevfuel phi_ev_ini n_ev_e phi_ev ev
+****              $361      $361       $361                    $361   $361   $36
+      _phev
+      1   $361
+--- LOAD  phi_reserves_share = 67:phi_reserves_share
+--- LOAD  reserves_intercept = 68:reserves_intercept
+--- LOAD  reserves_slope = 69:reserves_slope
+--- LOAD  reserves_reaction = 70:reserves_reaction
+--- LOAD  phi_reserves_call_y = 71:phi_reserves_call_y
+--- LOAD  phi_reserves_pr = 72:phi_reserves_pr
+ 260  $load phi_reserves_share reserves_intercept reserves_slope reserves_reacti
+****                                             $361           $361,362        
+      on phi_reserves_call_y phi_reserves_pr
+        $361                $361,362,363
+--- LOAD  m_res_pro = 73:m_res_pro
+--- LOAD  m_sto_pro_e = 74:m_sto_pro_e
+--- LOAD  m_sto_pro_p = 75:m_sto_pro_p
+--- LOAD  phi_sto_pro_ini = 76:phi_sto_pro_ini
+ 261  $load m_res_pro m_sto_pro_e m_sto_pro_p phi_sto_pro_ini
+****                 $361        $361        $361
+ 262  ;
+ 263   
+ 264   
+ 265  **************************************************************************
+      ******
+ 266   
+ 267   
+ 268  Parameters
+ 269  c_m(ct)        Marginal production costs for conventional plants including
+       variable O and M costs
+ 270  c_i(ct)        Annualized investment costs by conventioanl plant per MW
+ 271   
+ 272  c_i_res(res)     Annualized investment costs by renewable plant per MW
+ 273   
+ 274  c_i_sto_e(sto)   Annualized investment costs storage energy per MWh
+ 275  c_i_sto_p(sto)   Annualized investment costs storage capacity per MW
+ 276   
+ 277  c_i_dsm_cu(dsm_curt)     DSM: Investment costs load curtailment
+ 278  c_i_dsm_shift(dsm_shift) DSM: Investment costs load shifting
+ 279  ;
+ 280   
+ 281  c_m(ct) = con_fuelprice(ct)/eta_con(ct) + carbon_content(ct)/eta_con(ct)*c
+      on_CO2price + c_var_con(ct)   ;
+ 282  c_i(ct) = c_inv_overnight_con(ct)*( inv_interest_con(ct) * (1+inv_interest
+      _con(ct))**(inv_lifetime_con(ct)) )
+ 283                   / ( (1+inv_interest_con(ct))**(inv_lifetime_con(ct))-1 ) 
+            ;
+ 284   
+ 285  c_i_res(res) = c_inv_overnight_res(res)*( inv_interest_res(res) * (1+inv_i
+      nterest_res(res))**(inv_lifetime_res(res)) )
+ 286                   / ( (1+inv_interest_res(res))**(inv_lifetime_res(res))-1 
+      )       ;
+ 287   
+ 288  c_i_sto_e(sto) = c_inv_overnight_sto_e(sto)*( inv_interest_sto(sto) * (1+i
+      nv_interest_sto(sto))**(inv_lifetime_sto(sto)) )
+ 289                   / ( (1+inv_interest_sto(sto))**(inv_lifetime_sto(sto))-1 
+      )       ;
+ 290  c_i_sto_p(sto) = c_inv_overnight_sto_p(sto)*( inv_interest_sto(sto) * (1+i
+      nv_interest_sto(sto))**(inv_lifetime_sto(sto)) )
+ 291                   / ( (1+inv_interest_sto(sto))**(inv_lifetime_sto(sto))-1 
+      )       ;
+ 292   
+ 293  c_i_dsm_cu(dsm_curt) = c_inv_overnight_dsm_cu(dsm_curt)*( inv_interest_dsm
+      _cu(dsm_curt) * (1+inv_interest_dsm_cu(dsm_curt))**(inv_recovery_dsm_cu(ds
+      m_curt)) )
+ 294                   / ( (1+inv_interest_dsm_cu(dsm_curt))**(inv_recovery_dsm_
+      cu(dsm_curt))-1 )       ;
+ 295  c_i_dsm_shift(dsm_shift) = c_inv_overnight_dsm_shift(dsm_shift)*( inv_inte
+      rest_dsm_shift(dsm_shift) * (1+inv_interest_dsm_shift(dsm_shift))**(inv_re
+      covery_dsm_shift(dsm_shift)) )
+ 296                   / ( (1+inv_interest_dsm_shift(dsm_shift))**(inv_recovery_
+      dsm_shift(dsm_shift))-1 )       ;
+ 297   
+ 298   
+ 299   
+ 300  * Adjust investment costs on model's hourly basis
+ 301   
+ 302  c_i(ct) = c_i(ct)*card(h)/8760 ;
+ 303  c_i_res(res) = c_i_res(res)*card(h)/8760 ;
+ 304  %second_hour%c_i_sto_e(sto) = c_i_sto_e(sto)*card(h)/8760 ;
+****  $409
+ 305  c_i_sto_p(sto) = c_i_sto_p(sto)*card(h)/8760 ;
+ 306  c_i_dsm_cu(dsm_curt) = c_i_dsm_cu(dsm_curt)*card(h)/8760 ;
+ 307  c_i_dsm_shift(dsm_shift) = c_i_dsm_shift(dsm_shift)*card(h)/8760 ;
+ 308  %second_hour$ontext
+****  $409
+ 309  c_i_sto_e(sto) = c_i_sto_e(sto)*card(h)/8760 * 2 ;
+ 310  t_dur_dsm_cu(dsm_curt) = t_dur_dsm_cu(dsm_curt) / 2 ;
+ 311  t_off_dsm_cu(dsm_curt) = t_off_dsm_cu(dsm_curt) / 2 ;
+ 312  t_dur_dsm_shift(dsm_shift)$(ord(dsm_shift)=2 or ord(dsm_shift)=4 or ord(ds
+      m_shift)=5) = t_dur_dsm_shift(dsm_shift) / 2 ;
+ 313  t_dur_dsm_shift(dsm_shift)$(ord(dsm_shift)=1 or ord(dsm_shift)=3) = 2 ;
+ 316   
+ 317  c_fix_con(ct) = c_fix_con(ct)*card(h)/8760 ;
+ 318  c_fix_res(res) = c_fix_res(res)*card(h)/8760 ;
+ 319  c_fix_sto(sto) = c_fix_sto(sto)*card(h)/8760 ;
+ 320  c_fix_dsm_cu(dsm_curt) = c_fix_dsm_cu(dsm_curt)*card(h)/8760 ;
+ 321  c_fix_dsm_shift(dsm_shift) = c_fix_dsm_shift(dsm_shift)*card(h)/8760 ;
+ 322   
+ 323  m_con_e('bio') = m_con_e('bio')*card(h)/8760 ;
+****              $353             $353
+ 324   
+ 325  eta_sto_in(sto) = 0.5*eta_sto(sto);
+ 326  eta_sto_out(sto) = 0.5*eta_sto(sto);
+ 327   
+ 328  parameter phi_mean_reserves_call, phi_mean_reserves_call_y ;
+ 329  phi_mean_reserves_call_y(year,reserves) = sum(h, phi_reserves_call_y(year,
+      reserves,h) ) / card(h) + eps ;
+ 330   
+ 331   
+ 332   
+GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 08/04/18 18:34:26 Page 2
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Error Messages
+
+
+120  Unknown identifier entered as set
+300  Remaining errors not printed for this line
+353  The domain for this index position is unknown and the element
+        cannot be checked at this point. Missing data statement.
+361  Values for domain 1 are unknown - no checking possible
+362  Values for domain 2 are unknown - no checking possible
+363  Values for domain 3 are unknown - no checking possible
+409  Unrecognizable item - skip to find a new statement
+       looking for a ';' or a key word to get started again
+
+**** 86 ERROR(S)   0 WARNING(S)
+GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 08/04/18 18:34:26 Page 3
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Include File Summary
+
+
+   SEQ   GLOBAL TYPE      PARENT   LOCAL  FILENAME
+
+     1        1 INPUT          0       0  C:\Users\Lenovo\Dropbox\ma_prosumage\C
+                                          ode\Source_Code\DIETER_Prosumage\datal
+                                          oad.gms
+     2      251 GDXIN          1     251  C:\Users\Lenovo\Dropbox\ma_prosumage\C
+                                          ode\Source_Code\DIETER_Prosumage\Data_
+                                          input.gdx
+
+
+COMPILATION TIME     =        0.500 SECONDS     15 MB  24.7.4 r58773 WEX-WEI
+
+
+USER: Course License Energy Informatics Computer BaseS180601:0449AO-GEN
+      Humboldt-Universitaet zu Berlin, WirtschaftswissenschaftliDC14161
+      License for teaching and research at degree granting institutions
+
+
+**** FILE SUMMARY
+
+Input      C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumag
+           e\dataload.gms
+Output     C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumag
+           e\dataload.lst
+
+**** USER ERROR(S) ENCOUNTERED
