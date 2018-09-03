@@ -188,9 +188,9 @@ hh_energy_balance(h)..
 *** Household PV generation usage: Directly consumed, curtailed,stored or sold
 pv_generation(res,h)..
 
-      avail_solar(h) * N_PV(res) =E=
+      avail_solar(h) * N_PV(res) =G=
         G_PV(res,h)
-      + CU(res,h)
+*      + CU(res,h)
       + sum( sto , STO_IN(sto,h))
       + E_sell(h)
 ;

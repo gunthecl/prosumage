@@ -1,0 +1,12 @@
+B 2 C o m p i l a t i o n
+B 301 Include File Summary
+B 317 Model Statistics    SOLVE prosumod Using LP From line 288
+B 333 Solution Report     SOLVE prosumod Using LP From line 288
+B 367 E x e c u t i o n
+I 368 d
+I 2125 N_PV
+I 2131 Z
+I 2132 E_buy
+I 4113 E_sell
+I 5060 price_market
+I 7984 hh_energy_balance

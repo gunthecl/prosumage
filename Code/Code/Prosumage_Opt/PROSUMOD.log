@@ -1,83 +1,76 @@
 
---- Job PROSUMOD.gms Start 08/10/18 10:40:50 25.1.2 r67455 WEX-WEI x86 64bit/MS Windows
-GAMS 25.1.2   Copyright (C) 1987-2018 GAMS Development. All rights reserved
-Licensee: Course License Energy Informatics Computer BaseS180601:0449AO-GEN
-          Humboldt-Universitaet zu Berlin, WirtschaftswissenschaftliDC14161
+--- Job PROSUMOD.gms Start 09/03/18 11:34:14 24.2.1 r43572 WEX-WEI x86_64/MS Windows
+GAMS 24.2.1   Copyright (C) 1987-2013 GAMS Development. All rights reserved
+Licensee: Abteilung Energie, Verkehr, Umwelt, 5 User     S131220:0515AN-GEN
+          Deutsches Institut fuer Wirtschaftsforschung DIW           DC3975
           License for teaching and research at degree granting institutions
-          License Admin: Olga Spiridonova, spiridoo@cms.hu-berlin.de       
 --- Starting compilation
 --- PROSUMOD.gms(135) 3 Mb
---- GDXin=C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Prosumage_Opt\data\input_data.gdx
+--- GDXin=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Code\Prosumage_Opt\data\input_data.gdx
 --- PROSUMOD.gms(298) 28 Mb
---- Starting execution: elapsed 0:00:00.107
+--- Starting execution: elapsed 0:00:00.397
 --- PROSUMOD.gms(268) 29 Mb
 --- Generating LP model prosumod
---- PROSUMOD.gms(291) 46 Mb
----   52,562 rows  61,324 columns  188,289 non-zeroes
---- Executing CPLEX: elapsed 0:00:00.788
+--- PROSUMOD.gms(291) 44 Mb
+---   52,562 rows  52,564 columns  179,529 non-zeroes
+--- Executing CPLEX: elapsed 0:00:01.018
 
-IBM ILOG CPLEX   25.1.2 r67455 Released Aug  1, 2018 WEI x86 64bit/MS Windows 
+IBM ILOG CPLEX   24.2.1 r43572 Released Dec  9, 2013 WEI x86_64/MS Windows    
 --- GAMS/Cplex licensed for continuous and discrete problems.
-Cplex 12.8.0.0
+Cplex 12.6.0.0
 
 Reading data...
 Starting Cplex...
-Space for names approximately 3.35 Mb
+Space for names approximately 3.15 Mb
 Use option 'names no' to turn use of names off
-CPXPARAM_Advance                                 0
-CPXPARAM_Simplex_Limits_Iterations               2000000000
-CPXPARAM_TimeLimit                               10000000
-CPXPARAM_Threads                                 1
-CPXPARAM_Parallel                                1
-CPXPARAM_Tune_TimeLimit                          2000000
 Tried aggregator 1 time.
-LP Presolve eliminated 8871 rows and 22086 columns.
+LP Presolve eliminated 8871 rows and 13326 columns.
 Aggregator did 8707 substitutions.
 Reduced LP has 34984 rows, 30531 columns, and 120124 nonzeros.
-Presolve time = 0.11 sec. (48.90 ticks)
+Presolve time = 0.08 sec. (42.28 ticks)
 Initializing dual steep norms . . .
 
 Iteration log . . .
 Iteration:     1   Dual objective     =          -363.814139
 Iteration:   237   Dual objective     =          -197.693881
 Iteration:   942   Dual objective     =            -8.649517
-Iteration:  1450   Dual objective     =           128.886187
+Iteration:  1458   Dual objective     =           128.886187
 Perturbation started.
 Iteration:  1515   Dual objective     =           128.886187
-Iteration:  2289   Dual objective     =           231.279504
-Iteration:  2752   Dual objective     =           327.000069
-Iteration:  3006   Dual objective     =           375.852899
-Iteration:  3306   Dual objective     =           430.956155
-Iteration:  3634   Dual objective     =           473.382113
-Iteration:  3927   Dual objective     =           508.618736
-Iteration:  4135   Dual objective     =           539.172465
-Iteration:  4381   Dual objective     =           572.142081
-Iteration:  4588   Dual objective     =           591.373322
-Iteration:  4830   Dual objective     =           619.379601
-Iteration:  5080   Dual objective     =           647.644855
-Iteration:  5349   Dual objective     =           677.381856
-Iteration:  5604   Dual objective     =           712.676748
-Iteration:  5868   Dual objective     =           745.426924
-Iteration:  6134   Dual objective     =           775.830255
-Iteration:  6325   Dual objective     =           785.439083
-Iteration:  6645   Dual objective     =           816.122999
-Iteration:  7026   Dual objective     =           833.983950
-Iteration:  7388   Dual objective     =           846.377519
-Iteration:  7756   Dual objective     =           862.449912
-Iteration:  8133   Dual objective     =           883.179604
-Iteration:  8542   Dual objective     =           894.059313
-Iteration:  8865   Dual objective     =           901.060638
-Iteration:  9229   Dual objective     =           909.510736
-Iteration:  9577   Dual objective     =           916.971968
-Iteration:  9915   Dual objective     =           923.583225
-Iteration: 10248   Dual objective     =           927.397666
-Iteration: 10602   Dual objective     =           929.135603
-Iteration: 10963   Dual objective     =           934.153922
-Iteration: 11331   Dual objective     =           937.703271
-Iteration: 11755   Dual objective     =           938.961031
+Iteration:  2337   Dual objective     =           239.361480
+Iteration:  2894   Dual objective     =           360.075004
+Iteration:  3177   Dual objective     =           407.694917
+Iteration:  3502   Dual objective     =           449.464563
+Iteration:  3783   Dual objective     =           495.432859
+Iteration:  4106   Dual objective     =           529.939431
+Iteration:  4397   Dual objective     =           568.487693
+Iteration:  4689   Dual objective     =           600.084806
+Iteration:  4957   Dual objective     =           632.192158
+Iteration:  5256   Dual objective     =           670.454509
+Iteration:  5514   Dual objective     =           701.403651
+Iteration:  5763   Dual objective     =           724.951303
+Iteration:  6013   Dual objective     =           755.955586
+Iteration:  6260   Dual objective     =           774.191670
+Iteration:  6546   Dual objective     =           795.654218
+Iteration:  6952   Dual objective     =           827.156114
+Iteration:  7362   Dual objective     =           852.891347
+Iteration:  7696   Dual objective     =           863.905155
+Iteration:  8068   Dual objective     =           873.273718
+Iteration:  8412   Dual objective     =           883.967712
+Iteration:  8734   Dual objective     =           894.734169
+Iteration:  9075   Dual objective     =           903.193062
+Iteration:  9417   Dual objective     =           912.152437
+Iteration:  9766   Dual objective     =           916.767554
+Iteration: 10137   Dual objective     =           920.902134
+Iteration: 10441   Dual objective     =           924.721565
+Iteration: 10776   Dual objective     =           929.194432
+Iteration: 11103   Dual objective     =           933.361664
+Iteration: 11457   Dual objective     =           935.513967
+Iteration: 11836   Dual objective     =           937.535303
+Iteration: 12159   Dual objective     =           938.962876
 Removing perturbation.
 LP status(1): optimal
-Cplex Time: 8.03sec (det. 5069.27 ticks)
+Cplex Time: 6.35sec (det. 5059.11 ticks)
 
 Optimal solution found.
 Objective :         939.079854
@@ -86,8 +79,7 @@ Objective :         939.079854
 --- PROSUMOD.gms(291) 31 Mb
 --- Reading solution for model prosumod
 --- PROSUMOD.gms(291) 35 Mb
---- Executing after solve: elapsed 0:00:09.575
---- PROSUMOD.gms(292) 36 Mb
+--- Executing after solve: elapsed 0:00:07.938
+--- PROSUMOD.gms(292) 35 Mb
 *** Status: Normal completion
---- Job PROSUMOD.gms Stop 08/10/18 10:41:00 elapsed 0:00:10.070
-Cannot delete directory: 225a
+--- Job PROSUMOD.gms Stop 09/03/18 11:34:22 elapsed 0:00:08.304

@@ -65,7 +65,7 @@ Z                        Objective
 
 Positive variables
 G_PV(res,h)              Generation of pv plant
-CU(res,h)                Curtailment of pv energy
+*CU(res,h)                Curtailment of pv energy
 N_PV(res)                PV generation capacities
 *N_STO_E(sto)             Capacities: storage energy
 *N_STO_P(sto)             Capacities: storage power
@@ -186,7 +186,7 @@ pv_generation(res,h)..
 
       avail_solar(h) * N_PV(res) =E=
         G_PV(res,h)
-      + CU(res,h)
+*      + CU(res,h)
 *      + sum( sto , STO_IN(sto,h))
       + E_sell(h)
 ;

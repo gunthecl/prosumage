@@ -1,0 +1,69 @@
+
+--- Job Test_MCP1.gms Start 09/03/18 13:02:44 24.2.1 r43572 WEX-WEI x86_64/MS Windows
+GAMS 24.2.1   Copyright (C) 1987-2013 GAMS Development. All rights reserved
+Licensee: Abteilung Energie, Verkehr, Umwelt, 5 User     S131220:0515AN-GEN
+          Deutsches Institut fuer Wirtschaftsforschung DIW           DC3975
+          License for teaching and research at degree granting institutions
+--- Starting compilation
+--- Test_MCP1.gms(131) 3 Mb
+--- GDXin=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Code\Prosumage_Opt\data\input_data.gdx
+--- Test_MCP1.gms(295) 28 Mb
+--- Starting execution: elapsed 0:00:00.122
+--- Test_MCP1.gms(265) 29 Mb
+--- Generating LP model prosumod
+--- Test_MCP1.gms(288) 36 Mb
+---   17,521 rows  26,282 columns  56,888 non-zeroes
+--- Executing CPLEX: elapsed 0:00:00.181
+
+IBM ILOG CPLEX   24.2.1 r43572 Released Dec  9, 2013 WEI x86_64/MS Windows    
+--- GAMS/Cplex licensed for continuous and discrete problems.
+Cplex 12.6.0.0
+
+Reading data...
+Starting Cplex...
+Space for names approximately 1.14 Mb
+Use option 'names no' to turn use of names off
+Tried aggregator 1 time.
+LP Presolve eliminated 8869 rows and 13303 columns.
+Aggregator did 4326 substitutions.
+Reduced LP has 4326 rows, 8653 columns, and 12978 nonzeros.
+Presolve time = 0.09 sec. (48.16 ticks)
+
+Iteration log . . .
+Iteration:     1   Scaled dual infeas =           151.008510
+Iteration:   420   Scaled dual infeas =           133.996010
+Iteration:   840   Scaled dual infeas =           117.669780
+Iteration:  1260   Scaled dual infeas =           102.103370
+Iteration:  1680   Scaled dual infeas =            89.351260
+Iteration:  2100   Scaled dual infeas =            75.441490
+Iteration:  2520   Scaled dual infeas =            61.835510
+Iteration:  2940   Scaled dual infeas =            47.187030
+Iteration:  3360   Scaled dual infeas =            33.705510
+Iteration:  3780   Scaled dual infeas =            20.427320
+Iteration:  4200   Scaled dual infeas =             3.933460
+Iteration:  4304   Dual objective     =           933.706752
+Iteration:  4408   Dual objective     =           971.045533
+Iteration:  4527   Dual objective     =          1005.785961
+Iteration:  4676   Dual objective     =          1045.621233
+Iteration:  4790   Dual objective     =          1084.913525
+Iteration:  4922   Dual objective     =          1131.801250
+Iteration:  5065   Dual objective     =          1191.381327
+Iteration:  5187   Dual objective     =          1223.836685
+Iteration:  5319   Dual objective     =          1241.423393
+Iteration:  5480   Dual objective     =          1268.643717
+Iteration:  5635   Dual objective     =          1277.237908
+Iteration:  5782   Dual objective     =          1281.851823
+LP status(1): optimal
+Cplex Time: 0.37sec (det. 210.68 ticks)
+
+Optimal solution found.
+Objective :        1283.505189
+
+--- Restarting execution
+--- Test_MCP1.gms(288) 28 Mb
+--- Reading solution for model prosumod
+--- Test_MCP1.gms(288) 31 Mb
+--- Executing after solve: elapsed 0:00:02.533
+--- Test_MCP1.gms(289) 31 Mb
+*** Status: Normal completion
+--- Job Test_MCP1.gms Stop 09/03/18 13:02:47 elapsed 0:00:02.559

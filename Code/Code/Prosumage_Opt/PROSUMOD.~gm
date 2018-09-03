@@ -65,7 +65,6 @@ hh_profile       Household load data                     /V1*V74/
 
 Variables
 Z                        Objective
-V_market                 Market value of energy sold
 ;
 
 Positive variables
@@ -98,8 +97,7 @@ c_i_sto_p(sto)              Cost: investment into storage power
 c_i_pv(res)                 Cost: investment into renewable capacity
 c_var_sto(sto)              Cost: variable generation costs storage
 penalty                     Penalty term
-test
-period
+
 
 ;
 
@@ -163,8 +161,6 @@ stolev_max_energy          Storage capacity constraint on maximum energy
 stoin_max_power            Storage capacity constraint on maximum power - storing in
 stoout_max_power           Storage capacity constraint on maximum power - storing out
 foresight_24h              Perfect foresight only for next 24h
-market_value               Market value of energy produced
-
 ;
 
 
@@ -251,17 +247,6 @@ stoout_max_power(sto,h)..
          STO_OUT(sto,h) =L= N_STO_P(sto)
 ;
 
-* Market value
-market_value..
-
-         V_market =E=
-
-       sum( h , E_sell(h)*price_market(h))   /  sum( h , E_sell(h))
-
-;
-
-
-
 
 ***************************** Initialize model *********************************
 Model prosumod /
@@ -274,7 +259,7 @@ stolev_max_energy
 stoin_max_power
 stoout_max_power
 pv_install_max
-market_value
+
 *foresight_24h
 /
 
@@ -305,7 +290,7 @@ $offecho
 
 solve   prosumod using lp min Z;
 display d , N_PV.l , N_STO_E.l, N_STO_P.l, Z.l, E_buy.l , E_sell.l ,
-        STO_L.l, price_market
+        STO_L.l, price_market, hh_energy_balance.m
 
 
 ***************************** Set up reporting *********************************

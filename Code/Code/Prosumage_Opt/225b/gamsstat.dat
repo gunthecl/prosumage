@@ -1,0 +1,4438 @@
+=0PATH             24.2.1 r43572 Released Dec  9, 2013 WEI x86_64/MS Windows    
+=1
+43801 row/cols, 78732 non-zeros, 0.00% dense.
+
+=2
+convergence_tolerance 1e-006
+major_iteration_limit 500
+minor_iteration_limit 87602
+crash_iteration_limit 50
+cumulative_iteration_limit 2000000000
+time_limit 1e+007
+interrupt_limit 5
+chen_lambda 0.8
+output yes
+output_errors yes
+output_warnings no
+output_major_iterations yes
+output_major_iterations_frequency 1
+output_minor_iterations yes
+output_minor_iterations_frequency 500
+output_crash_iterations yes
+output_crash_iterations_frequency 1
+output_initial_point no
+output_initial_statistics no
+output_initial_point_statistics yes
+output_initial_scaling_statistics yes
+output_final_point no
+output_final_statistics yes
+output_final_point_statistics yes
+output_final_scaling_statistics no
+output_final_degeneracy_statistics no
+output_final_summary yes
+output_maximum_zero_log 10
+output_maximum_zero_listing 1000
+output_restart_log yes
+output_preprocess_level 1
+output_options no
+preprocess yes
+gradient_step_limit 5
+gradient_searchtype arc
+crash_method pnewton
+crash_perturb yes
+crash_searchtype line
+crash_minimum_dimension 1
+crash_nbchange_limit 1
+nms yes
+nms_memory_size 10
+nms_mstep_frequency 10
+nms_initial_reference_factor 20
+nms_searchtype line
+nms_maximum_watchdogs 5
+proximal_perturbation 0
+merit_function fischer
+crash_merit_function fischer
+lemke_start automatic
+lemke_start_type slack
+lemke_rank_deficiency_iterations 10
+output_linear_model no
+=1
+Path 4.7.02 (Mon Dec 09 08:54:09 2013)
+Written by Todd Munson, Steven Dirkse, and Michael Ferris
+=2
+  ** WARNING **
+Basis modifications: 43801
+
+INITIAL STATISTICS
+Inf-Norm of Complementarity . .  3.8277e+000 eqn: (hh_energy_balance(h332))
+Inf-Norm of Normal Map. . . . .  3.8277e+000 eqn: (hh_energy_balance(h332))
+Inf-Norm of Minimum Map . . . .  3.8277e+000 eqn: (hh_energy_balance(h332))
+Inf-Norm of Fischer Function. .  3.8277e+000 eqn: (hh_energy_balance(h332))
+Inf-Norm of Grad Fischer Fcn. .  4.4277e+000 eqn: (KKTEB(h332))
+Two-Norm of Grad Fischer Fcn. .  1.8865e+002
+=1
+
+INITIAL POINT STATISTICS
+=2
+=1
+Maximum of X. . . . . . . . . .  0.0000e+000 var: (N_PV)
+=2
+=1
+Maximum of F. . . . . . . . . .  6.0527e+001 eqn: (KKTN)
+=2
+=1
+Maximum of Grad F . . . . . . .  1.0000e+000 eqn: (hh_energy_balance(h1))
+                                            var: (G_PV(h1))
+=2
+=1
+
+INITIAL JACOBIAN NORM STATISTICS
+=2
+=1
+Maximum Row Norm. . . . . . . .  1.1282e+003 eqn: (KKTN)
+=2
+=1
+Minimum Row Norm. . . . . . . .  1.0000e+000 eqn: (KKTEB(h1))
+=2
+=1
+Maximum Column Norm . . . . . .  1.1282e+003 var: (N_PV)
+=2
+=1
+Minimum Column Norm . . . . . .  1.0000e+000 var: (E_buy(h1))
+=2
+
+Crash Log
+major  func  diff  size  residual    step       prox   (label)
+    0     0             9.7185e+001             0.0e+000 (hh_energy_balance(h332))
+Factorization: number of singularities 64(34976)
+Crash: Factor: 64 singularities.
+Crash: Factor: singular constraint: pv_generation(h27)
+Crash: Factor: singular constraint: pv_generation(h1106)
+Crash: Factor: singular constraint: pv_generation(h1110)
+Crash: Factor: singular constraint: pv_generation(h1111)
+Crash: Factor: singular constraint: pv_generation(h1776)
+Crash: Factor: singular constraint: pv_generation(h1777)
+Crash: Factor: singular constraint: pv_generation(h1778)
+Crash: Factor: singular constraint: pv_generation(h1779)
+Crash: Factor: singular constraint: pv_generation(h1780)
+Crash: Factor: singular constraint: pv_generation(h1781)
+Crash: Factor: singular constraint: pv_generation(h1782)
+Crash: Factor: singular constraint: pv_generation(h1783)
+Crash: Factor: singular constraint: pv_generation(h1790)
+Crash: Factor: singular constraint: pv_generation(h1791)
+Crash: Factor: singular constraint: pv_generation(h1801)
+Crash: Factor: singular constraint: pv_generation(h1802)
+Crash: Factor: singular constraint: pv_generation(h1803)
+Crash: Factor: singular constraint: pv_generation(h2461)
+Crash: Factor: singular constraint: pv_generation(h2462)
+Crash: Factor: singular constraint: pv_generation(h2463)
+Crash: Factor: singular constraint: pv_generation(h3125)
+Crash: Factor: singular constraint: pv_generation(h3126)
+Crash: Factor: singular constraint: pv_generation(h3128)
+Crash: Factor: singular constraint: pv_generation(h3129)
+Crash: Factor: singular constraint: pv_generation(h3130)
+Crash: Factor: singular constraint: pv_generation(h3131)
+Crash: Factor: singular constraint: pv_generation(h3132)
+Crash: Factor: singular constraint: pv_generation(h3133)
+Crash: Factor: singular constraint: pv_generation(h3134)
+Crash: Factor: singular constraint: pv_generation(h3135)
+Crash: Factor: singular constraint: pv_generation(h5481)
+Crash: Factor: singular constraint: pv_generation(h5483)
+Crash: Factor: singular constraint: pv_generation(h5484)
+Crash: Factor: singular constraint: pv_generation(h5485)
+Crash: Factor: singular constraint: pv_generation(h5486)
+Crash: Factor: singular constraint: pv_generation(h5487)
+Crash: Factor: singular constraint: pv_generation(h8474)
+Crash: Factor: singular constraint: pv_generation(h8475)
+Crash: Factor: singular constraint: pv_generation(h8476)
+Crash: Factor: singular constraint: pv_generation(h8477)
+Crash: Factor: singular constraint: pv_generation(h8478)
+Crash: Factor: singular constraint: pv_generation(h8519)
+Crash: Factor: singular constraint: pv_generation(h8520)
+Crash: Factor: singular constraint: pv_generation(h8521)
+Crash: Factor: singular constraint: pv_generation(h8522)
+Crash: Factor: singular constraint: pv_generation(h8523)
+Crash: Factor: singular constraint: pv_generation(h8524)
+Crash: Factor: singular constraint: pv_generation(h8525)
+Crash: Factor: singular constraint: pv_generation(h8526)
+Crash: Factor: singular constraint: pv_generation(h8543)
+Crash: Factor: singular constraint: pv_generation(h8544)
+Crash: Factor: singular constraint: pv_generation(h8545)
+Crash: Factor: singular constraint: pv_generation(h8546)
+Crash: Factor: singular constraint: pv_generation(h8547)
+Crash: Factor: singular constraint: pv_generation(h8548)
+Crash: Factor: singular constraint: pv_generation(h8549)
+Crash: Factor: singular constraint: pv_generation(h8569)
+Crash: Factor: singular constraint: pv_generation(h8570)
+Crash: Factor: singular constraint: pv_generation(h8571)
+Crash: Factor: singular constraint: pv_generation(h8572)
+Crash: Factor: singular constraint: pv_generation(h8573)
+Crash: Factor: singular constraint: pv_generation(h8574)
+Crash: Factor: singular constraint: pv_generation(h8598)
+Crash: Factor: singular constraint: pv_generation(h8599)
+    1     9 12487 34976 9.5916e+001  1.2e-002    9.7e-001 (hh_energy_balance(h332))
+    2    16  9728 41085 9.1027e+001  6.9e-002    8.7e-001 (hh_energy_balance(h332))
+    3    17 12027 37428 8.0455e+001  1.0e+000    7.9e-001 (KKTES(h332))
+    4    22   478 34093 5.2794e+001  2.6e-001    7.1e-001 (KKTEB(h1110))
+    5    28  2695 34093 4.6237e+001  1.7e-001    5.3e-001 (pv_generation(h5486))
+    6    29  7854 35288 2.0142e+001  1.0e+000    4.6e-001 (KKTES(h1110))
+    7    30  4427 29189 1.8247e+001  1.0e+000    2.0e-001 (KKTES(h7578))
+    8    32   700 26158 1.7767e+001  8.0e-001    1.8e-001 (KKTES(h2463))
+pn_search terminated: no progress.
+  ** WARNING **
+Basis modifications: 17580
+
+Major Iteration Log
+major minor  func  grad  residual    step  type prox    inorm  (label)
+    0     0    45     9 1.7767e+001           I 1.6e-001 5.8e-001 (KKTES(h2463))
+  ** WARNING **
+Residual scaled (4.978795e-001).
+Basis: update  1: LU: 112001 z: 0 dmin: 0.065261
+Basis: update 21: LU: 111966 z: 0 dmin: 0.065261
+Basis: update 41: LU: 111926 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117603 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117562 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117522 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117862 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117824 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117784 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117563 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117522 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117482 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 114061 z: 0 dmin: 0.065261
+Basis: update 21: LU: 114020 z: 0 dmin: 0.065261
+Basis: update 41: LU: 113980 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116863 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116822 z: 0 dmin: 0.065261
+Basis: update 41: LU: 116782 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 115443 z: 0 dmin: 0.065261
+Basis: update 21: LU: 115402 z: 0 dmin: 0.065261
+Basis: update 41: LU: 115365 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 112651 z: 0 dmin: 0.065261
+Basis: update 21: LU: 112610 z: 0 dmin: 0.065261
+Basis: update 41: LU: 112570 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 111802 z: 0 dmin: 0.065261
+Basis: update 21: LU: 111761 z: 0 dmin: 0.065261
+Basis: update 41: LU: 111721 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 111765 z: 0 dmin: 0.065261
+Basis: update 21: LU: 111724 z: 0 dmin: 0.065261
+
+Minor Iteration Log
+minor      t          z     w     v   art ckpts  enter    leave
+  500  9.3528e-003 25662 18138     0     0     9 w[  722] z[  541]
+Basis: update 41: LU: 111687 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 113047 z: 0 dmin: 0.065261
+Basis: update 21: LU: 113009 z: 0 dmin: 0.065261
+Basis: update 41: LU: 112969 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 110869 z: 0 dmin: 0.065261
+Basis: update 21: LU: 110831 z: 0 dmin: 0.065261
+Basis: update 41: LU: 110791 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 110367 z: 0 dmin: 0.065261
+Basis: update 21: LU: 110326 z: 0 dmin: 0.065261
+Basis: update 41: LU: 110289 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 109619 z: 0 dmin: 0.065261
+Basis: update 21: LU: 109581 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118543 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116463 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116847 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117636 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117499 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117850 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118698 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116650 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116989 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117703 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 115597 z: 0 dmin: 0.065261
+Basis: update 21: LU: 115888 z: 0 dmin: 0.065261
+Basis: update 41: LU: 116466 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117359 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117657 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118225 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 115925 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116224 z: 0 dmin: 0.065261
+ 1000  9.0693e-003 25757 18043     0     0    19 z[  425] w[ 3042]
+Basis: update 41: LU: 117002 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 119010 z: 0 dmin: 0.065261
+Basis: update 21: LU: 119302 z: 0 dmin: 0.065261
+Basis: update 41: LU: 120045 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117626 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117998 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118529 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117905 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118194 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118912 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117568 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117898 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118489 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116803 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117149 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117954 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116890 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117226 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118008 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118385 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118776 z: 0 dmin: 0.065261
+Basis: update 41: LU: 119401 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 120813 z: 0 dmin: 0.065261
+Basis: update 21: LU: 120999 z: 0 dmin: 0.065261
+Basis: update 41: LU: 121237 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118644 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118805 z: 0 dmin: 0.065261
+Basis: update 41: LU: 119150 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118507 z: 0 dmin: 0.065261
+ 1500 -2.5511e-001 26064 17736     0     0    29 w[18766] z[18717]
+Basis: update 21: LU: 118708 z: 0 dmin: 0.065261
+Basis: update 41: LU: 119162 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117158 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117381 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117949 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117873 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118136 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118937 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116898 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117106 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118030 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116815 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117122 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117779 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 120258 z: 0 dmin: 0.065261
+Basis: update 21: LU: 120413 z: 0 dmin: 0.065261
+Basis: update 41: LU: 121095 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118064 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118396 z: 0 dmin: 0.065261
+Basis: update 41: LU: 119279 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116483 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116769 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117570 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 119487 z: 0 dmin: 0.065261
+Basis: update 21: LU: 119621 z: 0 dmin: 0.065261
+Basis: update 41: LU: 120144 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 119466 z: 0 dmin: 0.065261
+Basis: update 21: LU: 119668 z: 0 dmin: 0.065261
+Basis: update 41: LU: 120438 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116219 z: 0 dmin: 0.065261
+ 2000 -2.5697e-001 25564 18236     0     0    39 w[22936] z[18655]
+Basis: update 21: LU: 116472 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117205 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 121166 z: 0 dmin: 0.065261
+Basis: update 21: LU: 121453 z: 0 dmin: 0.065261
+Basis: update 41: LU: 122359 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118776 z: 0 dmin: 0.065261
+Basis: update 21: LU: 114585 z: 0 dmin: 0.065261
+Basis: update 41: LU: 114696 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117187 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117271 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117357 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117970 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118053 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118137 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118036 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118126 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118214 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118088 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118181 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118270 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118138 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118221 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118304 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118188 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118269 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118353 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118240 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118324 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118412 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+ 2500 -2.5547e-001 25855 17945     0     0    49 z[20226] w[23685]
+Basis: update  1: LU: 118290 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118379 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118467 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118342 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118429 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118517 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118392 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118478 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118566 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118444 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118530 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118619 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118494 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118578 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118664 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118546 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118634 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118721 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 115768 z: 0 dmin: 0.065261
+Basis: update 21: LU: 115727 z: 0 dmin: 0.065261
+Basis: update 41: LU: 115687 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118125 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118084 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118047 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117884 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117846 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117809 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116575 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116534 z: 0 dmin: 0.065261
+Basis: update 41: LU: 116494 z: 0 dmin: 0.065261
+ 3000  8.5905e-003 25964 17836     0     0    58 w[ 2799] z[ 6443]
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 114999 z: 0 dmin: 0.065261
+Basis: update 21: LU: 114958 z: 0 dmin: 0.065261
+Basis: update 41: LU: 114918 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116839 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116798 z: 0 dmin: 0.065261
+Basis: update 41: LU: 116758 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 113151 z: 0 dmin: 0.065261
+Basis: update 21: LU: 113110 z: 0 dmin: 0.065261
+Basis: update 41: LU: 113070 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 115083 z: 0 dmin: 0.065261
+Basis: update 21: LU: 115045 z: 0 dmin: 0.065261
+Basis: update 41: LU: 115005 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 114510 z: 0 dmin: 0.065261
+Basis: update 21: LU: 114469 z: 0 dmin: 0.065261
+Basis: update 41: LU: 114432 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 111865 z: 0 dmin: 0.065261
+Basis: update 21: LU: 111824 z: 0 dmin: 0.065261
+Basis: update 41: LU: 111787 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 111487 z: 0 dmin: 0.065261
+Basis: update 21: LU: 111446 z: 0 dmin: 0.065261
+Basis: update 41: LU: 111406 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 110840 z: 0 dmin: 0.065261
+Basis: update 21: LU: 110802 z: 0 dmin: 0.065261
+Basis: update 41: LU: 110762 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 110177 z: 0 dmin: 0.065261
+Basis: update 21: LU: 110145 z: 0 dmin: 0.065261
+Basis: update 41: LU: 110108 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 109592 z: 0 dmin: 0.065261
+Basis: update 21: LU: 109555 z: 0 dmin: 0.065261
+ 3500  1.2108e-002 25464 18336     0     0    68 w[ 1615] z[ 5077]
+Basis: update 41: LU: 118681 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116371 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116751 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117541 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116439 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116788 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117593 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 115479 z: 0 dmin: 0.065261
+Basis: update 21: LU: 115821 z: 0 dmin: 0.065261
+Basis: update 41: LU: 116475 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 115615 z: 0 dmin: 0.065261
+Basis: update 21: LU: 115859 z: 0 dmin: 0.065261
+Basis: update 41: LU: 116521 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117008 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117311 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117870 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117604 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117901 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118688 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 119265 z: 0 dmin: 0.065261
+Basis: update 21: LU: 119607 z: 0 dmin: 0.065261
+Basis: update 41: LU: 120313 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117338 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117689 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118130 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116279 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116576 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117234 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 120476 z: 0 dmin: 0.065261
+Basis: update 21: LU: 120801 z: 0 dmin: 0.065261
+ 4000  8.6606e-003 25955 17845     0     0    78 z[  203] w[ 4766]
+Basis: update 41: LU: 121436 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116839 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117222 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117994 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 119996 z: 0 dmin: 0.065261
+Basis: update 21: LU: 120375 z: 0 dmin: 0.065261
+Basis: update 41: LU: 121086 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118985 z: 0 dmin: 0.065261
+Basis: update 21: LU: 119308 z: 0 dmin: 0.065261
+Basis: update 41: LU: 120004 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 120594 z: 0 dmin: 0.065261
+Basis: update 21: LU: 120761 z: 0 dmin: 0.065261
+Basis: update 41: LU: 121026 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 122401 z: 0 dmin: 0.065261
+Basis: update 21: LU: 122544 z: 0 dmin: 0.065261
+Basis: update 41: LU: 122865 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 120813 z: 0 dmin: 0.065261
+Basis: update 21: LU: 121000 z: 0 dmin: 0.065261
+Basis: update 41: LU: 121551 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117153 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117388 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118003 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117007 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117311 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118029 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 121347 z: 0 dmin: 0.065261
+Basis: update 21: LU: 121525 z: 0 dmin: 0.065261
+Basis: update 41: LU: 122426 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116797 z: 0 dmin: 0.065261
+ 4500 -2.5558e-001 25866 17934     0     0    88 w[22286] z[22433]
+Basis: update 21: LU: 117089 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117635 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117283 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117462 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118221 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 119912 z: 0 dmin: 0.065261
+Basis: update 21: LU: 120259 z: 0 dmin: 0.065261
+Basis: update 41: LU: 121152 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 119609 z: 0 dmin: 0.065261
+Basis: update 21: LU: 119899 z: 0 dmin: 0.065261
+Basis: update 41: LU: 120729 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 119474 z: 0 dmin: 0.065261
+Basis: update 21: LU: 119651 z: 0 dmin: 0.065261
+Basis: update 41: LU: 120261 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116465 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116687 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117513 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116233 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116504 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117247 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116270 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116581 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117550 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 115974 z: 0 dmin: 0.065261
+Basis: update 21: LU: 111745 z: 0 dmin: 0.065261
+Basis: update 41: LU: 111811 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116387 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116475 z: 0 dmin: 0.065261
+Basis: update 41: LU: 116562 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117964 z: 0 dmin: 0.065261
+ 5000 -2.5692e-001 25553 18247     0     0    98 z[23418] w[18759]
+Basis: update 21: LU: 118050 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118137 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118038 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118122 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118210 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118090 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118174 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118258 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118140 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118223 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118312 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118192 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118275 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118361 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118242 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118326 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118413 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118294 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118380 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118464 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118344 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118431 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118519 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118396 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118483 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118571 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118446 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118534 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118625 z: 0 dmin: 0.065261
+ 5500 -2.5504e-001 26053 17747     0     0   107 z[17734] w[23335]
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118498 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118583 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118671 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118548 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118637 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118725 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118063 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118022 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117983 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117098 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117058 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117021 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117609 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117571 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117531 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 115233 z: 0 dmin: 0.065261
+Basis: update 21: LU: 115195 z: 0 dmin: 0.065261
+Basis: update 41: LU: 115155 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117155 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117114 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117074 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 115992 z: 0 dmin: 0.065261
+Basis: update 21: LU: 115953 z: 0 dmin: 0.065261
+Basis: update 41: LU: 115914 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 113197 z: 0 dmin: 0.065261
+Basis: update 21: LU: 113159 z: 0 dmin: 0.065261
+Basis: update 41: LU: 113119 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 113974 z: 0 dmin: 0.065261
+Basis: update 21: LU: 113934 z: 0 dmin: 0.065261
+ 6000  9.0137e-003 25766 18034     0     0   117 w[ 5709] z[ 3450]
+Basis: update 41: LU: 113894 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 114269 z: 0 dmin: 0.065261
+Basis: update 21: LU: 114231 z: 0 dmin: 0.065261
+Basis: update 41: LU: 114191 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 112005 z: 0 dmin: 0.065261
+Basis: update 21: LU: 111964 z: 0 dmin: 0.065261
+Basis: update 41: LU: 111924 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 112983 z: 0 dmin: 0.065261
+Basis: update 21: LU: 112942 z: 0 dmin: 0.065261
+Basis: update 41: LU: 112908 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 110708 z: 0 dmin: 0.065261
+Basis: update 21: LU: 110667 z: 0 dmin: 0.065261
+Basis: update 41: LU: 110627 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 110297 z: 0 dmin: 0.065261
+Basis: update 21: LU: 110259 z: 0 dmin: 0.065261
+Basis: update 41: LU: 110225 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 109583 z: 0 dmin: 0.065261
+Basis: update 21: LU: 109548 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118698 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 114935 z: 0 dmin: 0.065261
+Basis: update 21: LU: 115311 z: 0 dmin: 0.065261
+Basis: update 41: LU: 116125 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 114963 z: 0 dmin: 0.065261
+Basis: update 21: LU: 115278 z: 0 dmin: 0.065261
+Basis: update 41: LU: 116089 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116733 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117078 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117636 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116978 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117195 z: 0 dmin: 0.065261
+ 6500  9.4217e-003 25653 18147     0     0   127 z[ 1909] w[  614]
+Basis: update 41: LU: 117882 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118645 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118950 z: 0 dmin: 0.065261
+Basis: update 41: LU: 119526 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 115998 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116331 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117134 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 119263 z: 0 dmin: 0.065261
+Basis: update 21: LU: 119636 z: 0 dmin: 0.065261
+Basis: update 41: LU: 120252 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117326 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117662 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118071 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 119955 z: 0 dmin: 0.065261
+Basis: update 21: LU: 120247 z: 0 dmin: 0.065261
+Basis: update 41: LU: 120838 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 120524 z: 0 dmin: 0.065261
+Basis: update 21: LU: 120871 z: 0 dmin: 0.065261
+Basis: update 41: LU: 121579 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116845 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117276 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117986 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116941 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117376 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118082 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118248 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118509 z: 0 dmin: 0.065261
+Basis: update 41: LU: 119187 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117270 z: 0 dmin: 0.065261
+ 7000  8.3405e-003 26153 17647     0     0   137 z[ 3886] w[ 5779]
+Basis: update 21: LU: 117470 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117817 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 122382 z: 0 dmin: 0.065261
+Basis: update 21: LU: 122522 z: 0 dmin: 0.065261
+Basis: update 41: LU: 122755 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118513 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118707 z: 0 dmin: 0.065261
+Basis: update 41: LU: 119333 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 120128 z: 0 dmin: 0.065261
+Basis: update 21: LU: 120314 z: 0 dmin: 0.065261
+Basis: update 41: LU: 120900 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117218 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117529 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118180 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116948 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117177 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118142 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 119675 z: 0 dmin: 0.065261
+Basis: update 21: LU: 119955 z: 0 dmin: 0.065261
+Basis: update 41: LU: 120507 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 120236 z: 0 dmin: 0.065261
+Basis: update 21: LU: 120406 z: 0 dmin: 0.065261
+Basis: update 41: LU: 121180 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116996 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117361 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118140 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116809 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117093 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117912 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116551 z: 0 dmin: 0.065261
+ 7500 -2.5626e-001 25668 18132     0     0   147 w[21355] z[17625]
+Basis: update 21: LU: 116770 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117292 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116636 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116870 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117561 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118974 z: 0 dmin: 0.065261
+Basis: update 21: LU: 119262 z: 0 dmin: 0.065261
+Basis: update 41: LU: 120019 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118305 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118552 z: 0 dmin: 0.065261
+Basis: update 41: LU: 119471 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116062 z: 0 dmin: 0.065261
+Basis: update 21: LU: 111798 z: 0 dmin: 0.065261
+Basis: update 41: LU: 111861 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117194 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117276 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117363 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117960 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118041 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118125 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118042 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118130 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118214 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118092 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118180 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118266 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118144 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118229 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118313 z: 0 dmin: 0.065261
+ 8000 -2.5577e-001 25751 18049     0     0   156 z[20346] w[17946]
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118194 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118278 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118368 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118246 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118326 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118412 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118296 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118378 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118461 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118348 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118432 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118518 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118398 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118483 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118571 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118450 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118540 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118627 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118500 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118591 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118681 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118552 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118638 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118722 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118437 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118396 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118362 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117173 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117132 z: 0 dmin: 0.065261
+ 8500  8.4517e-003 26068 17732     0     0   166 w[ 5949] z[ 3016]
+Basis: update 41: LU: 117092 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117110 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117072 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117032 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116445 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116406 z: 0 dmin: 0.065261
+Basis: update 41: LU: 116367 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116093 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116055 z: 0 dmin: 0.065261
+Basis: update 41: LU: 116015 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 115968 z: 0 dmin: 0.065261
+Basis: update 21: LU: 115931 z: 0 dmin: 0.065261
+Basis: update 41: LU: 115891 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 114361 z: 0 dmin: 0.065261
+Basis: update 21: LU: 114320 z: 0 dmin: 0.065261
+Basis: update 41: LU: 114280 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 114819 z: 0 dmin: 0.065261
+Basis: update 21: LU: 114778 z: 0 dmin: 0.065261
+Basis: update 41: LU: 114738 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 112362 z: 0 dmin: 0.065261
+Basis: update 21: LU: 112321 z: 0 dmin: 0.065261
+Basis: update 41: LU: 112284 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 111977 z: 0 dmin: 0.065261
+Basis: update 21: LU: 111936 z: 0 dmin: 0.065261
+Basis: update 41: LU: 111896 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 112956 z: 0 dmin: 0.065261
+Basis: update 21: LU: 112918 z: 0 dmin: 0.065261
+Basis: update 41: LU: 112881 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 110752 z: 0 dmin: 0.065261
+Basis: update 21: LU: 110717 z: 0 dmin: 0.065261
+ 9000  9.7925e-003 25568 18232     0     0   176 w[  952] z[ 4066]
+Basis: update 41: LU: 110677 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 110084 z: 0 dmin: 0.065261
+Basis: update 21: LU: 110046 z: 0 dmin: 0.065261
+Basis: update 41: LU: 110009 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 109518 z: 0 dmin: 0.065261
+Basis: update 21: LU: 109484 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118639 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116822 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117217 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118027 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 114843 z: 0 dmin: 0.065261
+Basis: update 21: LU: 115153 z: 0 dmin: 0.065261
+Basis: update 41: LU: 115907 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 115518 z: 0 dmin: 0.065261
+Basis: update 21: LU: 115843 z: 0 dmin: 0.065261
+Basis: update 41: LU: 116393 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 115589 z: 0 dmin: 0.065261
+Basis: update 21: LU: 115830 z: 0 dmin: 0.065261
+Basis: update 41: LU: 116592 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117373 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117672 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118293 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 115942 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116268 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117058 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 119174 z: 0 dmin: 0.065261
+Basis: update 21: LU: 119493 z: 0 dmin: 0.065261
+Basis: update 41: LU: 120191 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117429 z: 0 dmin: 0.065261
+ 9500  8.8815e-003 25851 17949     0     0   186 z[  765] w[ 2610]
+Basis: update 21: LU: 117702 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118221 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 119916 z: 0 dmin: 0.065261
+Basis: update 21: LU: 120201 z: 0 dmin: 0.065261
+Basis: update 41: LU: 120778 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117972 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118343 z: 0 dmin: 0.065261
+Basis: update 41: LU: 119092 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 120016 z: 0 dmin: 0.065261
+Basis: update 21: LU: 120434 z: 0 dmin: 0.065261
+Basis: update 41: LU: 121154 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118268 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118712 z: 0 dmin: 0.065261
+Basis: update 41: LU: 119438 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117554 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117842 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118442 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117294 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117510 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117840 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 121803 z: 0 dmin: 0.065261
+Basis: update 21: LU: 121960 z: 0 dmin: 0.065261
+Basis: update 41: LU: 122261 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 121640 z: 0 dmin: 0.065261
+Basis: update 21: LU: 121827 z: 0 dmin: 0.065261
+Basis: update 41: LU: 122445 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 120146 z: 0 dmin: 0.065261
+Basis: update 21: LU: 120343 z: 0 dmin: 0.065261
+Basis: update 41: LU: 120950 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118097 z: 0 dmin: 0.065261
+10000 -2.5532e-001 25970 17830     0     0   196 w[18143] z[19317]
+Basis: update 21: LU: 118379 z: 0 dmin: 0.065261
+Basis: update 41: LU: 119054 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117568 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117811 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118670 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 119630 z: 0 dmin: 0.065261
+Basis: update 21: LU: 119891 z: 0 dmin: 0.065261
+Basis: update 41: LU: 120366 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 120255 z: 0 dmin: 0.065261
+Basis: update 21: LU: 120440 z: 0 dmin: 0.065261
+Basis: update 41: LU: 121213 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116974 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117337 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118154 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117098 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117403 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118193 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 119384 z: 0 dmin: 0.065261
+Basis: update 21: LU: 119584 z: 0 dmin: 0.065261
+Basis: update 41: LU: 120093 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116618 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116840 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117591 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116215 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116544 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117347 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116128 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116399 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117327 z: 0 dmin: 0.065261
+10500 -2.5907e-001 25470 18330     0     0   205 w[18565] z[19259]
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 120461 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116198 z: 0 dmin: 0.065261
+Basis: update 41: LU: 116279 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117097 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117183 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117267 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117994 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118075 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118158 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118044 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118123 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118210 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118096 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118180 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118265 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118146 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118229 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118311 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118198 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118283 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118369 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118248 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118331 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118416 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118300 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118384 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118469 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118350 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118437 z: 0 dmin: 0.065261
+11000 -2.5522e-001 25949 17851     0     0   215 z[21907] w[22026]
+Basis: update 41: LU: 118525 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118402 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118484 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118571 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118452 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118537 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118629 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118504 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118589 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118677 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118554 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118642 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118727 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117480 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117439 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117399 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118174 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118133 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118093 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116628 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116590 z: 0 dmin: 0.065261
+Basis: update 41: LU: 116550 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117464 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117423 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117383 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117119 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117078 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117041 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116414 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116373 z: 0 dmin: 0.065261
+11500  8.7889e-003 25870 17930     0     0   225 w[ 1726] z[   66]
+Basis: update 41: LU: 116333 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 113093 z: 0 dmin: 0.065261
+Basis: update 21: LU: 113052 z: 0 dmin: 0.065261
+Basis: update 41: LU: 113012 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 111849 z: 0 dmin: 0.065261
+Basis: update 21: LU: 111808 z: 0 dmin: 0.065261
+Basis: update 41: LU: 111768 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 113391 z: 0 dmin: 0.065261
+Basis: update 21: LU: 113350 z: 0 dmin: 0.065261
+Basis: update 41: LU: 113312 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 114489 z: 0 dmin: 0.065261
+Basis: update 21: LU: 114451 z: 0 dmin: 0.065261
+Basis: update 41: LU: 114411 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 111482 z: 0 dmin: 0.065261
+Basis: update 21: LU: 111441 z: 0 dmin: 0.065261
+Basis: update 41: LU: 111401 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 110584 z: 0 dmin: 0.065261
+Basis: update 21: LU: 110543 z: 0 dmin: 0.065261
+Basis: update 41: LU: 110508 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 110228 z: 0 dmin: 0.065261
+Basis: update 21: LU: 110190 z: 0 dmin: 0.065261
+Basis: update 41: LU: 110153 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 109491 z: 0 dmin: 0.065261
+Basis: update 21: LU: 109458 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118549 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 114938 z: 0 dmin: 0.065261
+Basis: update 21: LU: 115310 z: 0 dmin: 0.065261
+Basis: update 41: LU: 116167 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116417 z: 0 dmin: 0.065261
+12000  1.0002e-002 25549 18251     0     0   235 z[  319] w[ 1623]
+Basis: update 21: LU: 116765 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117462 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116965 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117282 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117772 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 115644 z: 0 dmin: 0.065261
+Basis: update 21: LU: 115928 z: 0 dmin: 0.065261
+Basis: update 41: LU: 116575 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117539 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117889 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118516 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117782 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118135 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118858 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117556 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117888 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118605 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 119507 z: 0 dmin: 0.065261
+Basis: update 21: LU: 119759 z: 0 dmin: 0.065261
+Basis: update 41: LU: 120323 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117465 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117755 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118382 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 120016 z: 0 dmin: 0.065261
+Basis: update 21: LU: 120366 z: 0 dmin: 0.065261
+Basis: update 41: LU: 121163 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116891 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117302 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118055 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 120813 z: 0 dmin: 0.065261
+12500  8.5262e-003 26049 17751     0     0   245 z[ 6083] w[ 1817]
+Basis: update 21: LU: 121245 z: 0 dmin: 0.065261
+Basis: update 41: LU: 122015 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117098 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117393 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117880 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117556 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117723 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118095 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118617 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118777 z: 0 dmin: 0.065261
+Basis: update 41: LU: 119129 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 121670 z: 0 dmin: 0.065261
+Basis: update 21: LU: 121847 z: 0 dmin: 0.065261
+Basis: update 41: LU: 122474 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117133 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117351 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117932 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 120077 z: 0 dmin: 0.065261
+Basis: update 21: LU: 120323 z: 0 dmin: 0.065261
+Basis: update 41: LU: 121053 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 120583 z: 0 dmin: 0.065261
+Basis: update 21: LU: 120843 z: 0 dmin: 0.065261
+Basis: update 41: LU: 121658 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 119626 z: 0 dmin: 0.065261
+Basis: update 21: LU: 119946 z: 0 dmin: 0.065261
+Basis: update 41: LU: 120394 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 120253 z: 0 dmin: 0.065261
+Basis: update 21: LU: 120478 z: 0 dmin: 0.065261
+Basis: update 41: LU: 121194 z: 0 dmin: 0.065261
+13000 -2.5588e-001 25772 18028     0     0   254 w[25455] z[22352]
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116977 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117352 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118116 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116800 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117147 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117781 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 119469 z: 0 dmin: 0.065261
+Basis: update 21: LU: 119717 z: 0 dmin: 0.065261
+Basis: update 41: LU: 120238 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 119132 z: 0 dmin: 0.065261
+Basis: update 21: LU: 119348 z: 0 dmin: 0.065261
+Basis: update 41: LU: 120049 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116376 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116685 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117509 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116012 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116310 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117112 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 113360 z: 0 dmin: 0.065261
+Basis: update 21: LU: 113421 z: 0 dmin: 0.0140651
+Basis: update 41: LU: 113484 z: 0 dmin: 0.0140651
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117386 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117471 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117557 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117996 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118081 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118164 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118048 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118131 z: 0 dmin: 0.065261
+13500 -2.5625e-001 25647 18153     0     0   264 z[17625] w[18757]
+Basis: update 41: LU: 118218 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118098 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118183 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118271 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118150 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118234 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118317 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118200 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118287 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118372 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118252 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118337 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118424 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118302 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118388 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118473 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118354 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118438 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118521 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118404 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118493 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118579 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118456 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118543 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118631 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118506 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118589 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118677 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118558 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118645 z: 0 dmin: 0.065261
+14000 -2.5475e-001 26147 17653     0     0   274 z[18183] w[26225]
+Basis: update 41: LU: 118713 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118546 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118505 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118465 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117265 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117224 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117185 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117764 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117723 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117683 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116726 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116685 z: 0 dmin: 0.065261
+Basis: update 41: LU: 116645 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116375 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116334 z: 0 dmin: 0.065261
+Basis: update 41: LU: 116294 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116260 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116219 z: 0 dmin: 0.065261
+Basis: update 41: LU: 116179 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116048 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116007 z: 0 dmin: 0.065261
+Basis: update 41: LU: 115967 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 114957 z: 0 dmin: 0.065261
+Basis: update 21: LU: 114919 z: 0 dmin: 0.065261
+Basis: update 41: LU: 114879 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 114434 z: 0 dmin: 0.065261
+Basis: update 21: LU: 114393 z: 0 dmin: 0.065261
+Basis: update 41: LU: 114356 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 111604 z: 0 dmin: 0.065261
+14500  9.3171e-003 25672 18128     0     0   284 w[ 2469] z[ 1149]
+Basis: update 21: LU: 111563 z: 0 dmin: 0.065261
+Basis: update 41: LU: 111526 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 111403 z: 0 dmin: 0.065261
+Basis: update 21: LU: 111365 z: 0 dmin: 0.065261
+Basis: update 41: LU: 111325 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 110704 z: 0 dmin: 0.065261
+Basis: update 21: LU: 110666 z: 0 dmin: 0.065261
+Basis: update 41: LU: 110629 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 110109 z: 0 dmin: 0.065261
+Basis: update 21: LU: 110071 z: 0 dmin: 0.065261
+Basis: update 41: LU: 110032 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 109458 z: 0 dmin: 0.065261
+Basis: update 21: LU: 109425 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118685 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 115973 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116341 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117197 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 114880 z: 0 dmin: 0.065261
+Basis: update 21: LU: 115242 z: 0 dmin: 0.065261
+Basis: update 41: LU: 115958 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118623 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118944 z: 0 dmin: 0.065261
+Basis: update 41: LU: 119519 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 115699 z: 0 dmin: 0.065261
+Basis: update 21: LU: 115991 z: 0 dmin: 0.065261
+Basis: update 41: LU: 116642 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 115853 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116143 z: 0 dmin: 0.065261
+Basis: update 41: LU: 116733 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 115963 z: 0 dmin: 0.065261
+15000  9.1003e-003 25747 18053     0     0   294 z[ 1303] w[ 1696]
+Basis: update 21: LU: 116349 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117065 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 119439 z: 0 dmin: 0.065261
+Basis: update 21: LU: 119767 z: 0 dmin: 0.065261
+Basis: update 41: LU: 120519 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117345 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117625 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118236 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 119770 z: 0 dmin: 0.065261
+Basis: update 21: LU: 120077 z: 0 dmin: 0.065261
+Basis: update 41: LU: 120611 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117519 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117847 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118623 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 119713 z: 0 dmin: 0.065261
+Basis: update 21: LU: 120104 z: 0 dmin: 0.065261
+Basis: update 41: LU: 120738 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116976 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117373 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118236 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117114 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117377 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117781 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 121479 z: 0 dmin: 0.065261
+Basis: update 21: LU: 121616 z: 0 dmin: 0.065261
+Basis: update 41: LU: 121872 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 122341 z: 0 dmin: 0.065261
+Basis: update 21: LU: 122496 z: 0 dmin: 0.065261
+Basis: update 41: LU: 122844 z: 0 dmin: 0.065261
+15500 -2.5507e-001 26074 17726     0     0   303 w[18933] z[19412]
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 120262 z: 0 dmin: 0.065261
+Basis: update 21: LU: 120434 z: 0 dmin: 0.065261
+Basis: update 41: LU: 121059 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 120107 z: 0 dmin: 0.065261
+Basis: update 21: LU: 120307 z: 0 dmin: 0.065261
+Basis: update 41: LU: 120963 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117889 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118224 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118927 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117430 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117773 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118675 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116771 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117078 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117530 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 120227 z: 0 dmin: 0.065261
+Basis: update 21: LU: 120483 z: 0 dmin: 0.065261
+Basis: update 41: LU: 121146 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116973 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117327 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118081 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 119383 z: 0 dmin: 0.065261
+Basis: update 21: LU: 119663 z: 0 dmin: 0.065261
+Basis: update 41: LU: 120292 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 119450 z: 0 dmin: 0.065261
+Basis: update 21: LU: 119659 z: 0 dmin: 0.065261
+Basis: update 41: LU: 120207 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 120768 z: 0 dmin: 0.065261
+Basis: update 21: LU: 121030 z: 0 dmin: 0.065261
+16000 -2.5687e-001 25574 18226     0     0   313 w[25476] z[17635]
+Basis: update 41: LU: 121653 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118984 z: 0 dmin: 0.065261
+Basis: update 21: LU: 119291 z: 0 dmin: 0.065261
+Basis: update 41: LU: 120178 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 121102 z: 0 dmin: 0.065261
+Basis: update 21: LU: 121428 z: 0 dmin: 0.065261
+Basis: update 41: LU: 122261 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117335 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117418 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117501 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116206 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116291 z: 0 dmin: 0.065261
+Basis: update 41: LU: 116373 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118000 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118085 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118171 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118050 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118133 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118220 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118102 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118186 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118272 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118152 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118240 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118327 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118204 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118288 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118374 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118254 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118341 z: 0 dmin: 0.065261
+16500 -2.5552e-001 25845 17955     0     0   323 z[20149] w[21611]
+Basis: update 41: LU: 118426 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118306 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118391 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118478 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118356 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118441 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118528 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118408 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118493 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118579 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118458 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118544 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118632 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118510 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118598 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118685 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118560 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118646 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118695 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117923 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117882 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117845 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116898 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116857 z: 0 dmin: 0.065261
+Basis: update 41: LU: 116817 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116504 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116463 z: 0 dmin: 0.065261
+Basis: update 41: LU: 116423 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 115971 z: 0 dmin: 0.065261
+17000  8.5700e-003 25974 17826     0     0   333 w[ 1030] z[ 7697]
+Basis: update 21: LU: 115930 z: 0 dmin: 0.065261
+Basis: update 41: LU: 115890 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116264 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116226 z: 0 dmin: 0.065261
+Basis: update 41: LU: 116186 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 114617 z: 0 dmin: 0.065261
+Basis: update 21: LU: 114576 z: 0 dmin: 0.065261
+Basis: update 41: LU: 114536 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 115285 z: 0 dmin: 0.065261
+Basis: update 21: LU: 115244 z: 0 dmin: 0.065261
+Basis: update 41: LU: 115207 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 113971 z: 0 dmin: 0.065261
+Basis: update 21: LU: 113930 z: 0 dmin: 0.065261
+Basis: update 41: LU: 113890 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 112251 z: 0 dmin: 0.065261
+Basis: update 21: LU: 112213 z: 0 dmin: 0.065261
+Basis: update 41: LU: 112173 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 111877 z: 0 dmin: 0.065261
+Basis: update 21: LU: 111836 z: 0 dmin: 0.065261
+Basis: update 41: LU: 111799 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 111175 z: 0 dmin: 0.065261
+Basis: update 21: LU: 111140 z: 0 dmin: 0.065261
+Basis: update 41: LU: 111100 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 110717 z: 0 dmin: 0.065261
+Basis: update 21: LU: 110677 z: 0 dmin: 0.065261
+Basis: update 41: LU: 110643 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 110013 z: 0 dmin: 0.065261
+Basis: update 21: LU: 109975 z: 0 dmin: 0.065261
+Basis: update 41: LU: 109941 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 109430 z: 0 dmin: 0.065261
+17500  1.1357e-002 25474 18326     0     0   343 w[ 2582] z[ 1739]
+Basis: update 21: LU: 109398 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118597 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 114899 z: 0 dmin: 0.065261
+Basis: update 21: LU: 115221 z: 0 dmin: 0.065261
+Basis: update 41: LU: 116159 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116193 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116551 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117208 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 115544 z: 0 dmin: 0.065261
+Basis: update 21: LU: 115860 z: 0 dmin: 0.065261
+Basis: update 41: LU: 116422 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 115724 z: 0 dmin: 0.065261
+Basis: update 21: LU: 115996 z: 0 dmin: 0.065261
+Basis: update 41: LU: 116605 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117322 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117579 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118238 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116071 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116412 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117156 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 119455 z: 0 dmin: 0.065261
+Basis: update 21: LU: 119786 z: 0 dmin: 0.065261
+Basis: update 41: LU: 120559 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117359 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117603 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118278 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117837 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118168 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118750 z: 0 dmin: 0.065261
+18000  8.6679e-003 25945 17855     0     0   352 z[ 3982] w[ 2915]
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 120641 z: 0 dmin: 0.065261
+Basis: update 21: LU: 120916 z: 0 dmin: 0.065261
+Basis: update 41: LU: 121658 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116862 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117241 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117821 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117443 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117796 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118763 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 121391 z: 0 dmin: 0.065261
+Basis: update 21: LU: 121660 z: 0 dmin: 0.065261
+Basis: update 41: LU: 122024 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 121579 z: 0 dmin: 0.065261
+Basis: update 21: LU: 121693 z: 0 dmin: 0.065261
+Basis: update 41: LU: 125412 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118603 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118779 z: 0 dmin: 0.065261
+Basis: update 41: LU: 119197 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117353 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117548 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118096 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 120114 z: 0 dmin: 0.065261
+Basis: update 21: LU: 120329 z: 0 dmin: 0.065261
+Basis: update 41: LU: 120937 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117103 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117448 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118157 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 120458 z: 0 dmin: 0.065261
+Basis: update 21: LU: 120814 z: 0 dmin: 0.065261
+18500 -2.5556e-001 25876 17924     0     0   362 w[22869] z[17983]
+Basis: update 41: LU: 121555 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116757 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117050 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117508 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 120156 z: 0 dmin: 0.065261
+Basis: update 21: LU: 120460 z: 0 dmin: 0.065261
+Basis: update 41: LU: 121228 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 119502 z: 0 dmin: 0.065261
+Basis: update 21: LU: 119831 z: 0 dmin: 0.065261
+Basis: update 41: LU: 120635 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 119584 z: 0 dmin: 0.065261
+Basis: update 21: LU: 119897 z: 0 dmin: 0.065261
+Basis: update 41: LU: 120521 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 119457 z: 0 dmin: 0.065261
+Basis: update 21: LU: 119688 z: 0 dmin: 0.065261
+Basis: update 41: LU: 120314 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 119053 z: 0 dmin: 0.065261
+Basis: update 21: LU: 119356 z: 0 dmin: 0.065261
+Basis: update 41: LU: 119874 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116146 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116446 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117423 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 119004 z: 0 dmin: 0.065261
+Basis: update 21: LU: 119343 z: 0 dmin: 0.065261
+Basis: update 41: LU: 120187 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 115957 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116039 z: 0 dmin: 0.065261
+Basis: update 41: LU: 116125 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117906 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117992 z: 0 dmin: 0.065261
+19000 -2.5701e-001 25543 18257     0     0   372 z[18731] w[17839]
+Basis: update 41: LU: 118079 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118002 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118088 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118172 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118054 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118138 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118222 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118104 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118188 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118276 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118156 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118238 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118326 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118209 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118291 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118379 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118258 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118345 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118427 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118308 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118393 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118480 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118360 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118447 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118536 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118410 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118492 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118579 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118462 z: 0 dmin: 0.065261
+19500 -2.5506e-001 26043 17757     0     0   382 z[23128] w[26241]
+Basis: update 21: LU: 118552 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118642 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118512 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118598 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118681 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118564 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118650 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118684 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118468 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118427 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118387 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118100 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118059 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118019 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116704 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116663 z: 0 dmin: 0.065261
+Basis: update 41: LU: 116626 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 113543 z: 0 dmin: 0.065261
+Basis: update 21: LU: 113502 z: 0 dmin: 0.065261
+Basis: update 41: LU: 113462 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 112840 z: 0 dmin: 0.065261
+Basis: update 21: LU: 112802 z: 0 dmin: 0.065261
+Basis: update 41: LU: 112762 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116619 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116578 z: 0 dmin: 0.065261
+Basis: update 41: LU: 116538 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 115392 z: 0 dmin: 0.065261
+Basis: update 21: LU: 115351 z: 0 dmin: 0.065261
+Basis: update 41: LU: 115314 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 114965 z: 0 dmin: 0.065261
+20000  8.9851e-003 25776 18024     0     0   392 w[ 6447] z[ 1454]
+Basis: update 21: LU: 114924 z: 0 dmin: 0.065261
+Basis: update 41: LU: 114884 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 112246 z: 0 dmin: 0.065261
+Basis: update 21: LU: 112205 z: 0 dmin: 0.065261
+Basis: update 41: LU: 112168 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 111869 z: 0 dmin: 0.065261
+Basis: update 21: LU: 111828 z: 0 dmin: 0.065261
+Basis: update 41: LU: 111794 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 111268 z: 0 dmin: 0.065261
+Basis: update 21: LU: 111227 z: 0 dmin: 0.065261
+Basis: update 41: LU: 111190 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 110580 z: 0 dmin: 0.065261
+Basis: update 21: LU: 110545 z: 0 dmin: 0.065261
+Basis: update 41: LU: 110505 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 109933 z: 0 dmin: 0.065261
+Basis: update 21: LU: 109892 z: 0 dmin: 0.065261
+Basis: update 41: LU: 109855 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 109391 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118391 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118762 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 114910 z: 0 dmin: 0.065261
+Basis: update 21: LU: 115268 z: 0 dmin: 0.065261
+Basis: update 41: LU: 116193 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 114896 z: 0 dmin: 0.065261
+Basis: update 21: LU: 115253 z: 0 dmin: 0.065261
+Basis: update 41: LU: 115938 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 115501 z: 0 dmin: 0.065261
+Basis: update 21: LU: 115819 z: 0 dmin: 0.065261
+Basis: update 41: LU: 116314 z: 0 dmin: 0.065261
+20500  9.4770e-003 25643 18157     0     0   401 z[  541] w[  621]
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117523 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117814 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118328 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116026 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116279 z: 0 dmin: 0.065261
+Basis: update 41: LU: 116955 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116019 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116392 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117088 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117577 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117921 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118731 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118230 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118459 z: 0 dmin: 0.065261
+Basis: update 41: LU: 119111 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117479 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117794 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118431 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118071 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118334 z: 0 dmin: 0.065261
+Basis: update 41: LU: 119098 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117761 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118121 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118641 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117460 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117794 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118753 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 121381 z: 0 dmin: 0.065261
+Basis: update 21: LU: 121675 z: 0 dmin: 0.065261
+21000  8.3669e-003 26143 17657     0     0   411 z[  294] w[ 7138]
+Basis: update 41: LU: 122109 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 121999 z: 0 dmin: 0.065261
+Basis: update 21: LU: 122118 z: 0 dmin: 0.065261
+Basis: update 41: LU: 122425 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 121794 z: 0 dmin: 0.065261
+Basis: update 21: LU: 121946 z: 0 dmin: 0.065261
+Basis: update 41: LU: 122350 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 122040 z: 0 dmin: 0.065261
+Basis: update 21: LU: 122242 z: 0 dmin: 0.065261
+Basis: update 41: LU: 122824 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 120345 z: 0 dmin: 0.065261
+Basis: update 21: LU: 120587 z: 0 dmin: 0.065261
+Basis: update 41: LU: 121173 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116967 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117283 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117970 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 119882 z: 0 dmin: 0.065261
+Basis: update 21: LU: 120258 z: 0 dmin: 0.065261
+Basis: update 41: LU: 120934 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116734 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116979 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117418 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 120220 z: 0 dmin: 0.065261
+Basis: update 21: LU: 120515 z: 0 dmin: 0.065261
+Basis: update 41: LU: 121350 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 119852 z: 0 dmin: 0.065261
+Basis: update 21: LU: 120160 z: 0 dmin: 0.065261
+Basis: update 41: LU: 120879 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 119661 z: 0 dmin: 0.065261
+Basis: update 21: LU: 119968 z: 0 dmin: 0.065261
+21500 -2.5621e-001 25678 18122     0     0   421 w[19166] z[17585]
+Basis: update 41: LU: 120529 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116588 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116821 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117500 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 119485 z: 0 dmin: 0.065261
+Basis: update 21: LU: 119818 z: 0 dmin: 0.065261
+Basis: update 41: LU: 120337 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116193 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116513 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117499 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117652 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118031 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118778 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117341 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117426 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117513 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116444 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116526 z: 0 dmin: 0.065261
+Basis: update 41: LU: 116611 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118006 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118094 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118181 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118056 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118141 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118228 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118108 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118190 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118275 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118158 z: 0 dmin: 0.065261
+22000 -2.5580e-001 25741 18059     0     0   431 z[18399] w[19216]
+Basis: update 21: LU: 118243 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118331 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118210 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118294 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118380 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118260 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118344 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118431 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118312 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118398 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118484 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118362 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118448 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118536 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118414 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118499 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118582 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118464 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118553 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118640 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118516 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118604 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118691 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118566 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118654 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118667 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117939 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117898 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117858 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 115129 z: 0 dmin: 0.065261
+22500  8.4393e-003 26078 17722     0     0   441 w[ 7652] z[ 3359]
+Basis: update 21: LU: 115088 z: 0 dmin: 0.065261
+Basis: update 41: LU: 115051 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117243 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117202 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117162 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117404 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117363 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117323 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 113441 z: 0 dmin: 0.065261
+Basis: update 21: LU: 113403 z: 0 dmin: 0.065261
+Basis: update 41: LU: 113366 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116328 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116287 z: 0 dmin: 0.065261
+Basis: update 41: LU: 116247 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 115289 z: 0 dmin: 0.065261
+Basis: update 21: LU: 115248 z: 0 dmin: 0.065261
+Basis: update 41: LU: 115208 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 114942 z: 0 dmin: 0.065261
+Basis: update 21: LU: 114901 z: 0 dmin: 0.065261
+Basis: update 41: LU: 114861 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 113496 z: 0 dmin: 0.065261
+Basis: update 21: LU: 113461 z: 0 dmin: 0.065261
+Basis: update 41: LU: 113424 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 114139 z: 0 dmin: 0.065261
+Basis: update 21: LU: 114101 z: 0 dmin: 0.065261
+Basis: update 41: LU: 114061 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 111312 z: 0 dmin: 0.065261
+Basis: update 21: LU: 111271 z: 0 dmin: 0.065261
+Basis: update 41: LU: 111237 z: 0 dmin: 0.065261
+23000  9.7580e-003 25578 18222     0     0   450 w[  709] z[  187]
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 110509 z: 0 dmin: 0.065261
+Basis: update 21: LU: 110471 z: 0 dmin: 0.065261
+Basis: update 41: LU: 110431 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 109950 z: 0 dmin: 0.065261
+Basis: update 21: LU: 109915 z: 0 dmin: 0.065261
+Basis: update 41: LU: 109880 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 109343 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118333 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118765 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 115832 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116187 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117038 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 114969 z: 0 dmin: 0.065261
+Basis: update 21: LU: 115305 z: 0 dmin: 0.065261
+Basis: update 41: LU: 116017 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 115550 z: 0 dmin: 0.065261
+Basis: update 21: LU: 115843 z: 0 dmin: 0.065261
+Basis: update 41: LU: 116384 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117482 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117782 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118332 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117931 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118166 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118772 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118111 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118447 z: 0 dmin: 0.065261
+Basis: update 41: LU: 119161 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117390 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117696 z: 0 dmin: 0.065261
+23500  8.8962e-003 25841 17959     0     0   460 z[ 8246] w[ 5349]
+Basis: update 41: LU: 118491 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118155 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118372 z: 0 dmin: 0.065261
+Basis: update 41: LU: 119071 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117519 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117821 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118436 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118078 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118377 z: 0 dmin: 0.065261
+Basis: update 41: LU: 119068 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116878 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117195 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117732 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117446 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117737 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118701 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 121425 z: 0 dmin: 0.065261
+Basis: update 21: LU: 121737 z: 0 dmin: 0.065261
+Basis: update 41: LU: 122146 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 121363 z: 0 dmin: 0.065261
+Basis: update 21: LU: 121474 z: 0 dmin: 0.065261
+Basis: update 41: LU: 125246 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 121317 z: 0 dmin: 0.065261
+Basis: update 21: LU: 121459 z: 0 dmin: 0.065261
+Basis: update 41: LU: 121889 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 120236 z: 0 dmin: 0.065261
+Basis: update 21: LU: 120481 z: 0 dmin: 0.065261
+Basis: update 41: LU: 121012 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117098 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117347 z: 0 dmin: 0.065261
+24000 -2.5531e-001 25980 17820     0     0   470 w[20202] z[25890]
+Basis: update 41: LU: 117862 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117136 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117424 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117984 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117133 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117551 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118200 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116886 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117101 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117535 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117184 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117521 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118435 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116893 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117227 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117932 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116761 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117116 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117573 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116578 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116815 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117431 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116626 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116962 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117465 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118387 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118703 z: 0 dmin: 0.065261
+Basis: update 41: LU: 119636 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118634 z: 0 dmin: 0.065261
+24500 -2.5853e-001 25480 18320     0     0   480 w[17557] z[17556]
+Basis: update 21: LU: 118972 z: 0 dmin: 0.065261
+Basis: update 41: LU: 115312 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116841 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116926 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117012 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117950 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118035 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118120 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118008 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118089 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118176 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118060 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118143 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118231 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118110 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118190 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118278 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118162 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118247 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118330 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118212 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118297 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118385 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118264 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118349 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118435 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118314 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118398 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118484 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118366 z: 0 dmin: 0.065261
+25000 -2.5524e-001 25939 17861     0     0   490 z[17581] w[18550]
+Basis: update 21: LU: 118452 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118537 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118416 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118503 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118588 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118468 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118555 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118641 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118518 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118604 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118691 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118570 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118653 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118645 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118245 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118204 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118164 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117697 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117656 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117616 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116440 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116399 z: 0 dmin: 0.065261
+Basis: update 41: LU: 116362 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116295 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116258 z: 0 dmin: 0.065261
+Basis: update 41: LU: 116218 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117012 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116971 z: 0 dmin: 0.065261
+Basis: update 41: LU: 116931 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+25500  8.7659e-003 25880 17920     0     0   500 w[ 6109] z[ 4697]
+Basis: update  1: LU: 115692 z: 0 dmin: 0.065261
+Basis: update 21: LU: 115654 z: 0 dmin: 0.065261
+Basis: update 41: LU: 115614 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 115370 z: 0 dmin: 0.065261
+Basis: update 21: LU: 115329 z: 0 dmin: 0.065261
+Basis: update 41: LU: 115289 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 114923 z: 0 dmin: 0.065261
+Basis: update 21: LU: 114882 z: 0 dmin: 0.065261
+Basis: update 41: LU: 114842 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 112206 z: 0 dmin: 0.065261
+Basis: update 21: LU: 112165 z: 0 dmin: 0.065261
+Basis: update 41: LU: 112128 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 114212 z: 0 dmin: 0.065261
+Basis: update 21: LU: 114171 z: 0 dmin: 0.065261
+Basis: update 41: LU: 114137 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 111213 z: 0 dmin: 0.065261
+Basis: update 21: LU: 111175 z: 0 dmin: 0.065261
+Basis: update 41: LU: 111138 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 110789 z: 0 dmin: 0.065261
+Basis: update 21: LU: 110748 z: 0 dmin: 0.065261
+Basis: update 41: LU: 110711 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 109935 z: 0 dmin: 0.065261
+Basis: update 21: LU: 109900 z: 0 dmin: 0.065261
+Basis: update 41: LU: 109863 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 109318 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118286 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118788 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 114714 z: 0 dmin: 0.065261
+Basis: update 21: LU: 115069 z: 0 dmin: 0.065261
+26000  1.0124e-002 25539 18261     0     0   509 z[  679] w[ 8607]
+Basis: update 41: LU: 115891 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 114901 z: 0 dmin: 0.065261
+Basis: update 21: LU: 115266 z: 0 dmin: 0.065261
+Basis: update 41: LU: 115887 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117066 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117335 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117960 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117317 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117655 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118263 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 115805 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116083 z: 0 dmin: 0.065261
+Basis: update 41: LU: 116706 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118839 z: 0 dmin: 0.065261
+Basis: update 21: LU: 119168 z: 0 dmin: 0.065261
+Basis: update 41: LU: 119875 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 119548 z: 0 dmin: 0.065261
+Basis: update 21: LU: 119850 z: 0 dmin: 0.065261
+Basis: update 41: LU: 120694 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117320 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117536 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118203 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116331 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116595 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117283 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117209 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117547 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118252 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117339 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117655 z: 0 dmin: 0.065261
+26500  8.5356e-003 26039 17761     0     0   519 z[  807] w[ 7066]
+Basis: update 41: LU: 118254 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117268 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117561 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118559 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 121469 z: 0 dmin: 0.065261
+Basis: update 21: LU: 121768 z: 0 dmin: 0.065261
+Basis: update 41: LU: 122129 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 120710 z: 0 dmin: 0.065261
+Basis: update 21: LU: 120839 z: 0 dmin: 0.065261
+Basis: update 41: LU: 121171 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 121404 z: 0 dmin: 0.065261
+Basis: update 21: LU: 121519 z: 0 dmin: 0.065261
+Basis: update 41: LU: 121962 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118445 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118730 z: 0 dmin: 0.065261
+Basis: update 41: LU: 119234 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 120102 z: 0 dmin: 0.065261
+Basis: update 21: LU: 120323 z: 0 dmin: 0.065261
+Basis: update 41: LU: 120889 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116948 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117176 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117705 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117123 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117546 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118215 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116713 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116900 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117264 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117186 z: 0 dmin: 0.065261
+27000 -2.5585e-001 25782 18018     0     0   529 w[18823] z[20201]
+Basis: update 21: LU: 117504 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118421 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 119817 z: 0 dmin: 0.065261
+Basis: update 21: LU: 120093 z: 0 dmin: 0.065261
+Basis: update 41: LU: 120848 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 119666 z: 0 dmin: 0.065261
+Basis: update 21: LU: 119961 z: 0 dmin: 0.065261
+Basis: update 41: LU: 120361 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116559 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116778 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117359 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116488 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116774 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117317 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118847 z: 0 dmin: 0.065261
+Basis: update 21: LU: 119137 z: 0 dmin: 0.065261
+Basis: update 41: LU: 119932 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116183 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116560 z: 0 dmin: 0.065261
+Basis: update 41: LU: 112816 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 115915 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116004 z: 0 dmin: 0.065261
+Basis: update 41: LU: 116090 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117460 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117547 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117630 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118012 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118094 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118181 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118062 z: 0 dmin: 0.065261
+27500 -2.5629e-001 25637 18163     0     0   539 z[26203] w[17724]
+Basis: update 21: LU: 118150 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118236 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118114 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118200 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118282 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118164 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118249 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118334 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118216 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118303 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118387 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118266 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118353 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118439 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118318 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118400 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118491 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118368 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118457 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118546 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118420 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118506 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118592 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118470 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118559 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118647 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118522 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118608 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118697 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+28000 -2.5481e-001 26137 17663     0     0   549 z[17847] w[23603]
+Basis: update  1: LU: 118572 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118657 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118631 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117234 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117193 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117153 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117221 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117180 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117140 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117328 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117290 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117250 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116466 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116425 z: 0 dmin: 0.065261
+Basis: update 41: LU: 116385 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 113400 z: 0 dmin: 0.065261
+Basis: update 21: LU: 113359 z: 0 dmin: 0.065261
+Basis: update 41: LU: 113319 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116157 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116116 z: 0 dmin: 0.065261
+Basis: update 41: LU: 116076 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 112660 z: 0 dmin: 0.065261
+Basis: update 21: LU: 112619 z: 0 dmin: 0.065261
+Basis: update 41: LU: 112582 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 114766 z: 0 dmin: 0.065261
+Basis: update 21: LU: 114725 z: 0 dmin: 0.065261
+Basis: update 41: LU: 114685 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 113452 z: 0 dmin: 0.065261
+Basis: update 21: LU: 113411 z: 0 dmin: 0.065261
+Basis: update 41: LU: 113371 z: 0 dmin: 0.065261
+28500  9.2652e-003 25682 18118     0     0   558 w[ 4097] z[  994]
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 111830 z: 0 dmin: 0.065261
+Basis: update 21: LU: 111789 z: 0 dmin: 0.065261
+Basis: update 41: LU: 111749 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 111156 z: 0 dmin: 0.065261
+Basis: update 21: LU: 111115 z: 0 dmin: 0.065261
+Basis: update 41: LU: 111076 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 110763 z: 0 dmin: 0.065261
+Basis: update 21: LU: 110729 z: 0 dmin: 0.065261
+Basis: update 41: LU: 110690 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 109938 z: 0 dmin: 0.065261
+Basis: update 21: LU: 109899 z: 0 dmin: 0.065261
+Basis: update 41: LU: 109867 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 109291 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118297 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118888 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116047 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116391 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117199 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 115413 z: 0 dmin: 0.065261
+Basis: update 21: LU: 115721 z: 0 dmin: 0.065261
+Basis: update 41: LU: 116469 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117145 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117394 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118035 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117178 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117514 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118134 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117444 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117744 z: 0 dmin: 0.065261
+29000  9.1197e-003 25737 18063     0     0   568 z[ 3540] w[ 4832]
+Basis: update 41: LU: 118405 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116205 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116556 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117268 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117571 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117894 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118708 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116204 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116440 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117074 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117990 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118247 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118938 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118057 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118417 z: 0 dmin: 0.065261
+Basis: update 41: LU: 119143 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117053 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117362 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118031 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 120411 z: 0 dmin: 0.065261
+Basis: update 21: LU: 120715 z: 0 dmin: 0.065261
+Basis: update 41: LU: 121545 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117627 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117878 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118255 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 120720 z: 0 dmin: 0.065261
+Basis: update 21: LU: 120829 z: 0 dmin: 0.065261
+Basis: update 41: LU: 121092 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118585 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118735 z: 0 dmin: 0.065261
+29500 -2.5505e-001 26084 17716     0     0   578 w[18327] z[20298]
+Basis: update 41: LU: 119223 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117168 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117433 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117973 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117071 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117330 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117955 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 121449 z: 0 dmin: 0.065261
+Basis: update 21: LU: 121701 z: 0 dmin: 0.065261
+Basis: update 41: LU: 122220 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 120093 z: 0 dmin: 0.065261
+Basis: update 21: LU: 120397 z: 0 dmin: 0.065261
+Basis: update 41: LU: 121189 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116708 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116873 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117254 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117179 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117483 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118431 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116883 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117199 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117868 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116749 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117034 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117413 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 119252 z: 0 dmin: 0.065261
+Basis: update 21: LU: 119474 z: 0 dmin: 0.065261
+Basis: update 41: LU: 120015 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116287 z: 0 dmin: 0.065261
+30000 -2.5679e-001 25584 18216     0     0   588 w[22956] z[19115]
+Basis: update 21: LU: 116616 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117211 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117826 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118138 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118931 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 115905 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116270 z: 0 dmin: 0.065261
+Basis: update 41: LU: 112318 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117349 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117439 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117525 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117940 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118023 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118108 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118014 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118097 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118183 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118066 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118147 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118232 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118116 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118199 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118281 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118168 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118255 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118346 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118218 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118303 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118389 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118270 z: 0 dmin: 0.065261
+30500 -2.5554e-001 25835 17965     0     0   598 z[22930] w[19404]
+Basis: update 21: LU: 118359 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118443 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118320 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118405 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118492 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118372 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118457 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118544 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118422 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118512 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118603 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118474 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118561 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118646 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118524 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118611 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118702 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118576 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118659 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118619 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 115722 z: 0 dmin: 0.065261
+Basis: update 21: LU: 115682 z: 0 dmin: 0.065261
+Basis: update 41: LU: 115642 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117061 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117020 z: 0 dmin: 0.065261
+Basis: update 41: LU: 116980 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116854 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116813 z: 0 dmin: 0.065261
+Basis: update 41: LU: 116773 z: 0 dmin: 0.065261
+31000  8.5518e-003 25984 17816     0     0   607 w[ 8391] z[ 6065]
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116838 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116797 z: 0 dmin: 0.065261
+Basis: update 41: LU: 116757 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 113850 z: 0 dmin: 0.065261
+Basis: update 21: LU: 113812 z: 0 dmin: 0.065261
+Basis: update 41: LU: 113772 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 112780 z: 0 dmin: 0.065261
+Basis: update 21: LU: 112739 z: 0 dmin: 0.065261
+Basis: update 41: LU: 112699 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 114108 z: 0 dmin: 0.065261
+Basis: update 21: LU: 114067 z: 0 dmin: 0.065261
+Basis: update 41: LU: 114030 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 112584 z: 0 dmin: 0.065261
+Basis: update 21: LU: 112543 z: 0 dmin: 0.065261
+Basis: update 41: LU: 112503 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 114524 z: 0 dmin: 0.065261
+Basis: update 21: LU: 114483 z: 0 dmin: 0.065261
+Basis: update 41: LU: 114443 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 111748 z: 0 dmin: 0.065261
+Basis: update 21: LU: 111707 z: 0 dmin: 0.065261
+Basis: update 41: LU: 111670 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 111064 z: 0 dmin: 0.065261
+Basis: update 21: LU: 111024 z: 0 dmin: 0.065261
+Basis: update 41: LU: 110984 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 110506 z: 0 dmin: 0.065261
+Basis: update 21: LU: 110465 z: 0 dmin: 0.065261
+Basis: update 41: LU: 110431 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 109893 z: 0 dmin: 0.065261
+Basis: update 21: LU: 109855 z: 0 dmin: 0.065261
+31500  1.0922e-002 25484 18316     0     0   617 w[ 6108] z[  953]
+Basis: update 41: LU: 109819 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 109260 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118329 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118981 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 114738 z: 0 dmin: 0.065261
+Basis: update 21: LU: 115107 z: 0 dmin: 0.065261
+Basis: update 41: LU: 115941 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 115430 z: 0 dmin: 0.065261
+Basis: update 21: LU: 115729 z: 0 dmin: 0.065261
+Basis: update 41: LU: 116491 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117154 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117395 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117943 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 115601 z: 0 dmin: 0.065261
+Basis: update 21: LU: 115908 z: 0 dmin: 0.065261
+Basis: update 41: LU: 116588 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 115846 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116134 z: 0 dmin: 0.065261
+Basis: update 41: LU: 116743 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116087 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116414 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117136 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117400 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117724 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118507 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117547 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117826 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118453 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117530 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117801 z: 0 dmin: 0.065261
+32000  8.6873e-003 25935 17865     0     0   627 z[ 2351] w[ 1631]
+Basis: update 41: LU: 118552 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118034 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118407 z: 0 dmin: 0.065261
+Basis: update 41: LU: 119218 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117733 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118046 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118813 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118325 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118676 z: 0 dmin: 0.065261
+Basis: update 41: LU: 119487 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 121437 z: 0 dmin: 0.065261
+Basis: update 21: LU: 121639 z: 0 dmin: 0.065261
+Basis: update 41: LU: 121977 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 121885 z: 0 dmin: 0.065261
+Basis: update 21: LU: 121999 z: 0 dmin: 0.065261
+Basis: update 41: LU: 122315 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 120441 z: 0 dmin: 0.065261
+Basis: update 21: LU: 120571 z: 0 dmin: 0.065261
+Basis: update 41: LU: 120978 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 120210 z: 0 dmin: 0.065261
+Basis: update 21: LU: 120486 z: 0 dmin: 0.065261
+Basis: update 41: LU: 120987 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 121222 z: 0 dmin: 0.065261
+Basis: update 21: LU: 121465 z: 0 dmin: 0.065261
+Basis: update 41: LU: 122145 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117093 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117402 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117910 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116849 z: 0 dmin: 0.065261
+32500 -2.5554e-001 25886 17914     0     0   637 w[18551] z[22675]
+Basis: update 21: LU: 117208 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118044 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117330 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117517 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117867 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117216 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117500 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118422 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116873 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117139 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117894 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116617 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116827 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117263 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 119553 z: 0 dmin: 0.065261
+Basis: update 21: LU: 119785 z: 0 dmin: 0.065261
+Basis: update 41: LU: 120293 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116616 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116903 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117564 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118860 z: 0 dmin: 0.065261
+Basis: update 21: LU: 119177 z: 0 dmin: 0.065261
+Basis: update 41: LU: 120002 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 115909 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116237 z: 0 dmin: 0.065261
+Basis: update 41: LU: 112177 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117758 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117843 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117930 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117938 z: 0 dmin: 0.065261
+33000 -2.5713e-001 25533 18267     0     0   647 z[17756] w[22599]
+Basis: update 21: LU: 118024 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118109 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118018 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118102 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118188 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118068 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118157 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118248 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118120 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118207 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118294 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118170 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118255 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118339 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118222 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118308 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118394 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118272 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118361 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118447 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118324 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118410 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118499 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118374 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118462 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118546 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118426 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118512 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118602 z: 0 dmin: 0.065261
+33500 -2.5507e-001 26033 17767     0     0   656 z[18933] w[19412]
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118476 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118562 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118649 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118528 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118617 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118705 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118578 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118638 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118598 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117408 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117370 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117330 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116028 z: 0 dmin: 0.065261
+Basis: update 21: LU: 115987 z: 0 dmin: 0.065261
+Basis: update 41: LU: 115948 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116779 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116738 z: 0 dmin: 0.065261
+Basis: update 41: LU: 116698 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117276 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117238 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117198 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116082 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116041 z: 0 dmin: 0.065261
+Basis: update 41: LU: 116001 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116063 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116022 z: 0 dmin: 0.065261
+Basis: update 41: LU: 115982 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 115197 z: 0 dmin: 0.065261
+Basis: update 21: LU: 115156 z: 0 dmin: 0.065261
+34000  8.9592e-003 25786 18014     0     0   666 w[ 8299] z[ 1406]
+Basis: update 41: LU: 115116 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 115371 z: 0 dmin: 0.065261
+Basis: update 21: LU: 115330 z: 0 dmin: 0.065261
+Basis: update 41: LU: 115290 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 115022 z: 0 dmin: 0.065261
+Basis: update 21: LU: 114984 z: 0 dmin: 0.065261
+Basis: update 41: LU: 114944 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 111739 z: 0 dmin: 0.065261
+Basis: update 21: LU: 111698 z: 0 dmin: 0.065261
+Basis: update 41: LU: 111660 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 111151 z: 0 dmin: 0.065261
+Basis: update 21: LU: 111110 z: 0 dmin: 0.065261
+Basis: update 41: LU: 111070 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 110418 z: 0 dmin: 0.065261
+Basis: update 21: LU: 110378 z: 0 dmin: 0.065261
+Basis: update 41: LU: 110341 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 109964 z: 0 dmin: 0.065261
+Basis: update 21: LU: 109926 z: 0 dmin: 0.065261
+Basis: update 41: LU: 109892 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 109229 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118368 z: 0 dmin: 0.065261
+Basis: update 41: LU: 119086 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116490 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116878 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117622 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 115480 z: 0 dmin: 0.065261
+Basis: update 21: LU: 115782 z: 0 dmin: 0.065261
+Basis: update 41: LU: 116524 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116833 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117086 z: 0 dmin: 0.065261
+34500  9.5161e-003 25633 18167     0     0   676 z[ 4269] w[ 4405]
+Basis: update 41: LU: 117568 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117173 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117467 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118155 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 115871 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116149 z: 0 dmin: 0.065261
+Basis: update 41: LU: 116864 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117137 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117428 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118171 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 119295 z: 0 dmin: 0.065261
+Basis: update 21: LU: 119642 z: 0 dmin: 0.065261
+Basis: update 41: LU: 120339 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117851 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118152 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118718 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117993 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118236 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118967 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 119441 z: 0 dmin: 0.065261
+Basis: update 21: LU: 119782 z: 0 dmin: 0.065261
+Basis: update 41: LU: 120621 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117360 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117630 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118442 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118390 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118753 z: 0 dmin: 0.065261
+Basis: update 41: LU: 119461 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 122344 z: 0 dmin: 0.065261
+35000  8.4008e-003 26133 17667     0     0   686 z[ 5950] w[ 3142]
+Basis: update 21: LU: 122518 z: 0 dmin: 0.065261
+Basis: update 41: LU: 122938 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 121433 z: 0 dmin: 0.065261
+Basis: update 21: LU: 121567 z: 0 dmin: 0.065261
+Basis: update 41: LU: 121939 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118580 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118761 z: 0 dmin: 0.065261
+Basis: update 41: LU: 119205 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117310 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117564 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118098 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 120308 z: 0 dmin: 0.065261
+Basis: update 21: LU: 120575 z: 0 dmin: 0.065261
+Basis: update 41: LU: 121293 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118366 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118648 z: 0 dmin: 0.065261
+Basis: update 41: LU: 119185 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117385 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117722 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118478 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117327 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117488 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117914 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 120172 z: 0 dmin: 0.065261
+Basis: update 21: LU: 120445 z: 0 dmin: 0.065261
+Basis: update 41: LU: 121374 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 119736 z: 0 dmin: 0.065261
+Basis: update 21: LU: 119997 z: 0 dmin: 0.065261
+Basis: update 41: LU: 120685 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116740 z: 0 dmin: 0.065261
+35500 -2.5618e-001 25688 18112     0     0   696 w[17680] z[17781]
+Basis: update 21: LU: 116986 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117489 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 119339 z: 0 dmin: 0.065261
+Basis: update 21: LU: 119574 z: 0 dmin: 0.065261
+Basis: update 41: LU: 120094 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116246 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116465 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117212 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118832 z: 0 dmin: 0.065261
+Basis: update 21: LU: 119171 z: 0 dmin: 0.065261
+Basis: update 41: LU: 119852 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116046 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116392 z: 0 dmin: 0.065261
+Basis: update 41: LU: 112178 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116532 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116616 z: 0 dmin: 0.065261
+Basis: update 41: LU: 116707 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117940 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118024 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118107 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118020 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118105 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118194 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118072 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118156 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118242 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118122 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118204 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118291 z: 0 dmin: 0.065261
+36000 -2.5583e-001 25731 18069     0     0   705 z[26267] w[19818]
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118174 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118258 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118343 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118224 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118310 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118397 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118276 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118362 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118448 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118326 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118412 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118495 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118378 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118464 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118554 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118428 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118513 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118597 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118480 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118567 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118652 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118530 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118619 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118707 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118582 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118624 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118619 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118054 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118013 z: 0 dmin: 0.065261
+36500  8.4210e-003 26088 17712     0     0   715 w[  477] z[ 4145]
+Basis: update 41: LU: 117973 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117155 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117114 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117074 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116754 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116713 z: 0 dmin: 0.065261
+Basis: update 41: LU: 116673 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 113981 z: 0 dmin: 0.065261
+Basis: update 21: LU: 113940 z: 0 dmin: 0.065261
+Basis: update 41: LU: 113903 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116451 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116410 z: 0 dmin: 0.065261
+Basis: update 41: LU: 116370 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116483 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116442 z: 0 dmin: 0.065261
+Basis: update 41: LU: 116402 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 114155 z: 0 dmin: 0.065261
+Basis: update 21: LU: 114117 z: 0 dmin: 0.065261
+Basis: update 41: LU: 114077 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 114829 z: 0 dmin: 0.065261
+Basis: update 21: LU: 114788 z: 0 dmin: 0.065261
+Basis: update 41: LU: 114748 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 114485 z: 0 dmin: 0.065261
+Basis: update 21: LU: 114444 z: 0 dmin: 0.065261
+Basis: update 41: LU: 114405 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 113112 z: 0 dmin: 0.065261
+Basis: update 21: LU: 113071 z: 0 dmin: 0.065261
+Basis: update 41: LU: 113031 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 110865 z: 0 dmin: 0.065261
+Basis: update 21: LU: 110824 z: 0 dmin: 0.065261
+37000  9.7106e-003 25588 18212     0     0   725 w[ 1596] z[ 3975]
+Basis: update 41: LU: 110784 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 110576 z: 0 dmin: 0.065261
+Basis: update 21: LU: 110535 z: 0 dmin: 0.065261
+Basis: update 41: LU: 110497 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 109647 z: 0 dmin: 0.065261
+Basis: update 21: LU: 109621 z: 0 dmin: 0.065261
+Basis: update 41: LU: 109588 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 113673 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118435 z: 0 dmin: 0.065261
+Basis: update 41: LU: 119274 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 115033 z: 0 dmin: 0.065261
+Basis: update 21: LU: 115464 z: 0 dmin: 0.065261
+Basis: update 41: LU: 116188 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 115462 z: 0 dmin: 0.065261
+Basis: update 21: LU: 115764 z: 0 dmin: 0.065261
+Basis: update 41: LU: 116473 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 115357 z: 0 dmin: 0.065261
+Basis: update 21: LU: 115622 z: 0 dmin: 0.065261
+Basis: update 41: LU: 116134 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 115686 z: 0 dmin: 0.065261
+Basis: update 21: LU: 115967 z: 0 dmin: 0.065261
+Basis: update 41: LU: 116661 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117533 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117822 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118527 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118018 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118323 z: 0 dmin: 0.065261
+Basis: update 41: LU: 119078 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117392 z: 0 dmin: 0.065261
+37500  8.9155e-003 25831 17969     0     0   735 z[  326] w[  906]
+Basis: update 21: LU: 117767 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118458 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 120104 z: 0 dmin: 0.065261
+Basis: update 21: LU: 120422 z: 0 dmin: 0.065261
+Basis: update 41: LU: 121058 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117527 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117812 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118449 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116607 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116973 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117893 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 120309 z: 0 dmin: 0.065261
+Basis: update 21: LU: 120563 z: 0 dmin: 0.065261
+Basis: update 41: LU: 121501 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118365 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118776 z: 0 dmin: 0.065261
+Basis: update 41: LU: 119448 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117191 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117388 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117826 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 120713 z: 0 dmin: 0.065261
+Basis: update 21: LU: 120845 z: 0 dmin: 0.065261
+Basis: update 41: LU: 121217 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 120333 z: 0 dmin: 0.065261
+Basis: update 21: LU: 120482 z: 0 dmin: 0.065261
+Basis: update 41: LU: 120930 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117152 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117386 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117907 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117965 z: 0 dmin: 0.065261
+38000 -2.5528e-001 25990 17810     0     0   745 w[18091] z[17889]
+Basis: update 21: LU: 118253 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118923 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117160 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117450 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118022 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116833 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117114 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117853 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 120282 z: 0 dmin: 0.065261
+Basis: update 21: LU: 120453 z: 0 dmin: 0.065261
+Basis: update 41: LU: 120853 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117192 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117519 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118420 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116868 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117196 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117924 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116631 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116880 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117429 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 119303 z: 0 dmin: 0.065261
+Basis: update 21: LU: 119519 z: 0 dmin: 0.065261
+Basis: update 41: LU: 119992 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116606 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116812 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117556 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116098 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116499 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117209 z: 0 dmin: 0.065261
+38500 -2.5810e-001 25490 18310     0     0   754 w[19787] z[18441]
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 115890 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116210 z: 0 dmin: 0.065261
+Basis: update 41: LU: 111941 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117312 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117397 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117484 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117944 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118030 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118114 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118024 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118108 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118192 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118074 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118159 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118243 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118126 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118210 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118295 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118176 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118258 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118344 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118228 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118313 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118396 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118278 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118358 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118443 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118330 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118418 z: 0 dmin: 0.065261
+39000 -2.5527e-001 25929 17871     0     0   764 z[25388] w[18899]
+Basis: update 41: LU: 118508 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118380 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118464 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118551 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118432 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118517 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118603 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118482 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118573 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118657 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118534 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118619 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118707 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118584 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118609 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118605 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118082 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118041 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118001 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116805 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116764 z: 0 dmin: 0.065261
+Basis: update 41: LU: 116724 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116506 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116465 z: 0 dmin: 0.065261
+Basis: update 41: LU: 116425 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116431 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116390 z: 0 dmin: 0.065261
+Basis: update 41: LU: 116350 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 113048 z: 0 dmin: 0.065261
+Basis: update 21: LU: 113007 z: 0 dmin: 0.065261
+39500  8.7465e-003 25890 17910     0     0   774 w[ 3061] z[ 5814]
+Basis: update 41: LU: 112967 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 114363 z: 0 dmin: 0.065261
+Basis: update 21: LU: 114322 z: 0 dmin: 0.065261
+Basis: update 41: LU: 114282 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 115059 z: 0 dmin: 0.065261
+Basis: update 21: LU: 115018 z: 0 dmin: 0.065261
+Basis: update 41: LU: 114981 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 114590 z: 0 dmin: 0.065261
+Basis: update 21: LU: 114552 z: 0 dmin: 0.065261
+Basis: update 41: LU: 114512 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 112052 z: 0 dmin: 0.065261
+Basis: update 21: LU: 112011 z: 0 dmin: 0.065261
+Basis: update 41: LU: 111974 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 112403 z: 0 dmin: 0.065261
+Basis: update 21: LU: 112362 z: 0 dmin: 0.065261
+Basis: update 41: LU: 112325 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 111031 z: 0 dmin: 0.065261
+Basis: update 21: LU: 110993 z: 0 dmin: 0.065261
+Basis: update 41: LU: 110956 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 110413 z: 0 dmin: 0.065261
+Basis: update 21: LU: 110378 z: 0 dmin: 0.065261
+Basis: update 41: LU: 110338 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 109706 z: 0 dmin: 0.065261
+Basis: update 21: LU: 109667 z: 0 dmin: 0.065261
+Basis: update 41: LU: 109633 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 114726 z: 0 dmin: 0.065261
+Basis: update 21: LU: 115078 z: 0 dmin: 0.065261
+Basis: update 41: LU: 115932 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 114970 z: 0 dmin: 0.065261
+40000  1.0227e-002 25529 18271     0     0   784 z[ 3228] w[ 1067]
+Basis: update 21: LU: 115359 z: 0 dmin: 0.065261
+Basis: update 41: LU: 116140 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117018 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117315 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117955 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116634 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116884 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117417 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117354 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117580 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118322 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117566 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117877 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118630 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117290 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117615 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118340 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117434 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117793 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118469 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 119809 z: 0 dmin: 0.065261
+Basis: update 21: LU: 120150 z: 0 dmin: 0.065261
+Basis: update 41: LU: 120836 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 119931 z: 0 dmin: 0.065261
+Basis: update 21: LU: 120212 z: 0 dmin: 0.065261
+Basis: update 41: LU: 120960 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116709 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117022 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117962 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 120210 z: 0 dmin: 0.065261
+40500  8.5509e-003 26029 17771     0     0   794 z[ 1676] w[ 5875]
+Basis: update 21: LU: 120462 z: 0 dmin: 0.065261
+Basis: update 41: LU: 121356 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 121409 z: 0 dmin: 0.065261
+Basis: update 21: LU: 121817 z: 0 dmin: 0.065261
+Basis: update 41: LU: 122487 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117202 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117417 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117787 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 121897 z: 0 dmin: 0.065261
+Basis: update 21: LU: 122019 z: 0 dmin: 0.065261
+Basis: update 41: LU: 122398 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 121742 z: 0 dmin: 0.065261
+Basis: update 21: LU: 121876 z: 0 dmin: 0.065261
+Basis: update 41: LU: 122259 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 120134 z: 0 dmin: 0.065261
+Basis: update 21: LU: 120344 z: 0 dmin: 0.065261
+Basis: update 41: LU: 120879 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 121052 z: 0 dmin: 0.065261
+Basis: update 21: LU: 121247 z: 0 dmin: 0.065261
+Basis: update 41: LU: 121951 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118340 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118610 z: 0 dmin: 0.065261
+Basis: update 41: LU: 119237 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116797 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117077 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117825 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 120299 z: 0 dmin: 0.065261
+Basis: update 21: LU: 120475 z: 0 dmin: 0.065261
+Basis: update 41: LU: 120980 z: 0 dmin: 0.065261
+41000 -2.5581e-001 25792 18008     0     0   803 w[18398] z[20604]
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116804 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117155 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118088 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116859 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117140 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117984 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116727 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116922 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117509 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 119356 z: 0 dmin: 0.065261
+Basis: update 21: LU: 119603 z: 0 dmin: 0.065261
+Basis: update 41: LU: 120120 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116278 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116483 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117211 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118343 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118754 z: 0 dmin: 0.065261
+Basis: update 41: LU: 119486 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116035 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116330 z: 0 dmin: 0.065261
+Basis: update 41: LU: 112031 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116040 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116124 z: 0 dmin: 0.065261
+Basis: update 41: LU: 116208 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117970 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118052 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118136 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118026 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118109 z: 0 dmin: 0.065261
+41500 -2.5636e-001 25627 18173     0     0   813 z[17600] w[21021]
+Basis: update 41: LU: 118191 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118078 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118158 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118244 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118128 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118213 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118299 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118180 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118267 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118353 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118230 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118318 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118404 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118282 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118368 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118457 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118332 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118415 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118499 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118384 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118469 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118555 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118434 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118527 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118617 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118486 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118573 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118662 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118536 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118630 z: 0 dmin: 0.065261
+42000 -2.5485e-001 26127 17673     0     0   823 z[18763] w[21689]
+Basis: update 41: LU: 118718 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 118588 z: 0 dmin: 0.065261
+Basis: update 21: LU: 118593 z: 0 dmin: 0.065261
+Basis: update 41: LU: 118553 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117123 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117082 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117042 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 114673 z: 0 dmin: 0.065261
+Basis: update 21: LU: 114635 z: 0 dmin: 0.065261
+Basis: update 41: LU: 114595 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 117509 z: 0 dmin: 0.065261
+Basis: update 21: LU: 117471 z: 0 dmin: 0.065261
+Basis: update 41: LU: 117431 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 114467 z: 0 dmin: 0.065261
+Basis: update 21: LU: 114426 z: 0 dmin: 0.065261
+Basis: update 41: LU: 114386 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 116528 z: 0 dmin: 0.065261
+Basis: update 21: LU: 116487 z: 0 dmin: 0.065261
+Basis: update 41: LU: 116447 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 115268 z: 0 dmin: 0.065261
+Basis: update 21: LU: 115227 z: 0 dmin: 0.065261
+Basis: update 41: LU: 115187 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 112615 z: 0 dmin: 0.065261
+Basis: update 21: LU: 112574 z: 0 dmin: 0.065261
+Basis: update 41: LU: 112534 z: 0 dmin: 0.065261
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 112448 z: 0 dmin: 0.065261
+Basis: update 21: LU

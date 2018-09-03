@@ -63,11 +63,12 @@ Variables
 Z                        Objective
 lambda1(h)
 lambda2(h)
+
 ;
 
 Positive variables
 G_PV(h)              Generation of pv plant
-CU(h)                Curtailment of pv energy
+*CU(h)                Curtailment of pv energy
 N_PV                PV generation capacities
 *N_STO_E(sto)             Capacities: storage energy
 *N_STO_P(sto)             Capacities: storage power
@@ -76,7 +77,7 @@ N_PV                PV generation capacities
 *STO_OUT(sto,h)           Storage generation
 E_buy(h)                 Energy purchased from market
 E_sell(h)                Energy sold to market
-mu(h)
+mu
 
 ;
 
@@ -156,10 +157,10 @@ pv_generation              Household use of pv energy generation
 pv_install_max        PV capacity constraint
 energy_tomarket            Amount of energy sold to market
 energy_frommarket          Amount of energy purchased from market
-h1
-h2
-h3
-h4
+KKTN
+KKTG
+KKTEB
+KKTES
 *stolev_no_freelunch        Storage level in initial and last period
 *stolevel                   Storage level dynamics
 *stolev_max_energy          Storage capacity constraint on maximum energy
@@ -170,45 +171,56 @@ h4
 
 
 *** Objective function: Minimize total system costs
-h1(h)..
-
-   0 =E=
-   c_i_pv + lambda2(h)* avail_solar(h) + mu(h)
-;
 
 *** Household energy balance: Satisfy load with own generation, storage and grid
-h2(h)..
-
-   price_buy(h) - lambda1(h) =E= 0
-
-;
-
-h3(h)..
-
-   - price_market(h) - lambda2(h) =E= 0
-
-;
-
-
-pv_install_max..
-
-         N_PV =L= pv_cap_max
-;
-
 hh_energy_balance(h)..
 
-  d(h)         -   G_PV(h)
+
+           G_PV(h)
 *         + sum( sto , STO_OUT(sto,h))
-         - E_buy(h)  =E= 0
+         + E_buy(h)
+        =L= d(h)
+
 ;
 
+*** Household PV generation usage: Directly consumed, curtailed,stored or sold
 pv_generation(h)..
 
-      avail_solar(h) * N_PV
-      -  G_PV(h)
-      - CU(h)
+
+        G_PV(h)
+*      + CU(res,h)
 *      + sum( sto , STO_IN(sto,h))
-      - E_sell(h)  =E= 0
+      + E_sell(h)   =L=
+        avail_solar(h) * N_PV
+
+
+;
+
+*** Restrict PV capacity
+pv_install_max..
+
+           pv_cap_max =G= N_PV
+;
+
+*** Restrict PV capacity
+KKTN..
+
+        c_i_pv - sum( h , lambda2(h)*  avail_solar(h)) + mu =E= 0
+;
+
+KKTG(h)..
+
+       lambda1(h) +  lambda2(h) =E= 0
+;
+
+KKTEB(h)..
+
+      -price_buy(h) +  lambda1(h) =E= 0
+;
+
+KKTES(h)..
+
+      -price_market(h) +  lambda2(h) =E= 0
 ;
 
 $ontext
@@ -258,11 +270,12 @@ $offtext
 
 ***************************** Initialize model *********************************
 Model prosumodmcp /
-h1.N_PV
-h2.E_buy
-h3.E_sell
-hh_energy_balance.lambda2
-pv_generation.lambda1
+KKTN.N_PV
+KKTG.G_PV
+KKTEB.E_buy
+KKTES.E_sell
+hh_energy_balance.lambda1
+pv_generation.lambda2
 pv_install_max.mu
 
 $ontext
@@ -301,8 +314,8 @@ parallelmode -1
 $offecho
 
 
-solve   prosumod using mcp;
-display d , N_PV.l , Z.l, E_buy.l , E_sell.l ,
+solve   prosumodmcp using mcp;
+display d , N_PV.l , E_buy.l , E_sell.l ,
         price_market, hh_energy_balance.m
 
 

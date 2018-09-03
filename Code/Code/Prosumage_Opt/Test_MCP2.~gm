@@ -61,12 +61,15 @@ hh_profile       Household load data                     /V1*V74/
 
 Variables
 Z                        Objective
+lambda1(h)
+lambda2(h)
+
 ;
 
 Positive variables
-G_PV(res,h)              Generation of pv plant
-CU(res,h)                Curtailment of pv energy
-N_PV(res)                PV generation capacities
+G_PV(h)              Generation of pv plant
+*CU(h)                Curtailment of pv energy
+N_PV                PV generation capacities
 *N_STO_E(sto)             Capacities: storage energy
 *N_STO_P(sto)             Capacities: storage power
 *STO_L(sto,h)             Storage level
@@ -74,6 +77,8 @@ N_PV(res)                PV generation capacities
 *STO_OUT(sto,h)           Storage generation
 E_buy(h)                 Energy purchased from market
 E_sell(h)                Energy sold to market
+mu
+
 ;
 
 Parameters
@@ -84,18 +89,16 @@ d(h)                        Household load
 d_upload(h,hh_profile)      Household load - upload parameter
 avail_solar(h)              Hourly capacity factor for pv
 avail_solar_upload(h,year)  Hourly capacity factor pv - upload parameter
-pv_cap_max(res)             PV capacity maximum
+pv_cap_max             PV capacity maximum
 price_market(h)             Price for selling energy per kWh
 price_market_upload(h,year) Price for selling energy per MWh - upload parameter
-price_buy                   Price for energy consumption per kWh
+price_buy(h)                   Price for energy consumption per kWh
 *c_i_sto_e(sto)              Cost: investment into storage energy
 *c_i_sto_p(sto)              Cost: investment into storage power
-c_i_pv(res)                 Cost: investment into renewable capacity
+c_i_pv                      Cost: investment into renewable capacity
 *c_var_sto(sto)              Cost: variable generation costs storage
 penalty                     Penalty term
-lambda1(h)
-lambda2(h)
-mu(h)
+
 
 
 ;
@@ -111,12 +114,12 @@ penalty = 0 ;
 * Declare cost parameters
 *c_i_sto_e(sto)  =  5418.14/1000 ;
 *c_i_sto_p(sto)  = 50995.48/1000 ;
-c_i_pv('solar') = 60526.64/1000 ;
+c_i_pv = 60526.64/1000 ;
 *c_var_sto(sto)  =     0.5/1000 ;
-price_buy       =     0.30 ;
+price_buy(h)       =     0.30 ;
 
 * Declare further restrictions
-pv_cap_max(res) = 10;
+pv_cap_max = 10;
 
 
 ***************************** Upload data **************************************
@@ -151,13 +154,13 @@ Equations
 objective                  Objective function
 hh_energy_balance          Household energy balance
 pv_generation              Household use of pv energy generation
-pv_install_max(res)        PV capacity constraint
+pv_install_max        PV capacity constraint
 energy_tomarket            Amount of energy sold to market
 energy_frommarket          Amount of energy purchased from market
-h1
-h2
-h3
-h4
+KKTN
+KKTG
+KKTEB
+KKTES
 *stolev_no_freelunch        Storage level in initial and last period
 *stolevel                   Storage level dynamics
 *stolev_max_energy          Storage capacity constraint on maximum energy
@@ -168,46 +171,56 @@ h4
 
 
 *** Objective function: Minimize total system costs
-h1(h)..
-
-   0 =E=
-   c_i_pv(res) + lambda2(h)* avail_solar(h) + mu
-;
 
 *** Household energy balance: Satisfy load with own generation, storage and grid
-h2(h)..
-
-   sum(h, price_buy) - lambda1(h) =E= 0
-
-;
-
-h3(h)..
-
-   - sum(h, price_market) - lambda2(h) =E= 0
-
-;
-
-
-pv_install_max(res)..
-
-         N_PV(res) =L= pv_cap_max(res)
-;
-
 hh_energy_balance(h)..
 
-  d(h)
-         -  sum( res , G_PV(res,h))
+
+           G_PV(h)
 *         + sum( sto , STO_OUT(sto,h))
-         - E_buy(h)  =E= 0
+         + E_buy(h)
+        =L= d(h)
+
 ;
 
-pv_generation(res,h)..
+*** Household PV generation usage: Directly consumed, curtailed,stored or sold
+pv_generation(h)..
 
-      avail_solar(h) * N_PV(res)
-      -  G_PV(res,h)
-      - CU(res,h)
+
+        G_PV(h)
+*      + CU(res,h)
 *      + sum( sto , STO_IN(sto,h))
-      - E_sell(h)  =E= 0
+      + E_sell(h)   =L=
+        avail_solar(h) * N_PV
+
+
+;
+
+*** Restrict PV capacity
+pv_install_max..
+
+         N_PV - pv_cap_max =L= 0
+;
+
+*** Restrict PV capacity
+KKTN..
+
+        c_i_pv - sum( h , lambda2(h)*  avail_solar(h))  =E= 0
+;
+
+KKTG(h)..
+
+       lambda1(h) +  lambda2(h) =E= 0
+;
+
+KKTEB(h)..
+
+      -price_buy(h) +  lambda1(h) =E= 0
+;
+
+KKTES(h)..
+
+      -price_market(h) +  lambda2(h) =E= 0
 ;
 
 $ontext
@@ -257,12 +270,13 @@ $offtext
 
 ***************************** Initialize model *********************************
 Model prosumodmcp /
-h1.N_PV
-h2.E_buy
-h3.E_sell
-hh_energy_balance.
-pv_generation
-pv_install_max.mu
+KKTN.N_PV
+KKTG.G_PV
+KKTEB.E_buy
+KKTES.E_sell
+hh_energy_balance.lambda1
+pv_generation.lambda2
+
 
 $ontext
 stolev_no_freelunch
@@ -280,7 +294,7 @@ options
 optcr = 0.00
 reslim = 10000000
 lp = cplex
-mip = cplex
+mcp = path
 nlp = conopt
 dispwidth = 15
 limrow = 0
@@ -300,8 +314,8 @@ parallelmode -1
 $offecho
 
 
-solve   prosumod using mcp;
-display d , N_PV.l , Z.l, E_buy.l , E_sell.l ,
+solve   prosumodmcp using mcp;
+display d , N_PV.l , E_buy.l , E_sell.l ,
         price_market, hh_energy_balance.m
 
 
