@@ -1,0 +1,22 @@
+B 2 C o m p i l a t i o n
+B 109 Equation Listing    SOLVE testmodel Using MCP From line 94
+D 110 KKTG
+D 122 KKTL
+D 129 KKTM
+B 142 Column Listing      SOLVE testmodel Using MCP From line 94
+E 143 g
+E 163 lambda
+E 178 mu
+B 196 Model Statistics    SOLVE testmodel Using MCP From line 94
+B 214 Solution Report     SOLVE testmodel Using MCP From line 94
+F 265 KKTG
+F 276 KKTL
+F 283 KKTM
+G 289 g
+G 300 lambda
+G 307 mu
+B 327 E x e c u t i o n
+I 328 g
+I 337 lambda
+I 343 lev_Z
+I 344 mu

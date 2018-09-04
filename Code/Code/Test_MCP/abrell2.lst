@@ -1,0 +1,490 @@
+GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 09/04/18 17:24:27 Page 1
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+C o m p i l a t i o n
+
+
+   1   
+   2  *#########################################################################
+      ######
+   3  *DATA
+   4  *#########################################################################
+      ######
+   5  set
+   6  g  set  of  technologies/ coal, nuc, ccgt    /
+   7  f  set of  f u e l s /hcoa , uran, ng /
+   8  m(g , f )   mapping from  technologies  to / coal.hcoa, nuc.uran,ccgt.ng/
+   9  ;
+  10  parameter
+  11  pf ( f ) f u e l  price   in  $
+  12  /hcoa    2
+  13  uran    1
+  14  ng      3/
+  15   
+  16  c ( g ) other  unit  cost  in  $
+  17  / coal    50
+  18  nuc      2000
+  19  ccgt    200/
+  20  eta ( g )   heat  e f f i c i e n c y
+  21  / coal 0.35
+  22  nuc  0.4
+  23  ccgt  0.5/
+  24  theta ( g )  a v a i l a b i l i t y  in  hours
+  25  / coal    1
+  26  nuc      1
+  27  ccgt    1/
+  28   
+  29  cap ( g )   i n s t a l l e d  capacity  in MW
+  30  / coal    200
+  31  nuc      300
+  32  ccgt    300/
+  33   
+  34   ;
+  35   
+  36   
+  37  scalar
+  38   
+  39  d   demand /500/
+  40  ;
+  41   
+  42   
+  43  *#########################################################################
+      ######
+  44  *
+  45  *LP OPTIMIZATION MODEL
+  46  *
+  47  *#########################################################################
+      ######
+  48  Variable
+  49  COST  t o t a l  generation  cost  in  $
+  50  ;
+  51  Positive  Variable
+  52  X(g) generation  in MWh
+  53  ;
+  54  Equation
+  55  obj
+  56  objective  d e f i n i t i o n  in  $
+  57  mkt_E
+  58  market  c l e a r i n g  e l e c t r i c i t y  in MWh
+  59  mkt_CAP(g)
+  60  market  c l e a r i n g  capacity  in MWh
+  61  ;
+  62  obj..
+  63  COST =E= sum(g , X(g)*c (g))
+  64  ;
+  65   
+  66   
+  67   
+  68  mkt_E..
+  69  sum(g , X( g ))=G= d
+  70  ;
+  71  mkt_CAP( g )..
+  72  cap ( g)*theta ( g ) =G= X(g)
+  73  ;
+  74   
+  75  model elec_LP /obj , mkt_E, mkt_CAP/;
+  76   
+  77  *Set some  i n i t i a l  v a l u e s
+  78   
+  79  X.L( g ) = 1;
+  80   
+  81  solve  elec_LP  minimizing COST using LP;
+  82   
+  83  parameter
+  84  compare   s t o r e s  solution  values
+  85  ;
+  86   
+  87  compare("LP" ," Generation " , g ) = X.L( g ) ;
+  88  *In  the LP version  the  dual  or  Lagrangian  m u l t i p l i e r s  are
+        given  as  marginals
+  89  *of  the  corresponding  equations
+  90  *Use  a b s o l u t e  value  to  avoid  e r ro r s  in  sign
+  91  compare ("LP" ," Elec  Price " ," x ")    = abs (mkt_E.M) ;
+  92  compare ("LP" ," Cap Price " , g )= abs (mkt_CAP.M( g ) ) ;
+  93   
+  94  *#########################################################################
+      ######
+  95  *
+  96  *MCP EQUILIBRIUM MODEL
+  97  *#########################################################################
+      ######
+  98   
+  99  Positive  Variable
+ 100  P  e l e c t r i c i t y  price  in  $  per MWh
+ 101  PCAP(g)
+ 102  capacity  price  in  $  per MWh
+ 103  ;
+ 104  Equation
+ 105  zpf_X(g)
+ 106  zero  p r o f i t s  generation  in  $
+ 107  ;
+ 108  zpf_X(g)..
+ 109  sum(m(g , f ) ,  pf ( f )/ eta ( g )) + c ( g ) + PCAP( g )
+ 110  =G=
+ 111  P
+ 112  ;
+ 113  model elec_MCP /zpf_X.X, mkt_E.P, mkt_CAP.PCAP/;
+ 114  *Set  some  i n i t i a l  v a l u e s
+ 115   
+ 116  X.L(g) = 1;
+ 117  solve  elec_MCP using MCP;
+ 118  compare ("MCP" ," Generation " , g ) = X.L( g ) ;
+ 119  compare ("MCP" ," Elec  Price " ," x ")    = P.L;
+ 120  compare ("MCP" ," Cap Price " , g ) = PCAP.L( g ) ;
+ 121  display
+ 122  compare ;
+
+
+COMPILATION TIME     =        0.000 SECONDS      3 MB  24.7.4 r58773 WEX-WEI
+GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 09/04/18 17:24:27 Page 2
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Equation Listing    SOLVE elec_LP Using LP From line 81
+
+
+---- obj  =E=  
+
+obj..  COST - 50*X(coal) - 2000*X(nuc) - 200*X(ccgt) =E= 0 ;
+     
+      (LHS = -2250, INFES = 2250 ****)
+     
+
+---- mkt_E  =G=  
+
+mkt_E..  X(coal) + X(nuc) + X(ccgt) =G= 500 ; (LHS = 3, INFES = 497 ****)
+     
+
+---- mkt_CAP  =G=  
+
+mkt_CAP(coal)..  - X(coal) =G= -200 ; (LHS = -1)
+     
+mkt_CAP(nuc)..  - X(nuc) =G= -300 ; (LHS = -1)
+     
+mkt_CAP(ccgt)..  - X(ccgt) =G= -300 ; (LHS = -1)
+     
+GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 09/04/18 17:24:27 Page 3
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Column Listing      SOLVE elec_LP Using LP From line 81
+
+
+---- COST  t o t a l  generation  cost  in  $
+
+COST
+                (.LO, .L, .UP, .M = -INF, 0, +INF, 0)
+        1       obj
+
+
+---- X  generation  in MWh
+
+X(coal)
+                (.LO, .L, .UP, .M = 0, 1, +INF, 0)
+      -50       obj
+        1       mkt_E
+       -1       mkt_CAP(coal)
+
+X(nuc)
+                (.LO, .L, .UP, .M = 0, 1, +INF, 0)
+    -2000       obj
+        1       mkt_E
+       -1       mkt_CAP(nuc)
+
+X(ccgt)
+                (.LO, .L, .UP, .M = 0, 1, +INF, 0)
+     -200       obj
+        1       mkt_E
+       -1       mkt_CAP(ccgt)
+
+GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 09/04/18 17:24:27 Page 4
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Model Statistics    SOLVE elec_LP Using LP From line 81
+
+
+MODEL STATISTICS
+
+BLOCKS OF EQUATIONS           3     SINGLE EQUATIONS            5
+BLOCKS OF VARIABLES           2     SINGLE VARIABLES            4
+NON ZERO ELEMENTS            10
+
+
+GENERATION TIME      =        0.016 SECONDS      4 MB  24.7.4 r58773 WEX-WEI
+
+
+EXECUTION TIME       =        0.016 SECONDS      4 MB  24.7.4 r58773 WEX-WEI
+GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 09/04/18 17:24:27 Page 5
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Solution Report     SOLVE elec_LP Using LP From line 81
+
+
+               S O L V E      S U M M A R Y
+
+     MODEL   elec_LP             OBJECTIVE  COST
+     TYPE    LP                  DIRECTION  MINIMIZE
+     SOLVER  CPLEX               FROM LINE  81
+
+**** SOLVER STATUS     1 Normal Completion         
+**** MODEL STATUS      1 Optimal                   
+**** OBJECTIVE VALUE            70000.0000
+
+ RESOURCE USAGE, LIMIT          0.016      1000.000
+ ITERATION COUNT, LIMIT         0    2000000000
+
+IBM ILOG CPLEX   24.7.4 r58773 Released Sep 19, 2016 WEI x86 64bit/MS Windows 
+Cplex 12.6.3.0
+
+Space for names approximately 0.00 Mb
+Use option 'names no' to turn use of names off
+LP status(1): optimal
+Cplex Time: 0.00sec (det. 0.00 ticks)
+Optimal solution found.
+Objective :       70000.000000
+
+
+                       LOWER     LEVEL     UPPER    MARGINAL
+
+---- EQU obj             .         .         .        1.000      
+---- EQU mkt_E        500.000   500.000     +INF   2000.000      
+
+---- EQU mkt_CAP  
+
+        LOWER     LEVEL     UPPER    MARGINAL
+
+coal  -200.000  -200.000     +INF   1950.000      
+nuc   -300.000      .        +INF       .         
+ccgt  -300.000  -300.000     +INF   1800.000      
+
+                       LOWER     LEVEL     UPPER    MARGINAL
+
+---- VAR COST           -INF  70000.000     +INF       .         
+
+  COST  t o t a l  generation  cost  in  $
+
+---- VAR X  generation  in MWh
+
+        LOWER     LEVEL     UPPER    MARGINAL
+
+coal      .      200.000     +INF       .         
+nuc       .         .        +INF       .         
+ccgt      .      300.000     +INF       .         
+
+
+**** REPORT SUMMARY :        0     NONOPT
+                             0 INFEASIBLE
+                             0  UNBOUNDED
+GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 09/04/18 17:24:27 Page 6
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Equation Listing    SOLVE elec_MCP Using MCP From line 117
+
+
+---- zpf_X  =G=  
+
+zpf_X(coal)..  - P + PCAP(coal) =G= -55.7142857142857 ; (LHS = 0)
+     
+zpf_X(nuc)..  - P + PCAP(nuc) =G= -2002.5 ; (LHS = 0)
+     
+zpf_X(ccgt)..  - P + PCAP(ccgt) =G= -206 ; (LHS = 0)
+     
+
+---- mkt_E  =G=  
+
+mkt_E..  X(coal) + X(nuc) + X(ccgt) =G= 500 ; (LHS = 3, INFES = 497 ****)
+     
+
+---- mkt_CAP  =G=  
+
+mkt_CAP(coal)..  - X(coal) =G= -200 ; (LHS = -1)
+     
+mkt_CAP(nuc)..  - X(nuc) =G= -300 ; (LHS = -1)
+     
+mkt_CAP(ccgt)..  - X(ccgt) =G= -300 ; (LHS = -1)
+     
+GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 09/04/18 17:24:27 Page 7
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Column Listing      SOLVE elec_MCP Using MCP From line 117
+
+
+---- X  generation  in MWh
+
+X(coal)
+                (.LO, .L, .UP, .M = 0, 1, +INF, 0)
+        1       mkt_E
+       -1       mkt_CAP(coal)
+
+X(nuc)
+                (.LO, .L, .UP, .M = 0, 1, +INF, 0)
+        1       mkt_E
+       -1       mkt_CAP(nuc)
+
+X(ccgt)
+                (.LO, .L, .UP, .M = 0, 1, +INF, 0)
+        1       mkt_E
+       -1       mkt_CAP(ccgt)
+
+
+---- P  e l e c t r i c i t y  price  in  $  per MWh
+
+P
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+       -1       zpf_X(coal)
+       -1       zpf_X(nuc)
+       -1       zpf_X(ccgt)
+
+
+---- PCAP  
+
+PCAP(coal)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+        1       zpf_X(coal)
+
+PCAP(nuc)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+        1       zpf_X(nuc)
+
+PCAP(ccgt)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+        1       zpf_X(ccgt)
+
+GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 09/04/18 17:24:27 Page 8
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Model Statistics    SOLVE elec_MCP Using MCP From line 117
+
+
+MODEL STATISTICS
+
+BLOCKS OF EQUATIONS           3     SINGLE EQUATIONS            7
+BLOCKS OF VARIABLES           3     SINGLE VARIABLES            7
+NON ZERO ELEMENTS            12     NON LINEAR N-Z              0
+DERIVATIVE POOL              20     CONSTANT POOL              16
+CODE LENGTH                   0
+
+
+GENERATION TIME      =        0.000 SECONDS      3 MB  24.7.4 r58773 WEX-WEI
+
+
+EXECUTION TIME       =        0.000 SECONDS      3 MB  24.7.4 r58773 WEX-WEI
+GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 09/04/18 17:24:27 Page 9
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Solution Report     SOLVE elec_MCP Using MCP From line 117
+
+
+               S O L V E      S U M M A R Y
+
+     MODEL   elec_MCP            
+     TYPE    MCP                 
+     SOLVER  PATH                FROM LINE  117
+
+**** SOLVER STATUS     1 Normal Completion         
+**** MODEL STATUS      1 Optimal                   
+
+ RESOURCE USAGE, LIMIT          0.110      1000.000
+ ITERATION COUNT, LIMIT         6    2000000000
+ EVALUATION ERRORS              0             0
+7 row/cols, 12 non-zeros, 24.49% dense.
+
+Path 4.7.04 (Mon Sep 19 11:18:59 2016)
+Written by Todd Munson, Steven Dirkse, and Michael Ferris
+
+INITIAL POINT STATISTICS
+Maximum of X. . . . . . . . . .  1.0000e+000 var: (X(coal))
+Maximum of F. . . . . . . . . .  2.0025e+003 eqn: (zpf_X(nuc))
+Maximum of Grad F . . . . . . .  1.0000e+000 eqn: (mkt_E)
+                                            var: (X(coal))
+
+INITIAL JACOBIAN NORM STATISTICS
+Maximum Row Norm. . . . . . . .  3.0000e+000 eqn: (mkt_E)
+Minimum Row Norm. . . . . . . .  1.0000e+000 eqn: (zpf_X(coal))
+Maximum Column Norm . . . . . .  3.0000e+000 var: (P)
+Minimum Column Norm . . . . . .  1.0000e+000 var: (X(coal))
+
+FINAL STATISTICS
+Inf-Norm of Complementarity . .  0.0000e+000 eqn: (zpf_X(coal))
+Inf-Norm of Normal Map. . . . .  0.0000e+000 eqn: (zpf_X(coal))
+Inf-Norm of Minimum Map . . . .  0.0000e+000 eqn: (zpf_X(coal))
+Inf-Norm of Fischer Function. .  0.0000e+000 eqn: (zpf_X(coal))
+Inf-Norm of Grad Fischer Fcn. .  0.0000e+000 eqn: (zpf_X(coal))
+Two-Norm of Grad Fischer Fcn. .  0.0000e+000
+
+FINAL POINT STATISTICS
+Maximum of X. . . . . . . . . .  3.7397e+002 var: (P)
+Maximum of F. . . . . . . . . .  1.6285e+003 eqn: (zpf_X(nuc))
+Maximum of Grad F . . . . . . .  1.0000e+000 eqn: (mkt_E)
+                                            var: (X(coal))
+
+
+---- EQU zpf_X  
+
+        LOWER     LEVEL     UPPER    MARGINAL
+
+coal   -55.714   -55.714     +INF    200.000      
+nuc  -2002.500  -373.971     +INF       .         
+ccgt  -206.000  -206.000     +INF    300.000      
+
+                       LOWER     LEVEL     UPPER    MARGINAL
+
+---- EQU mkt_E        500.000   500.000     +INF    373.971      
+
+---- EQU mkt_CAP  
+
+        LOWER     LEVEL     UPPER    MARGINAL
+
+coal  -200.000  -200.000     +INF    318.257      
+nuc   -300.000      .        +INF       .         
+ccgt  -300.000  -300.000     +INF    167.971      
+
+---- VAR X  generation  in MWh
+
+        LOWER     LEVEL     UPPER    MARGINAL
+
+coal      .      200.000     +INF       .         
+nuc       .         .        +INF   1628.529      
+ccgt      .      300.000     +INF       .         
+
+                       LOWER     LEVEL     UPPER    MARGINAL
+
+---- VAR P               .      373.971     +INF       .         
+
+  P  e l e c t r i c i t y  price  in  $  per MWh
+
+---- VAR PCAP  
+
+        LOWER     LEVEL     UPPER    MARGINAL
+
+coal      .      318.257     +INF       .         
+nuc       .         .        +INF    300.000      
+ccgt      .      167.971     +INF       .         
+
+
+**** REPORT SUMMARY :        0     NONOPT
+                             0 INFEASIBLE
+                             0  UNBOUNDED
+                             0  REDEFINED
+                             0     ERRORS
+GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 09/04/18 17:24:27 Page 10
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+E x e c u t i o n
+
+
+----    122 PARAMETER compare  s t o r e s  solution  values
+
+                        coal        ccgt           x
+
+LP . Generation      200.000     300.000
+LP . Elec  Price                            2000.000
+LP . Cap Price      1950.000    1800.000
+MCP. Generation      200.000     300.000
+MCP. Elec  Price                             373.971
+MCP. Cap Price       318.257     167.971
+
+
+
+EXECUTION TIME       =        0.000 SECONDS      3 MB  24.7.4 r58773 WEX-WEI
+
+
+USER: Course License Energy Informatics Computer BaseS180601:0449AO-GEN
+      Humboldt-Universitaet zu Berlin, WirtschaftswissenschaftliDC14161
+      License for teaching and research at degree granting institutions
+
+
+**** FILE SUMMARY
+
+Input      C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Code\Test_MCP\abrell2
+           .gms
+Output     C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Code\Test_MCP\abrell2
+           .lst

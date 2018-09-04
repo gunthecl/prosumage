@@ -1,0 +1,99 @@
+
+--- Job NBES_2.gms Start 09/04/18 17:30:47 24.7.4 r58773 WEX-WEI x86 64bit/MS Windows
+GAMS 24.7.4   Copyright (C) 1987-2016 GAMS Development. All rights reserved
+Licensee: Course License Energy Informatics Computer BaseS180601:0449AO-GEN
+          Humboldt-Universitaet zu Berlin, WirtschaftswissenschaftliDC14161
+          License for teaching and research at degree granting institutions
+          License Admin: Olga Spiridonova, spiridoo@cms.hu-berlin.de       
+--- Starting compilation
+--- NBES_2.gms(99) 3 Mb
+--- Starting execution: elapsed 0:00:00.005
+--- NBES_2.gms(91) 4 Mb
+--- Generating MCP model testmodel
+--- NBES_2.gms(94) 6 Mb
+---   14 rows  14 columns  24 non-zeroes
+---   0 nl-code  0 nl-non-zeroes
+--- NBES_2.gms(94) 4 Mb
+--- Executing PATH: elapsed 0:00:00.018
+Reading dictionary...
+Reading row data...
+Evaluating functions...
+Checking model...
+Calculating Jacobian...
+
+PATH             24.7.4 r58773 Released Sep 19, 2016 WEI x86 64bit/MS Windows 
+
+14 row/cols, 24 non-zeros, 12.24% dense.
+
+Path 4.7.04 (Mon Sep 19 11:18:59 2016)
+Written by Todd Munson, Steven Dirkse, and Michael Ferris
+
+Zero:     0 Single:     0 Double:     6
+Preprocessed size   : 8
+
+INITIAL POINT STATISTICS
+Maximum of X. . . . . . . . . .  1.0000e+000 var: (g(c,1))
+Maximum of F. . . . . . . . . .  2.0000e+003 eqn: (KKTG(o,1))
+Maximum of Grad F . . . . . . .  1.0000e+000 eqn: (KKTL(1))
+                                            var: (g(c,1))
+
+INITIAL JACOBIAN NORM STATISTICS
+Maximum Row Norm. . . . . . . .  3.0000e+000 eqn: (KKTL(1))
+Minimum Row Norm. . . . . . . .  1.0000e+000 eqn: (KKTG(c,1))
+Maximum Column Norm . . . . . .  3.0000e+000 var: (lambda(1))
+Minimum Column Norm . . . . . .  1.0000e+000 var: (g(c,1))
+
+Crash Log
+major  func  diff  size  residual    step       prox   (label)
+    0     0             1.2722e+003             0.0e+000 (KKTL(1))
+    1     1     6     8 1.1883e+003  1.0e+000    1.0e+001 (KKTL(1))
+    2     2     0     4 1.1216e+003  1.0e+000    9.0e+000 (KKTL(1))
+pn_search terminated: no basis change.
+
+Major Iteration Log
+major minor  func  grad  residual    step  type prox    inorm  (label)
+    0     0     3     3 1.1216e+003           I 8.1e+000 8.7e+002 (KKTL(1))
+    1     3     4     4 8.7743e+002  1.0e+000 SO 3.2e+000 6.4e+002 (KKTL(1))
+    2     1     5     5 2.2951e+002  1.0e+000 SO 1.3e+000 1.2e+002 (KKTG(g,1))
+    3     3     6     6 6.5408e+001  1.0e+000 SO 5.2e-001 4.1e+001 (KKTG(g,1))
+    4     1     7     7 1.6161e+001  1.0e+000 SO 2.1e-001 1.3e+001 (KKTL(1))
+    5     1     8     8 1.3755e+000  1.0e+000 SO 8.3e-002 1.2e+000 (KKTG(g,1))
+    6     1     9     9 4.5536e-002  1.0e+000 SO 3.3e-002 3.9e-002 (KKTL(1))
+    7     1    10    10 2.0733e-004  1.0e+000 SO 4.6e-003 1.8e-004 (KKTG(g,1))
+    8     1    11    11 4.2987e-009  1.0e+000 SO 2.1e-005 3.7e-009 (KKTL(1))
+
+FINAL STATISTICS
+Inf-Norm of Complementarity . .  7.3176e-007 eqn: (KKTL(1))
+Inf-Norm of Normal Map. . . . .  3.6588e-009 eqn: (KKTL(1))
+Inf-Norm of Minimum Map . . . .  3.6588e-009 eqn: (KKTL(1))
+Inf-Norm of Fischer Function. .  3.6588e-009 eqn: (KKTL(1))
+Inf-Norm of Grad Fischer Fcn. .  3.6588e-009 eqn: (KKTG(c,1))
+Two-Norm of Grad Fischer Fcn. .  7.2987e-009
+
+FINAL POINT STATISTICS
+Maximum of X. . . . . . . . . .  3.0000e+002 var: (g(c,1))
+Maximum of F. . . . . . . . . .  1.8000e+003 eqn: (KKTG(o,2))
+Maximum of Grad F . . . . . . .  1.0000e+000 eqn: (KKTL(1))
+                                            var: (g(c,1))
+
+ ** EXIT - solution found.
+
+Major Iterations. . . . 8
+Minor Iterations. . . . 12
+Restarts. . . . . . . . 0
+Crash Iterations. . . . 2
+Gradient Steps. . . . . 0
+Function Evaluations. . 11
+Gradient Evaluations. . 11
+Basis Time. . . . . . . 0.000000
+Total Time. . . . . . . 0.125000
+Residual. . . . . . . . 4.298747e-009
+Postsolved residual: 4.2987e-009
+
+--- Restarting execution
+--- NBES_2.gms(94) 2 Mb
+--- Reading solution for model testmodel
+--- Executing after solve: elapsed 0:00:00.309
+--- NBES_2.gms(99) 3 Mb
+*** Status: Normal completion
+--- Job NBES_2.gms Stop 09/04/18 17:30:48 elapsed 0:00:00.310

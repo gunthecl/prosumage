@@ -1,0 +1,121 @@
+
+*###############################################################################
+*DATA
+*###############################################################################
+set
+g  set  of  technologies/ coal, nuc, ccgt    /
+f  set of  f u e l s /hcoa , uran, ng /
+m(g , f )   mapping from  technologies  to / coal.hcoa, nuc.uran,ccgt.ng/
+;
+parameter
+pf ( f ) f u e l  price   in  $
+/hcoa    2
+uran    1
+ng      3/
+
+c ( g ) other  unit  cost  in  $
+/ coal    50
+nuc      2000
+ccgt    200/
+eta ( g )   heat  e f f i c i e n c y
+/ coal 0.35
+nuc  0.4
+ccgt  0.5/
+theta ( g )  a v a i l a b i l i t y  in  hours
+/ coal    1
+nuc      1
+ccgt    1/
+
+cap ( g )   i n s t a l l e d  capacity  in MW
+/ coal    200
+nuc      300
+ccgt    300/
+
+ ;
+
+
+scalar
+
+d   demand /500/
+;
+
+
+*###############################################################################
+*
+*LP OPTIMIZATION MODEL
+*
+*###############################################################################
+Variable
+COST  t o t a l  generation  cost  in  $
+;
+Positive  Variable
+X(g) generation  in MWh
+;
+Equation
+obj
+objective  d e f i n i t i o n  in  $
+mkt_E
+market  c l e a r i n g  e l e c t r i c i t y  in MWh
+mkt_CAP(g)
+market  c l e a r i n g  capacity  in MWh
+;
+obj..
+COST =E= sum(g , X(g)*c (g))
+;
+
+
+
+mkt_E..
+sum(g , X( g ))=G= d
+;
+mkt_CAP( g )..
+cap (g) =G= X(g)
+;
+
+model elec_LP /obj , mkt_E, mkt_CAP/;
+
+*Set some  i n i t i a l  v a l u e s
+
+X.L( g ) = 1;
+
+solve  elec_LP  minimizing COST using LP;
+
+parameter
+compare   s t o r e s  solution  values
+;
+
+compare("LP" ," Generation " , g ) = X.L( g ) ;
+*In  the LP version  the  dual  or  Lagrangian  m u l t i p l i e r s  are  given  as  marginals
+*of  the  corresponding  equations
+*Use  a b s o l u t e  value  to  avoid  e r ro r s  in  sign
+compare ("LP" ," Elec  Price " ," x ")    = abs (mkt_E.M) ;
+compare ("LP" ," Cap Price " , g )= abs (mkt_CAP.M( g ) ) ;
+
+*###############################################################################
+*
+*MCP EQUILIBRIUM MODEL
+*###############################################################################
+
+Positive  Variable
+P  e l e c t r i c i t y  price  in  $  per MWh
+PCAP(g) capacity  price  in  $  per MWh
+;
+Equation
+zpf_X(g)
+zero  p r o f i t s  generation  in  $
+;
+zpf_X(g)..
+sum(m(g , f ) ,  pf ( f )/ eta ( g )) + c ( g ) + PCAP( g )
+=G=
+P
+;
+model elec_MCP /zpf_X.X, mkt_E.P, mkt_CAP.PCAP/;
+*Set  some  i n i t i a l  v a l u e s
+
+X.L(g) = 1;
+solve  elec_MCP using MCP;
+compare ("MCP" ," Generation " , g ) = X.L( g ) ;
+compare ("MCP" ," Elec  Price " ," x ")    = P.L;
+compare ("MCP" ," Cap Price " , g ) = PCAP.L( g ) ;
+display
+compare ;
