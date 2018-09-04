@@ -1,11 +1,4 @@
 B 2 C o m p i l a t i o n
-B 328 Include File Summary
-B 344 Model Statistics    SOLVE prosumodmcp Using MCP From line 317
-B 362 Solution Report     SOLVE prosumodmcp Using MCP From line 317
-B 417 E x e c u t i o n
-I 418 d
-I 1624 N_PV
-I 1626 E_buy
-I 2830 E_sell
-I 2835 price_market
-I 4839 hh_energy_balance
+B 334 Include File Summary
+B 350 Model Analysis      SOLVE prosumodmcp Using MCP From line 311
+B 26634 Model Statistics    SOLVE prosumodmcp Using MCP From line 311

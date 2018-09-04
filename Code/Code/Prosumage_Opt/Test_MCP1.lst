@@ -1,4 +1,4 @@
-GAMS 24.2.1  r43572 Released Dec  9, 2013 WEX-WEI x86_64/MS Windows 09/03/18 13:02:44 Page 1
+GAMS 24.2.1  r43572 Released Dec  9, 2013 WEX-WEI x86_64/MS Windows 09/04/18 12:01:25 Page 1
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
@@ -70,9 +70,9 @@ C o m p i l a t i o n
   64  ;
   65   
   66  Positive variables
-  67  G_PV(res,h)              Generation of pv plant
+  67  G_PV(h)              Generation of pv plant
   68  *CU(res,h)                Curtailment of pv energy
-  69  N_PV(res)                PV generation capacities
+  69  N_PV                PV generation capacities
   70  *N_STO_E(sto)             Capacities: storage energy
   71  *N_STO_P(sto)             Capacities: storage power
   72  *STO_L(sto,h)             Storage level
@@ -90,126 +90,128 @@ C o m p i l a t i o n
   84  d_upload(h,hh_profile)      Household load - upload parameter
   85  avail_solar(h)              Hourly capacity factor for pv
   86  avail_solar_upload(h,year)  Hourly capacity factor pv - upload parameter
-  87  pv_cap_max(res)             PV capacity maximum
+  87  pv_cap_max             PV capacity maximum
   88  price_market(h)             Price for selling energy per kWh
   89  price_market_upload(h,year) Price for selling energy per MWh - upload para
       meter
   90  price_buy                   Price for energy consumption per kWh
   91  *c_i_sto_e(sto)              Cost: investment into storage energy
   92  *c_i_sto_p(sto)              Cost: investment into storage power
-  93  c_i_pv(res)                 Cost: investment into renewable capacity
+  93  c_i_pv                Cost: investment into renewable capacity
   94  *c_var_sto(sto)              Cost: variable generation costs storage
   95  penalty                     Penalty term
-  96   
-  97   
-  98  ;
+  96  lev_Z
+  97  lev_EB
+  98  lev_ES
   99   
- 100   
- 101  * Declare efficiency parameters
- 102  *sto_ini_last(sto)  =  0.5 ;
- 103  *eta_sto_in(sto)    =  0.81 ;
- 104  *eta_sto_out(sto)   =  0.926 ;
- 105  penalty = 0 ;
- 106   
- 107   
- 108  * Declare cost parameters
- 109  *c_i_sto_e(sto)  =  5418.14/1000 ;
- 110  *c_i_sto_p(sto)  = 50995.48/1000 ;
- 111  c_i_pv('solar') = 60526.64/1000 ;
- 112  *c_var_sto(sto)  =     0.5/1000 ;
- 113  price_buy       =     0.30 ;
- 114   
- 115  * Declare further restrictions
- 116  pv_cap_max(res) = 10;
- 117   
- 118   
- 119  ***************************** Upload data ********************************
-      ******
+ 100  ;
+ 101   
+ 102   
+ 103  * Declare efficiency parameters
+ 104  *sto_ini_last(sto)  =  0.5 ;
+ 105  *eta_sto_in(sto)    =  0.81 ;
+ 106  *eta_sto_out(sto)   =  0.926 ;
+ 107  penalty = 0 ;
+ 108   
+ 109   
+ 110  * Declare cost parameters
+ 111  *c_i_sto_e(sto)  =  5418.14/1000 ;
+ 112  *c_i_sto_p(sto)  = 50995.48/1000 ;
+ 113  c_i_pv           = 60526.64/1000 ;
+ 114  *c_var_sto(sto)  =     0.5/1000 ;
+ 115  price_buy       =     0.30 ;
+ 116   
+ 117  * Declare further restrictions
+ 118  pv_cap_max = 10;
+ 119   
  120   
- 128   
- 129   
- 130  *$call "gdxxrw data\input_data.xlsx squeeze=N @data\input_data.tmp  o=data
+ 121  ***************************** Upload data ********************************
+      ******
+ 122   
+ 130   
+ 131   
+ 132  *$call "gdxxrw data\input_data.xlsx squeeze=N @data\input_data.tmp  o=data
       \input_data.gdx  ";
 GDXIN   C:\Users\cguenther\Documents\GitHub\prosumage\Code\Code\Prosumage_Opt\da
         ta\input_data.gdx
 --- LOAD  d_upload = 1:d_upload
 --- LOAD  avail_solar_upload = 2:avail_solar_upload
 --- LOAD  price_market_upload = 3:price_market_upload
- 133  ;
- 134   
- 135  * Load data for specific household and base year
- 136  d(h)                   = d_upload(h,'V17') ;
- 137  avail_solar(h)         = avail_solar_upload(h,'2014') ;
- 138   
- 139  *Load market price as price per kWh
- 140  price_market(h)        = price_market_upload(h,'2014')/1000 ;
- 141  *price_market(h)        = 0.12 ;
- 142   
+ 135  ;
+ 136   
+ 137  * Load data for specific household and base year
+ 138  d(h)                   = d_upload(h,'V17') ;
+ 139  avail_solar(h)         = avail_solar_upload(h,'2014') ;
+ 140   
+ 141  *Load market price as price per kWh
+ 142  price_market(h)        = price_market_upload(h,'2014')/1000 ;
+ 143  *price_market(h)        = 0.12 ;
  144   
- 145  ****************************** Model setup *******************************
-      ******
  146   
- 147  Equations
- 148  objective                  Objective function
- 149  hh_energy_balance          Household energy balance
- 150  pv_generation              Household use of pv energy generation
- 151  pv_install_max(res)        PV capacity constraint
- 152  energy_tomarket            Amount of energy sold to market
- 153  energy_frommarket          Amount of energy purchased from market
- 154  *stolev_no_freelunch        Storage level in initial and last period
- 155  *stolevel                   Storage level dynamics
- 156  *stolev_max_energy          Storage capacity constraint on maximum energy
- 157  *stoin_max_power            Storage capacity constraint on maximum power -
+ 147  ****************************** Model setup *******************************
+      ******
+ 148   
+ 149  Equations
+ 150  objective                  Objective function
+ 151  hh_energy_balance          Household energy balance
+ 152  pv_generation              Household use of pv energy generation
+ 153  pv_install_max        PV capacity constraint
+ 154  energy_tomarket            Amount of energy sold to market
+ 155  energy_frommarket          Amount of energy purchased from market
+ 156  *stolev_no_freelunch        Storage level in initial and last period
+ 157  *stolevel                   Storage level dynamics
+ 158  *stolev_max_energy          Storage capacity constraint on maximum energy
+ 159  *stoin_max_power            Storage capacity constraint on maximum power -
        storing in
- 158  *stoout_max_power           Storage capacity constraint on maximum power -
+ 160  *stoout_max_power           Storage capacity constraint on maximum power -
        storing out
- 159  *foresight_24h              Perfect foresight only for next 24h
- 160  ;
- 161   
- 162   
- 163  *** Objective function: Minimize total system costs
- 164  objective..
- 165   
- 166     Z =E=
+ 161  *foresight_24h              Perfect foresight only for next 24h
+ 162  ;
+ 163   
+ 164   
+ 165  *** Objective function: Minimize total system costs
+ 166  objective..
  167   
- 168             sum( res , c_i_pv(res) * N_PV(res) )
- 169  *         + sum( sto , c_i_sto_e(sto) * N_STO_E(sto) + c_i_sto_p(sto) * N_
+ 168     Z =E=
+ 169   
+ 170            c_i_pv * N_PV
+ 171  *         + sum( sto , c_i_sto_e(sto) * N_STO_E(sto) + c_i_sto_p(sto) * N_
       STO_P(sto) )
- 170  *         + sum( (sto,h) , c_var_sto(sto) * (STO_IN(sto,h) + STO_OUT(sto,h
+ 172  *         + sum( (sto,h) , c_var_sto(sto) * (STO_IN(sto,h) + STO_OUT(sto,h
       )) )
- 171           + sum(  h , price_buy * E_buy(h))
- 172           - sum(  h , price_market(h) * E_sell(h))
- 173  ;
- 174   
- 175  *** Household energy balance: Satisfy load with own generation, storage an
+ 173           + sum(  h , price_buy * E_buy(h))
+ 174           - sum(  h , price_market(h) * E_sell(h))
+ 175  ;
+ 176   
+ 177  *** Household energy balance: Satisfy load with own generation, storage an
       d grid
- 176  hh_energy_balance(h)..
- 177   
- 178    d(h) =E=
- 179             sum( res , G_PV(res,h))
- 180  *         + sum( sto , STO_OUT(sto,h))
- 181           + E_buy(h)
- 182  ;
- 183   
- 184  *** Household PV generation usage: Directly consumed, curtailed,stored or 
+ 178  hh_energy_balance(h)..
+ 179   
+ 180    d(h) =E=
+ 181            G_PV(h)
+ 182  *         + sum( sto , STO_OUT(sto,h))
+ 183           + E_buy(h)
+ 184  ;
+ 185   
+ 186  *** Household PV generation usage: Directly consumed, curtailed,stored or 
       sold
- 185  pv_generation(res,h)..
- 186   
- 187        avail_solar(h) * N_PV(res) =E=
- 188          G_PV(res,h)
- 189  *      + CU(res,h)
- 190  *      + sum( sto , STO_IN(sto,h))
- 191        + E_sell(h)
- 192  ;
- 193   
- 194  *** Restrict PV capacity
- 195  pv_install_max(res)..
- 196   
- 197           N_PV(res) =L= pv_cap_max(res)
- 198  ;
- 199   
- 200   
+ 187  pv_generation(h)..
+ 188   
+ 189        avail_solar(h) * N_PV =E=
+ 190          G_PV(h)
+ 191  *      + CU(res,h)
+ 192  *      + sum( sto , STO_IN(sto,h))
+ 193        + E_sell(h)
+ 194  ;
+ 195   
+ 196  *** Restrict PV capacity
+ 197  pv_install_max..
+ 198   
+ 199           N_PV =L= pv_cap_max
+ 200  ;
  201   
+ 202   
+ 203   
       *** Technical constraints on storage
       *Storage level in first and last period must be the same
       stolev_no_freelunch(sto)..
@@ -254,13 +256,15 @@ GDXIN   C:\Users\cguenther\Documents\GitHub\prosumage\Code\Code\Prosumage_Opt\da
        
                STO_OUT(sto,h) =L= N_STO_P(sto)
       ;
- 246   
- 247  ***************************** Initialize model ***************************
+ 248   
+ 249  ***************************** Initialize model ***************************
       ******
- 248  Model prosumod /
- 249  objective
- 250  hh_energy_balance
- 251  pv_generation
+ 250  Model prosumod /
+ 251  objective
+ 252  hh_energy_balance
+ 253  pv_generation
+ 254  pv_install_max
+ 255   
       stolev_no_freelunch
       stolevel
       stolev_max_energy
@@ -268,36 +272,45 @@ GDXIN   C:\Users\cguenther\Documents\GitHub\prosumage\Code\Code\Prosumage_Opt\da
       stoout_max_power
       pv_install_max
       *foresight_24h
- 261  /
- 262   
- 263   
- 264  options
- 265  optcr = 0.00
- 266  reslim = 10000000
- 267  lp = cplex
- 268  mip = cplex
- 269  nlp = conopt
- 270  dispwidth = 15
- 271  limrow = 0
- 272  limcol = 0
- 273  solprint = off
- 274  sysout = off
- 275  optcr = 1e-3
- 276  optca = 10
- 277  ;
- 278   
- 286   
- 287   
- 288  solve   prosumod using lp min Z;
- 289  display d , N_PV.l , Z.l, E_buy.l , E_sell.l ,
- 290          price_market, hh_energy_balance.m
+ 265  /
+ 266   
+ 267   
+ 268  options
+ 269  optcr = 0.00
+ 270  reslim = 10000000
+ 271  lp = cplex
+ 272  mip = cplex
+ 273  nlp = conopt
+ 274  dispwidth = 15
+ 275  limrow = 0
+ 276  limcol = 0
+ 277  solprint = off
+ 278  sysout = off
+ 279  optcr = 1e-3
+ 280  optca = 10
+ 281  ;
+ 282   
+ 290   
  291   
- 292   
- 293  ***************************** Set up reporting ***************************
+ 292  solve   prosumod using lp min Z;
+ 293   
+ 294  lev_Z      =    sum( h , E_buy.l(h)* price_buy )
+ 295                - sum( h,  E_sell.l(h)*price_market(h) )
+ 296                +  c_i_pv*N_PV.l
+ 297   
+ 298  ;
+ 299  lev_EB    =  sum( h , E_buy.l(h));
+ 300  lev_ES    = sum( h,  E_sell.l(h));
+ 301   
+ 302  display d , N_PV.l , Z.l, E_buy.l , E_sell.l ,  G_PV.l,
+ 303          price_market, hh_energy_balance.m, lev_Z,  lev_EB, lev_ES
+ 304   
+ 305   
+ 306  ***************************** Set up reporting ***************************
       ******
- 294   
- 295   
-GAMS 24.2.1  r43572 Released Dec  9, 2013 WEX-WEI x86_64/MS Windows 09/03/18 13:02:44 Page 2
+ 307   
+ 308   
+GAMS 24.2.1  r43572 Released Dec  9, 2013 WEX-WEI x86_64/MS Windows 09/04/18 12:01:25 Page 2
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Include File Summary
 
@@ -307,54 +320,54 @@ Include File Summary
      1        1 INPUT          0       0  C:\Users\cguenther\Documents\GitHub\pr
                                           osumage\Code\Code\Prosumage_Opt\Test_M
                                           CP1.gms
-     2      131 GDXIN          1     131  C:\Users\cguenther\Documents\GitHub\pr
+     2      133 GDXIN          1     133  C:\Users\cguenther\Documents\GitHub\pr
                                           osumage\Code\Code\Prosumage_Opt\data\i
                                           nput_data.gdx
 
 
-COMPILATION TIME     =        0.109 SECONDS     28 MB  24.2.1 r43572 WEX-WEI
-GAMS 24.2.1  r43572 Released Dec  9, 2013 WEX-WEI x86_64/MS Windows 09/03/18 13:02:44 Page 3
+COMPILATION TIME     =        0.110 SECONDS     28 MB  24.2.1 r43572 WEX-WEI
+GAMS 24.2.1  r43572 Released Dec  9, 2013 WEX-WEI x86_64/MS Windows 09/04/18 12:01:25 Page 3
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
-Model Statistics    SOLVE prosumod Using LP From line 288
+Model Statistics    SOLVE prosumod Using LP From line 292
 
 
 MODEL STATISTICS
 
-BLOCKS OF EQUATIONS           3     SINGLE EQUATIONS       17,521
+BLOCKS OF EQUATIONS           4     SINGLE EQUATIONS       17,522
 BLOCKS OF VARIABLES           5     SINGLE VARIABLES       26,282
-NON ZERO ELEMENTS        56,888
+NON ZERO ELEMENTS        56,889
 
 
-GENERATION TIME      =        0.046 SECONDS     36 MB  24.2.1 r43572 WEX-WEI
+GENERATION TIME      =        0.046 SECONDS     35 MB  24.2.1 r43572 WEX-WEI
 
 
-EXECUTION TIME       =        0.046 SECONDS     36 MB  24.2.1 r43572 WEX-WEI
-GAMS 24.2.1  r43572 Released Dec  9, 2013 WEX-WEI x86_64/MS Windows 09/03/18 13:02:44 Page 4
+EXECUTION TIME       =        0.046 SECONDS     35 MB  24.2.1 r43572 WEX-WEI
+GAMS 24.2.1  r43572 Released Dec  9, 2013 WEX-WEI x86_64/MS Windows 09/04/18 12:01:25 Page 4
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
-Solution Report     SOLVE prosumod Using LP From line 288
+Solution Report     SOLVE prosumod Using LP From line 292
 
 
                S O L V E      S U M M A R Y
 
      MODEL   prosumod            OBJECTIVE  Z
      TYPE    LP                  DIRECTION  MINIMIZE
-     SOLVER  CPLEX               FROM LINE  288
+     SOLVER  CPLEX               FROM LINE  292
 
 **** SOLVER STATUS     1 Normal Completion         
 **** MODEL STATUS      1 Optimal                   
 **** OBJECTIVE VALUE             1283.5052
 
- RESOURCE USAGE, LIMIT          0.733  10000000.000
- ITERATION COUNT, LIMIT      5926    2000000000
+ RESOURCE USAGE, LIMIT          0.390  10000000.000
+ ITERATION COUNT, LIMIT      4100    2000000000
 
 IBM ILOG CPLEX   24.2.1 r43572 Released Dec  9, 2013 WEI x86_64/MS Windows    
 --- GAMS/Cplex licensed for continuous and discrete problems.
 Cplex 12.6.0.0
 
-Space for names approximately 1.14 Mb
+Space for names approximately 1.04 Mb
 Use option 'names no' to turn use of names off
 LP status(1): optimal
-Cplex Time: 0.37sec (det. 210.68 ticks)
+Cplex Time: 0.34sec (det. 340.58 ticks)
 Optimal solution found.
 Objective :        1283.505189
 
@@ -363,12 +376,12 @@ Objective :        1283.505189
 **** REPORT SUMMARY :        0     NONOPT
                              0 INFEASIBLE
                              0  UNBOUNDED
-GAMS 24.2.1  r43572 Released Dec  9, 2013 WEX-WEI x86_64/MS Windows 09/03/18 13:02:44 Page 5
+GAMS 24.2.1  r43572 Released Dec  9, 2013 WEX-WEI x86_64/MS Windows 09/04/18 12:01:25 Page 5
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 E x e c u t i o n
 
 
-----    289 PARAMETER d  Household load
+----    302 PARAMETER d  Household load
 
 h1    0.613,    h2    0.651,    h3    0.715,    h4    0.573,    h5    0.641
 h6    0.514,    h7    0.556,    h8    0.551,    h9    0.590,    h10   0.695
@@ -2124,14 +2137,11 @@ h8751 0.172,    h8752 1.019,    h8753 1.079,    h8754 1.659,    h8755 0.664
 h8756 0.197,    h8757 0.253,    h8758 0.191,    h8759 0.126,    h8760 0.497
 
 
-----    289 VARIABLE N_PV.L  PV generation capacities
+----    302 VARIABLE N_PV.L                =           5.624  PV generation capa
+                                                              cities
+            VARIABLE Z.L                   =        1283.505  Objective
 
-solar 5.624
-
-
-----    289 VARIABLE Z.L                   =        1283.505  Objective
-
-----    289 VARIABLE E_buy.L  Energy purchased from market
+----    302 VARIABLE E_buy.L  Energy purchased from market
 
 h1             0.613,    h2             0.651,    h3             0.715
 h4             0.573,    h5             0.641,    h6             0.514
@@ -4112,7 +4122,7 @@ h8755          0.664,    h8756          0.197,    h8757          0.253
 h8758          0.191,    h8759          0.126,    h8760          0.497
 
 
-----    289 VARIABLE E_sell.L  Energy sold to market
+----    302 VARIABLE E_sell.L  Energy sold to market
 
 h10            0.098,    h11            0.384,    h12            0.135
 h61            0.538,    h62            0.167,    h83            0.150
@@ -5059,7 +5069,877 @@ h8702          1.457,    h8703          0.194,    h8722          0.118
 h8723          0.075,    h8724          0.042
 
 
-----    289 PARAMETER price_market  Price for selling energy per kWh
+----    302 VARIABLE G_PV.L  Generation of pv plant
+
+h8    0.017,    h9    0.326,    h10   0.695,    h11   0.595,    h12   0.697
+h13   0.377,    h14   0.281,    h15   0.079,    h33   0.146,    h34   0.270
+h35   0.360,    h36   0.422,    h37   0.304,    h38   0.146,    h39   0.017
+h57   0.051,    h58   0.141,    h59   0.287,    h60   0.596,    h61   1.025
+h62   0.880,    h63   0.169,    h81   0.107,    h82   0.371,    h83   0.643
+h84   0.810,    h85   0.641,    h86   0.411,    h87   0.073,    h105  0.051
+h106  0.157,    h107  0.287,    h108  0.180,    h109  0.067,    h110  0.034
+h128  0.022,    h129  0.664,    h130  2.053,    h131  1.619,    h132  0.894
+h133  0.292,    h134  0.101,    h135  0.011,    h152  0.146,    h153  0.884
+h154  1.088,    h155  0.817,    h156  0.996,    h157  0.907,    h158  1.485
+h159  0.337,    h177  0.062,    h178  0.394,    h179  0.619,    h180  0.737
+h181  0.433,    h182  0.219,    h183  0.034,    h201  0.118,    h202  0.596
+h203  1.777,    h204  1.215,    h205  0.557,    h206  0.388,    h207  0.090
+h224  0.006,    h225  0.174,    h226  0.546,    h227  0.889,    h228  1.349
+h229  1.034,    h230  0.669,    h231  0.112,    h248  0.017,    h249  0.208
+h250  0.799,    h251  0.625,    h252  0.893,    h253  0.788,    h254  0.900
+h255  0.411,    h272  0.118,    h273  0.816,    h274  1.129,    h275  0.959
+h276  0.915,    h277  0.698,    h278  0.749,    h279  0.371,    h296  0.022
+h297  0.298,    h298  0.809,    h299  0.989,    h300  0.902,    h301  0.506
+h302  0.079,    h320  0.011,    h321  0.152,    h322  0.281,    h323  0.343
+h324  0.309,    h325  0.242,    h326  0.157,    h327  0.034,    h344  0.056
+h345  0.456,    h346  0.900,    h347  0.624,    h348  0.667,    h349  0.703
+h350  0.439,    h351  0.112,    h369  0.124,    h370  0.292,    h371  0.292
+h372  0.242,    h373  0.191,    h374  0.129,    h375  0.039,    h392  0.090
+h393  0.478,    h394  0.706,    h395  0.904,    h396  0.844,    h397  0.625
+h398  0.839,    h399  0.270,    h416  0.045,    h417  0.326,    h418  0.765
+h419  0.728,    h420  0.681,    h421  0.898,    h422  0.686,    h423  0.180
+h440  0.011,    h441  0.118,    h442  0.186,    h443  0.186,    h444  0.141
+h445  0.096,    h446  0.051,    h447  0.006,    h465  0.022,    h466  0.062
+h467  0.090,    h468  0.107,    h469  0.090,    h470  0.051,    h471  0.006
+h488  0.028,    h489  0.214,    h490  0.411,    h491  0.568,    h492  0.585
+h493  0.467,    h494  0.276,    h495  0.067,    h512  0.073,    h513  0.371
+h514  0.692,    h515  0.736,    h516  0.977,    h517  0.614,    h518  0.630
+h519  0.202,    h536  0.439,    h537  1.087,    h538  2.098,    h539  2.795
+h540  2.144,    h541  1.403,    h542  0.789,    h543  0.422,    h560  0.101
+h561  0.714,    h562  1.102,    h563  2.437,    h564  1.429,    h565  1.134
+h566  1.056,    h567  0.669,    h584  0.591,    h585  1.052,    h586  1.280
+h587  0.909,    h588  0.767,    h589  1.571,    h590  1.765,    h591  1.204
+h592  0.017,    h608  0.686,    h609  0.929,    h610  0.883,    h611  0.814
+h612  0.987,    h613  1.986,    h614  1.833,    h615  0.962,    h616  0.011
+h632  0.011,    h633  0.118,    h634  0.264,    h635  0.371,    h636  0.382
+h637  0.337,    h638  0.225,    h639  0.073,    h656  0.253,    h657  0.911
+h658  0.943,    h659  0.809,    h660  0.933,    h661  1.051,    h662  0.956
+h663  0.304,    h680  0.152,    h681  0.517,    h682  0.855,    h683  0.837
+h684  0.692,    h685  0.754,    h686  0.596,    h687  0.236,    h704  0.612
+h705  1.236,    h706  1.166,    h707  1.257,    h708  2.313,    h709  2.745
+h710  1.553,    h711  0.754,    h712  0.028,    h728  0.079,    h729  0.315
+h730  0.472,    h731  0.489,    h732  0.546,    h733  0.489,    h734  0.366
+h735  0.146,    h752  0.292,    h753  1.108,    h754  0.905,    h755  0.665
+h756  0.679,    h757  0.764,    h758  0.906,    h759  0.632,    h760  0.039
+h776  0.163,    h777  0.371,    h778  0.399,    h779  0.405,    h780  0.366
+h781  0.304,    h782  0.197,    h783  0.112,    h800  0.051,    h801  0.157
+h802  0.276,    h803  0.450,    h804  0.709,    h805  0.948,    h806  1.057
+h807  0.591,    h808  0.039,    h824  0.866,    h825  1.605,    h826  0.986
+h827  0.877,    h828  1.334,    h829  1.506,    h830  1.719,    h831  1.001
+h832  0.079,    h848  0.461,    h849  1.400,    h850  0.969,    h851  0.864
+h852  0.570,    h853  0.798,    h854  0.674,    h855  0.689,    h856  0.051
+h872  0.118,    h873  0.613,    h874  0.856,    h875  1.547,    h876  1.088
+h877  1.692,    h878  1.834,    h879  1.209,    h880  0.152,    h896  0.112
+h897  0.326,    h898  0.456,    h899  0.394,    h900  0.433,    h901  0.871
+h902  0.908,    h903  0.191,    h920  0.124,    h921  1.153,    h922  0.993
+h923  0.947,    h924  1.040,    h925  0.839,    h926  0.692,    h927  0.309
+h928  0.034,    h943  0.017,    h944  0.366,    h945  0.770,    h946  1.112
+h947  0.998,    h948  1.026,    h949  0.732,    h950  0.860,    h951  0.495
+h952  0.090,    h967  0.006,    h968  0.388,    h969  1.307,    h970  2.045
+h971  1.129,    h972  0.776,    h973  0.865,    h974  1.677,    h975  0.883
+h976  0.084,    h991  0.017,    h992  0.602,    h993  1.519,    h994  1.103
+h995  0.965,    h996  0.888,    h997  0.862,    h998  0.806,    h999  0.512
+h1000 0.090,    h1015 0.006,    h1016 0.208,    h1017 0.501,    h1018 0.832
+h1019 0.805,    h1020 0.743,    h1021 1.168,    h1022 0.954,    h1023 0.823
+h1024 0.236,    h1039 0.028,    h1040 1.013,    h1041 0.913,    h1042 1.002
+h1043 3.100,    h1044 3.008,    h1045 1.035,    h1046 0.411,    h1047 0.146
+h1048 0.006,    h1064 0.394,    h1065 1.174,    h1066 2.414,    h1067 1.760
+h1068 0.963,    h1069 1.176,    h1070 1.079,    h1071 0.910,    h1072 0.321
+h1087 0.028,    h1088 0.264,    h1089 0.501,    h1090 0.860,    h1091 0.794
+h1092 0.743,    h1093 0.848,    h1094 0.461,    h1095 0.152,    h1096 0.017
+h1111 0.112,    h1112 0.992,    h1113 0.949,    h1114 1.143,    h1115 0.655
+h1116 0.753,    h1117 0.709,    h1118 0.808,    h1119 0.808,    h1120 0.270
+h1135 0.022,    h1136 0.309,    h1137 0.669,    h1138 0.979,    h1139 0.845
+h1140 0.991,    h1141 0.906,    h1142 0.858,    h1143 0.489,    h1144 0.067
+h1159 0.017,    h1160 0.298,    h1161 0.911,    h1162 1.053,    h1163 0.292
+h1164 0.629,    h1165 0.366,    h1166 0.651,    h1167 0.416,    h1168 0.096
+h1184 0.045,    h1185 0.231,    h1186 0.416,    h1187 0.478,    h1188 0.626
+h1189 1.007,    h1190 0.472,    h1191 0.786,    h1192 0.090,    h1207 0.011
+h1208 0.208,    h1209 0.855,    h1210 2.497,    h1211 1.641,    h1212 1.334
+h1213 0.626,    h1214 0.784,    h1215 0.756,    h1216 0.191,    h1231 0.017
+h1232 0.174,    h1233 0.212,    h1234 0.405,    h1235 0.877,    h1236 1.614
+h1237 1.546,    h1238 1.350,    h1239 0.399,    h1240 0.062,    h1255 0.017
+h1256 0.169,    h1257 0.399,    h1258 0.805,    h1259 0.754,    h1260 0.846
+h1261 1.676,    h1262 1.511,    h1263 1.580,    h1264 0.484,    h1279 0.017
+h1280 0.214,    h1281 0.355,    h1282 0.431,    h1283 0.350,    h1284 0.641
+h1285 0.465,    h1286 2.088,    h1287 1.856,    h1288 0.641,    h1303 0.512
+h1304 0.984,    h1305 0.781,    h1306 0.485,    h1307 0.578,    h1308 0.915
+h1309 0.710,    h1310 1.234,    h1311 1.314,    h1312 0.720,    h1327 0.208
+h1328 0.819,    h1329 0.621,    h1330 0.827,    h1331 0.654,    h1332 0.494
+h1333 1.331,    h1334 0.435,    h1335 1.066,    h1336 0.440,    h1351 0.202
+h1352 0.574,    h1353 0.934,    h1354 0.745,    h1355 0.624,    h1356 0.594
+h1357 0.627,    h1358 0.883,    h1359 0.562,    h1360 0.186,    h1375 0.073
+h1376 0.332,    h1377 0.619,    h1378 0.855,    h1379 1.164,    h1380 0.637
+h1381 0.809,    h1382 0.598,    h1383 0.345,    h1384 0.309,    h1399 0.152
+h1400 0.664,    h1401 1.309,    h1402 0.650,    h1403 0.576,    h1404 0.542
+h1405 1.777,    h1406 0.449,    h1407 0.475,    h1408 0.191,    h1423 0.332
+h1424 0.299,    h1425 0.244,    h1426 0.151,    h1427 0.333,    h1428 0.515
+h1429 0.376,    h1430 1.079,    h1431 0.750,    h1432 0.585,    h1433 0.006
+h1447 0.045,    h1448 0.219,    h1449 0.478,    h1450 0.846,    h1451 0.679
+h1452 0.942,    h1453 1.795,    h1454 1.089,    h1455 0.608,    h1456 0.557
+h1457 0.011,    h1471 0.214,    h1472 0.697,    h1473 0.844,    h1474 0.940
+h1475 0.711,    h1476 0.709,    h1477 1.134,    h1478 0.709,    h1479 0.763
+h1480 0.444,    h1481 0.011,    h1495 0.096,    h1496 0.450,    h1497 0.791
+h1498 0.866,    h1499 0.675,    h1500 1.061,    h1501 0.843,    h1502 0.755
+h1503 0.529,    h1504 0.169,    h1519 0.079,    h1520 0.332,    h1521 0.776
+h1522 0.666,    h1523 1.038,    h1524 2.098,    h1525 1.243,    h1526 1.035
+h1527 1.468,    h1528 0.461,    h1529 0.011,    h1543 0.129,    h1544 0.450
+h1545 0.804,    h1546 1.192,    h1547 1.603,    h1548 2.019,    h1549 1.239
+h1550 0.735,    h1551 0.851,    h1552 0.851,    h1553 0.051,    h1567 0.152
+h1568 0.585,    h1569 1.153,    h1570 0.833,    h1571 0.609,    h1572 0.518
+h1573 0.919,    h1574 0.731,    h1575 0.448,    h1576 0.360,    h1577 0.017
+h1591 0.197,    h1592 0.586,    h1593 1.482,    h1594 2.009,    h1595 2.175
+h1596 0.600,    h1597 0.830,    h1598 2.405,    h1599 1.486,    h1600 0.855
+h1601 0.096,    h1615 0.146,    h1616 0.776,    h1617 1.273,    h1618 0.902
+h1619 0.831,    h1620 1.064,    h1621 1.307,    h1622 2.144,    h1623 0.653
+h1624 1.039,    h1625 0.118,    h1638 0.017,    h1639 0.903,    h1640 0.792
+h1641 0.907,    h1642 0.801,    h1643 1.128,    h1644 0.957,    h1645 1.761
+h1646 0.902,    h1647 1.520,    h1648 1.051,    h1649 0.129,    h1663 0.112
+h1664 0.360,    h1665 0.737,    h1666 1.100,    h1667 2.752,    h1668 0.926
+h1669 0.913,    h1670 1.853,    h1671 0.736,    h1672 0.606,    h1673 0.135
+h1686 0.034,    h1687 0.491,    h1688 0.749,    h1689 0.601,    h1690 0.633
+h1691 0.682,    h1692 2.197,    h1693 1.597,    h1694 1.508,    h1695 1.805
+h1696 1.215,    h1697 0.186,    h1710 0.045,    h1711 0.566,    h1712 1.639
+h1713 0.801,    h1714 1.534,    h1715 0.829,    h1716 0.469,    h1717 0.680
+h1718 1.392,    h1719 1.229,    h1720 0.949,    h1721 0.169,    h1735 0.202
+h1736 0.523,    h1737 1.153,    h1738 1.800,    h1739 2.556,    h1740 1.518
+h1741 0.871,    h1742 1.501,    h1743 1.289,    h1744 1.012,    h1745 0.135
+h1759 0.107,    h1760 0.242,    h1761 0.246,    h1762 0.227,    h1763 1.823
+h1764 2.951,    h1765 1.279,    h1766 1.134,    h1767 1.057,    h1768 1.164
+h1769 0.186,    h1783 0.028,    h1784 0.152,    h1785 0.427,    h1786 0.495
+h1787 0.742,    h1788 0.652,    h1789 0.461,    h1790 0.472,    h1791 0.332
+h1792 0.225,    h1793 0.022,    h1806 0.017,    h1807 0.259,    h1808 0.692
+h1809 1.249,    h1810 1.727,    h1811 0.561,    h1812 0.755,    h1813 0.389
+h1814 0.213,    h1815 0.754,    h1816 0.467,    h1817 0.084,    h1830 0.006
+h1831 0.146,    h1832 0.323,    h1833 0.241,    h1834 0.237,    h1835 1.475
+h1836 0.883,    h1837 1.189,    h1838 0.445,    h1839 0.310,    h1840 0.270
+h1841 0.017,    h1855 0.208,    h1856 0.440,    h1857 0.564,    h1858 0.429
+h1859 1.203,    h1860 0.720,    h1861 1.344,    h1862 0.392,    h1863 0.353
+h1864 0.591,    h1865 0.163,    h1878 0.096,    h1879 0.335,    h1880 1.594
+h1881 0.564,    h1882 0.818,    h1883 1.695,    h1884 1.549,    h1885 1.443
+h1886 0.681,    h1887 0.361,    h1888 0.356,    h1889 0.202,    h1902 0.112
+h1903 0.825,    h1904 0.407,    h1905 0.315,    h1906 0.368,    h1907 1.412
+h1908 1.920,    h1909 0.992,    h1910 0.521,    h1911 1.371,    h1912 1.158
+h1913 0.163,    h1926 0.034,    h1927 0.276,    h1928 0.472,    h1929 0.484
+h1930 0.638,    h1931 0.435,    h1932 0.606,    h1933 0.956,    h1934 0.144
+h1935 0.276,    h1936 0.231,    h1937 0.096,    h1950 0.045,    h1951 0.133
+h1952 0.157,    h1953 0.083,    h1954 0.096,    h1955 0.222,    h1956 0.139
+h1957 0.129,    h1958 0.075,    h1959 0.472,    h1960 0.197,    h1961 0.039
+h1974 0.017,    h1975 0.091,    h1976 0.131,    h1977 0.195,    h1978 0.135
+h1979 0.116,    h1980 0.113,    h1981 0.181,    h1982 0.150,    h1983 0.437
+h1984 0.281,    h1985 0.067,    h1998 0.017,    h1999 0.135,    h2000 0.199
+h2001 0.187,    h2002 0.137,    h2003 0.142,    h2004 0.127,    h2005 0.285
+h2006 0.177,    h2007 0.243,    h2008 0.246,    h2009 0.079,    h2022 0.135
+h2023 0.520,    h2024 0.187,    h2025 0.207,    h2026 0.280,    h2027 0.241
+h2028 0.321,    h2029 0.244,    h2030 0.317,    h2031 0.303,    h2032 0.318
+h2033 0.290,    h2046 0.096,    h2047 0.390,    h2048 0.818,    h2049 1.327
+h2050 0.230,    h2051 0.188,    h2052 0.136,    h2053 0.197,    h2054 0.110
+h2055 0.127,    h2056 0.258,    h2057 0.171,    h2070 0.034,    h2071 0.186
+h2072 0.317,    h2073 0.456,    h2074 0.489,    h2075 0.369,    h2076 0.314
+h2077 0.412,    h2078 1.013,    h2079 0.990,    h2080 0.407,    h2081 0.242
+h2094 0.056,    h2095 0.242,    h2096 0.416,    h2097 0.248,    h2098 0.197
+h2099 0.278,    h2100 0.120,    h2101 0.194,    h2102 1.168,    h2103 0.867
+h2104 0.357,    h2105 0.315,    h2118 0.146,    h2119 0.113,    h2120 0.225
+h2121 1.857,    h2122 0.519,    h2123 0.970,    h2124 0.557,    h2125 0.194
+h2126 0.374,    h2127 0.651,    h2128 0.741,    h2129 0.337,    h2142 0.201
+h2143 0.178,    h2144 0.154,    h2145 0.143,    h2146 0.147,    h2147 0.140
+h2148 0.117,    h2149 0.772,    h2150 0.304,    h2151 0.220,    h2152 0.198
+h2153 0.349,    h2166 0.152,    h2167 0.185,    h2168 0.119,    h2169 0.145
+h2170 0.144,    h2171 0.111,    h2172 0.116,    h2173 0.162,    h2174 0.153
+h2175 0.405,    h2176 0.418,    h2177 0.247,    h2190 0.186,    h2191 0.360
+h2192 0.215,    h2193 0.305,    h2194 1.368,    h2195 1.243,    h2196 0.434
+h2197 0.290,    h2198 0.474,    h2199 1.264,    h2200 0.688,    h2201 0.264
+h2214 0.219,    h2215 0.766,    h2216 0.237,    h2217 0.340,    h2218 0.513
+h2219 0.465,    h2220 0.437,    h2221 0.313,    h2222 0.435,    h2223 0.468
+h2224 0.354,    h2225 0.225,    h2226 0.006,    h2238 0.169,    h2239 0.138
+h2240 0.205,    h2241 0.414,    h2242 0.318,    h2243 0.408,    h2244 0.367
+h2245 1.137,    h2246 1.279,    h2247 0.629,    h2248 0.636,    h2249 0.208
+h2262 0.186,    h2263 0.282,    h2264 0.227,    h2265 0.624,    h2266 2.648
+h2267 0.702,    h2268 0.368,    h2269 0.706,    h2270 0.403,    h2271 0.197
+h2272 0.250,    h2273 0.377,    h2274 0.017,    h2286 0.190,    h2287 0.237
+h2288 0.174,    h2289 0.151,    h2290 0.206,    h2291 0.166,    h2292 0.156
+h2293 0.301,    h2294 0.234,    h2295 0.191,    h2296 0.483,    h2297 0.495
+h2298 0.017,    h2310 0.101,    h2311 0.562,    h2312 0.331,    h2313 0.200
+h2314 0.215,    h2315 0.195,    h2316 0.202,    h2317 0.250,    h2318 0.189
+h2319 0.247,    h2320 0.745,    h2321 0.391,    h2322 0.022,    h2334 0.136
+h2335 0.156,    h2336 0.452,    h2337 0.317,    h2338 0.400,    h2339 0.346
+h2340 0.931,    h2341 0.555,    h2342 1.695,    h2343 1.526,    h2344 1.020
+h2345 0.228,    h2346 0.017,    h2358 0.107,    h2359 0.367,    h2360 0.413
+h2361 0.164,    h2362 0.192,    h2363 0.428,    h2364 0.477,    h2365 0.765
+h2366 0.797,    h2367 0.795,    h2368 0.882,    h2369 0.467,    h2370 0.028
+h2382 0.073,    h2383 0.211,    h2384 0.182,    h2385 0.340,    h2386 1.066
+h2387 2.332,    h2388 1.089,    h2389 0.723,    h2390 0.654,    h2391 0.980
+h2392 0.778,    h2393 0.427,    h2394 0.039,    h2405 0.006,    h2406 0.309
+h2407 0.579,    h2408 0.575,    h2409 1.529,    h2410 1.154,    h2411 0.802
+h2412 1.005,    h2413 1.914,    h2414 1.457,    h2415 0.698,    h2416 0.467
+h2417 0.309,    h2418 0.028,    h2429 0.006,    h2430 0.191,    h2431 0.517
+h2432 0.503,    h2433 0.627,    h2434 0.702,    h2435 0.529,    h2436 0.622
+h2437 0.737,    h2438 0.618,    h2439 0.811,    h2440 0.676,    h2441 0.298
+h2442 0.022,    h2453 0.017,    h2454 0.332,    h2455 0.672,    h2456 0.516
+h2457 0.620,    h2458 0.661,    h2459 0.552,    h2460 0.600,    h2461 0.686
+h2462 0.740,    h2463 1.749,    h2464 1.558,    h2465 0.591,    h2466 0.045
+h2478 0.079,    h2479 0.186,    h2480 0.596,    h2481 0.545,    h2482 0.587
+h2483 0.640,    h2484 0.626,    h2485 0.579,    h2486 0.658,    h2487 0.641
+h2488 0.797,    h2489 0.444,    h2490 0.056,    h2501 0.022,    h2502 0.208
+h2503 0.574,    h2504 0.743,    h2505 0.546,    h2506 0.746,    h2507 1.135
+h2508 0.774,    h2509 0.890,    h2510 0.642,    h2511 0.721,    h2512 0.692
+h2513 0.321,    h2514 0.034,    h2525 0.022,    h2526 0.371,    h2527 1.002
+h2528 0.655,    h2529 0.550,    h2530 0.641,    h2531 0.646,    h2532 0.603
+h2533 1.687,    h2534 1.031,    h2535 0.557,    h2536 0.639,    h2537 0.714
+h2538 0.090,    h2549 0.039,    h2550 0.362,    h2551 0.746,    h2552 0.576
+h2553 0.847,    h2554 1.648,    h2555 0.981,    h2556 2.744,    h2557 2.357
+h2558 1.095,    h2559 0.735,    h2560 0.841,    h2561 0.534,    h2562 0.101
+h2574 0.090,    h2575 0.681,    h2576 0.704,    h2577 0.735,    h2578 0.967
+h2579 1.251,    h2580 1.885,    h2581 2.503,    h2582 1.183,    h2583 0.836
+h2584 0.746,    h2585 0.433,    h2586 0.090,    h2597 0.034,    h2598 0.326
+h2599 0.848,    h2600 0.817,    h2601 0.471,    h2602 0.634,    h2603 0.647
+h2604 0.857,    h2605 0.666,    h2606 1.268,    h2607 0.731,    h2608 1.509
+h2609 0.669,    h2610 0.112,    h2621 0.039,    h2622 0.337,    h2623 0.778
+h2624 0.672,    h2625 0.503,    h2626 0.629,    h2627 0.646,    h2628 1.481
+h2629 0.833,    h2630 1.244,    h2631 1.192,    h2632 0.815,    h2633 0.619
+h2634 0.090,    h2645 0.056,    h2646 0.394,    h2647 0.702,    h2648 0.662
+h2649 0.530,    h2650 0.703,    h2651 0.834,    h2652 0.754,    h2653 0.273
+h2654 0.797,    h2655 1.454,    h2656 1.277,    h2657 0.484,    h2658 0.096
+h2669 0.062,    h2670 0.199,    h2671 0.528,    h2672 0.292,    h2673 0.769
+h2674 0.771,    h2675 0.788,    h2676 0.633,    h2677 0.591,    h2678 0.950
+h2679 0.737,    h2680 0.456,    h2681 0.247,    h2682 0.062,    h2693 0.073
+h2694 0.551,    h2695 0.708,    h2696 0.756,    h2697 0.735,    h2698 0.754
+h2699 0.730,    h2700 1.344,    h2701 1.779,    h2702 2.216,    h2703 0.904
+h2704 0.607,    h2705 0.337,    h2706 0.090,    h2717 0.067,    h2718 0.450
+h2719 0.793,    h2720 0.880,    h2721 0.668,    h2722 0.714,    h2723 0.623
+h2724 0.547,    h2725 0.602,    h2726 0.714,    h2727 0.747,    h2728 0.810
+h2729 0.411,    h2730 0.124,    h2741 0.090,    h2742 0.522,    h2743 0.608
+h2744 0.698,    h2745 0.826,    h2746 1.272,    h2747 1.766,    h2748 1.331
+h2749 1.279,    h2750 1.151,    h2751 0.557,    h2752 0.679,    h2753 0.642
+h2754 0.157,    h2765 0.096,    h2766 0.568,    h2767 0.996,    h2768 0.833
+h2769 0.600,    h2770 0.703,    h2771 0.617,    h2772 0.514,    h2773 0.765
+h2774 0.671,    h2775 0.625,    h2776 0.638,    h2777 0.591,    h2778 0.152
+h2789 0.101,    h2790 0.602,    h2791 1.513,    h2792 0.805,    h2793 0.821
+h2794 0.676,    h2795 0.762,    h2796 0.653,    h2797 1.234,    h2798 1.555
+h2799 1.268,    h2800 1.469,    h2801 0.641,    h2802 0.163,    h2813 0.112
+h2814 0.641,    h2815 1.558,    h2816 0.688,    h2817 0.552,    h2818 0.645
+h2819 0.692,    h2820 0.485,    h2821 0.588,    h2822 0.630,    h2823 0.532
+h2824 0.764,    h2825 0.889,    h2826 0.169,    h2837 0.112,    h2838 0.720
+h2839 1.594,    h2840 0.688,    h2841 0.578,    h2842 0.614,    h2843 0.614
+h2844 0.582,    h2845 0.623,    h2846 0.536,    h2847 0.496,    h2848 1.365
+h2849 0.787,    h2850 0.180,    h2861 0.124,    h2862 0.714,    h2863 1.669
+h2864 0.813,    h2865 0.603,    h2866 0.687,    h2867 0.746,    h2868 0.440
+h2869 0.568,    h2870 0.623,    h2871 0.755,    h2872 0.788,    h2873 0.782
+h2874 0.186,    h2885 0.118,    h2886 0.523,    h2887 0.767,    h2888 0.675
+h2889 0.591,    h2890 0.822,    h2891 1.120,    h2892 1.088,    h2893 1.572
+h2894 1.722,    h2895 0.819,    h2896 0.827,    h2897 0.349,    h2898 0.084
+h2909 0.022,    h2910 0.157,    h2911 0.416,    h2912 0.652,    h2913 0.762
+h2914 1.580,    h2915 1.108,    h2916 1.421,    h2917 0.775,    h2918 1.220
+h2919 1.171,    h2920 1.209,    h2921 0.647,    h2922 0.225,    h2933 0.141
+h2934 0.538,    h2935 0.707,    h2936 0.612,    h2937 0.482,    h2938 0.561
+h2939 0.636,    h2940 0.535,    h2941 1.129,    h2942 0.664,    h2943 1.397
+h2944 0.919,    h2945 0.745,    h2946 0.157,    h2947 0.006,    h2957 0.157
+h2958 0.787,    h2959 0.532,    h2960 0.662,    h2961 0.464,    h2962 0.593
+h2963 0.579,    h2964 0.533,    h2965 0.521,    h2966 0.610,    h2967 0.971
+h2968 0.825,    h2969 0.714,    h2970 0.236,    h2971 0.006,    h2981 0.152
+h2982 0.565,    h2983 0.582,    h2984 0.605,    h2985 0.458,    h2986 0.547
+h2987 0.574,    h2988 0.483,    h2989 0.558,    h2990 0.569,    h2991 0.602
+h2992 0.702,    h2993 0.600,    h2994 0.186,    h2995 0.011,    h3005 0.197
+h3006 0.581,    h3007 0.646,    h3008 0.574,    h3009 0.544,    h3010 0.569
+h3011 0.613,    h3012 0.512,    h3013 0.534,    h3014 0.586,    h3015 0.844
+h3016 0.467,    h3017 0.270,    h3018 0.186,    h3019 0.006,    h3029 0.084
+h3030 0.456,    h3031 0.624,    h3032 0.610,    h3033 0.508,    h3034 0.589
+h3035 0.611,    h3036 0.457,    h3037 0.541,    h3038 1.325,    h3039 0.529
+h3040 1.108,    h3041 0.866,    h3042 0.253,    h3043 0.017,    h3053 0.180
+h3054 0.541,    h3055 0.586,    h3056 0.531,    h3057 0.730,    h3058 1.855
+h3059 1.034,    h3060 1.662,    h3061 0.989,    h3062 1.889,    h3063 1.310
+h3064 0.900,    h3065 0.388,    h3066 0.197,    h3067 0.006,    h3077 0.045
+h3078 0.304,    h3079 0.628,    h3080 0.557,    h3081 0.706,    h3082 0.768
+h3083 1.620,    h3084 1.488,    h3085 1.513,    h3086 0.766,    h3087 0.575
+h3088 0.794,    h3089 0.605,    h3090 0.287,    h3091 0.017,    h3101 0.073
+h3102 0.388,    h3103 0.653,    h3104 0.551,    h3105 0.538,    h3106 0.828
+h3107 0.471,    h3108 0.425,    h3109 0.041,    h3110 0.233,    h3111 0.992
+h3112 1.192,    h3113 0.427,    h3114 0.129,    h3115 0.006,    h3125 0.191
+h3126 0.281,    h3127 1.206,    h3128 0.735,    h3129 0.596,    h3130 0.667
+h3131 0.514,    h3132 0.582,    h3133 0.605,    h3134 0.526,    h3135 0.539
+h3136 0.634,    h3137 0.776,    h3138 0.281,    h3139 0.022,    h3149 0.146
+h3150 0.395,    h3151 0.605,    h3152 0.549,    h3153 0.611,    h3154 0.530
+h3155 0.489,    h3156 0.573,    h3157 0.057,    h3158 0.611,    h3159 1.047
+h3160 0.585,    h3161 0.298,    h3162 0.101,    h3173 0.141,    h3174 0.136
+h3175 0.158,    h3176 0.332,    h3177 0.789,    h3178 1.115,    h3179 1.187
+h3180 2.114,    h3181 1.604,    h3182 0.916,    h3183 0.790,    h3184 0.773
+h3185 0.720,    h3186 0.270,    h3187 0.034,    h3197 0.219,    h3198 0.256
+h3199 0.278,    h3200 0.430,    h3201 0.678,    h3202 0.919,    h3203 0.786
+h3204 0.702,    h3205 0.763,    h3206 1.520,    h3207 1.096,    h3208 0.788
+h3209 0.624,    h3210 0.247,    h3211 0.022,    h3221 0.056,    h3222 0.281
+h3223 0.287,    h3224 0.413,    h3225 1.327,    h3226 1.429,    h3227 2.462
+h3228 1.129,    h3229 0.903,    h3230 0.752,    h3231 0.844,    h3232 0.755
+h3233 0.828,    h3234 0.259,    h3235 0.051,    h3244 0.011,    h3245 0.156
+h3246 0.392,    h3247 0.260,    h3248 0.453,    h3249 0.679,    h3250 0.673
+h3251 1.530,    h3252 1.541,    h3253 1.212,    h3254 0.889,    h3255 0.578
+h3256 0.497,    h3257 0.591,    h3258 0.208,    h3259 0.045,    h3268 0.011
+h3269 0.238,    h3270 0.175,    h3271 0.226,    h3272 0.432,    h3273 0.627
+h3274 0.514,    h3275 0.551,    h3276 0.670,    h3277 0.549,    h3278 1.338
+h3279 0.899,    h3280 0.678,    h3281 0.489,    h3282 0.146,    h3283 0.017
+h3293 0.067,    h3294 0.247,    h3295 0.399,    h3296 0.524,    h3297 0.638
+h3298 0.544,    h3299 0.492,    h3300 0.675,    h3301 0.849,    h3302 0.974
+h3303 0.512,    h3304 0.337,    h3305 0.242,    h3306 0.118,    h3307 0.017
+h3316 0.017,    h3317 0.151,    h3318 0.213,    h3319 0.344,    h3320 0.377
+h3321 0.725,    h3322 1.010,    h3323 0.650,    h3324 0.661,    h3325 0.752
+h3326 1.313,    h3327 1.075,    h3328 0.907,    h3329 0.761,    h3330 0.321
+h3331 0.067,    h3340 0.022,    h3341 0.189,    h3342 0.293,    h3343 0.168
+h3344 0.450,    h3345 0.697,    h3346 0.506,    h3347 0.693,    h3348 0.746
+h3349 0.966,    h3350 0.333,    h3351 0.151,    h3352 1.901,    h3353 1.007
+h3354 0.242,    h3355 0.067,    h3364 0.022,    h3365 0.163,    h3366 0.756
+h3367 0.755,    h3368 0.041,    h3369 0.041,    h3370 0.237,    h3371 0.727
+h3372 0.861,    h3373 0.562,    h3374 0.754,    h3375 0.614,    h3376 0.476
+h3377 0.572,    h3378 0.315,    h3379 0.056,    h3388 0.028,    h3389 0.095
+h3390 0.164,    h3391 0.130,    h3392 0.121,    h3393 0.589,    h3394 0.454
+h3395 0.585,    h3396 0.600,    h3397 0.569,    h3398 0.562,    h3399 0.552
+h3400 0.432,    h3401 0.535,    h3402 0.264,    h3403 0.073,    h3412 0.028
+h3413 0.138,    h3414 0.138,    h3415 0.142,    h3416 0.112,    h3417 0.581
+h3418 0.481,    h3419 0.539,    h3420 0.629,    h3421 0.450,    h3422 0.542
+h3423 0.648,    h3424 0.457,    h3425 0.456,    h3426 0.152,    h3427 0.017
+h3436 0.028,    h3437 0.287,    h3438 0.154,    h3439 0.101,    h3440 0.124
+h3441 0.476,    h3442 0.514,    h3443 0.531,    h3444 0.470,    h3445 0.640
+h3446 0.591,    h3447 0.915,    h3448 1.130,    h3449 0.697,    h3450 0.343
+h3451 0.079,    h3460 0.034,    h3461 0.165,    h3462 0.178,    h3463 0.139
+h3464 0.259,    h3465 0.916,    h3466 0.617,    h3467 0.682,    h3468 0.801
+h3469 1.367,    h3470 0.605,    h3471 1.411,    h3472 0.591,    h3473 0.607
+h3474 0.326,    h3475 0.084,    h3484 0.039,    h3485 0.242,    h3486 0.537
+h3487 0.665,    h3488 0.472,    h3489 0.615,    h3490 0.635,    h3491 0.418
+h3492 0.602,    h3493 0.565,    h3494 0.443,    h3495 1.974,    h3496 1.475
+h3497 0.651,    h3498 0.309,    h3499 0.067,    h3508 0.045,    h3509 0.321
+h3510 0.534,    h3511 0.616,    h3512 0.445,    h3513 0.654,    h3514 0.616
+h3515 0.530,    h3516 0.641,    h3517 0.550,    h3518 0.512,    h3519 0.467
+h3520 0.270,    h3521 0.124,    h3522 0.045,    h3533 0.112,    h3534 0.287
+h3535 0.433,    h3536 0.489,    h3537 0.591,    h3538 0.675,    h3539 0.804
+h3540 0.938,    h3541 1.000,    h3542 0.861,    h3543 0.557,    h3544 0.343
+h3545 0.247,    h3546 0.107,    h3547 0.011,    h3556 0.028,    h3557 0.151
+h3558 0.461,    h3559 0.594,    h3560 0.528,    h3561 0.570,    h3562 1.829
+h3563 0.871,    h3564 1.701,    h3565 1.335,    h3566 0.999,    h3567 0.806
+h3568 0.828,    h3569 0.555,    h3570 0.382,    h3571 0.096,    h3580 0.051
+h3581 0.133,    h3582 0.488,    h3583 0.626,    h3584 0.501,    h3585 0.784
+h3586 0.707,    h3587 0.771,    h3588 1.075,    h3589 0.683,    h3590 0.713
+h3591 0.778,    h3592 0.861,    h3593 1.024,    h3594 0.366,    h3595 0.101
+h3604 0.056,    h3605 0.270,    h3606 0.900,    h3607 0.611,    h3608 0.595
+h3609 0.785,    h3610 0.535,    h3611 0.577,    h3612 0.613,    h3613 1.213
+h3614 0.724,    h3615 0.722,    h3616 1.066,    h3617 0.740,    h3618 0.287
+h3619 0.112,    h3628 0.056,    h3629 0.281,    h3630 0.588,    h3631 0.551
+h3632 0.557,    h3633 0.597,    h3634 0.562,    h3635 0.590,    h3636 0.574
+h3637 0.638,    h3638 0.647,    h3639 0.819,    h3640 1.434,    h3641 1.147
+h3642 0.281,    h3643 0.112,    h3652 0.067,    h3653 0.253,    h3654 0.538
+h3655 0.623,    h3656 0.555,    h3657 0.591,    h3658 0.594,    h3659 0.557
+h3660 0.619,    h3661 0.689,    h3662 0.739,    h3663 0.738,    h3664 0.787
+h3665 0.599,    h3666 0.343,    h3667 0.067,    h3676 0.017,    h3677 0.129
+h3678 0.343,    h3679 0.629,    h3680 0.509,    h3681 0.597,    h3682 0.570
+h3683 0.504,    h3684 0.607,    h3685 0.609,    h3686 1.246,    h3687 1.159
+h3688 1.046,    h3689 0.556,    h3690 0.242,    h3691 0.056,    h3700 0.067
+h3701 0.292,    h3702 0.350,    h3703 0.653,    h3704 0.496,    h3705 0.534
+h3706 0.627,    h3707 0.476,    h3708 0.579,    h3709 0.573,    h3710 0.428
+h3711 0.600,    h3712 0.850,    h3713 0.447,    h3714 0.366,    h3715 0.129
+h3724 0.045,    h3725 0.150,    h3726 0.427,    h3727 0.568,    h3728 0.776
+h3729 1.620,    h3730 2.233,    h3731 1.210,    h3732 0.669,    h3733 0.758
+h3734 0.565,    h3735 0.651,    h3736 0.652,    h3737 0.448,    h3738 0.180
+h3739 0.056,    h3748 0.073,    h3749 0.104,    h3750 0.393,    h3751 0.696
+h3752 0.413,    h3753 1.128,    h3754 0.964,    h3755 1.132,    h3756 1.824
+h3757 1.852,    h3758 0.673,    h3759 0.556,    h3760 1.558,    h3761 1.142
+h3762 0.292,    h3763 0.118,    h3772 0.079,    h3773 0.172,    h3774 0.651
+h3775 1.084,    h3776 0.588,    h3777 0.594,    h3778 0.622,    h3779 0.503
+h3780 0.534,    h3781 0.578,    h3782 0.932,    h3783 0.893,    h3784 1.100
+h3785 1.069,    h3786 0.371,    h3787 0.112,    h3796 0.079,    h3797 0.125
+h3798 0.397,    h3799 0.674,    h3800 0.636,    h3801 0.638,    h3802 0.583
+h3803 0.482,    h3804 0.584,    h3805 0.831,    h3806 0.762,    h3807 0.658
+h3808 0.837,    h3809 0.894,    h3810 0.360,    h3811 0.129,    h3820 0.067
+h3821 0.304,    h3822 0.849,    h3823 0.912,    h3824 1.549,    h3825 0.844
+h3826 0.892,    h3827 0.707,    h3828 0.823,    h3829 0.774,    h3830 0.735
+h3831 1.296,    h3832 1.495,    h3833 0.855,    h3834 0.360,    h3835 0.135
+h3844 0.079,    h3845 0.190,    h3846 0.711,    h3847 0.627,    h3848 0.535
+h3849 0.554,    h3850 0.596,    h3851 0.502,    h3852 0.602,    h3853 0.650
+h3854 0.506,    h3855 0.645,    h3856 1.232,    h3857 0.905,    h3858 0.382
+h3859 0.118,    h3868 0.067,    h3869 0.343,    h3870 0.481,    h3871 0.729
+h3872 0.731,    h3873 0.860,    h3874 0.531,    h3875 0.592,    h3876 0.956
+h3877 0.714,    h3878 0.619,    h3879 0.517,    h3880 0.422,    h3881 0.321
+h3882 0.169,    h3883 0.045,    h3892 0.084,    h3893 0.159,    h3894 0.446
+h3895 0.668,    h3896 0.777,    h3897 0.814,    h3898 1.874,    h3899 1.163
+h3900 1.394,    h3901 1.035,    h3902 1.042,    h3903 0.896,    h3904 0.782
+h3905 0.761,    h3906 0.382,    h3907 0.101,    h3916 0.084,    h3917 0.195
+h3918 0.524,    h3919 0.628,    h3920 0.634,    h3921 2.134,    h3922 1.473
+h3923 0.893,    h3924 1.022,    h3925 1.795,    h3926 1.622,    h3927 1.746
+h3928 1.733,    h3929 0.945,    h3930 0.399,    h3931 0.135,    h3940 0.090
+h3941 0.267,    h3942 0.579,    h3943 0.665,    h3944 0.817,    h3945 1.136
+h3946 0.737,    h3947 1.498,    h3948 1.527,    h3949 1.416,    h3950 1.255
+h3951 0.698,    h3952 0.659,    h3953 0.485,    h3954 0.405,    h3955 0.146
+h3964 0.090,    h3965 0.116,    h3966 0.491,    h3967 0.620,    h3968 1.382
+h3969 1.124,    h3970 1.461,    h3971 0.990,    h3972 1.497,    h3973 1.105
+h3974 2.094,    h3975 0.786,    h3976 1.609,    h3977 1.130,    h3978 0.382
+h3979 0.141,    h3988 0.096,    h3989 0.304,    h3990 0.443,    h3991 0.661
+h3992 0.491,    h3993 0.591,    h3994 0.590,    h3995 0.502,    h3996 0.536
+h3997 0.489,    h3998 0.565,    h3999 0.821,    h4000 0.759,    h4001 0.456
+h4002 0.208,    h4003 0.051,    h4012 0.096,    h4013 0.264,    h4014 0.468
+h4015 0.568,    h4016 0.491,    h4017 0.622,    h4018 0.544,    h4019 0.425
+h4020 0.582,    h4021 0.634,    h4022 0.459,    h4023 0.557,    h4024 1.008
+h4025 0.515,    h4026 0.416,    h4027 0.146,    h4036 0.090,    h4037 0.242
+h4038 0.589,    h4039 0.615,    h4040 0.534,    h4041 0.592,    h4042 0.489
+h4043 0.479,    h4044 0.626,    h4045 0.645,    h4046 1.534,    h4047 1.261
+h4048 0.804,    h4049 1.024,    h4050 0.427,    h4051 0.141,    h4060 0.084
+h4061 0.228,    h4062 0.405,    h4063 0.568,    h4064 1.308,    h4065 2.237
+h4066 1.648,    h4067 0.798,    h4068 0.788,    h4069 0.706,    h4070 0.569
+h4071 0.802,    h4072 0.647,    h4073 0.439,    h4074 0.276,    h4075 0.084
+h4084 0.073,    h4085 0.136,    h4086 0.527,    h4087 0.612,    h4088 0.644
+h4089 1.802,    h4090 1.750,    h4091 0.847,    h4092 0.835,    h4093 1.254
+h4094 1.175,    h4095 1.432,    h4096 1.457,    h4097 0.808,    h4098 0.360
+h4099 0.084,    h4108 0.034,    h4109 0.319,    h4110 0.550,    h4111 0.576
+h4112 0.492,    h4113 0.586,    h4114 0.571,    h4115 0.458,    h4116 0.610
+h4117 0.705,    h4118 0.573,    h4119 1.408,    h4120 0.804,    h4121 0.582
+h4122 0.467,    h4123 0.124,    h4132 0.090,    h4133 0.281,    h4134 0.499
+h4135 0.486,    h4136 0.541,    h4137 0.499,    h4138 0.509,    h4139 0.579
+h4140 0.555,    h4141 0.446,    h4142 0.560,    h4143 0.545,    h4144 1.447
+h4145 1.142,    h4146 0.399,    h4147 0.152,    h4156 0.090,    h4157 0.219
+h4158 0.828,    h4159 0.664,    h4160 0.518,    h4161 0.613,    h4162 0.534
+h4163 0.505,    h4164 0.576,    h4165 0.497,    h4166 0.532,    h4167 1.935
+h4168 1.513,    h4169 1.187,    h4170 0.354,    h4171 0.135,    h4180 0.101
+h4181 0.351,    h4182 0.624,    h4183 0.488,    h4184 0.591,    h4185 0.549
+h4186 0.464,    h4187 0.660,    h4188 1.094,    h4189 0.483,    h4190 0.594
+h4191 0.601,    h4192 0.580,    h4193 0.597,    h4194 0.411,    h4195 0.141
+h4204 0.017,    h4205 0.135,    h4206 0.309,    h4207 0.484,    h4208 0.582
+h4209 0.572,    h4210 0.492,    h4211 0.518,    h4212 0.552,    h4213 0.475
+h4214 0.846,    h4215 1.001,    h4216 0.669,    h4217 0.427,    h4218 0.225
+h4219 0.124,    h4228 0.101,    h4229 0.143,    h4230 0.710,    h4231 0.746
+h4232 0.591,    h4233 0.615,    h4234 0.472,    h4235 0.546,    h4236 0.655
+h4237 0.430,    h4238 0.602,    h4239 1.519,    h4240 1.412,    h4241 1.142
+h4242 0.427,    h4243 0.157,    h4252 0.101,    h4253 0.147,    h4254 0.596
+h4255 0.578,    h4256 0.918,    h4257 0.706,    h4258 0.520,    h4259 0.516
+h4260 0.623,    h4261 0.516,    h4262 0.543,    h4263 1.244,    h4264 1.429
+h4265 0.810,    h4266 0.337,    h4267 0.096,    h4276 0.011,    h4277 0.141
+h4278 0.510,    h4279 0.563,    h4280 0.652,    h4281 0.648,    h4282 0.725
+h4283 0.778,    h4284 0.741,    h4285 0.594,    h4286 1.171,    h4287 1.181
+h4288 0.888,    h4289 0.562,    h4290 0.253,    h4291 0.079,    h4300 0.011
+h4301 0.141,    h4302 0.501,    h4303 0.532,    h4304 0.574,    h4305 0.552
+h4306 0.833,    h4307 1.148,    h4308 0.637,    h4309 0.445,    h4310 1.125
+h4311 0.917,    h4312 0.461,    h4313 0.292,    h4314 0.169,    h4315 0.039
+h4324 0.045,    h4325 0.192,    h4326 0.522,    h4327 0.723,    h4328 0.693
+h4329 0.689,    h4330 0.660,    h4331 0.474,    h4332 0.738,    h4333 0.695
+h4334 0.791,    h4335 0.724,    h4336 0.694,    h4337 0.495,    h4338 0.309
+h4339 0.112,    h4348 0.084,    h4349 0.231,    h4350 0.575,    h4351 0.531
+h4352 0.565,    h4353 0.515,    h4354 0.516,    h4355 0.566,    h4356 0.639
+h4357 0.531,    h4358 0.483,    h4359 1.519,    h4360 0.756,    h4361 0.602
+h4362 0.399,    h4363 0.141,    h4372 0.084,    h4373 0.231,    h4374 0.547
+h4375 0.549,    h4376 0.559,    h4377 0.575,    h4378 0.456,    h4379 0.513
+h4380 0.660,    h4381 0.467,    h4382 0.602,    h4383 0.877,    h4384 0.716
+h4385 0.880,    h4386 0.411,    h4387 0.129,    h4396 0.084,    h4397 0.242
+h4398 0.738,    h4399 0.616,    h4400 0.902,    h4401 1.143,    h4402 1.282
+h4403 2.596,    h4404 1.990,    h4405 1.754,    h4406 1.444,    h4407 0.952
+h4408 0.723,    h4409 0.749,    h4410 0.377,    h4411 0.129,    h4420 0.079
+h4421 0.220,    h4422 0.596,    h4423 0.640,    h4424 0.657,    h4425 0.955
+h4426 0.660,    h4427 1.116,    h4428 1.443,    h4429 1.360,    h4430 0.751
+h4431 1.042,    h4432 0.728,    h4433 0.670,    h4434 0.371,    h4435 0.129
+h4444 0.034,    h4445 0.163,    h4446 0.276,    h4447 0.427,    h4448 0.565
+h4449 0.645,    h4450 0.444,    h4451 0.485,    h4452 0.650,    h4453 0.501
+h4454 0.556,    h4455 0.885,    h4456 0.717,    h4457 0.593,    h4458 0.422
+h4459 0.107,    h4468 0.073,    h4469 0.259,    h4470 0.611,    h4471 0.624
+h4472 0.591,    h4473 0.647,    h4474 0.544,    h4475 0.578,    h4476 0.643
+h4477 0.595,    h4478 0.656,    h4479 0.741,    h4480 0.975,    h4481 0.737
+h4482 0.394,    h4483 0.124,    h4492 0.073,    h4493 0.219,    h4494 0.612
+h4495 0.547,    h4496 0.611,    h4497 1.089,    h4498 0.695,    h4499 0.639
+h4500 0.601,    h4501 0.457,    h4502 0.555,    h4503 0.703,    h4504 0.887
+h4505 0.765,    h4506 0.354,    h4507 0.084,    h4516 0.022,    h4517 0.152
+h4518 0.444,    h4519 0.770,    h4520 0.659,    h4521 0.604,    h4522 0.590
+h4523 0.577,    h4524 0.535,    h4525 0.525,    h4526 0.767,    h4527 0.602
+h4528 0.326,    h4529 0.163,    h4530 0.079,    h4531 0.022,    h4540 0.039
+h4541 0.207,    h4542 0.601,    h4543 0.569,    h4544 0.557,    h4545 0.822
+h4546 0.604,    h4547 0.639,    h4548 0.642,    h4549 0.692,    h4550 0.670
+h4551 0.913,    h4552 0.636,    h4553 0.354,    h4554 0.146,    h4555 0.028
+h4564 0.067,    h4565 0.264,    h4566 0.648,    h4567 0.572,    h4568 0.529
+h4569 0.515,    h4570 0.517,    h4571 0.508,    h4572 0.581,    h4573 0.476
+h4574 0.577,    h4575 0.581,    h4576 0.501,    h4577 0.537,    h4578 0.399
+h4579 0.101,    h4588 0.056,    h4589 0.132,    h4590 0.523,    h4591 0.569
+h4592 0.573,    h4593 0.591,    h4594 0.506,    h4595 0.545,    h4596 0.558
+h4597 0.430,    h4598 0.499,    h4599 0.615,    h4600 0.517,    h4601 0.538
+h4602 0.366,    h4603 0.112,    h4612 0.056,    h4613 0.175,    h4614 0.477
+h4615 0.481,    h4616 0.559,    h4617 0.598,    h4618 0.510,    h4619 0.563
+h4620 0.642,    h4621 0.465,    h4622 0.559,    h4623 0.607,    h4624 0.527
+h4625 0.437,    h4626 0.382,    h4627 0.107,    h4636 0.062,    h4637 0.207
+h4638 0.564,    h4639 0.592,    h4640 0.620,    h4641 0.528,    h4642 0.433
+h4643 0.560,    h4644 0.541,    h4645 0.559,    h4646 0.575,    h4647 0.545
+h4648 0.491,    h4649 0.304,    h4650 0.135,    h4651 0.028,    h4661 0.096
+h4662 0.382,    h4663 0.543,    h4664 0.615,    h4665 0.511,    h4666 0.562
+h4667 0.575,    h4668 0.545,    h4669 0.482,    h4670 0.559,    h4671 0.518
+h4672 0.532,    h4673 0.579,    h4674 0.399,    h4675 0.101,    h4684 0.045
+h4685 0.142,    h4686 0.567,    h4687 0.665,    h4688 1.179,    h4689 1.097
+h4690 1.559,    h4691 0.923,    h4692 1.113,    h4693 0.572,    h4694 1.169
+h4695 1.244,    h4696 1.706,    h4697 1.062,    h4698 0.360,    h4699 0.101
+h4708 0.045,    h4709 0.198,    h4710 0.459,    h4711 0.733,    h4712 1.921
+h4713 0.712,    h4714 0.604,    h4715 0.676,    h4716 0.809,    h4717 0.635
+h4718 1.379,    h4719 0.737,    h4720 0.602,    h4721 0.643,    h4722 0.371
+h4723 0.084,    h4732 0.039,    h4733 0.195,    h4734 0.762,    h4735 0.535
+h4736 0.724,    h4737 0.753,    h4738 0.954,    h4739 1.582,    h4740 0.953
+h4741 1.036,    h4742 0.700,    h4743 0.660,    h4744 0.537,    h4745 0.640
+h4746 0.332,    h4747 0.096,    h4756 0.039,    h4757 0.161,    h4758 0.600
+h4759 0.518,    h4760 0.573,    h4761 0.627,    h4762 0.529,    h4763 0.551
+h4764 0.735,    h4765 1.548,    h4766 1.307,    h4767 0.737,    h4768 0.514
+h4769 0.588,    h4770 0.321,    h4771 0.084,    h4780 0.034,    h4781 0.200
+h4782 0.579,    h4783 0.587,    h4784 1.524,    h4785 1.451,    h4786 0.746
+h4787 0.649,    h4788 0.665,    h4789 0.780,    h4790 0.856,    h4791 0.886
+h4792 0.736,    h4793 0.689,    h4794 0.332,    h4795 0.079,    h4804 0.034
+h4805 0.165,    h4806 0.543,    h4807 0.547,    h4808 0.944,    h4809 1.691
+h4810 0.824,    h4811 0.585,    h4812 0.660,    h4813 0.588,    h4814 0.742
+h4815 0.712,    h4816 0.783,    h4817 0.590,    h4818 0.360,    h4819 0.084
+h4828 0.028,    h4829 0.165,    h4830 0.624,    h4831 1.451,    h4832 1.605
+h4833 1.822,    h4834 0.652,    h4835 0.612,    h4836 0.892,    h4837 0.550
+h4838 0.577,    h4839 0.691,    h4840 0.593,    h4841 0.589,    h4842 0.309
+h4843 0.062,    h4852 0.028,    h4853 0.214,    h4854 0.607,    h4855 0.547
+h4856 0.864,    h4857 0.971,    h4858 0.585,    h4859 0.701,    h4860 0.613
+h4861 0.643,    h4862 0.682,    h4863 0.589,    h4864 0.938,    h4865 0.703
+h4866 0.332,    h4867 0.067,    h4876 0.022,    h4877 0.208,    h4878 0.594
+h4879 0.519,    h4880 0.545,    h4881 0.532,    h4882 0.523,    h4883 0.602
+h4884 0.636,    h4885 0.547,    h4886 1.071,    h4887 1.706,    h4888 1.407
+h4889 0.720,    h4890 0.321,    h4891 0.067,    h4900 0.028,    h4901 0.154
+h4902 0.592,    h4903 0.646,    h4904 0.681,    h4905 0.860,    h4906 1.310
+h4907 1.122,    h4908 0.741,    h4909 0.558,    h4910 0.597,    h4911 0.692
+h4912 0.433,    h4913 0.214,    h4914 0.062,    h4924 0.006,    h4925 0.186
+h4926 0.433,    h4927 0.575,    h4928 0.880,    h4929 1.445,    h4930 1.797
+h4931 0.731,    h4932 0.630,    h4933 0.565,    h4934 0.605,    h4935 1.175
+h4936 0.917,    h4937 0.512,    h4938 0.174,    h4939 0.011,    h4948 0.017
+h4949 0.225,    h4950 0.585,    h4951 0.554,    h4952 0.625,    h4953 0.569
+h4954 0.486,    h4955 0.554,    h4956 0.601,    h4957 0.567,    h4958 0.603
+h4959 0.806,    h4960 0.571,    h4961 0.636,    h4962 0.270,    h4963 0.034
+h4972 0.006,    h4973 0.197,    h4974 0.590,    h4975 0.590,    h4976 0.587
+h4977 0.586,    h4978 0.503,    h4979 0.538,    h4980 0.561,    h4981 0.566
+h4982 0.628,    h4983 0.781,    h4984 0.613,    h4985 0.326,    h4986 0.096
+h4987 0.006,    h4997 0.056,    h4998 0.253,    h4999 0.579,    h5000 0.482
+h5001 0.664,    h5002 0.905,    h5003 1.001,    h5004 0.776,    h5005 0.861
+h5006 1.147,    h5007 0.883,    h5008 0.624,    h5009 0.326,    h5010 0.107
+h5011 0.006,    h5021 0.163,    h5022 0.536,    h5023 0.478,    h5024 0.564
+h5025 0.822,    h5026 0.578,    h5027 0.475,    h5028 0.525,    h5029 0.528
+h5030 0.849,    h5031 0.607,    h5032 0.411,    h5033 0.276,    h5034 0.101
+h5035 0.006,    h5044 0.006,    h5045 0.219,    h5046 0.522,    h5047 0.533
+h5048 0.558,    h5049 0.621,    h5050 0.536,    h5051 0.461,    h5052 0.617
+h5053 0.553,    h5054 0.467,    h5055 1.653,    h5056 1.254,    h5057 0.742
+h5058 0.214,    h5059 0.011,    h5068 0.006,    h5069 0.104,    h5070 0.571
+h5071 0.492,    h5072 0.541,    h5073 1.307,    h5074 0.741,    h5075 1.353
+h5076 3.507,    h5077 2.256,    h5078 2.385,    h5079 0.932,    h5080 0.794
+h5081 0.684,    h5082 0.259,    h5083 0.034,    h5092 0.006,    h5093 0.169
+h5094 0.567,    h5095 0.557,    h5096 0.655,    h5097 1.043,    h5098 0.858
+h5099 1.677,    h5100 0.907,    h5101 0.620,    h5102 0.642,    h5103 1.477
+h5104 0.642,    h5105 0.681,    h5106 0.242,    h5107 0.017,    h5117 0.163
+h5118 0.551,    h5119 0.775,    h5120 0.638,    h5121 0.617,    h5122 0.745
+h5123 0.624,    h5124 0.757,    h5125 0.639,    h5126 1.083,    h5127 1.848
+h5128 1.316,    h5129 0.633,    h5130 0.253,    h5131 0.017,    h5141 0.208
+h5142 0.709,    h5143 0.729,    h5144 0.625,    h5145 0.660,    h5146 0.773
+h5147 0.665,    h5148 0.787,    h5149 0.765,    h5150 0.669,    h5151 0.484
+h5152 0.264,    h5153 0.157,    h5154 0.062,    h5165 0.168,    h5166 0.510
+h5167 0.500,    h5168 0.684,    h5169 0.672,    h5170 0.587,    h5171 0.717
+h5172 0.960,    h5173 0.751,    h5174 0.737,    h5175 0.636,    h5176 0.501
+h5177 0.326,    h5178 0.129,    h5189 0.174,    h5190 0.591,    h5191 0.568
+h5192 0.612,    h5193 0.659,    h5194 0.528,    h5195 1.362,    h5196 0.635
+h5197 0.517,    h5198 1.170,    h5199 0.919,    h5200 0.619,    h5201 0.489
+h5202 0.186,    h5203 0.006,    h5213 0.163,    h5214 0.697,    h5215 0.832
+h5216 1.273,    h5217 0.821,    h5218 0.661,    h5219 0.962,    h5220 1.709
+h5221 0.589,    h5222 0.688,    h5223 0.784,    h5224 0.576,    h5225 0.644
+h5226 0.231,    h5227 0.011,    h5237 0.109,    h5238 0.534,    h5239 0.542
+h5240 0.598,    h5241 0.584,    h5242 0.504,    h5243 0.684,    h5244 0.596
+h5245 0.437,    h5246 0.473,    h5247 0.585,    h5248 0.549,    h5249 0.525
+h5250 0.242,    h5251 0.011,    h5261 0.109,    h5262 0.520,    h5263 0.506
+h5264 0.581,    h5265 0.583,    h5266 0.475,    h5267 0.569,    h5268 0.600
+h5269 0.456,    h5270 0.546,    h5271 1.278,    h5272 1.182,    h5273 0.905
+h5274 0.219,    h5285 0.157,    h5286 0.675,    h5287 1.586,    h5288 0.759
+h5289 0.653,    h5290 0.596,    h5291 0.543,    h5292 0.968,    h5293 0.885
+h5294 1.103,    h5295 0.650,    h5296 0.912,    h5297 0.889,    h5298 0.225
+h5299 0.006,    h5309 0.157,    h5310 0.681,    h5311 1.597,    h5312 0.699
+h5313 0.585,    h5314 0.490,    h5315 0.712,    h5316 0.628,    h5317 0.732
+h5318 0.737,    h5319 0.832,    h5320 0.537,    h5321 0.405,    h5322 0.045
+h5333 0.062,    h5334 0.214,    h5335 0.641,    h5336 0.741,    h5337 0.549
+h5338 0.496,    h5339 0.610,    h5340 0.617,    h5341 0.752,    h5342 0.794
+h5343 1.590,    h5344 1.596,    h5345 0.799,    h5346 0.180,    h5357 0.135
+h5358 0.664,    h5359 0.801,    h5360 0.769,    h5361 0.645,    h5362 0.716
+h5363 0.635,    h5364 0.775,    h5365 1.003,    h5366 0.766,    h5367 0.796
+h5368 0.903,    h5369 0.660,    h5370 0.191,    h5381 0.141,    h5382 0.675
+h5383 0.644,    h5384 0.646,    h5385 0.645,    h5386 0.656,    h5387 0.521
+h5388 1.272,    h5389 1.002,    h5390 1.104,    h5391 0.887,    h5392 0.742
+h5393 0.585,    h5394 0.141,    h5405 0.124,    h5406 0.563,    h5407 0.589
+h5408 0.729,    h5409 1.736,    h5410 1.299,    h5411 1.534,    h5412 2.313
+h5413 1.737,    h5414 1.156,    h5415 2.153,    h5416 1.475,    h5417 0.737
+h5418 0.180,    h5429 0.101,    h5430 0.495,    h5431 0.535,    h5432 0.601
+h5433 0.758,    h5434 1.530,    h5435 1.316,    h5436 0.874,    h5437 1.102
+h5438 0.905,    h5439 0.692,    h5440 0.422,    h5441 0.225,    h5442 0.062
+h5453 0.112,    h5454 0.610,    h5455 0.848,    h5456 0.670,    h5457 0.838
+h5458 0.613,    h5459 0.710,    h5460 0.675,    h5461 1.111,    h5462 0.862
+h5463 0.890,    h5464 0.704,    h5465 0.551,    h5466 0.135,    h5477 0.107
+h5478 0.472,    h5479 0.666,    h5480 0.692,    h5481 0.654,    h5482 0.496
+h5483 0.534,    h5484 0.695,    h5485 0.575,    h5486 1.393,    h5487 1.017
+h5488 0.682,    h5489 0.360,    h5490 0.101,    h5501 0.062,    h5502 0.484
+h5503 0.627,    h5504 0.761,    h5505 0.745,    h5506 0.564,    h5507 0.595
+h5508 0.621,    h5509 0.862,    h5510 1.283,    h5511 2.030,    h5512 1.355
+h5513 0.675,    h5514 0.146,    h5525 0.096,    h5526 0.619,    h5527 0.731
+h5528 0.740,    h5529 0.605,    h5530 0.494,    h5531 0.742,    h5532 0.596
+h5533 0.626,    h5534 1.170,    h5535 0.915,    h5536 0.588,    h5537 0.253
+h5538 0.045,    h5549 0.079,    h5550 0.540,    h5551 0.951,    h5552 0.620
+h5553 1.059,    h5554 1.618,    h5555 0.860,    h5556 0.797,    h5557 0.595
+h5558 1.346,    h5559 0.857,    h5560 0.584,    h5561 0.666,    h5562 0.135
+h5573 0.067,    h5574 0.501,    h5575 0.579,    h5576 0.709,    h5577 1.385
+h5578 2.349,    h5579 2.784,    h5580 1.360,    h5581 0.600,    h5582 0.606
+h5583 0.820,    h5584 0.607,    h5585 0.528,    h5586 0.141,    h5597 0.056
+h5598 0.461,    h5599 0.479,    h5600 0.595,    h5601 1.840,    h5602 0.812
+h5603 1.177,    h5604 0.797,    h5605 1.403,    h5606 1.131,    h5607 1.423
+h5608 0.641,    h5609 0.292,    h5610 0.084,    h5621 0.028,    h5622 0.304
+h5623 0.708,    h5624 0.839,    h5625 0.897,    h5626 0.573,    h5627 0.600
+h5628 0.635,    h5629 0.590,    h5630 1.127,    h5631 1.812,    h5632 1.108
+h5633 0.349,    h5634 0.062,    h5645 0.028,    h5646 0.349,    h5647 0.765
+h5648 0.942,    h5649 0.904,    h5650 0.532,    h5651 0.578,    h5652 0.953
+h5653 0.796,    h5654 1.250,    h5655 1.171,    h5656 0.639,    h5657 0.557
+h5658 0.107,    h5669 0.039,    h5670 0.427,    h5671 0.573,    h5672 0.854
+h5673 0.957,    h5674 0.857,    h5675 0.604,    h5676 0.640,    h5677 0.529
+h5678 0.785,    h5679 0.687,    h5680 0.592,    h5681 0.568,    h5682 0.073
+h5693 0.006,    h5694 0.107,    h5695 0.298,    h5696 0.596,    h5697 0.635
+h5698 0.556,    h5699 0.570,    h5700 0.680,    h5701 0.706,    h5702 1.132
+h5703 1.213,    h5704 0.758,    h5705 0.450,    h5706 0.084,    h5717 0.034
+h5718 0.540,    h5719 0.913,    h5720 1.032,    h5721 0.699,    h5722 0.552
+h5723 0.594,    h5724 0.742,    h5725 0.737,    h5726 1.198,    h5727 1.451
+h5728 0.969,    h5729 0.737,    h5730 0.090,    h5741 0.028,    h5742 0.534
+h5743 0.486,    h5744 0.551,    h5745 0.975,    h5746 1.282,    h5747 0.870
+h5748 0.690,    h5749 0.516,    h5750 1.493,    h5751 0.785,    h5752 0.791
+h5753 0.759,    h5754 0.073,    h5765 0.022,    h5766 0.281,    h5767 0.557
+h5768 0.497,    h5769 0.820,    h5770 0.735,    h5771 0.676,    h5772 0.713
+h5773 0.538,    h5774 0.731,    h5775 1.204,    h5776 0.751,    h5777 0.681
+h5778 0.079,    h5790 0.124,    h5791 0.478,    h5792 0.610,    h5793 0.572
+h5794 0.511,    h5795 0.580,    h5796 0.663,    h5797 0.508,    h5798 0.745
+h5799 0.760,    h5800 1.063,    h5801 0.422,    h5802 0.051,    h5814 0.051
+h5815 0.208,    h5816 0.456,    h5817 0.602,    h5818 0.543,    h5819 0.569
+h5820 0.545,    h5821 0.709,    h5822 0.527,    h5823 0.670,    h5824 0.620
+h5825 0.298,    h5826 0.028,    h5837 0.011,    h5838 0.304,    h5839 0.586
+h5840 0.578,    h5841 0.513,    h5842 0.631,    h5843 0.496,    h5844 0.583
+h5845 0.778,    h5846 0.650,    h5847 0.802,    h5848 0.450,    h5849 0.163
+h5850 0.011,    h5862 0.084,    h5863 0.388,    h5864 0.804,    h5865 0.899
+h5866 0.446,    h5867 0.653,    h5868 0.587,    h5869 0.519,    h5870 0.781
+h5871 0.586,    h5872 0.495,    h5873 0.214,    h5874 0.017,    h5885 0.006
+h5886 0.225,    h5887 0.675,    h5888 0.872,    h5889 0.676,    h5890 0.463
+h5891 0.774,    h5892 0.704,    h5893 0.723,    h5894 0.811,    h5895 0.724
+h5896 0.714,    h5897 0.360,    h5898 0.039,    h5909 0.006,    h5910 0.405
+h5911 0.521,    h5912 0.715,    h5913 1.536,    h5914 1.944,    h5915 1.596
+h5916 2.410,    h5917 1.633,    h5918 0.843,    h5919 0.706,    h5920 0.573
+h5921 0.562,    h5922 0.028,    h5934 0.394,    h5935 0.566,    h5936 0.641
+h5937 1.367,    h5938 2.301,    h5939 0.718,    h5940 2.132,    h5941 0.765
+h5942 0.771,    h5943 0.695,    h5944 0.428,    h5945 0.484,    h5946 0.022
+h5958 0.354,    h5959 0.477,    h5960 0.616,    h5961 0.553,    h5962 0.560
+h5963 0.583,    h5964 0.544,    h5965 0.529,    h5966 0.498,    h5967 0.966
+h5968 0.950,    h5969 0.332,    h5970 0.017,    h5982 0.253,    h5983 0.531
+h5984 0.613,    h5985 0.594,    h5986 0.510,    h5987 0.598,    h5988 0.584
+h5989 0.426,    h5990 0.620,    h5991 0.634,    h5992 0.570,    h5993 0.315
+h5994 0.011,    h6006 0.304,    h6007 0.563,    h6008 0.580,    h6009 0.604
+h6010 0.468,    h6011 0.629,    h6012 0.520,    h6013 0.463,    h6014 0.592
+h6015 0.831,    h6016 0.658,    h6017 0.276,    h6018 0.006,    h6030 0.146
+h6031 0.424,    h6032 0.662,    h6033 0.644,    h6034 0.448,    h6035 0.631
+h6036 0.499,    h6037 0.482,    h6038 0.667,    h6039 0.639,    h6040 0.567
+h6041 0.416,    h6042 0.006,    h6054 0.219,    h6055 0.490,    h6056 0.572
+h6057 0.700,    h6058 0.469,    h6059 0.579,    h6060 0.518,    h6061 0.426
+h6062 0.596,    h6063 0.587,    h6064 0.596,    h6065 0.298,    h6066 0.006
+h6078 0.236,    h6079 0.652,    h6080 0.693,    h6081 1.461,    h6082 1.536
+h6083 1.109,    h6084 1.323,    h6085 0.742,    h6086 0.619,    h6087 0.571
+h6088 0.486,    h6089 0.169,    h6102 0.180,    h6103 0.492,    h6104 0.640
+h6105 1.100,    h6106 0.920,    h6107 2.956,    h6108 1.730,    h6109 1.557
+h6110 1.231,    h6111 0.675,    h6112 0.500,    h6113 0.225,    h6126 0.141
+h6127 0.449,    h6128 0.689,    h6129 0.609,    h6130 0.523,    h6131 0.626
+h6132 0.554,    h6133 0.455,    h6134 0.569,    h6135 0.675,    h6136 0.638
+h6137 0.242,    h6150 0.191,    h6151 0.534,    h6152 0.628,    h6153 1.057
+h6154 1.080,    h6155 0.725,    h6156 1.316,    h6157 1.231,    h6158 0.978
+h6159 0.686,    h6160 0.343,    h6161 0.107,    h6174 0.135,    h6175 0.494
+h6176 0.602,    h6177 0.709,    h6178 0.755,    h6179 0.715,    h6180 1.436
+h6181 1.135,    h6182 0.672,    h6183 0.783,    h6184 0.792,    h6185 0.309
+h6198 0.197,    h6199 1.001,    h6200 0.628,    h6201 0.545,    h6202 0.566
+h6203 0.576,    h6204 0.553,    h6205 0.534,    h6206 0.705,    h6207 0.996
+h6208 0.657,    h6209 0.264,    h6222 0.180,    h6223 0.502,    h6224 0.679
+h6225 0.638,    h6226 0.650,    h6227 1.543,    h6228 1.293,    h6229 0.683
+h6230 0.886,    h6231 0.880,    h6232 0.703,    h6233 0.337,    h6246 0.114
+h6247 0.194,    h6248 0.132,    h6249 0.373,    h6250 1.089,    h6251 0.911
+h6252 0.719,    h6253 0.705,    h6254 0.380,    h6255 0.322,    h6256 0.515
+h6257 0.332,    h6270 0.109,    h6271 0.204,    h6272 0.090,    h6273 0.111
+h6274 1.187,    h6275 0.748,    h6276 0.286,    h6277 0.721,    h6278 1.019
+h6279 0.816,    h6280 0.324,    h6281 0.270,    h6294 0.129,    h6295 0.132
+h6296 0.148,    h6297 0.615,    h6298 1.427,    h6299 1.504,    h6300 0.424
+h6301 1.454,    h6302 0.821,    h6303 0.529,    h6304 0.160,    h6305 0.056
+h6318 0.084,    h6319 0.506,    h6320 0.295,    h6321 0.280,    h6322 0.359
+h6323 0.304,    h6324 0.249,    h6325 0.170,    h6326 0.126,    h6327 0.145
+h6328 0.190,    h6329 0.118,    h6342 0.067,    h6343 0.190,    h6344 0.099
+h6345 0.172,    h6346 0.126,    h6347 0.100,    h6348 0.148,    h6349 0.176
+h6350 0.577,    h6351 0.796,    h6352 0.484,    h6353 0.073,    h6366 0.112
+h6367 0.494,    h6368 0.270,    h6369 0.782,    h6370 0.227,    h6371 0.154
+h6372 0.249,    h6373 0.175,    h6374 0.111,    h6375 0.110,    h6376 0.359
+h6377 0.147,    h6390 0.022,    h6391 0.177,    h6392 0.579,    h6393 0.905
+h6394 0.347,    h6395 0.487,    h6396 0.493,    h6397 0.229,    h6398 0.370
+h6399 0.405,    h6400 0.186,    h6401 0.028,    h6414 0.028,    h6415 0.219
+h6416 0.501,    h6417 0.771,    h6418 0.893,    h6419 1.029,    h6420 0.624
+h6421 0.480,    h6422 0.481,    h6423 0.456,    h6424 0.358,    h6425 0.107
+h6438 0.011,    h6439 0.102,    h6440 0.557,    h6441 1.063,    h6442 1.355
+h6443 1.514,    h6444 1.002,    h6445 0.694,    h6446 1.260,    h6447 0.860
+h6448 0.416,    h6449 0.056,    h6462 0.101,    h6463 0.334,    h6464 0.314
+h6465 0.372,    h6466 0.465,    h6467 0.413,    h6468 0.505,    h6469 0.311
+h6470 0.824,    h6471 0.352,    h6472 0.222,    h6473 0.135,    h6486 0.090
+h6487 0.154,    h6488 0.306,    h6489 0.249,    h6490 0.731,    h6491 0.296
+h6492 0.111,    h6493 1.094,    h6494 0.772,    h6495 0.347,    h6496 0.323
+h6497 0.124,    h6510 0.011,    h6511 0.270,    h6512 0.179,    h6513 0.163
+h6514 0.143,    h6515 0.106,    h6516 0.334,    h6517 0.442,    h6518 0.262
+h6519 0.225,    h6520 0.263,    h6521 0.056,    h6535 0.096,    h6536 0.236
+h6537 0.236,    h6538 0.262,    h6539 0.244,    h6540 0.233,    h6541 0.420
+h6542 0.229,    h6543 0.298,    h6544 0.132,    h6545 0.045,    h6558 0.028
+h6559 0.205,    h6560 0.577,    h6561 1.156,    h6562 0.420,    h6563 0.425
+h6564 0.536,    h6565 0.283,    h6566 0.344,    h6567 0.516,    h6568 0.508
+h6569 0.079,    h6582 0.017,    h6583 0.227,    h6584 0.196,    h6585 1.263
+h6586 0.745,    h6587 0.668,    h6588 1.630,    h6589 1.000,    h6590 1.014
+h6591 1.457,    h6592 0.534,    h6593 0.051,    h6606 0.017,    h6607 0.109
+h6608 0.135,    h6609 0.938,    h6610 0.689,    h6611 0.825,    h6612 0.193
+h6613 0.387,    h6614 0.689,    h6615 1.274,    h6616 1.007,    h6617 0.096
+h6630 0.017,    h6631 0.195,    h6632 0.167,    h6633 0.120,    h6634 0.177
+h6635 0.131,    h6636 0.360,    h6637 0.302,    h6638 0.224,    h6639 0.288
+h6640 0.270,    h6641 0.090,    h6654 0.006,    h6655 0.384,    h6656 0.211
+h6657 0.270,    h6658 0.274,    h6659 0.177,    h6660 0.273,    h6661 0.134
+h6662 0.172,    h6663 0.251,    h6664 0.157,    h6665 0.028,    h6679 0.399
+h6680 0.326,    h6681 0.209,    h6682 0.167,    h6683 0.291,    h6684 0.649
+h6685 0.553,    h6686 1.175,    h6687 1.074,    h6688 0.373,    h6689 0.028
+h6703 0.079,    h6704 0.061,    h6705 0.086,    h6706 0.043,    h6707 0.078
+h6708 0.057,    h6709 0.064,    h6710 0.062,    h6711 0.062,    h6712 0.063
+h6727 0.080,    h6728 0.061,    h6729 0.057,    h6730 0.057,    h6731 0.057
+h6732 0.059,    h6733 0.080,    h6734 0.045,    h6735 0.095,    h6736 0.053
+h6751 0.077,    h6752 0.047,    h6753 0.082,    h6754 0.058,    h6755 0.069
+h6756 0.065,    h6757 0.055,    h6758 0.062,    h6759 0.071,    h6760 0.050
+h6775 0.055,    h6776 0.058,    h6777 0.060,    h6778 0.061,    h6779 0.091
+h6780 0.044,    h6781 0.071,    h6782 0.050,    h6783 0.062,    h6784 0.067
+h6785 0.011,    h6799 0.022,    h6800 0.067,    h6801 0.055,    h6802 0.090
+h6803 0.041,    h6804 0.070,    h6805 0.054,    h6806 0.058,    h6807 0.064
+h6808 0.041,    h6823 0.056,    h6824 0.067,    h6825 0.060,    h6826 0.050
+h6827 0.061,    h6828 0.080,    h6829 0.042,    h6830 0.084,    h6831 0.042
+h6832 0.067,    h6833 0.011,    h6847 0.045,    h6848 0.090,    h6849 0.046
+h6850 0.072,    h6851 0.058,    h6852 0.050,    h6853 0.075,    h6854 0.053
+h6855 0.072,    h6856 0.057,    h6871 0.045,    h6872 0.049,    h6873 0.062
+h6874 0.059,    h6875 0.051,    h6876 0.061,    h6877 0.061,    h6878 0.061
+h6879 0.060,    h6880 0.052,    h6895 0.028,    h6896 0.051,    h6897 0.061
+h6898 0.057,    h6899 0.054,    h6900 0.082,    h6901 0.041,    h6902 0.059
+h6903 0.064,    h6904 0.047,    h6919 0.045,    h6920 0.056,    h6921 0.070
+h6922 0.050,    h6923 0.077,    h6924 0.047,    h6925 0.057,    h6926 0.068
+h6927 0.044,    h6928 0.081,    h6943 0.061,    h6944 0.071,    h6945 0.054
+h6946 0.064,    h6947 0.051,    h6948 0.057,    h6949 0.071,    h6950 0.045
+h6951 0.067,    h6952 0.052,    h6967 0.057,    h6968 0.053,    h6969 0.059
+h6970 0.057,    h6971 0.067,    h6972 0.059,    h6973 0.051,    h6974 0.061
+h6975 0.071,    h6976 0.047,    h6991 0.059,    h6992 0.065,    h6993 0.060
+h6994 0.051,    h6995 0.061,    h6996 0.082,    h6997 0.041,    h6998 0.084
+h6999 0.046,    h7000 0.063,    h7015 0.041,    h7016 0.090,    h7017 0.055
+h7018 0.065,    h7019 0.058,    h7020 0.055,    h7021 0.068,    h7022 0.061
+h7023 0.063,    h7024 0.058,    h7039 0.041,    h7040 0.059,    h7041 0.064
+h7042 0.042,    h7043 0.075,    h7044 0.041,    h7045 0.059,    h7046 0.067
+h7047 0.041,    h7048 0.028,    h7064 0.022,    h7065 0.056,    h7066 0.101
+h7067 0.080,    h7068 0.141,    h7069 0.184,    h7070 0.111,    h7071 0.129
+h7072 0.073,    h7087 0.062,    h7088 0.148,    h7089 0.267,    h7090 1.024
+h7091 1.091,    h7092 0.717,    h7093 0.283,    h7094 1.267,    h7095 0.872
+h7096 0.174,    h7111 0.051,    h7112 0.077,    h7113 0.267,    h7114 1.514
+h7115 1.521,    h7116 0.878,    h7117 0.970,    h7118 0.704,    h7119 0.535
+h7120 0.309,    h7135 0.022,    h7136 0.186,    h7137 0.394,    h7138 0.482
+h7139 0.392,    h7140 0.611,    h7141 0.349,    h7142 0.395,    h7143 0.293
+h7144 0.062,    h7159 0.011,    h7160 0.101,    h7161 0.276,    h7162 0.748
+h7163 0.883,    h7164 0.511,    h7165 0.249,    h7166 0.547,    h7167 0.596
+h7168 0.118,    h7183 0.034,    h7184 0.348,    h7185 0.293,    h7186 0.375
+h7187 1.363,    h7188 0.386,    h7189 0.493,    h7190 1.601,    h7191 1.358
+h7192 0.411,    h7207 0.011,    h7208 0.203,    h7209 0.770,    h7210 0.326
+h7211 0.190,    h7212 0.085,    h7213 0.271,    h7214 0.100,    h7215 0.089
+h7216 0.204,    h7231 0.011,    h7232 0.163,    h7233 0.461,    h7234 0.283
+h7235 0.226,    h7236 0.185,    h7237 0.171,    h7238 0.222,    h7239 0.146
+h7240 0.191,    h7256 0.191,    h7257 0.449,    h7258 1.135,    h7259 1.315
+h7260 0.982,    h7261 0.793,    h7262 0.461,    h7263 0.197,    h7264 0.017
+h7279 0.011,    h7280 0.206,    h7281 0.199,    h7282 0.480,    h7283 0.774
+h7284 0.974,    h7285 0.329,    h7286 0.647,    h7287 0.242,    h7288 0.022
+h7303 0.039,    h7304 0.228,    h7305 0.391,    h7306 0.363,    h7307 0.150
+h7308 0.211,    h7309 0.285,    h7310 0.624,    h7311 0.989,    h7312 0.174
+h7328 0.219,    h7329 0.153,    h7330 0.257,    h7331 0.330,    h7332 0.430
+h7333 0.308,    h7334 1.048,    h7335 1.215,    h7336 0.152,    h7351 0.006
+h7352 0.199,    h7353 0.148,    h7354 0.166,    h7355 0.187,    h7356 0.137
+h7357 0.198,    h7358 0.785,    h7359 0.469,    h7360 0.073,    h7375 0.006
+h7376 0.242,    h7377 0.217,    h7378 0.348,    h7379 0.449,    h7380 0.418
+h7381 0.405,    h7382 0.324,    h7383 0.366,    h7384 0.028,    h7400 0.114
+h7401 0.217,    h7402 0.133,    h7403 0.103,    h7404 0.332,    h7405 0.219
+h7406 0.282,    h7407 0.264,    h7408 0.011,    h7424 0.141,    h7425 0.433
+h7426 0.726,    h7427 1.010,    h7428 1.646,    h7429 0.568,    h7430 0.554
+h7431 0.339,    h7432 0.011,    h7448 0.359,    h7449 1.384,    h7450 0.997
+h7451 1.762,    h7452 0.540,    h7453 0.443,    h7454 0.507,    h7455 0.608
+h7456 0.096,    h7472 0.166,    h7473 0.091,    h7474 0.198,    h7475 0.076
+h7476 0.154,    h7477 0.271,    h7478 0.123,    h7479 0.146,    h7480 0.028
+h7496 0.118,    h7497 0.086,    h7498 0.178,    h7499 0.092,    h7500 0.151
+h7501 0.228,    h7502 0.140,    h7503 0.174,    h7520 0.101,    h7521 0.125
+h7522 0.124,    h7523 0.232,    h7524 0.063,    h7525 0.127,    h7526 0.165
+h7527 0.090,    h7544 0.090,    h7545 0.281,    h7546 0.123,    h7547 0.207
+h7548 0.551,    h7549 0.506,    h7550 0.174,    h7551 0.157,    h7552 0.006
+h7568 0.045,    h7569 0.223,    h7570 0.178,    h7571 0.645,    h7572 0.263
+h7573 0.358,    h7574 0.354,    h7575 0.129,    h7592 0.034,    h7593 0.169
+h7594 0.272,    h7595 0.358,    h7596 0.206,    h7597 0.108,    h7598 0.382
+h7599 0.146,    h7616 0.202,    h7617 0.883,    h7618 0.941,    h7619 2.058
+h7620 0.400,    h7621 0.280,    h7622 0.362,    h7623 0.259,    h7640 0.028
+h7641 0.124,    h7642 0.199,    h7643 0.193,    h7644 0.161,    h7645 0.104
+h7646 0.377,    h7647 0.219,    h7664 0.011,    h7665 0.090,    h7666 0.146
+h7667 0.161,    h7668 0.146,    h7669 0.206,    h7670 0.149,    h7671 0.208
+h7688 0.135,    h7689 0.232,    h7690 0.221,    h7691 0.250,    h7692 0.218
+h7693 0.295,    h7694 0.265,    h7695 0.472,    h7712 0.051,    h7713 0.184
+h7714 0.282,    h7715 0.371,    h7716 0.309,    h7717 0.298,    h7718 0.135
+h7719 0.028,    h7736 0.028,    h7737 0.163,    h7738 0.138,    h7739 0.206
+h7740 0.181,    h7741 0.162,    h7742 0.157,    h7743 0.045,    h7760 0.146
+h7761 0.697,    h7762 0.903,    h7763 0.270,    h7764 0.243,    h7765 0.208
+h7766 0.513,    h7767 0.174,    h7784 0.022,    h7785 0.163,    h7786 0.354
+h7787 0.501,    h7788 0.438,    h7789 0.602,    h7790 0.209,    h7791 0.246
+h7808 0.129,    h7809 0.399,    h7810 0.335,    h7811 0.068,    h7812 0.100
+h7813 0.195,    h7814 0.163,    h7815 0.090,    h7832 0.079,    h7833 0.147
+h7834 0.147,    h7835 0.187,    h7836 0.092,    h7837 0.152,    h7838 0.277
+h7839 0.442,    h7856 0.011,    h7857 0.039,    h7858 0.051,    h7859 0.122
+h7860 0.208,    h7861 0.239,    h7862 0.243,    h7863 0.180,    h7880 0.011
+h7881 0.107,    h7882 0.073,    h7883 0.182,    h7884 0.166,    h7885 0.121
+h7886 0.074,    h7887 0.039,    h7904 0.067,    h7905 0.219,    h7906 0.245
+h7907 0.143,    h7908 0.079,    h7909 0.207,    h7910 0.413,    h7911 0.372
+h7928 0.096,    h7929 0.226,    h7930 1.241,    h7931 0.698,    h7932 1.486
+h7933 1.637,    h7934 1.670,    h7935 0.675,    h7952 0.186,    h7953 0.533
+h7954 0.373,    h7955 2.164,    h7956 1.357,    h7957 0.734,    h7958 0.168
+h7959 0.484,    h7976 0.090,    h7977 0.602,    h7978 0.195,    h7979 0.235
+h7980 0.413,    h7981 0.287,    h7982 0.954,    h7983 0.456,    h8000 0.056
+h8001 0.105,    h8002 0.185,    h8003 0.253,    h8004 1.192,    h8005 1.035
+h8006 0.579,    h8007 0.152,    h8024 0.253,    h8025 0.106,    h8026 0.196
+h8027 0.154,    h8028 0.445,    h8029 0.387,    h8030 0.537,    h8031 0.579
+h8048 0.135,    h8049 0.116,    h8050 0.177,    h8051 0.160,    h8052 0.195
+h8053 0.141,    h8054 0.301,    h8055 0.119,    h8072 0.034,    h8073 0.278
+h8074 0.182,    h8075 0.101,    h8076 0.122,    h8077 0.196,    h8078 0.529
+h8079 0.107,    h8096 0.028,    h8097 0.281,    h8098 0.534,    h8099 0.720
+h8100 0.403,    h8101 0.208,    h8102 0.090,    h8103 0.017,    h8121 0.056
+h8122 0.180,    h8123 0.264,    h8124 0.444,    h8125 0.405,    h8126 0.315
+h8127 0.124,    h8144 0.045,    h8145 0.280,    h8146 0.112,    h8147 0.147
+h8148 0.103,    h8149 0.119,    h8150 0.146,    h8151 0.017,    h8168 0.006
+h8169 0.096,    h8170 0.110,    h8171 0.161,    h8172 0.119,    h8173 0.149
+h8174 0.129,    h8175 0.259,    h8192 0.017,    h8193 0.125,    h8194 0.206
+h8195 0.074,    h8196 0.137,    h8197 0.750,    h8198 0.832,    h8199 0.197
+h8216 0.011,    h8217 0.227,    h8218 0.069,    h8219 0.245,    h8220 0.159
+h8221 0.097,    h8222 0.126,    h8223 0.079,    h8241 0.062,    h8242 0.129
+h8243 0.124,    h8244 0.163,    h8245 0.214,    h8246 0.096,    h8247 0.011
+h8265 0.067,    h8266 0.163,    h8267 0.208,    h8268 0.186,    h8269 0.236
+h8270 0.180,    h8271 0.028,    h8289 0.096,    h8290 0.186,    h8291 0.219
+h8292 0.186,    h8293 0.101,    h8294 0.039,    h8295 0.006,    h8313 0.141
+h8314 0.151,    h8315 0.147,    h8316 0.321,    h8317 0.259,    h8318 0.112
+h8319 0.006,    h8336 0.011,    h8337 0.228,    h8338 0.192,    h8339 0.474
+h8340 0.956,    h8341 0.810,    h8342 0.472,    h8343 0.028,    h8361 0.135
+h8362 0.119,    h8363 0.188,    h8364 0.284,    h8365 0.281,    h8366 0.051
+h8384 0.006,    h8385 0.236,    h8386 0.314,    h8387 0.235,    h8388 0.283
+h8389 0.557,    h8390 0.186,    h8391 0.011,    h8409 0.090,    h8410 0.169
+h8411 0.129,    h8412 0.165,    h8413 0.158,    h8414 0.101,    h8415 0.011
+h8433 0.056,    h8434 0.062,    h8435 0.084,    h8436 0.186,    h8437 0.129
+h8438 0.067,    h8457 0.034,    h8458 0.107,    h8459 0.090,    h8460 0.051
+h8461 0.045,    h8462 0.017,    h8480 0.006,    h8481 0.090,    h8482 0.090
+h8483 0.064,    h8484 0.090,    h8485 0.096,    h8486 0.028,    h8504 0.011
+h8505 0.154,    h8506 0.215,    h8507 0.155,    h8508 0.081,    h8509 0.160
+h8510 0.112,    h8511 0.028,    h8530 0.017,    h8531 0.079,    h8532 0.056
+h8533 0.034,    h8534 0.011,    h8553 0.017,    h8554 0.067,    h8555 0.146
+h8556 0.214,    h8557 0.174,    h8558 0.090,    h8559 0.011,    h8577 0.039
+h8578 0.107,    h8579 0.107,    h8580 0.112,    h8581 0.051,    h8582 0.011
+h8600 0.011,    h8601 0.236,    h8602 0.394,    h8603 0.343,    h8604 0.186
+h8605 0.382,    h8606 0.292,    h8607 0.067,    h8624 0.011,    h8625 0.343
+h8626 0.827,    h8627 0.948,    h8628 0.393,    h8629 0.399,    h8630 0.144
+h8631 0.086,    h8648 0.045,    h8649 0.171,    h8650 0.129,    h8651 0.243
+h8652 0.150,    h8653 0.217,    h8654 0.483,    h8655 0.118,    h8672 0.062
+h8673 0.289,    h8674 0.074,    h8675 0.115,    h8676 0.121,    h8677 0.183
+h8678 0.146,    h8679 0.304,    h8696 0.011,    h8697 0.145,    h8698 0.156
+h8699 0.088,    h8700 0.228,    h8701 0.169,    h8702 0.106,    h8703 0.194
+h8721 0.152,    h8722 0.174,    h8723 0.229,    h8724 0.245,    h8725 0.208
+h8726 0.112,    h8727 0.006,    h8746 0.011,    h8747 0.022,    h8748 0.034
+h8749 0.017
+
+
+----    302 PARAMETER price_market  Price for selling energy per kWh
 
 h1             0.013,    h2             0.012,    h3             0.012
 h4             0.012,    h5             0.011,    h6             0.010
@@ -7983,7 +8863,7 @@ h8755          0.031,    h8756          0.029,    h8757          0.029
 h8758          0.030,    h8759          0.028,    h8760          0.025
 
 
-----    289 EQUATION hh_energy_balance.M  Household energy balance
+----    302 EQUATION hh_energy_balance.M  Household energy balance
 
 h1            -0.300,    h2            -0.300,    h3            -0.300
 h4            -0.300,    h5            -0.300,    h6            -0.300
@@ -10907,8 +11787,12 @@ h8755         -0.300,    h8756         -0.300,    h8757         -0.300
 h8758         -0.300,    h8759         -0.300,    h8760         -0.300
 
 
+----    302 PARAMETER lev_Z                =        1283.505  
+            PARAMETER lev_EB               =        3568.941  
+            PARAMETER lev_ES               =        3989.817  
 
-EXECUTION TIME       =        0.062 SECONDS     31 MB  24.2.1 r43572 WEX-WEI
+
+EXECUTION TIME       =        0.032 SECONDS     31 MB  24.2.1 r43572 WEX-WEI
 
 
 USER: Abteilung Energie, Verkehr, Umwelt, 5 User     S131220:0515AN-GEN

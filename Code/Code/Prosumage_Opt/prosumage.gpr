@@ -735,19 +735,6 @@ PlaneRownr=-1
 [RP:SCENARIO]
 1=
 
-[RP:DIETER_V1.2.0]
-1=
-
-[OPENWINDOW_1]
-MAXIM=0
-TOP=50
-LEFT=50
-HEIGHT=798
-WIDTH=1339
-
-[RP:TEST_MCP1]
-1=
-
 [RP:PROSUMOD]
 1=
 
@@ -757,16 +744,38 @@ WIDTH=1339
 [RP:UNTITLED_1]
 1=
 
+[RP:TEST_MCP1]
+1=
+
+[RP:DIETER_V1.2.0]
+1=
+
+[RP:UNTITLED_2]
+1=
+
+[RP:NBES_1]
+1=
+
 [RP:TEST3]
 1=
 
 [MRUFILES]
-1=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Code\Prosumage_Opt\Untitled_1.lst
-2=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Code\Prosumage_Opt\Test3.lst
-3=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Code\Prosumage_Opt\Test3.gms
-4=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Code\Prosumage_Opt\Test_MCP2.lst
-5=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Code\Prosumage_Opt\Test_MCP2.gms
-6=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Code\Prosumage_Opt\Test_MCP1.lst
-7=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Code\Prosumage_Opt\Test_MCP1.gms
+1=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Code\Prosumage_Opt\Untitled_2.gms
+2=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Code\Source_Code\DIETER_Prosumage\DIETER_v1.2.0.gms
+3=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Code\Prosumage_Opt\Test_MCP1.lst
+4=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Code\Prosumage_Opt\Test_MCP1.gms
+5=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Code\Prosumage_Opt\Untitled_1.lst
+6=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Code\Prosumage_Opt\Test_MCP2.lst
+7=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Code\Prosumage_Opt\Test_MCP2.gms
 8=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Code\Prosumage_Opt\PROSUMOD.lst
-9=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Code\Prosumage_Opt\PROSUMOD.gms
+
+[OPENWINDOW_1]
+FILE0=C:\Users\cguenther\Desktop\NBES_1.gms
+FILE1=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Code\Prosumage_Opt\Test3.gms
+FILE2=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Code\Prosumage_Opt\Test3.lst
+FILE3=C:\Users\cguenther\Desktop\NBES_1.gms
+MAXIM=0
+TOP=50
+LEFT=50
+HEIGHT=798
+WIDTH=1339

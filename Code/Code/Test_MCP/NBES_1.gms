@@ -1,0 +1,84 @@
+Sets
+tech                Technology                                   /c,g,o/
+t                    hour                                        /1,2/
+;
+
+Variables
+Z
+
+Positive variables
+g(tech, t) generation
+;
+
+Parameters
+d(t)       demand
+cv(tech)   variable costs
+cap(tech)  capactiy max
+;
+
+d('1')   = 500  ;
+d('2')   = 500 ;
+cv('g')  = 200;
+cv('c')  = 50;
+cv('o')  = 2000;
+cap('g')  = 300;
+cap('c')  = 300;
+cap('o')  = 300;
+
+Equations
+obj
+energy_balance
+cap_constraint
+;
+
+obj..
+
+
+         Z =E= sum ( (tech,t), cv(tech)*g(tech,t) )
+
+;
+
+energy_balance(t)..
+
+                 sum( tech, g(tech, t)) =E= d(t)
+;
+
+cap_constraint(tech, t)..
+
+          g(tech, t) =L= cap(tech)
+
+
+Model testmodel /
+obj
+energy_balance
+cap_constraint
+/
+
+
+options
+optcr = 0.00
+reslim = 10000000
+lp = cplex
+mip = cplex
+nlp = conopt
+dispwidth = 15
+limrow = 0
+limcol = 0
+solprint = off
+sysout = off
+optcr = 1e-3
+optca = 10
+;
+
+$onecho > cplex.opt
+lpmethod 4
+threads 4
+epgap 1e-3
+epagap 10
+parallelmode -1
+$offecho
+
+
+solve   testmodel using lp min Z;
+
+display g.l, Z.l
