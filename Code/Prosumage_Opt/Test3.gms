@@ -66,7 +66,7 @@ gamma
 
 Positive variables
 G_PV(h)              Generation of pv plant
-*CU(h)                Curtailment of pv energy
+CU(h)                Curtailment of pv energy
 N_PV                PV generation capacities
 *N_STO_E(sto)             Capacities: storage energy
 *N_STO_P(sto)             Capacities: storage power
@@ -161,6 +161,7 @@ KKTN
 KKTG
 KKTEB
 KKTES
+KKTCU
 *stolev_no_freelunch        Storage level in initial and last period
 *stolevel                   Storage level dynamics
 *stolev_max_energy          Storage capacity constraint on maximum energy
@@ -187,8 +188,8 @@ pv_generation(h)..
 *      + CU(res,h)
 *      + sum( sto , STO_IN(sto,h))
          (avail_solar(h) * N_PV)
-         =G=
-         G_PV(h) + E_sell(h)
+         =E=
+         G_PV(h) + E_sell(h) + CU(h)
 
 ;
 
@@ -224,7 +225,12 @@ KKTG(h)..
 
 ;
 
+KKTCU(h)..
 
+      + mu(h) =G= 0
+
+
+;
 
 ***************************** Initialize model *********************************
 Model prosumodmcp /
@@ -235,6 +241,7 @@ KKTES.E_sell
 hh_energy_balance.lambda
 pv_generation.mu
 pv_install_max.gamma
+KKTCU.CU
 
 $ontext
 KKTN.N_PV
@@ -285,7 +292,7 @@ check(h)     =  - avail_solar(h) * N_PV.l
 
 display d , N_PV.l ,  N_PV.m, E_buy.l , E_sell.l , G_PV.l
         price_market, hh_energy_balance.m, check,
-         mu.l,  lambda.l , gamma.l, lev_Z, lev_EB, lev_ES, KKTN.m
+         mu.l,  lambda.l , gamma.l, lev_Z, lev_EB, lev_ES, KKTN.m, CU.l
 
 
 ***************************** Set up reporting *********************************

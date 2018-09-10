@@ -1,5 +1,5 @@
 
---- Job Test3.gms Start 09/10/18 12:56:07 24.2.1 r43572 WEX-WEI x86_64/MS Windows
+--- Job Test3.gms Start 09/10/18 13:43:36 24.2.1 r43572 WEX-WEI x86_64/MS Windows
 GAMS 24.2.1   Copyright (C) 1987-2013 GAMS Development. All rights reserved
 Licensee: Abteilung Energie, Verkehr, Umwelt, 5 User     S131220:0515AN-GEN
           Deutsches Institut fuer Wirtschaftsforschung DIW           DC3975
@@ -7,15 +7,15 @@ Licensee: Abteilung Energie, Verkehr, Umwelt, 5 User     S131220:0515AN-GEN
 --- Starting compilation
 --- Test3.gms(137) 3 Mb
 --- GDXin=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\data\input_data.gdx
---- Test3.gms(293) 28 Mb
---- Starting execution: elapsed 0:00:00.105
---- Test3.gms(252) 30 Mb
+--- Test3.gms(300) 28 Mb
+--- Starting execution: elapsed 0:00:00.104
+--- Test3.gms(259) 30 Mb
 --- Generating MCP model prosumodmcp
---- Test3.gms(274) 41 Mb
----   43,802 rows  43,802 columns  78,734 non-zeroes
+--- Test3.gms(281) 43 Mb
+---   52,562 rows  52,562 columns  96,254 non-zeroes
 ---   0 nl-code  0 nl-non-zeroes
---- Test3.gms(274) 39 Mb
---- Executing PATH: elapsed 0:00:00.189
+--- Test3.gms(281) 41 Mb
+--- Executing PATH: elapsed 0:00:00.196
 Reading dictionary...
 Reading row data...
 Evaluating functions...
@@ -24,12 +24,12 @@ Calculating Jacobian...
 
 PATH             24.2.1 r43572 Released Dec  9, 2013 WEI x86_64/MS Windows    
 
-43802 row/cols, 78734 non-zeros, 0.00% dense.
+52562 row/cols, 96254 non-zeros, 0.00% dense.
 
 Path 4.7.02 (Mon Dec 09 08:54:09 2013)
 Written by Todd Munson, Steven Dirkse, and Michael Ferris
 
-Zero:  4434 Single: 21955 Double:     0
+Zero:  4434 Single: 26281 Double:  4434
 Preprocessed size   : 12979
 
 INITIAL POINT STATISTICS
@@ -106,15 +106,15 @@ Crash Iterations. . . . 4
 Gradient Steps. . . . . 0
 Function Evaluations. . 28
 Gradient Evaluations. . 10
-Total Time. . . . . . . 29.822000
+Total Time. . . . . . . 28.524000
 Residual. . . . . . . . 2.269221e-007
 Postsolved residual: 2.2692e-007
 
 --- Restarting execution
---- Test3.gms(274) 30 Mb
+--- Test3.gms(281) 31 Mb
 --- Reading solution for model prosumodmcp
---- Test3.gms(274) 34 Mb
---- Executing after solve: elapsed 0:00:30.633
---- Test3.gms(286) 34 Mb
+--- Test3.gms(281) 35 Mb
+--- Executing after solve: elapsed 0:00:29.176
+--- Test3.gms(293) 36 Mb
 *** Status: Normal completion
---- Job Test3.gms Stop 09/10/18 12:56:37 elapsed 0:00:30.671
+--- Job Test3.gms Stop 09/10/18 13:44:05 elapsed 0:00:29.219

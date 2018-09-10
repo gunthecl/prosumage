@@ -59,14 +59,14 @@ hh_profile       Household load data                     /V1*V74/
 
 ;
 
-Variables
+Positive Variables
 mu(h)
 lambda(h)
 gamma
 
 Positive variables
 G_PV(h)              Generation of pv plant
-*CU(h)                Curtailment of pv energy
+CU(h)                Curtailment of pv energy
 N_PV                PV generation capacities
 *N_STO_E(sto)             Capacities: storage energy
 *N_STO_P(sto)             Capacities: storage power
@@ -161,6 +161,7 @@ KKTN
 KKTG
 KKTEB
 KKTES
+KKTCU
 *stolev_no_freelunch        Storage level in initial and last period
 *stolevel                   Storage level dynamics
 *stolev_max_energy          Storage capacity constraint on maximum energy
@@ -187,8 +188,8 @@ pv_generation(h)..
 *      + CU(res,h)
 *      + sum( sto , STO_IN(sto,h))
          (avail_solar(h) * N_PV)
-         =G=
-         G_PV(h) + E_sell(h)
+         =E=
+         G_PV(h) + E_sell(h) + CU(h)
 
 ;
 
@@ -224,7 +225,12 @@ KKTG(h)..
 
 ;
 
+KKTCU(h)..
 
+      + mu(h) =G= 0
+
+
+;
 
 ***************************** Initialize model *********************************
 Model prosumodmcp /
@@ -235,6 +241,7 @@ KKTES.E_sell
 hh_energy_balance.lambda
 pv_generation.mu
 pv_install_max.gamma
+KKTCU.CU
 
 $ontext
 KKTN.N_PV

@@ -1,4 +1,4 @@
-GAMS 24.2.1  r43572 Released Dec  9, 2013 WEX-WEI x86_64/MS Windows 09/10/18 12:56:07 Page 1
+GAMS 24.2.1  r43572 Released Dec  9, 2013 WEX-WEI x86_64/MS Windows 09/10/18 13:43:36 Page 1
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
@@ -72,7 +72,7 @@ C o m p i l a t i o n
   66   
   67  Positive variables
   68  G_PV(h)              Generation of pv plant
-  69  *CU(h)                Curtailment of pv energy
+  69  CU(h)                Curtailment of pv energy
   70  N_PV                PV generation capacities
   71  *N_STO_E(sto)             Capacities: storage energy
   72  *N_STO_P(sto)             Capacities: storage power
@@ -166,86 +166,93 @@ GDXIN   C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\data\in
  161  KKTG
  162  KKTEB
  163  KKTES
- 164  *stolev_no_freelunch        Storage level in initial and last period
- 165  *stolevel                   Storage level dynamics
- 166  *stolev_max_energy          Storage capacity constraint on maximum energy
- 167  *stoin_max_power            Storage capacity constraint on maximum power -
+ 164  KKTCU
+ 165  *stolev_no_freelunch        Storage level in initial and last period
+ 166  *stolevel                   Storage level dynamics
+ 167  *stolev_max_energy          Storage capacity constraint on maximum energy
+ 168  *stoin_max_power            Storage capacity constraint on maximum power -
        storing in
- 168  *stoout_max_power           Storage capacity constraint on maximum power -
+ 169  *stoout_max_power           Storage capacity constraint on maximum power -
        storing out
- 169  *foresight_24h              Perfect foresight only for next 24h
- 170  ;
- 171   
- 172  *** Household energy balance: Satisfy load with own generation, storage an
+ 170  *foresight_24h              Perfect foresight only for next 24h
+ 171  ;
+ 172   
+ 173  *** Household energy balance: Satisfy load with own generation, storage an
       d grid
- 173  hh_energy_balance(h)..
- 174   
+ 174  hh_energy_balance(h)..
  175   
- 176              G_PV(h) + E_buy(h)  =E= d(h)
- 177  *         + sum( sto , STO_OUT(sto,h))
- 178   
+ 176   
+ 177              G_PV(h) + E_buy(h)  =E= d(h)
+ 178  *         + sum( sto , STO_OUT(sto,h))
  179   
- 180  ;
- 181   
- 182  *** Household PV generation usage: Directly consumed, curtailed,stored or 
+ 180   
+ 181  ;
+ 182   
+ 183  *** Household PV generation usage: Directly consumed, curtailed,stored or 
       sold
- 183  pv_generation(h)..
- 184   
+ 184  pv_generation(h)..
  185   
  186   
- 187  *      + CU(res,h)
- 188  *      + sum( sto , STO_IN(sto,h))
- 189           (avail_solar(h) * N_PV)
- 190           =G=
- 191           G_PV(h) + E_sell(h)
- 192   
- 193  ;
- 194   
- 195  *** Restrict PV capacity
- 196  pv_install_max..
- 197   
- 198             pv_cap_max - N_PV =G= 0
- 199  ;
- 200   
+ 187   
+ 188  *      + CU(res,h)
+ 189  *      + sum( sto , STO_IN(sto,h))
+ 190           (avail_solar(h) * N_PV)
+ 191           =E=
+ 192           G_PV(h) + E_sell(h) + CU(h)
+ 193   
+ 194  ;
+ 195   
+ 196  *** Restrict PV capacity
+ 197  pv_install_max..
+ 198   
+ 199             pv_cap_max - N_PV =G= 0
+ 200  ;
  201   
- 202  KKTN..
- 203   
- 204          c_i_pv - sum( h, mu(h)*avail_solar(h)) + gamma =G= 0
- 205   
- 206  ;
- 207   
- 208  KKTEB(h)..
- 209   
- 210           price_buy(h) - lambda(h) =G= 0
- 211   
- 212  ;
- 213   
- 214  KKTES(h)..
- 215   
- 216             -price_market(h)   + mu(h) =G=  0
- 217   
- 218  ;
- 219   
- 220  KKTG(h)..
- 221   
- 222        - lambda(h) + mu(h) =G= 0
- 223   
+ 202   
+ 203  KKTN..
+ 204   
+ 205          c_i_pv - sum( h, mu(h)*avail_solar(h)) + gamma =G= 0
+ 206   
+ 207  ;
+ 208   
+ 209  KKTEB(h)..
+ 210   
+ 211           price_buy(h) - lambda(h) =G= 0
+ 212   
+ 213  ;
+ 214   
+ 215  KKTES(h)..
+ 216   
+ 217             -price_market(h)   + mu(h) =G=  0
+ 218   
+ 219  ;
+ 220   
+ 221  KKTG(h)..
+ 222   
+ 223        - lambda(h) + mu(h) =G= 0
  224   
- 225  ;
- 226   
+ 225   
+ 226  ;
  227   
- 228   
- 229  ***************************** Initialize model ***************************
+ 228  KKTCU(h)..
+ 229   
+ 230        + mu(h) =G= 0
+ 231   
+ 232   
+ 233  ;
+ 234   
+ 235  ***************************** Initialize model ***************************
       ******
- 230  Model prosumodmcp /
- 231  KKTN.N_PV
- 232  KKTG.G_PV
- 233  KKTEB.E_buy
- 234  KKTES.E_sell
- 235  hh_energy_balance.lambda
- 236  pv_generation.mu
- 237  pv_install_max.gamma
- 238   
+ 236  Model prosumodmcp /
+ 237  KKTN.N_PV
+ 238  KKTG.G_PV
+ 239  KKTEB.E_buy
+ 240  KKTES.E_sell
+ 241  hh_energy_balance.lambda
+ 242  pv_generation.mu
+ 243  pv_install_max.gamma
+ 244  KKTCU.CU
+ 245   
       KKTN.N_PV
       KKTG.G_PV
       KKTEB.E_buy
@@ -253,47 +260,47 @@ GDXIN   C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\data\in
       hh_energy_balance.lambda1
       pv_generation.lambda2
       pv_install_max.mu
- 248  /
- 249   
- 250   
- 251  options
- 252  optcr = 0.00
- 253  reslim = 10000000
- 254  lp = cplex
- 255  mcp = path
- 256  nlp = conopt
- 257  dispwidth = 15
- 258  limrow = 0
- 259  limcol = 0
- 260  solprint = off
- 261  sysout = off
- 262  optcr = 1e-3
- 263  optca = 10
- 264  ;
- 265   
- 273   
- 274  solve   prosumodmcp using mcp;
- 275   
- 276  lev_Z      =     sum( h , E_buy.l(h)* price_buy(h) )
- 277                -  sum( h,  E_sell.l(h)* price_market(h) )
- 278                +   c_i_pv  * N_PV.l  ;
- 279   
- 280  lev_EB    =  sum( h , E_buy.l(h));
- 281  lev_ES    = sum( h,  E_sell.l(h));
- 282  check(h)     =  - avail_solar(h) * N_PV.l
- 283           + G_PV.l(h)
- 284           + E_sell.l(h)
- 285   
- 286  display d , N_PV.l ,  N_PV.m, E_buy.l , E_sell.l , G_PV.l
- 287          price_market, hh_energy_balance.m, check,
- 288           mu.l,  lambda.l , gamma.l, lev_Z, lev_EB, lev_ES, KKTN.m
- 289   
- 290   
- 291  ***************************** Set up reporting ***************************
-      ******
+ 255  /
+ 256   
+ 257   
+ 258  options
+ 259  optcr = 0.00
+ 260  reslim = 10000000
+ 261  lp = cplex
+ 262  mcp = path
+ 263  nlp = conopt
+ 264  dispwidth = 15
+ 265  limrow = 0
+ 266  limcol = 0
+ 267  solprint = off
+ 268  sysout = off
+ 269  optcr = 1e-3
+ 270  optca = 10
+ 271  ;
+ 272   
+ 280   
+ 281  solve   prosumodmcp using mcp;
+ 282   
+ 283  lev_Z      =     sum( h , E_buy.l(h)* price_buy(h) )
+ 284                -  sum( h,  E_sell.l(h)* price_market(h) )
+ 285                +   c_i_pv  * N_PV.l  ;
+ 286   
+ 287  lev_EB    =  sum( h , E_buy.l(h));
+ 288  lev_ES    = sum( h,  E_sell.l(h));
+ 289  check(h)     =  - avail_solar(h) * N_PV.l
+ 290           + G_PV.l(h)
+ 291           + E_sell.l(h)
  292   
- 293   
-GAMS 24.2.1  r43572 Released Dec  9, 2013 WEX-WEI x86_64/MS Windows 09/10/18 12:56:07 Page 2
+ 293  display d , N_PV.l ,  N_PV.m, E_buy.l , E_sell.l , G_PV.l
+ 294          price_market, hh_energy_balance.m, check,
+ 295           mu.l,  lambda.l , gamma.l, lev_Z, lev_EB, lev_ES, KKTN.m, CU.l
+ 296   
+ 297   
+ 298  ***************************** Set up reporting ***************************
+      ******
+ 299   
+ 300   
+GAMS 24.2.1  r43572 Released Dec  9, 2013 WEX-WEI x86_64/MS Windows 09/10/18 13:43:36 Page 2
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Include File Summary
 
@@ -307,43 +314,43 @@ Include File Summary
                                           data.gdx
 
 
-COMPILATION TIME     =        0.093 SECONDS     28 MB  24.2.1 r43572 WEX-WEI
-GAMS 24.2.1  r43572 Released Dec  9, 2013 WEX-WEI x86_64/MS Windows 09/10/18 12:56:07 Page 3
+COMPILATION TIME     =        0.109 SECONDS     28 MB  24.2.1 r43572 WEX-WEI
+GAMS 24.2.1  r43572 Released Dec  9, 2013 WEX-WEI x86_64/MS Windows 09/10/18 13:43:36 Page 3
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
-Model Statistics    SOLVE prosumodmcp Using MCP From line 274
+Model Statistics    SOLVE prosumodmcp Using MCP From line 281
 
 
 MODEL STATISTICS
 
-BLOCKS OF EQUATIONS           7     SINGLE EQUATIONS       43,802
-BLOCKS OF VARIABLES           7     SINGLE VARIABLES       43,802
-NON ZERO ELEMENTS        78,734     NON LINEAR N-Z              0
+BLOCKS OF EQUATIONS           8     SINGLE EQUATIONS       52,562
+BLOCKS OF VARIABLES           8     SINGLE VARIABLES       52,562
+NON ZERO ELEMENTS        96,254     NON LINEAR N-Z              0
 DERIVATIVE POOL              10     CONSTANT POOL              16
 CODE LENGTH                   0
 
 
-GENERATION TIME      =        0.078 SECONDS     39 MB  24.2.1 r43572 WEX-WEI
+GENERATION TIME      =        0.078 SECONDS     41 MB  24.2.1 r43572 WEX-WEI
 
 
-EXECUTION TIME       =        0.094 SECONDS     39 MB  24.2.1 r43572 WEX-WEI
-GAMS 24.2.1  r43572 Released Dec  9, 2013 WEX-WEI x86_64/MS Windows 09/10/18 12:56:07 Page 4
+EXECUTION TIME       =        0.078 SECONDS     41 MB  24.2.1 r43572 WEX-WEI
+GAMS 24.2.1  r43572 Released Dec  9, 2013 WEX-WEI x86_64/MS Windows 09/10/18 13:43:36 Page 4
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
-Solution Report     SOLVE prosumodmcp Using MCP From line 274
+Solution Report     SOLVE prosumodmcp Using MCP From line 281
 
 
                S O L V E      S U M M A R Y
 
      MODEL   prosumodmcp         
      TYPE    MCP                 
-     SOLVER  PATH                FROM LINE  274
+     SOLVER  PATH                FROM LINE  281
 
 **** SOLVER STATUS     1 Normal Completion         
 **** MODEL STATUS      1 Optimal                   
 
- RESOURCE USAGE, LIMIT         29.967  10000000.000
+ RESOURCE USAGE, LIMIT         28.611  10000000.000
  ITERATION COUNT, LIMIT      8022    2000000000
  EVALUATION ERRORS              0             0
-43802 row/cols, 78734 non-zeros, 0.00% dense.
+52562 row/cols, 96254 non-zeros, 0.00% dense.
 
 Path 4.7.02 (Mon Dec 09 08:54:09 2013)
 Written by Todd Munson, Steven Dirkse, and Michael Ferris
@@ -379,14 +386,14 @@ Maximum of Grad F . . . . . . .  1.0000e+000 eqn: (hh_energy_balance(h8))
 **** REPORT SUMMARY :        0     NONOPT
                              0 INFEASIBLE
                              0  UNBOUNDED
-                            18  REDEFINED (REDEF)
+                            36  REDEFINED (REDEF)
                              0     ERRORS
-GAMS 24.2.1  r43572 Released Dec  9, 2013 WEX-WEI x86_64/MS Windows 09/10/18 12:56:07 Page 5
+GAMS 24.2.1  r43572 Released Dec  9, 2013 WEX-WEI x86_64/MS Windows 09/10/18 13:43:36 Page 5
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 E x e c u t i o n
 
 
-----    286 PARAMETER d  Household load
+----    293 PARAMETER d  Household load
 
 h1    0.613,    h2    0.651,    h3    0.715,    h4    0.573,    h5    0.641
 h6    0.514,    h7    0.556,    h8    0.551,    h9    0.590,    h10   0.695
@@ -2142,12 +2149,12 @@ h8751 0.172,    h8752 1.019,    h8753 1.079,    h8754 1.659,    h8755 0.664
 h8756 0.197,    h8757 0.253,    h8758 0.191,    h8759 0.126,    h8760 0.497
 
 
-----    286 VARIABLE N_PV.L                =           5.669  PV generation capa
+----    293 VARIABLE N_PV.L                =           5.669  PV generation capa
                                                               cities
             VARIABLE N_PV.M                =  -1.46520662E-8  PV generation capa
                                                               cities
 
-----    286 VARIABLE E_buy.L  Energy purchased from market
+----    293 VARIABLE E_buy.L  Energy purchased from market
 
 h1             0.613,    h2             0.651,    h3             0.715
 h4             0.573,    h5             0.641,    h6             0.514
@@ -4126,7 +4133,7 @@ h8757          0.253,    h8758          0.191,    h8759          0.126
 h8760          0.497
 
 
-----    286 VARIABLE E_sell.L  Energy sold to market
+----    293 VARIABLE E_sell.L  Energy sold to market
 
 h10            0.104,    h11            0.392,    h12            0.142
 h61            0.551,    h62            0.175,    h83            0.156
@@ -5070,7 +5077,7 @@ h8703          0.197,    h8722          0.120,    h8723          0.077
 h8724          0.044
 
 
-----    286 VARIABLE G_PV.L  Generation of pv plant
+----    293 VARIABLE G_PV.L  Generation of pv plant
 
 h8    0.017,    h9    0.329,    h10   0.695,    h11   0.595,    h12   0.697
 h13   0.380,    h14   0.283,    h15   0.079,    h33   0.147,    h34   0.272
@@ -5940,7 +5947,7 @@ h8726 0.113,    h8727 0.006,    h8746 0.011,    h8747 0.023,    h8748 0.034
 h8749 0.017
 
 
-----    286 PARAMETER price_market  Price for selling energy per kWh
+----    293 PARAMETER price_market  Price for selling energy per kWh
 
 h1             0.013,    h2             0.012,    h3             0.012
 h4             0.012,    h5             0.011,    h6             0.010
@@ -8864,7 +8871,7 @@ h8755          0.031,    h8756          0.029,    h8757          0.029
 h8758          0.030,    h8759          0.028,    h8760          0.025
 
 
-----    286 EQUATION hh_energy_balance.M  Household energy balance
+----    293 EQUATION hh_energy_balance.M  Household energy balance
 
 h1             0.300,    h2             0.300,    h3             0.300
 h4             0.300,    h5             0.300,    h6             0.300
@@ -11782,7 +11789,7 @@ h8755          0.300,    h8756          0.300,    h8757          0.300
 h8758          0.300,    h8759          0.300,    h8760          0.300
 
 
-----    286 PARAMETER check  
+----    293 PARAMETER check  
 
 h8    -1.2195314E-12,    h9    -2.3683611E-11,    h13   -2.7384484E-11
 h14   -2.0461410E-11,    h15   -5.7270161E-12,    h33   -1.0641293E-11
@@ -12289,7 +12296,7 @@ h8727 -2.4540352E-13,    h8746 6.91424903E-11,    h8747 -1.7668332E-12
 h8748 -2.3330435E-12,    h8749 -1.1010359E-12
 
 
-----    286 VARIABLE mu.L  
+----    293 VARIABLE mu.L  
 
 h1             0.300,    h2             0.300,    h3             0.300
 h4             0.300,    h5             0.300,    h6             0.300
@@ -15207,7 +15214,7 @@ h8755          0.300,    h8756          0.300,    h8757          0.300
 h8758          0.300,    h8759          0.300,    h8760          0.300
 
 
-----    286 VARIABLE lambda.L  
+----    293 VARIABLE lambda.L  
 
 h1             0.300,    h2             0.300,    h3             0.300
 h4             0.300,    h5             0.300,    h6             0.300
@@ -18125,14 +18132,19 @@ h8755          0.300,    h8756          0.300,    h8757          0.300
 h8758          0.300,    h8759          0.300,    h8760          0.300
 
 
-----    286 VARIABLE gamma.L               =           0.000  
+----    293 VARIABLE gamma.L               =           0.000  
             PARAMETER lev_Z                =        1282.270  level of objective
             PARAMETER lev_EB               =        3564.913  total bought power
             PARAMETER lev_ES               =        3997.070  total sold power
             EQUATION KKTN.M                =           5.669  
 
+----    293 VARIABLE CU.L  Curtailment of pv energy
 
-EXECUTION TIME       =        0.063 SECONDS     34 MB  24.2.1 r43572 WEX-WEI
+                      ( ALL          0.000 )
+
+
+
+EXECUTION TIME       =        0.062 SECONDS     36 MB  24.2.1 r43572 WEX-WEI
 
 
 USER: Abteilung Energie, Verkehr, Umwelt, 5 User     S131220:0515AN-GEN
