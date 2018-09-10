@@ -59,6 +59,10 @@ hh_profile       Household load data                     /V1*V74/
 
 ;
 
+Positive Variables
+mu(h)
+lambda(h)
+gamma
 
 Positive variables
 G_PV(h)              Generation of pv plant
@@ -71,9 +75,7 @@ N_PV                PV generation capacities
 *STO_OUT(sto,h)           Storage generation
 E_buy(h)                 Energy purchased from market
 E_sell(h)                Energy sold to market
-mu
-lambda2(h)
-lambda1(h)
+
 
 ;
 
@@ -88,7 +90,7 @@ avail_solar_upload(h,year)  Hourly capacity factor pv - upload parameter
 pv_cap_max             PV capacity maximum
 price_market(h)             Price for selling energy per kWh
 price_market_upload(h,year) Price for selling energy per MWh - upload parameter
-price_buy                   Price for energy consumption per kWh
+price_buy(h)                   Price for energy consumption per kWh
 *c_i_sto_e(sto)              Cost: investment into storage energy
 *c_i_sto_p(sto)              Cost: investment into storage power
 c_i_pv                      Cost: investment into renewable capacity
@@ -114,7 +116,7 @@ penalty = 0 ;
 *c_i_sto_p(sto)  = 50995.48/1000 ;
 c_i_pv           = 60526.64/1000 ;
 *c_var_sto(sto)  =     0.5/1000 ;
-price_buy        =    0.30 ;
+price_buy(h)        =    0.30 ;
 
 * Declare further restrictions
 pv_cap_max =  10;
@@ -171,9 +173,9 @@ KKTES
 hh_energy_balance(h)..
 
 
-           - G_PV(h)
+            G_PV(h) + E_buy(h)  =E= d(h)
 *         + sum( sto , STO_OUT(sto,h))
-            - E_buy(h) + d(h)  =G= 0
+
 
 ;
 
@@ -184,39 +186,44 @@ pv_generation(h)..
 
 *      + CU(res,h)
 *      + sum( sto , STO_IN(sto,h))
-        0 =E=
-         + G_PV(h)
-         + E_sell(h)
-         - (avail_solar(h) * N_PV)
+         (avail_solar(h) * N_PV)
+         =G=
+         G_PV(h) + E_sell(h)
 
 ;
 
 *** Restrict PV capacity
 pv_install_max..
 
-           pv_cap_max =G= N_PV
+           pv_cap_max - N_PV =G= 0
 ;
 
-*** Restrict PV capacity
+
 KKTN..
 
-       0 =G= c_i_pv + sum( h , lambda2(h)* avail_solar(h)) - mu
-;
+        c_i_pv - sum( h, mu(h)*avail_solar(h)) + gamma =G= 0
 
-KKTG(h)..
-
-       0 =G= lambda1(h) -  lambda2(h)
 ;
 
 KKTEB(h)..
 
-     0 =G= price_buy + lambda1(h)
+         price_buy(h) - lambda(h) =G= 0
+
 ;
 
 KKTES(h)..
 
-     0 =G= - price_market(h) -  lambda2(h)
+           -price_market(h)   + mu(h) =G=  0
+
 ;
+
+KKTG(h)..
+
+      - lambda(h) + mu(h) =G= 0
+
+
+;
+
 
 
 ***************************** Initialize model *********************************
@@ -225,9 +232,9 @@ KKTN.N_PV
 KKTG.G_PV
 KKTEB.E_buy
 KKTES.E_sell
-hh_energy_balance.lambda1
-pv_generation.lambda2
-pv_install_max.mu
+hh_energy_balance.lambda
+pv_generation.mu
+pv_install_max.gamma
 
 $ontext
 KKTN.N_PV
@@ -266,7 +273,7 @@ $offecho
 
 solve   prosumodmcp using mcp;
 
-lev_Z      =     sum( h , E_buy.l(h)* price_buy )
+lev_Z      =     sum( h , E_buy.l(h)* price_buy(h) )
               -  sum( h,  E_sell.l(h)* price_market(h) )
               +   c_i_pv  * N_PV.l  ;
 
@@ -278,7 +285,7 @@ check(h)     =  - avail_solar(h) * N_PV.l
 
 display d , N_PV.l ,  N_PV.m, E_buy.l , E_sell.l , G_PV.l
         price_market, hh_energy_balance.m, check,
-         mu.l,  lambda1.l , lambda2.l, lev_Z, lev_EB, lev_ES
+         mu.l,  lambda.l , gamma.l, lev_Z, lev_EB, lev_ES, KKTN.m
 
 
 ***************************** Set up reporting *********************************

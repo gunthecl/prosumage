@@ -81,4 +81,4 @@ $offecho
 
 solve   testmodel using lp min Z;
 
-display g.l, Z.l, energy_balance.m
+display g.l, Z.l; energy_balance.m

@@ -1,16 +1,18 @@
 B 2 C o m p i l a t i o n
-B 314 Include File Summary
-B 330 Model Statistics    SOLVE prosumod Using LP From line 292
-B 346 Solution Report     SOLVE prosumod Using LP From line 292
-B 380 E x e c u t i o n
-I 381 d
-I 2139 N_PV
-I 2141 Z
-I 2142 E_buy
-I 4123 E_sell
-I 5070 G_PV
-I 5940 price_market
-I 8864 hh_energy_balance
-I 11789 lev_Z
-I 11790 lev_EB
-I 11791 lev_ES
+B 315 Include File Summary
+B 331 Model Statistics    SOLVE prosumod Using LP From line 292
+B 347 Solution Report     SOLVE prosumod Using LP From line 292
+B 381 E x e c u t i o n
+I 382 d
+I 2140 N_PV
+I 2142 Z
+I 2143 E_buy
+I 4122 E_sell
+I 5066 G_PV
+I 5936 price_market
+I 8860 hh_energy_balance
+I 11785 lev_Z
+I 11786 lev_EB
+I 11787 lev_ES
+I 11788 pv_install_max
+I 11790 pv_generation

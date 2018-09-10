@@ -1,4 +1,4 @@
-GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 09/04/18 17:24:27 Page 1
+GAMS 24.2.1  r43572 Released Dec  9, 2013 WEX-WEI x86_64/MS Windows 09/10/18 12:00:06 Page 1
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
@@ -78,7 +78,7 @@ C o m p i l a t i o n
   69  sum(g , X( g ))=G= d
   70  ;
   71  mkt_CAP( g )..
-  72  cap ( g)*theta ( g ) =G= X(g)
+  72  cap (g) =G= X(g)
   73  ;
   74   
   75  model elec_LP /obj , mkt_E, mkt_CAP/;
@@ -110,32 +110,31 @@ C o m p i l a t i o n
   98   
   99  Positive  Variable
  100  P  e l e c t r i c i t y  price  in  $  per MWh
- 101  PCAP(g)
- 102  capacity  price  in  $  per MWh
- 103  ;
- 104  Equation
- 105  zpf_X(g)
- 106  zero  p r o f i t s  generation  in  $
- 107  ;
- 108  zpf_X(g)..
- 109  sum(m(g , f ) ,  pf ( f )/ eta ( g )) + c ( g ) + PCAP( g )
- 110  =G=
- 111  P
- 112  ;
- 113  model elec_MCP /zpf_X.X, mkt_E.P, mkt_CAP.PCAP/;
- 114  *Set  some  i n i t i a l  v a l u e s
- 115   
- 116  X.L(g) = 1;
- 117  solve  elec_MCP using MCP;
- 118  compare ("MCP" ," Generation " , g ) = X.L( g ) ;
- 119  compare ("MCP" ," Elec  Price " ," x ")    = P.L;
- 120  compare ("MCP" ," Cap Price " , g ) = PCAP.L( g ) ;
- 121  display
- 122  compare ;
+ 101  PCAP(g) capacity  price  in  $  per MWh
+ 102  ;
+ 103  Equation
+ 104  zpf_X(g)
+ 105  zero  p r o f i t s  generation  in  $
+ 106  ;
+ 107  zpf_X(g)..
+ 108  sum(m(g , f ) ,  pf ( f )/ eta ( g )) + c ( g ) + PCAP( g )
+ 109  =G=
+ 110  P
+ 111  ;
+ 112  model elec_MCP /zpf_X.X, mkt_E.P, mkt_CAP.PCAP/;
+ 113  *Set  some  i n i t i a l  v a l u e s
+ 114   
+ 115  X.L(g) = 1;
+ 116  solve  elec_MCP using MCP;
+ 117  compare ("MCP" ," Generation " , g ) = X.L( g ) ;
+ 118  compare ("MCP" ," Elec  Price " ," x ")    = P.L;
+ 119  compare ("MCP" ," Cap Price " , g ) = PCAP.L( g ) ;
+ 120  display
+ 121  compare ;
 
 
-COMPILATION TIME     =        0.000 SECONDS      3 MB  24.7.4 r58773 WEX-WEI
-GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 09/04/18 17:24:27 Page 2
+COMPILATION TIME     =        0.000 SECONDS      3 MB  24.2.1 r43572 WEX-WEI
+GAMS 24.2.1  r43572 Released Dec  9, 2013 WEX-WEI x86_64/MS Windows 09/10/18 12:00:06 Page 2
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Equation Listing    SOLVE elec_LP Using LP From line 81
 
@@ -160,7 +159,7 @@ mkt_CAP(nuc)..  - X(nuc) =G= -300 ; (LHS = -1)
      
 mkt_CAP(ccgt)..  - X(ccgt) =G= -300 ; (LHS = -1)
      
-GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 09/04/18 17:24:27 Page 3
+GAMS 24.2.1  r43572 Released Dec  9, 2013 WEX-WEI x86_64/MS Windows 09/10/18 12:00:06 Page 3
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Column Listing      SOLVE elec_LP Using LP From line 81
 
@@ -192,7 +191,7 @@ X(ccgt)
         1       mkt_E
        -1       mkt_CAP(ccgt)
 
-GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 09/04/18 17:24:27 Page 4
+GAMS 24.2.1  r43572 Released Dec  9, 2013 WEX-WEI x86_64/MS Windows 09/10/18 12:00:06 Page 4
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Model Statistics    SOLVE elec_LP Using LP From line 81
 
@@ -204,11 +203,11 @@ BLOCKS OF VARIABLES           2     SINGLE VARIABLES            4
 NON ZERO ELEMENTS            10
 
 
-GENERATION TIME      =        0.016 SECONDS      4 MB  24.7.4 r58773 WEX-WEI
+GENERATION TIME      =        0.000 SECONDS      4 MB  24.2.1 r43572 WEX-WEI
 
 
-EXECUTION TIME       =        0.016 SECONDS      4 MB  24.7.4 r58773 WEX-WEI
-GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 09/04/18 17:24:27 Page 5
+EXECUTION TIME       =        0.000 SECONDS      4 MB  24.2.1 r43572 WEX-WEI
+GAMS 24.2.1  r43572 Released Dec  9, 2013 WEX-WEI x86_64/MS Windows 09/10/18 12:00:06 Page 5
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE elec_LP Using LP From line 81
 
@@ -223,11 +222,11 @@ Solution Report     SOLVE elec_LP Using LP From line 81
 **** MODEL STATUS      1 Optimal                   
 **** OBJECTIVE VALUE            70000.0000
 
- RESOURCE USAGE, LIMIT          0.016      1000.000
+ RESOURCE USAGE, LIMIT          0.015      1000.000
  ITERATION COUNT, LIMIT         0    2000000000
 
-IBM ILOG CPLEX   24.7.4 r58773 Released Sep 19, 2016 WEI x86 64bit/MS Windows 
-Cplex 12.6.3.0
+IBM ILOG CPLEX   24.2.1 r43572 Released Dec  9, 2013 WEI x86_64/MS Windows    
+Cplex 12.6.0.0
 
 Space for names approximately 0.00 Mb
 Use option 'names no' to turn use of names off
@@ -268,9 +267,9 @@ ccgt      .      300.000     +INF       .
 **** REPORT SUMMARY :        0     NONOPT
                              0 INFEASIBLE
                              0  UNBOUNDED
-GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 09/04/18 17:24:27 Page 6
+GAMS 24.2.1  r43572 Released Dec  9, 2013 WEX-WEI x86_64/MS Windows 09/10/18 12:00:06 Page 6
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
-Equation Listing    SOLVE elec_MCP Using MCP From line 117
+Equation Listing    SOLVE elec_MCP Using MCP From line 116
 
 
 ---- zpf_X  =G=  
@@ -295,9 +294,9 @@ mkt_CAP(nuc)..  - X(nuc) =G= -300 ; (LHS = -1)
      
 mkt_CAP(ccgt)..  - X(ccgt) =G= -300 ; (LHS = -1)
      
-GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 09/04/18 17:24:27 Page 7
+GAMS 24.2.1  r43572 Released Dec  9, 2013 WEX-WEI x86_64/MS Windows 09/10/18 12:00:06 Page 7
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
-Column Listing      SOLVE elec_MCP Using MCP From line 117
+Column Listing      SOLVE elec_MCP Using MCP From line 116
 
 
 ---- X  generation  in MWh
@@ -327,7 +326,7 @@ P
        -1       zpf_X(ccgt)
 
 
----- PCAP  
+---- PCAP  capacity  price  in  $  per MWh
 
 PCAP(coal)
                 (.LO, .L, .UP, .M = 0, 0, +INF, 0)
@@ -341,9 +340,9 @@ PCAP(ccgt)
                 (.LO, .L, .UP, .M = 0, 0, +INF, 0)
         1       zpf_X(ccgt)
 
-GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 09/04/18 17:24:27 Page 8
+GAMS 24.2.1  r43572 Released Dec  9, 2013 WEX-WEI x86_64/MS Windows 09/10/18 12:00:06 Page 8
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
-Model Statistics    SOLVE elec_MCP Using MCP From line 117
+Model Statistics    SOLVE elec_MCP Using MCP From line 116
 
 
 MODEL STATISTICS
@@ -351,34 +350,34 @@ MODEL STATISTICS
 BLOCKS OF EQUATIONS           3     SINGLE EQUATIONS            7
 BLOCKS OF VARIABLES           3     SINGLE VARIABLES            7
 NON ZERO ELEMENTS            12     NON LINEAR N-Z              0
-DERIVATIVE POOL              20     CONSTANT POOL              16
+DERIVATIVE POOL              10     CONSTANT POOL              16
 CODE LENGTH                   0
 
 
-GENERATION TIME      =        0.000 SECONDS      3 MB  24.7.4 r58773 WEX-WEI
+GENERATION TIME      =        0.000 SECONDS      3 MB  24.2.1 r43572 WEX-WEI
 
 
-EXECUTION TIME       =        0.000 SECONDS      3 MB  24.7.4 r58773 WEX-WEI
-GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 09/04/18 17:24:27 Page 9
+EXECUTION TIME       =        0.000 SECONDS      3 MB  24.2.1 r43572 WEX-WEI
+GAMS 24.2.1  r43572 Released Dec  9, 2013 WEX-WEI x86_64/MS Windows 09/10/18 12:00:06 Page 9
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
-Solution Report     SOLVE elec_MCP Using MCP From line 117
+Solution Report     SOLVE elec_MCP Using MCP From line 116
 
 
                S O L V E      S U M M A R Y
 
      MODEL   elec_MCP            
      TYPE    MCP                 
-     SOLVER  PATH                FROM LINE  117
+     SOLVER  PATH                FROM LINE  116
 
 **** SOLVER STATUS     1 Normal Completion         
 **** MODEL STATUS      1 Optimal                   
 
- RESOURCE USAGE, LIMIT          0.110      1000.000
+ RESOURCE USAGE, LIMIT          0.093      1000.000
  ITERATION COUNT, LIMIT         6    2000000000
  EVALUATION ERRORS              0             0
 7 row/cols, 12 non-zeros, 24.49% dense.
 
-Path 4.7.04 (Mon Sep 19 11:18:59 2016)
+Path 4.7.02 (Mon Dec 09 08:54:09 2013)
 Written by Todd Munson, Steven Dirkse, and Michael Ferris
 
 INITIAL POINT STATISTICS
@@ -442,7 +441,7 @@ ccgt      .      300.000     +INF       .
 
   P  e l e c t r i c i t y  price  in  $  per MWh
 
----- VAR PCAP  
+---- VAR PCAP  capacity  price  in  $  per MWh
 
         LOWER     LEVEL     UPPER    MARGINAL
 
@@ -456,12 +455,12 @@ ccgt      .      167.971     +INF       .
                              0  UNBOUNDED
                              0  REDEFINED
                              0     ERRORS
-GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 09/04/18 17:24:27 Page 10
+GAMS 24.2.1  r43572 Released Dec  9, 2013 WEX-WEI x86_64/MS Windows 09/10/18 12:00:06 Page 10
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 E x e c u t i o n
 
 
-----    122 PARAMETER compare  s t o r e s  solution  values
+----    121 PARAMETER compare  s t o r e s  solution  values
 
                         coal        ccgt           x
 
@@ -474,17 +473,17 @@ MCP. Cap Price       318.257     167.971
 
 
 
-EXECUTION TIME       =        0.000 SECONDS      3 MB  24.7.4 r58773 WEX-WEI
+EXECUTION TIME       =        0.000 SECONDS      3 MB  24.2.1 r43572 WEX-WEI
 
 
-USER: Course License Energy Informatics Computer BaseS180601:0449AO-GEN
-      Humboldt-Universitaet zu Berlin, WirtschaftswissenschaftliDC14161
+USER: Abteilung Energie, Verkehr, Umwelt, 5 User     S131220:0515AN-GEN
+      Deutsches Institut fuer Wirtschaftsforschung DIW           DC3975
       License for teaching and research at degree granting institutions
 
 
 **** FILE SUMMARY
 
-Input      C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Code\Test_MCP\abrell2
-           .gms
-Output     C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Code\Test_MCP\abrell2
-           .lst
+Input      C:\Users\cguenther\Documents\GitHub\prosumage\Code\Test_MCP\abrell2.g
+           ms
+Output     C:\Users\cguenther\Documents\GitHub\prosumage\Code\Test_MCP\abrell2.l
+           st

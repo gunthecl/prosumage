@@ -21,8 +21,8 @@ cap(tech)  capactiy max
 lev_Z      total costs
 ;
 
-d(t)   = 500  ;
-*d('2')   = 500 ;
+d('1')   = 500  ;
+d('2')   = 400 ;
 cv('g')  = 200;
 cv('c')  = 50;
 cv('o')  = 2000;

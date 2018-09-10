@@ -1,23 +1,120 @@
 
---- Job Test3.gms Start 09/04/18 12:39:56 24.2.1 r43572 WEX-WEI x86_64/MS Windows
+--- Job Test3.gms Start 09/10/18 12:56:07 24.2.1 r43572 WEX-WEI x86_64/MS Windows
 GAMS 24.2.1   Copyright (C) 1987-2013 GAMS Development. All rights reserved
 Licensee: Abteilung Energie, Verkehr, Umwelt, 5 User     S131220:0515AN-GEN
           Deutsches Institut fuer Wirtschaftsforschung DIW           DC3975
           License for teaching and research at degree granting institutions
 --- Starting compilation
---- Test3.gms(135) 3 Mb
---- GDXin=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Code\Prosumage_Opt\data\input_data.gdx
---- Test3.gms(330) 28 Mb
---- Starting execution: elapsed 0:00:00.143
---- Test3.gms(289) 29 Mb
+--- Test3.gms(137) 3 Mb
+--- GDXin=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\data\input_data.gdx
+--- Test3.gms(293) 28 Mb
+--- Starting execution: elapsed 0:00:00.105
+--- Test3.gms(252) 30 Mb
 --- Generating MCP model prosumodmcp
---- Test3.gms(311) 40 Mb 8760 Errors
----   35,042 rows  43,802 columns  61,214 non-zeroes
+--- Test3.gms(274) 41 Mb
+---   43,802 rows  43,802 columns  78,734 non-zeroes
 ---   0 nl-code  0 nl-non-zeroes
---- Test3.gms(311) 38 Mb
-*** SOLVE aborted
---- Executing PATH: elapsed 0:00:00.237
---- Test3.gms(311) 38 Mb 8760 Errors
-*** Status: Execution error(s)
---- Job Test3.gms Stop 09/04/18 12:39:57 elapsed 0:00:00.240
-Exit code = 3
+--- Test3.gms(274) 39 Mb
+--- Executing PATH: elapsed 0:00:00.189
+Reading dictionary...
+Reading row data...
+Evaluating functions...
+Checking model...
+Calculating Jacobian...
+
+PATH             24.2.1 r43572 Released Dec  9, 2013 WEI x86_64/MS Windows    
+
+43802 row/cols, 78734 non-zeros, 0.00% dense.
+
+Path 4.7.02 (Mon Dec 09 08:54:09 2013)
+Written by Todd Munson, Steven Dirkse, and Michael Ferris
+
+Zero:  4434 Single: 21955 Double:     0
+Preprocessed size   : 12979
+
+INITIAL POINT STATISTICS
+Maximum of X. . . . . . . . . .  7.2940e-002 var: (mu(h800))
+Maximum of F. . . . . . . . . .  2.3551e+001 eqn: (KKTN)
+Maximum of Grad F . . . . . . .  1.0000e+000 eqn: (hh_energy_balance(h8))
+                                            var: (G_PV(h8))
+
+INITIAL JACOBIAN NORM STATISTICS
+Maximum Row Norm. . . . . . . .  1.1282e+003 eqn: (KKTN)
+Minimum Row Norm. . . . . . . .  1.0000e+000 eqn: (hh_energy_balance(h8))
+Maximum Column Norm . . . . . .  1.1282e+003 var: (N_PV)
+Minimum Column Norm . . . . . .  1.0000e+000 var: (lambda(h8))
+
+Crash Log
+major  func  diff  size  residual    step       prox   (label)
+    0     0             2.9322e+001             0.0e+000 (hh_energy_balance(h5076)
+    1     2  8820  4326 2.7042e+001  8.0e-001    2.9e-001 (KKTG(h1111))
+    2     9  8484  8820 2.4970e+001  6.9e-002    2.6e-001 (pv_generation(h5076))
+    3    15  4090 12978 2.3790e+001  1.7e-001    2.4e-001 (KKTN)
+    4    22     1 12979 2.3691e+001  6.9e-002    2.1e-001 (KKTN)
+pn_search terminated: no basis change.
+
+Major Iteration Log
+major minor  func  grad  residual    step  type prox    inorm  (label)
+    0     0    23     5 2.3691e+001           I 1.9e-001 1.9e+001 (KKTN)
+
+Minor Iteration Log
+minor      t          z     w     v   art ckpts  enter    leave
+  500  6.5455e-003 12479    31   468     0     9 w[12308] z[ 4808]
+ 1000  9.9519e-003 11979    53   946     0    19 v[ 4969] z[ 7777]
+ 1500  1.4202e-002 11479   100  1399     0    29 v[ 6855] z[12259]
+ 2000  2.0637e-002 10979   150  1849     0    39 v[ 7032] z[ 7048]
+ 2500  3.2420e-002 10479   209  2290     0    49 v[ 6044] z[ 6542]
+ 3000  5.4940e-002  9979   293  2706     0    58 v[ 6570] z[ 6825]
+ 3500  1.0701e-001  9479   487  3012     0    68 v[ 5203] z[11483]
+ 4000  2.4404e-001  9047   837  3094     0    78 w[ 9993] z[10984]
+ 4500  4.0117e-001  8883  1136  2959     0    88 z[ 5195] z[11952]
+ 5000  5.3496e-001  8830  1374  2774     0    98 w[10197] v[ 7272]
+ 5500  6.5551e-001  8799  1603  2576     0   107 z[ 5874] z[12175]
+ 6000  7.7648e-001  8775  1845  2358     0   117 w[ 9964] z[ 9304]
+ 6500  8.7150e-001  8763  2100  2115     0   127 z[ 7621] z[  202]
+ 7000  9.3606e-001  8708  2378  1892     0   137 z[ 6757] v[ 7948]
+ 7500  9.8418e-001  8674  2645  1659     0   147 z[ 6383] v[ 4736]
+
+Major Iteration Log
+major minor  func  grad  residual    step  type prox    inorm  (label)
+    1  7707    24     6 3.1329e+000  1.0e+000 SM 7.7e-002 3.9e-001 (KKTN)
+    2   267    25     7 1.3800e-001  1.0e+000 SO 3.1e-002 1.2e-002 (pv_generation(h)
+    3    36    26     8 9.0385e-003  1.0e+000 SO 1.2e-002 2.4e-003 (pv_generation(h)
+    4    10    27     9 3.2551e-004  1.0e+000 SO 9.0e-004 1.5e-004 (hh_energy_balan)
+    5     2    28    10 2.2692e-007  1.0e+000 SO 3.3e-005 1.9e-007 (hh_energy_balan)
+
+FINAL STATISTICS
+Inf-Norm of Complementarity . .  8.3243e-008 eqn: (pv_generation(h2414))
+Inf-Norm of Normal Map. . . . .  1.8643e-007 eqn: (hh_energy_balance(h5201))
+Inf-Norm of Minimum Map . . . .  1.8643e-007 eqn: (hh_energy_balance(h5201))
+Inf-Norm of Fischer Function. .  1.8643e-007 eqn: (hh_energy_balance(h5201))
+Inf-Norm of Grad Fischer Fcn. .  1.8643e-007 eqn: (KKTG(h5201))
+Two-Norm of Grad Fischer Fcn. .  3.7677e-007
+
+FINAL POINT STATISTICS
+Maximum of X. . . . . . . . . .  5.6689e+000 var: (N_PV)
+Maximum of F. . . . . . . . . .  4.0819e+000 eqn: (pv_generation(h2052))
+Maximum of Grad F . . . . . . .  1.0000e+000 eqn: (hh_energy_balance(h8))
+                                            var: (G_PV(h8))
+
+ ** EXIT - solution found.
+
+Major Iterations. . . . 5
+Minor Iterations. . . . 8022
+Restarts. . . . . . . . 0
+Crash Iterations. . . . 4
+Gradient Steps. . . . . 0
+Function Evaluations. . 28
+Gradient Evaluations. . 10
+Total Time. . . . . . . 29.822000
+Residual. . . . . . . . 2.269221e-007
+Postsolved residual: 2.2692e-007
+
+--- Restarting execution
+--- Test3.gms(274) 30 Mb
+--- Reading solution for model prosumodmcp
+--- Test3.gms(274) 34 Mb
+--- Executing after solve: elapsed 0:00:30.633
+--- Test3.gms(286) 34 Mb
+*** Status: Normal completion
+--- Job Test3.gms Stop 09/10/18 12:56:37 elapsed 0:00:30.671

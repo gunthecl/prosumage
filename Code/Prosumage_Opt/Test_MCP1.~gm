@@ -94,6 +94,8 @@ c_i_pv                Cost: investment into renewable capacity
 *c_var_sto(sto)              Cost: variable generation costs storage
 penalty                     Penalty term
 lev_Z
+lev_EB
+lev_ES
 
 ;
 
@@ -184,7 +186,7 @@ hh_energy_balance(h)..
 *** Household PV generation usage: Directly consumed, curtailed,stored or sold
 pv_generation(h)..
 
-      avail_solar(h) * N_PV =E=
+      avail_solar(h) * N_PV =G=
         G_PV(h)
 *      + CU(res,h)
 *      + sum( sto , STO_IN(sto,h))
@@ -294,9 +296,11 @@ lev_Z      =    sum( h , E_buy.l(h)* price_buy )
               +  c_i_pv*N_PV.l
 
 ;
+lev_EB    =  sum( h , E_buy.l(h));
+lev_ES    = sum( h,  E_sell.l(h));
 
 display d , N_PV.l , Z.l, E_buy.l , E_sell.l ,  G_PV.l,
-        price_market, hh_energy_balance.m, lev_Z
+        price_market, hh_energy_balance.m, lev_Z,  lev_EB, lev_ES
 
 
 ***************************** Set up reporting *********************************

@@ -186,7 +186,7 @@ hh_energy_balance(h)..
 *** Household PV generation usage: Directly consumed, curtailed,stored or sold
 pv_generation(h)..
 
-      avail_solar(h) * N_PV =E=
+      avail_solar(h) * N_PV =G=
         G_PV(h)
 *      + CU(res,h)
 *      + sum( sto , STO_IN(sto,h))
@@ -300,7 +300,8 @@ lev_EB    =  sum( h , E_buy.l(h));
 lev_ES    = sum( h,  E_sell.l(h));
 
 display d , N_PV.l , Z.l, E_buy.l , E_sell.l ,  G_PV.l,
-        price_market, hh_energy_balance.m, lev_Z,  lev_EB, lev_ES
+        price_market, hh_energy_balance.m, lev_Z,  lev_EB, lev_ES,
+        pv_install_max.m, pv_generation.m
 
 
 ***************************** Set up reporting *********************************

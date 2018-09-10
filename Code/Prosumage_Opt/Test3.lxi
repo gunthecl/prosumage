@@ -1,4 +1,21 @@
 B 2 C o m p i l a t i o n
-B 334 Include File Summary
-B 350 Model Analysis      SOLVE prosumodmcp Using MCP From line 311
-B 26634 Model Statistics    SOLVE prosumodmcp Using MCP From line 311
+B 297 Include File Summary
+B 312 Model Statistics    SOLVE prosumodmcp Using MCP From line 274
+B 330 Solution Report     SOLVE prosumodmcp Using MCP From line 274
+B 385 E x e c u t i o n
+I 386 d
+I 2144 N_PV
+I 2146 N_PV
+I 2148 E_buy
+I 4127 E_sell
+I 5071 G_PV
+I 5941 price_market
+I 8865 hh_energy_balance
+I 11783 check
+I 12290 mu
+I 15208 lambda
+I 18127 gamma
+I 18128 lev_Z
+I 18129 lev_EB
+I 18130 lev_ES
+I 18131 KKTN

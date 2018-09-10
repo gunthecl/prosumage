@@ -1,33 +1,33 @@
 B 2 C o m p i l a t i o n
-B 142 Equation Listing    SOLVE elec_LP Using LP From line 82
-D 143 obj
-D 151 mkt_E
-D 156 mkt_CAP
-B 167 Column Listing      SOLVE elec_LP Using LP From line 82
-E 168 COST
-E 176 X
-B 199 Model Statistics    SOLVE elec_LP Using LP From line 82
-B 215 Solution Report     SOLVE elec_LP Using LP From line 82
-F 244 obj
-F 245 mkt_E
-F 251 mkt_CAP
-G 254 COST
-G 260 X
-B 275 Equation Listing    SOLVE elec_MCP Using MCP From line 119
-D 276 zpf_X
-D 286 mkt_E
-D 291 mkt_CAP
-B 302 Column Listing      SOLVE elec_MCP Using MCP From line 119
-E 303 X
-E 322 P
-E 331 PCAP
-B 348 Model Statistics    SOLVE elec_MCP Using MCP From line 119
-B 366 Solution Report     SOLVE elec_MCP Using MCP From line 119
-F 417 zpf_X
-F 423 mkt_E
-F 429 mkt_CAP
-G 432 X
-G 440 P
+B 140 Equation Listing    SOLVE elec_LP Using LP From line 81
+D 141 obj
+D 149 mkt_E
+D 154 mkt_CAP
+B 165 Column Listing      SOLVE elec_LP Using LP From line 81
+E 166 COST
+E 174 X
+B 197 Model Statistics    SOLVE elec_LP Using LP From line 81
+B 213 Solution Report     SOLVE elec_LP Using LP From line 81
+F 242 obj
+F 243 mkt_E
+F 249 mkt_CAP
+G 252 COST
+G 258 X
+B 273 Equation Listing    SOLVE elec_MCP Using MCP From line 117
+D 274 zpf_X
+D 284 mkt_E
+D 289 mkt_CAP
+B 300 Column Listing      SOLVE elec_MCP Using MCP From line 117
+E 301 X
+E 320 P
+E 329 PCAP
+B 346 Model Statistics    SOLVE elec_MCP Using MCP From line 117
+B 364 Solution Report     SOLVE elec_MCP Using MCP From line 117
+F 415 zpf_X
+F 421 mkt_E
+F 427 mkt_CAP
+G 430 X
+G 438 P
 G 444 PCAP
 B 461 E x e c u t i o n
 I 462 compare

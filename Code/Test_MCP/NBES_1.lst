@@ -1,0 +1,169 @@
+GAMS 24.2.1  r43572 Released Dec  9, 2013 WEX-WEI x86_64/MS Windows 09/10/18 12:03:21 Page 1
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+C o m p i l a t i o n
+
+
+   1  Sets
+   2  tech                Technology                                   /c,g,o/
+   3  t                    hour                                        /1,2/
+   4  ;
+   5   
+   6  Variables
+   7  Z
+   8   
+   9  Positive variables
+  10  g(tech, t) generation
+  11  ;
+  12   
+  13  Parameters
+  14  d(t)       demand
+  15  cv(tech)   variable costs
+  16  cap(tech)  capactiy max
+  17  ;
+  18   
+  19  d('1')   = 500  ;
+  20  d('2')   = 500 ;
+  21  cv('g')  = 200;
+  22  cv('c')  = 50;
+  23  cv('o')  = 2000;
+  24  cap('g')  = 300;
+  25  cap('c')  = 300;
+  26  cap('o')  = 300;
+  27   
+  28  Equations
+  29  obj
+  30  energy_balance
+  31  cap_constraint
+  32  ;
+  33   
+  34  obj..
+  35   
+  36   
+  37           Z =E= sum ( (tech,t), cv(tech)*g(tech,t) )
+  38   
+  39  ;
+  40   
+  41  energy_balance(t)..
+  42   
+  43                   sum( tech, g(tech, t)) =E= d(t)
+  44  ;
+  45   
+  46  cap_constraint(tech, t)..
+  47   
+  48            g(tech, t) =L= cap(tech)
+  49   
+  50   
+  51  Model testmodel /
+  52  obj
+  53  energy_balance
+  54  cap_constraint
+  55  /
+  56   
+  57   
+  58  options
+  59  optcr = 0.00
+  60  reslim = 10000000
+  61  lp = cplex
+  62  mip = cplex
+  63  nlp = conopt
+  64  dispwidth = 15
+  65  limrow = 0
+  66  limcol = 0
+  67  solprint = off
+  68  sysout = off
+  69  optcr = 1e-3
+  70  optca = 10
+  71  ;
+  72   
+  80   
+  81   
+  82  solve   testmodel using lp min Z;
+  83   
+  84  display g.l, Z.l, energy_balance.m
+
+
+COMPILATION TIME     =        0.000 SECONDS      3 MB  24.2.1 r43572 WEX-WEI
+GAMS 24.2.1  r43572 Released Dec  9, 2013 WEX-WEI x86_64/MS Windows 09/10/18 12:03:21 Page 2
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Model Statistics    SOLVE testmodel Using LP From line 82
+
+
+MODEL STATISTICS
+
+BLOCKS OF EQUATIONS           3     SINGLE EQUATIONS            9
+BLOCKS OF VARIABLES           2     SINGLE VARIABLES            7
+NON ZERO ELEMENTS            19
+
+
+GENERATION TIME      =        0.016 SECONDS      4 MB  24.2.1 r43572 WEX-WEI
+
+
+EXECUTION TIME       =        0.016 SECONDS      4 MB  24.2.1 r43572 WEX-WEI
+GAMS 24.2.1  r43572 Released Dec  9, 2013 WEX-WEI x86_64/MS Windows 09/10/18 12:03:21 Page 3
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Solution Report     SOLVE testmodel Using LP From line 82
+
+
+               S O L V E      S U M M A R Y
+
+     MODEL   testmodel           OBJECTIVE  Z
+     TYPE    LP                  DIRECTION  MINIMIZE
+     SOLVER  CPLEX               FROM LINE  82
+
+**** SOLVER STATUS     1 Normal Completion         
+**** MODEL STATUS      1 Optimal                   
+**** OBJECTIVE VALUE           110000.0000
+
+ RESOURCE USAGE, LIMIT          0.016  10000000.000
+ ITERATION COUNT, LIMIT         2    2000000000
+
+IBM ILOG CPLEX   24.2.1 r43572 Released Dec  9, 2013 WEI x86_64/MS Windows    
+Cplex 12.6.0.0
+
+Space for names approximately 0.00 Mb
+Use option 'names no' to turn use of names off
+LP status(1): optimal
+Cplex Time: 0.00sec (det. 0.01 ticks)
+Optimal solution found.
+Objective :      110000.000000
+
+
+
+**** REPORT SUMMARY :        0     NONOPT
+                             0 INFEASIBLE
+                             0  UNBOUNDED
+GAMS 24.2.1  r43572 Released Dec  9, 2013 WEX-WEI x86_64/MS Windows 09/10/18 12:03:21 Page 4
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+E x e c u t i o n
+
+
+----     84 VARIABLE g.L  generation
+
+               1              2
+
+c        300.000        300.000
+g        200.000        200.000
+
+
+----     84 VARIABLE Z.L                   =      110000.000  
+
+----     84 EQUATION energy_balance.M  
+
+1 200.000,    2 200.000
+
+
+
+EXECUTION TIME       =        0.000 SECONDS      3 MB  24.2.1 r43572 WEX-WEI
+
+
+USER: Abteilung Energie, Verkehr, Umwelt, 5 User     S131220:0515AN-GEN
+      Deutsches Institut fuer Wirtschaftsforschung DIW           DC3975
+      License for teaching and research at degree granting institutions
+
+
+**** FILE SUMMARY
+
+Input      C:\Users\cguenther\Documents\GitHub\prosumage\Code\Test_MCP\NBES_1.gm
+           s
+Output     C:\Users\cguenther\Documents\GitHub\prosumage\Code\Test_MCP\NBES_1.ls
+           t

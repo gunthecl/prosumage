@@ -1,0 +1,7 @@
+B 2 C o m p i l a t i o n
+B 87 Model Statistics    SOLVE testmodel Using LP From line 82
+B 103 Solution Report     SOLVE testmodel Using LP From line 82
+B 136 E x e c u t i o n
+I 137 g
+I 147 Z
+I 148 energy_balance

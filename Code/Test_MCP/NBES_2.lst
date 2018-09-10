@@ -1,4 +1,4 @@
-GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 09/04/18 17:30:47 Page 1
+GAMS 24.2.1  r43572 Released Dec  9, 2013 WEX-WEI x86_64/MS Windows 09/10/18 12:02:03 Page 1
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
@@ -27,87 +27,86 @@ C o m p i l a t i o n
   22  ;
   23   
   24  d('1')   = 500  ;
-  25  d('2')   = 400 ;
+  25  d('2')   = 500 ;
   26  cv('g')  = 200;
   27  cv('c')  = 50;
   28  cv('o')  = 2000;
-  29   
-  30  cap('g')  = 300;
-  31  cap('c')  = 300;
-  32  cap('o')  = 300;
-  33   
-  34  Equations
-  35  obj
-  36  energy_balance
-  37  cap_constraint
-  38  KKTG
-  39  KKTL
-  40  KKTM
-  41  ;
-  42   
-  43  obj..
+  29  cap('g')  = 300;
+  30  cap('c')  = 300;
+  31  cap('o')  = 300;
+  32   
+  33  Equations
+  34  obj
+  35  energy_balance
+  36  cap_constraint
+  37  KKTG
+  38  KKTL
+  39  KKTM
+  40  ;
+  41   
+  42  obj..
+  43   
   44   
-  45   
-  46           Z =E=  sum ( (tech,t), cv(tech)*g(tech,t) )
-  47   
-  48  ;
-  49   
-  50  energy_balance(t)..
-  51   
-  52                   sum( tech, g(tech,t)) =E= d(t)
-  53  ;
-  54   
-  55  cap_constraint(tech,t)..
-  56   
-  57           cap(tech)  =G= g(tech,t)   ;
+  45           Z =E=  sum ( (tech,t), cv(tech)*g(tech,t) )
+  46   
+  47  ;
+  48   
+  49  energy_balance(t)..
+  50   
+  51                   sum( tech, g(tech,t)) =E= d(t)
+  52  ;
+  53   
+  54  cap_constraint(tech,t)..
+  55   
+  56           cap(tech)  =G= g(tech,t)   ;
+  57   
   58   
-  59   
-  60  KKTG(tech,t)..
-  61   
-  62       cv(tech) + mu(tech,t) =G= lambda(t)
-  63   
-  64  ;
-  65   
-  66  KKTL(t)..
+  59  KKTG(tech,t)..
+  60   
+  61       cv(tech) + mu(tech,t) =G= lambda(t)
+  62   
+  63  ;
+  64   
+  65  KKTL(t)..
+  66   
   67   
-  68   
-  69         sum( tech, g(tech,t)) =G= d(t)
-  70   
-  71  ;
-  72   
-  73  KKTM(tech,t)..
-  74   
-  75          cap(tech) =G= g(tech,t)
+  68         sum( tech, g(tech,t)) =G= d(t)
+  69   
+  70  ;
+  71   
+  72  KKTM(tech,t)..
+  73   
+  74          cap(tech) =G= g(tech,t)
+  75   
   76   
-  77   
-  78  ;
+  77  ;
+  78   
   79   
   80   
   81   
-  82   
-  83  Model testmodel /
-  84  KKTG.g
-  85  KKTL.lambda
-  86  KKTM.mu
-  87  /  ;
-  88   
-  89  *Set  some  i n i t i a l  v a l u e s
-  90   
-  91  g.l(tech,t) = 1;
+  82  Model testmodel /
+  83  KKTG.g
+  84  KKTL.lambda
+  85  KKTM.mu
+  86  /  ;
+  87   
+  88  *Set  some  i n i t i a l  v a l u e s
+  89   
+  90  g.l(tech,t) = 1;
+  91   
   92   
-  93   
-  94  solve   testmodel using mcp;
-  95   
-  96  lev_Z = sum( (tech,t), cv(tech)*g.l(tech,t))
+  93  solve   testmodel using mcp;
+  94   
+  95  lev_Z = sum( (tech,t), cv(tech)*g.l(tech,t))
+  96   
   97   
-  98   
-  99  display g.l , lambda.l , lev_Z, mu.l
+  98  display g.l , lambda.l , lev_Z, mu.l
 
 
-COMPILATION TIME     =        0.000 SECONDS      3 MB  24.7.4 r58773 WEX-WEI
-GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 09/04/18 17:30:47 Page 2
+COMPILATION TIME     =        0.000 SECONDS      3 MB  24.2.1 r43572 WEX-WEI
+GAMS 24.2.1  r43572 Released Dec  9, 2013 WEX-WEI x86_64/MS Windows 09/10/18 12:02:03 Page 2
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
-Equation Listing    SOLVE testmodel Using MCP From line 94
+Equation Listing    SOLVE testmodel Using MCP From line 93
 
 
 ---- KKTG  =G=  
@@ -125,7 +124,7 @@ REMAINING 3 ENTRIES SKIPPED
 
 KKTL(1)..  g(c,1) + g(g,1) + g(o,1) =G= 500 ; (LHS = 3, INFES = 497 ****)
      
-KKTL(2)..  g(c,2) + g(g,2) + g(o,2) =G= 400 ; (LHS = 3, INFES = 397 ****)
+KKTL(2)..  g(c,2) + g(g,2) + g(o,2) =G= 500 ; (LHS = 3, INFES = 497 ****)
      
 
 ---- KKTM  =G=  
@@ -138,9 +137,9 @@ KKTM(g,1)..  - g(g,1) =G= -300 ; (LHS = -1)
      
 REMAINING 3 ENTRIES SKIPPED
 
-GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 09/04/18 17:30:47 Page 3
+GAMS 24.2.1  r43572 Released Dec  9, 2013 WEX-WEI x86_64/MS Windows 09/10/18 12:02:03 Page 3
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
-Column Listing      SOLVE testmodel Using MCP From line 94
+Column Listing      SOLVE testmodel Using MCP From line 93
 
 
 ---- g  generation
@@ -192,9 +191,9 @@ mu(g,1)
         1       KKTG(g,1)
 
 REMAINING 3 ENTRIES SKIPPED
-GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 09/04/18 17:30:47 Page 4
+GAMS 24.2.1  r43572 Released Dec  9, 2013 WEX-WEI x86_64/MS Windows 09/10/18 12:02:03 Page 4
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
-Model Statistics    SOLVE testmodel Using MCP From line 94
+Model Statistics    SOLVE testmodel Using MCP From line 93
 
 
 MODEL STATISTICS
@@ -202,34 +201,34 @@ MODEL STATISTICS
 BLOCKS OF EQUATIONS           3     SINGLE EQUATIONS           14
 BLOCKS OF VARIABLES           3     SINGLE VARIABLES           14
 NON ZERO ELEMENTS            24     NON LINEAR N-Z              0
-DERIVATIVE POOL              20     CONSTANT POOL              16
+DERIVATIVE POOL              10     CONSTANT POOL              16
 CODE LENGTH                   0
 
 
-GENERATION TIME      =        0.015 SECONDS      4 MB  24.7.4 r58773 WEX-WEI
+GENERATION TIME      =        0.016 SECONDS      4 MB  24.2.1 r43572 WEX-WEI
 
 
-EXECUTION TIME       =        0.015 SECONDS      4 MB  24.7.4 r58773 WEX-WEI
-GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 09/04/18 17:30:47 Page 5
+EXECUTION TIME       =        0.016 SECONDS      4 MB  24.2.1 r43572 WEX-WEI
+GAMS 24.2.1  r43572 Released Dec  9, 2013 WEX-WEI x86_64/MS Windows 09/10/18 12:02:03 Page 5
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
-Solution Report     SOLVE testmodel Using MCP From line 94
+Solution Report     SOLVE testmodel Using MCP From line 93
 
 
                S O L V E      S U M M A R Y
 
      MODEL   testmodel           
      TYPE    MCP                 
-     SOLVER  PATH                FROM LINE  94
+     SOLVER  PATH                FROM LINE  93
 
 **** SOLVER STATUS     1 Normal Completion         
 **** MODEL STATUS      1 Optimal                   
 
- RESOURCE USAGE, LIMIT          0.125      1000.000
+ RESOURCE USAGE, LIMIT          0.109      1000.000
  ITERATION COUNT, LIMIT        12    2000000000
  EVALUATION ERRORS              0             0
 14 row/cols, 24 non-zeros, 12.24% dense.
 
-Path 4.7.04 (Mon Sep 19 11:18:59 2016)
+Path 4.7.02 (Mon Dec 09 08:54:09 2013)
 Written by Todd Munson, Steven Dirkse, and Michael Ferris
 
 INITIAL POINT STATISTICS
@@ -245,16 +244,16 @@ Maximum Column Norm . . . . . .  3.0000e+000 var: (lambda(1))
 Minimum Column Norm . . . . . .  1.0000e+000 var: (g(c,1))
 
 FINAL STATISTICS
-Inf-Norm of Complementarity . .  7.3176e-007 eqn: (KKTL(1))
-Inf-Norm of Normal Map. . . . .  3.6588e-009 eqn: (KKTL(1))
-Inf-Norm of Minimum Map . . . .  3.6588e-009 eqn: (KKTL(1))
-Inf-Norm of Fischer Function. .  3.6588e-009 eqn: (KKTL(1))
-Inf-Norm of Grad Fischer Fcn. .  3.6588e-009 eqn: (KKTG(c,1))
-Two-Norm of Grad Fischer Fcn. .  7.2987e-009
+Inf-Norm of Complementarity . .  1.3357e-006 eqn: (KKTL(1))
+Inf-Norm of Normal Map. . . . .  6.6785e-009 eqn: (KKTL(1))
+Inf-Norm of Minimum Map . . . .  6.6785e-009 eqn: (KKTL(1))
+Inf-Norm of Fischer Function. .  6.6785e-009 eqn: (KKTL(1))
+Inf-Norm of Grad Fischer Fcn. .  6.6785e-009 eqn: (KKTG(c,1))
+Two-Norm of Grad Fischer Fcn. .  1.6441e-008
 
 FINAL POINT STATISTICS
 Maximum of X. . . . . . . . . .  3.0000e+002 var: (g(c,1))
-Maximum of F. . . . . . . . . .  1.8000e+003 eqn: (KKTG(o,2))
+Maximum of F. . . . . . . . . .  1.8000e+003 eqn: (KKTG(o,1))
 Maximum of Grad F . . . . . . .  1.0000e+000 eqn: (KKTL(1))
                                             var: (g(c,1))
 
@@ -266,7 +265,7 @@ Maximum of Grad F . . . . . . .  1.0000e+000 eqn: (KKTL(1))
 c.1   -50.000   -50.000     +INF    300.000      
 c.2   -50.000   -50.000     +INF    300.000      
 g.1  -200.000  -200.000     +INF    200.000      
-g.2  -200.000  -200.000     +INF    100.000      
+g.2  -200.000  -200.000     +INF    200.000      
 o.1 -2000.000  -200.000     +INF       .         
 o.2 -2000.000  -200.000     +INF       .         
 
@@ -275,7 +274,7 @@ o.2 -2000.000  -200.000     +INF       .
      LOWER     LEVEL     UPPER    MARGINAL
 
 1   500.000   500.000     +INF    200.000      
-2   400.000   400.000     +INF    200.000      
+2   500.000   500.000     +INF    200.000      
 
 ---- EQU KKTM  
 
@@ -284,7 +283,7 @@ o.2 -2000.000  -200.000     +INF       .
 c.1  -300.000  -300.000     +INF    150.000      
 c.2  -300.000  -300.000     +INF    150.000      
 g.1  -300.000  -200.000     +INF       .         
-g.2  -300.000  -100.000     +INF       .         
+g.2  -300.000  -200.000     +INF       .         
 o.1  -300.000      .        +INF       .         
 o.2  -300.000      .        +INF       .         
 
@@ -295,7 +294,7 @@ o.2  -300.000      .        +INF       .
 c.1      .      300.000     +INF       .         
 c.2      .      300.000     +INF       .         
 g.1      .      200.000     +INF       .         
-g.2      .      100.000     +INF       .         
+g.2      .      200.000     +INF       .         
 o.1      .         .        +INF   1800.000      
 o.2      .         .        +INF   1800.000      
 
@@ -313,7 +312,7 @@ o.2      .         .        +INF   1800.000
 c.1      .      150.000     +INF       .         
 c.2      .      150.000     +INF       .         
 g.1      .         .        +INF    100.000      
-g.2      .         .        +INF    200.000      
+g.2      .         .        +INF    100.000      
 o.1      .         .        +INF    300.000      
 o.2      .         .        +INF    300.000      
 
@@ -323,27 +322,27 @@ o.2      .         .        +INF    300.000
                              0  UNBOUNDED
                              0  REDEFINED
                              0     ERRORS
-GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 09/04/18 17:30:47 Page 6
+GAMS 24.2.1  r43572 Released Dec  9, 2013 WEX-WEI x86_64/MS Windows 09/10/18 12:02:03 Page 6
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 E x e c u t i o n
 
 
-----     99 VARIABLE g.L  generation
+----     98 VARIABLE g.L  generation
 
             1           2
 
 c     300.000     300.000
-g     200.000     100.000
+g     200.000     200.000
 
 
-----     99 VARIABLE lambda.L  
+----     98 VARIABLE lambda.L  
 
 1 200.000,    2 200.000
 
 
-----     99 PARAMETER lev_Z                =    90000.000  total costs
+----     98 PARAMETER lev_Z                =   110000.000  total costs
 
-----     99 VARIABLE mu.L  
+----     98 VARIABLE mu.L  
 
             1           2
 
@@ -351,17 +350,17 @@ c     150.000     150.000
 
 
 
-EXECUTION TIME       =        0.015 SECONDS      3 MB  24.7.4 r58773 WEX-WEI
+EXECUTION TIME       =        0.000 SECONDS      3 MB  24.2.1 r43572 WEX-WEI
 
 
-USER: Course License Energy Informatics Computer BaseS180601:0449AO-GEN
-      Humboldt-Universitaet zu Berlin, WirtschaftswissenschaftliDC14161
+USER: Abteilung Energie, Verkehr, Umwelt, 5 User     S131220:0515AN-GEN
+      Deutsches Institut fuer Wirtschaftsforschung DIW           DC3975
       License for teaching and research at degree granting institutions
 
 
 **** FILE SUMMARY
 
-Input      C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Code\Test_MCP\NBES_2.
-           gms
-Output     C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Code\Test_MCP\NBES_2.
-           lst
+Input      C:\Users\cguenther\Documents\GitHub\prosumage\Code\Test_MCP\NBES_2.gm
+           s
+Output     C:\Users\cguenther\Documents\GitHub\prosumage\Code\Test_MCP\NBES_2.ls
+           t

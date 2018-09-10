@@ -1,21 +1,20 @@
 
---- Job abrell2.gms Start 09/04/18 17:24:27 24.7.4 r58773 WEX-WEI x86 64bit/MS Windows
-GAMS 24.7.4   Copyright (C) 1987-2016 GAMS Development. All rights reserved
-Licensee: Course License Energy Informatics Computer BaseS180601:0449AO-GEN
-          Humboldt-Universitaet zu Berlin, WirtschaftswissenschaftliDC14161
+--- Job abrell2.gms Start 09/10/18 12:00:06 24.2.1 r43572 WEX-WEI x86_64/MS Windows
+GAMS 24.2.1   Copyright (C) 1987-2013 GAMS Development. All rights reserved
+Licensee: Abteilung Energie, Verkehr, Umwelt, 5 User     S131220:0515AN-GEN
+          Deutsches Institut fuer Wirtschaftsforschung DIW           DC3975
           License for teaching and research at degree granting institutions
-          License Admin: Olga Spiridonova, spiridoo@cms.hu-berlin.de       
 --- Starting compilation
---- abrell2.gms(122) 3 Mb
---- Starting execution: elapsed 0:00:00.006
+--- abrell2.gms(121) 3 Mb
+--- Starting execution: elapsed 0:00:00.005
 --- abrell2.gms(79) 4 Mb
 --- Generating LP model elec_LP
 --- abrell2.gms(81) 4 Mb
 ---   5 rows  4 columns  10 non-zeroes
---- Executing CPLEX: elapsed 0:00:00.019
+--- Executing CPLEX: elapsed 0:00:00.013
 
-IBM ILOG CPLEX   24.7.4 r58773 Released Sep 19, 2016 WEI x86 64bit/MS Windows 
-Cplex 12.6.3.0
+IBM ILOG CPLEX   24.2.1 r43572 Released Dec  9, 2013 WEI x86_64/MS Windows    
+Cplex 12.6.0.0
 
 Reading data...
 Starting Cplex...
@@ -34,25 +33,25 @@ Objective :       70000.000000
 --- Restarting execution
 --- abrell2.gms(81) 2 Mb
 --- Reading solution for model elec_LP
---- Executing after solve: elapsed 0:00:00.168
---- abrell2.gms(116) 3 Mb
+--- Executing after solve: elapsed 0:00:00.162
+--- abrell2.gms(115) 3 Mb
 --- Generating MCP model elec_MCP
---- abrell2.gms(117) 5 Mb
+--- abrell2.gms(116) 5 Mb
 ---   7 rows  7 columns  12 non-zeroes
 ---   0 nl-code  0 nl-non-zeroes
---- abrell2.gms(117) 3 Mb
---- Executing PATH: elapsed 0:00:00.174
+--- abrell2.gms(116) 3 Mb
+--- Executing PATH: elapsed 0:00:00.168
 Reading dictionary...
 Reading row data...
 Evaluating functions...
 Checking model...
 Calculating Jacobian...
 
-PATH             24.7.4 r58773 Released Sep 19, 2016 WEI x86 64bit/MS Windows 
+PATH             24.2.1 r43572 Released Dec  9, 2013 WEI x86_64/MS Windows    
 
 7 row/cols, 12 non-zeros, 24.49% dense.
 
-Path 4.7.04 (Mon Sep 19 11:18:59 2016)
+Path 4.7.02 (Mon Dec 09 08:54:09 2013)
 Written by Todd Munson, Steven Dirkse, and Michael Ferris
 
 Zero:     0 Single:     0 Double:     3
@@ -107,15 +106,14 @@ Crash Iterations. . . . 2
 Gradient Steps. . . . . 0
 Function Evaluations. . 6
 Gradient Evaluations. . 6
-Basis Time. . . . . . . 0.000000
-Total Time. . . . . . . 0.078000
+Total Time. . . . . . . 0.084000
 Residual. . . . . . . . 0.000000e+000
 Postsolved residual: 7.1054e-015
 
 --- Restarting execution
---- abrell2.gms(117) 2 Mb
+--- abrell2.gms(116) 2 Mb
 --- Reading solution for model elec_MCP
---- Executing after solve: elapsed 0:00:00.440
---- abrell2.gms(122) 3 Mb
+--- Executing after solve: elapsed 0:00:00.407
+--- abrell2.gms(121) 3 Mb
 *** Status: Normal completion
---- Job abrell2.gms Stop 09/04/18 17:24:27 elapsed 0:00:00.441
+--- Job abrell2.gms Stop 09/10/18 12:00:07 elapsed 0:00:00.408
