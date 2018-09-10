@@ -1,4 +1,4 @@
-GAMS 24.2.1  r43572 Released Dec  9, 2013 WEX-WEI x86_64/MS Windows 09/10/18 16:07:07 Page 1
+GAMS 24.2.1  r43572 Released Dec  9, 2013 WEX-WEI x86_64/MS Windows 09/10/18 16:10:35 Page 1
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
@@ -57,7 +57,7 @@ C o m p i l a t i o n
   51   
   52   
   53  Sets
-  54  h                Hours                                   /h1*h3000/
+  54  h                Hours                                   /h1*h8760/
   55  res              Renewable technologies                  /solar/
   56  sto              Storage technolgies                     /storage/
   57  year             Base years                              /2010*2016/
@@ -390,7 +390,7 @@ GDXIN   C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\data\in
       ******
  388   
  389   
-GAMS 24.2.1  r43572 Released Dec  9, 2013 WEX-WEI x86_64/MS Windows 09/10/18 16:07:07 Page 2
+GAMS 24.2.1  r43572 Released Dec  9, 2013 WEX-WEI x86_64/MS Windows 09/10/18 16:10:35 Page 2
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Include File Summary
 
@@ -405,22 +405,22 @@ Include File Summary
                                           data.gdx
 
 
-COMPILATION TIME     =        0.078 SECONDS     12 MB  24.2.1 r43572 WEX-WEI
-GAMS 24.2.1  r43572 Released Dec  9, 2013 WEX-WEI x86_64/MS Windows 09/10/18 16:07:07 Page 3
+COMPILATION TIME     =        0.110 SECONDS     28 MB  24.2.1 r43572 WEX-WEI
+GAMS 24.2.1  r43572 Released Dec  9, 2013 WEX-WEI x86_64/MS Windows 09/10/18 16:10:35 Page 3
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Model Statistics    SOLVE prosumodmcp Using MCP From line 380
 
 
 MODEL STATISTICS
 
-BLOCKS OF EQUATIONS          17     SINGLE EQUATIONS       39,004
-BLOCKS OF VARIABLES          17     SINGLE VARIABLES       39,004
-NON ZERO ELEMENTS       104,690     NON LINEAR N-Z              0
+BLOCKS OF EQUATIONS          17     SINGLE EQUATIONS      113,884
+BLOCKS OF VARIABLES          17     SINGLE VARIABLES      113,884
+NON ZERO ELEMENTS       306,494     NON LINEAR N-Z              0
 DERIVATIVE POOL              10     CONSTANT POOL              16
 CODE LENGTH                   0
 
 
-GENERATION TIME      =        0.078 SECONDS     22 MB  24.2.1 r43572 WEX-WEI
+GENERATION TIME      =        0.234 SECONDS     58 MB  24.2.1 r43572 WEX-WEI
 
 
-EXECUTION TIME       =        0.078 SECONDS     22 MB  24.2.1 r43572 WEX-WEI
+EXECUTION TIME       =        0.234 SECONDS     58 MB  24.2.1 r43572 WEX-WEI

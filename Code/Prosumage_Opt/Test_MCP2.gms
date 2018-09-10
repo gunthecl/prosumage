@@ -51,7 +51,7 @@ $setglobal outputfile "results\%modelrun%_results"
 
 
 Sets
-h                Hours                                   /h1*h3000/
+h                Hours                                   /h1*h8760/
 res              Renewable technologies                  /solar/
 sto              Storage technolgies                     /storage/
 year             Base years                              /2010*2016/

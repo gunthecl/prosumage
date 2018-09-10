@@ -1,11 +1,11 @@
 46
-5 3083 0 0 242  0.00000000000000E+0000 5  0.00000000000000E+0000 0 1
-39004 0 0 0 15004 9000 30004 0 0 0 0 0
-39004 0 0 0 0 0 0 0
-104690 0
-39004 0 0 0 0 0 0 39004 0 0
+5 8843 0 0 242  0.00000000000000E+0000 5  0.00000000000000E+0000 0 1
+113884 0 0 0 43804 26280 87604 0 0 0 0 0
+113884 0 0 0 0 0 0 0
+306494 0
+113884 0 0 0 0 0 0 113884 0 0
 0 0 0 0 0 0 0
-0 6000 0
+0 17520 0
 0 16 10
  1.00000000000000E-0003  1.00000000000000E+0001 0
 0  0.00000000000000E+0000 0  0.00000000000000E+0000
@@ -23,13 +23,13 @@ C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\225e\gamssolu.d
 
 C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\225e\gamsdict.dat
 3
-16:07:07
+16:10:35
 09/10/18
 C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\
 C:\GAMS\win64\24.2\
 C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\225e\
 80 2147483647
-0 0 1725 43352 41627 59733
+0 0 1725 43352 41627 65493
 Abteilung Energie, Verkehr, Umwelt, 5 User     S131220:0515AN-GEN0
 Deutsches Institut fuer Wirtschaftsforschung DIW                 0
 1523935701BACOCPM5PT                                       0000000
@@ -281,7 +281,7 @@ DC3975       l 5, m 1, b 1, q 1, p 4, g 2      A Invoice         0
 C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Test_MCP2.dat
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0 0  1.00000000000000E+0000 0 0
-39004 0 0
+113884 0 0
 0 0 0 1 0
 C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\prosumodmcp.dll
 C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\225e\sbbinfo.dat
