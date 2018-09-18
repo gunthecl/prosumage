@@ -1,21 +1,21 @@
 
---- Job PROSUMOD.gms Start 09/03/18 11:34:14 24.2.1 r43572 WEX-WEI x86_64/MS Windows
-GAMS 24.2.1   Copyright (C) 1987-2013 GAMS Development. All rights reserved
+--- Job PROSUMOD.gms Start 09/18/18 17:10:13 24.2.3 r46072 WEX-WEI x86_64/MS Windows
+GAMS 24.2.3   Copyright (C) 1987-2014 GAMS Development. All rights reserved
 Licensee: Abteilung Energie, Verkehr, Umwelt, 5 User     S131220:0515AN-GEN
           Deutsches Institut fuer Wirtschaftsforschung DIW           DC3975
           License for teaching and research at degree granting institutions
 --- Starting compilation
 --- PROSUMOD.gms(135) 3 Mb
---- GDXin=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Code\Prosumage_Opt\data\input_data.gdx
---- PROSUMOD.gms(298) 28 Mb
---- Starting execution: elapsed 0:00:00.397
---- PROSUMOD.gms(268) 29 Mb
+--- GDXin=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\data\input_data.gdx
+--- PROSUMOD.gms(297) 28 Mb
+--- Starting execution: elapsed 0:00:00.072
+--- PROSUMOD.gms(267) 29 Mb
 --- Generating LP model prosumod
---- PROSUMOD.gms(291) 44 Mb
+--- PROSUMOD.gms(290) 44 Mb
 ---   52,562 rows  52,564 columns  179,529 non-zeroes
---- Executing CPLEX: elapsed 0:00:01.018
+--- Executing CPLEX: elapsed 0:00:00.521
 
-IBM ILOG CPLEX   24.2.1 r43572 Released Dec  9, 2013 WEI x86_64/MS Windows    
+IBM ILOG CPLEX   24.2.3 r46072 Released May 22, 2014 WEI x86_64/MS Windows    
 --- GAMS/Cplex licensed for continuous and discrete problems.
 Cplex 12.6.0.0
 
@@ -27,7 +27,7 @@ Tried aggregator 1 time.
 LP Presolve eliminated 8871 rows and 13326 columns.
 Aggregator did 8707 substitutions.
 Reduced LP has 34984 rows, 30531 columns, and 120124 nonzeros.
-Presolve time = 0.08 sec. (42.28 ticks)
+Presolve time = 0.05 sec. (42.28 ticks)
 Initializing dual steep norms . . .
 
 Iteration log . . .
@@ -70,16 +70,16 @@ Iteration: 11836   Dual objective     =           937.535303
 Iteration: 12159   Dual objective     =           938.962876
 Removing perturbation.
 LP status(1): optimal
-Cplex Time: 6.35sec (det. 5059.11 ticks)
+Cplex Time: 2.93sec (det. 5059.11 ticks)
 
 Optimal solution found.
 Objective :         939.079854
 
 --- Restarting execution
---- PROSUMOD.gms(291) 31 Mb
+--- PROSUMOD.gms(290) 31 Mb
 --- Reading solution for model prosumod
+--- PROSUMOD.gms(290) 35 Mb
+--- Executing after solve: elapsed 0:00:03.838
 --- PROSUMOD.gms(291) 35 Mb
---- Executing after solve: elapsed 0:00:07.938
---- PROSUMOD.gms(292) 35 Mb
 *** Status: Normal completion
---- Job PROSUMOD.gms Stop 09/03/18 11:34:22 elapsed 0:00:08.304
+--- Job PROSUMOD.gms Stop 09/18/18 17:10:17 elapsed 0:00:04.056

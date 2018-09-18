@@ -141,7 +141,7 @@ d(h)                   = d_upload(h,'%household_profile%') ;
 avail_solar(h)         = avail_solar_upload(h,'%base_year%') ;
 
 *Load market price as price per kWh
-price_market(h)        = price_market_upload(h,'%base_year%')/1000 ;
+*price_market(h)        = price_market_upload(h,'%base_year%')/1000 ;
 *price_market(h)        = 0.12 ;
 
 $if "%modelkill%" == "*"  $abort Check GDX upload
@@ -188,9 +188,9 @@ hh_energy_balance(h)..
 *** Household PV generation usage: Directly consumed, curtailed,stored or sold
 pv_generation(res,h)..
 
-      avail_solar(h) * N_PV(res) =E=
+      avail_solar(h) * N_PV(res) =G=
         G_PV(res,h)
-      + CU(res,h)
+*      + CU(res,h)
       + sum( sto , STO_IN(sto,h))
       + E_sell(h)
 ;
@@ -246,7 +246,6 @@ stoout_max_power(sto,h)..
 
          STO_OUT(sto,h) =L= N_STO_P(sto)
 ;
-
 
 ***************************** Initialize model *********************************
 Model prosumod /

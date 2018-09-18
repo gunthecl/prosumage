@@ -1,4 +1,4 @@
-GAMS 24.2.1  r43572 Released Dec  9, 2013 WEX-WEI x86_64/MS Windows 09/03/18 11:34:14 Page 1
+GAMS 24.2.3  r46072 Released May 22, 2014 WEX-WEI x86_64/MS Windows 09/18/18 17:10:13 Page 1
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
@@ -135,8 +135,8 @@ C o m p i l a t i o n
  133   
  134  *$call "gdxxrw data\input_data.xlsx squeeze=N @data\input_data.tmp  o=data
       \input_data.gdx  ";
-GDXIN   C:\Users\cguenther\Documents\GitHub\prosumage\Code\Code\Prosumage_Opt\da
-        ta\input_data.gdx
+GDXIN   C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\data\in
+        put_data.gdx
 --- LOAD  d_upload = 1:d_upload
 --- LOAD  avail_solar_upload = 2:avail_solar_upload
 --- LOAD  price_market_upload = 3:price_market_upload
@@ -261,51 +261,50 @@ GDXIN   C:\Users\cguenther\Documents\GitHub\prosumage\Code\Code\Prosumage_Opt\da
  247           STO_OUT(sto,h) =L= N_STO_P(sto)
  248  ;
  249   
- 250   
- 251  ***************************** Initialize model ***************************
+ 250  ***************************** Initialize model ***************************
       ******
- 252  Model prosumod /
- 253  objective
- 254  hh_energy_balance
- 255  pv_generation
- 256  stolev_no_freelunch
- 257  stolevel
- 258  stolev_max_energy
- 259  stoin_max_power
- 260  stoout_max_power
- 261  pv_install_max
- 262   
- 263  *foresight_24h
- 264  /
+ 251  Model prosumod /
+ 252  objective
+ 253  hh_energy_balance
+ 254  pv_generation
+ 255  stolev_no_freelunch
+ 256  stolevel
+ 257  stolev_max_energy
+ 258  stoin_max_power
+ 259  stoout_max_power
+ 260  pv_install_max
+ 261   
+ 262  *foresight_24h
+ 263  /
+ 264   
  265   
- 266   
- 267  options
- 268  optcr = 0.00
- 269  reslim = 10000000
- 270  lp = cplex
- 271  mip = cplex
- 272  nlp = conopt
- 273  dispwidth = 15
- 274  limrow = 0
- 275  limcol = 0
- 276  solprint = off
- 277  sysout = off
- 278  optcr = 1e-3
- 279  optca = 10
- 280  ;
- 281   
+ 266  options
+ 267  optcr = 0.00
+ 268  reslim = 10000000
+ 269  lp = cplex
+ 270  mip = cplex
+ 271  nlp = conopt
+ 272  dispwidth = 15
+ 273  limrow = 0
+ 274  limcol = 0
+ 275  solprint = off
+ 276  sysout = off
+ 277  optcr = 1e-3
+ 278  optca = 10
+ 279  ;
+ 280   
+ 288   
  289   
- 290   
- 291  solve   prosumod using lp min Z;
- 292  display d , N_PV.l , N_STO_E.l, N_STO_P.l, Z.l, E_buy.l , E_sell.l ,
- 293          STO_L.l, price_market, hh_energy_balance.m
+ 290  solve   prosumod using lp min Z;
+ 291  display d , N_PV.l , N_STO_E.l, N_STO_P.l, Z.l, E_buy.l , E_sell.l ,
+ 292          STO_L.l, price_market, hh_energy_balance.m
+ 293   
  294   
- 295   
- 296  ***************************** Set up reporting ***************************
+ 295  ***************************** Set up reporting ***************************
       ******
+ 296   
  297   
- 298   
-GAMS 24.2.1  r43572 Released Dec  9, 2013 WEX-WEI x86_64/MS Windows 09/03/18 11:34:14 Page 2
+GAMS 24.2.3  r46072 Released May 22, 2014 WEX-WEI x86_64/MS Windows 09/18/18 17:10:13 Page 2
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Include File Summary
 
@@ -313,17 +312,17 @@ Include File Summary
    SEQ   GLOBAL TYPE      PARENT   LOCAL  FILENAME
 
      1        1 INPUT          0       0  C:\Users\cguenther\Documents\GitHub\pr
-                                          osumage\Code\Code\Prosumage_Opt\PROSUM
-                                          OD.gms
+                                          osumage\Code\Prosumage_Opt\PROSUMOD.gm
+                                          s
      2      135 GDXIN          1     135  C:\Users\cguenther\Documents\GitHub\pr
-                                          osumage\Code\Code\Prosumage_Opt\data\i
-                                          nput_data.gdx
+                                          osumage\Code\Prosumage_Opt\data\input_
+                                          data.gdx
 
 
-COMPILATION TIME     =        0.390 SECONDS     28 MB  24.2.1 r43572 WEX-WEI
-GAMS 24.2.1  r43572 Released Dec  9, 2013 WEX-WEI x86_64/MS Windows 09/03/18 11:34:14 Page 3
+COMPILATION TIME     =        0.063 SECONDS     28 MB  24.2.3 r46072 WEX-WEI
+GAMS 24.2.3  r46072 Released May 22, 2014 WEX-WEI x86_64/MS Windows 09/18/18 17:10:13 Page 3
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
-Model Statistics    SOLVE prosumod Using LP From line 291
+Model Statistics    SOLVE prosumod Using LP From line 290
 
 
 MODEL STATISTICS
@@ -333,36 +332,36 @@ BLOCKS OF VARIABLES          10     SINGLE VARIABLES       52,564
 NON ZERO ELEMENTS       179,529
 
 
-GENERATION TIME      =        0.608 SECONDS     44 MB  24.2.1 r43572 WEX-WEI
+GENERATION TIME      =        0.437 SECONDS     44 MB  24.2.3 r46072 WEX-WEI
 
 
-EXECUTION TIME       =        0.624 SECONDS     44 MB  24.2.1 r43572 WEX-WEI
-GAMS 24.2.1  r43572 Released Dec  9, 2013 WEX-WEI x86_64/MS Windows 09/03/18 11:34:14 Page 4
+EXECUTION TIME       =        0.452 SECONDS     44 MB  24.2.3 r46072 WEX-WEI
+GAMS 24.2.3  r46072 Released May 22, 2014 WEX-WEI x86_64/MS Windows 09/18/18 17:10:13 Page 4
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
-Solution Report     SOLVE prosumod Using LP From line 291
+Solution Report     SOLVE prosumod Using LP From line 290
 
 
                S O L V E      S U M M A R Y
 
      MODEL   prosumod            OBJECTIVE  Z
      TYPE    LP                  DIRECTION  MINIMIZE
-     SOLVER  CPLEX               FROM LINE  291
+     SOLVER  CPLEX               FROM LINE  290
 
 **** SOLVER STATUS     1 Normal Completion         
 **** MODEL STATUS      1 Optimal                   
 **** OBJECTIVE VALUE              939.0799
 
- RESOURCE USAGE, LIMIT          6.458  10000000.000
+ RESOURCE USAGE, LIMIT          3.042  10000000.000
  ITERATION COUNT, LIMIT     12383    2000000000
 
-IBM ILOG CPLEX   24.2.1 r43572 Released Dec  9, 2013 WEI x86_64/MS Windows    
+IBM ILOG CPLEX   24.2.3 r46072 Released May 22, 2014 WEI x86_64/MS Windows    
 --- GAMS/Cplex licensed for continuous and discrete problems.
 Cplex 12.6.0.0
 
 Space for names approximately 3.15 Mb
 Use option 'names no' to turn use of names off
 LP status(1): optimal
-Cplex Time: 6.35sec (det. 5059.11 ticks)
+Cplex Time: 2.93sec (det. 5059.11 ticks)
 Optimal solution found.
 Objective :         939.079854
 
@@ -371,12 +370,12 @@ Objective :         939.079854
 **** REPORT SUMMARY :        0     NONOPT
                              0 INFEASIBLE
                              0  UNBOUNDED
-GAMS 24.2.1  r43572 Released Dec  9, 2013 WEX-WEI x86_64/MS Windows 09/03/18 11:34:14 Page 5
+GAMS 24.2.3  r46072 Released May 22, 2014 WEX-WEI x86_64/MS Windows 09/18/18 17:10:13 Page 5
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 E x e c u t i o n
 
 
-----    292 PARAMETER d  Household load
+----    291 PARAMETER d  Household load
 
 h1    0.613,    h2    0.651,    h3    0.715,    h4    0.573,    h5    0.641
 h6    0.514,    h7    0.556,    h8    0.551,    h9    0.590,    h10   0.695
@@ -2132,24 +2131,24 @@ h8751 0.172,    h8752 1.019,    h8753 1.079,    h8754 1.659,    h8755 0.664
 h8756 0.197,    h8757 0.253,    h8758 0.191,    h8759 0.126,    h8760 0.497
 
 
-----    292 VARIABLE N_PV.L  PV generation capacities
+----    291 VARIABLE N_PV.L  PV generation capacities
 
 solar 8.017
 
 
-----    292 VARIABLE N_STO_E.L  Capacities: storage energy
+----    291 VARIABLE N_STO_E.L  Capacities: storage energy
 
 storage 10.896
 
 
-----    292 VARIABLE N_STO_P.L  Capacities: storage power
+----    291 VARIABLE N_STO_P.L  Capacities: storage power
 
 storage 1.795
 
 
-----    292 VARIABLE Z.L                   =         939.080  Objective
+----    291 VARIABLE Z.L                   =         939.080  Objective
 
-----    292 VARIABLE E_buy.L  Energy purchased from market
+----    291 VARIABLE E_buy.L  Energy purchased from market
 
 h3    0.715,    h6    0.514,    h8    0.527,    h9    0.125,    h13   0.118
 h14   0.285,    h15   0.452,    h16   0.690,    h17   0.617,    h18   0.701
@@ -2556,7 +2555,7 @@ h8754 1.659,    h8756 0.197,    h8757 0.253,    h8758 0.191,    h8759 0.126
 h8760 0.497
 
 
-----    292 VARIABLE E_sell.L  Energy sold to market
+----    291 VARIABLE E_sell.L  Energy sold to market
 
 h155           1.116,    h156           0.985,    h157           0.553
 h253           0.071,    h275           0.838,    h276           0.890
@@ -3285,7 +3284,7 @@ h8698          0.359,    h8699          1.982,    h8700          1.962
 h8701          1.475,    h8702          0.328
 
 
-----    292 VARIABLE STO_L.L  Storage level
+----    291 VARIABLE STO_L.L  Storage level
 
                     h1             h2             h3             h4
 
@@ -11472,7 +11471,7 @@ storage          2.615          2.615          2.615          2.615
 storage          2.615
 
 
-----    292 PARAMETER price_market  Price for selling energy per kWh
+----    291 PARAMETER price_market  Price for selling energy per kWh
 
 h1             0.013,    h2             0.012,    h3             0.012
 h4             0.012,    h5             0.011,    h6             0.010
@@ -14396,7 +14395,7 @@ h8755          0.031,    h8756          0.029,    h8757          0.029
 h8758          0.030,    h8759          0.028,    h8760          0.025
 
 
-----    292 EQUATION hh_energy_balance.M  Household energy balance
+----    291 EQUATION hh_energy_balance.M  Household energy balance
 
 h1    -5.00000000E-4,    h2            -0.300,    h3            -0.300
 h4            -0.300,    h5            -0.300,    h6            -0.300
@@ -17321,7 +17320,7 @@ h8758         -0.300,    h8759         -0.300,    h8760         -0.300
 
 
 
-EXECUTION TIME       =        0.375 SECONDS     35 MB  24.2.1 r43572 WEX-WEI
+EXECUTION TIME       =        0.234 SECONDS     35 MB  24.2.3 r46072 WEX-WEI
 
 
 USER: Abteilung Energie, Verkehr, Umwelt, 5 User     S131220:0515AN-GEN
@@ -17331,7 +17330,7 @@ USER: Abteilung Energie, Verkehr, Umwelt, 5 User     S131220:0515AN-GEN
 
 **** FILE SUMMARY
 
-Input      C:\Users\cguenther\Documents\GitHub\prosumage\Code\Code\Prosumage_Opt
-           \PROSUMOD.gms
-Output     C:\Users\cguenther\Documents\GitHub\prosumage\Code\Code\Prosumage_Opt
-           \PROSUMOD.lst
+Input      C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\PROS
+           UMOD.gms
+Output     C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\PROS
+           UMOD.lst

@@ -2,20 +2,20 @@ B 2 C o m p i l a t i o n
 B 317 Include File Summary
 B 333 Model Statistics    SOLVE prosumod Using LP From line 292
 B 349 Solution Report     SOLVE prosumod Using LP From line 292
-B 383 E x e c u t i o n
-I 384 d
-I 2142 N_PV
-I 2144 Z
-I 2145 E_buy
-I 2547 E_sell
-I 3276 G_PV
-I 4120 price_market
-I 7044 hh_energy_balance
-I 9969 lev_Z
-I 9970 lev_EB
-I 9971 lev_ES
-I 9972 pv_install_max
-I 9974 pv_generation
-I 12898 N_STO_E
-I 12903 N_STO_P
-I 12908 STO_L
+B 381 E x e c u t i o n
+I 382 d
+I 2140 N_PV
+I 2142 Z
+I 2143 E_buy
+I 2545 E_sell
+I 3274 G_PV
+I 4118 price_market
+I 7042 hh_energy_balance
+I 9967 lev_Z
+I 9968 lev_EB
+I 9969 lev_ES
+I 9970 pv_install_max
+I 9972 pv_generation
+I 12896 N_STO_E
+I 12901 N_STO_P
+I 12906 STO_L

@@ -247,7 +247,6 @@ stoout_max_power(sto,h)..
          STO_OUT(sto,h) =L= N_STO_P(sto)
 ;
 
-
 ***************************** Initialize model *********************************
 Model prosumod /
 objective

@@ -80,7 +80,7 @@ gamma1
 gamma2(h)
 gamma3(h)
 gamma4(h)
-levelsto
+levelsto(h)
 
 ;
 
@@ -380,7 +380,7 @@ N_STO_P.l    = 1.5  ;
 solve prosumodmcp using mcp;
 
 display d , N_PV.l , E_buy.l , E_sell.l ,  G_PV.l,
-        price_market, hh_energy_balance.m,
+        price_market, hh_energy_balance.m,  levelsto.l,
         pv_install_max.m, pv_generation.m, N_STO_E.l, N_STO_P.l
 
 
