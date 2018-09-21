@@ -1,6 +1,0 @@
-lpmethod 4
-threads 4
-epgap 1e-3
-parallelmode -1
-barcrossalg -1
-barepcomp 1e-8

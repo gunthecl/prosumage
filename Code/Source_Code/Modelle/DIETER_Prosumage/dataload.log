@@ -1,0 +1,205 @@
+
+--- Job dataload.gms Start 08/04/18 18:34:26 24.7.4 r58773 WEX-WEI x86 64bit/MS Windows
+GAMS 24.7.4   Copyright (C) 1987-2016 GAMS Development. All rights reserved
+Licensee: Course License Energy Informatics Computer BaseS180601:0449AO-GEN
+          Humboldt-Universitaet zu Berlin, WirtschaftswissenschaftliDC14161
+          License for teaching and research at degree granting institutions
+          License Admin: Olga Spiridonova, spiridoo@cms.hu-berlin.de       
+--- Starting compilation
+--- dataload.gms(25) 2 Mb 1 Error
+*** Error 120 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Unknown identifier entered as set
+--- dataload.gms(53) 2 Mb 2 Errors
+*** Error 120 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Unknown identifier entered as set
+--- dataload.gms(67) 2 Mb 4 Errors
+*** Error 120 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Unknown identifier entered as set
+*** Error 120 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Unknown identifier entered as set
+--- dataload.gms(72) 2 Mb 5 Errors
+*** Error 120 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Unknown identifier entered as set
+--- dataload.gms(80) 2 Mb 6 Errors
+*** Error 120 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Unknown identifier entered as set
+--- dataload.gms(114) 2 Mb 7 Errors
+*** Error 120 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Unknown identifier entered as set
+--- dataload.gms(115) 2 Mb 8 Errors
+*** Error 120 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Unknown identifier entered as set
+--- dataload.gms(139) 2 Mb 9 Errors
+*** Error 120 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Unknown identifier entered as set
+--- dataload.gms(249) 2 Mb 10 Errors
+*** Error 409 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- dataload.gms(251) 2 Mb
+--- GDXin=C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\Data_input.gdx
+--- dataload.gms(252) 12 Mb 18 Errors
+*** Error 361 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Values for domain 1 are unknown - no checking possible
+*** Error 361 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Values for domain 1 are unknown - no checking possible
+*** Error 362 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Values for domain 2 are unknown - no checking possible
+*** Error 363 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Values for domain 3 are unknown - no checking possible
+*** Error 361 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Values for domain 1 are unknown - no checking possible
+*** Error 362 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Values for domain 2 are unknown - no checking possible
+*** Error 361 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Values for domain 1 are unknown - no checking possible
+*** Error 362 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Values for domain 2 are unknown - no checking possible
+--- dataload.gms(253) 12 Mb 31 Errors
+*** Error 361 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Values for domain 1 are unknown - no checking possible
+*** Error 361 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Values for domain 1 are unknown - no checking possible
+*** Error 361 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Values for domain 1 are unknown - no checking possible
+*** Error 361 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Values for domain 1 are unknown - no checking possible
+*** Error 361 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Values for domain 1 are unknown - no checking possible
+*** Error 361 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Values for domain 1 are unknown - no checking possible
+*** Error 361 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Values for domain 1 are unknown - no checking possible
+*** Error 361 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Values for domain 1 are unknown - no checking possible
+*** Error 361 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Values for domain 1 are unknown - no checking possible
+*** Error 300 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Remaining errors not printed for this line
+--- dataload.gms(254) 12 Mb 32 Errors
+*** Error 361 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Values for domain 1 are unknown - no checking possible
+--- dataload.gms(255) 12 Mb 39 Errors
+*** Error 361 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Values for domain 1 are unknown - no checking possible
+*** Error 361 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Values for domain 1 are unknown - no checking possible
+*** Error 361 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Values for domain 1 are unknown - no checking possible
+*** Error 361 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Values for domain 1 are unknown - no checking possible
+*** Error 361 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Values for domain 1 are unknown - no checking possible
+*** Error 361 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Values for domain 1 are unknown - no checking possible
+*** Error 361 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Values for domain 1 are unknown - no checking possible
+--- dataload.gms(256) 12 Mb 50 Errors
+*** Error 361 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Values for domain 1 are unknown - no checking possible
+*** Error 361 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Values for domain 1 are unknown - no checking possible
+*** Error 361 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Values for domain 1 are unknown - no checking possible
+*** Error 361 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Values for domain 1 are unknown - no checking possible
+*** Error 361 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Values for domain 1 are unknown - no checking possible
+*** Error 361 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Values for domain 1 are unknown - no checking possible
+*** Error 361 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Values for domain 1 are unknown - no checking possible
+*** Error 361 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Values for domain 1 are unknown - no checking possible
+*** Error 361 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Values for domain 1 are unknown - no checking possible
+*** Error 300 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Remaining errors not printed for this line
+--- dataload.gms(257) 12 Mb 58 Errors
+*** Error 361 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Values for domain 1 are unknown - no checking possible
+*** Error 361 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Values for domain 1 are unknown - no checking possible
+*** Error 361 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Values for domain 1 are unknown - no checking possible
+*** Error 361 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Values for domain 1 are unknown - no checking possible
+*** Error 361 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Values for domain 1 are unknown - no checking possible
+*** Error 361 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Values for domain 1 are unknown - no checking possible
+*** Error 361 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Values for domain 1 are unknown - no checking possible
+*** Error 361 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Values for domain 1 are unknown - no checking possible
+--- dataload.gms(258) 12 Mb 65 Errors
+*** Error 361 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Values for domain 1 are unknown - no checking possible
+*** Error 361 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Values for domain 1 are unknown - no checking possible
+*** Error 361 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Values for domain 1 are unknown - no checking possible
+*** Error 361 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Values for domain 1 are unknown - no checking possible
+*** Error 361 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Values for domain 1 are unknown - no checking possible
+*** Error 361 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Values for domain 1 are unknown - no checking possible
+*** Error 361 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Values for domain 1 are unknown - no checking possible
+--- dataload.gms(259) 12 Mb 72 Errors
+*** Error 361 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Values for domain 1 are unknown - no checking possible
+*** Error 361 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Values for domain 1 are unknown - no checking possible
+*** Error 361 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Values for domain 1 are unknown - no checking possible
+*** Error 361 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Values for domain 1 are unknown - no checking possible
+*** Error 361 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Values for domain 1 are unknown - no checking possible
+*** Error 361 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Values for domain 1 are unknown - no checking possible
+*** Error 361 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Values for domain 1 are unknown - no checking possible
+--- dataload.gms(260) 15 Mb 79 Errors
+*** Error 361 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Values for domain 1 are unknown - no checking possible
+*** Error 361 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Values for domain 1 are unknown - no checking possible
+*** Error 362 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Values for domain 2 are unknown - no checking possible
+*** Error 361 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Values for domain 1 are unknown - no checking possible
+*** Error 361 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Values for domain 1 are unknown - no checking possible
+*** Error 362 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Values for domain 2 are unknown - no checking possible
+*** Error 363 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Values for domain 3 are unknown - no checking possible
+--- dataload.gms(261) 15 Mb 82 Errors
+*** Error 361 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Values for domain 1 are unknown - no checking possible
+*** Error 361 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Values for domain 1 are unknown - no checking possible
+*** Error 361 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Values for domain 1 are unknown - no checking possible
+--- dataload.gms(304) 15 Mb 83 Errors
+*** Error 409 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- dataload.gms(308) 15 Mb 84 Errors
+*** Error 409 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- dataload.gms(323) 15 Mb 86 Errors
+*** Error 353 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    The domain for this index position is unknown and the element
+       cannot be checked at this point. Missing data statement.
+*** Error 353 in C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
+    The domain for this index position is unknown and the element
+       cannot be checked at this point. Missing data statement.
+--- dataload.gms(332) 15 Mb 86 Errors
+*** Status: Compilation error(s)
+--- Job dataload.gms Stop 08/04/18 18:34:26 elapsed 0:00:00.499
+Exit code = 2

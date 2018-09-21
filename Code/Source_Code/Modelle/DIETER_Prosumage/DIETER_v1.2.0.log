@@ -1,0 +1,857 @@
+
+--- Job DIETER_v1.2.0.gms Start 08/04/18 18:17:21 24.7.4 r58773 WEX-WEI x86 64bit/MS Windows
+GAMS 24.7.4   Copyright (C) 1987-2016 GAMS Development. All rights reserved
+Licensee: Course License Energy Informatics Computer BaseS180601:0449AO-GEN
+          Humboldt-Universitaet zu Berlin, WirtschaftswissenschaftliDC14161
+          License for teaching and research at degree granting institutions
+          License Admin: Olga Spiridonova, spiridoo@cms.hu-berlin.de       
+--- Starting compilation
+--- DIETER_v1.2.0.gms(156) 3 Mb
+--- .dataload.gms(249) 4 Mb
+--- call gdxxrw Data_Input_2035.xlsx @temp.tmp o=Data_input
+
+GDXXRW           24.7.4 r58773 Released Sep 19, 2016 VS8 x86 32bit/MS Windows 
+Input file : C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\Data_Input_2035.xlsx
+Output file: C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\Data_input.gdx
+Total time = 13625 Ms
+--- .dataload.gms(251) 4 Mb
+--- GDXin=C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\Data_input.gdx
+--- .dataload.gms(332) 21 Mb
+--- DIETER_v1.2.0.gms(1253) 21 Mb
+--- .fix.gms(256) 21 Mb
+--- DIETER_v1.2.0.gms(1254) 21 Mb
+--- .scenario.gms(78) 21 Mb
+--- DIETER_v1.2.0.gms(1360) 21 Mb
+--- .report.gms(1017) 21 Mb
+--- DIETER_v1.2.0.gms(1377) 21 Mb
+--- Starting execution: elapsed 0:00:13.912
+--- DIETER_v1.2.0.gms(2022) 95 Mb
+---
+--- collecting and writing gdx file 
+---
+--- Generating LP model DIETER
+--- DIETER_v1.2.0.gms(674) 131 Mb  35 secs
+--- DIETER_v1.2.0.gms(743) 188 Mb  95 secs
+--- DIETER_v1.2.0.gms(942) 261 Mb  300 secs
+--- DIETER_v1.2.0.gms(1224) 280 Mb  35 secs
+--- DIETER_v1.2.0.gms(1230) 285 Mb  25 secs
+--- DIETER_v1.2.0.gms(1236) 286 Mb  9 secs
+--- DIETER_v1.2.0.gms(1242) 295 Mb  5 secs
+--- DIETER_v1.2.0.gms(1246) 322 Mb  9 secs
+--- DIETER_v1.2.0.gms(1282) 391 Mb  16 secs
+--- DIETER_v1.2.0.gms(1297) 425 Mb  15 secs
+--- DIETER_v1.2.0.gms(2022) 432 Mb
+---   902,290 rows  1,068,727 columns  4,616,446 non-zeroes
+---   473,044 nl-code  473,038 nl-non-zeroes
+--- DIETER_v1.2.0.gms(2022) 428 Mb
+--- Executing CPLEX: elapsed 0:09:41.267
+
+GUSS             24.7.4 r58773 Released Sep 19, 2016 WEI x86 64bit/MS Windows 
+Reading parameter(s) from scenario dictionary
+>>  Logoption 2
+>>  Optfile 1
+>>  Skipbasecase 1
+--- Scenario Variable with potential updates identified: phi_min_res
+--- Scenario Variable with potential updates identified: phi_pro_self
+
+IBM ILOG CPLEX   24.7.4 r58773 Released Sep 19, 2016 WEI x86 64bit/MS Windows 
+--- GAMS/Cplex licensed for continuous and discrete problems.
+Cplex 12.6.3.0
+
+Reading parameter(s) from "C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\cplex.opt"
+>>  lpmethod 4
+>>  threads 4
+>>  epgap 1e-3
+>>  parallelmode -1
+>>  barcrossalg -1
+>>  barepcomp 1e-8
+Finished reading from "C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\cplex.opt"
+Depreciated value -1 for BarCrossAlg. Using SolutionType=2
+Reading data...
+Starting Cplex...
+Space for names approximately 67.34 Mb
+Use option 'names no' to turn use of names off
+Tried aggregator 1 time.
+LP Presolve eliminated 590629 rows and 724245 columns.
+Aggregator did 12750 substitutions.
+Reduced LP has 298911 rows, 331732 columns, and 1358597 nonzeros.
+Presolve time = 2.50 sec. (984.17 ticks)
+Parallel mode: using up to 4 threads for barrier.
+
+***NOTE: Found 8 dense columns.
+
+Number of nonzeros in lower triangle of A*A' = 1509434
+Using Approximate Minimum Degree ordering
+Total time for automatic ordering = 0.58 sec. (157.61 ticks)
+Summary statistics for Cholesky factor:
+  Threads                   = 4
+  Rows in Factor            = 298919
+  Integer space required    = 829959
+  Total non-zeros in factor = 4892352
+  Total FP ops to factor    = 104583626
+ Itn      Primal Obj        Dual Obj  Prim Inf Upper Inf  Dual Inf Inf Ratio
+   0  2.2204921e+013 -1.2586959e+014 2.59e+012 4.86e+011 4.97e+010 1.00e+000
+   1  2.6071537e+012 -1.6352583e+013 2.24e+011 4.19e+010 6.72e+009 1.81e-010
+   2  1.7252090e+011 -2.7521698e+012 9.50e+009 1.78e+009 1.15e+009 1.80e-009
+   3  1.6300584e+011 -1.9256018e+012 8.80e+009 1.65e+009 8.13e+008 2.86e-009
+   4  1.5767795e+011 -1.1643550e+012 5.43e+009 1.02e+009 5.15e+008 2.06e-009
+   5  9.9869277e+010 -2.8783779e+011 1.06e+009 1.99e+008 1.54e+008 7.89e-009
+   6  8.0610380e+010 -4.4652574e+009 2.07e+008 3.88e+007 3.40e+007 4.61e-008
+   7  6.1485894e+010  2.6158822e+010 8.86e+007 1.66e+007 1.38e+007 1.78e-007
+   8  5.2735906e+010  3.1272307e+010 5.98e+007 1.12e+007 5.44e+006 6.82e-007
+   9  4.3951741e+010  3.3107153e+010 3.18e+007 5.95e+006 1.78e+006 2.99e-006
+  10  4.0459339e+010  3.3845568e+010 2.00e+007 3.74e+006 8.76e+005 7.15e-006
+  11  3.9136598e+010  3.4371932e+010 1.52e+007 2.85e+006 4.51e+005 1.68e-005
+  12  3.6873490e+010  3.4635254e+010 7.18e+006 1.35e+006 1.99e+005 4.34e-005
+  13  3.6315062e+010  3.4719449e+010 5.19e+006 9.72e+005 1.25e+005 7.94e-005
+  14  3.5770062e+010  3.4760065e+010 3.21e+006 6.02e+005 9.42e+004 1.14e-004
+  15  3.5580837e+010  3.4798213e+010 2.48e+006 4.65e+005 7.37e+004 1.54e-004
+  16  3.5454453e+010  3.4816800e+010 1.99e+006 3.73e+005 6.41e+004 1.84e-004
+  17  3.5295902e+010  3.4849330e+010 1.37e+006 2.57e+005 4.81e+004 2.65e-004
+  18  3.5243110e+010  3.4866725e+010 1.16e+006 2.17e+005 4.01e+004 3.33e-004
+  19  3.5202732e+010  3.4884650e+010 9.98e+005 1.87e+005 3.15e+004 4.51e-004
+  20  3.5161148e+010  3.4894881e+010 8.37e+005 1.57e+005 2.62e+004 5.66e-004
+  21  3.5127600e+010  3.4904345e+010 7.07e+005 1.32e+005 2.13e+004 7.31e-004
+  22  3.5091184e+010  3.4910552e+010 5.65e+005 1.06e+005 1.81e+004 8.92e-004
+  23  3.5062735e+010  3.4914233e+010 4.54e+005 8.51e+004 1.62e+004 1.02e-003
+  24  3.5040551e+010  3.4918080e+010 3.65e+005 6.85e+004 1.45e+004 1.17e-003
+  25  3.5014866e+010  3.4921475e+010 2.62e+005 4.92e+004 1.29e+004 1.36e-003
+  26  3.5001042e+010  3.4922787e+010 2.05e+005 3.85e+004 1.23e+004 1.43e-003
+  27  3.4997205e+010  3.4924393e+010 1.89e+005 3.54e+004 1.17e+004 1.53e-003
+  28  3.4991703e+010  3.4927067e+010 1.66e+005 3.11e+004 1.05e+004 1.74e-003
+  29  3.4985485e+010  3.4929279e+010 1.40e+005 2.63e+004 9.58e+003 1.97e-003
+  30  3.4979120e+010  3.4932139e+010 1.14e+005 2.15e+004 8.31e+003 2.35e-003
+  31  3.4976088e+010  3.4933373e+010 1.03e+005 1.92e+004 7.73e+003 2.57e-003
+  32  3.4969554e+010  3.4934270e+010 7.74e+004 1.45e+004 7.30e+003 2.76e-003
+  33  3.4967519e+010  3.4934952e+010 6.92e+004 1.30e+004 6.99e+003 2.92e-003
+  34  3.4964275e+010  3.4936240e+010 5.64e+004 1.06e+004 6.39e+003 3.27e-003
+  35  3.4961890e+010  3.4937236e+010 4.69e+004 8.80e+003 5.93e+003 3.59e-003
+  36  3.4959362e+010  3.4938414e+010 3.72e+004 6.96e+003 5.37e+003 4.07e-003
+  37  3.4957726e+010  3.4939088e+010 3.10e+004 5.81e+003 5.04e+003 4.40e-003
+  38  3.4956902e+010  3.4939749e+010 2.80e+004 5.26e+003 4.71e+003 4.80e-003
+  39  3.4956391e+010  3.4940355e+010 2.63e+004 4.93e+003 4.39e+003 5.24e-003
+  40  3.4955796e+010  3.4940806e+010 2.43e+004 4.56e+003 4.15e+003 5.63e-003
+  41  3.4955446e+010  3.4941383e+010 2.32e+004 4.35e+003 3.83e+003 6.23e-003
+  42  3.4954354e+010  3.4941866e+010 1.98e+004 3.71e+003 3.55e+003 6.85e-003
+  43  3.4954182e+010  3.4942141e+010 1.93e+004 3.61e+003 3.38e+003 7.27e-003
+  44  3.4953761e+010  3.4942532e+010 1.80e+004 3.37e+003 3.15e+003 7.95e-003
+  45  3.4952671e+010  3.4942835e+010 1.48e+004 2.78e+003 2.96e+003 8.59e-003
+  46  3.4952326e+010  3.4943084e+010 1.38e+004 2.59e+003 2.80e+003 9.19e-003
+  47  3.4952153e+010  3.4943266e+010 1.33e+004 2.50e+003 2.69e+003 9.69e-003
+  48  3.4951510e+010  3.4943589e+010 1.15e+004 2.16e+003 2.48e+003 1.07e-002
+  49  3.4951038e+010  3.4943777e+010 1.02e+004 1.92e+003 2.35e+003 1.14e-002
+  50  3.4950429e+010  3.4943896e+010 8.51e+003 1.60e+003 2.28e+003 1.19e-002
+  51  3.4950175e+010  3.4944161e+010 7.83e+003 1.47e+003 2.10e+003 1.32e-002
+  52  3.4949893e+010  3.4944242e+010 7.10e+003 1.33e+003 2.04e+003 1.37e-002
+  53  3.4949731e+010  3.4944414e+010 6.68e+003 1.25e+003 1.92e+003 1.48e-002
+  54  3.4949284e+010  3.4944647e+010 5.58e+003 1.05e+003 1.75e+003 1.66e-002
+  55  3.4949206e+010  3.4944696e+010 5.39e+003 1.01e+003 1.71e+003 1.71e-002
+  56  3.4949140e+010  3.4944796e+010 5.23e+003 9.81e+002 1.63e+003 1.81e-002
+  57  3.4948962e+010  3.4944982e+010 4.83e+003 9.06e+002 1.48e+003 2.04e-002
+  58  3.4948743e+010  3.4945092e+010 4.36e+003 8.17e+002 1.39e+003 2.21e-002
+  59  3.4948555e+010  3.4945177e+010 3.96e+003 7.43e+002 1.31e+003 2.37e-002
+  60  3.4948307e+010  3.4945267e+010 3.44e+003 6.45e+002 1.23e+003 2.56e-002
+  61  3.4948283e+010  3.4945283e+010 3.40e+003 6.37e+002 1.22e+003 2.61e-002
+  62  3.4947985e+010  3.4945326e+010 2.78e+003 5.22e+002 1.18e+003 2.71e-002
+  63  3.4947854e+010  3.4945432e+010 2.51e+003 4.71e+002 1.08e+003 3.01e-002
+  64  3.4947710e+010  3.4945475e+010 2.23e+003 4.18e+002 1.04e+003 3.16e-002
+  65  3.4947588e+010  3.4945527e+010 2.00e+003 3.74e+002 9.93e+002 3.37e-002
+  66  3.4947518e+010  3.4945544e+010 1.86e+003 3.49e+002 9.76e+002 3.44e-002
+  67  3.4947374e+010  3.4945613e+010 1.60e+003 3.00e+002 9.06e+002 3.78e-002
+  68  3.4947286e+010  3.4945677e+010 1.43e+003 2.69e+002 8.42e+002 4.14e-002
+  69  3.4947236e+010  3.4945709e+010 1.35e+003 2.53e+002 8.07e+002 4.36e-002
+  70  3.4947208e+010  3.4945738e+010 1.30e+003 2.43e+002 7.76e+002 4.58e-002
+  71  3.4947201e+010  3.4945743e+010 1.29e+003 2.42e+002 7.68e+002 4.64e-002
+  72  3.4947110e+010  3.4945777e+010 1.14e+003 2.14e+002 7.29e+002 4.95e-002
+  73  3.4947099e+010  3.4945798e+010 1.12e+003 2.11e+002 7.02e+002 5.19e-002
+  74  3.4947048e+010  3.4945864e+010 1.05e+003 1.96e+002 6.19e+002 6.08e-002
+  75  3.4947015e+010  3.4945892e+010 1.00e+003 1.88e+002 5.79e+002 6.59e-002
+  76  3.4946924e+010  3.4945907e+010 8.78e+002 1.65e+002 5.56e+002 6.93e-002
+  77  3.4946866e+010  3.4945928e+010 7.99e+002 1.50e+002 5.25e+002 7.44e-002
+  78  3.4946838e+010  3.4945951e+010 7.63e+002 1.43e+002 4.86e+002 8.21e-002
+  79  3.4946733e+010  3.4945964e+010 6.28e+002 1.18e+002 4.65e+002 8.65e-002
+  80  3.4946619e+010  3.4945977e+010 4.78e+002 8.96e+001 4.44e+002 9.15e-002
+  81  3.4946552e+010  3.4945995e+010 3.94e+002 7.39e+001 4.13e+002 1.00e-001
+  82  3.4946517e+010  3.4946010e+010 3.52e+002 6.60e+001 3.87e+002 1.09e-001
+  83  3.4946496e+010  3.4946013e+010 3.27e+002 6.14e+001 3.80e+002 1.11e-001
+  84  3.4946438e+010  3.4946028e+010 2.64e+002 4.95e+001 3.50e+002 1.23e-001
+  85  3.4946383e+010  3.4946032e+010 2.05e+002 3.85e+001 3.41e+002 1.27e-001
+  86  3.4946354e+010  3.4946041e+010 1.73e+002 3.24e+001 3.22e+002 1.37e-001
+  87  3.4946331e+010  3.4946051e+010 1.50e+002 2.81e+001 3.00e+002 1.50e-001
+  88  3.4946329e+010  3.4946052e+010 1.48e+002 2.78e+001 2.95e+002 1.53e-001
+  89  3.4946317e+010  3.4946063e+010 1.38e+002 2.59e+001 2.66e+002 1.74e-001
+  90  3.4946273e+010  3.4946067e+010 1.03e+002 1.94e+001 2.52e+002 1.86e-001
+  91  3.4946270e+010  3.4946070e+010 1.00e+002 1.88e+001 2.43e+002 1.94e-001
+  92  3.4946261e+010  3.4946073e+010 9.29e+001 1.74e+001 2.34e+002 2.04e-001
+  93  3.4946260e+010  3.4946074e+010 9.18e+001 1.72e+001 2.26e+002 2.12e-001
+  94  3.4946229e+010  3.4946083e+010 7.04e+001 1.32e+001 1.89e+002 2.67e-001
+  95  3.4946205e+010  3.4946085e+010 5.54e+001 1.04e+001 1.78e+002 2.88e-001
+  96  3.4946172e+010  3.4946089e+010 3.66e+001 6.89e+000 1.48e+002 3.63e-001
+  97  3.4946166e+010  3.4946089e+010 3.42e+001 6.43e+000 1.41e+002 3.86e-001
+  98  3.4946139e+010  3.4946089e+010 2.23e+001 4.21e+000 1.14e+002 5.03e-001
+  99  3.4946103e+010  3.4946083e+010 1.10e+001 2.10e+000 8.46e+001 7.21e-001
+ 100  3.4946100e+010  3.4946082e+010 1.02e+001 1.94e+000 7.84e+001 7.93e-001
+ 101  3.4946084e+010  3.4946074e+010 5.82e+000 1.11e+000 4.78e+001 1.52e+000
+ 102  3.4946073e+010  3.4946063e+010 3.88e+000 7.50e-001 2.67e+001 3.27e+000
+ 103  3.4946061e+010  3.4946050e+010 2.45e+000 4.77e-001 1.12e+001 1.03e+001
+ 104  3.4946042e+010  3.4946042e+010 6.56e-001 1.27e-001 5.56e+000 2.13e+001
+ 105  3.4946038e+010  3.4946039e+010 3.05e-001 4.25e-002 3.08e+000 4.27e+001
+ 106  3.4946036e+010  3.4946037e+010 1.49e-001 1.38e-002 1.07e+000 1.60e+002
+ 107  3.4946036e+010  3.4946036e+010 1.78e-001 9.23e-003 5.07e-001 3.81e+002
+ 108  3.4946036e+010  3.4946036e+010 1.86e-001 8.21e-003 4.21e-001 4.63e+002
+ 109  3.4946035e+010  3.4946035e+010 1.82e-001 4.31e-003 1.81e-001 1.13e+003
+Barrier time = 60.94 sec. (18280.63 ticks)
+
+Total time on 4 threads = 60.94 sec. (18280.63 ticks)
+LP status(1): optimal
+Cplex Time: 60.94sec (det. 18283.21 ticks)
+
+Optimal solution found.
+Objective : 34946035218.613487
+
+--- Scenario scen1:     Records read:    2
+--- Solution statistics for scenario scen1
+---   Solver Status    1 Normal Completion         
+---   Model Status     1 Optimal                   
+---   Objective Value  34946035218.6135
+---   Resource Usage   63250
+---   Total Time (ms)  63938
+
+IBM ILOG CPLEX   24.7.4 r58773 Released Sep 19, 2016 WEI x86 64bit/MS Windows 
+--- GAMS/Cplex licensed for continuous and discrete problems.
+Cplex 12.6.3.0
+
+Reading parameter(s) from "C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\cplex.opt"
+>>  lpmethod 4
+>>  threads 4
+>>  epgap 1e-3
+>>  parallelmode -1
+>>  barcrossalg -1
+>>  barepcomp 1e-8
+Finished reading from "C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\cplex.opt"
+Depreciated value -1 for BarCrossAlg. Using SolutionType=2
+Reading data...
+Starting Cplex...
+Space for names approximately 67.34 Mb
+Use option 'names no' to turn use of names off
+Tried aggregator 1 time.
+LP Presolve eliminated 590629 rows and 724245 columns.
+Aggregator did 12750 substitutions.
+Reduced LP has 298911 rows, 331732 columns, and 1358597 nonzeros.
+Presolve time = 1.63 sec. (984.17 ticks)
+Parallel mode: using up to 4 threads for barrier.
+
+***NOTE: Found 8 dense columns.
+
+Number of nonzeros in lower triangle of A*A' = 1509434
+Using Approximate Minimum Degree ordering
+Total time for automatic ordering = 0.61 sec. (157.61 ticks)
+Summary statistics for Cholesky factor:
+  Threads                   = 4
+  Rows in Factor            = 298919
+  Integer space required    = 829959
+  Total non-zeros in factor = 4892352
+  Total FP ops to factor    = 104583626
+ Itn      Primal Obj        Dual Obj  Prim Inf Upper Inf  Dual Inf Inf Ratio
+   0  2.2204921e+013 -1.2586959e+014 2.59e+012 4.86e+011 4.97e+010 1.00e+000
+   1  2.6116577e+012 -1.6355745e+013 2.24e+011 4.20e+010 6.72e+009 1.81e-010
+   2  1.7237041e+011 -2.7541351e+012 9.49e+009 1.78e+009 1.15e+009 1.79e-009
+   3  1.6289260e+011 -1.9280431e+012 8.79e+009 1.65e+009 8.14e+008 2.84e-009
+   4  1.5672957e+011 -1.1478214e+012 5.39e+009 1.01e+009 5.08e+008 2.08e-009
+   5  9.9817887e+010 -2.8995377e+011 1.08e+009 2.03e+008 1.55e+008 7.83e-009
+   6  8.0780252e+010 -4.8125850e+009 2.22e+008 4.15e+007 3.41e+007 4.54e-008
+   7  6.1455408e+010  2.6272746e+010 9.35e+007 1.75e+007 1.38e+007 1.78e-007
+   8  5.2653068e+010  3.1312852e+010 6.29e+007 1.18e+007 5.40e+006 6.81e-007
+   9  4.3953988e+010  3.3130634e+010 3.35e+007 6.29e+006 1.77e+006 2.97e-006
+  10  4.0485157e+010  3.3857175e+010 2.11e+007 3.96e+006 8.74e+005 7.04e-006
+  11  3.8823924e+010  3.4382206e+010 1.48e+007 2.77e+006 4.54e+005 1.65e-005
+  12  3.6850371e+010  3.4647697e+010 7.44e+006 1.39e+006 1.99e+005 4.44e-005
+  13  3.6151867e+010  3.4731242e+010 4.81e+006 9.02e+005 1.25e+005 8.10e-005
+  14  3.5781781e+010  3.4770929e+010 3.37e+006 6.31e+005 9.87e+004 1.10e-004
+  15  3.5577246e+010  3.4813655e+010 2.54e+006 4.77e+005 7.46e+004 1.56e-004
+  16  3.5453531e+010  3.4831644e+010 2.04e+006 3.83e+005 6.48e+004 1.86e-004
+  17  3.5279523e+010  3.4863505e+010 1.33e+006 2.49e+005 4.83e+004 2.71e-004
+  18  3.5213535e+010  3.4881212e+010 1.05e+006 1.96e+005 3.99e+004 3.45e-004
+  19  3.5161931e+010  3.4895841e+010 8.32e+005 1.56e+005 3.28e+004 4.41e-004
+  20  3.5104270e+010  3.4910466e+010 5.91e+005 1.11e+005 2.56e+004 6.04e-004
+  21  3.5070685e+010  3.4920104e+010 4.51e+005 8.46e+004 2.08e+004 7.84e-004
+  22  3.5039079e+010  3.4927812e+010 3.21e+005 6.02e+004 1.69e+004 1.02e-003
+  23  3.5011787e+010  3.4931555e+010 2.09e+005 3.92e+004 1.50e+004 1.19e-003
+  24  3.5006534e+010  3.4935634e+010 1.87e+005 3.50e+004 1.30e+004 1.42e-003
+  25  3.4992853e+010  3.4938253e+010 1.31e+005 2.46e+004 1.16e+004 1.64e-003
+  26  3.4982643e+010  3.4942300e+010 8.98e+004 1.68e+004 9.52e+003 2.12e-003
+  27  3.4975974e+010  3.4944347e+010 6.40e+004 1.20e+004 8.38e+003 2.49e-003
+  28  3.4971907e+010  3.4946657e+010 4.86e+004 9.10e+003 7.07e+003 3.09e-003
+  29  3.4968726e+010  3.4947423e+010 3.72e+004 6.98e+003 6.61e+003 3.37e-003
+  30  3.4965010e+010  3.4948783e+010 2.41e+004 4.53e+003 5.77e+003 4.01e-003
+  31  3.4962156e+010  3.4950435e+010 1.47e+004 2.75e+003 4.71e+003 5.22e-003
+  32  3.4961292e+010  3.4951288e+010 1.22e+004 2.28e+003 4.10e+003 6.23e-003
+  33  3.4960732e+010  3.4952169e+010 1.07e+004 2.01e+003 3.42e+003 7.86e-003
+  34  3.4959759e+010  3.4953129e+010 8.47e+003 1.59e+003 2.58e+003 1.13e-002
+  35  3.4959308e+010  3.4953416e+010 7.57e+003 1.42e+003 2.27e+003 1.33e-002
+  36  3.4957329e+010  3.4953827e+010 3.95e+003 7.40e+002 1.74e+003 1.86e-002
+  37  3.4957211e+010  3.4953860e+010 3.74e+003 7.01e+002 1.69e+003 1.92e-002
+  38  3.4956413e+010  3.4954055e+010 2.33e+003 4.36e+002 1.43e+003 2.38e-002
+  39  3.4955738e+010  3.4954307e+010 1.23e+003 2.30e+002 1.04e+003 3.60e-002
+  40  3.4955394e+010  3.4954379e+010 7.89e+002 1.48e+002 8.80e+002 4.45e-002
+  41  3.4955360e+010  3.4954411e+010 7.51e+002 1.41e+002 7.89e+002 5.11e-002
+  42  3.4955075e+010  3.4954485e+010 4.53e+002 8.50e+001 5.35e+002 8.49e-002
+  43  3.4954768e+010  3.4954487e+010 2.11e+002 3.96e+001 4.57e+002 1.04e-001
+  44  3.4954658e+010  3.4954487e+010 1.28e+002 2.41e+001 3.74e+002 1.33e-001
+  45  3.4954587e+010  3.4954472e+010 8.46e+001 1.59e+001 2.23e+002 2.67e-001
+  46  3.4954462e+010  3.4954461e+010 3.62e+001 6.80e+000 1.98e+002 3.09e-001
+  47  3.4954404e+010  3.4954396e+010 1.31e+001 2.51e+000 5.69e+001 2.57e+000
+  48  3.4954376e+010  3.4954388e+010 9.32e+000 1.79e+000 5.17e+001 2.85e+000
+  49  3.4954324e+010  3.4954338e+010 2.24e+000 4.67e-001 2.04e+001 8.23e+000
+  50  3.4954312e+010  3.4954320e+010 2.93e+000 1.77e-001 9.78e+000 1.97e+001
+  51  3.4954306e+010  3.4954308e+010 9.72e-001 5.35e-002 2.59e+000 9.72e+001
+  52  3.4954304e+010  3.4954303e+010 4.87e-001 2.69e-002 3.76e-001 7.33e+002
+  53  3.4954302e+010  3.4954302e+010 3.88e-002 2.05e-003 4.46e-002 6.11e+003
+Barrier time = 29.92 sec. (9883.86 ticks)
+
+Total time on 4 threads = 29.92 sec. (9883.86 ticks)
+LP status(1): optimal
+Cplex Time: 29.94sec (det. 9886.44 ticks)
+
+Optimal solution found.
+Objective : 34954302392.613373
+
+--- Scenario scen2:     Records read:    2
+--- Solution statistics for scenario scen2
+---   Solver Status    1 Normal Completion         
+---   Model Status     1 Optimal                   
+---   Objective Value  34954302392.6134
+---   Resource Usage   32172
+---   Total Time (ms)  32765
+
+IBM ILOG CPLEX   24.7.4 r58773 Released Sep 19, 2016 WEI x86 64bit/MS Windows 
+--- GAMS/Cplex licensed for continuous and discrete problems.
+Cplex 12.6.3.0
+
+Reading parameter(s) from "C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\cplex.opt"
+>>  lpmethod 4
+>>  threads 4
+>>  epgap 1e-3
+>>  parallelmode -1
+>>  barcrossalg -1
+>>  barepcomp 1e-8
+Finished reading from "C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\cplex.opt"
+Depreciated value -1 for BarCrossAlg. Using SolutionType=2
+Reading data...
+Starting Cplex...
+Space for names approximately 67.34 Mb
+Use option 'names no' to turn use of names off
+Tried aggregator 1 time.
+LP Presolve eliminated 590629 rows and 724245 columns.
+Aggregator did 12750 substitutions.
+Reduced LP has 298911 rows, 331732 columns, and 1358597 nonzeros.
+Presolve time = 1.81 sec. (984.17 ticks)
+Parallel mode: using up to 4 threads for barrier.
+
+***NOTE: Found 8 dense columns.
+
+Number of nonzeros in lower triangle of A*A' = 1509434
+Using Approximate Minimum Degree ordering
+Total time for automatic ordering = 0.55 sec. (157.61 ticks)
+Summary statistics for Cholesky factor:
+  Threads                   = 4
+  Rows in Factor            = 298919
+  Integer space required    = 829959
+  Total non-zeros in factor = 4892352
+  Total FP ops to factor    = 104583626
+ Itn      Primal Obj        Dual Obj  Prim Inf Upper Inf  Dual Inf Inf Ratio
+   0  2.2204921e+013 -1.2586959e+014 2.59e+012 4.86e+011 4.97e+010 1.00e+000
+   1  2.6161708e+012 -1.6358887e+013 2.24e+011 4.21e+010 6.73e+009 1.80e-010
+   2  1.7221813e+011 -2.7561165e+012 9.47e+009 1.78e+009 1.16e+009 1.78e-009
+   3  1.6277748e+011 -1.9305148e+012 8.78e+009 1.65e+009 8.15e+008 2.83e-009
+   4  1.5577145e+011 -1.1304956e+012 5.35e+009 1.00e+009 5.01e+008 2.10e-009
+   5  9.9746338e+010 -2.9390165e+011 1.11e+009 2.08e+008 1.56e+008 7.74e-009
+   6  8.1017650e+010 -5.0958606e+009 2.37e+008 4.44e+007 3.42e+007 4.47e-008
+   7  6.1435556e+010  2.6441678e+010 9.82e+007 1.84e+007 1.37e+007 1.77e-007
+   8  5.2569662e+010  3.1390815e+010 6.58e+007 1.23e+007 5.35e+006 6.84e-007
+   9  4.3963101e+010  3.3166578e+010 3.53e+007 6.61e+006 1.76e+006 2.97e-006
+  10  4.0513836e+010  3.3873231e+010 2.23e+007 4.18e+006 8.73e+005 6.99e-006
+  11  3.8421061e+010  3.4402277e+010 1.39e+007 2.60e+006 4.55e+005 1.64e-005
+  12  3.6972047e+010  3.4655325e+010 8.22e+006 1.54e+006 2.05e+005 4.80e-005
+  13  3.6221424e+010  3.4748269e+010 5.25e+006 9.85e+005 1.25e+005 9.05e-005
+  14  3.5804418e+010  3.4795626e+010 3.53e+006 6.62e+005 9.53e+004 1.27e-004
+  15  3.5591482e+010  3.4842884e+010 2.62e+006 4.90e+005 7.14e+004 1.82e-004
+  16  3.5460107e+010  3.4865075e+010 2.04e+006 3.83e+005 6.10e+004 2.22e-004
+  17  3.5315892e+010  3.4898781e+010 1.40e+006 2.62e+005 4.59e+004 3.17e-004
+  18  3.5236447e+010  3.4917755e+010 1.04e+006 1.95e+005 3.77e+004 4.06e-004
+  19  3.5146677e+010  3.4942237e+010 6.36e+005 1.19e+005 2.72e+004 6.13e-004
+  20  3.5109350e+010  3.4956661e+010 4.68e+005 8.78e+004 2.10e+004 8.53e-004
+  21  3.5067082e+010  3.4966815e+010 2.84e+005 5.32e+004 1.63e+004 1.17e-003
+  22  3.5044683e+010  3.4976403e+010 1.86e+005 3.49e+004 1.18e+004 1.76e-003
+  23  3.5026556e+010  3.4980189e+010 1.11e+005 2.08e+004 9.92e+003 2.20e-003
+  24  3.5016667e+010  3.4984618e+010 6.97e+004 1.31e+004 7.70e+003 3.04e-003
+  25  3.5011513e+010  3.4987159e+010 4.96e+004 9.29e+003 6.33e+003 3.90e-003
+  26  3.5006081e+010  3.4989461e+010 2.96e+004 5.54e+003 4.99e+003 5.27e-003
+  27  3.5003019e+010  3.4991328e+010 1.92e+004 3.60e+003 3.81e+003 7.45e-003
+  28  3.5000689e+010  3.4992785e+010 1.22e+004 2.29e+003 2.76e+003 1.13e-002
+  29  3.4998598e+010  3.4994491e+010 6.85e+003 1.28e+003 1.26e+003 3.39e-002
+  30  3.4996510e+010  3.4994604e+010 3.01e+003 5.65e+002 8.86e+002 5.20e-002
+  31  3.4995809e+010  3.4994750e+010 1.73e+003 3.25e+002 3.85e+002 1.61e-001
+  32  3.4995091e+010  3.4994656e+010 7.20e+002 1.35e+002 1.71e+002 4.04e-001
+  33  3.4994877e+010  3.4994618e+010 4.25e+002 7.97e+001 9.80e+001 7.71e-001
+  34  3.4994653e+010  3.4994577e+010 1.32e+002 2.49e+001 3.83e+001 2.18e+000
+  35  3.4994571e+010  3.4994558e+010 2.98e+001 5.66e+000 1.35e+001 6.48e+000
+  36  3.4994558e+010  3.4994553e+010 1.29e+001 2.45e+000 6.52e+000 1.51e+001
+  37  3.4994548e+010  3.4994547e+010 2.51e+000 4.87e-001 1.41e+000 7.47e+001
+  38  3.4994548e+010  3.4994546e+010 1.65e+000 3.19e-001 3.98e-001 3.72e+002
+  39  3.4994546e+010  3.4994546e+010 3.54e-001 2.11e-002 2.84e-002 5.12e+003
+Barrier time = 24.63 sec. (7688.44 ticks)
+
+Total time on 4 threads = 24.63 sec. (7688.44 ticks)
+LP status(1): optimal
+Cplex Time: 24.64sec (det. 7691.03 ticks)
+
+Optimal solution found.
+Objective : 34994545926.547852
+
+--- Scenario scen3:     Records read:    2
+--- Solution statistics for scenario scen3
+---   Solver Status    1 Normal Completion         
+---   Model Status     1 Optimal                   
+---   Objective Value  34994545926.5479
+---   Resource Usage   26765
+---   Total Time (ms)  27375
+
+IBM ILOG CPLEX   24.7.4 r58773 Released Sep 19, 2016 WEI x86 64bit/MS Windows 
+--- GAMS/Cplex licensed for continuous and discrete problems.
+Cplex 12.6.3.0
+
+Reading parameter(s) from "C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\cplex.opt"
+>>  lpmethod 4
+>>  threads 4
+>>  epgap 1e-3
+>>  parallelmode -1
+>>  barcrossalg -1
+>>  barepcomp 1e-8
+Finished reading from "C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\cplex.opt"
+Depreciated value -1 for BarCrossAlg. Using SolutionType=2
+Reading data...
+Starting Cplex...
+Space for names approximately 67.34 Mb
+Use option 'names no' to turn use of names off
+Tried aggregator 1 time.
+LP Presolve eliminated 590629 rows and 724245 columns.
+Aggregator did 12750 substitutions.
+Reduced LP has 298911 rows, 331732 columns, and 1358597 nonzeros.
+Presolve time = 1.89 sec. (984.17 ticks)
+Parallel mode: using up to 4 threads for barrier.
+
+***NOTE: Found 8 dense columns.
+
+Number of nonzeros in lower triangle of A*A' = 1509434
+Using Approximate Minimum Degree ordering
+Total time for automatic ordering = 0.58 sec. (157.61 ticks)
+Summary statistics for Cholesky factor:
+  Threads                   = 4
+  Rows in Factor            = 298919
+  Integer space required    = 829959
+  Total non-zeros in factor = 4892352
+  Total FP ops to factor    = 104583626
+ Itn      Primal Obj        Dual Obj  Prim Inf Upper Inf  Dual Inf Inf Ratio
+   0  2.2204921e+013 -1.2586959e+014 2.59e+012 4.86e+011 4.97e+010 1.00e+000
+   1  2.6206932e+012 -1.6362011e+013 2.25e+011 4.22e+010 6.73e+009 1.80e-010
+   2  1.7206403e+011 -2.7581140e+012 9.45e+009 1.77e+009 1.16e+009 1.77e-009
+   3  1.6266046e+011 -1.9330168e+012 8.76e+009 1.64e+009 8.16e+008 2.82e-009
+   4  1.5480641e+011 -1.1123890e+012 5.31e+009 9.95e+008 4.93e+008 2.12e-009
+   5  9.9652744e+010 -2.9776671e+011 1.13e+009 2.12e+008 1.58e+008 7.65e-009
+   6  8.1266236e+010 -5.2822726e+009 2.53e+008 4.73e+007 3.43e+007 4.42e-008
+   7  6.1441564e+010  2.6674928e+010 1.03e+008 1.93e+007 1.36e+007 1.77e-007
+   8  5.2494981e+010  3.1514078e+010 6.86e+007 1.29e+007 5.29e+006 6.93e-007
+   9  4.3979354e+010  3.3215860e+010 3.69e+007 6.93e+006 1.74e+006 2.99e-006
+  10  4.0546993e+010  3.3900746e+010 2.34e+007 4.39e+006 8.70e+005 7.00e-006
+  11  3.8152707e+010  3.4436147e+010 1.33e+007 2.49e+006 4.54e+005 1.66e-005
+  12  3.7006203e+010  3.4708225e+010 8.55e+006 1.60e+006 2.06e+005 4.93e-005
+  13  3.6436923e+010  3.4807213e+010 6.19e+006 1.16e+006 1.19e+005 9.93e-005
+  14  3.5908345e+010  3.4852253e+010 3.96e+006 7.42e+005 8.64e+004 1.48e-004
+  15  3.5623835e+010  3.4888537e+010 2.68e+006 5.03e+005 6.83e+004 1.97e-004
+  16  3.5439756e+010  3.4916266e+010 1.82e+006 3.41e+005 5.67e+004 2.49e-004
+  17  3.5302028e+010  3.4943066e+010 1.15e+006 2.16e+005 4.64e+004 3.21e-004
+  18  3.5228321e+010  3.4970309e+010 7.90e+005 1.48e+005 3.63e+004 4.38e-004
+  19  3.5152390e+010  3.4994229e+010 4.24e+005 7.94e+004 2.71e+004 6.37e-004
+  20  3.5128145e+010  3.5009998e+010 3.09e+005 5.80e+004 2.08e+004 8.91e-004
+  21  3.5102054e+010  3.5017065e+010 1.95e+005 3.65e+004 1.77e+004 1.09e-003
+  22  3.5085431e+010  3.5026713e+010 1.22e+005 2.29e+004 1.35e+004 1.55e-003
+  23  3.5081356e+010  3.5034660e+010 1.06e+005 1.99e+004 9.66e+003 2.39e-003
+  24  3.5070875e+010  3.5038415e+010 6.93e+004 1.30e+004 7.45e+003 3.32e-003
+  25  3.5063341e+010  3.5040955e+010 4.41e+004 8.27e+003 5.84e+003 4.52e-003
+  26  3.5058359e+010  3.5043249e+010 2.82e+004 5.29e+003 4.27e+003 6.73e-003
+  27  3.5054692e+010  3.5044511e+010 1.76e+004 3.30e+003 3.27e+003 9.43e-003
+  28  3.5051868e+010  3.5045620e+010 9.99e+003 1.87e+003 2.28e+003 1.50e-002
+  29  3.5049528e+010  3.5046391e+010 4.48e+003 8.40e+002 1.40e+003 2.82e-002
+  30  3.5048779e+010  3.5046580e+010 3.05e+003 5.73e+002 1.06e+003 3.98e-002
+  31  3.5047728e+010  3.5046701e+010 1.34e+003 2.52e+002 6.62e+002 7.06e-002
+  32  3.5047445e+010  3.5046730e+010 9.28e+002 1.74e+002 4.95e+002 1.01e-001
+  33  3.5047382e+010  3.5046743e+010 8.41e+002 1.58e+002 2.93e+002 1.98e-001
+  34  3.5047133e+010  3.5046669e+010 5.61e+002 1.05e+002 9.43e+001 9.14e-001
+  35  3.5046827e+010  3.5046599e+010 2.56e+002 4.80e+001 2.78e+001 3.02e+000
+  36  3.5046669e+010  3.5046578e+010 9.86e+001 1.85e+001 7.61e+000 9.50e+000
+  37  3.5046596e+010  3.5046574e+010 2.74e+001 5.20e+000 4.97e+000 1.25e+001
+  38  3.5046585e+010  3.5046574e+010 1.28e+001 2.43e+000 2.65e+000 2.39e+001
+  39  3.5046578e+010  3.5046575e+010 4.56e+000 8.66e-001 1.07e+000 6.61e+001
+  40  3.5046576e+010  3.5046574e+010 1.49e+000 2.85e-001 3.74e-001 1.94e+002
+  41  3.5046575e+010  3.5046574e+010 3.16e-001 5.70e-002 4.74e-002 1.65e+003
+Barrier time = 25.20 sec. (7993.62 ticks)
+
+Total time on 4 threads = 25.20 sec. (7993.62 ticks)
+LP status(1): optimal
+Cplex Time: 25.20sec (det. 7996.20 ticks)
+
+Optimal solution found.
+Objective : 35046574514.125931
+
+--- Scenario scen4:     Records read:    2
+--- Solution statistics for scenario scen4
+---   Solver Status    1 Normal Completion         
+---   Model Status     1 Optimal                   
+---   Objective Value  35046574514.1259
+---   Resource Usage   27344
+---   Total Time (ms)  27938
+
+IBM ILOG CPLEX   24.7.4 r58773 Released Sep 19, 2016 WEI x86 64bit/MS Windows 
+--- GAMS/Cplex licensed for continuous and discrete problems.
+Cplex 12.6.3.0
+
+Reading parameter(s) from "C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\cplex.opt"
+>>  lpmethod 4
+>>  threads 4
+>>  epgap 1e-3
+>>  parallelmode -1
+>>  barcrossalg -1
+>>  barepcomp 1e-8
+Finished reading from "C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\cplex.opt"
+Depreciated value -1 for BarCrossAlg. Using SolutionType=2
+Reading data...
+Starting Cplex...
+Space for names approximately 67.34 Mb
+Use option 'names no' to turn use of names off
+Tried aggregator 1 time.
+LP Presolve eliminated 590629 rows and 724245 columns.
+Aggregator did 12750 substitutions.
+Reduced LP has 298911 rows, 331732 columns, and 1358597 nonzeros.
+Presolve time = 2.05 sec. (984.17 ticks)
+Parallel mode: using up to 4 threads for barrier.
+
+***NOTE: Found 8 dense columns.
+
+Number of nonzeros in lower triangle of A*A' = 1509434
+Using Approximate Minimum Degree ordering
+Total time for automatic ordering = 0.34 sec. (157.61 ticks)
+Summary statistics for Cholesky factor:
+  Threads                   = 4
+  Rows in Factor            = 298919
+  Integer space required    = 829959
+  Total non-zeros in factor = 4892352
+  Total FP ops to factor    = 104583626
+ Itn      Primal Obj        Dual Obj  Prim Inf Upper Inf  Dual Inf Inf Ratio
+   0  2.2204921e+013 -1.2586959e+014 2.59e+012 4.86e+011 4.97e+010 1.00e+000
+   1  2.6252247e+012 -1.6365115e+013 2.25e+011 4.22e+010 6.73e+009 1.79e-010
+   2  1.7190809e+011 -2.7601278e+012 9.44e+009 1.77e+009 1.16e+009 1.76e-009
+   3  1.6254154e+011 -1.9355492e+012 8.75e+009 1.64e+009 8.17e+008 2.80e-009
+   4  1.5383714e+011 -1.0935140e+012 5.27e+009 9.88e+008 4.86e+008 2.15e-009
+   5  9.9534943e+010 -3.0249879e+011 1.15e+009 2.16e+008 1.59e+008 7.55e-009
+   6  8.1547530e+010 -5.3555482e+009 2.69e+008 5.04e+007 3.43e+007 4.36e-008
+   7  6.1488588e+010  2.6983637e+010 1.08e+008 2.02e+007 1.36e+007 1.78e-007
+   8  5.2437052e+010  3.1711236e+010 7.12e+007 1.34e+007 5.22e+006 7.08e-007
+   9  4.3993551e+010  3.3293527e+010 3.85e+007 7.22e+006 1.71e+006 3.05e-006
+  10  4.0579916e+010  3.3942856e+010 2.45e+007 4.59e+006 8.65e+005 7.09e-006
+  11  3.8202297e+010  3.4486967e+010 1.39e+007 2.61e+006 4.50e+005 1.68e-005
+  12  3.7231847e+010  3.4713285e+010 9.70e+006 1.82e+006 2.51e+005 3.61e-005
+  13  3.6799445e+010  3.4792857e+010 7.80e+006 1.46e+006 1.85e+005 5.28e-005
+  14  3.6085497e+010  3.4865113e+010 4.64e+006 8.70e+005 1.31e+005 8.26e-005
+  15  3.5877463e+010  3.4920594e+010 3.65e+006 6.85e+005 1.01e+005 1.15e-004
+  16  3.5593478e+010  3.4978019e+010 2.30e+006 4.32e+005 7.02e+004 1.82e-004
+  17  3.5448571e+010  3.5004661e+010 1.60e+006 2.99e+005 5.72e+004 2.37e-004
+  18  3.5326886e+010  3.5028293e+010 9.93e+005 1.86e+005 4.61e+004 3.12e-004
+  19  3.5262513e+010  3.5058557e+010 6.69e+005 1.25e+005 3.23e+004 4.95e-004
+  20  3.5202398e+010  3.5075644e+010 3.83e+005 7.19e+004 2.36e+004 7.45e-004
+  21  3.5175960e+010  3.5087511e+010 2.60e+005 4.88e+004 1.73e+004 1.11e-003
+  22  3.5160967e+010  3.5094838e+010 1.94e+005 3.64e+004 1.29e+004 1.61e-003
+  23  3.5156082e+010  3.5101635e+010 1.74e+005 3.26e+004 8.39e+003 2.82e-003
+  24  3.5144583e+010  3.5104524e+010 1.30e+005 2.44e+004 5.62e+003 4.66e-003
+  25  3.5135623e+010  3.5105920e+010 9.71e+004 1.82e+004 4.01e+003 7.00e-003
+  26  3.5128725e+010  3.5106786e+010 7.18e+004 1.35e+004 2.95e+003 1.01e-002
+  27  3.5120952e+010  3.5107313e+010 4.33e+004 8.11e+003 2.29e+003 1.36e-002
+  28  3.5116052e+010  3.5107849e+010 2.46e+004 4.62e+003 1.75e+003 1.87e-002
+  29  3.5113415e+010  3.5108172e+010 1.44e+004 2.71e+003 1.44e+003 2.37e-002
+  30  3.5111980e+010  3.5108629e+010 8.85e+003 1.66e+003 1.01e+003 3.68e-002
+  31  3.5110498e+010  3.5108845e+010 3.57e+003 6.70e+002 7.59e+002 5.23e-002
+  32  3.5110031e+010  3.5109121e+010 1.97e+003 3.70e+002 4.16e+002 1.15e-001
+  33  3.5109615e+010  3.5109154e+010 9.62e+002 1.80e+002 2.77e+002 1.90e-001
+  34  3.5109367e+010  3.5109156e+010 4.28e+002 8.02e+001 2.32e+002 2.36e-001
+  35  3.5109203e+010  3.5109140e+010 1.29e+002 2.43e+001 7.56e+001 1.01e+000
+  36  3.5109121e+010  3.5109091e+010 4.66e+001 9.16e+000 2.20e+001 4.12e+000
+  37  3.5109075e+010  3.5109075e+010 8.95e+000 1.78e+000 8.92e+000 1.03e+001
+  38  3.5109068e+010  3.5109068e+010 2.63e+000 5.06e-001 2.83e+000 3.85e+001
+  39  3.5109064e+010  3.5109065e+010 1.67e-001 3.18e-002 8.44e-001 1.31e+002
+  40  3.5109064e+010  3.5109064e+010 7.00e-002 4.96e-003 6.35e-002 2.21e+003
+Barrier time = 23.19 sec. (7843.16 ticks)
+
+Total time on 4 threads = 23.19 sec. (7843.16 ticks)
+LP status(1): optimal
+Cplex Time: 23.19sec (det. 7845.74 ticks)
+
+Optimal solution found.
+Objective : 35109063649.613739
+
+--- Scenario scen5:     Records read:    2
+--- Solution statistics for scenario scen5
+---   Solver Status    1 Normal Completion         
+---   Model Status     1 Optimal                   
+---   Objective Value  35109063649.6137
+---   Resource Usage   25266
+---   Total Time (ms)  25812
+
+IBM ILOG CPLEX   24.7.4 r58773 Released Sep 19, 2016 WEI x86 64bit/MS Windows 
+--- GAMS/Cplex licensed for continuous and discrete problems.
+Cplex 12.6.3.0
+
+Reading parameter(s) from "C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\cplex.opt"
+>>  lpmethod 4
+>>  threads 4
+>>  epgap 1e-3
+>>  parallelmode -1
+>>  barcrossalg -1
+>>  barepcomp 1e-8
+Finished reading from "C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\cplex.opt"
+Depreciated value -1 for BarCrossAlg. Using SolutionType=2
+Reading data...
+Starting Cplex...
+Space for names approximately 67.34 Mb
+Use option 'names no' to turn use of names off
+Tried aggregator 1 time.
+LP Presolve eliminated 590629 rows and 724245 columns.
+Aggregator did 12750 substitutions.
+Reduced LP has 298911 rows, 331732 columns, and 1358597 nonzeros.
+Presolve time = 1.59 sec. (984.17 ticks)
+Parallel mode: using up to 4 threads for barrier.
+
+***NOTE: Found 8 dense columns.
+
+Number of nonzeros in lower triangle of A*A' = 1509434
+Using Approximate Minimum Degree ordering
+Total time for automatic ordering = 0.55 sec. (157.61 ticks)
+Summary statistics for Cholesky factor:
+  Threads                   = 4
+  Rows in Factor            = 298919
+  Integer space required    = 829959
+  Total non-zeros in factor = 4892352
+  Total FP ops to factor    = 104583626
+ Itn      Primal Obj        Dual Obj  Prim Inf Upper Inf  Dual Inf Inf Ratio
+   0  2.2204921e+013 -1.2586959e+014 2.59e+012 4.86e+011 4.97e+010 1.00e+000
+   1  2.6297654e+012 -1.6368200e+013 2.26e+011 4.23e+010 6.73e+009 1.79e-010
+   2  1.7175030e+011 -2.7621580e+012 9.42e+009 1.77e+009 1.16e+009 1.75e-009
+   3  1.6242070e+011 -1.9381120e+012 8.74e+009 1.64e+009 8.18e+008 2.79e-009
+   4  1.5286621e+011 -1.0738839e+012 5.23e+009 9.80e+008 4.78e+008 2.17e-009
+   5  9.9390410e+010 -3.0816710e+011 1.18e+009 2.20e+008 1.62e+008 7.44e-009
+   6  8.1858199e+010 -5.2844409e+009 2.86e+008 5.36e+007 3.43e+007 4.31e-008
+   7  6.1593664e+010  2.7384439e+010 1.12e+008 2.10e+007 1.35e+007 1.78e-007
+   8  5.2415590e+010  3.2040631e+010 7.36e+007 1.38e+007 5.12e+006 7.34e-007
+   9  4.3988071e+010  3.3461721e+010 3.96e+007 7.43e+006 1.68e+006 3.15e-006
+  10  4.0606023e+010  3.3998485e+010 2.53e+007 4.74e+006 9.20e+005 6.57e-006
+  11  3.9629148e+010  3.4481153e+010 2.08e+007 3.89e+006 5.34e+005 1.29e-005
+  12  3.7662326e+010  3.4650208e+010 1.21e+007 2.26e+006 3.31e+005 2.42e-005
+  13  3.7288124e+010  3.4823619e+010 1.03e+007 1.93e+006 2.07e+005 4.37e-005
+  14  3.6264080e+010  3.4915326e+010 5.53e+006 1.04e+006 1.33e+005 7.78e-005
+  15  3.5989835e+010  3.4977948e+010 4.13e+006 7.74e+005 1.01e+005 1.10e-004
+  16  3.5763712e+010  3.5031150e+010 2.96e+006 5.56e+005 7.55e+004 1.59e-004
+  17  3.5551183e+010  3.5081131e+010 1.86e+006 3.49e+005 5.23e+004 2.54e-004
+  18  3.5429666e+010  3.5105864e+010 1.22e+006 2.29e+005 4.11e+004 3.44e-004
+  19  3.5347007e+010  3.5122183e+010 7.81e+005 1.46e+005 3.41e+004 4.38e-004
+  20  3.5294077e+010  3.5143158e+010 4.94e+005 9.27e+004 2.52e+004 6.46e-004
+  21  3.5258862e+010  3.5158935e+010 3.12e+005 5.84e+004 1.80e+004 9.95e-004
+  22  3.5238184e+010  3.5168920e+010 2.10e+005 3.94e+004 1.31e+004 1.51e-003
+  23  3.5233250e+010  3.5174801e+010 1.88e+005 3.52e+004 9.78e+003 2.18e-003
+  24  3.5227333e+010  3.5178736e+010 1.63e+005 3.05e+004 7.13e+003 3.24e-003
+  25  3.5210990e+010  3.5181222e+010 9.60e+004 1.80e+004 5.08e+003 4.93e-003
+  26  3.5201971e+010  3.5182652e+010 5.90e+004 1.11e+004 3.94e+003 6.74e-003
+  27  3.5196962e+010  3.5183748e+010 3.84e+004 7.20e+003 3.07e+003 9.18e-003
+  28  3.5195320e+010  3.5184784e+010 3.18e+004 5.96e+003 2.20e+003 1.39e-002
+  29  3.5190670e+010  3.5185301e+010 1.45e+004 2.72e+003 1.63e+003 2.01e-002
+  30  3.5188964e+010  3.5185775e+010 8.05e+003 1.51e+003 1.13e+003 3.21e-002
+  31  3.5187534e+010  3.5186019e+010 3.59e+003 6.73e+002 6.73e+002 5.84e-002
+  32  3.5187111e+010  3.5186062e+010 2.26e+003 4.25e+002 5.95e+002 6.79e-002
+  33  3.5186682e+010  3.5186096e+010 1.13e+003 2.11e+002 4.92e+002 8.44e-002
+  34  3.5186627e+010  3.5186109e+010 9.42e+002 1.77e+002 4.65e+002 9.04e-002
+  35  3.5186435e+010  3.5186161e+010 4.36e+002 8.17e+001 3.17e+002 1.44e-001
+  36  3.5186298e+010  3.5186192e+010 1.31e+002 2.51e+001 1.87e+002 2.90e-001
+  37  3.5186159e+010  3.5186131e+010 4.10e+001 7.57e+000 6.57e+001 9.37e-001
+  38  3.5186106e+010  3.5186096e+010 1.56e+001 2.41e+000 1.96e+001 3.67e+000
+  39  3.5186085e+010  3.5186081e+010 5.12e+000 8.17e-001 5.40e+000 1.53e+001
+  40  3.5186077e+010  3.5186077e+010 1.26e+000 2.11e-001 2.18e+000 4.09e+001
+  41  3.5186075e+010  3.5186075e+010 5.83e-001 1.05e-001 6.93e-001 1.64e+002
+  42  3.5186074e+010  3.5186074e+010 6.84e-002 1.23e-002 1.10e-001 1.03e+003
+Barrier time = 23.28 sec. (8220.22 ticks)
+
+Total time on 4 threads = 23.28 sec. (8220.22 ticks)
+LP status(1): optimal
+Cplex Time: 23.28sec (det. 8222.80 ticks)
+
+Optimal solution found.
+Objective : 35186073603.850266
+
+--- Scenario scen6:     Records read:    2
+--- Solution statistics for scenario scen6
+---   Solver Status    1 Normal Completion         
+---   Model Status     1 Optimal                   
+---   Objective Value  35186073603.8503
+---   Resource Usage   25391
+---   Total Time (ms)  25969
+
+IBM ILOG CPLEX   24.7.4 r58773 Released Sep 19, 2016 WEI x86 64bit/MS Windows 
+--- GAMS/Cplex licensed for continuous and discrete problems.
+Cplex 12.6.3.0
+
+Reading parameter(s) from "C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\cplex.opt"
+>>  lpmethod 4
+>>  threads 4
+>>  epgap 1e-3
+>>  parallelmode -1
+>>  barcrossalg -1
+>>  barepcomp 1e-8
+Finished reading from "C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\cplex.opt"
+Depreciated value -1 for BarCrossAlg. Using SolutionType=2
+Reading data...
+Starting Cplex...
+Space for names approximately 67.34 Mb
+Use option 'names no' to turn use of names off
+Tried aggregator 1 time.
+LP Presolve eliminated 590629 rows and 724245 columns.
+Aggregator did 12750 substitutions.
+Reduced LP has 298911 rows, 331732 columns, and 1358597 nonzeros.
+Presolve time = 1.67 sec. (984.17 ticks)
+Parallel mode: using up to 4 threads for barrier.
+
+***NOTE: Found 8 dense columns.
+
+Number of nonzeros in lower triangle of A*A' = 1509434
+Using Approximate Minimum Degree ordering
+Total time for automatic ordering = 0.44 sec. (157.61 ticks)
+Summary statistics for Cholesky factor:
+  Threads                   = 4
+  Rows in Factor            = 298919
+  Integer space required    = 829959
+  Total non-zeros in factor = 4892352
+  Total FP ops to factor    = 104583626
+ Itn      Primal Obj        Dual Obj  Prim Inf Upper Inf  Dual Inf Inf Ratio
+   0  2.2204921e+013 -1.2586959e+014 2.59e+012 4.86e+011 4.97e+010 1.00e+000
+   1  2.6343154e+012 -1.6371266e+013 2.26e+011 4.24e+010 6.73e+009 1.79e-010
+   2  1.7159065e+011 -2.7642046e+012 9.40e+009 1.76e+009 1.16e+009 1.74e-009
+   3  1.6229794e+011 -1.9407052e+012 8.72e+009 1.64e+009 8.19e+008 2.78e-009
+   4  1.5189606e+011 -1.0535130e+012 5.19e+009 9.72e+008 4.69e+008 2.20e-009
+   5  9.9216158e+010 -3.1367876e+011 1.20e+009 2.24e+008 1.64e+008 7.33e-009
+   6  8.2169765e+010 -5.1091348e+009 3.04e+008 5.69e+007 3.42e+007 4.26e-008
+   7  6.1760353e+010  2.7898055e+010 1.17e+008 2.19e+007 1.34e+007 1.78e-007
+   8  5.2475977e+010  3.1602760e+010 7.55e+007 1.41e+007 6.79e+006 4.46e-007
+   9  4.3407600e+010  3.3003004e+010 3.53e+007 6.62e+006 4.31e+006 8.25e-007
+  10  4.1219285e+010  3.4251051e+010 2.46e+007 4.60e+006 2.63e+006 1.53e-006
+  11  4.0049457e+010  3.4661309e+010 1.91e+007 3.59e+006 1.99e+006 2.20e-006
+  12  3.9643232e+010  3.5135922e+010 1.59e+007 2.99e+006 1.67e+006 2.71e-006
+  13  3.7937971e+010  3.5444118e+010 8.57e+006 1.61e+006 1.04e+006 4.79e-006
+  14  3.7788249e+010  3.5534928e+010 7.83e+006 1.47e+006 9.20e+005 5.63e-006
+  15  3.7471029e+010  3.5580646e+010 6.29e+006 1.18e+006 8.54e+005 6.18e-006
+  16  3.7375485e+010  3.5686885e+010 5.83e+006 1.09e+006 6.97e+005 8.09e-006
+  17  3.7200383e+010  3.5730214e+010 5.06e+006 9.49e+005 6.13e+005 9.57e-006
+  18  3.6891858e+010  3.5791436e+010 3.66e+006 6.87e+005 5.07e+005 1.23e-005
+  19  3.6631348e+010  3.5854378e+010 2.57e+006 4.82e+005 3.66e+005 1.94e-005
+  20  3.6535192e+010  3.5864356e+010 2.22e+006 4.16e+005 3.14e+005 2.37e-005
+  21  3.6406978e+010  3.5869010e+010 1.78e+006 3.33e+005 2.68e+005 2.93e-005
+  22  3.6240664e+010  3.5886491e+010 1.16e+006 2.17e+005 1.89e+005 4.72e-005
+  23  3.6103500e+010  3.5884310e+010 7.18e+005 1.35e+005 1.25e+005 8.42e-005
+  24  3.6013959e+010  3.5876237e+010 4.59e+005 8.61e+004 9.09e+004 1.30e-004
+  25  3.5963370e+010  3.5871587e+010 3.22e+005 6.03e+004 7.73e+004 1.61e-004
+  26  3.5926592e+010  3.5862139e+010 2.25e+005 4.21e+004 5.30e+004 2.69e-004
+  27  3.5900030e+010  3.5851561e+010 1.63e+005 3.05e+004 3.54e+004 4.65e-004
+  28  3.5878880e+010  3.5842707e+010 1.19e+005 2.23e+004 2.49e+004 7.43e-004
+  29  3.5865995e+010  3.5837124e+010 9.38e+004 1.76e+004 1.93e+004 1.03e-003
+  30  3.5849323e+010  3.5832239e+010 6.25e+004 1.17e+004 1.49e+004 1.45e-003
+  31  3.5844835e+010  3.5827707e+010 5.42e+004 1.02e+004 1.08e+004 2.20e-003
+  32  3.5835985e+010  3.5823832e+010 3.89e+004 7.28e+003 7.86e+003 3.32e-003
+  33  3.5832993e+010  3.5820018e+010 3.38e+004 6.34e+003 5.10e+003 5.83e-003
+  34  3.5829320e+010  3.5817849e+010 2.80e+004 5.25e+003 3.79e+003 8.41e-003
+  35  3.5821755e+010  3.5814955e+010 1.61e+004 3.02e+003 2.07e+003 1.74e-002
+  36  3.5819017e+010  3.5814308e+010 1.18e+004 2.21e+003 1.68e+003 2.22e-002
+  37  3.5816261e+010  3.5813400e+010 7.36e+003 1.38e+003 1.09e+003 3.70e-002
+  38  3.5814635e+010  3.5812731e+010 4.71e+003 8.83e+002 6.52e+002 6.86e-002
+  39  3.5813274e+010  3.5812212e+010 2.52e+003 4.73e+002 3.23e+002 1.56e-001
+  40  3.5812754e+010  3.5812102e+010 1.68e+003 3.17e+002 2.54e+002 2.02e-001
+  41  3.5812358e+010  3.5812049e+010 1.02e+003 1.94e+002 2.17e+002 2.40e-001
+  42  3.5812056e+010  3.5811983e+010 4.97e+002 9.67e+001 1.68e+002 3.20e-001
+  43  3.5811929e+010  3.5811920e+010 2.74e+002 5.26e+001 1.17e+002 4.95e-001
+  44  3.5811813e+010  3.5811817e+010 1.29e+002 2.21e+001 5.37e+001 1.13e+000
+  45  3.5811754e+010  3.5811762e+010 6.27e+001 6.20e+000 1.92e+001 3.92e+000
+  46  3.5811741e+010  3.5811735e+010 3.97e+001 3.44e+000 5.80e+000 1.87e+001
+  47  3.5811725e+010  3.5811722e+010 8.93e+000 8.29e-001 8.91e-001 1.12e+002
+  48  3.5811721e+010  3.5811720e+010 1.70e+000 1.83e-001 1.43e-001 6.63e+002
+  49  3.5811720e+010  3.5811720e+010 1.01e+001 1.56e-002 1.97e-002 4.31e+003
+Barrier time = 26.51 sec. (9201.62 ticks)
+
+Total time on 4 threads = 26.51 sec. (9201.62 ticks)
+LP status(1): optimal
+Cplex Time: 26.51sec (det. 9204.20 ticks)
+
+Optimal solution found.
+Objective : 35811719658.098190
+
+--- Scenario scen7:     Records read:    2
+--- Solution statistics for scenario scen7
+---   Solver Status    1 Normal Completion         
+---   Model Status     1 Optimal                   
+---   Objective Value  35811719658.0982
+---   Resource Usage   28594
+---   Total Time (ms)  29235
+--- Restarting execution
+--- DIETER_v1.2.0.gms(2022) 145 Mb
+--- Reading solution for model DIETER
+--- Executing after solve: elapsed 0:13:37.837
+--- DIETER_v1.2.0.gms(2022) 146 Mb
+---
+--- scattering and reading gdx file
+---
+--- DIETER_v1.2.0.gms(2022) 147 Mb
+--- marginal Id = con5a_minRES maps to marginal_con5a
+--- marginal Id = con1a_bal maps to marginal_con1a
+--- level    Id = Z maps to lev_Z
+--- level    Id = G_L maps to lev_G_L
+--- level    Id = G_DO maps to lev_G_DO
+--- level    Id = G_RES maps to lev_G_RES
+--- level    Id = CU maps to lev_CU
+--- level    Id = STO_IN maps to lev_STO_IN
+--- level    Id = STO_OUT maps to lev_STO_OUT
+--- level    Id = STO_L maps to lev_STO_L
+--- level    Id = N_CON maps to lev_N_CON
+--- level    Id = N_RES maps to lev_N_RES
+--- level    Id = N_STO_E maps to lev_N_STO_E
+--- level    Id = N_STO_P maps to lev_N_STO_P
+--- level    Id = CU_PRO maps to lev_CU_PRO
+--- level    Id = G_MARKET_PRO2M maps to lev_G_MARKET_PRO2M
+--- level    Id = G_MARKET_M2PRO maps to lev_G_MARKET_M2PRO
+--- level    Id = G_RES_PRO maps to lev_G_RES_PRO
+--- level    Id = STO_IN_PRO2PRO maps to lev_STO_IN_PRO2PRO
+--- level    Id = STO_IN_PRO2M maps to lev_STO_IN_PRO2M
+--- level    Id = STO_IN_M2PRO maps to lev_STO_IN_M2PRO
+--- level    Id = STO_IN_M2M maps to lev_STO_IN_M2M
+--- level    Id = STO_OUT_PRO2PRO maps to lev_STO_OUT_PRO2PRO
+--- level    Id = STO_OUT_PRO2M maps to lev_STO_OUT_PRO2M
+--- level    Id = STO_OUT_M2PRO maps to lev_STO_OUT_M2PRO
+--- level    Id = STO_OUT_M2M maps to lev_STO_OUT_M2M
+--- level    Id = STO_L_PRO maps to lev_STO_L_PRO
+--- level    Id = STO_L_PRO2PRO maps to lev_STO_L_PRO2PRO
+--- level    Id = STO_L_PRO2M maps to lev_STO_L_PRO2M
+--- level    Id = STO_L_M2PRO maps to lev_STO_L_M2PRO
+--- level    Id = STO_L_M2M maps to lev_STO_L_M2M
+--- level    Id = N_STO_E_PRO maps to lev_N_STO_E_PRO
+--- level    Id = N_STO_P_PRO maps to lev_N_STO_P_PRO
+--- level    Id = N_RES_PRO maps to lev_N_RES_PRO
+--- DIETER_v1.2.0.gms(2022) 320 Mb
+--- GDXin=C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\225a\scenrep.dat
+--- Scatter finished in 1313 ms
+--- DIETER_v1.2.0.gms(2101) 328 Mb  4 secs
+--- DIETER_v1.2.0.gms(3048) 338 Mb
+--- GDX File C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\results.gdx
+*** Status: Normal completion
+--- Job DIETER_v1.2.0.gms Stop 08/04/18 18:31:19 elapsed 0:13:57.791
