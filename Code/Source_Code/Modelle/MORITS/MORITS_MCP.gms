@@ -51,7 +51,7 @@ $setglobal outputfile "results\%modelrun%_results_MCP"
 
 
 Sets
-h                Hours                                   /h3000*h4000/
+h                Hours                                   /h1000*h8760/
 res              Renewable technologies                  /renewable/
 sto              Storage technolgies                     /storage/
 year             Base years                              /2010*2016/
@@ -648,13 +648,13 @@ $offecho
 G_PV_hh.up(h)              = 10  ;
 CU_hh.up(h)                = 10  ;
 N_PV_hh.up                 = 10  ;
-N_STO_E_hh.up              = 15  ;
-N_STO_P_hh.up              = 15  ;
-STO_L_hh.up(h)             = 15  ;
-STO_IN_hh.up(h)            = 15  ;
-STO_OUT_hh.up(h)           = 15  ;
+N_STO_E_hh.up              = 20  ;
+N_STO_P_hh.up              = 20  ;
+STO_L_hh.up(h)             = 20  ;
+STO_IN_hh.up(h)            = 20  ;
+STO_OUT_hh.up(h)           = 20  ;
 E_buy_hh.up(h)             = 50  ;
-E_sell_hh.up(h)            = 10  ;
+E_sell_hh.up(h)            = 30  ;
 * System Variables
 G_CON.up(ct,h)             = 100000 ;
 G_RENEWABLE.up(h)          = 300000 ;
