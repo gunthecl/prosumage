@@ -1,37 +1,37 @@
 
---- Job MORITS_MCP.gms Start 09/21/18 13:08:49 24.2.1 r43572 WEX-WEI x86_64/MS Windows
+--- Job MORITS_MCP.gms Start 09/21/18 17:50:34 24.2.1 r43572 WEX-WEI x86_64/MS Windows
 GAMS 24.2.1   Copyright (C) 1987-2013 GAMS Development. All rights reserved
 Licensee: Abteilung Energie, Verkehr, Umwelt, 5 User     S131220:0515AN-GEN
           Deutsches Institut fuer Wirtschaftsforschung DIW           DC3975
           License for teaching and research at degree granting institutions
 --- Starting compilation
---- MORITS_MCP.gms(221) 3 Mb
+--- MORITS_MCP.gms(220) 3 Mb
 --- call gdxxrw data\input_data.xlsx squeeze=N @data\input_data.tmp  o=data\input_data.gdx  
 
 GDXXRW           24.2.1 r43572 Released Dec  9, 2013 VS8 x86/MS Windows       
 Input file : C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\data\input_data.xlsx
 Output file: C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\data\input_data.gdx
-Total time = 7940 Ms
---- MORITS_MCP.gms(222) 3 Mb
+Total time = 6084 Ms
+--- MORITS_MCP.gms(221) 3 Mb
 --- GDXin=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\data\input_data.gdx
---- MORITS_MCP.gms(241) 8 Mb
+--- MORITS_MCP.gms(240) 6 Mb
 --- call gdxxrw data/upload_data.xlsx @temp.tmp o=Data_input
 
 GDXXRW           24.2.1 r43572 Released Dec  9, 2013 VS8 x86/MS Windows       
 Input file : C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\data\upload_data.xlsx
 Output file: C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\Data_input.gdx
-Total time = 1560 Ms
---- MORITS_MCP.gms(242) 8 Mb
+Total time = 1591 Ms
+--- MORITS_MCP.gms(241) 6 Mb
 --- GDXin=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\Data_input.gdx
---- MORITS_MCP.gms(696) 10 Mb
---- Starting execution: elapsed 0:00:10.547
---- MORITS_MCP.gms(681) 12 Mb
+--- MORITS_MCP.gms(697) 6 Mb
+--- Starting execution: elapsed 0:00:08.890
+--- MORITS_MCP.gms(680) 8 Mb
 --- Generating MCP model prosumodmcp
---- MORITS_MCP.gms(683) 29 Mb
----   56,038 rows  56,038 columns  170,094 non-zeroes
+--- MORITS_MCP.gms(682) 17 Mb
+---   28,038 rows  28,038 columns  85,396 non-zeroes
 ---   0 nl-code  0 nl-non-zeroes
---- MORITS_MCP.gms(683) 27 Mb
---- Executing PATH: elapsed 0:00:10.789
+--- MORITS_MCP.gms(682) 15 Mb
+--- Executing PATH: elapsed 0:00:08.976
 Reading dictionary...
 Reading row data...
 Evaluating functions...
@@ -40,1725 +40,185 @@ Calculating Jacobian...
 
 PATH             24.2.1 r43572 Released Dec  9, 2013 WEI x86_64/MS Windows    
 
-56038 row/cols, 170094 non-zeros, 0.01% dense.
+28038 row/cols, 85396 non-zeros, 0.01% dense.
 
 Path 4.7.02 (Mon Dec 09 08:54:09 2013)
 Written by Todd Munson, Steven Dirkse, and Michael Ferris
 
-Zero:     0 Single:  4003 Double:     0
-Preprocessed size   : 52035
+Zero:     0 Single:  2003 Double:     0
+Preprocessed size   : 26035
 
 INITIAL POINT STATISTICS
 Maximum of X. . . . . . . . . .  1.2000e+005 var: (N_STO_E)
-Maximum of F. . . . . . . . . .  4.6738e+007 eqn: (minRES)
-Maximum of Grad F . . . . . . .  1.0799e+000 eqn: (KKTSTOUT_hh(h1000))
-                                            var: (levelsto_hh(h1000))
+Maximum of F. . . . . . . . . .  2.2227e+007 eqn: (minRES)
+Maximum of Grad F . . . . . . .  1.0799e+000 eqn: (KKTSTOUT_hh(h3000))
+                                            var: (levelsto_hh(h3000))
 
 INITIAL JACOBIAN NORM STATISTICS
-Maximum Row Norm. . . . . . . .  4.0020e+003 eqn: (KKTNSTOP_hh)
-Minimum Row Norm. . . . . . . .  1.0000e+000 eqn: (KKTEB_hh(h1000))
-Maximum Column Norm . . . . . .  4.0020e+003 var: (N_STO_P_hh)
-Minimum Column Norm . . . . . .  1.0010e+000 var: (E_buy_hh(h1000))
+Maximum Row Norm. . . . . . . .  2.0020e+003 eqn: (KKTNSTOP_hh)
+Minimum Row Norm. . . . . . . .  1.0000e+000 eqn: (KKTEB_hh(h3000))
+Maximum Column Norm . . . . . .  2.0020e+003 var: (N_STO_P_hh)
+Minimum Column Norm . . . . . .  1.0010e+000 var: (E_buy_hh(h3000))
 
 Crash Log
 major  func  diff  size  residual    step       prox   (label)
-    0     0             5.3008e+006             0.0e+000 (energy_balance(h1027))
-    1     1 19017  8012 5.1525e+006  1.0e+000    1.0e+001 (energy_balance(h1027))
-    2     2 20654 21021 4.7537e+006  1.0e+000    9.0e+000 (energy_balance(h1027))
-    3     3 11856 28663 4.3079e+006  1.0e+000    8.1e+000 (energy_balance(h1027))
-    4     4  4931 32876 3.8433e+006  1.0e+000    7.3e+000 (energy_balance(h1027))
-    5     5  1058 33501 3.4306e+006  1.0e+000    6.6e+000 (KKTNRES)
-    6    10   422 33639 3.3008e+006  2.6e-001    5.9e+000 (KKTNRES)
-    7    17   110 33726 3.2615e+006  6.9e-002    5.3e+000 (KKTNRES)
-    8    26    28 33747 3.2538e+006  1.2e-002    4.8e+000 (KKTNRES)
-    9    36     8 33754 3.2523e+006  1.9e-003    4.3e+000 (KKTNRES)
-pn_search terminated: no basis change.
+    0     0             3.5730e+006             0.0e+000 (energy_balance(h3875))
+    1     1  9360  4012 3.4731e+006  1.0e+000    1.0e+001 (energy_balance(h3875))
+    2     2  9255 10365 3.2053e+006  1.0e+000    9.0e+000 (energy_balance(h3875))
+    3     3  6004 13265 2.9075e+006  1.0e+000    8.1e+000 (energy_balance(h3875))
+    4     4  3460 16366 2.6014e+006  1.0e+000    7.3e+000 (energy_balance(h3875))
+    5     5   583 16634 2.3260e+006  1.0e+000    6.6e+000 (KKTNRES)
+    6    10   290 16851 2.2383e+006  2.6e-001    5.9e+000 (KKTNRES)
+    7    17    86 16916 2.2117e+006  6.9e-002    5.3e+000 (KKTNRES)
+    8    25    30 16937 2.2078e+006  2.8e-002    4.8e+000 (minRES)
+    9    26  1303 16946 1.5681e+006  1.0e+000    4.3e+000 (KKTNRES)
+   10    27  2691 18014 1.3540e+006  1.0e+000    3.9e+000 (KKTNRES)
+   11    28  1798 18308 1.1274e+006  1.0e+000    3.5e+000 (KKTNCON(base))
+   12    29  3013 17626 1.0375e+006  1.0e+000    3.1e+000 (KKTNCON(base))
+   13    30  2859 18917 7.6194e+005  1.0e+000    2.8e+000 (KKTNSTOP)
+   14    31  1202 17694 6.0870e+005  1.0e+000    2.5e+000 (KKTNSTOP)
+   15    32   874 17191 4.8107e+005  1.0e+000    2.3e+000 (KKTNSTOP)
+   16    33  1262 16815 3.6129e+005  1.0e+000    2.1e+000 (minRES)
+pn_search terminated: no progress.
 
 Major Iteration Log
 major minor  func  grad  residual    step  type prox    inorm  (label)
-    0     0    37    10 3.2523e+006           I 3.9e+000 2.1e+005 (KKTNRES)
+    0     0    46    17 3.6129e+005           I 1.9e+000 9.1e+004 (minRES)
 
 Minor Iteration Log
 minor      t          z     w     v   art ckpts  enter    leave
-  500 -1.1280e+005   499 51535     0     0     9 z[24401] w[25160]
- 1000 -9.6477e+004   999 51035     0     0    19 z[25124] w[25452]
- 1500 -8.2854e+004  1499 50535     0     0    29 z[25817] w[24243]
- 2000 -6.3127e+004  1999 50035     0     0    39 z[40225] w[42219]
- 2500 -5.9608e+004  2499 49535     0     0    49 z[40104] w[44390]
- 3000 -5.8384e+004  2999 49035     0     0    58 z[44540] w[42749]
- 3500 -5.7291e+004  3499 48535     0     0    68 z[43896] w[42702]
- 4000 -5.6022e+004  3999 48035     0     0    78 z[44397] w[40605]
- 4500 -5.4653e+004  4499 47535     0     0    88 z[49256] w[43582]
- 5000 -5.2986e+004  4999 47035     0     0    98 z[44024] w[49428]
- 5500 -5.0724e+004  5499 46535     0     0   107 z[44767] w[44614]
- 6000 -4.8042e+004  5999 46035     0     0   117 z[42028] w[43717]
- 6500 -4.5700e+004  6499 45535     0     0   127 z[48804] w[45129]
- 7000 -4.3929e+004  6999 45035     0     0   137 z[41453] w[40805]
- 7500 -4.2512e+004  7499 44535     0     0   147 z[49814] w[42908]
- 8000 -4.1292e+004  7999 44035     0     0   156 z[43554] w[45922]
- 8500 -3.9978e+004  8499 43535     0     0   166 z[45220] w[49390]
- 9000 -3.8331e+004  8999 43035     0     0   176 z[49692] w[48315]
- 9500 -3.5772e+004  9499 42535     0     0   186 z[41622] w[43913]
-10000 -2.9623e+004  9999 42035     0     0   196 z[43674] w[49656]
+  500  2.5417e-001 15871 10162     1     0     9 w[10740] w[ 6106]
+ 1000  6.0765e-001 15626 10407     1     0    19 w[20134] z[15242]
+ 1500  7.4882e-001 15336 10697     1     0    29 w[25769] z[ 5918]
+ 2000  9.2708e-001 14966 11067     1     0    39 w[20113] z[22026]
 
 Major Iteration Log
 major minor  func  grad  residual    step  type prox    inorm  (label)
-    1 10000    38    11 3.9838e+006  1.0e+000 IM 1.5e+000 5.7e+004 (energy_balance()
+    1  2182    47    18 2.0754e+005  1.0e+000 SM 7.4e-001 7.3e+003 (KKTSTOLEV(h3472)
 
 Minor Iteration Log
 minor      t          z     w     v   art ckpts  enter    leave
-  500  9.3181e-013 10498 41536     0     0     9 z[32095] w[28093]
- 1000  1.8924e-012 10998 41036     0     0    19 z[27546] w[32381]
- 1500  2.8704e-012 11498 40536     0     0    29 z[28864] w[26862]
- 2000  3.8820e-012 11998 40036     0     0    39 z[33693] w[29691]
- 2500  4.9328e-012 12498 39536     0     0    49 z[32435] w[28433]
- 3000  6.0432e-012 12998 39036     0     0    58 z[27787] w[32817]
- 3500  7.2372e-012 13498 38536     0     0    68 z[29622] w[32483]
- 4000  8.4970e-012 13998 38036     0     0    78 z[28078] w[26076]
- 4500  9.8068e-012 14498 37536     0     0    88 z[33132] w[29130]
- 5000  1.1166e-011 14998 37036     0     0    98 z[29180] w[27178]
- 5500  1.2599e-011 15498 36536     0     0   107 z[29999] w[27997]
- 6000  1.4176e-011 15998 36036     0     0   117 z[33638] w[29636]
- 6500  5.9096e-011 16498 35536     0     0   127 z[51022] w[51661]
- 7000  5.6529e-010 16998 35036     0     0   137 z[50717] w[50419]
- 7500  1.7094e-008 17498 34536     0     0   147 z[  845] w[16856]
- 8000  3.3561e-008 17998 34036     0     0   156 z[ 3155] w[ 2362]
- 8500  5.4458e-008 18498 33536     0     0   166 z[  438] w[16449]
- 9000  8.1177e-008 18998 33036     0     0   176 z[14569] w[14570]
- 9500  1.0840e-007 19498 32536     0     0   186 z[15159] w[15160]
-10000  1.3562e-007 19998 32036     0     0   196 z[15720] w[15721]
-10500  1.6140e-007 20498 31536     0     0   205 z[ 2739] w[ 1652]
-11000  1.8766e-007 20998 31036     0     0   215 z[17332] w[ 1946]
-11500  2.1794e-007 21498 30536     0     0   225 z[ 2153] w[ 2143]
-12000  2.5266e-007 21998 30036     0     0   235 z[  566] w[16577]
-12500  2.9430e-007 22498 29536     0     0   245 z[ 2719] w[ 3264]
-13000  3.4432e-007 22998 29036     0     0   254 z[16333] w[ 1647]
-13500  4.0941e-007 23498 28536     0     0   264 z[ 1027] w[17038]
-14000  5.0078e-007 23998 28036     0     0   274 z[17077] w[ 3305]
-14500  6.3365e-007 24498 27536     0     0   284 z[ 3766] w[ 3403]
-15000  2.2118e-004 24998 27036     0     0   294 z[22147] w[22079]
-15500  2.5659e-004 25494 26540     0     0   303 z[22196] w[10188]
-16000  2.9883e-004 25972 26062     0     0   313 z[20834] w[ 4823]
-16500  3.3210e-004 26470 25564     0     0   323 z[22291] w[22447]
-17000  3.6516e-004 26948 25086     0     0   333 z[ 4359] w[ 5862]
-17500  4.1889e-004 27426 24608     0     0   343 z[22143] w[22412]
-18000  4.4934e-004 27900 24134     0     0   352 z[23665] w[23967]
-18500  5.0924e-004 28346 23688     0     0   362 z[ 5526] w[ 4703]
-19000  5.6026e-004 28774 23260     0     0   372 z[ 4702] w[ 5101]
-19500  6.0629e-004 29205 22829     0     0   382 w[22410] z[22654]
-20000  6.5326e-004 29640 22394     0     0   392 z[ 6903] w[ 6036]
-20500  6.9883e-004 30062 21972     0     0   401 z[23229] w[23893]
-21000  7.6700e-004 30424 21610     0     0   411 z[ 5473] w[ 5522]
-21500  8.4256e-004 30826 21208     0     0   421 z[21936] w[20693]
-22000  9.4286e-004 31214 20820     0     0   431 z[23375] w[ 5261]
-22500  1.1863e-003 31672 20362     0     0   441 z[11360] w[23349]
-23000  1.3827e-003 32104 19930     0     0   450 z[23102] w[11094]
-23500  1.8904e-003 32464 19570     0     0   460 z[21019] w[21047]
-24000  2.6978e-003 32804 19230     0     0   470 z[11144] w[20816]
-24500  4.6711e-003 33126 18908     0     0   480 z[21490] w[21000]
-25000  1.8154e-002 32893 19141     0     0   490 w[51196] z[29275]
-25500  2.7145e-002 32584 19450     0     0   500 z[51550] w[50634]
-26000  3.1647e-002 32830 19204     0     0   509 z[47394] w[46909]
-26500  3.5540e-002 33090 18944     0     0   519 z[47712] w[47827]
-27000  4.1351e-002 33314 18720     0     0   529 z[46438] w[47423]
-27500  5.5078e-002 33484 18550     0     0   539 w[29940] w[47425]
-28000  7.2563e-002 33385 18649     0     0   549 w[50657] z[26327]
-28500  9.8033e-002 33273 18761     0     0   558 w[28735] z[51657]
-29000  1.1838e-001 33024 19010     0     0   568 w[29168] w[50952]
-29500  1.3354e-001 32719 19315     0     0   578 w[26825] z[11313]
-30000  1.4945e-001 32378 19656     0     0   588 w[11406] w[30720]
-30500  1.7040e-001 32075 19959     0     0   598 z[12557] z[29690]
-31000  2.0154e-001 31821 20213     0     0   607 w[ 7038] z[29548]
-31500  2.3484e-001 31617 20417     0     0   617 z[13691] z[29862]
-32000  2.7635e-001 31409 20625     0     0   627 w[51184] z[51322]
-32500  3.1670e-001 31228 20806     0     0   637 z[12641] w[30382]
-33000  3.6379e-001 31061 20973     0     0   647 w[ 6241] z[11715]
-33500  4.2215e-001 30938 21096     0     0   656 z[30529] w[12642]
-34000  4.8853e-001 30896 21138     0     0   666 w[ 7768] w[18966]
-34500  5.5165e-001 31082 20952     0     0   676 w[ 6053] w[23043]
-35000  6.1155e-001 31270 20764     0     0   686 w[50253] w[13937]
-35500  6.9493e-001 31406 20628     0     0   696 w[27408] w[19904]
-36000  8.0421e-001 31518 20516     0     0   705 z[12662] w[50700]
-36500  9.1250e-001 31648 20385     1     0   715 z[18360] w[39890]
+  500  3.3106e-001 14567 11466     1     0     9 w[ 6809] z[  277]
+ 1000  7.6006e-001 14425 11608     1     0    19 z[20592] z[ 9911]
 
 Major Iteration Log
 major minor  func  grad  residual    step  type prox    inorm  (label)
-    2 36947    39    12 9.5642e+005  1.0e+000 SO 6.2e-001 1.9e+004 (KKTGRES(h2622))
+    2  1312    48    19 9.5957e+004  1.0e+000 SO 3.0e-001 5.4e+003 (KKTNSTOE)
 
 Minor Iteration Log
 minor      t          z     w     v   art ckpts  enter    leave
-  500  5.9675e-002 31649 20384     1     0     9 w[38429] z[13754]
- 1000  1.3165e-001 31515 20518     1     0    19 z[50271] z[14759]
- 1500  2.0290e-001 31429 20604     1     0    29 z[26630] z[14691]
- 2000  2.4756e-001 31496 20537     1     0    39 w[39746] w[12885]
- 2500  2.9052e-001 31295 20738     1     0    49 z[12910] z[15623]
- 3000  3.7922e-001 31175 20858     1     0    58 w[ 7416] z[ 2118]
- 3500  4.8124e-001 31077 20956     1     0    68 w[47728] z[42788]
- 4000  5.7386e-001 30847 21186     1     0    78 w[41992] z[37437]
- 4500  6.6696e-001 30664 21369     1     0    88 w[41804] w[26872]
- 5000  7.7840e-001 30463 21570     1     0    98 z[50134] z[21500]
- 5500  8.8490e-001 30223 21810     1     0   107 w[37369] z[50898]
- 6000  9.2453e-001 29895 22138     1     0   117 w[48471] z[41564]
- 6500  9.6366e-001 29610 22423     1     0   127 w[40099] w[51123]
+  500  2.7175e-001 14463 11570     1     0     9 z[25574] w[ 2396]
+ 1000  4.2675e-001 14432 11437   165     0    19 v[ 7383] z[ 7215]
+ 1500  6.2018e-001 14505 11286   243     0    29 z[18157] w[20905]
+ 2000  7.5547e-001 14703 11058   273     0    39 w[18732] w[24300]
+ 2500  8.8858e-001 14787 10947   300     0    49 z[25369] w[25115]
 
 Major Iteration Log
 major minor  func  grad  residual    step  type prox    inorm  (label)
-    3  6786    40    13 1.8512e+005  1.0e+000 SO 2.5e-001 6.0e+003 (KKTGRES(h1044))
+    3  2796    49    20 2.4740e+004  1.0e+000 SO 1.2e-001 5.0e+003 (KKTNSTOE)
 
 Minor Iteration Log
 minor      t          z     w     v   art ckpts  enter    leave
-  500  1.0316e-001 29362 22671     1     0     9 w[22753] z[14877]
- 1000  2.4092e-001 29301 22731     2     0    19 w[48997] w[47243]
- 1500  4.1691e-001 29236 22791     7     0    29 w[13585] z[15099]
-    4    95    41    14 1.7207e+005  1.0e+000 SO 1.0e+001 6.9e+003 (minRES)
-    5   226    42    15 1.5448e+005  1.0e+000 SO 4.0e+000 5.3e+003 (KKTNSTOE)
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  6.7750e-001 29230 22803     1     0     9 w[37074] w[23808]
+  500  1.9721e-001 14760 10893   381     0     9 w[ 8970] w[ 1949]
+ 1000  4.2558e-001 14671 10874   489     0    19 z[21214] z[24689]
+ 1500  6.6704e-001 14569 10902   563     0    29 z[ 2614] z[24618]
+ 2000  9.2746e-001 14445 10943   646     0    39 z[13869] z[23440]
 
 Major Iteration Log
 major minor  func  grad  residual    step  type prox    inorm  (label)
-    6   983    43    16 1.1413e+005  1.0e+000 SO 1.6e+000 5.3e+003 (KKTNSTOE)
+    4  2104    50    21 7.0212e+003  1.0e+000 SO 4.7e-002 1.1e+003 (KKTNRES)
 
 Minor Iteration Log
 minor      t          z     w     v   art ckpts  enter    leave
-  500  2.3247e-001 28728 23305     1     0     9 z[47124] w[23572]
- 1000  3.9933e-001 28421 23612     1     0    19 w[32054] z[32305]
- 1500  5.5486e-001 28093 23940     1     0    29 w[51592] z[33579]
- 2000  7.8970e-001 27965 24068     1     0    39 w[20749] z[ 1675]
+  500  2.4559e-001 14262 11054   718     0     9 w[23926] z[ 5122]
+ 1000  4.9822e-001 14094 11193   747     0    19 z[12653] z[23561]
+ 1500  7.5050e-001 13916 11368   750     0    29 z[10241] z[  826]
+ 2000  8.9150e-001 13607 11679   748     0    39 w[  966] w[12484]
+ 2500  9.8768e-001 13391 11896   747     0    49 w[11476] w[ 4113]
 
 Major Iteration Log
 major minor  func  grad  residual    step  type prox    inorm  (label)
-    7  2298    44    17 8.4504e+004  1.0e+000 SO 6.4e-001 5.3e+003 (KKTNSTOE)
+    5  2563    51    22 4.1218e+003  1.0e+000 SO 1.9e-002 2.1e+002 (KKTSTOLEV(h3807)
 
 Minor Iteration Log
 minor      t          z     w     v   art ckpts  enter    leave
-  500  3.0786e-001 27834 24198     2     0     9 w[48670] z[21814]
- 1000  6.0200e-001 27880 24149     5     0    20 z[50364] z[49142]
- 1500  7.8681e-001 27668 24132   234     0    29 v[14341] z[14943]
- 2000  9.9243e-001 27404 24198   432     0    39 w[  403] z[49098]
+  500  2.0561e-001 13184 12092   758     0     9 w[24095] z[ 6486]
+ 1000  4.0219e-001 13049 12239   746     0    19 w[18878] w[  335]
+ 1500  6.6882e-001 12840 12447   747     0    29 z[14461] z[15786]
+ 2000  8.8553e-001 12624 12652   758     0    39 w[ 6825] z[  847]
 
 Major Iteration Log
 major minor  func  grad  residual    step  type prox    inorm  (label)
-    8  2020    45    18 6.2686e+004  1.0e+000 SO 2.6e-001 4.8e+003 (KKTNSTOE)
+    6  2299    52    23 1.5816e+003  1.0e+000 SO 7.6e-003 1.4e+002 (maxout_power(h3)
 
 Minor Iteration Log
 minor      t          z     w     v   art ckpts  enter    leave
-  500  1.6844e-001 27313 24186   535     0     9 w[15145] z[17455]
- 1000  3.5385e-001 27188 24175   671     0    19 w[15125] w[50574]
- 1500  5.4787e-001 27027 24179   828     0    29 z[15714] z[26886]
- 2000  6.9311e-001 26981 24111   942     0    39 z[50484] z[22562]
- 2500  7.7139e-001 27079 23960   995     0    49 z[27619] z[48203]
- 3000  8.8116e-001 27148 23839  1047     0    58 w[47069] w[45459]
- 3500  9.8001e-001 27248 23700  1086     0    68 z[49296] w[26883]
+  500  3.9285e-001 12529 12792   713     0     9 w[ 4499] w[14405]
+ 1000  9.1268e-001 12484 12845   705     0    19 z[23466] z[25467]
 
 Major Iteration Log
 major minor  func  grad  residual    step  type prox    inorm  (label)
-    9  3602    46    19 2.1928e+004  1.0e+000 SO 1.0e-001 9.7e+002 (KKTNRES)
+    7  1225    53    24 6.6462e+002  1.0e+000 SO 3.0e-003 3.7e+001 (KKTSTOLEV(h3928)
 
 Minor Iteration Log
 minor      t          z     w     v   art ckpts  enter    leave
-  500  1.1949e-001 27167 23661  1206     0     9 w[47153] w[23136]
- 1000  2.5429e-001 27241 23510  1283     0    19 z[37458] w[21465]
- 1500  3.8768e-001 27218 23492  1324     0    29 z[49464] z[17698]
- 2000  5.2985e-001 27184 23477  1373     0    39 v[14778] z[ 8675]
- 2500  6.4478e-001 27125 23497  1412     0    49 w[17149] w[49264]
- 3000  7.6903e-001 26992 23581  1461     0    58 z[49629] z[16936]
- 3500  8.8609e-001 26892 23636  1506     0    68 z[14844] z[16838]
+  500  6.1760e-001 12571 12781   682     0     9 z[ 6519] v[ 6518]
 
 Major Iteration Log
 major minor  func  grad  residual    step  type prox    inorm  (label)
-   10  3888    47    20 5.2961e+003  1.0e+000 SO 4.1e-002 7.3e+002 (KKTNRES)
+    8   914    54    25 3.2732e+002  1.0e+000 SO 1.2e-003 1.4e+001 (KKTSTOLEV(h3651)
 
 Minor Iteration Log
 minor      t          z     w     v   art ckpts  enter    leave
-  500  1.4248e-001 26737 23710  1587     0     9 v[15969] z[ 3696]
- 1000  3.3663e-001 26662 23754  1618     0    19 w[48715] w[37341]
- 1500  5.5144e-001 26662 23760  1612     0    29 z[29968] w[28411]
- 2000  7.5225e-001 26670 23809  1555     0    39 z[32813] w[32780]
- 2500  8.6974e-001 26540 23993  1501     0    49 w[ 5110] w[32106]
- 3000  9.3798e-001 26227 24333  1474     0    58 w[ 5400] z[ 5449]
- 3500  9.9229e-001 25884 24684  1466     0    68 z[ 3415] w[ 5750]
+  500  7.8078e-001 12345 13017   672     0     9 w[20060] z[20384]
+ 1000  8.7749e-001 11897 13465   672     0    19 w[20505] z[20193]
 
 Major Iteration Log
 major minor  func  grad  residual    step  type prox    inorm  (label)
-   11  3607    48    21 3.2398e+003  1.0e+000 SO 1.6e-002 1.2e+002 (KKTSTOLEV(h1912)
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  1.3457e-001 25786 24801  1447     0     9 w[46260] w[32804]
- 1000  2.6285e-001 25781 24796  1457     0    19 z[29318] z[13236]
- 1500  4.2111e-001 25635 24935  1464     0    29 z[50400] z[14852]
- 2000  5.9674e-001 25587 25008  1439     0    39 z[29409] z[12924]
- 2500  7.0631e-001 25335 25281  1418     0    49 z[12849] z[37098]
- 3000  8.6233e-001 25206 25450  1378     0    58 w[40072] w[ 4884]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-   12  3399    49    22 1.8044e+003  1.0e+000 SO 6.6e-003 8.2e+001 (KKTSTOLEV(h1911)
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  1.6465e-001 24979 25679  1376     0     9 w[43705] z[51758]
- 1000  3.6571e-001 24884 25774  1376     0    19 z[51436] w[ 5662]
- 1500  7.8020e-001 24827 25830  1377     0    29 w[51048] z[48069]
- 2000  9.2180e-001 24555 26102  1377     0    39 w[36920] z[51804]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-   13  2396    50    23 5.2693e+002  1.0e+000 SO 2.6e-003 6.7e+001 (maxout_power(h1)
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  5.5065e-001 24717 25936  1381     0     9 w[49071] w[ 4874]
- 1000  9.5595e-001 24719 25935  1380     0    19 z[46586] w[50506]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-   14  1100    51    24 2.5610e+002  1.0e+000 SO 1.0e-003 1.8e+001 (KKTSTOLEV(h2514)
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  5.2594e-001 24871 25783  1380     0     9 z[51539] z[36144]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-   15   909    52    25 1.2086e+002  1.0e+000 SO 4.2e-004 9.7e+000 (KKTSTOLEV(h2970)
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  9.8678e-001 24948 25706  1380     0     9 z[48271] w[49911]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-   16   515    53    26 6.4538e+001  1.0e+000 SO 1.7e-004 4.8e+000 (KKTSTOLEV(h2378)
-   17   378    54    27 3.4750e+001  1.0e+000 SO 6.7e-005 2.7e+000 (KKTSTOLEV(h1318)
-   18    15    55    28 3.4720e+001  1.0e+000 SO 3.5e+000 2.7e+000 (KKTSTOLEV(h1323)
-   19     6    56    29 3.4600e+001  1.0e+000 SO 1.4e+000 2.7e+000 (KKTSTOLEV(h1326)
-   20    53    57    30 3.4331e+001  1.0e+000 SO 5.6e-001 2.7e+000 (KKTSTOLEV(h1329)
-   21    12    58    31 3.4040e+001  1.0e+000 SO 2.2e-001 2.6e+000 (KKTSTOLEV(h1332)
-   22    41    59    32 3.3695e+001  1.0e+000 SO 8.9e-002 2.6e+000 (KKTSTOLEV(h1315)
-   23    23    60    33 3.3227e+001  1.0e+000 SO 3.6e-002 2.4e+000 (KKTSTOLEV(h1315)
-   24    24    61    34 3.2677e+001  1.0e+000 SO 1.4e-002 2.0e+000 (KKTSTOLEV(h1331)
-   25    30    62    35 3.0473e+001  1.0e+000 SO 5.7e-003 2.0e+000 (KKTSTOLEV(h1930)
-   26     2    63    36 3.0471e+001  1.0e+000 SO 3.0e+000 2.0e+000 (KKTSTOLEV(h1930)
-   27     1    64    37 3.0463e+001  1.0e+000 SO 1.2e+000 2.0e+000 (KKTSTOLEV(h1930)
-   28     2    65    38 3.0450e+001  1.0e+000 SO 4.9e-001 2.0e+000 (KKTSTOLEV(h1930)
-   29     5    66    39 3.0438e+001  1.0e+000 SO 2.0e-001 2.0e+000 (KKTSTOLEV(h1930)
-   30     4    67    40 3.0413e+001  1.0e+000 SO 7.8e-002 2.0e+000 (KKTSTOLEV(h1930)
-   31     2    68    41 3.0349e+001  1.0e+000 SO 3.1e-002 2.0e+000 (KKTSTOLEV(h1930)
-   32     1    82    42 3.1631e+001  1.2e-006 SB 3.0e+000 6.6e+000 (KKTSTOIN_hh(h18)
-   33     1    83    43 3.6939e+001  1.0e+000 ND 3.2e+000 1.5e+001 (stolevel_hh(h13)
-   34    22    84    44 3.2288e+001  1.0e+000 SO 1.3e+000 5.6e+000 (KKTSTOLEV_hh(h1)
-   35    19    85    45 3.0524e+001  1.0e+000 SO 5.1e-001 2.0e+000 (KKTSTOLEV(h1922)
-   36    15    86    46 3.0367e+001  1.0e+000 SO 2.0e-001 2.0e+000 (KKTSTOLEV(h1920)
-   37    12    87    47 3.0350e+001  1.0e+000 SO 8.1e-002 2.0e+000 (KKTSTOLEV(h1920)
-   38    21    88    48 3.0306e+001  1.0e+000 SO 3.2e-002 2.0e+000 (KKTSTOLEV(h1922)
-   39    10    89    49 3.0117e+001  1.0e+000 SO 1.3e-002 2.0e+000 (KKTSTOLEV(h1930)
-   40    13    90    50 2.9985e+001  1.0e+000 SO 5.2e-003 2.0e+000 (KKTSTOLEV(h1919)
-   41    24    91    51 2.9920e+001  1.0e+000 SO 2.1e-003 2.0e+000 (KKTSTOLEV(h1919)
-   42    50    92    52 2.9322e+001  1.0e+000 SO 8.3e-004 2.0e+000 (KKTSTOLEV(h1922)
-   43   249    93    53 2.2402e+001  1.0e+000 SO 3.3e-004 1.6e+000 (KKTSTOLEV(h1919)
-   44   129    94    54 1.4577e+001  1.0e+000 SO 1.3e-004 1.4e+000 (KKTSTOLEV(h2587)
-   45   105    95    55 6.2644e+000  1.0e+000 SM 5.3e-005 3.8e-001 (KKTSTOLEV(h1930)
-   46   356    96    56 4.2505e+000  1.0e+000 SM 2.1e-005 2.4e-001 (hh_energy_balan)
-   47   362    97    57 4.2505e+000  1.0e+000 SO 4.3e-001 2.4e-001 (pv_generation_h)
-   48    35    98    58 4.2505e+000  1.0e+000 SO 1.7e-001 2.4e-001 (hh_energy_balan)
-   49    36    99    59 4.2505e+000  1.0e+000 SO 6.8e-002 2.4e-001 (pv_generation_h)
-   50   116   100    60 4.2505e+000  1.0e+000 SO 2.7e-002 2.4e-001 (pv_generation_h)
-   51    80   101    61 4.2504e+000  1.0e+000 SO 1.1e-002 2.4e-001 (hh_energy_balan)
-   52    80   102    62 4.2503e+000  1.0e+000 SO 4.4e-003 2.4e-001 (hh_energy_balan)
-   53    67   103    63 4.2503e+000  1.0e+000 SO 1.7e-003 2.4e-001 (hh_energy_balan)
-   54   170   104    64 4.2503e+000  1.0e+000 SO 7.0e-004 2.4e-001 (hh_energy_balan)
-   55     1   105    65 4.2503e+000  1.0e+000 SO 2.8e-004 2.4e-001 (pv_generation_h)
-   56     1   106    66 4.2503e+000  1.0e+000 SO 1.1e-004 2.4e-001 (hh_energy_balan)
-   57     1   107    67 4.2503e+000  1.0e+000 SM 4.5e-005 2.4e-001 (pv_generation_h)
-   58     2   108    68 4.2503e+000  1.0e+000 SO 4.3e-001 2.4e-001 (pv_generation_h)
-   59     1   109    69 4.2503e+000  1.0e+000 SO 1.7e-001 2.4e-001 (pv_generation_h)
-   60     1   110    70 4.2503e+000  1.0e+000 SO 6.8e-002 2.4e-001 (hh_energy_balan)
-   61     1   111    71 4.2503e+000  1.0e+000 SO 2.7e-002 2.4e-001 (hh_energy_balan)
-   62     1   112    72 4.2503e+000  1.0e+000 SO 1.1e-002 2.4e-001 (hh_energy_balan)
-   63     1   113    73 4.2503e+000  1.0e+000 SO 4.4e-003 2.4e-001 (pv_generation_h)
-   64     1   114    74 4.2503e+000  1.0e+000 SO 1.7e-003 2.4e-001 (pv_generation_h)
-   65     1   115    75 4.2503e+000  1.0e+000 SO 7.0e-004 2.4e-001 (pv_generation_h)
-   66     1   116    76 4.2503e+000  1.0e+000 SO 2.8e-004 2.4e-001 (pv_generation_h)
-   67     1   117    77 4.2503e+000  1.0e+000 SM 1.1e-004 2.4e-001 (hh_energy_balan)
-   68     1   118    78 4.2503e+000  1.0e+000 SM 4.5e-005 2.4e-001 (hh_energy_balan)
-   69     1   119    79 4.2503e+000  1.0e+000 SM 1.8e-005 2.4e-001 (hh_energy_balan)
-   70     1   120    80 4.2503e+000  1.0e+000 SM 7.1e-006 2.4e-001 (hh_energy_balan)
-   71     1   121    81 4.2503e+000  1.0e+000 SM 2.9e-006 2.4e-001 (pv_generation_h)
-   72     1   122    82 4.2503e+000  1.0e+000 SM 1.1e-006 2.4e-001 (hh_energy_balan)
-   73     4   123    83 4.2503e+000  1.0e+000 SO 4.3e-001 2.4e-001 (pv_generation_h)
-   74     2   124    84 4.2503e+000  1.0e+000 SO 1.7e-001 2.4e-001 (pv_generation_h)
-   75     2   125    85 4.2503e+000  1.0e+000 SO 6.8e-002 2.4e-001 (pv_generation_h)
-   76     1   126    86 4.2503e+000  1.0e+000 SO 2.7e-002 2.4e-001 (pv_generation_h)
-   77     1   127    87 4.2503e+000  1.0e+000 SO 1.1e-002 2.4e-001 (hh_energy_balan)
-   78     1   128    88 4.2503e+000  1.0e+000 SO 4.4e-003 2.4e-001 (hh_energy_balan)
-   79     1   129    89 4.2503e+000  1.0e+000 SO 1.7e-003 2.4e-001 (hh_energy_balan)
-   80     1   130    90 4.2503e+000  1.0e+000 SO 7.0e-004 2.4e-001 (hh_energy_balan)
-   81     1   131    91 4.2503e+000  1.0e+000 SM 2.8e-004 2.4e-001 (hh_energy_balan)
-   82     1   132    92 4.2503e+000  1.0e+000 SM 1.1e-004 2.4e-001 (hh_energy_balan)
-   83     1   133    93 4.2503e+000  1.0e+000 SM 4.5e-005 2.4e-001 (hh_energy_balan)
-   84     1   134    94 4.2503e+000  1.0e+000 SM 1.8e-005 2.4e-001 (hh_energy_balan)
-   85     1   135    95 4.2503e+000  1.0e+000 SM 7.1e-006 2.4e-001 (pv_generation_h)
-   86     2   136    96 4.2503e+000  1.0e+000 SO 4.3e-001 2.4e-001 (hh_energy_balan)
-   87     1   137    97 4.2503e+000  1.0e+000 SO 1.7e-001 2.4e-001 (hh_energy_balan)
-   88     1   138    98 4.2503e+000  1.0e+000 SO 6.8e-002 2.4e-001 (pv_generation_h)
-   89     1   139    99 4.2503e+000  1.0e+000 SO 2.7e-002 2.4e-001 (hh_energy_balan)
-   90     1   140   100 4.2503e+000  1.0e+000 SO 1.1e-002 2.4e-001 (hh_energy_balan)
-   91     1   141   101 4.2503e+000  1.0e+000 SO 4.4e-003 2.4e-001 (pv_generation_h)
-   92     1   142   102 4.2503e+000  1.0e+000 SO 1.7e-003 2.4e-001 (pv_generation_h)
-   93     1   143   103 4.2503e+000  1.0e+000 SM 7.0e-004 2.4e-001 (pv_generation_h)
-   94     1   144   104 4.2503e+000  1.0e+000 SM 2.8e-004 2.4e-001 (hh_energy_balan)
-   95     1   145   105 4.2503e+000  1.0e+000 SM 1.1e-004 2.4e-001 (hh_energy_balan)
-   96     1   146   106 4.2503e+000  1.0e+000 SM 4.5e-005 2.4e-001 (pv_generation_h)
-   97     1   147   107 4.2503e+000  1.0e+000 SM 1.8e-005 2.4e-001 (hh_energy_balan)
-   98     1   148   108 4.2503e+000  1.0e+000 SM 7.1e-006 2.4e-001 (hh_energy_balan)
-   99     2   149   109 4.2503e+000  1.0e+000 SO 4.3e-001 2.4e-001 (hh_energy_balan)
-  100     1   150   110 4.2503e+000  1.0e+000 SO 1.7e-001 2.4e-001 (hh_energy_balan)
-  101     1   151   111 4.2503e+000  1.0e+000 SO 6.8e-002 2.4e-001 (hh_energy_balan)
-  102     1   152   112 4.2503e+000  1.0e+000 SO 2.7e-002 2.4e-001 (pv_generation_h)
-  103     1   153   113 4.2503e+000  1.0e+000 SO 1.1e-002 2.4e-001 (pv_generation_h)
-  104     1   154   114 4.2503e+000  1.0e+000 SO 4.4e-003 2.4e-001 (hh_energy_balan)
-  105     1   155   115 4.2503e+000  1.0e+000 SM 1.7e-003 2.4e-001 (hh_energy_balan)
-  106     1   156   116 4.2503e+000  1.0e+000 SM 7.0e-004 2.4e-001 (hh_energy_balan)
-  107     1   157   117 4.2503e+000  1.0e+000 SM 2.8e-004 2.4e-001 (hh_energy_balan)
-  108     1   158   118 4.2503e+000  1.0e+000 SM 1.1e-004 2.4e-001 (hh_energy_balan)
-  109     1   159   119 4.2503e+000  1.0e+000 SM 4.5e-005 2.4e-001 (hh_energy_balan)
-  110     2   160   120 4.2503e+000  1.0e+000 SO 4.3e-001 2.4e-001 (hh_energy_balan)
-  111     1   161   121 4.2503e+000  1.0e+000 SO 1.7e-001 2.4e-001 (hh_energy_balan)
-  112     1   162   122 4.2503e+000  1.0e+000 SO 6.8e-002 2.4e-001 (pv_generation_h)
-  113     1   163   123 4.2503e+000  1.0e+000 SO 2.7e-002 2.4e-001 (hh_energy_balan)
-  114     1   164   124 4.2503e+000  1.0e+000 SO 1.1e-002 2.4e-001 (pv_generation_h)
-  115     1   165   125 4.2503e+000  1.0e+000 SM 4.4e-003 2.4e-001 (hh_energy_balan)
-  116     1   166   126 4.2503e+000  1.0e+000 SM 1.7e-003 2.4e-001 (hh_energy_balan)
-  117     1   167   127 4.2503e+000  1.0e+000 SM 7.0e-004 2.4e-001 (hh_energy_balan)
-  118     1   168   128 4.2503e+000  1.0e+000 SM 2.8e-004 2.4e-001 (pv_generation_h)
-  119     1   169   129 4.2503e+000  1.0e+000 SM 1.1e-004 2.4e-001 (pv_generation_h)
-  120     1   170   130 4.2503e+000  1.0e+000 SM 4.5e-005 2.4e-001 (hh_energy_balan)
-  121     1   171   131 4.2503e+000  1.0e+000 SM 1.8e-005 2.4e-001 (hh_energy_balan)
-  122     1   172   132 4.2503e+000  1.0e+000 SM 7.1e-006 2.4e-001 (hh_energy_balan)
-  123     1   173   133 4.2503e+000  1.0e+000 SM 2.9e-006 2.4e-001 (hh_energy_balan)
-  124     1   174   134 4.2503e+000  1.0e+000 SM 1.1e-006 2.4e-001 (hh_energy_balan)
-  125     2   175   135 4.2503e+000  1.0e+000 SO 4.3e-001 2.4e-001 (pv_generation_h)
-  126     1   176   136 4.2503e+000  1.0e+000 SO 1.7e-001 2.4e-001 (hh_energy_balan)
-  127     1   177   137 4.2503e+000  1.0e+000 SO 6.8e-002 2.4e-001 (pv_generation_h)
-  128     1   178   138 4.2503e+000  1.0e+000 SO 2.7e-002 2.4e-001 (hh_energy_balan)
-  129     1   179   139 4.2503e+000  1.0e+000 SO 1.1e-002 2.4e-001 (hh_energy_balan)
-  130     1   180   140 4.2503e+000  1.0e+000 SM 4.4e-003 2.4e-001 (pv_generation_h)
-  131     1   181   141 4.2503e+000  1.0e+000 SM 1.7e-003 2.4e-001 (hh_energy_balan)
-  132     1   182   142 4.2503e+000  1.0e+000 SM 7.0e-004 2.4e-001 (hh_energy_balan)
-  133     1   183   143 4.2503e+000  1.0e+000 SM 2.8e-004 2.4e-001 (hh_energy_balan)
-  134     1   184   144 4.2503e+000  1.0e+000 SM 1.1e-004 2.4e-001 (hh_energy_balan)
-  135     1   185   145 4.2503e+000  1.0e+000 SM 4.5e-005 2.4e-001 (hh_energy_balan)
-  136     2   186   146 4.2503e+000  1.0e+000 SM 1.8e-005 2.4e-001 (hh_energy_balan)
-  137     1   187   147 4.2503e+000  1.0e+000 SM 7.1e-006 2.4e-001 (hh_energy_balan)
-  138     1   188   148 4.2503e+000  1.0e+000 SM 2.9e-006 2.4e-001 (hh_energy_balan)
-  139     1   189   149 4.2503e+000  1.0e+000 SM 1.1e-006 2.4e-001 (pv_generation_h)
-  140     2   190   150 4.2503e+000  1.0e+000 SM 4.6e-007 2.4e-001 (hh_energy_balan)
-  141     1   191   151 4.2503e+000  1.0e+000 SM 1.8e-007 2.4e-001 (hh_energy_balan)
-  142    10   192   152 4.2503e+000  1.0e+000 SO 4.3e-001 2.4e-001 (hh_energy_balan)
-  143     2   193   153 4.2503e+000  1.0e+000 SO 1.7e-001 2.4e-001 (pv_generation_h)
-  144     5   194   154 4.2503e+000  1.0e+000 SO 6.8e-002 2.4e-001 (pv_generation_h)
-
-Restart Log
-proximal_perturbation 0
-crash_method none
-crash_perturb yes
-nms_initial_reference_factor 2
-lemke_search_type slack
-proximal_perturbation 1.0000e-001
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-  144     0   196   156 5.3008e+006           R 1.0e-001 1.5e+005 (energy_balance()
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  7.2121e-005 19123 32911     0     0     9 z[49348] w[48517]
- 1000  7.6357e-005 19282 32752     0     0    19 w[50520] z[51263]
- 1500  8.4420e-005 19391 32643     0     0    29 w[50631] w[48796]
- 2000  9.5113e-005 19507 32527     0     0    39 z[48259] w[48115]
- 2500  1.0293e-004 19677 32357     0     0    49 z[48717] w[48625]
- 3000  1.2116e-004 19876 32158     0     0    58 z[49698] z[51699]
- 3500  4.3251e-003 20307 31727     0     0    68 z[40047] w[40097]
- 4000  4.6344e-003 20807 31227     0     0    78 z[41397] w[41204]
- 4500  5.1610e-003 21307 30727     0     0    88 z[40458] w[20372]
- 5000  5.9249e-003 21807 30227     0     0    99 z[41133] w[20381]
- 5500  6.4585e-003 22307 29727     0     0   109 z[40906] w[41487]
- 6000  7.3210e-003 22807 29227     0     0   120 z[41959] w[41503]
- 6500  8.4084e-003 23307 28727     0     0   130 z[46773] w[46554]
- 7000  9.0166e-003 23807 28227     0     0   140 z[46841] w[47783]
- 7500  1.0403e-002 24307 27727     0     0   150 z[46071] w[47298]
- 8000  1.1320e-002 24807 27227     0     0   159 z[43202] w[47768]
- 8500  1.1806e-002 25307 26727     0     0   169 z[42583] w[43063]
- 9000  1.2513e-002 25807 26227     0     0   179 z[47869] w[46622]
- 9500  1.3810e-002 26307 25727     0     0   189 z[47962] w[21073]
-10000  1.5485e-002 26807 25227     0     0   199 z[47680] w[42187]
-10500  1.7492e-002 27307 24727     0     0   208 z[43362] w[43265]
-11000  3.1186e-002 27807 24227     0     0   218 z[21706] w[21187]
-11500  2.9446e-001 28307 23727     0     0   228 z[10688] w[10797]
-12000  2.9592e-001 28807 23227     0     0   238 z[11371] w[11885]
-12500  2.9774e-001 29307 22727     0     0   248 z[11459] w[11631]
-13000  3.0077e-001 29807 22227     0     0   257 z[10790] w[11767]
-13500  3.0279e-001 30307 21727     0     0   267 z[ 8321] w[ 8322]
-14000  3.0279e-001 30807 21227     0     0   277 z[ 8843] w[ 8844]
-14500  3.0279e-001 31307 20727     0     0   287 z[ 9345] w[ 9346]
-15000  3.0279e-001 31807 20227     0     0   297 z[ 9850] w[ 9851]
-15500  6.7713e-001 32305 19729     0     0   306 z[18849] w[ 3407]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-  145 15930   197   157 4.9464e+006  1.0e+000 SO 1.0e+001 1.4e+005 (energy_balance()
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  8.4923e-002 33058 18976     0     0     9 z[ 3612] w[27848]
- 1000  1.1935e-001 33102 18932     0     0    19 z[ 2019] w[ 3704]
- 1500  1.2761e-001 33119 18915     0     0    29 z[26416] z[ 9469]
- 2000  1.3323e-001 33033 19001     0     0    39 w[18295] z[ 8267]
- 2500  1.3831e-001 32878 19156     0     0    49 w[18634] w[ 3532]
- 3000  1.4549e-001 32647 19387     0     0    58 w[19038] z[19303]
- 3500  3.2592e-001 32990 19044     0     0    68 z[26576] w[27103]
- 4000  4.8625e-001 33416 18618     0     0    78 z[51764] w[26563]
- 4500  5.9187e-001 33890 18144     0     0    88 z[12974] w[26252]
- 5000  7.3224e-001 34364 17670     0     0    98 z[27394] w[51824]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-  146  5475   198   158 3.8712e+006  1.0e+000 SO 4.0e+000 9.0e+004 (energy_balance()
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  7.8534e-001 35248 16786     0     0     9 z[13622] w[26854]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-  147   622   199   159 3.5837e+006  1.0e+000 SO 1.0e+001 6.9e+004 (energy_balance()
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  4.5283e-002 34946 17088     0     0     9 w[ 8606] z[ 8607]
- 1000  4.5284e-002 34446 17588     0     0    19 w[ 9254] z[ 9255]
- 1500  4.5286e-002 33946 18088     0     0    29 w[ 9979] z[ 9980]
- 2000  4.5536e-002 33446 18588     0     0    39 w[ 8317] z[ 8650]
- 2500  2.4700e-001 33219 18815     0     0    49 w[10987] w[12551]
- 3000  5.1177e-001 32985 19049     0     0    58 w[11747] w[12045]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-  148  3475   200   160 2.8489e+006  1.0e+000 SO 4.0e+000 1.7e+005 (KKTNRES)
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  1.0676e-001 32669 19365     0     0     9 w[11489] w[12476]
-  149   369   201   161 2.1724e+006  1.0e+000 SO 1.0e+001 4.1e+005 (minRES)
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  2.8471e-001 32688 19346     0     0     9 z[29839] z[11956]
- 1000  5.9505e-001 32678 19356     0     0    19 z[28563] z[10564]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-  150  1454   202   162 1.9391e+006  1.0e+000 SO 4.0e+000 1.5e+005 (KKTNRES)
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  1.4219e-001 32708 19326     0     0     9 z[19978] w[19565]
- 1000  2.7622e-001 32770 19264     0     0    19 z[19945] w[19667]
- 1500  4.9021e-001 32700 19334     0     0    29 z[ 7800] w[46576]
- 2000  8.2440e-001 32574 19459     1     0    39 z[50333] w[19396]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-  151  2304   203   163 1.2754e+006  1.0e+000 SO 1.6e+000 2.6e+004 (stolev(h1364))
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  1.4147e-001 32495 19538     1     0     9 w[28093] w[27050]
- 1000  2.8867e-001 32468 19565     1     0    19 w[11899] z[47427]
- 1500  3.7173e-001 32461 19572     1     0    29 w[ 3652] w[36667]
- 2000  5.4766e-001 32380 19653     1     0    39 w[ 3386] z[51277]
- 2500  7.1798e-001 32373 19660     1     0    49 w[20877] w[51447]
- 3000  8.8465e-001 32324 19709     1     0    58 z[28009] z[20304]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-  152  3376   204   164 4.9686e+005  1.0e+000 SO 6.4e-001 9.5e+003 (KKTGRES(h2968))
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  8.6390e-002 31956 20077     1     0     9 w[42837] w[13699]
- 1000  1.8288e-001 31651 20382     1     0    19 w[37080] z[12654]
- 1500  2.8235e-001 31337 20696     1     0    29 w[40837] z[21801]
- 2000  3.9626e-001 31031 21002     1     0    39 w[43781] z[41520]
- 2500  4.6817e-001 30685 21348     1     0    49 w[51230] z[49056]
- 3000  5.1932e-001 30307 21726     1     0    58 w[48518] z[41229]
- 3500  6.0037e-001 30030 22003     1     0    68 z[50495] w[51890]
- 4000  7.0668e-001 29821 22212     1     0    78 w[49418] z[42750]
- 4500  8.0341e-001 29725 22308     1     0    88 z[18242] z[48960]
- 5000  8.9694e-001 29538 22495     1     0    98 w[ 1123] w[47456]
- 5500  9.7096e-001 29209 22824     1     0   107 w[48982] z[ 1056]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-  153  5791   205   165 1.2146e+005  1.0e+000 SO 2.6e-001 5.4e+003 (KKTNSTOE)
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  1.4912e-001 28853 23180     1     0     9 z[19091] z[48491]
- 1000  3.2797e-001 28738 23291     5     0    19 w[ 2023] w[50234]
- 1500  4.2321e-001 28393 23363   278     0    29 v[14031] z[15134]
- 2000  5.6345e-001 28131 23457   446     0    39 w[25619] z[14441]
- 2500  7.2648e-001 27921 23575   538     0    49 w[16926] z[15993]
- 3000  8.4132e-001 27687 23744   603     0    58 w[ 1176] z[ 8623]
- 3500  9.3697e-001 27542 23833   659     0    68 w[22174] w[44742]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-  154  3883   206   166 6.0382e+004  1.0e+000 SO 1.0e-001 4.7e+003 (KKTNSTOE)
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  1.1855e-001 27207 23936   891     0     9 z[37512] z[15259]
- 1000  2.4613e-001 27043 23940  1051     0    19 z[45024] z[12569]
- 1500  3.3575e-001 27051 23847  1136     0    29 z[48047] z[16326]
- 2000  4.0875e-001 27117 23729  1188     0    39 w[17989] z[15441]
- 2500  4.9954e-001 27097 23699  1238     0    49 z[50054] z[13258]
- 3000  5.9806e-001 27093 23669  1272     0    58 z[49872] z[12502]
- 3500  6.8903e-001 27103 23617  1314     0    68 z[14052] z[12464]
- 4000  7.7268e-001 27118 23569  1347     0    78 z[49144] w[50605]
- 4500  8.6035e-001 27182 23483  1369     0    88 w[15097] w[49800]
- 5000  9.3289e-001 27227 23426  1381     0    98 w[ 1321] z[46499]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-  155  5433   207   167 1.0685e+004  1.0e+000 SO 4.1e-002 9.8e+002 (KKTNRES)
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  1.1432e-001 27000 23604  1430     0     9 z[36306] w[28438]
- 1000  2.4940e-001 26853 23748  1433     0    19 w[13163] z[46598]
- 1500  4.3376e-001 26705 23891  1438     0    29 z[28958] z[42899]
- 2000  6.1881e-001 26558 24026  1450     0    39 w[43106] w[28756]
- 2500  7.6343e-001 26383 24195  1456     0    51 z[20903] z[46674]
- 3000  8.4590e-001 26115 24470  1449     0    60 w[ 5928] z[ 5077]
- 3500  9.0106e-001 25817 24777  1440     0    70 z[12753] z[ 8747]
- 4000  9.6901e-001 25528 25076  1430     0    80 z[48166] w[12951]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-  156  4327   208   168 3.2377e+003  1.0e+000 SO 1.6e-002 1.4e+002 (KKTGRES(h1932))
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  1.1410e-001 25364 25237  1433     0     9 w[43205] w[ 1423]
- 1000  2.4086e-001 25424 25182  1428     0    20 w[13720] w[ 1710]
- 1500  4.7345e-001 25350 25269  1415     0    30 w[48945] w[38289]
- 2000  7.0878e-001 25279 25364  1391     0    40 w[43274] z[37099]
- 2500  9.0872e-001 25168 25489  1377     0    49 w[43668] w[28943]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-  157  2749   209   169 1.8187e+003  1.0e+000 SO 6.6e-003 7.9e+001 (KKTSTOLEV(h1911)
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  1.8581e-001 25019 25636  1379     0     9 z[51732] z[51778]
- 1000  4.5371e-001 24921 25734  1379     0    19 w[40364] z[47904]
- 1500  8.8768e-001 24822 25832  1380     0    29 w[32801] w[39586]
- 2000  9.9977e-001 24621 26034  1379     0    39 w[25649] z[25984]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-  158  2050   210   170 5.2356e+002  1.0e+000 SO 2.6e-003 7.3e+001 (maxout_power(h1)
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  6.1614e-001 24651 26004  1379     0     9 z[50406] w[50405]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-  159   954   211   171 2.5192e+002  1.0e+000 SO 1.0e-003 1.8e+001 (KKTSTOLEV(h2514)
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  5.3812e-001 24827 25828  1379     0     9 z[ 4658] z[40747]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-  160   929   212   172 1.1850e+002  1.0e+000 SO 4.2e-004 9.6e+000 (KKTSTOLEV(h2970)
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  8.5097e-001 24976 25679  1379     0     9 w[49553] w[30671]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-  161   577   213   173 6.4376e+001  1.0e+000 SO 1.7e-004 4.8e+000 (KKTSTOLEV(h2378)
-  162   389   214   174 3.4690e+001  1.0e+000 SO 6.7e-005 2.7e+000 (KKTSTOLEV(h1318)
-  163    35   215   175 3.4678e+001  1.0e+000 SO 3.5e+000 2.7e+000 (KKTSTOLEV(h1323)
-  164     1   239   176 3.4617e+001  1.2e-002 TG 3.5e+000 3.2e+000 (KKTNSTOE)
-  165   459   240   177 3.4617e+001  1.0e+000 TO 3.5e+000 3.2e+000 (KKTNSTOE)
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  6.9446e-009 32230 19082   722     0     9 w[46879] z[47226]
- 1000  3.8659e-008 31732 19578   724     0    19 w[49293] z[49833]
- 1500  1.0744e-007 31264 20043   727     0    29 w[30737] z[30738]
- 2000  1.0744e-007 30764 20543   727     0    39 w[31681] z[31682]
- 2500  1.9075e-007 30375 20925   734     0    49 w[30680] w[47955]
- 3000  4.1066e-007 29950 21337   747     0    58 w[30445] z[30461]
- 3500  8.2769e-007 29494 21791   749     0    68 w[ 6295] z[ 6177]
- 4000  1.6610e-006 29018 22263   753     0    78 w[47620] z[ 7350]
- 4500  2.2693e-006 28520 22756   758     0    88 w[10117] z[ 9820]
- 5000  3.2703e-006 28028 23218   788     0    98 w[ 9107] z[11906]
- 5500  4.2910e-006 27528 23550   956     0   107 v[15945] z[15946]
- 6000  6.2934e-006 27030 23790  1214     0   117 w[10731] z[10188]
- 6500  1.1870e-005 26532 24222  1280     0   127 w[13116] z[13295]
- 7000  1.5443e-005 26032 24714  1288     0   137 w[13585] z[13586]
- 7500  3.7260e-005 25532 25188  1314     0   147 w[13509] z[30557]
-  166   255   241   178 3.4617e+001  1.0e+000 TO 3.5e+000 3.2e+000 (KKTNSTOE)
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  1.0172e-008 31604 19708   722     0     9 w[46770] z[48416]
- 1000  1.0165e-007 31140 20167   727     0    19 w[30125] z[30126]
- 1500  1.0166e-007 30640 20667   727     0    29 w[31370] z[31371]
- 2000  1.3658e-007 30180 21121   733     0    39 w[31291] z[30093]
- 2500  3.1512e-007 29752 21537   745     0    49 w[30200] z[30608]
- 3000  6.8585e-007 29280 22005   749     0    58 w[48267] z[49704]
- 3500  1.4460e-006 28806 22475   753     0    68 w[ 9538] z[ 9464]
- 4000  2.2046e-006 28310 22967   757     0    78 w[10019] z[11618]
- 4500  3.4566e-006 27816 23398   820     0    88 v[15944] z[15645]
- 5000  4.7562e-006 27316 23699  1019     0    98 w[11688] z[ 8097]
- 5500  8.7289e-006 26820 23945  1269     0   107 w[ 9492] z[11117]
- 6000  1.2576e-005 26320 24430  1284     0   117 w[13220] z[13221]
- 6500  1.8482e-005 25820 24917  1297     0   127 w[13587] z[13588]
- 7000  1.7730e-004 25334 25354  1346     0   137 w[15600] z[ 8746]
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  3.1524e-008 31604 19708   722     0     9 w[49967] z[27576]
- 1000  2.2482e-007 31104 20204   726     0    19 w[30138] z[30139]
- 1500  2.2483e-007 30604 20704   726     0    29 w[31383] z[31384]
- 2000  3.1172e-007 30106 21199   729     0    39 w[46980] z[46450]
- 2500  7.5716e-007 29606 21683   745     0    49 w[30461] z[31967]
- 3000  1.8007e-006 29108 22177   749     0    58 w[34659] z[30444]
- 3500  3.6320e-006 28608 22673   753     0    68 w[10512] z[31103]
- 4000  5.2800e-006 28110 23167   757     0    78 w[27526] z[49165]
- 4500  8.6392e-006 27610 23603   821     0    88 w[ 8410] z[ 8985]
- 5000  1.4513e-005 27110 23847  1077     0    98 v[15256] z[15257]
- 5500  2.9163e-005 26610 24144  1280     0   107 w[ 8024] z[ 8049]
- 6000  2.9671e-005 26110 24644  1280     0   117 w[13414] z[13413]
- 6500  5.5780e-005 25610 25116  1308     0   127 w[ 8120] z[ 8435]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-  167  6834   242   179 7.7627e+001  1.0e+000 TD 3.5e+000 2.8e+001 (stolevel_hh(h18)
-  168     1   243   180 7.7627e+001  1.0e+000 ND 7.8e+000 2.8e+001 (stolevel_hh(h18)
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500 -2.0081e+005   499 51535     0     0     9 z[45063] w[51094]
- 1000 -1.4856e+005   999 51035     0     0    19 z[51551] w[45685]
- 1500 -1.0694e+005  1499 50535     0     0    29 z[44034] w[45072]
- 2000 -8.8875e+004  1999 50035     0     0    39 z[43236] w[44769]
- 2500 -6.8412e+004  2499 49535     0     0    49 z[45416] w[43294]
- 3000 -5.9302e+004  2999 49035     0     0    58 z[40215] w[40216]
- 3500 -5.9302e+004  3499 48535     0     0    68 z[41931] w[41940]
- 4000 -5.8610e+004  3999 48035     0     0    78 z[25103] w[44577]
- 4500 -5.0622e+004  4499 47535     0     0    88 z[24546] w[24573]
- 5000 -4.4696e+004  4999 47035     0     0    98 z[24257] w[42410]
- 5500 -3.7003e+004  5499 46535     0     0   107 z[51704] w[51705]
- 6000 -2.9017e+004  5999 46035     0     0   117 z[49574] w[45871]
- 6500 -2.1560e+004  6499 45535     0     0   127 z[24999] w[43793]
- 7000 -1.5332e+004  6999 45035     0     0   137 z[28429] w[25653]
- 7500 -1.3772e+004  7499 44535     0     0   147 z[ 2252] w[ 2253]
- 8000 -1.2310e+004  7999 44035     0     0   156 z[28345] w[28344]
- 8500 -1.1640e+004  8499 43535     0     0   166 z[25148] w[28561]
- 9000 -9.5346e+003  8999 43035     0     0   176 z[  230] w[ 2231]
- 9500 -7.2364e+003  9499 42535     0     0   186 z[37077] w[37076]
-10000 -5.7918e+003  9997 42036     1     0   196 z[27237] w[27884]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-  169 10000   254   181 3.4578e+001  1.9e-003 IG 3.5e+000 2.7e+000 (KKTNSTOE)
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  4.9132e-009 33168 18153   713     0     9 w[46106] z[47076]
- 1000  9.0230e-009 32670 18651   713     0    19 w[47392] z[47389]
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  1.4084e-008 33168 18153   713     0    10 w[47766] z[46577]
- 1000  3.0765e-008 32668 18653   713     0    20 w[46109] z[46271]
- 1500  1.4637e-007 32178 19141   715     0    30 w[38852] z[27577]
- 2000  4.6410e-007 31738 19572   724     0    40 w[38159] z[43635]
- 2500  7.6714e-007 31314 19990   730     0    50 w[ 7975] z[ 6297]
- 3000  9.7400e-007 30822 20476   736     0    59 w[42152] z[43592]
- 3500  1.2643e-006 30324 20972   738     0    69 w[17722] z[19720]
- 4000  2.1193e-006 29828 21466   740     0    79 w[19846] z[49844]
- 4500  3.7954e-006 29328 21955   751     0    89 w[34518] z[48534]
- 5000  8.7588e-006 28848 22415   771     0    99 v[15536] z[12878]
- 5500  1.2028e-005 28348 22754   932     0   108 w[43758] z[43225]
- 6000  2.1004e-005 27848 22932  1254     0   118 w[ 3144] z[43948]
- 6500  3.0828e-005 27348 23408  1278     0   128 w[13752] z[13321]
- 7000  4.4053e-005 26848 23898  1288     0   139 w[34511] z[34510]
- 7500  1.0377e-004 26348 24372  1314     0   149 w[  690] z[ 1434]
- 8000  1.0760e-003 25848 24836  1350     0   160 w[42297] z[24638]
- 8500  2.1856e-003 25374 25295  1365     0   172 w[21830] z[21831]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-  170  8683   255   182 3.4901e+001  1.0e+000 TD 3.5e+000 3.3e+000 (hh_energy_balan)
-  171     1   261   183 3.4595e+001  2.1e-001 TW 3.5e+000 2.7e+000 (KKTSTOLEV(h1326)
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  3.4753e-009 33182 18137   715     0     9 w[47747] z[47241]
- 1000  8.4690e-009 32682 18637   715     0    19 w[47786] z[46783]
- 1500  1.0184e-007 32200 19113   721     0    29 w[48468] z[48470]
- 2000  2.2230e-007 31722 19584   728     0    39 w[47625] z[48344]
- 2500  3.2683e-007 31234 20061   739     0    49 w[ 6008] z[ 7369]
- 3000  3.8184e-007 30734 20560   740     0    58 w[42112] z[42111]
- 3500  4.6123e-007 30240 21045   749     0    69 w[19581] z[17580]
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  1.0102e-008 33182 18137   715     0    10 w[49037] z[49036]
- 1000  2.7744e-008 32682 18637   715     0    20 w[27505] z[40892]
- 1500  1.2702e-007 32194 19123   717     0    30 w[49003] z[25453]
- 2000  4.1071e-007 31764 19544   726     0    40 z[25506] z[27142]
- 2500  7.1958e-007 31324 19972   738     0    50 w[ 7658] z[ 6767]
- 3000  8.1748e-007 30828 20467   739     0    59 w[41494] z[40148]
- 3500  1.2278e-006 30328 20964   742     0    69 w[19534] z[ 6612]
- 4000  2.0572e-006 29832 21460   742     0    79 w[17703] z[18880]
- 4500  3.2517e-006 29332 21950   752     0    89 w[44021] z[42867]
- 5000  7.5513e-006 28852 22385   797     0    99 v[14697] z[15824]
- 5500  9.5652e-006 28352 22743   939     0   108 w[42509] z[42721]
- 6000  1.7853e-005 27852 22943  1239     0   118 v[15185] z[15231]
- 6500  2.5197e-005 27352 23405  1277     0   128 w[13120] z[13073]
- 7000  3.5981e-005 26852 23894  1288     0   138 w[13138] z[13906]
- 7500  8.2589e-005 26352 24368  1314     0   148 v[15355] z[24327]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-  172  7616   287   184 3.4573e+001  3.2e-004 TG 3.5e+000 2.7e+000 (KKTSTOLEV(h1326)
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  5.2526e-010 34770 16611   653     0     9 w[29646] z[29647]
- 1000  2.7509e-009 34270 17101   663     0    19 w[28975] z[28977]
- 1500  5.4578e-009 33770 17596   668     0    30 w[29395] z[27480]
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  1.3484e-009 34770 16612   652     0    10 w[29984] z[29985]
- 1000  9.8616e-009 34270 17098   666     0    20 w[49267] z[48270]
- 1500  1.4074e-008 33770 17596   668     0    30 w[49973] z[49949]
- 2000  3.3809e-008 33270 18096   668     0    40 w[30063] z[30064]
- 2500  3.3816e-008 32770 18596   668     0    50 w[31243] z[31244]
- 3000  4.2031e-008 32270 19096   668     0    59 w[47601] z[47392]
- 3500  8.8704e-008 31770 19596   668     0    69 w[47534] z[47058]
- 4000  2.5276e-007 31286 20077   671     0    79 w[30587] z[48560]
- 4500  6.4282e-007 30792 20562   680     0    89 w[ 6686] z[ 6158]
- 5000  1.0428e-006 30296 21046   692     0    99 w[27310] z[25525]
- 5500  1.7665e-006 29804 21535   695     0   108 w[16856] z[18856]
- 6000  2.5515e-006 29308 21978   748     0   118 w[49027] z[49845]
- 6500  6.4822e-006 28822 22459   753     0   128 w[47405] z[48718]
- 7000  1.1480e-005 28322 22794   918     0   138 v[14971] z[ 3241]
- 7500  2.1141e-005 27822 22959  1253     0   148 w[48943] z[12913]
- 8000  2.9030e-005 27322 23438  1274     0   159 w[13433] z[ 2265]
- 8500  3.9849e-005 26822 23928  1284     0   169 w[13748] z[13747]
- 9000  8.5305e-005 26322 24401  1311     0   179 w[13010] z[13669]
- 9500  8.4153e-004 25822 24864  1348     0   189 w[20752] z[20751]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-  173  9981   312   185 3.4567e+001  1.9e-003 TG 3.5e+000 2.7e+000 (KKTSTOLEV(h1326)
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500 -8.9502e+004   499 51535     0     0     9 z[45783] w[45063]
- 1000 -7.1139e+004   999 51035     0     0    19 z[24209] w[24691]
- 1500 -6.4878e+004  1499 50535     0     0    29 z[44910] w[25696]
- 2000 -5.7606e+004  1999 50035     0     0    39 z[44534] w[42731]
- 2500 -5.2782e+004  2499 49535     0     0    49 z[45992] w[44277]
- 3000 -4.8301e+004  2999 49035     0     0    58 z[25048] w[42778]
- 3500 -4.2721e+004  3499 48535     0     0    68 z[40680] w[43341]
- 4000 -3.9323e+004  3999 48035     0     0    78 z[40968] w[25656]
- 4500 -3.6668e+004  4499 47535     0     0    88 z[49094] w[42380]
- 5000 -3.4149e+004  4999 47035     0     0    98 z[41289] w[41933]
- 5500 -3.1654e+004  5499 46535     0     0   107 z[41036] w[41035]
- 6000 -2.5623e+004  5999 46035     0     0   117 z[45837] w[40496]
- 6500 -2.0356e+004  6499 45535     0     0   127 z[50902] w[50067]
- 7000 -1.4268e+004  6999 45035     0     0   137 z[51738] w[51739]
- 7500 -1.1451e+004  7495 44539     0     0   147 z[27189] w[50886]
- 8000 -8.2474e+003  7995 44039     0     0   156 z[27235] w[49092]
- 8500 -6.3734e+003  8495 43539     0     0   166 z[ 2102] w[ 2103]
- 9000 -5.2444e+003  8993 43041     0     0   176 z[24825] w[45721]
- 9500 -4.9089e+003  9493 42541     0     0   186 z[29828] w[29898]
-10000 -4.4018e+003  9993 42041     0     0   196 z[28481] w[28227]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-  174 10000   327   186 3.4565e+001  3.5e-008 IB 1.4e+000 2.7e+000 (KKTSTOLEV(h1326)
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  4.0058e-009 36088 15615   331     0     9 w[24903] z[24880]
- 1000  1.4463e-008 35588 15922   524     0    19 w[47729] z[47583]
- 1500  2.9292e-008 35088 16416   530     0    29 w[47068] z[46085]
- 2000  7.0149e-008 34588 16915   531     0    39 w[47161] z[46911]
- 2500  1.1909e-007 34088 17401   545     0    49 w[30909] z[30919]
- 3000  1.1992e-007 33588 17901   545     0    58 w[31434] z[31168]
- 3500  2.2120e-007 33094 18393   547     0    68 w[30366] z[31931]
- 4000  4.0909e-007 32682 18801   551     0    78 w[46745] z[48751]
- 4500  7.6227e-007 32210 19267   557     0    88 w[ 7058] z[ 6996]
- 5000  1.0588e-006 31787 19679   568     0    98 w[31448] w[25668]
- 5500  1.5770e-006 31354 20108   572     0   107 w[17648] z[18979]
- 6000  1.8426e-006 30854 20608   572     0   117 w[17843] z[19600]
- 6500  2.3117e-006 30356 21106   572     0   127 w[43543] z[43542]
- 7000  3.3594e-006 29856 21437   741     0   137 w[19199] z[19609]
- 7500  9.0516e-006 29356 21921   757     0   147 w[ 2641] z[12320]
- 8000  1.3022e-005 28858 22327   849     0   156 v[15776] z[15404]
- 8500  2.1920e-005 28384 22459  1191     0   166 w[49424] z[51780]
- 9000  2.8490e-005 27888 22891  1255     0   176 w[43899] z[43444]
- 9500  3.6746e-005 27388 23369  1277     0   186 w[13966] z[13020]
-10000  5.7593e-005 26888 23857  1289     0   196 w[13708] z[12340]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-  175 10223   339   187 3.4560e+001  3.2e-004 TG 3.5e+000 2.7e+000 (KKTSTOLEV(h1326)
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  6.7868e-009 40106 11476   452     0     9 v[12547] z[12549]
- 1000  1.9714e-008 39608 11877   549     0    19 w[46359] z[46951]
- 1500  3.4195e-008 39108 12375   551     0    29 w[46086] z[46859]
- 2000  8.2339e-008 38608 12861   565     0    39 w[30637] z[30638]
- 2500  8.8326e-008 38108 13361   565     0    49 w[32009] z[30089]
- 3000  9.9315e-008 37608 13861   565     0    58 w[49946] z[49211]
- 3500  2.1127e-007 37134 14333   567     0    68 w[30187] z[30357]
- 4000  3.5784e-007 36700 14764   570     0    78 w[40123] z[40122]
- 4500  6.2926e-007 36212 15246   576     0    88 w[ 6946] z[ 6044]
- 5000  8.8229e-007 35720 15736   578     0    98 w[31180] z[43155]
- 5500  1.1855e-006 35220 16225   589     0   107 w[ 6295] z[ 3487]
- 6000  1.8465e-006 34722 16720   592     0   117 w[19961] z[19841]
- 6500  2.5854e-006 34222 17208   604     0   127 w[17049] z[19822]
- 7000  3.6320e-006 33722 17571   741     0   137 w[17675] z[19585]
- 7500  5.2761e-006 33224 18059   751     0   147 w[ 8030] z[ 8031]
- 8000  5.4661e-006 32724 18559   751     0   156 w[ 8947] z[ 8967]
- 8500  5.6352e-006 32224 19059   751     0   166 w[ 6169] z[ 9961]
- 9000  7.2725e-006 31728 19554   752     0   176 w[10678] z[10916]
- 9500  7.5458e-006 31228 20054   752     0   186 w[11034] z[ 9614]
-10000  8.2311e-006 30728 20553   753     0   196 w[10092] z[11651]
-10500  8.9362e-006 30248 21030   756     0   205 w[10656] z[ 9179]
-11000  1.1085e-005 29748 21529   757     0   215 w[43608] z[43487]
-11500  1.2409e-005 29248 21983   803     0   225 w[51995] z[48408]
-12000  1.6683e-005 28752 22290   992     0   235 w[40063] z[30565]
-12500  2.3893e-005 28252 22561  1221     0   245 w[  597] z[ 3467]
-13000  4.3775e-005 27752 23001  1281     0   254 w[12603] z[13874]
-13500  4.4608e-005 27252 23500  1282     0   264 w[13913] z[13912]
-14000  6.5944e-005 26752 23986  1296     0   274 w[12225] z[13033]
-14500  2.1844e-004 26252 24455  1327     0   285 w[ 1945] z[ 1946]
-
-Restart Log
-proximal_perturbation 0
-crash_method none
-crash_perturb no
-nms_initial_reference_factor 10
-nms_memory_size 2
-nms_mstep_frequency 1
-lemke_search_type slack
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-  175     0   366   188 5.3008e+006           R 0.0e+000 1.5e+005 (energy_balance()
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500 -6.8834e-015 17749 33275   117   893     7 v[15753] a[45762]
- 1000 -6.8834e-015 17499 33525   242   768    14 v[15307] a[45326]
- 1500 -6.8834e-015 17251 33774   366   643    22 v[14818] a[44825]
- 2000 -6.8834e-015 17001 34024   491   518    29 v[14251] a[44270]
- 2500  7.4140e-012 17003 34027   498   506    39 w[15286] w[21289]
- 3000  2.2180e-011 17003 34027   498   506    48 w[15794] w[21797]
- 3500  4.5452e-011 17007 34023   498   506    58 w[15463] w[21466]
- 4000  1.0052e-010 17007 34023   498   506    68 w[15582] w[21585]
- 4500  3.5800e-010 17409 33824   296   505    78 z[14899] w[ 2841]
- 5000 -8.2823e-014 17562 33810   211   451    86 w[45893] z[25877]
- 5500 -8.2823e-014 17446 33993   269   326    94 w[45461] z[25445]
- 6000 -8.2823e-014 17352 34165   316   201   101 w[44969] z[24953]
- 6500 -8.2823e-014 17264 34334   360    76   109 w[44439] z[24423]
- 7000 -2.7645e-013 17098 34556   380     0   117 w[44253] z[24237]
- 7500 -4.6896e-013 16598 35056   380     0   127 w[44129] z[24113]
- 8000 -6.9744e-013 16098 35556   380     0   136 w[44765] z[24749]
- 8500 -9.4702e-013 15600 36053   381     0   146 w[45242] z[25226]
- 9000 -1.5998e-008 15304 36386   344     0   156 z[15707] z[16464]
- 9500 -2.4359e-008 15593 36261   180     0   166 z[15662] w[ 2883]
-10000 -2.7647e-008 15858 36168     8     0   176 w[16250] z[  239]
-10500 -3.5265e-008 15358 36668     8     0   185 w[20147] z[  134]
-11000 -4.6596e-008 14858 37168     8     0   195 w[16228] z[  217]
-11500 -6.0141e-008 14546 37480     8     0   205 w[  505] z[14515]
-12000 -7.3753e-008 14248 37778     8     0   215 w[ 1057] z[15067]
-12500 -2.5381e-007 13830 38196     8     0   225 w[ 1537] z[15547]
-13000 -6.5512e-007 13488 38538     8     0   234 w[ 1971] z[15981]
-13500 -1.2731e-006 13154 38871     9     0   243 w[21964] z[ 1951]
-14000 -1.2941e-006 12654 39371     9     0   253 w[21193] z[ 1180]
-14500 -1.3428e-006 12154 39871     9     0   263 w[21441] z[ 1428]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-  176 14655   367   189 5.2993e+006  1.0e+000 RM 0.0e+000 1.5e+005 (energy_balance()
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  1.7608e-013 18115 33229   186   504     9 z[25519] w[45535]
- 1000  4.0123e-013 18615 32729   186   504    19 z[25638] w[45654]
- 1500  1.3689e-008 18623 32968   185   258    29 w[15154] a[45161]
- 2000  1.3689e-008 18623 33218   185     8    39 w[14054] a[44073]
- 2500  1.7601e-008 19107 32741   185     1    49 z[18851] w[ 6842]
- 3000  1.8174e-008 19607 32241   185     1    58 z[19551] w[ 7542]
- 3500  3.8130e-008 19875 31973   185     1    68 w[16038] w[14038]
- 4000  3.9697e-008 20353 31495   185     1    78 z[46271] w[36261]
- 4500  3.9697e-008 20853 30995   185     1    88 z[46521] w[36511]
- 5000  3.9697e-008 21353 30495   185     1    98 z[46771] w[36761]
- 5500  3.9697e-008 21853 29995   185     1   107 z[47021] w[37011]
- 6000  3.9697e-008 22353 29495   185     1   117 z[47271] w[37261]
- 6500  3.9697e-008 22853 28995   185     1   127 z[47522] w[37512]
- 7000  3.9697e-008 23353 28495   185     1   137 z[47772] w[37762]
- 7500  3.9697e-008 23853 27995   185     1   147 z[48022] w[38012]
- 8000  4.0267e-007 23887 27961   185     1   156 z[   72] w[16083]
- 8500  9.9278e-007 23930 27902   201     1   166 z[16288] z[14287]
- 9000  1.0495e-006 23909 27917   207     1   176 w[16314] w[14307]
- 9500  1.0651e-006 23894 27924   215     1   186 z[14539] z[44560]
-10000  1.0818e-006 23813 27982   238     1   196 w[24775] w[ 2761]
-10500  1.1206e-006 23688 28091   254     1   205 z[15058] z[45079]
-11000  1.1319e-006 23512 28228   293     1   215 z[15396] z[45417]
-11500  1.1939e-006 23356 28342   335     1   225 z[15714] z[45735]
-12000  1.2724e-006 23205 28452   376     1   235 z[14709] w[ 8720]
-12500  6.1683e-007 23148 28510   376     0   245 z[22269] z[15117]
-13000  5.8143e-007 23137 28521   376     0   254 w[  666] w[24681]
-13500  5.4984e-007 23127 28531   376     0   264 w[ 1442] w[25457]
-14000  1.5339e-007 23109 28549   376     0   274 z[10394] w[14400]
-14500  1.2306e-007 23151 28507   376     0   284 w[16386] w[22392]
-15000  7.1580e-008 23053 28605   376     0   294 w[22101] w[14108]
-15500  1.1507e-008 22967 28691   376     0   303 w[16953] w[14953]
-16000 -2.1760e-014 22838 28820   376     0   313 w[45395] z[25379]
-16500 -2.0073e-013 22338 29320   376     0   323 w[44863] z[24847]
-17000 -5.8181e-009 21838 29819   377     0   333 w[44082] z[24066]
-17500 -5.8183e-009 21338 30319   377     0   343 w[45425] z[25409]
-18000 -5.8185e-009 20838 30819   377     0   352 w[44232] z[24216]
-18500 -5.8187e-009 20338 31319   377     0   362 w[45025] z[25009]
-19000 -5.8189e-009 19838 31819   377     0   372 w[45411] z[25395]
-19500 -8.0974e-009 19338 32319   377     0   382 w[44248] z[24232]
-20000 -4.4121e-008 19234 32423   377     0   392 w[19304] z[ 7294]
-20500 -1.0344e-007 18922 32735   377     0   401 w[18630] z[ 8625]
-21000 -2.4341e-007 18688 32969   377     0   411 w[16517] z[ 7344]
-21500 -2.8612e-007 18188 33469   377     0   421 w[22615] z[ 4604]
-22000 -4.2415e-007 17698 33959   377     0   431 w[22579] z[ 4568]
-22500 -5.0866e-007 17198 34459   377     0   441 w[23194] z[ 5183]
-23000 -5.9311e-007 16700 34957   377     0   450 w[20739] z[  726]
-23500 -6.1924e-007 16200 35457   377     0   460 w[16632] z[  621]
-24000 -6.4655e-007 15828 35890   316     0   469 z[14823] z[14823]
-24500 -8.4786e-007 15588 36260   186     0   476 w[23292] z[ 5281]
-25000 -1.1284e-006 15160 36567   307     0   486 w[ 1777] z[15595]
-25500 -1.1551e-006 14941 36590   503     0   496 z[23741] w[ 5729]
-26000 -1.2031e-006 15431 36100   503     0   506 z[22807] w[ 4795]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-  177 26313   368   190 5.2992e+006  1.0e+000 CM 0.0e+000 1.5e+005 (energy_balance()
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500 -3.3529e-014 23494 28163   376     1     9 w[44848] z[24832]
- 1000 -1.3255e-006 23221 28436   376     1    19 z[10374] w[14380]
- 1500 -1.3660e-006 23414 28243   376     1    29 w[44748] z[24732]
- 2000 -1.3660e-006 22914 28743   376     1    39 w[45174] z[25158]
- 2500 -1.3715e-006 22422 29235   376     1    49 w[44185] z[24169]
- 3000 -1.3718e-006 21922 29734   377     1    58 w[45572] z[25556]
- 3500 -1.3718e-006 21422 30234   377     1    68 w[44068] z[24052]
- 4000 -1.3718e-006 20922 30734   377     1    78 w[45001] z[24985]
- 4500 -1.3718e-006 20551 31105   377     1    88 w[16857] w[14857]
- 5000 -1.3847e-006 20444 31212   377     1    98 w[20002] z[ 7992]
- 5500 -1.4005e-006 20123 31533   377     1   107 w[17176] w[15176]
- 6000 -1.4024e-006 20105 31551   377     1   117 w[16065] w[14065]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-  178  6402   369   191 5.2992e+006  1.0e+000 CM 0.0e+000 1.5e+005 (energy_balance()
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500 -1.6520e-013 23098 28560   376     0     9 w[46085] z[36076]
- 1000 -3.0909e-013 22598 29060   376     0    19 w[46335] z[36326]
- 1500 -4.5319e-013 22098 29560   376     0    29 w[46585] z[36576]
- 2000 -5.9752e-013 21598 30060   376     0    39 w[46835] z[36826]
- 2500 -7.4163e-013 21098 30560   376     0    49 w[47085] z[37076]
- 3000 -8.8751e-013 20598 31060   376     0    58 w[47335] z[37326]
- 3500 -1.0316e-012 20098 31560   376     0    68 w[47586] z[37577]
- 4000 -1.1759e-012 19598 32060   376     0    78 w[47836] z[37827]
- 4500 -9.2884e-007 19171 32487   376     0    88 w[16470] w[14470]
- 5000 -1.3165e-006 19197 32461   376     0    98 w[14543] w[16545]
- 5500 -1.3366e-006 19289 32369   376     0   107 w[16118] w[14118]
- 6000 -1.3660e-006 19132 32526   376     0   117 w[44248] z[24232]
- 6500 -1.3660e-006 18632 33026   376     0   127 w[44910] z[24894]
- 7000 -1.3718e-006 18132 33525   377     0   137 w[44589] z[24573]
- 7500 -1.3718e-006 17632 34025   377     0   147 w[44469] z[24453]
- 8000 -1.3718e-006 17132 34525   377     0   156 w[44356] z[24340]
- 8500 -1.3718e-006 16632 35025   377     0   166 w[45123] z[25107]
- 9000 -1.3754e-006 16205 35452   377     0   176 w[22841] w[14838]
- 9500 -1.3773e-006 16064 35593   377     0   186 w[19256] z[ 7224]
-10000 -1.3861e-006 15942 35715   377     0   196 w[19041] z[ 9034]
-10500 -1.4112e-006 15755 35902   377     0   205 w[16787] w[22790]
-11000 -1.4475e-006 15618 36039   377     0   215 w[19931] z[ 7921]
-11500 -1.4892e-006 15374 36283   377     0   225 w[16280] z[ 7947]
-12000 -1.5431e-006 14874 36783   377     0   235 w[22886] z[ 4875]
-12500 -1.5827e-006 14374 37283   377     0   245 w[23220] z[ 5209]
-13000 -1.6193e-006 13876 37781   377     0   254 w[22399] z[ 4388]
-13500 -1.6784e-006 13380 38277   377     0   264 w[23574] z[ 5563]
-14000 -1.9411e-006 12947 38710   377     0   274 z[23621] w[ 5609]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-  179 14337   392   192 3.1049e+006  2.8e-002 CG 0.0e+000 8.0e+004 (energy_balance()
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  2.4536e-014 34393  4818  2001 10822     9 z[33071] z[29499]
- 1000 -5.5689e-013 34526  4935  2001 10572    16 w[38531] a[46846]
- 1500 -1.1990e-013 34649  5052  2001 10332    23 z[26524] z[34529]
- 2000 -1.2985e-012 34628  5219  2001 10186    33 z[27880] z[27312]
- 2500 -3.1111e-012 34618  5333  2001 10082    42 w[47852] z[27041]
- 3000 -3.1175e-012 34616  5447  2001  9970    51 z[29838] z[26898]
- 3500 -3.1957e-012 34616  5540  2001  9877    61 z[26103] z[29838]
- 4000 -3.0216e-012 34616  5629  2001  9788    70 z[29838] z[27648]
- 4500 -3.1894e-012 34614  5724  2001  9695    80 z[29838] z[26400]
- 5000 -3.2625e-012 34614  5807  2001  9612    90 z[27693] z[29838]
- 5500 -3.2530e-013 34598  5934  2001  9501   100 w[51712] z[38100]
- 6000 -3.1972e-012 34586  6095  2001  9352   110 w[50370] z[29423]
- 6500 -3.2188e-012 34556  6308  2001  9169   119 w[47362] z[29797]
- 7000 -3.2387e-012 34531  6507  2001  8995   129 z[27412] z[27880]
- 7500 -3.2614e-012 34529  6592  2001  8912   139 w[47428] z[26313]
- 8000 -3.2858e-012 34530  6675  2001  8828   149 z[27587] w[47896]
- 8500 -7.6805e-013 34518  6766  2001  8749   159 w[51166] w[47428]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-  180  8617   393   193 3.1049e+006  1.0e+000 CM 0.0e+000 8.0e+004 (energy_balance()
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500 -7.0498e+004   499 51535     0     0     9 z[24873] w[44889]
- 1000 -6.8079e+004   999 51035     0     0    19 z[25029] w[45045]
- 1500 -6.4178e+004  1499 50535     0     0    29 z[25338] w[45354]
- 2000 -5.8218e+004  1999 50035     0     0    39 z[25124] w[45140]
- 2500 -5.3044e+004  2499 49535     0     0    49 z[24135] w[44151]
- 3000 -5.0019e+004  2999 49035     0     0    58 z[24243] w[44259]
- 3500 -4.6558e+004  3499 48535     0     0    68 z[24640] w[44656]
- 4000 -3.7388e+004  3999 48035     0     0    78 z[26062] w[48079]
- 4500 -3.5250e+004  4499 47535     0     0    88 z[27354] w[49371]
- 5000 -3.4046e+004  4999 47035     0     0    98 z[27049] w[49066]
- 5500 -3.2099e+004  5499 46535     0     0   107 z[27556] w[49573]
- 6000 -2.9123e+004  5999 46035     0     0   117 z[26113] w[48130]
- 6500 -2.6528e+004  6499 45535     0     0   127 z[27398] w[49415]
- 7000 -2.5163e+004  6999 45035     0     0   137 z[26870] w[48887]
- 7500 -2.4446e+004  7499 44535     0     0   147 z[33864] w[41873]
- 8000 -2.3866e+004  7999 44035     0     0   156 z[27853] w[49870]
- 8500 -2.3271e+004  8499 43535     0     0   166 z[33053] w[41062]
- 9000 -2.2362e+004  8999 43035     0     0   176 z[33417] w[41426]
- 9500 -2.1280e+004  9499 42535     0     0   186 z[32852] w[40861]
-10000 -1.9622e+004  9999 42035     0     0   196 z[32455] w[40464]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-  181 10000   402   194 2.1915e+006  2.8e-002 IG 0.0e+000 5.9e+005 (minRES)
-  182    77   410   195 2.8034e+006  5.5e-002 CB 0.0e+000 5.6e+005 (minRES)
-  183   119   411   196 2.1915e+006  1.0e+000 CM 0.0e+000 5.9e+005 (minRES)
-  184   135   412   197 2.1915e+006  1.0e+000 CM 0.0e+000 5.9e+005 (minRES)
-  185   118   418   198 2.1915e+006  2.1e-001 CB 0.0e+000 5.9e+005 (minRES)
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500 -7.0498e+004   499 51535     0     0     9 z[24873] w[44889]
- 1000 -6.8079e+004   999 51035     0     0    19 z[25029] w[45045]
- 1500 -6.4178e+004  1499 50535     0     0    29 z[25338] w[45354]
- 2000 -5.8218e+004  1999 50035     0     0    39 z[25124] w[45140]
- 2500 -5.3044e+004  2499 49535     0     0    49 z[24135] w[44151]
- 3000 -5.0019e+004  2999 49035     0     0    58 z[24243] w[44259]
- 3500 -4.6558e+004  3499 48535     0     0    68 z[24640] w[44656]
- 4000 -3.7388e+004  3999 48035     0     0    78 z[26062] w[48079]
- 4500 -3.5250e+004  4499 47535     0     0    88 z[27354] w[49371]
- 5000 -3.4046e+004  4999 47035     0     0    98 z[27049] w[49066]
- 5500 -3.2098e+004  5499 46535     0     0   107 z[27556] w[49573]
- 6000 -2.9123e+004  5999 46035     0     0   117 z[26113] w[48130]
- 6500 -2.6527e+004  6499 45535     0     0   127 z[27398] w[49415]
- 7000 -2.5163e+004  6999 45035     0     0   137 z[26870] w[48887]
- 7500 -2.4446e+004  7499 44535     0     0   147 z[33864] w[41873]
- 8000 -2.3866e+004  7999 44035     0     0   156 z[27853] w[49870]
- 8500 -2.3271e+004  8499 43535     0     0   166 z[33053] w[41062]
- 9000 -2.2362e+004  8999 43035     0     0   176 z[33417] w[41426]
- 9500 -2.1280e+004  9499 42535     0     0   186 z[32852] w[40861]
-10000 -1.9622e+004  9999 42035     0     0   196 z[32455] w[40464]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-  186 10000   423   199 2.1381e+006  3.3e-001 IB 0.0e+000 4.0e+005 (minRES)
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  7.5044e-010 42401  9633     0     0     9 z[34320] w[34330]
- 1000  2.2452e-009 42897  9137     0     0    19 z[35436] w[35438]
- 1500  3.0952e-007 43379  8655     0     0    29 z[ 7540] w[ 6885]
- 2000  1.0462e-005 43516  8518     0     0    39 w[ 8363] z[ 8365]
- 2500  2.0914e-005 43016  9018     0     0    49 w[ 9872] z[ 9874]
- 3000  1.1564e-002 43263  8771     0     0    58 w[19325] w[46121]
- 3500  1.8989e-002 43673  8361     0     0    68 z[46090] w[46257]
- 4000  1.9520e-002 43232  8802     0     0    78 w[36636] z[36637]
- 4500  1.9520e-002 42732  9302     0     0    88 w[37411] z[37412]
- 5000  1.9550e-002 42232  9802     0     0    98 w[38023] z[36312]
- 5500  1.9837e-002 41754 10280     0     0   107 w[36308] z[36030]
- 6000  2.9612e-002 41846 10188     0     0   117 z[47346] z[10213]
- 6500  4.5168e-002 41809 10225     0     0   127 w[11934] w[46441]
- 7000  6.9995e-002 41696 10338     0     0   137 w[19896] z[11790]
- 7500  9.6416e-002 41418 10616     0     0   147 w[10174] z[10193]
- 8000  1.1548e-001 41036 10998     0     0   156 w[18313] z[18108]
- 8500  1.3319e-001 40598 11436     0     0   166 w[10077] z[26818]
- 9000  1.5643e-001 40174 11860     0     0   176 w[11636] z[26827]
- 9500  1.8246e-001 39736 12298     0     0   186 w[10151] z[11419]
-10000  1.9941e-001 39268 12766     0     0   196 w[19912] z[18282]
-10500  2.6268e-001 38840 13194     0     0   205 w[31642] z[39957]
-11000  3.1546e-001 38400 13634     0     0   215 w[27021] z[31617]
-11500  3.4867e-001 37920 14114     0     0   225 w[39608] z[38445]
-12000  3.7589e-001 37430 14604     0     0   235 w[28977] z[28611]
-12500  4.0359e-001 36950 15084     0     0   245 w[31519] z[30727]
-13000  4.3475e-001 36471 15563     0     0   254 w[30982] w[47631]
-13500  4.7545e-001 35988 16046     0     0   264 w[39131] z[29058]
-14000  5.2777e-001 35518 16516     0     0   274 z[47799] z[38794]
-14500  5.6591e-001 35036 16998     0     0   284 w[39262] z[30179]
-15000  5.9118e-001 34546 17488     0     0   294 w[28739] z[30553]
-15500  6.0446e-001 34048 17986     0     0   303 w[27690] z[31032]
-16000  6.2577e-001 33548 18486     0     0   313 w[29696] z[29332]
-16500  6.3989e-001 33052 18982     0     0   323 w[29741] z[28670]
-17000  9.4442e-001 32659 19375     0     0   333 w[26970] w[47986]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-  187 17040   424   200 2.0731e+006  1.0e+000 SM 1.0e+001 5.3e+004 (KKTNRES)
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  1.4841e-001 32357 19677     0     0     9 w[34725] z[34726]
- 1000  1.4841e-001 31857 20177     0     0    19 w[35698] z[35699]
- 1500  2.5024e-001 31481 20553     0     0    29 w[35072] z[35832]
- 2000  4.2767e-001 31517 20517     0     0    39 w[35885] z[19113]
- 2500  5.7722e-001 31884 20150     0     0    49 z[10090] w[10232]
- 3000  7.0608e-001 32288 19746     0     0    58 w[35066] w[10391]
- 3500  8.8258e-001 32674 19360     0     0    68 w[34754] w[10887]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-  188  3703   425   201 1.7785e+006  1.0e+000 SM 4.0e+000 3.4e+004 (KKTNSTOP)
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  1.0325e-001 32660 19374     0     0     9 w[11575] w[22544]
- 1000  1.7069e-001 32327 19707     0     0    19 w[ 6529] z[ 6532]
- 1500  1.7069e-001 31827 20207     0     0    29 w[ 7615] z[ 7616]
- 2000  2.1281e-001 31465 20569     0     0    39 w[ 6210] z[ 7552]
- 2500  2.9420e-001 31206 20828     0     0    49 w[ 7914] w[22898]
- 3000  3.9957e-001 31073 20961     0     0    58 w[ 6278] z[ 6263]
- 3500  5.6270e-001 31028 21006     0     0    68 w[11980] w[12376]
- 4000  8.0325e-001 31096 20938     0     0    78 w[10263] w[19160]
- 4500  9.9924e-001 31357 20677     0     0    88 z[19710] z[ 3148]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-  189  4504   426   202 1.0215e+006  1.0e+000 SM 1.6e+000 3.4e+004 (KKTNRES)
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  6.7721e-002 31342 20692     0     0     9 z[30551] z[10054]
- 1000  1.5021e-001 31374 20659     1     0    19 w[10043] z[28037]
- 1500  2.3609e-001 31425 20608     1     0    29 z[13459] w[22313]
- 2000  3.4928e-001 31519 20514     1     0    39 w[11710] w[18201]
- 2500  4.8986e-001 31613 20420     1     0    49 w[28380] w[18733]
- 3000  5.3900e-001 31712 20321     1     0    58 w[38357] z[51039]
- 3500  6.7482e-001 31698 20335     1     0    68 z[13287] z[ 3537]
- 4000  8.5258e-001 31777 20256     1     0    78 z[19299] w[19131]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-  190  4313   427   203 4.6984e+005  1.0e+000 SM 6.4e-001 9.3e+003 (KKTGRES(h1720))
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  1.1506e-001 31827 20206     1     0     9 z[12812] w[18635]
- 1000  2.3838e-001 31762 20271     1     0    19 w[43680] z[41686]
- 1500  3.0737e-001 31470 20355   209     0    29 w[43529] z[15876]
- 2000  3.7717e-001 31150 20501   383     0    39 v[14584] z[41639]
- 2500  4.7726e-001 30920 20671   443     0    49 z[22669] z[47991]
- 3000  5.7470e-001 30630 20910   494     0    58 w[40125] z[14777]
- 3500  6.4349e-001 30386 21119   529     0    68 z[12849] z[48182]
- 4000  7.0495e-001 30074 21411   549     0    78 w[49464] z[43755]
- 4500  7.6648e-001 29850 21609   575     0    88 w[49145] z[14874]
- 5000  8.4038e-001 29728 21699   607     0    98 z[47291] z[15055]
- 5500  9.0595e-001 29497 21888   649     0   107 v[15687] w[47846]
- 6000  9.9889e-001 29336 22014   684     0   118 z[13127] z[ 3441]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-  191  6008   428   204 1.3703e+005  1.0e+000 SM 2.6e-001 5.4e+003 (KKTGRES(h1044))
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  1.1081e-001 29047 22280   707     0     9 w[15695] z[20054]
- 1000  2.3066e-001 28799 22495   740     0    19 v[12624] z[14738]
- 1500  3.7093e-001 28611 22660   763     0    29 z[20753] z[15503]
- 2000  5.3975e-001 28511 22757   766     0    39 w[15766] z[20633]
- 2500  7.2091e-001 28365 22886   783     0    49 z[41644] z[15439]
- 3000  8.3420e-001 28097 23111   826     0    58 w[ 1752] z[  595]
- 3500  9.0585e-001 27790 23393   851     0    68 z[51363] w[50880]
- 4000  9.5600e-001 27515 23646   873     0    78 z[51204] z[ 5530]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-  192  4456   429   205 4.8046e+004  1.0e+000 SM 1.0e-001 1.2e+003 (renewable_gener)
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  9.2106e-002 27144 23851  1039     0     9 w[20103] z[15870]
- 1000  1.9402e-001 27062 23823  1149     0    19 w[15173] z[51099]
- 1500  3.0948e-001 27023 23787  1224     0    29 z[23488] w[24347]
- 2000  4.0065e-001 27052 23689  1293     0    39 w[17122] z[12713]
- 2500  5.1501e-001 27075 23613  1346     0    49 w[19944] v[15560]
- 3000  6.0115e-001 27154 23514  1366     0    58 z[43758] z[12768]
- 3500  6.9204e-001 27181 23468  1385     0    68 z[  835] w[14956]
- 4000  7.7456e-001 27219 23416  1399     0    78 z[48522] w[15127]
- 4500  8.5032e-001 27186 23426  1422     0    88 w[17344] z[16930]
- 5000  9.2050e-001 27110 23469  1455     0    98 z[49243] z[20343]
- 5500  9.8634e-001 27076 23479  1479     0   107 z[49557] z[ 1822]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-  193  5605   430   206 8.5043e+003  1.0e+000 SM 4.1e-002 9.0e+002 (KKTNRES)
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  1.1630e-001 26806 23673  1555     0     9 w[46767] z[46046]
- 1000  2.7882e-001 26743 23715  1576     0    19 z[28601] w[32787]
- 1500  4.5489e-001 26708 23733  1593     0    29 w[49467] z[14961]
- 2000  6.6484e-001 26642 23771  1621     0    39 w[47891] z[26138]
- 2500  8.4889e-001 26704 23760  1570     0    49 z[19886] z[14674]
- 3000  9.6416e-001 26663 23880  1491     0    58 w[46452] w[50454]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-  194  3426   431   207 3.4670e+003  1.0e+000 SM 1.6e-002 1.4e+002 (KKTNSTOE)
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  1.3002e-001 26422 24152  1460     0     9 w[13047] w[28990]
- 1000  2.5782e-001 26315 24269  1450     0    19 w[13384] z[13023]
- 1500  4.1637e-001 26169 24407  1458     0    29 w[49402] z[47648]
- 2000  5.8776e-001 26037 24553  1444     0    39 z[ 1721] z[13051]
- 2500  7.3231e-001 25823 24784  1427     0    49 w[ 5835] z[13463]
- 3000  8.3407e-001 25567 25061  1406     0    58 w[ 4900] z[48097]
- 3500  9.1330e-001 25281 25377  1376     0    68 w[ 2600] z[46092]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-  195  3876   432   208 1.9344e+003  1.0e+000 SM 6.6e-003 8.8e+001 (KKTSTOLEV(h2368)
-  196    93   433   209 1.9317e+003  1.0e+000 SM 1.0e+001 8.8e+001 (KKTSTOLEV(h2368)
-  197    52   434   210 1.9299e+003  1.0e+000 SM 1.0e+001 8.7e+001 (KKTSTOLEV(h2368)
-  198    35   435   211 1.9286e+003  1.0e+000 SM 1.0e+001 8.6e+001 (KKTSTOLEV(h2368)
-  199    37   436   212 1.9277e+003  1.0e+000 SM 1.0e+001 8.5e+001 (KKTSTOLEV(h2368)
-  200    25   437   213 1.9268e+003  1.0e+000 SM 1.0e+001 8.3e+001 (KKTSTOLEV(h2368)
-  201    34   438   214 1.9259e+003  1.0e+000 SM 1.0e+001 8.1e+001 (KKTSTOLEV(h2368)
-  202    25   439   215 1.9247e+003  1.0e+000 SM 1.0e+001 8.2e+001 (KKTSTOLEV(h2367)
-  203    23   440   216 1.9231e+003  1.0e+000 SM 1.0e+001 8.4e+001 (KKTSTOLEV(h2367)
-  204    22   441   217 1.9211e+003  1.0e+000 SM 1.0e+001 8.6e+001 (KKTSTOLEV(h2367)
-  205    20   442   218 1.9186e+003  1.0e+000 SM 1.0e+001 8.8e+001 (KKTSTOLEV(h2367)
-  206    16   443   219 1.9158e+003  1.0e+000 SM 1.0e+001 9.0e+001 (KKTSTOLEV(h2367)
-  207    18   444   220 1.9127e+003  1.0e+000 SM 1.0e+001 9.2e+001 (KKTSTOLEV(h2367)
-  208    15   445   221 1.9095e+003  1.0e+000 SM 1.0e+001 9.3e+001 (KKTSTOLEV(h2367)
-  209    17   446   222 1.9064e+003  1.0e+000 SM 1.0e+001 9.4e+001 (KKTSTOLEV(h2367)
-  210    17   447   223 1.9037e+003  1.0e+000 SM 1.0e+001 9.6e+001 (KKTSTOLEV(h2367)
-  211   115   448   224 1.9013e+003  1.0e+000 SM 1.0e+001 9.6e+001 (KKTSTOLEV(h2367)
-  212    23   449   225 1.8989e+003  1.0e+000 SM 1.0e+001 9.7e+001 (KKTSTOLEV(h2367)
-  213    30   450   226 1.8963e+003  1.0e+000 SM 1.0e+001 9.7e+001 (KKTSTOLEV(h2367)
-  214    31   451   227 1.8935e+003  1.0e+000 SM 1.0e+001 9.7e+001 (KKTSTOLEV(h2367)
-  215    18   452   228 1.8906e+003  1.0e+000 SM 1.0e+001 9.7e+001 (KKTSTOLEV(h2367)
-  216    20   453   229 1.8877e+003  1.0e+000 SM 1.0e+001 9.7e+001 (KKTSTOLEV(h2367)
-  217    22   454   230 1.8849e+003  1.0e+000 SM 1.0e+001 9.7e+001 (KKTSTOLEV(h2367)
-  218    17   455   231 1.8821e+003  1.0e+000 SM 1.0e+001 9.7e+001 (KKTSTOLEV(h2367)
-  219    25   456   232 1.8795e+003  1.0e+000 SM 1.0e+001 9.6e+001 (KKTSTOLEV(h2367)
-  220    18   457   233 1.8769e+003  1.0e+000 SM 1.0e+001 9.6e+001 (KKTSTOLEV(h2367)
-  221    19   458   234 1.8744e+003  1.0e+000 SM 1.0e+001 9.6e+001 (KKTSTOLEV(h2509)
-  222    17   459   235 1.8719e+003  1.0e+000 SM 1.0e+001 9.6e+001 (KKTSTOLEV(h2509)
-  223    19   460   236 1.8696e+003  1.0e+000 SM 1.0e+001 9.6e+001 (KKTSTOLEV(h2509)
-  224    11   461   237 1.8673e+003  1.0e+000 SM 1.0e+001 9.6e+001 (KKTSTOLEV(h2509)
-  225    20   462   238 1.8650e+003  1.0e+000 SM 1.0e+001 9.6e+001 (KKTSTOLEV(h2509)
-  226    11   463   239 1.8628e+003  1.0e+000 SM 1.0e+001 9.8e+001 (maxin_power(h15)
-  227    16   464   240 1.8606e+003  1.0e+000 SM 1.0e+001 1.0e+002 (maxin_power(h15)
-  228    14   465   241 1.8585e+003  1.0e+000 SM 1.0e+001 1.0e+002 (maxin_power(h15)
-  229    12   466   242 1.8564e+003  1.0e+000 SM 1.0e+001 1.0e+002 (maxin_power(h15)
-  230     7   467   243 1.8543e+003  1.0e+000 SM 1.0e+001 1.1e+002 (maxin_power(h15)
-  231    11   468   244 1.8524e+003  1.0e+000 SM 1.0e+001 1.1e+002 (maxin_power(h15)
-  232     8   469   245 1.8504e+003  1.0e+000 SM 1.0e+001 1.1e+002 (maxin_power(h15)
-  233     8   470   246 1.8485e+003  1.0e+000 SM 1.0e+001 1.1e+002 (maxin_power(h15)
-  234    10   471   247 1.8466e+003  1.0e+000 SM 1.0e+001 1.1e+002 (maxin_power(h15)
-  235    13   472   248 1.8446e+003  1.0e+000 SM 1.0e+001 1.1e+002 (maxin_power(h15)
-  236     9   473   249 1.8427e+003  1.0e+000 SM 1.0e+001 1.0e+002 (maxin_power(h15)
-  237    15   474   250 1.8407e+003  1.0e+000 SM 1.0e+001 1.0e+002 (maxin_power(h15)
-  238     5   475   251 1.8387e+003  1.0e+000 SM 1.0e+001 1.0e+002 (renewable_gener)
-  239     9   476   252 1.8368e+003  1.0e+000 SM 1.0e+001 1.0e+002 (renewable_gener)
-  240     8   477   253 1.8348e+003  1.0e+000 SM 1.0e+001 1.0e+002 (renewable_gener)
-  241     9   478   254 1.8330e+003  1.0e+000 SM 1.0e+001 1.0e+002 (renewable_gener)
-  242     7   479   255 1.8312e+003  1.0e+000 SM 1.0e+001 1.0e+002 (renewable_gener)
-  243    13   480   256 1.8296e+003  1.0e+000 SM 1.0e+001 1.0e+002 (renewable_gener)
-  244     7   481   257 1.8283e+003  1.0e+000 SM 1.0e+001 1.0e+002 (renewable_gener)
-  245    19   482   258 1.8271e+003  1.0e+000 SM 1.0e+001 1.0e+002 (renewable_gener)
-  246     7   483   259 1.8260e+003  1.0e+000 SM 1.0e+001 1.0e+002 (renewable_gener)
-  247    12   484   260 1.8251e+003  1.0e+000 SM 1.0e+001 1.0e+002 (renewable_gener)
-  248    17   485   261 1.8242e+003  1.0e+000 SM 1.0e+001 1.0e+002 (renewable_gener)
-  249     4   486   262 1.8233e+003  1.0e+000 SM 1.0e+001 1.0e+002 (KKTSTOLEV(h2053)
-  250     5   487   263 1.8225e+003  1.0e+000 SM 1.0e+001 1.0e+002 (KKTSTOLEV(h2053)
-  251    12   488   264 1.8216e+003  1.0e+000 SM 1.0e+001 1.0e+002 (KKTSTOLEV(h2053)
-  252     3   489   265 1.8206e+003  1.0e+000 SM 1.0e+001 1.0e+002 (KKTSTOLEV(h1571)
-  253     9   490   266 1.8196e+003  1.0e+000 SM 1.0e+001 1.1e+002 (KKTSTOLEV(h1571)
-  254    19   491   267 1.8185e+003  1.0e+000 SM 1.0e+001 1.1e+002 (KKTSTOLEV(h1571)
-  255    43   492   268 1.8174e+003  1.0e+000 SM 1.0e+001 1.1e+002 (KKTSTOLEV(h1571)
-  256    20   493   269 1.8163e+003  1.0e+000 SM 1.0e+001 1.0e+002 (KKTSTOLEV(h1571)
-  257    18   494   270 1.8152e+003  1.0e+000 SM 1.0e+001 1.0e+002 (KKTSTOLEV(h2053)
-  258    17   495   271 1.8142e+003  1.0e+000 SM 1.0e+001 1.0e+002 (KKTSTOLEV(h2053)
-  259    16   496   272 1.8131e+003  1.0e+000 SM 1.0e+001 1.0e+002 (KKTSTOLEV(h2053)
-  260    12   497   273 1.8120e+003  1.0e+000 SM 1.0e+001 1.0e+002 (KKTSTOLEV(h2053)
-  261     8   498   274 1.8110e+003  1.0e+000 SM 1.0e+001 1.0e+002 (KKTSTOLEV(h2053)
-  262    20   499   275 1.8101e+003  1.0e+000 SM 1.0e+001 9.9e+001 (KKTSTOLEV(h2053)
-  263    19   500   276 1.8092e+003  1.0e+000 SM 1.0e+001 9.8e+001 (KKTSTOLEV(h2053)
-  264    17   501   277 1.8084e+003  1.0e+000 SM 1.0e+001 9.8e+001 (KKTSTOLEV(h2053)
-  265    25   502   278 1.8078e+003  1.0e+000 SM 1.0e+001 9.7e+001 (KKTSTOLEV(h2053)
-  266    22   503   279 1.8073e+003  1.0e+000 SM 1.0e+001 9.7e+001 (KKTSTOLEV(h2563)
-  267    34   504   280 1.8068e+003  1.0e+000 SM 1.0e+001 9.8e+001 (KKTSTOLEV(h2563)
-  268    14   505   281 1.8065e+003  1.0e+000 SM 1.0e+001 9.8e+001 (KKTSTOLEV(h2563)
-  269    16   506   282 1.8063e+003  1.0e+000 SM 1.0e+001 9.9e+001 (KKTSTOLEV(h2563)
-  270    17   507   283 1.8061e+003  1.0e+000 SM 1.0e+001 9.9e+001 (KKTSTOLEV(h2563)
-  271     9   508   284 1.8057e+003  1.0e+000 SM 1.0e+001 1.0e+002 (KKTSTOLEV(h2563)
-  272    19   509   285 1.8053e+003  1.0e+000 SM 1.0e+001 1.0e+002 (KKTSTOLEV(h2563)
-  273    16   510   286 1.8046e+003  1.0e+000 SM 1.0e+001 1.0e+002 (KKTSTOLEV(h2563)
-  274    14   511   287 1.8037e+003  1.0e+000 SM 1.0e+001 1.0e+002 (KKTSTOLEV(h2563)
-  275    12   512   288 1.8026e+003  1.0e+000 SM 1.0e+001 1.0e+002 (KKTSTOLEV(h2563)
-  276     8   513   289 1.8013e+003  1.0e+000 SM 1.0e+001 1.0e+002 (KKTSTOLEV(h2563)
-  277     4   514   290 1.7997e+003  1.0e+000 SM 1.0e+001 1.0e+002 (KKTSTOLEV(h2563)
-  278    10   515   291 1.7980e+003  1.0e+000 SM 1.0e+001 1.0e+002 (KKTSTOLEV(h2563)
-  279    16   516   292 1.7960e+003  1.0e+000 SM 1.0e+001 1.0e+002 (KKTSTOLEV(h2563)
-  280    14   517   293 1.7939e+003  1.0e+000 SM 1.0e+001 1.0e+002 (KKTSTOLEV(h2563)
-  281     7   518   294 1.7917e+003  1.0e+000 SM 1.0e+001 1.0e+002 (KKTSTOLEV(h2563)
-  282    11   519   295 1.7894e+003  1.0e+000 SM 1.0e+001 1.0e+002 (KKTSTOLEV(h2563)
-  283    10   520   296 1.7871e+003  1.0e+000 SM 1.0e+001 1.0e+002 (KKTSTOLEV(h2563)
-  284    11   521   297 1.7847e+003  1.0e+000 SM 1.0e+001 1.0e+002 (KKTSTOLEV(h2563)
-  285     6   522   298 1.7824e+003  1.0e+000 SM 1.0e+001 1.0e+002 (KKTSTOLEV(h2563)
-  286    13   523   299 1.7800e+003  1.0e+000 SM 1.0e+001 1.0e+002 (KKTSTOLEV(h2563)
-  287     9   524   300 1.7778e+003  1.0e+000 SM 1.0e+001 1.0e+002 (KKTSTOLEV(h2563)
-  288    15   525   301 1.7755e+003  1.0e+000 SM 1.0e+001 1.0e+002 (KKTSTOUT(h1571))
-  289     7   526   302 1.7733e+003  1.0e+000 SM 1.0e+001 1.0e+002 (KKTSTOUT(h1571))
-  290    12   527   303 1.7712e+003  1.0e+000 SM 1.0e+001 1.1e+002 (KKTSTOUT(h1571))
-  291    13   528   304 1.7691e+003  1.0e+000 SM 1.0e+001 1.1e+002 (KKTSTOUT(h1571))
-  292     9   529   305 1.7670e+003  1.0e+000 SM 1.0e+001 1.1e+002 (KKTSTOUT(h1571))
-  293     9   530   306 1.7651e+003  1.0e+000 SM 1.0e+001 1.1e+002 (KKTSTOUT(h1571))
-
-Restart Log
-proximal_perturbation 0
-crash_method pnewton
-crash_nbchange_limit 10
-nms_initial_reference_factor 2
-crash_searchtype arc
-nms_searchtype arc
-gradient_searchtype arc
-lemke_search_type slack
-
-Crash Log
-major  func  diff  size  residual    step       prox   (label)
-    0     0             5.3008e+006             0.0e+000 (energy_balance(h1027))
-    1     1 19017  8012 5.1525e+006  1.0e+000    1.0e+001 (energy_balance(h1027))
-    2     2 20654 21021 4.7537e+006  1.0e+000    9.0e+000 (energy_balance(h1027))
-    3     3 11856 28663 4.3079e+006  1.0e+000    8.1e+000 (energy_balance(h1027))
-    4     4  4931 32876 3.8433e+006  1.0e+000    7.3e+000 (energy_balance(h1027))
-    5     5  1058 33501 3.4306e+006  1.0e+000    6.6e+000 (KKTNRES)
-    6    10   685 33639 3.3009e+006  2.6e-001    5.9e+000 (KKTNRES)
-    7    17   233 33463 3.2616e+006  6.9e-002    5.3e+000 (KKTNRES)
-    8    26    46 33363 3.2539e+006  1.2e-002    4.8e+000 (KKTNRES)
-    9    36    12 33349 3.2524e+006  1.9e-003    4.3e+000 (KKTNRES)
-   10    46     9 33344 3.2506e+006  1.9e-003    3.9e+000 (KKTNRES)
-   11    56     7 33340 3.2487e+006  1.9e-003    3.5e+000 (KKTNRES)
-   12    57  3383 33337 2.3782e+006  1.0e+000    3.1e+000 (KKTNRES)
-   13    58  5398 34733 1.9470e+006  1.0e+000    2.8e+000 (KKTNCON(base))
-   14    59  7774 36239 1.5015e+006  1.0e+000    2.5e+000 (KKTNCON(base))
-   15    60  6180 37905 1.0716e+006  1.0e+000    2.3e+000 (KKTNSTOP)
-   16    61  2262 34875 7.9551e+005  1.0e+000    2.1e+000 (KKTNSTOP)
-   17    62  2405 33613 5.9206e+005  1.0e+000    1.9e+000 (KKTNSTOP)
-   18    67  1009 32242 5.5468e+005  2.6e-001    1.7e+000 (minRES)
-   19    73   504 31786 5.4438e+005  1.7e-001    1.5e+000 (minRES)
-   20    79   457 31548 5.3816e+005  1.7e-001    1.4e+000 (minRES)
-   21    86   211 31306 5.2542e+005  6.9e-002    1.2e+000 (minRES)
-   22    93   184 31196 5.1247e+005  6.9e-002    1.1e+000 (minRES)
-   23    99   406 31095 5.0420e+005  1.7e-001    9.8e-001 (minRES)
-   24   106   262 30900 4.9470e+005  6.9e-002    8.9e-001 (minRES)
-   25   113   256 30799 4.8401e+005  6.9e-002    8.0e-001 (minRES)
-   26   122    94 30658 4.8171e+005  1.2e-002    7.2e-001 (minRES)
-   27   131    78 30628 4.7970e+005  1.2e-002    6.5e-001 (minRES)
-   28   140    77 30582 4.7894e+005  1.2e-002    5.8e-001 (minRES)
-   29   147   249 30536 4.7543e+005  6.9e-002    5.2e-001 (minRES)
-   30   155   199 30453 4.7078e+005  2.8e-002    4.7e-001 (minRES)
-   31   164   117 30411 4.7057e+005  1.2e-002    4.2e-001 (minRES)
-   32   173    69 30357 4.6889e+005  1.2e-002    3.8e-001 (minRES)
-   33   182    76 30329 4.6737e+005  1.2e-002    3.4e-001 (minRES)
-   34   191    90 30290 4.6622e+005  1.2e-002    3.1e-001 (minRES)
-   35   200    86 30243 4.6299e+005  1.2e-002    2.8e-001 (minRES)
-   36   209   101 30224 4.6170e+005  1.2e-002    2.5e-001 (minRES)
-   37   219    38 30188 4.6102e+005  1.9e-003    2.3e-001 (minRES)
-   38   229    24 30179 4.6045e+005  1.9e-003    2.0e-001 (minRES)
-   39   239    24 30168 4.5983e+005  1.9e-003    1.8e-001 (minRES)
-   40   248   107 30158 4.5873e+005  1.2e-002    1.6e-001 (minRES)
-   41   257   119 30101 4.5715e+005  1.2e-002    1.5e-001 (minRES)
-   42   265   258 30041 4.5294e+005  2.8e-002    1.3e-001 (minRES)
-   43   270  1349 29935 4.3264e+005  2.6e-001    1.2e-001 (minRES)
-   44   272  3295 29432 4.3207e+005  8.0e-001    1.1e-001 (minRES)
-   45   275  3139 27808 4.1263e+005  6.4e-001    9.7e-002 (minRES)
-   46   276  8642 27667 3.3565e+005  1.0e+000    8.7e-002 (KKTNSTOE)
-   47   285  1806 21468 3.3344e+005  1.2e-002    7.9e-002 (KKTNSTOE)
-   48   290  4101 22417 3.2758e+005  2.6e-001    7.1e-002 (KKTNSTOE)
-   49   294  5161 25031 2.7433e+005  4.1e-001    6.4e-002 (KKTNSTOE)
-   50   304  1935 26460 2.7406e+005  1.9e-003    5.7e-002 (KKTNSTOE)
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-  293     0   836   358 2.7406e+005           R 5.2e-002 2.2e+005 (KKTNSTOE)
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  2.0918e-003 26965 23590  1479     0     9 z[49747] z[40099]
- 1000  2.1912e-002 27167 23366  1501     0    19 z[33902] z[51916]
- 1500  4.7347e-002 27434 23100  1500     0    29 z[33183] w[32436]
- 2000  9.6520e-002 27478 23053  1503     0    39 w[50135] w[32537]
- 2500  1.7849e-001 27321 23199  1514     0    49 z[36104] z[14226]
- 3000  3.0768e-001 27149 23363  1522     0    58 z[ 5825] z[48401]
- 3500  4.4033e-001 26997 23520  1517     0    68 z[32787] z[50801]
- 4000  5.7822e-001 26866 23653  1515     0    78 w[13965] w[29731]
- 4500  6.8715e-001 26680 23845  1509     0    88 w[ 5330] w[ 5363]
- 5000  7.7404e-001 26413 24118  1503     0    98 w[ 5017] z[48547]
- 5500  8.5335e-001 26227 24324  1483     0   108 z[51784] z[ 1308]
- 6000  9.2840e-001 26027 24538  1469     0   117 z[ 5371] z[35244]
- 6500  9.9439e-001 25900 24687  1447     0   127 z[ 5429] w[43328]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-  294  6580   837   359 4.4863e+003  1.0e+000 SM 2.1e-002 3.8e+002 (KKTGCON(base,h1)
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  1.2657e-001 25965 24630  1439     0     9 z[29801] w[29904]
- 1000  3.1577e-001 26020 24588  1426     0    19 z[29842] z[46361]
- 1500  5.0828e-001 25994 24618  1422     0    29 z[39103] z[37102]
- 2000  7.1036e-001 25905 24716  1413     0    39 w[ 3513] w[ 1044]
- 2500  8.7722e-001 25786 24866  1382     0    49 w[ 3745] z[ 5358]
- 3000  9.8799e-001 25590 25062  1382     0    59 w[12081] z[21423]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-  295  3074   838   360 2.8561e+003  1.0e+000 SM 8.2e-003 1.3e+002 (KKTSTOLEV(h2561)
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  1.2930e-001 25421 25231  1382     0     9 z[28157] z[43502]
-  296    80   839   361 2.8531e+003  1.0e+000 SM 1.0e+001 1.3e+002 (KKTSTOLEV(h2561)
-  297    43   840   362 2.8508e+003  1.0e+000 SM 1.0e+001 1.3e+002 (KKTSTOLEV(h2561)
-  298    42   841   363 2.8488e+003  1.0e+000 SM 1.0e+001 1.3e+002 (KKTSTOLEV(h2561)
-  299    22   842   364 2.8471e+003  1.0e+000 SM 1.0e+001 1.3e+002 (KKTSTOLEV(h2561)
-  300    15   843   365 2.8454e+003  1.0e+000 SM 1.0e+001 1.3e+002 (KKTSTOLEV(h2561)
-  301    13   844   366 2.8436e+003  1.0e+000 SM 1.0e+001 1.3e+002 (KKTSTOLEV(h2561)
-  302    10   845   367 2.8415e+003  1.0e+000 SM 1.0e+001 1.3e+002 (KKTSTOLEV(h2561)
-  303    13   846   368 2.8389e+003  1.0e+000 SM 1.0e+001 1.2e+002 (KKTSTOLEV(h2561)
-  304     5   847   369 2.8358e+003  1.0e+000 SM 1.0e+001 1.2e+002 (KKTSTOLEV(h2561)
-  305     8   848   370 2.8321e+003  1.0e+000 SM 1.0e+001 1.2e+002 (KKTSTOLEV(h2561)
-  306     4   849   371 2.8280e+003  1.0e+000 SM 1.0e+001 1.2e+002 (KKTSTOLEV(h2561)
-  307     9   850   372 2.8235e+003  1.0e+000 SM 1.0e+001 1.2e+002 (maxout_power(h1)
-  308     9   851   373 2.8190e+003  1.0e+000 SM 1.0e+001 1.3e+002 (maxout_power(h1)
-  309    11   852   374 2.8147e+003  1.0e+000 SM 1.0e+001 1.3e+002 (maxout_power(h1)
-  310    13   853   375 2.8108e+003  1.0e+000 SM 1.0e+001 1.3e+002 (maxout_power(h1)
-  311    63   854   376 2.8076e+003  1.0e+000 SM 1.0e+001 1.3e+002 (maxout_power(h1)
-  312     7   855   377 2.8045e+003  1.0e+000 SM 1.0e+001 1.4e+002 (maxout_power(h1)
-  313    14   856   378 2.8013e+003  1.0e+000 SM 1.0e+001 1.4e+002 (maxout_power(h1)
-  314    10   857   379 2.7981e+003  1.0e+000 SM 1.0e+001 1.4e+002 (maxout_power(h1)
-  315    14   858   380 2.7950e+003  1.0e+000 SM 1.0e+001 1.4e+002 (maxout_power(h1)
-  316     8   859   381 2.7921e+003  1.0e+000 SM 1.0e+001 1.4e+002 (maxout_power(h2)
-  317     8   860   382 2.7893e+003  1.0e+000 SM 1.0e+001 1.4e+002 (maxout_power(h2)
-  318    12   861   383 2.7868e+003  1.0e+000 SM 1.0e+001 1.5e+002 (maxout_power(h2)
-  319     6   862   384 2.7844e+003  1.0e+000 SM 1.0e+001 1.5e+002 (maxout_power(h2)
-  320    13   863   385 2.7822e+003  1.0e+000 SM 1.0e+001 1.5e+002 (maxout_power(h2)
-  321    14   864   386 2.7800e+003  1.0e+000 SM 1.0e+001 1.5e+002 (maxout_power(h2)
-  322    40   865   387 2.7697e+003  1.0e+000 SM 4.0e+000 1.5e+002 (maxout_power(h2)
-  323    13   866   388 2.7678e+003  1.0e+000 SM 1.0e+001 1.4e+002 (maxout_power(h2)
-  324    10   867   389 2.7660e+003  1.0e+000 SM 1.0e+001 1.4e+002 (maxout_power(h2)
-  325    20   868   390 2.7640e+003  1.0e+000 SM 1.0e+001 1.4e+002 (maxout_power(h2)
-  326    27   869   391 2.7543e+003  1.0e+000 SM 4.0e+000 1.3e+002 (maxout_power(h2)
-  327    76   870   392 2.7148e+003  1.0e+000 SM 1.6e+000 1.3e+002 (KKTSTOLEV(h2562)
-  328   138   871   393 2.6230e+003  1.0e+000 SM 6.4e-001 1.4e+002 (KKTSTOLEV(h2966)
-  329   312   872   394 2.4921e+003  1.0e+000 SM 2.6e-001 1.5e+002 (KKTGRES(h1692))
-  330   386   873   395 2.3117e+003  1.0e+000 SM 1.0e-001 1.2e+002 (KKTGRES(h1644))
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  9.4164e-001 25038 25616  1380     0     9 w[50404] z[49137]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-  331   536   874   396 2.0112e+003  1.0e+000 SM 4.1e-002 2.5e+002 (maxout_power(h1)
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  5.8496e-001 24949 25704  1381     0     9 z[49578] z[49567]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-  332   870   875   397 1.4391e+003  1.0e+000 SM 1.6e-002 2.2e+002 (maxout_power(h1)
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  3.5092e-001 24808 25845  1381     0     9 w[36796] z[36791]
-  333    15   876   398 1.4381e+003  1.0e+000 SM 1.0e+001 2.2e+002 (maxout_power(h1)
-  334     4   877   399 1.4374e+003  1.0e+000 SM 1.0e+001 2.2e+002 (maxout_power(h1)
-  335     2   878   400 1.4370e+003  1.0e+000 SM 1.0e+001 2.2e+002 (maxout_power(h1)
-  336     4   879   401 1.4367e+003  1.0e+000 SM 1.0e+001 2.2e+002 (maxout_power(h1)
-  337     2   880   402 1.4365e+003  1.0e+000 SM 1.0e+001 2.2e+002 (maxout_power(h1)
-  338     6   881   403 1.4363e+003  1.0e+000 SM 1.0e+001 2.2e+002 (maxout_power(h1)
-  339     6   882   404 1.4361e+003  1.0e+000 SM 1.0e+001 2.2e+002 (maxout_power(h1)
-  340     2   883   405 1.4359e+003  1.0e+000 SM 1.0e+001 2.2e+002 (maxout_power(h1)
-  341     3   884   406 1.4357e+003  1.0e+000 SM 1.0e+001 2.2e+002 (maxout_power(h1)
-  342     1   885   407 1.4355e+003  1.0e+000 SM 1.0e+001 2.2e+002 (maxout_power(h1)
-  343     4   886   408 1.4352e+003  1.0e+000 SM 1.0e+001 2.2e+002 (maxout_power(h1)
-  344     8   887   409 1.4348e+003  1.0e+000 SM 1.0e+001 2.2e+002 (maxout_power(h1)
-  345     7   888   410 1.4343e+003  1.0e+000 SM 1.0e+001 2.2e+002 (maxout_power(h1)
-  346     3   889   411 1.4338e+003  1.0e+000 SM 1.0e+001 2.2e+002 (maxout_power(h1)
-  347     6   890   412 1.4332e+003  1.0e+000 SM 1.0e+001 2.2e+002 (maxout_power(h1)
-  348    13   891   413 1.4325e+003  1.0e+000 SM 1.0e+001 2.2e+002 (maxout_power(h1)
-  349     7   892   414 1.4316e+003  1.0e+000 SM 1.0e+001 2.2e+002 (maxout_power(h1)
-  350     7   893   415 1.4307e+003  1.0e+000 SM 1.0e+001 2.2e+002 (maxout_power(h1)
-  351     8   894   416 1.4296e+003  1.0e+000 SM 1.0e+001 2.2e+002 (maxout_power(h1)
-  352     6   895   417 1.4286e+003  1.0e+000 SM 1.0e+001 2.2e+002 (maxout_power(h1)
-  353     9   896   418 1.4275e+003  1.0e+000 SM 1.0e+001 2.2e+002 (maxout_power(h1)
-  354     5   897   419 1.4264e+003  1.0e+000 SM 1.0e+001 2.1e+002 (maxout_power(h1)
-  355    11   898   420 1.4254e+003  1.0e+000 SM 1.0e+001 2.1e+002 (maxout_power(h1)
-  356     4   899   421 1.4244e+003  1.0e+000 SM 1.0e+001 2.1e+002 (maxout_power(h1)
-  357     4   900   422 1.4236e+003  1.0e+000 SM 1.0e+001 2.1e+002 (maxout_power(h1)
-  358     6   901   423 1.4228e+003  1.0e+000 SM 1.0e+001 2.1e+002 (maxout_power(h1)
-  359     8   902   424 1.4220e+003  1.0e+000 SM 1.0e+001 2.1e+002 (maxout_power(h1)
-  360     4   903   425 1.4213e+003  1.0e+000 SM 1.0e+001 2.1e+002 (maxout_power(h1)
-  361     8   904   426 1.4206e+003  1.0e+000 SM 1.0e+001 2.1e+002 (maxout_power(h1)
-  362     7   905   427 1.4198e+003  1.0e+000 SM 1.0e+001 2.1e+002 (maxout_power(h1)
-  363     8   906   428 1.4190e+003  1.0e+000 SM 1.0e+001 2.1e+002 (maxout_power(h1)
-  364     7   907   429 1.4181e+003  1.0e+000 SM 1.0e+001 2.1e+002 (maxout_power(h1)
-  365     8   908   430 1.4173e+003  1.0e+000 SM 1.0e+001 2.0e+002 (maxout_power(h1)
-  366     4   909   431 1.4164e+003  1.0e+000 SM 1.0e+001 2.0e+002 (maxout_power(h1)
-  367     4   910   432 1.4155e+003  1.0e+000 SM 1.0e+001 2.0e+002 (maxout_power(h1)
-  368     5   911   433 1.4146e+003  1.0e+000 SM 1.0e+001 2.0e+002 (maxout_power(h1)
-  369     2   912   434 1.4137e+003  1.0e+000 SM 1.0e+001 2.0e+002 (maxout_power(h1)
-  370     5   913   435 1.4129e+003  1.0e+000 SM 1.0e+001 2.0e+002 (maxout_power(h1)
-  371     6   914   436 1.4120e+003  1.0e+000 SM 1.0e+001 2.0e+002 (maxout_power(h1)
-  372     9   915   437 1.4111e+003  1.0e+000 SM 1.0e+001 2.0e+002 (maxout_power(h1)
-  373     5   916   438 1.4104e+003  1.0e+000 SM 1.0e+001 2.0e+002 (maxout_power(h1)
-  374     5   917   439 1.4096e+003  1.0e+000 SM 1.0e+001 2.0e+002 (maxout_power(h1)
-  375     3   918   440 1.4089e+003  1.0e+000 SM 1.0e+001 2.0e+002 (maxout_power(h1)
-  376     3   919   441 1.4082e+003  1.0e+000 SM 1.0e+001 2.0e+002 (maxout_power(h1)
-  377     8   920   442 1.4076e+003  1.0e+000 SM 1.0e+001 2.0e+002 (maxout_power(h1)
-  378     6   921   443 1.4069e+003  1.0e+000 SM 1.0e+001 2.0e+002 (maxout_power(h1)
-  379     4   922   444 1.4063e+003  1.0e+000 SM 1.0e+001 2.0e+002 (maxout_power(h1)
-  380     4   923   445 1.4057e+003  1.0e+000 SM 1.0e+001 2.0e+002 (maxout_power(h1)
-  381    13   924   446 1.4051e+003  1.0e+000 SM 1.0e+001 2.0e+002 (maxout_power(h1)
-  382   106   925   447 1.4045e+003  1.0e+000 SM 1.0e+001 2.0e+002 (maxout_power(h1)
-  383   105   926   448 1.4038e+003  1.0e+000 SM 1.0e+001 2.0e+002 (maxout_power(h1)
-  384   116   927   449 1.4031e+003  1.0e+000 SM 1.0e+001 1.9e+002 (maxout_power(h1)
-  385    27   928   450 1.4024e+003  1.0e+000 SM 1.0e+001 1.9e+002 (maxout_power(h1)
-  386    22   929   451 1.4017e+003  1.0e+000 SM 1.0e+001 1.9e+002 (maxout_power(h1)
-  387    19   930   452 1.4010e+003  1.0e+000 SM 1.0e+001 1.9e+002 (maxout_power(h1)
-  388    12   931   453 1.4004e+003  1.0e+000 SM 1.0e+001 1.9e+002 (maxout_power(h1)
-  389    15   932   454 1.3997e+003  1.0e+000 SM 1.0e+001 1.9e+002 (maxout_power(h1)
-  390     8   933   455 1.3991e+003  1.0e+000 SM 1.0e+001 1.9e+002 (maxout_power(h1)
-  391     9   934   456 1.3985e+003  1.0e+000 SM 1.0e+001 1.9e+002 (maxout_power(h1)
-  392    14   935   457 1.3979e+003  1.0e+000 SM 1.0e+001 1.9e+002 (maxout_power(h1)
-  393     9   936   458 1.3974e+003  1.0e+000 SM 1.0e+001 1.9e+002 (maxout_power(h1)
-  394    11   937   459 1.3968e+003  1.0e+000 SM 1.0e+001 1.9e+002 (maxout_power(h1)
-  395     4   938   460 1.3963e+003  1.0e+000 SM 1.0e+001 1.9e+002 (maxout_power(h1)
-  396     7   939   461 1.3958e+003  1.0e+000 SM 1.0e+001 1.9e+002 (maxout_power(h1)
-  397     7   940   462 1.3952e+003  1.0e+000 SM 1.0e+001 1.9e+002 (maxout_power(h1)
-  398     9   941   463 1.3946e+003  1.0e+000 SM 1.0e+001 1.9e+002 (energy_balance()
-  399     6   942   464 1.3940e+003  1.0e+000 SM 1.0e+001 1.9e+002 (energy_balance()
-  400     8   943   465 1.3933e+003  1.0e+000 SM 1.0e+001 1.9e+002 (energy_balance()
-  401    11   944   466 1.3927e+003  1.0e+000 SM 1.0e+001 1.9e+002 (energy_balance()
-  402    94   945   467 1.3921e+003  1.0e+000 SM 1.0e+001 1.9e+002 (energy_balance()
-  403    14   946   468 1.3914e+003  1.0e+000 SM 1.0e+001 1.9e+002 (energy_balance()
-  404    14   947   469 1.3908e+003  1.0e+000 SM 1.0e+001 1.9e+002 (energy_balance()
-  405    13   948   470 1.3902e+003  1.0e+000 SM 1.0e+001 1.9e+002 (energy_balance()
-  406    16   949   471 1.3896e+003  1.0e+000 SM 1.0e+001 1.9e+002 (energy_balance()
-  407     7   950   472 1.3891e+003  1.0e+000 SM 1.0e+001 1.9e+002 (maximum_generat)
-  408     6   951   473 1.3885e+003  1.0e+000 SM 1.0e+001 1.9e+002 (maximum_generat)
-  409     9   952   474 1.3879e+003  1.0e+000 SM 1.0e+001 1.9e+002 (maximum_generat)
-  410     8   953   475 1.3874e+003  1.0e+000 SM 1.0e+001 1.9e+002 (maximum_generat)
-  411     6   954   476 1.3868e+003  1.0e+000 SM 1.0e+001 1.9e+002 (maximum_generat)
-  412     7   955   477 1.3862e+003  1.0e+000 SM 1.0e+001 1.9e+002 (maximum_generat)
-  413     5   956   478 1.3856e+003  1.0e+000 SM 1.0e+001 1.9e+002 (maximum_generat)
-  414     9   957   479 1.3850e+003  1.0e+000 SM 1.0e+001 1.9e+002 (maximum_generat)
-  415    10   958   480 1.3844e+003  1.0e+000 SM 1.0e+001 1.9e+002 (maximum_generat)
-  416    17   959   481 1.3838e+003  1.0e+000 SM 1.0e+001 1.9e+002 (maximum_generat)
-  417     5   960   482 1.3833e+003  1.0e+000 SM 1.0e+001 1.9e+002 (maximum_generat)
-  418     7   961   483 1.3828e+003  1.0e+000 SM 1.0e+001 1.9e+002 (maximum_generat)
-  419     5   962   484 1.3823e+003  1.0e+000 SM 1.0e+001 1.9e+002 (maximum_generat)
-  420     8   963   485 1.3818e+003  1.0e+000 SM 1.0e+001 1.9e+002 (maximum_generat)
-  421     5   964   486 1.3812e+003  1.0e+000 SM 1.0e+001 1.9e+002 (maximum_generat)
-  422     4   965   487 1.3807e+003  1.0e+000 SM 1.0e+001 1.9e+002 (maximum_generat)
-  423     8   966   488 1.3801e+003  1.0e+000 SM 1.0e+001 1.9e+002 (maximum_generat)
-  424     1   967   489 1.3794e+003  1.0e+000 SM 1.0e+001 1.9e+002 (maximum_generat)
-  425     5   968   490 1.3787e+003  1.0e+000 SM 1.0e+001 1.9e+002 (maximum_generat)
+    9  1211    55    26 7.8944e+001  1.0e+000 SO 4.9e-004 9.1e+000 (KKTSTOLEV(h3644)
+   10   377    56    27 3.9722e+001  1.0e+000 SO 1.9e-004 3.9e+000 (KKTSTOLEV(h3637)
+   11   202    57    28 1.4706e+001  1.0e+000 SO 7.8e-005 1.5e+000 (KKTSTOLEV(h3259)
+   12    81    58    29 2.4903e-001  1.0e+000 SO 3.1e-005 2.3e-002 (KKTSTOLEV(h3168)
+   13    45    59    30 2.2882e-001  1.0e+000 SO 2.5e-002 2.6e-002 (maxout_power(h3)
+   14    34    60    31 2.0310e-001  1.0e+000 SO 1.0e-002 5.3e-002 (renewable_gener)
+   15   336    61    32 1.1829e-001  1.0e+000 SO 4.0e-003 4.5e-002 (renewable_gener)
+   16    47    62    33 1.8665e-002  1.0e+000 SO 1.6e-003 1.9e-003 (KKTSTOLEV(h3275)
+   17    13    63    34 1.3133e-003  1.0e+000 SO 6.4e-004 5.6e-004 (renewable_gener)
+   18    22    64    35 1.9267e-005  1.0e+000 SO 1.3e-004 2.5e-006 (KKTNSTOP)
+   19     1    65    36 1.1928e-007  1.0e+000 SO 1.9e-006 1.2e-007 (minRES)
 
 FINAL STATISTICS
-Inf-Norm of Complementarity . .  2.3699e-001 eqn: (hh_energy_balance_hh(h1135))
-Inf-Norm of Normal Map. . . . .  2.3699e-001 eqn: (hh_energy_balance_hh(h1135))
-Inf-Norm of Minimum Map . . . .  2.3699e-001 eqn: (hh_energy_balance_hh(h1121))
-Inf-Norm of Fischer Function. .  2.3699e-001 eqn: (hh_energy_balance_hh(h1135))
-Inf-Norm of Grad Fischer Fcn. .  1.8987e+000 eqn: (KKTNPV_hh)
-Two-Norm of Grad Fischer Fcn. .  2.0449e+000
+Inf-Norm of Complementarity . .  6.3939e-005 eqn: (renewable_generation(h3693))
+Inf-Norm of Normal Map. . . . .  1.1921e-007 eqn: (minRES)
+Inf-Norm of Minimum Map . . . .  1.1921e-007 eqn: (minRES)
+Inf-Norm of Fischer Function. .  1.1921e-007 eqn: (minRES)
+Inf-Norm of Grad Fischer Fcn. .  1.2089e-007 eqn: (KKTGCON(base,h3693))
+Two-Norm of Grad Fischer Fcn. .  5.3339e-006
 
 FINAL POINT STATISTICS
-Maximum of X. . . . . . . . . .  3.0092e+006 var: (mu_hh(h1121))
-Maximum of F. . . . . . . . . .  2.4109e+007 eqn: (KKTNPV_hh)
-Maximum of Grad F . . . . . . .  1.0799e+000 eqn: (KKTSTOUT_hh(h1000))
-                                            var: (levelsto_hh(h1000))
+Maximum of X. . . . . . . . . .  2.2722e+005 var: (N_RENEWABLE)
+Maximum of F. . . . . . . . . .  6.3330e+004 eqn: (stolev_max(h3082))
+Maximum of Grad F . . . . . . .  1.0799e+000 eqn: (KKTSTOUT_hh(h3000))
+                                            var: (levelsto_hh(h3000))
 
- ** EXIT - other error.
+ ** EXIT - solution found.
 
-Major Iterations. . . . 425
-Minor Iterations. . . . 405943
-Restarts. . . . . . . . 3
-Crash Iterations. . . . 59
-Gradient Steps. . . . . 8
-Function Evaluations. . 969
-Gradient Evaluations. . 491
-Total Time. . . . . . . 6803.455000
-Residual. . . . . . . . 4.250312e+000
-Postsolved residual: 4.2503e+000
+Major Iterations. . . . 19
+Minor Iterations. . . . 17866
+Restarts. . . . . . . . 0
+Crash Iterations. . . . 16
+Gradient Steps. . . . . 0
+Function Evaluations. . 65
+Gradient Evaluations. . 36
+Total Time. . . . . . . 106.738000
+Residual. . . . . . . . 1.192845e-007
+Postsolved residual: 1.1928e-007
 
 --- Restarting execution
---- MORITS_MCP.gms(683) 14 Mb
+--- MORITS_MCP.gms(682) 8 Mb
 --- Reading solution for model prosumodmcp
---- MORITS_MCP.gms(683) 17 Mb
---- Executing after solve: elapsed 1:53:34.704
---- MORITS_MCP.gms(685) 18 Mb
+--- MORITS_MCP.gms(682) 10 Mb
+--- Executing after solve: elapsed 0:01:55.996
+--- MORITS_MCP.gms(684) 10 Mb
 *** Status: Normal completion
---- Job MORITS_MCP.gms Stop 09/21/18 15:02:24 elapsed 1:53:34.729
+--- Job MORITS_MCP.gms Stop 09/21/18 17:52:30 elapsed 0:01:56.007

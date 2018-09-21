@@ -51,7 +51,7 @@ $setglobal outputfile "results\%modelrun%_results_MCP"
 
 
 Sets
-h                Hours                                   /h2000*h3000/
+h                Hours                                   /h3000*h4000/
 res              Renewable technologies                  /renewable/
 sto              Storage technolgies                     /storage/
 year             Base years                              /2010*2016/
@@ -129,7 +129,6 @@ lev_Z                       Objective value: Annual electricity costs
 lev_EB                      Level of purchased electricity from grid
 lev_ES                      Level of sold electricity to grid
 price_market(h)             Price for selling energy per kWh
-test(h)
 ;
 
 
@@ -162,18 +161,18 @@ share_wind(year)         Share of wind energy among total variable renewable ene
 sto_ini_last_hh  =  0.5 ;
 eta_sto_in_hh    =  0.81 ;
 eta_sto_out_hh   =  0.926 ;
-penalty = 0 ;
+penalty          =  0 ;
 
 
-* Declare cost parameters
-c_i_sto_e_hh  =  5418.14/1000 ;
-c_i_sto_p_hh  = 50995.48/1000 ;
-c_i_pv_hh     = 60526.64/1000 ;
-c_var_sto_hh  =     0.5/1000 ;
+* Declare cost parameters for household
+c_i_sto_e_hh  =  5418.14/1000  ;
+c_i_sto_p_hh  = 50995.48/1000  ;
+c_i_pv_hh     = 60526.64/1000  ;
+c_var_sto_hh  =     0.5 /1000   ;
 price_buy     =     0.30 ;
 
 * Declare further restrictions
-pv_cap_max = 10;
+pv_cap_max = 10       ;
 
 
 * Specify System Parameters
@@ -223,12 +222,12 @@ $GDXin %uploadfile%.gdx
 $load d_upload_hh avail_solar_upload price_market_upload
 ;
 
-* Load data for specific household and base year
+* Load data for specific household and base year in MWh
 d_hh(h)                = d_upload_hh(h,'%household_profile%') ;
 avail_solar(h)         = avail_solar_upload(h,'%base_year%') ;
 
 *Load market price as price per kWh
-price_market(h)        = price_market_upload(h,'%base_year%')/1000 ;
+price_market(h)        = price_market_upload(h,'%base_year%')/1000  ;
 *price_market(h)        = 0.12 ;
 
 
@@ -323,7 +322,7 @@ hh_energy_balance_hh(h)..
 
            G_PV_hh(h)
          + STO_OUT_hh(h)
-         + (E_buy_hh(h)/1000)   =E=
+         + E_buy_hh(h)/1000    =E=
           d_hh(h)
 ;
 
@@ -334,7 +333,7 @@ pv_generation_hh(h)..
         G_PV_hh(h)
       + CU_hh(h)
       + STO_IN_hh(h)
-      + (E_sell_hh(h)/1000)
+      + E_sell_hh(h)/1000
 ;
 
 *** Restrict PV capacity
@@ -646,16 +645,16 @@ $offecho
 
 * Set up lower bounds for speed up
 * Household Variables
-G_PV_hh.up(h)              = 10  ;
-CU_hh.up(h)                = 10  ;
-N_PV_hh.up                 = 10  ;
-N_STO_E_hh.up              = 15  ;
-N_STO_P_hh.up              = 15  ;
-STO_L_hh.up(h)             = 15  ;
-STO_IN_hh.up(h)            = 15  ;
-STO_OUT_hh.up(h)           = 15  ;
-E_buy_hh.up(h)             = 50  ;
-E_sell_hh.up(h)            = 10  ;
+G_PV_hh.up(h)              = 0.010  ;
+CU_hh.up(h)                = 0.010  ;
+N_PV_hh.up                 = 0.010  ;
+N_STO_E_hh.up              = 0.015  ;
+N_STO_P_hh.up              = 0.015  ;
+STO_L_hh.up(h)             = 0.015  ;
+STO_IN_hh.up(h)            = 0.015  ;
+STO_OUT_hh.up(h)           = 0.015  ;
+E_buy_hh.up(h)             = 0.050  ;
+E_sell_hh.up(h)            = 0.010  ;
 * System Variables
 G_CON.up(ct,h)             = 100000 ;
 G_RENEWABLE.up(h)          = 300000 ;
@@ -669,23 +668,25 @@ STO_IN.up(h)               = 100000  ;
 STO_OUT.up(h)              = 100000  ;
 
 * Set up initial values for speed up
-STO_L_hh.l(h)   = 4.367;
-N_PV_hh.l       = 8    ;
-N_STO_E_hh.l    = 10   ;
-N_STO_P_hh.l    = 1.5  ;
+STO_L_hh.l(h)   = 0.04367;
+N_PV_hh.l       = 0.08    ;
+N_STO_E_hh.l    = 0.010   ;
+N_STO_P_hh.l    = 0.015   ;
 N_RENEWABLE.l              = 43000  ;
 N_CON.l(ct)                = 100000  ;
 N_STO_E.l                  = 120000 ;
 N_STO_P.l                  = 100000  ;
 energy_balance.m(h)        = 900  ;
-price_market(h)            =  energy_balance.m(h)/1000;
+price_market(h)            =  energy_balance.m(h)/1000 ;
 
 solve prosumodmcp using mcp;
 
 display d_hh , N_PV_hh.l , E_buy_hh.l , E_sell_hh.l ,  G_PV_hh.l,
+        N_STO_E_hh.l, N_STO_P_hh.l, G_PV_hh.l,
+        hh_energy_balance_hh.l, hh_energy_balance_hh.m,
         price_market,  CU_hh.l, N_RENEWABLE.l, d, G_RENEWABLE.l,
         G_CON.l, STO_OUT.l, lambda.l, lambda.m, mu.l, mu.m, energy_balance.m,
-        N_CON.l, N_STO_E_hh.l;
+        N_CON.l;
 
 
 ***************************** Set up reporting *********************************
