@@ -1,11 +1,11 @@
 46
-5 1085 0 0 242  0.00000000000000E+0000 5  0.00000000000000E+0000 0 1
-28010 0 0 0 10010 6000 22010 0 0 0 0 0
-28010 0 0 0 0 0 0 0
-84684 0
-28010 0 0 0 0 0 0 28010 0 0
+5 2586 0 0 242  0.00000000000000E+0000 5  0.00000000000000E+0000 0 1
+70038 0 0 0 25020 15006 55032 0 0 0 0 0
+70038 0 0 0 0 0 0 0
+212304 0
+70038 0 0 0 0 0 0 70038 0 0
 0 0 0 0 0 0 0
-0 2000 0
+0 5002 0
 0 16 10
  1.00000000000000E-0003  1.00000000000000E+0001 0
 0  0.00000000000000E+0000 0  0.00000000000000E+0000
@@ -23,13 +23,13 @@ C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\22
 
 C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\225f\gamsdict.dat
 3
-11:42:36
-09/21/18
+15:10:19
+09/24/18
 C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\
 C:\GAMS\win64\24.2\
 C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\225f\
 80 2147483647
-0 0 1736 43363 41627 57737
+0 0 1739 43366 41627 59239
 Abteilung Energie, Verkehr, Umwelt, 5 User     S131220:0515AN-GEN0
 Deutsches Institut fuer Wirtschaftsforschung DIW                 0
 1523935701BACOCPM5PT                                       0000000
@@ -281,7 +281,7 @@ DC3975       l 5, m 1, b 1, q 1, p 4, g 2      A Invoice         0
 C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\MORITS_MCP.dat
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0 0  1.00000000000000E+0000 0 0
-28010 0 0
+70038 0 0
 0 0 0 1 0
 C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\prosumodmcp.dll
 C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\225f\sbbinfo.dat

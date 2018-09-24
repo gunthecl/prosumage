@@ -33,29 +33,49 @@ PlaneRownr=-1
 [RP:DOLORES]
 1=
 
-[RP:MORITS]
+[RP:TEST_MCP2]
 1=
 
-[RP:TEST_MCP2]
+[GDXDISP: report_tech Par 4]
+PlaneDim=0
+RowDim=4
+Squeeze=1
+Order=1,2,3,4
+Decim=7
+PlaneRownr=-1
+
+[RP:ABRELL]
 1=
 
 [OPENWINDOW_1]
 MAXIM=0
-TOP=228
-LEFT=218
-HEIGHT=637
+TOP=53
+LEFT=105
+HEIGHT=915
 WIDTH=1390
+
+[RP:MORITS]
+1=
+
+[RP:DATALOAD]
+1=
+
+[RP:DIETER_V1.2.0]
+1=
+
+[RP:SECOND_HOUR]
+1=
 
 [RP:MORITS_MCP]
 1=
 
 [MRUFILES]
-1=H:\Modelle\MORITS_MCP.lst
-2=H:\Modelle\MORITS_MCP.gms
-3=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Test_MCP2.lst
-4=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Test_MCP2.gms
-5=H:\Modelle\MORITS.gms
-6=H:\dolores\model\DOLORES.gms
-7=H:\dolores\original\Split up res\MORITS_split.gms
-8=H:\Modelle\morits.gpr
-9=H:\Modelle\results_base_year_2014.gdx
+1=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\MORITS_MCP.lst
+2=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\MORITS_MCP.gms
+3=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\DIETER_Prosumage\second_hour.gms
+4=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\DIETER_Prosumage\DIETER_v1.2.0.gms
+5=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\second_hour.gms
+6=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\DIETER_Prosumage\dataload.gms
+7=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\MORITS.gms
+8=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\MORITS.lst
+9=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\results_base_year_2014.gdx

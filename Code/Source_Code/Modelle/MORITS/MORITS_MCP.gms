@@ -50,18 +50,22 @@ $setglobal outputfile "results\%modelrun%_results_MCP"
 **************** Sets, variables, parameters declaration ***********************
 
 
+
 Sets
-h                Hours                                   /h1000*h8760/
+h                hour                                    /h1*h1000/
 res              Renewable technologies                  /renewable/
 sto              Storage technolgies                     /storage/
 year             Base years                              /2010*2016/
 hh_profile       Household load data                     /V1*V74/
 ct               Dispatchable Technologies               /base, peak/
 
+*include second_hour.gms
+
 ;
 
 Variables
-Z                        Objective
+Z_hh                         Objective household
+Z_sys                        Objective System
 ;
 
 Positive variables
@@ -235,6 +239,7 @@ price_market(h)        = price_market_upload(h,'%base_year%')/1000  ;
 $onecho >temp.tmp
 par=d_upload             rng=data!a3:f8763       rdim=1 cdim=1
 par=phi_res_upload       rng=data!h3:m8763       rdim=1 cdim=1
+
 $offecho
 
 $call "gdxxrw data/upload_data.xlsx @temp.tmp o=Data_input";
@@ -243,8 +248,8 @@ $load d_upload phi_res_upload
 ;
 
 * Initialize base year
-phi_res(h) = phi_res_upload(h,'%base_year%') ;
-d(h) = d_upload(h,'%base_year%') ;
+phi_res(h)    = phi_res_upload(h,'%base_year%') ;
+d(h)          = d_upload(h,'%base_year%') ;
 
 $if "%modelkill%" == "*"  $abort Check GDX upload
 
@@ -307,7 +312,7 @@ KKTCU
 *** Objective function: Minimize total household electricity costs
 objective_hh..
 
-   Z =E=
+   Z_hh =E=
 
           c_i_pv_hh* N_PV_hh
          + c_i_sto_e_hh * N_STO_E_hh + c_i_sto_p_hh * N_STO_P_hh
@@ -322,7 +327,7 @@ hh_energy_balance_hh(h)..
 
            G_PV_hh(h)
          + STO_OUT_hh(h)
-         + E_buy_hh(h)/1000    =E=
+         + E_buy_hh(h)    =E=
           d_hh(h)
 ;
 
@@ -333,7 +338,7 @@ pv_generation_hh(h)..
         G_PV_hh(h)
       + CU_hh(h)
       + STO_IN_hh(h)
-      + E_sell_hh(h)/1000
+      + E_sell_hh(h)
 ;
 
 *** Restrict PV capacity
@@ -408,7 +413,9 @@ KKTEB_hh(h)..
 
 KKTES_hh(h)..
 
-           -price_market(h)   + mu_hh(h) =G=  0
+*           -price_market(h)
+           -lambda(h)/1000
+           + mu_hh(h) =G=  0
 
 ;
 
@@ -461,9 +468,9 @@ energy_balance(h)..
          sum( ct , G_CON(ct,h))
         + G_RENEWABLE(h)
         + STO_OUT(h)
-        + E_sell_hh(h)
+        + E_sell_hh(h)/1000
          =E= d(h)
-        + E_buy_hh(h)
+        + E_buy_hh(h)/1000
 ;
 
 renewable_generation(h)..
@@ -532,13 +539,16 @@ KKTNCON(ct)..
 
 KKTGCON(ct,h)..
 
-      c_var_con(ct) - lambda(h) + resshare + gamma1(ct,h)  =G= 0
+      c_var_con(ct)
+      - lambda(h)
+      + resshare + gamma1(ct,h)  =G= 0
 
 ;
 
 KKTGRES(h)..
 
-                 - lambda(h) + mu(h) =G= 0
+                 - lambda(h)
+                 + mu(h) =G= 0
 
 ;
 
@@ -551,7 +561,10 @@ KKTSTOIN(h)..
 KKTSTOUT(h)..
 
 
-  c_var_sto - lambda(h) + gamma4(h) + levelsto(h)/eta_sto_out =G= 0
+  c_var_sto
+  - lambda(h)
+  + gamma4(h)
+  + levelsto(h)/eta_sto_out =G= 0
 
 
 
@@ -676,17 +689,36 @@ N_RENEWABLE.l              = 43000  ;
 N_CON.l(ct)                = 100000  ;
 N_STO_E.l                  = 120000 ;
 N_STO_P.l                  = 100000  ;
-energy_balance.m(h)        = 900  ;
-price_market(h)            =  energy_balance.m(h)/1000 ;
+lambda.l(h)                = 1  ;
+price_market(h)            = lambda.l(h)/1000 ;
 
 solve prosumodmcp using mcp;
+
+* Determine costs for system and household
+Z_sys.l                      =
+         sum( sto , c_i_sto_e  * N_STO_E.l  + c_i_sto_p  * N_STO_P.l  )
+         + c_i_res * N_RENEWABLE.l
+         + sum( ct , c_i_con(ct) * N_CON.l(ct) )
+         + sum( (ct,h) , c_var_con(ct) * G_CON.l(ct,h) )
+         + sum( ( h) , c_var_sto  * (STO_IN.l( h) + STO_OUT.l( h)) )
+;
+
+
+Z_hh.l                      =
+
+          c_i_pv_hh* N_PV_hh.l
+         + c_i_sto_e_hh * N_STO_E_hh.l  + c_i_sto_p_hh * N_STO_P_hh.l
+         + sum( (h) , c_var_sto_hh * (STO_IN_hh.l (h) + STO_OUT_hh.l (h)) )
+         + sum(  h , price_buy * E_buy_hh.l (h))
+         - sum(  h , lambda.l(h)/1000 * E_sell_hh.l (h))
+;
 
 display d_hh , N_PV_hh.l , E_buy_hh.l , E_sell_hh.l ,  G_PV_hh.l,
         N_STO_E_hh.l, N_STO_P_hh.l, G_PV_hh.l,
         hh_energy_balance_hh.l, hh_energy_balance_hh.m,
         price_market,  CU_hh.l, N_RENEWABLE.l, d, G_RENEWABLE.l,
         G_CON.l, STO_OUT.l, lambda.l, lambda.m, mu.l, mu.m, energy_balance.m,
-        N_CON.l;
+        N_CON.l, Z_sys.l , Z_hh.l  ;
 
 
 ***************************** Set up reporting *********************************
