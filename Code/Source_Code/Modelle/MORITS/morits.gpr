@@ -44,16 +44,6 @@ Order=1,2,3,4
 Decim=7
 PlaneRownr=-1
 
-[RP:ABRELL]
-1=
-
-[OPENWINDOW_1]
-MAXIM=0
-TOP=53
-LEFT=105
-HEIGHT=915
-WIDTH=1390
-
 [RP:MORITS]
 1=
 
@@ -69,9 +59,18 @@ WIDTH=1390
 [RP:MORITS_MCP]
 1=
 
+[RP:NBES_1]
+1=
+
+[RP:NBES_2]
+1=
+
+[RP:ABRELL]
+1=
+
 [MRUFILES]
-1=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\MORITS_MCP.lst
-2=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\MORITS_MCP.gms
+1=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Test_MCP\abrell.gms
+2=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\NBES_2.lst
 3=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\DIETER_Prosumage\second_hour.gms
 4=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\DIETER_Prosumage\DIETER_v1.2.0.gms
 5=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\second_hour.gms
@@ -79,3 +78,15 @@ WIDTH=1390
 7=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\MORITS.gms
 8=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\MORITS.lst
 9=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\results_base_year_2014.gdx
+
+[OPENWINDOW_1]
+FILE0=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\MORITS_MCP.gms
+FILE1=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\MORITS_MCP.lst
+FILE2=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Test_MCP\NBES_1.gms
+FILE3=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Test_MCP\NBES_2.gms
+FILE4=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Test_MCP\NBES_1.gms
+MAXIM=0
+TOP=53
+LEFT=105
+HEIGHT=915
+WIDTH=1390

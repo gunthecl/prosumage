@@ -7,6 +7,7 @@ Variables
 Z
 
 
+
 Positive variables
 g(tech,t) generation
 lambda(t)
@@ -22,11 +23,10 @@ lev_Z      total costs
 ;
 
 d('1')   = 500  ;
-d('2')   = 400 ;
+d('2')   = 500 ;
 cv('g')  = 200;
 cv('c')  = 50;
 cv('o')  = 2000;
-
 cap('g')  = 300;
 cap('c')  = 300;
 cap('o')  = 300;
@@ -82,7 +82,7 @@ KKTM(tech,t)..
 
 Model testmodel /
 KKTG.g
-KKTL.lambda
+energy_balance.lambda
 KKTM.mu
 /  ;
 

@@ -7,6 +7,7 @@ Variables
 Z
 
 
+
 Positive variables
 g(tech,t) generation
 lambda(t)
@@ -81,8 +82,8 @@ KKTM(tech,t)..
 
 Model testmodel /
 KKTG.g
-KKTL.lambda
-KKTM.mu
+energy_balance.lambda
+cap_constraint.mu
 /  ;
 
 *Set  some  i n i t i a l  v a l u e s

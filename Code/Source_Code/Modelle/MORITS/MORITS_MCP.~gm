@@ -540,14 +540,14 @@ KKTNCON(ct)..
 KKTGCON(ct,h)..
 
       c_var_con(ct)
-*      - lambda(h)
+      - lambda(h)
       + resshare + gamma1(ct,h)  =G= 0
 
 ;
 
 KKTGRES(h)..
 
-*                 - lambda(h)
+                 - lambda(h)
                  + mu(h) =G= 0
 
 ;
@@ -562,7 +562,7 @@ KKTSTOUT(h)..
 
 
   c_var_sto
-*  - lambda(h)
+  - lambda(h)
   + gamma4(h)
   + levelsto(h)/eta_sto_out =G= 0
 

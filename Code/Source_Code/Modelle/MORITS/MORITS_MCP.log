@@ -1,5 +1,5 @@
 
---- Job MORITS_MCP.gms Start 09/24/18 16:41:49 24.2.1 r43572 WEX-WEI x86_64/MS Windows
+--- Job MORITS_MCP.gms Start 10/05/18 13:54:14 24.2.1 r43572 WEX-WEI x86_64/MS Windows
 GAMS 24.2.1   Copyright (C) 1987-2013 GAMS Development. All rights reserved
 Licensee: Abteilung Energie, Verkehr, Umwelt, 5 User     S131220:0515AN-GEN
           Deutsches Institut fuer Wirtschaftsforschung DIW           DC3975
@@ -11,27 +11,27 @@ Licensee: Abteilung Energie, Verkehr, Umwelt, 5 User     S131220:0515AN-GEN
 GDXXRW           24.2.1 r43572 Released Dec  9, 2013 VS8 x86/MS Windows       
 Input file : C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\data\input_data.xlsx
 Output file: C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\data\input_data.gdx
-Total time = 6146 Ms
+Total time = 10109 Ms
 --- MORITS_MCP.gms(225) 3 Mb
 --- GDXin=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\data\input_data.gdx
---- MORITS_MCP.gms(245) 6 Mb
+--- MORITS_MCP.gms(245) 14 Mb
 --- call gdxxrw data/upload_data.xlsx @temp.tmp o=Data_input
 
 GDXXRW           24.2.1 r43572 Released Dec  9, 2013 VS8 x86/MS Windows       
 Input file : C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\data\upload_data.xlsx
 Output file: C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\Data_input.gdx
-Total time = 1560 Ms
---- MORITS_MCP.gms(246) 6 Mb
+Total time = 1591 Ms
+--- MORITS_MCP.gms(246) 14 Mb
 --- GDXin=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\Data_input.gdx
---- MORITS_MCP.gms(729) 6 Mb
---- Starting execution: elapsed 0:00:08.486
---- MORITS_MCP.gms(693) 8 Mb
+--- MORITS_MCP.gms(729) 16 Mb
+--- Starting execution: elapsed 0:00:12.721
+--- MORITS_MCP.gms(693) 21 Mb
 --- Generating MCP model prosumodmcp
---- MORITS_MCP.gms(695) 17 Mb
----   28,010 rows  28,010 columns  81,684 non-zeroes
+--- MORITS_MCP.gms(695) 52 Mb
+---   112,010 rows  112,010 columns  344,000 non-zeroes
 ---   0 nl-code  0 nl-non-zeroes
---- MORITS_MCP.gms(695) 15 Mb
---- Executing PATH: elapsed 0:00:08.592
+--- MORITS_MCP.gms(695) 50 Mb
+--- Executing PATH: elapsed 0:00:13.751
 Reading dictionary...
 Reading row data...
 Evaluating functions...
@@ -40,878 +40,95 @@ Calculating Jacobian...
 
 PATH             24.2.1 r43572 Released Dec  9, 2013 WEI x86_64/MS Windows    
 
-28010 row/cols, 81684 non-zeros, 0.01% dense.
+112010 row/cols, 344000 non-zeros, 0.00% dense.
 
 Path 4.7.02 (Mon Dec 09 08:54:09 2013)
 Written by Todd Munson, Steven Dirkse, and Michael Ferris
 
-Zero:     0 Single:  2001 Double:     0
-Forced:  2636 Redundant:   659
-MCPR: Zero:     0 Single:     0 Double:     0 Forced:  3000
-MCPR: Zero:     1 Single:     0 Double:     0 Forced:     0
-Zero:     2 Single:  3000 Double:     0
-Preprocessed size   : 16711
+Zero:     0 Single:  8001 Double:     0
+Forced:  8004 Redundant:  2001
+Preprocessed size   : 94004
 
 INITIAL POINT STATISTICS
-Zero column of order. . . . . .  0.0000e+000 var: (lambda(h1))
-Zero column of order. . . . . .  0.0000e+000 var: (lambda(h2))
-Zero column of order. . . . . .  0.0000e+000 var: (lambda(h3))
-Zero column of order. . . . . .  0.0000e+000 var: (lambda(h4))
-Zero column of order. . . . . .  0.0000e+000 var: (lambda(h5))
-Zero column of order. . . . . .  0.0000e+000 var: (lambda(h6))
-Zero column of order. . . . . .  0.0000e+000 var: (lambda(h7))
-Zero column of order. . . . . .  0.0000e+000 var: (lambda(h16))
-Zero column of order. . . . . .  0.0000e+000 var: (lambda(h17))
-Total zero columns. . . . . . .  659
 Maximum of X. . . . . . . . . .  1.2000e+005 var: (N_STO_E)
-Maximum of F. . . . . . . . . .  1.2000e+005 eqn: (stolev_max(h1))
+Maximum of F. . . . . . . . . .  9.3671e+007 eqn: (minRES)
 Maximum of Grad F . . . . . . .  1.0799e+000 eqn: (KKTSTOUT_hh(h1))
                                             var: (levelsto_hh(h1))
 
 INITIAL JACOBIAN NORM STATISTICS
-Maximum Row Norm. . . . . . . .  1.3410e+003 eqn: (KKTNSTOP_hh)
+Maximum Row Norm. . . . . . . .  8.0000e+003 eqn: (minRES)
 Minimum Row Norm. . . . . . . .  1.0000e+000 eqn: (KKTEB_hh(h1))
-Maximum Column Norm . . . . . .  1.3410e+003 var: (N_STO_P_hh)
-Minimum Column Norm . . . . . .  1.0000e-003 var: (lambda(h8))
+Maximum Column Norm . . . . . .  8.0000e+003 var: (resshare)
+Minimum Column Norm . . . . . .  1.0010e+000 var: (E_buy_hh(h1))
 
 Crash Log
 major  func  diff  size  residual    step       prox   (label)
-    0     0             3.9687e+006             0.0e+000 (energy_balance(h691))
-    1     1  2967  3347 3.7801e+006  1.0e+000    1.0e+001 (energy_balance(h691))
-    2     2  2885  4972 3.5934e+006  1.0e+000    9.0e+000 (energy_balance(h691))
-    3     3  2723  6026 3.4128e+006  1.0e+000    8.1e+000 (energy_balance(h691))
-    4     4  1712  7296 3.2422e+006  1.0e+000    7.3e+000 (energy_balance(h691))
-    5     5   400  7565 3.0848e+006  1.0e+000    6.6e+000 (energy_balance(h691))
-    6     6   109  7649 2.9428e+006  1.0e+000    5.9e+000 (energy_balance(h691))
-    7     7   471  7669 2.8169e+006  1.0e+000    5.3e+000 (energy_balance(h691))
-    8     8  1384  7224 2.7068e+006  1.0e+000    4.8e+000 (energy_balance(h691))
-    9     9  1190  7849 2.6116e+006  1.0e+000    4.3e+000 (energy_balance(h691))
-   10    10   491  7469 2.5296e+006  1.0e+000    3.9e+000 (energy_balance(h691))
-   11    11   269  6982 2.4592e+006  1.0e+000    3.5e+000 (energy_balance(h691))
-   12    12    97  6717 2.3989e+006  1.0e+000    3.1e+000 (energy_balance(h691))
-   13    13    68  6626 2.3472e+006  1.0e+000    2.8e+000 (energy_balance(h691))
-   14    14   689  6596 2.3026e+006  1.0e+000    2.5e+000 (energy_balance(h691))
-   15    15   880  6457 2.2642e+006  1.0e+000    2.3e+000 (energy_balance(h691))
-   16    16    86  5777 2.2309e+006  1.0e+000    2.1e+000 (energy_balance(h691))
-   17    17    84  5795 2.2020e+006  1.0e+000    1.9e+000 (energy_balance(h691))
-   18    18   117  5781 2.1769e+006  1.0e+000    1.7e+000 (energy_balance(h691))
-   19    19   104  5755 2.1549e+006  1.0e+000    1.5e+000 (energy_balance(h691))
-   20    20   152  5731 2.1357e+006  1.0e+000    1.4e+000 (energy_balance(h691))
-   21    21   192  5825 2.1189e+006  1.0e+000    1.2e+000 (energy_balance(h691))
-   22    22   119  5859 2.1040e+006  1.0e+000    1.1e+000 (energy_balance(h691))
-   23    23    86  5863 2.0909e+006  1.0e+000    9.8e-001 (energy_balance(h691))
-   24    24    87  5857 2.0794e+006  1.0e+000    8.9e-001 (energy_balance(h691))
-   25    25   118  5888 2.0692e+006  1.0e+000    8.0e-001 (energy_balance(h691))
-   26    26   145  5906 2.0601e+006  1.0e+000    7.2e-001 (energy_balance(h691))
-   27    27   223  5955 2.0520e+006  1.0e+000    6.5e-001 (energy_balance(h691))
-   28    28   278  6041 2.0449e+006  1.0e+000    5.8e-001 (energy_balance(h691))
-   29    29   241  6103 2.0385e+006  1.0e+000    5.2e-001 (energy_balance(h691))
-   30    30   189  6119 2.0328e+006  1.0e+000    4.7e-001 (energy_balance(h691))
-   31    31   160  6129 2.0278e+006  1.0e+000    4.2e-001 (energy_balance(h691))
-   32    32   184  6154 2.0232e+006  1.0e+000    3.8e-001 (energy_balance(h691))
-   33    33   241  6217 2.0192e+006  1.0e+000    3.4e-001 (energy_balance(h691))
-   34    34   230  6324 2.0156e+006  1.0e+000    3.1e-001 (energy_balance(h691))
-   35    35   188  6326 2.0124e+006  1.0e+000    2.8e-001 (energy_balance(h691))
-   36    36   196  6383 2.0095e+006  1.0e+000    2.5e-001 (energy_balance(h691))
-   37    37   155  6405 2.0069e+006  1.0e+000    2.3e-001 (energy_balance(h691))
-   38    38   147  6436 2.0045e+006  1.0e+000    2.0e-001 (energy_balance(h691))
-   39    39   114  6449 2.0025e+006  1.0e+000    1.8e-001 (energy_balance(h691))
-   40    40    64  6449 2.0006e+006  1.0e+000    1.6e-001 (energy_balance(h691))
-   41    41    44  6471 1.9989e+006  1.0e+000    1.5e-001 (energy_balance(h691))
-   42    42   220  6478 1.9974e+006  1.0e+000    1.3e-001 (energy_balance(h691))
-   43    43   208  6686 1.9961e+006  1.0e+000    1.2e-001 (energy_balance(h691))
-   44    44    25  6551 1.9949e+006  1.0e+000    1.1e-001 (energy_balance(h691))
-   45    45    92  6572 1.9938e+006  1.0e+000    9.7e-002 (energy_balance(h691))
-   46    46   117  6641 1.9928e+006  1.0e+000    8.7e-002 (energy_balance(h691))
-   47    47    54  6670 1.9919e+006  1.0e+000    7.9e-002 (energy_balance(h691))
-   48    48    25  6676 1.9911e+006  1.0e+000    7.1e-002 (energy_balance(h691))
-   49    49    19  6695 1.9904e+006  1.0e+000    6.4e-002 (energy_balance(h691))
-   50    50     0  6695 1.9898e+006  1.0e+000    5.7e-002 (energy_balance(h691))
-pn_search terminated: no basis change.
+    0     0             7.5210e+006             0.0e+000 (energy_balance(h691))
+    1     1 33363 22007 7.1611e+006  1.0e+000    1.0e+001 (energy_balance(h691))
+    2     2 31347 41368 6.6010e+006  1.0e+000    9.0e+000 (energy_balance(h691))
+    3     3 19847 52460 5.9806e+006  1.0e+000    8.1e+000 (energy_balance(h691))
+    4     4  9099 58611 5.3340e+006  1.0e+000    7.3e+000 (KKTNRES)
+    5     5  4198 60178 4.7620e+006  1.0e+000    6.6e+000 (KKTNRES)
+    6     9   868 58789 4.5019e+006  4.1e-001    5.9e+000 (KKTNRES)
+    7    10  5550 58940 3.1948e+006  1.0e+000    5.3e+000 (minRES)
+    8    11  8216 59671 2.9173e+006  1.0e+000    4.8e+000 (KKTNCON(base))
+    9    12  5619 61614 2.5921e+006  1.0e+000    4.3e+000 (KKTNCON(base))
+   10    13  4431 58750 2.2246e+006  1.0e+000    3.9e+000 (KKTNCON(base))
+   11    14  5738 58808 1.9348e+006  1.0e+000    3.5e+000 (KKTNSTOP)
+   12    15  6130 59934 1.6490e+006  1.0e+000    3.1e+000 (KKTNCON(peak))
+   13    16  4657 60456 1.2877e+006  1.0e+000    2.8e+000 (KKTNSTOP)
+   14    17  4589 59030 9.7338e+005  1.0e+000    2.5e+000 (KKTNSTOP)
+   15    18  6602 56418 8.5727e+005  1.0e+000    2.3e+000 (minRES)
+pn_search terminated: no progress.
 
 Major Iteration Log
 major minor  func  grad  residual    step  type prox    inorm  (label)
-    0     0    51    51 1.9898e+006           I 5.2e-002 7.8e+004 (energy_balance()
-    1     1    52    52 1.9885e+006  1.0e+000 SO 2.1e-002 7.8e+004 (energy_balance()
-    2     1    53    53 1.9869e+006  1.0e+000 SO 8.2e-003 7.8e+004 (energy_balance()
-    3     1    54    54 1.9856e+006  1.0e+000 SO 3.3e-003 7.8e+004 (energy_balance()
-    4     1    55    55 1.9856e+006  1.0e+000 SO 1.0e+001 7.8e+004 (energy_balance()
-    5     1    56    56 1.9856e+006  1.0e+000 SO 4.0e+000 7.8e+004 (energy_balance()
-    6     1    57    57 1.9856e+006  1.0e+000 SO 1.6e+000 7.8e+004 (energy_balance()
-    7     1    58    58 1.9856e+006  1.0e+000 SO 6.4e-001 7.8e+004 (energy_balance()
-    8     1    59    59 1.9856e+006  1.0e+000 SO 2.6e-001 7.8e+004 (energy_balance()
-    9     1    60    60 1.9856e+006  1.0e+000 SO 1.0e-001 7.8e+004 (energy_balance()
-   10     1    61    61 1.9855e+006  1.0e+000 SO 4.1e-002 7.8e+004 (energy_balance()
-   11     1    62    62 1.9854e+006  1.0e+000 SO 1.6e-002 7.8e+004 (energy_balance()
+    0     0    31    16 8.5727e+005           I 2.1e+000 4.0e+005 (minRES)
 
 Minor Iteration Log
 minor      t          z     w     v   art ckpts  enter    leave
-  500  3.9344e-001  9195  7173   342     0    10 w[ 8404] z[ 7830]
- 1000  4.1756e-001  8695  7673   342     0    20 w[ 8381] z[ 8393]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-   12  1191    63    63 1.9852e+006  1.0e+000 SO 6.6e-003 7.8e+004 (energy_balance()
-   13     1    64    64 1.9848e+006  1.0e+000 SM 2.6e-003 7.8e+004 (energy_balance()
-   14     1    65    65 1.9845e+006  1.0e+000 SM 1.0e-003 7.8e+004 (energy_balance()
-   15     1    66    66 1.9843e+006  1.0e+000 SM 4.2e-004 7.8e+004 (energy_balance()
-   16     1    67    67 1.9842e+006  1.0e+000 SM 1.7e-004 7.8e+004 (energy_balance()
-   17     1    68    68 1.9841e+006  1.0e+000 SM 6.7e-005 7.8e+004 (energy_balance()
-   18     1    69    69 1.9841e+006  1.0e+000 SM 2.7e-005 7.8e+004 (energy_balance()
-   19     1    70    70 1.9841e+006  1.0e+000 SM 1.1e-005 7.8e+004 (energy_balance()
-   20     1    71    71 1.9841e+006  1.0e+000 SM 4.3e-006 7.8e+004 (energy_balance()
-   21     1    72    72 1.9841e+006  1.0e+000 SM 1.7e-006 7.8e+004 (energy_balance()
-   22     1    73    73 1.9841e+006  1.0e+000 SM 6.9e-007 7.8e+004 (energy_balance()
-   23     1    74    74 1.9841e+006  1.0e+000 SM 2.7e-007 7.8e+004 (energy_balance()
-   24     1    75    75 1.9841e+006  1.0e+000 SM 1.1e-007 7.8e+004 (energy_balance()
-   25     1    76    76 1.9841e+006  1.0e+000 SM 4.4e-008 7.8e+004 (energy_balance()
-   26     1    77    77 1.9841e+006  1.0e+000 SM 1.8e-008 7.8e+004 (energy_balance()
-   27     1    78    78 1.9841e+006  1.0e+000 SM 7.0e-009 7.8e+004 (energy_balance()
-   28     1    79    79 1.9841e+006  1.0e+000 SM 2.8e-009 7.8e+004 (energy_balance()
-   29     1    80    80 1.9841e+006  1.0e+000 SM 1.1e-009 7.8e+004 (energy_balance()
-   30     1    81    81 1.9841e+006  1.0e+000 SM 4.5e-010 7.8e+004 (energy_balance()
-   31     1    82    82 1.9841e+006  1.0e+000 SM 1.8e-010 7.8e+004 (energy_balance()
-   32     1    83    83 1.9841e+006  1.0e+000 SM 7.2e-011 7.8e+004 (energy_balance()
-   33     1    84    84 1.9841e+006  1.0e+000 SO 1.0e+001 7.8e+004 (energy_balance()
-   34     1    85    85 1.9841e+006  1.0e+000 SD 4.0e+000 7.8e+004 (energy_balance()
-   35     1    86    86 1.9841e+006  1.0e+000 SO 1.6e+000 7.8e+004 (energy_balance()
-   36     1    87    87 1.9841e+006  1.0e+000 SO 6.4e-001 7.8e+004 (energy_balance()
-   37     1    88    88 1.9841e+006  1.0e+000 SD 2.6e-001 7.8e+004 (energy_balance()
-   38     1    89    89 1.9841e+006  1.0e+000 SD 1.0e-001 7.8e+004 (energy_balance()
-   39     1    90    90 1.9841e+006  1.0e+000 SO 4.1e-002 7.8e+004 (energy_balance()
-   40     1    91    91 1.9841e+006  1.0e+000 SO 1.6e-002 7.8e+004 (energy_balance()
-   41     1    96    92 1.9841e+006  3.3e-001 SB 6.6e-003 7.8e+004 (energy_balance()
-   42     1   101    93 1.9841e+006  3.3e-001 SB 2.6e-003 7.8e+004 (energy_balance()
-   43     1   109    94 1.9841e+006  5.5e-002 SB 1.0e-003 7.8e+004 (energy_balance()
-   44     1   117    95 1.9841e+006  5.5e-002 SB 4.2e-004 7.8e+004 (energy_balance()
-   45     1   125    96 1.9841e+006  5.5e-002 SB 1.7e-004 7.8e+004 (energy_balance()
-   46     1   145    97 1.7959e+006  2.6e-001 SG 7.2e-011 5.8e+004 (energy_balance()
+  500  2.8947e-007 52368 41633     2     0     9 z[19676] w[17941]
+ 1000  5.6963e-002 52045 41956     2     0    19 w[76502] z[75780]
+ 1500  1.2594e-001 51677 42324     2     0    30 w[70224] z[32990]
+ 2000  1.9884e-001 51283 42718     2     0    42 z[21978] z[71625]
+ 2500  2.7832e-001 50883 43118     2     0    51 z[92188] z[31949]
+ 3000  3.6918e-001 50506 43495     2     0    61 w[33865] w[11611]
+ 3500  4.6300e-001 50173 43828     2     0    72 w[71098] z[71094]
+ 4000  5.6250e-001 49864 44137     2     0    82 w[91612] w[83369]
 
 Minor Iteration Log
 minor      t          z     w     v   art ckpts  enter    leave
-  500  1.3227e-012  9004  7364   342     0     9 z[ 9959] w[10462]
- 1000  3.1111e-012  9504  6864   342     0    19 z[ 9716] w[ 9715]
+  500 -8.0419e+004   499 93504     0     0     9 z[40322] w[39497]
+ 1000 -7.5177e+004   999 93004     0     0    19 z[40336] w[40227]
+ 1500 -7.2340e+004  1499 92504     0     0    29 z[41752] w[40551]
+ 2000 -6.8022e+004  1999 92004     0     0    39 z[38043] w[70502]
+ 2500 -6.3983e+004  2499 91504     0     0    49 z[39603] w[40038]
+ 3000 -6.0429e+004  2999 91004     0     0    58 z[39628] w[38892]
+ 3500 -5.8634e+004  3499 90504     0     0    68 z[78908] w[40939]
+ 4000 -5.7312e+004  3999 90004     0     0    78 z[41809] w[70491]
+ 4500 -5.5978e+004  4499 89504     0     0    88 z[39118] w[39033]
+ 5000 -5.4460e+004  4999 89004     0     0    98 z[70828] w[78885]
+ 5500 -5.2749e+004  5499 88504     0     0   107 z[79572] w[78758]
+ 6000 -5.1064e+004  5999 88004     0     0   117 z[74812] w[72196]
+ 6500 -4.9211e+004  6499 87504     0     0   127 z[81192] w[79835]
+ 7000 -4.7386e+004  6999 87004     0     0   137 z[78701] w[81116]
+ 7500 -4.5739e+004  7499 86504     0     0   147 z[78563] w[74794]
+ 8000 -4.4310e+004  7999 86004     0     0   156 z[70289] w[80501]
+ 8500 -4.2819e+004  8499 85504     0     0   166 z[77771] w[78058]
+ 9000 -4.1381e+004  8999 85004     0     0   176 z[80902] w[78946]
+ 9500 -3.9637e+004  9499 84504     0     0   186 z[80642] w[77586]
+10000 -3.7797e+004  9999 84004     0     0   196 z[79354] w[73319]
 
 Major Iteration Log
 major minor  func  grad  residual    step  type prox    inorm  (label)
-   47  1002   146    98 1.7229e+006  1.0e+000 SO 1.0e+001 1.7e+005 (KKTNRES)
-   48    57   147    99 1.5682e+006  1.0e+000 SO 4.0e+000 2.1e+005 (KKTNRES)
+    1 10000    35    17 3.0648e+006  5.1e-001 IB 8.2e-001 1.2e+005 (KKTNSTOP)
 
 Minor Iteration Log
 minor      t          z     w     v   art ckpts  enter    leave
-  500  6.3968e-001  9285  7083   342     0     9 w[ 2978] w[ 8658]
- 1000  8.9156e-001  9338  7030   342     0    19 z[ 6756] z[ 4235]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-   49  1258   148   100 1.5604e+006  1.0e+000 SO 1.6e+000 9.3e+004 (KKTNRES)
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  3.6784e-001  9063  7305   342     0     9 w[ 7253] z[ 3062]
- 1000  5.2196e-001  9170  7198   342     0    19 z[ 3586] w[ 3587]
- 1500  5.2196e-001  9670  6698   342     0    29 z[ 4228] w[ 4229]
- 2000  6.0660e-001  9957  6411   342     0    39 z[ 8531] z[ 7916]
- 2500  8.8309e-001 10039  6329   342     0    49 z[ 8347] z[14215]
- 3000  9.7939e-001  9667  6701   342     0    58 w[ 3677] z[ 3678]
-   50   125   149   101 1.5680e+006  1.0e+000 SO 1.0e+001 8.4e+004 (KKTNRES)
-   51   354   150   102 1.5869e+006  1.0e+000 SO 4.0e+000 7.1e+004 (energy_balance()
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  4.3672e-001  9124  7244   342     0     9 w[ 7679] z[10514]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-   52   802   151   103 1.6219e+006  1.0e+000 SO 1.6e+000 7.7e+004 (energy_balance()
-   53    82   152   104 1.6262e+006  1.0e+000 SO 1.0e+001 7.7e+004 (energy_balance()
-   54   203   153   105 1.6330e+006  1.0e+000 SO 4.0e+000 7.7e+004 (energy_balance()
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  7.6774e-001  8707  7661   342     0     9 z[ 3361] w[ 3362]
- 1000  7.6775e-001  9207  7161   342     0    19 z[ 3890] w[ 3893]
- 1500  7.6777e-001  9707  6661   342     0    29 z[ 4490] w[ 4491]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-   55  1724   154   106 1.6423e+006  1.0e+000 SO 1.6e+000 7.7e+004 (energy_balance()
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  9.8265e-001 10075  6293   342     0     9 w[  186] z[  130]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-   56   517   155   107 1.6703e+006  1.0e+000 SO 6.4e-001 7.7e+004 (energy_balance()
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  8.5832e-001 10451  5917   342     0     9 z[ 2368] z[10039]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-   57   597   156   108 1.7394e+006  1.0e+000 SD 2.6e-001 7.7e+004 (energy_balance()
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  9.4740e-001 10813  5555   342     0     9 z[ 2435] z[ 8081]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-   58   632   157   109 1.8671e+006  1.0e+000 SD 1.0e-001 7.7e+004 (energy_balance()
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  4.2993e-001 10402  5966   342     0     9 w[ 8191] z[ 8415]
- 1000  7.3825e-001  9972  6396   342     0    19 w[ 8118] z[ 8012]
- 1500  8.5796e-001  9566  6802   342     0    29 w[ 7963] z[ 8053]
- 2000  8.9628e-001  9730  6638   342     0    39 w[ 8672] z[ 8462]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-   59  2238   158   110 1.9841e+006  1.0e+000 SD 4.1e-002 7.8e+004 (energy_balance()
-   60    37   159   111 1.9841e+006  1.0e+000 SD 1.6e-002 7.8e+004 (energy_balance()
-   61     1   162   112 1.7142e+006  6.4e-001 SW 6.4e-001 7.7e+004 (energy_balance()
-   62   342   163   113 1.7751e+006  1.0e+000 SD 2.6e-001 7.7e+004 (energy_balance()
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  8.7342e-001 10721  5647   342     0     9 w[ 7888] z[ 8073]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-   63   881   164   114 1.8990e+006  1.0e+000 SD 1.0e-001 7.7e+004 (energy_balance()
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  3.4553e-001 10079  6289   342     0    10 w[14267] z[14598]
- 1000  6.8760e-001  9601  6767   342     0    20 w[ 8563] z[14620]
- 1500  8.3910e-001  9470  6898   342     0    30 z[ 2711] w[ 2712]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-   64  1796   165   115 1.9841e+006  1.0e+000 SD 4.1e-002 7.8e+004 (energy_balance()
-   65    20   166   116 1.9841e+006  1.0e+000 SD 1.6e-002 7.8e+004 (energy_balance()
-   66     1   184   117 1.3694e+006  6.4e-001 SG 1.6e+000 6.5e+004 (renewable_gener)
-   67    51   185   118 1.3694e+006  1.0e+000 TD 1.0e+001 6.5e+004 (renewable_gener)
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  1.7785e-001  8891  7477   342     0     9 w[ 8153] z[14907]
- 1000  7.3370e-001  8513  7855   342     0    19 w[ 2825] z[ 4056]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-   68  1137   186   119 1.0722e+006  1.0e+000 SO 4.0e+000 4.8e+004 (renewable_gener)
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  2.1682e-001  8836  7532   342     0     9 z[ 5343] w[ 5609]
- 1000  2.9886e-001  9254  7114   342     0    19 z[ 5554] w[ 5215]
- 1500  6.9234e-001  9153  7214   343     0    29 w[ 7544] z[ 7428]
- 2000  9.9474e-001  9031  7336   343     0    39 z[ 3168] z[ 7377]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-   69  2011   187   120 8.9949e+005  1.0e+000 SO 1.6e+000 6.2e+004 (energy_balance()
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  4.5114e-001  8966  7401   343     0     9 z[ 3401] w[ 3402]
- 1000  4.5114e-001  9466  6901   343     0    19 z[ 3961] w[ 3964]
- 1500  4.5114e-001  9966  6401   343     0    29 z[ 4585] w[ 4588]
- 2000  8.0645e-001  9867  6500   343     0    39 z[ 7814] z[ 2825]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-   70  2089   188   121 1.0931e+006  1.0e+000 SO 6.4e-001 7.7e+004 (energy_balance()
-   71   385   189   122 1.1564e+006  1.0e+000 SO 2.6e-001 7.7e+004 (energy_balance()
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  9.6476e-001 10348  6020   342     0     9 z[ 2870] w[10619]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-   72   548   190   123 1.3090e+006  1.0e+000 SO 1.0e-001 7.7e+004 (energy_balance()
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  8.6694e-001 10520  5848   342     0     9 z[ 2508] z[ 8253]
- 1000  9.6564e-001 10319  6049   342     0    19 w[ 2392] w[ 2851]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-   73  1195   191   124 1.6032e+006  1.0e+000 SD 4.1e-002 7.7e+004 (energy_balance()
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  5.6956e-001  9830  6538   342     0    10 w[ 8507] z[14071]
- 1000  7.8432e-001  9376  6992   342     0    20 w[13966] z[ 7971]
- 1500  9.3533e-001  8936  7432   342     0    30 w[13787] z[13976]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-   74  1526   192   125 1.9841e+006  1.0e+000 SD 1.6e-002 7.8e+004 (energy_balance()
-   75    40   198   126 1.3663e+006  2.1e-001 SW 1.0e-001 7.7e+004 (energy_balance()
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  9.2723e-001 10423  5945   342     0    10 w[ 8429] z[ 8614]
- 1000  9.9269e-001 10162  6206   342     0    21 z[ 8256] w[ 2466]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-   76  1157   199   127 1.6647e+006  1.0e+000 SD 4.1e-002 7.7e+004 (energy_balance()
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  4.9811e-001  9777  6591   342     0     9 w[14078] z[14536]
- 1000  7.6058e-001  9311  7057   342     0    19 w[14667] z[13734]
- 1500  8.7772e-001  9081  7287   342     0    29 z[ 2595] z[13977]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-   77  1859   200   128 1.9841e+006  1.0e+000 SD 1.6e-002 7.8e+004 (energy_balance()
-   78    30   210   129 1.3688e+006  9.2e-003 SW 1.0e-001 7.7e+004 (energy_balance()
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  9.2750e-001 10424  5944   342     0     9 w[ 8478] w[ 3105]
- 1000  9.9282e-001 10162  6206   342     0    19 z[ 2669] w[ 8041]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-   79  1158   211   130 1.6674e+006  1.0e+000 SD 4.1e-002 7.7e+004 (energy_balance()
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  4.9514e-001  9776  6592   342     0     9 w[14536] z[14264]
- 1000  7.5994e-001  9312  7056   342     0    19 w[13734] z[14144]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-   80  1455   212   131 1.9841e+006  1.0e+000 SD 1.6e-002 7.8e+004 (energy_balance()
-   81    30   223   132 1.3692e+006  1.5e-003 SW 1.0e-001 7.7e+004 (energy_balance()
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  9.2725e-001 10423  5945   342     0     9 w[ 8478] z[ 8375]
- 1000  9.9268e-001 10160  6208   342     0    19 z[ 2669] w[ 8422]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-   82  1162   224   133 1.6679e+006  1.0e+000 SD 4.1e-002 7.7e+004 (energy_balance()
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  4.9449e-001  9776  6592   342     0     9 w[14536] z[14264]
- 1000  7.5704e-001  9316  7052   342     0    19 w[14461] z[14640]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-   83  1460   225   134 1.9841e+006  1.0e+000 SD 1.6e-002 7.8e+004 (energy_balance()
-
-Restart Log
-proximal_perturbation 0
-crash_method none
-crash_perturb yes
-nms_initial_reference_factor 2
-lemke_search_type slack
-proximal_perturbation 1.0000e-001
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-   83     0   227   135 3.9687e+006           R 1.0e-001 1.6e+005 (energy_balance()
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  1.7070e-005  7891  8819     0     0     9 z[ 7662] w[ 7305]
- 1000  3.6484e-005  8268  8441     1     0    19 z[ 7126] z[ 6156]
- 1500  8.0597e-005  8596  8113     1     0    29 z[ 1212] z[ 6579]
- 2000  1.8132e-002  8735  7974     1     0    39 z[ 4434] w[ 4823]
- 2500  2.3237e-002  9177  7532     1     0    49 z[ 4902] w[ 4981]
- 3000  2.8008e-002  9669  7040     1     0    58 z[ 4087] w[ 4651]
- 3500  3.4227e-002 10144  6565     1     0    68 z[ 4637] z[ 4566]
- 4000  4.9231e-002 10609  6100     1     0    78 z[ 3713] w[ 5155]
- 4500  6.7715e-002 11095  5614     1     0    88 z[ 2831] w[ 2535]
- 5000  7.8438e-002 11593  5116     1     0    98 z[13078] w[13079]
- 5500  7.8438e-002 12093  4616     1     0   107 z[13578] w[13579]
- 6000  3.8726e-001 12396  4218    96     0   117 v[ 5960] z[ 5735]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-   84  6261   228   136 2.0237e+006  1.0e+000 SO 4.0e-002 8.0e+004 (energy_balance()
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  9.3392e-001 12297  4071   342     0    10 z[ 3475] w[ 3476]
- 1000  9.5542e-001 12214  4154   342     0    20 w[ 6937] z[ 6939]
- 1500  9.7552e-001 11720  4648   342     0    30 w[ 7601] z[ 7139]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-   85  1541   229   137 1.9954e+006  1.0e+000 SO 1.6e-002 7.9e+004 (energy_balance()
-   86     1   230   138 1.9881e+006  1.0e+000 SO 6.4e-003 7.8e+004 (energy_balance()
-   87     1   231   139 1.9856e+006  1.0e+000 SM 2.6e-003 7.8e+004 (energy_balance()
-   88     1   232   140 1.9856e+006  1.0e+000 SO 1.0e+001 7.8e+004 (energy_balance()
-   89     1   233   141 1.9856e+006  1.0e+000 SO 4.0e+000 7.8e+004 (energy_balance()
-   90     1   234   142 1.9856e+006  1.0e+000 SO 1.6e+000 7.8e+004 (energy_balance()
-   91     1   235   143 1.9856e+006  1.0e+000 SO 6.4e-001 7.8e+004 (energy_balance()
-   92     1   236   144 1.9856e+006  1.0e+000 SO 2.6e-001 7.8e+004 (energy_balance()
-   93     1   237   145 1.9856e+006  1.0e+000 SO 1.0e-001 7.8e+004 (energy_balance()
-   94     1   238   146 1.9855e+006  1.0e+000 SO 4.1e-002 7.8e+004 (energy_balance()
-   95     1   239   147 1.9854e+006  1.0e+000 SO 1.6e-002 7.8e+004 (energy_balance()
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  4.7107e-001 11184  5184   342     0    10 w[ 7756] z[ 8521]
- 1000  4.7288e-001 10684  5684   342     0    20 w[ 8461] z[ 8076]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-   96  1001   240   148 1.9852e+006  1.0e+000 SO 6.6e-003 7.8e+004 (energy_balance()
-   97     1   241   149 1.9848e+006  1.0e+000 SM 2.6e-003 7.8e+004 (energy_balance()
-   98     1   242   150 1.9845e+006  1.0e+000 SM 1.0e-003 7.8e+004 (energy_balance()
-   99     1   243   151 1.9843e+006  1.0e+000 SM 4.2e-004 7.8e+004 (energy_balance()
-  100     1   244   152 1.9842e+006  1.0e+000 SM 1.7e-004 7.8e+004 (energy_balance()
-  101     1   245   153 1.9841e+006  1.0e+000 SM 6.7e-005 7.8e+004 (energy_balance()
-  102     1   246   154 1.9841e+006  1.0e+000 SM 2.7e-005 7.8e+004 (energy_balance()
-  103     1   247   155 1.9841e+006  1.0e+000 SM 1.1e-005 7.8e+004 (energy_balance()
-  104     1   248   156 1.9841e+006  1.0e+000 SM 4.3e-006 7.8e+004 (energy_balance()
-  105     1   249   157 1.9841e+006  1.0e+000 SM 1.7e-006 7.8e+004 (energy_balance()
-  106     1   250   158 1.9841e+006  1.0e+000 SM 6.9e-007 7.8e+004 (energy_balance()
-  107     1   251   159 1.9841e+006  1.0e+000 SM 2.7e-007 7.8e+004 (energy_balance()
-  108     1   252   160 1.9841e+006  1.0e+000 SM 1.1e-007 7.8e+004 (energy_balance()
-  109     1   253   161 1.9841e+006  1.0e+000 SM 4.4e-008 7.8e+004 (energy_balance()
-  110     1   254   162 1.9841e+006  1.0e+000 SM 1.8e-008 7.8e+004 (energy_balance()
-  111     1   255   163 1.9841e+006  1.0e+000 SM 7.0e-009 7.8e+004 (energy_balance()
-  112     1   256   164 1.9841e+006  1.0e+000 SM 2.8e-009 7.8e+004 (energy_balance()
-  113     1   257   165 1.9841e+006  1.0e+000 SM 1.1e-009 7.8e+004 (energy_balance()
-  114     1   258   166 1.9841e+006  1.0e+000 SM 4.5e-010 7.8e+004 (energy_balance()
-  115     1   259   167 1.9841e+006  1.0e+000 SM 1.8e-010 7.8e+004 (energy_balance()
-  116     1   260   168 1.9841e+006  1.0e+000 SM 7.2e-011 7.8e+004 (energy_balance()
-  117     1   261   169 1.9841e+006  1.0e+000 SO 1.0e+001 7.8e+004 (energy_balance()
-  118     1   262   170 1.9841e+006  1.0e+000 SD 4.0e+000 7.8e+004 (energy_balance()
-  119     1   263   171 1.9841e+006  1.0e+000 SO 1.6e+000 7.8e+004 (energy_balance()
-  120     1   264   172 1.9841e+006  1.0e+000 SO 6.4e-001 7.8e+004 (energy_balance()
-  121     1   265   173 1.9841e+006  1.0e+000 SD 2.6e-001 7.8e+004 (energy_balance()
-  122     1   266   174 1.9841e+006  1.0e+000 SD 1.0e-001 7.8e+004 (energy_balance()
-  123     1   267   175 1.9841e+006  1.0e+000 SO 4.1e-002 7.8e+004 (energy_balance()
-  124     1   268   176 1.9841e+006  1.0e+000 SO 1.6e-002 7.8e+004 (energy_balance()
-  125     1   273   177 1.9841e+006  3.3e-001 SB 6.6e-003 7.8e+004 (energy_balance()
-  126     1   278   178 1.9841e+006  3.3e-001 SB 2.6e-003 7.8e+004 (energy_balance()
-  127     1   283   179 1.9841e+006  3.3e-001 SB 1.0e-003 7.8e+004 (energy_balance()
-  128     1   288   180 1.9841e+006  3.3e-001 SB 4.2e-004 7.8e+004 (energy_balance()
-  129     1   308   181 1.7959e+006  2.6e-001 SG 7.2e-011 5.8e+004 (energy_balance()
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  1.3227e-012 11182  5186   342     0     9 z[ 9959] w[10462]
- 1000  3.1112e-012 11682  4686   342     0    19 z[ 9716] w[ 9715]
- 1500  3.9024e-001 12182  4186   342     0    29 z[ 7431] w[ 7135]
- 2000  3.9866e-001 12682  3686   342     0    39 z[ 6821] w[ 6814]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-  130  2344   309   182 1.7229e+006  1.0e+000 SO 1.0e+001 1.7e+005 (KKTNRES)
-  131   253   310   183 1.5682e+006  1.0e+000 SO 4.0e+000 2.1e+005 (KKTNRES)
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  1.7038e-001 12363  4005   342     0     9 w[ 9769] w[ 7935]
- 1000  4.8616e-001 12144  4224   342     0    19 w[ 2409] z[ 3007]
- 1500  8.0841e-001 11698  4670   342     0    29 w[ 4379] z[ 3973]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-  132  1730   311   184 1.5604e+006  1.0e+000 SO 1.6e+000 9.3e+004 (KKTNRES)
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  4.5832e-001 11119  5249   342     0     9 w[10368] z[ 9945]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-  133   814   312   185 1.6309e+006  1.0e+000 SO 6.4e-001 7.7e+004 (energy_balance()
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  4.2847e-001 11199  5169   342     0     9 z[10311] w[ 4042]
- 1000  5.6648e-001 11420  4948   342     0    19 z[ 2777] z[ 7453]
- 1500  6.0450e-001 11086  5282   342     0    29 w[ 6913] z[ 4636]
- 2000  6.0600e-001 11529  4839   342     0    39 z[ 4129] w[ 4132]
- 2500  6.2508e-001 11376  4992   342     0    49 z[ 3282] z[ 4604]
- 3000  6.7585e-001 10949  5419   342     0    58 w[ 6718] w[ 7911]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-  134  3204   313   186 1.7083e+006  1.0e+000 SO 2.6e-001 7.7e+004 (energy_balance()
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  9.3108e-001 11364  5004   342     0     9 z[ 2780] w[ 2639]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-  135   619   314   187 1.8434e+006  1.0e+000 SD 1.0e-001 7.7e+004 (energy_balance()
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  4.6323e-001 11007  5361   342     0     9 w[14181] z[14236]
- 1000  8.0895e-001 10695  5673   342     0    19 w[13722] z[ 8120]
- 1500  8.8960e-001 10355  6013   342     0    29 w[ 2862] z[ 2670]
- 2000  9.6828e-001 10000  6368   342     0    39 w[ 2943] w[ 3063]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-  136  2171   315   188 1.9841e+006  1.0e+000 SD 4.1e-002 7.8e+004 (energy_balance()
-  137   353   316   189 1.9841e+006  1.0e+000 SD 1.6e-002 7.8e+004 (energy_balance()
-  138     1   319   190 1.7942e+006  6.4e-001 SW 2.6e-001 7.7e+004 (energy_balance()
-  139   264   320   191 1.9243e+006  1.0e+000 SD 1.0e-001 7.7e+004 (energy_balance()
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  2.5639e-001 10999  5369   342     0     9 w[14243] z[14284]
- 1000  5.3545e-001 10611  5757   342     0    19 w[13745] z[14143]
- 1500  7.2718e-001 10231  6137   342     0    29 w[ 8099] z[ 7716]
- 2000  8.2015e-001 10274  6094   342     0    39 z[ 3016] w[ 3017]
- 2500  8.8418e-001  9965  6403   342     0    49 w[ 8666] z[ 3225]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-  140  2519   321   192 1.9841e+006  1.0e+000 SD 4.1e-002 7.8e+004 (energy_balance()
-  141    17   322   193 1.9841e+006  1.0e+000 SD 1.6e-002 7.8e+004 (energy_balance()
-  142     1   332   194 1.7954e+006  9.2e-003 SW 2.6e-001 7.7e+004 (energy_balance()
-  143   202   333   195 1.9255e+006  1.0e+000 SD 1.0e-001 7.7e+004 (energy_balance()
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  2.5299e-001 10999  5369   342     0     9 w[14243] z[14284]
- 1000  5.3238e-001 10609  5759   342     0    19 w[ 7988] z[ 8155]
- 1500  7.2661e-001 10229  6139   342     0    29 w[ 8695] z[ 8468]
- 2000  8.1923e-001 10258  6110   342     0    39 z[ 2911] w[ 2912]
- 2500  8.6969e-001 10007  6361   342     0    49 w[ 2771] z[ 7815]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-  144  2537   334   196 1.9841e+006  1.0e+000 SD 4.1e-002 7.8e+004 (energy_balance()
-  145    17   335   197 1.9841e+006  1.0e+000 SD 1.6e-002 7.8e+004 (energy_balance()
-  146     1   346   198 1.7956e+006  1.5e-003 SW 2.6e-001 7.7e+004 (energy_balance()
-  147   202   347   199 1.9257e+006  1.0e+000 SD 1.0e-001 7.7e+004 (energy_balance()
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  2.5237e-001 10999  5369   342     0     9 w[14243] z[14284]
- 1000  5.3167e-001 10609  5759   342     0    19 w[ 7988] z[ 8155]
- 1500  7.2630e-001 10229  6139   342     0    29 w[ 8695] z[ 8468]
- 2000  8.1882e-001 10270  6098   342     0    39 z[ 2920] w[ 2922]
- 2500  8.6685e-001 10007  6361   342     0    49 w[ 8599] z[ 7815]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-  148  2539   348   200 1.9841e+006  1.0e+000 SD 4.1e-002 7.8e+004 (energy_balance()
-  149    17   349   201 1.9841e+006  1.0e+000 SD 1.6e-002 7.8e+004 (energy_balance()
-  150     1   360   202 1.7958e+006  1.5e-003 SW 2.6e-001 7.7e+004 (energy_balance()
-  151   202   361   203 1.9259e+006  1.0e+000 SD 1.0e-001 7.7e+004 (energy_balance()
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  2.5167e-001 10999  5369   342     0     9 w[ 7757] z[14243]
- 1000  5.3101e-001 10609  5759   342     0    19 w[ 7988] z[ 8155]
- 1500  7.2598e-001 10229  6139   342     0    29 w[ 8695] z[ 8468]
- 2000  8.1860e-001 10272  6096   342     0    39 z[ 2993] w[ 2994]
- 2500  8.7859e-001  9981  6387   342     0    49 w[ 8630] z[ 8299]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-  152  2523   362   204 1.9841e+006  1.0e+000 SD 4.1e-002 7.8e+004 (energy_balance()
-  153    17   363   205 1.9841e+006  1.0e+000 SD 1.6e-002 7.8e+004 (energy_balance()
-  154     1   375   206 1.7959e+006  2.6e-004 SW 2.6e-001 7.7e+004 (energy_balance()
-  155   202   376   207 1.9259e+006  1.0e+000 SD 1.0e-001 7.7e+004 (energy_balance()
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  2.5157e-001 10999  5369   342     0     9 w[ 7757] z[14243]
- 1000  5.3090e-001 10609  5759   342     0    19 w[ 7988] z[ 8155]
- 1500  7.2616e-001 10229  6139   342     0    29 w[ 8695] z[ 8468]
- 2000  8.1737e-001 10276  6092   342     0    39 z[ 3099] w[ 3101]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-  156  2495   377   208 1.9841e+006  1.0e+000 SD 4.1e-002 7.8e+004 (energy_balance()
-  157    17   378   209 1.9841e+006  1.0e+000 SD 1.6e-002 7.8e+004 (energy_balance()
-
-Restart Log
-proximal_perturbation 0
-crash_method none
-crash_perturb no
-nms_initial_reference_factor 10
-nms_memory_size 2
-nms_mstep_frequency 1
-lemke_search_type slack
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-  157     0   380   210 3.9687e+006           R 0.0e+000 1.6e+005 (energy_balance()
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500 -2.2204e-016  5522 10519     2   667     9 w[ 5722] z[ 8837]
- 1000 -8.8818e-016  5441 10705     2   562    17 w[ 9565] w[10565]
- 1500 -8.8818e-016  5609 10704     2   395    24 w[ 8822] w[ 9822]
- 2000 -8.8818e-016  5776 10704     2   228    30 z[ 9066] z[ 9066]
- 2500 -8.8818e-016  5943 10704     2    61    37 z[10311] a[ 9312]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-  158  2669   381   211 3.9686e+006  1.0e+000 RM 0.0e+000 1.6e+005 (energy_balance()
-  159     6   382   212 3.9686e+006  1.0e+000 RM 0.0e+000 1.6e+005 (energy_balance()
-  160     6   383   213 3.9686e+006  1.0e+000 RM 0.0e+000 1.6e+005 (energy_balance()
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500 -1.0066e-008  5498 11206     2     4     9 w[ 6117] z[  297]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-  161   689   398   214 3.9686e+006  3.5e-008 RB 0.0e+000 1.6e+005 (energy_balance()
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  5.5511e-016  9917  5354     1  1438     9 w[ 6863] z[ 1047]
- 1000  5.5511e-016  9835  5562     1  1312    18 w[ 7253] z[ 3749]
- 1500  5.5511e-016  9801  5760     1  1148    26 z[ 9334] z[ 9334]
- 2000  5.5511e-016  9805  5898     1  1006    35 z[ 8953] z[ 8953]
- 2500  5.5511e-016  9810  6043     1   856    44 w[ 9637] a[ 9550]
- 3000  5.5511e-016  9792  6219     1   698    52 w[ 9088] a[ 8951]
- 3500 -3.9968e-015  9734  6418     1   557    61 w[ 7721] z[ 1355]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-  162  3807   399   215 3.9674e+006  1.0e+000 CM 0.0e+000 1.6e+005 (energy_balance()
-  163     2   406   216 2.8218e+006  1.7e-001 RG 0.0e+000 1.1e+005 (renewable_gener)
-  164   167   407   217 2.8218e+006  1.0e+000 CM 0.0e+000 1.1e+005 (renewable_gener)
-  165   169   408   218 2.8218e+006  1.0e+000 CM 0.0e+000 1.1e+005 (renewable_gener)
-  166   282   428   219 2.7524e+006  2.6e-001 CG 0.0e+000 1.1e+005 (energy_balance()
-  167    14   448   220 1.5525e+006  2.6e-001 RG 0.0e+000 9.4e+004 (renewable_gener)
-  168     2   454   221 1.4872e+006  2.1e-001 RB 0.0e+000 1.5e+005 (KKTNRES)
-  169   103   459   222 1.4326e+006  4.1e-001 CG 0.0e+000 9.5e+004 (energy_balance()
-  170    92   460   223 1.4451e+006  1.0e+000 RM 0.0e+000 9.5e+004 (energy_balance()
-  171    34   480   224 1.1916e+006  2.6e-001 RG 0.0e+000 7.9e+004 (renewable_gener)
-
-Restart Log
-proximal_perturbation 0
-crash_method pnewton
-crash_nbchange_limit 10
-nms_initial_reference_factor 2
-crash_searchtype arc
-nms_searchtype arc
-gradient_searchtype arc
-lemke_search_type slack
-
-Crash Log
-major  func  diff  size  residual    step       prox   (label)
-    0     0             3.9687e+006             0.0e+000 (energy_balance(h691))
-    1     1  2967  3347 3.7801e+006  1.0e+000    1.0e+001 (energy_balance(h691))
-    2     2  2885  4972 3.5934e+006  1.0e+000    9.0e+000 (energy_balance(h691))
-    3     3  2723  6026 3.4128e+006  1.0e+000    8.1e+000 (energy_balance(h691))
-    4     4  1712  7296 3.2422e+006  1.0e+000    7.3e+000 (energy_balance(h691))
-    5     5   400  7565 3.0848e+006  1.0e+000    6.6e+000 (energy_balance(h691))
-    6     6   109  7649 2.9428e+006  1.0e+000    5.9e+000 (energy_balance(h691))
-    7     7   471  7669 2.8169e+006  1.0e+000    5.3e+000 (energy_balance(h691))
-    8     8  1384  7224 2.7068e+006  1.0e+000    4.8e+000 (energy_balance(h691))
-    9     9  1190  7849 2.6116e+006  1.0e+000    4.3e+000 (energy_balance(h691))
-   10    10   491  7469 2.5296e+006  1.0e+000    3.9e+000 (energy_balance(h691))
-   11    11   269  6982 2.4592e+006  1.0e+000    3.5e+000 (energy_balance(h691))
-   12    12    97  6717 2.3989e+006  1.0e+000    3.1e+000 (energy_balance(h691))
-   13    13    68  6626 2.3472e+006  1.0e+000    2.8e+000 (energy_balance(h691))
-   14    14   689  6596 2.3026e+006  1.0e+000    2.5e+000 (energy_balance(h691))
-   15    15   880  6457 2.2642e+006  1.0e+000    2.3e+000 (energy_balance(h691))
-   16    16    86  5777 2.2309e+006  1.0e+000    2.1e+000 (energy_balance(h691))
-   17    17    84  5795 2.2020e+006  1.0e+000    1.9e+000 (energy_balance(h691))
-   18    18   117  5781 2.1769e+006  1.0e+000    1.7e+000 (energy_balance(h691))
-   19    19   104  5755 2.1549e+006  1.0e+000    1.5e+000 (energy_balance(h691))
-   20    20   152  5731 2.1357e+006  1.0e+000    1.4e+000 (energy_balance(h691))
-   21    21   192  5825 2.1189e+006  1.0e+000    1.2e+000 (energy_balance(h691))
-   22    22   119  5859 2.1040e+006  1.0e+000    1.1e+000 (energy_balance(h691))
-   23    23    86  5863 2.0909e+006  1.0e+000    9.8e-001 (energy_balance(h691))
-   24    24    87  5857 2.0794e+006  1.0e+000    8.9e-001 (energy_balance(h691))
-   25    25   118  5888 2.0692e+006  1.0e+000    8.0e-001 (energy_balance(h691))
-   26    26   145  5906 2.0601e+006  1.0e+000    7.2e-001 (energy_balance(h691))
-   27    27   223  5955 2.0520e+006  1.0e+000    6.5e-001 (energy_balance(h691))
-   28    28   278  6041 2.0449e+006  1.0e+000    5.8e-001 (energy_balance(h691))
-   29    29   241  6103 2.0385e+006  1.0e+000    5.2e-001 (energy_balance(h691))
-   30    30   189  6119 2.0328e+006  1.0e+000    4.7e-001 (energy_balance(h691))
-   31    31   160  6129 2.0278e+006  1.0e+000    4.2e-001 (energy_balance(h691))
-   32    32   184  6154 2.0232e+006  1.0e+000    3.8e-001 (energy_balance(h691))
-   33    33   241  6217 2.0192e+006  1.0e+000    3.4e-001 (energy_balance(h691))
-   34    34   230  6324 2.0156e+006  1.0e+000    3.1e-001 (energy_balance(h691))
-   35    35   188  6326 2.0124e+006  1.0e+000    2.8e-001 (energy_balance(h691))
-   36    36   196  6383 2.0095e+006  1.0e+000    2.5e-001 (energy_balance(h691))
-   37    37   155  6405 2.0069e+006  1.0e+000    2.3e-001 (energy_balance(h691))
-   38    38   147  6436 2.0045e+006  1.0e+000    2.0e-001 (energy_balance(h691))
-   39    39   114  6449 2.0025e+006  1.0e+000    1.8e-001 (energy_balance(h691))
-   40    40    64  6449 2.0006e+006  1.0e+000    1.6e-001 (energy_balance(h691))
-   41    41    44  6471 1.9989e+006  1.0e+000    1.5e-001 (energy_balance(h691))
-   42    42   220  6478 1.9974e+006  1.0e+000    1.3e-001 (energy_balance(h691))
-   43    43   208  6686 1.9961e+006  1.0e+000    1.2e-001 (energy_balance(h691))
-   44    44    25  6551 1.9949e+006  1.0e+000    1.1e-001 (energy_balance(h691))
-   45    45    92  6572 1.9938e+006  1.0e+000    9.7e-002 (energy_balance(h691))
-   46    46   117  6641 1.9928e+006  1.0e+000    8.7e-002 (energy_balance(h691))
-   47    47    54  6670 1.9919e+006  1.0e+000    7.9e-002 (energy_balance(h691))
-   48    48    25  6676 1.9911e+006  1.0e+000    7.1e-002 (energy_balance(h691))
-   49    49    19  6695 1.9904e+006  1.0e+000    6.4e-002 (energy_balance(h691))
-   50    50     0  6695 1.9898e+006  1.0e+000    5.7e-002 (energy_balance(h691))
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-  171     0   551   275 1.9898e+006           R 5.2e-002 7.8e+004 (energy_balance()
-  172     1   552   276 1.9885e+006  1.0e+000 SM 2.1e-002 7.8e+004 (energy_balance()
-  173     1   553   277 1.9869e+006  1.0e+000 SM 8.2e-003 7.8e+004 (energy_balance()
-  174     1   554   278 1.9856e+006  1.0e+000 SM 3.3e-003 7.8e+004 (energy_balance()
-  175     1   555   279 1.9856e+006  1.0e+000 SM 1.0e+001 7.8e+004 (energy_balance()
-  176     1   556   280 1.9856e+006  1.0e+000 SM 4.0e+000 7.8e+004 (energy_balance()
-  177     1   557   281 1.9856e+006  1.0e+000 SM 1.6e+000 7.8e+004 (energy_balance()
-  178     1   558   282 1.9856e+006  1.0e+000 SM 6.4e-001 7.8e+004 (energy_balance()
-  179     1   559   283 1.9856e+006  1.0e+000 SM 2.6e-001 7.8e+004 (energy_balance()
-  180     1   560   284 1.9856e+006  1.0e+000 SM 1.0e-001 7.8e+004 (energy_balance()
-  181     1   561   285 1.9855e+006  1.0e+000 SM 4.1e-002 7.8e+004 (energy_balance()
-  182     1   562   286 1.9854e+006  1.0e+000 SM 1.6e-002 7.8e+004 (energy_balance()
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  3.9344e-001  9195  7173   342     0    10 w[ 8404] z[ 7830]
- 1000  4.1756e-001  8695  7673   342     0    20 w[ 8381] z[ 8393]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-  183  1191   563   287 1.9852e+006  1.0e+000 SM 6.6e-003 7.8e+004 (energy_balance()
-  184     1   564   288 1.9848e+006  1.0e+000 SM 2.6e-003 7.8e+004 (energy_balance()
-  185     1   565   289 1.9845e+006  1.0e+000 SM 1.0e-003 7.8e+004 (energy_balance()
-  186     1   566   290 1.9843e+006  1.0e+000 SM 4.2e-004 7.8e+004 (energy_balance()
-  187     1   567   291 1.9842e+006  1.0e+000 SM 1.7e-004 7.8e+004 (energy_balance()
-  188     1   568   292 1.9841e+006  1.0e+000 SM 6.7e-005 7.8e+004 (energy_balance()
-  189     1   569   293 1.9841e+006  1.0e+000 SM 2.7e-005 7.8e+004 (energy_balance()
-  190     1   570   294 1.9841e+006  1.0e+000 SM 1.1e-005 7.8e+004 (energy_balance()
-  191     1   571   295 1.9841e+006  1.0e+000 SM 4.3e-006 7.8e+004 (energy_balance()
-  192     1   572   296 1.9841e+006  1.0e+000 SM 1.7e-006 7.8e+004 (energy_balance()
-  193     1   573   297 1.9841e+006  1.0e+000 SM 6.9e-007 7.8e+004 (energy_balance()
-  194     1   574   298 1.9841e+006  1.0e+000 SM 2.7e-007 7.8e+004 (energy_balance()
-  195     1   575   299 1.9841e+006  1.0e+000 SM 1.1e-007 7.8e+004 (energy_balance()
-  196     1   576   300 1.9841e+006  1.0e+000 SM 4.4e-008 7.8e+004 (energy_balance()
-  197     1   577   301 1.9841e+006  1.0e+000 SM 1.8e-008 7.8e+004 (energy_balance()
-  198     1   578   302 1.9841e+006  1.0e+000 SM 7.0e-009 7.8e+004 (energy_balance()
-  199     1   579   303 1.9841e+006  1.0e+000 SM 2.8e-009 7.8e+004 (energy_balance()
-  200     1   580   304 1.9841e+006  1.0e+000 SM 1.1e-009 7.8e+004 (energy_balance()
-  201     1   581   305 1.9841e+006  1.0e+000 SM 4.5e-010 7.8e+004 (energy_balance()
-  202     1   582   306 1.9841e+006  1.0e+000 SM 1.8e-010 7.8e+004 (energy_balance()
-  203     1   583   307 1.9841e+006  1.0e+000 SM 7.2e-011 7.8e+004 (energy_balance()
-  204     1   584   308 1.9841e+006  1.0e+000 SM 1.0e+001 7.8e+004 (energy_balance()
-  205     1   589   309 1.9841e+006  3.3e-001 SB 4.0e+000 7.8e+004 (energy_balance()
-  206     1   609   310 1.7959e+006  2.6e-001 SG 7.2e-011 5.8e+004 (energy_balance()
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  1.3227e-012  9004  7364   342     0     9 z[ 9959] w[10462]
- 1000  3.1111e-012  9504  6864   342     0    19 z[ 9716] w[ 9715]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-  207  1002   610   311 1.7229e+006  1.0e+000 SM 1.0e+001 1.7e+005 (KKTNRES)
-  208    57   611   312 1.5682e+006  1.0e+000 SM 4.0e+000 2.1e+005 (KKTNRES)
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  6.3968e-001  9285  7083   342     0     9 w[ 2978] w[ 8658]
- 1000  8.9156e-001  9338  7030   342     0    19 z[ 6756] z[ 4235]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-  209  1258   612   313 1.5604e+006  1.0e+000 SM 1.6e+000 9.3e+004 (KKTNRES)
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  3.6784e-001  9063  7305   342     0     9 w[ 7253] z[ 3062]
- 1000  5.2196e-001  9170  7198   342     0    19 z[ 3586] w[ 3587]
- 1500  5.2196e-001  9670  6698   342     0    29 z[ 4228] w[ 4229]
- 2000  6.0660e-001  9957  6411   342     0    39 z[ 8531] z[ 7916]
- 2500  8.8309e-001 10039  6329   342     0    49 z[ 8347] z[14215]
- 3000  9.7939e-001  9667  6701   342     0    58 w[ 3677] z[ 3678]
-  210   125   613   314 1.5680e+006  1.0e+000 SM 1.0e+001 8.4e+004 (KKTNRES)
-  211   354   631   315 1.3694e+006  6.4e-001 SG 1.6e+000 6.5e+004 (renewable_gener)
-  212    51   651   316 1.1101e+006  2.6e-001 TG 1.0e+001 6.1e+004 (energy_balance()
-  213    51   652   317 1.1101e+006  1.0e+000 TM 1.0e+001 6.1e+004 (energy_balance()
-  214    51   666   318 1.1101e+006  1.2e-006 TB 1.0e+001 6.1e+004 (energy_balance()
-  215    51   685   319 9.8095e+005  4.1e-001 TG 1.0e+001 7.4e+004 (KKTNSTOP)
-  216    51   704   320 9.2608e+005  4.1e-001 TG 1.0e+001 5.8e+004 (energy_balance()
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500 -5.7236e+015   499 16211     0     0     9 z[ 8959] w[ 9462]
- 1000 -3.4511e+015   999 15711     0     0    19 z[ 8716] w[ 8715]
- 1500 -1.4243e+012  1341 15290    79     0    27 v[ 6009] w[ 5833]
- 2000 -5.1839e+011  1341 15040   329     0    32 v[ 5691] w[ 5690]
- 2500 -1.6226e+005  1815 14553   342     0    42 z[13951] w[14084]
- 3000 -7.7841e+004  2315 14053   342     0    52 z[10181] w[10185]
- 3500 -2.8612e+004  2813 13554   343     0    61 z[10381] w[10344]
- 4000 -9.7773e+001  3313 13054   343     0    71 z[15150] w[14976]
- 4500 -5.3773e+000  3813 12554   343     0    81 z[ 2223] w[ 2105]
- 5000 -4.4049e+000  4313 12054   343     0    91 z[ 7510] w[ 1556]
- 5500 -3.6452e+000  4813 11554   343     0   101 z[11255] w[ 1351]
- 6000 -2.7734e+000  5313 11054   343     0   110 z[  624] w[  590]
- 6500 -2.4660e+000  5813 10554   343     0   120 z[  801] w[11408]
- 7000 -1.9332e+000  6313 10054   343     0   130 z[ 7284] w[11008]
- 7500 -1.1213e+000  6813  9554   343     0   140 z[10870] w[ 4632]
- 8000 -6.7364e-001  7313  9054   343     0   150 z[12591] w[ 4472]
- 8500 -3.8275e-001  7813  8554   343     0   159 z[ 5605] w[16375]
- 9000 -2.4506e-001  8313  8054   343     0   169 z[ 8033] w[ 5365]
- 9500 -1.9458e-001  8813  7554   343     0   179 z[ 4770] w[15802]
-10000 -6.4845e-002  9313  7054   343     0   189 z[11672] w[15998]
-
-FINAL STATISTICS
-Inf-Norm of Complementarity . .  6.3521e+008 eqn: (KKTGRES(h643))
-Inf-Norm of Normal Map. . . . .  6.1766e+004 eqn: (energy_balance(h498))
-Inf-Norm of Minimum Map . . . .  6.1766e+004 eqn: (energy_balance(h498))
-Inf-Norm of Fischer Function. .  6.1766e+004 eqn: (energy_balance(h498))
-Inf-Norm of Grad Fischer Fcn. .  6.9041e+005 eqn: (KKTNRES)
-Two-Norm of Grad Fischer Fcn. .  9.4452e+005
-
-FINAL POINT STATISTICS
-Zero column of order. . . . . .  0.0000e+000 var: (lambda(h1))
-Zero column of order. . . . . .  0.0000e+000 var: (lambda(h2))
-Zero column of order. . . . . .  0.0000e+000 var: (lambda(h3))
-Zero column of order. . . . . .  0.0000e+000 var: (lambda(h4))
-Zero column of order. . . . . .  0.0000e+000 var: (lambda(h5))
-Zero column of order. . . . . .  0.0000e+000 var: (lambda(h6))
-Zero column of order. . . . . .  0.0000e+000 var: (lambda(h7))
-Zero column of order. . . . . .  0.0000e+000 var: (lambda(h16))
-Zero column of order. . . . . .  0.0000e+000 var: (lambda(h17))
-Total zero columns. . . . . . .  659
-Maximum of X. . . . . . . . . .  1.8103e+015 var: (lambda(h691))
-Maximum of F. . . . . . . . . .  3.5690e+013 eqn: (KKTNPV_hh)
-Maximum of Grad F . . . . . . .  1.0799e+000 eqn: (KKTSTOUT_hh(h1))
-                                            var: (levelsto_hh(h1))
-
- ** EXIT - other error.
-
-Major Iterations. . . . 216
-Minor Iterations. . . . 94658
-Restarts. . . . . . . . 3
-Crash Iterations. . . . 100
-Gradient Steps. . . . . 15
-Function Evaluations. . 709
-Gradient Evaluations. . 320
-Total Time. . . . . . . 112.479000
-Residual. . . . . . . . 8.994928e+005
-Postsolved residual: 8.9949e+005
-
---- Restarting execution
---- MORITS_MCP.gms(695) 8 Mb
---- Reading solution for model prosumodmcp
---- MORITS_MCP.gms(695) 10 Mb
---- Executing after solve: elapsed 0:02:01.538
---- MORITS_MCP.gms(716) 10 Mb
-*** Status: Normal completion
---- Job MORITS_MCP.gms Stop 09/24/18 16:43:50 elapsed 0:02:01.547
+  500  1.7065e-011 52109 41894     0     0     9 z[86414] w[92563]
+ 1000  9.5351e-010 52609 41394     0     0    19 z[24271] w[25241]
+ 1500  1.6167e-007 53109 40894     0     0    29 z[18493] w[19418]
+Sending CtrlBreakp signal
+Batchvorgang abbrechen (J/N)? 
+^CERROR: Solver "PATH" returned with nonzero exitcode -1073741510 
+Exit code = -1073741510

@@ -1,0 +1,22 @@
+B 2 C o m p i l a t i o n
+B 109 Equation Listing    SOLVE testmodel Using MCP From line 94
+D 110 KKTG
+D 122 energy_balance
+D 133 cap_constraint
+B 146 Column Listing      SOLVE testmodel Using MCP From line 94
+E 147 g
+E 167 lambda
+E 182 mu
+B 200 Model Statistics    SOLVE testmodel Using MCP From line 94
+B 218 Solution Report     SOLVE testmodel Using MCP From line 94
+F 269 KKTG
+F 280 energy_balance
+F 287 cap_constraint
+G 293 g
+G 304 lambda
+G 311 mu
+B 331 E x e c u t i o n
+I 332 g
+I 341 lambda
+I 347 lev_Z
+I 348 mu
