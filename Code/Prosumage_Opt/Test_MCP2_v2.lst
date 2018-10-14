@@ -1,0 +1,433 @@
+GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 10/14/18 19:08:42 Page 1
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+C o m p i l a t i o n
+
+
+   1  **************************************************************************
+      ******
+   2  **************************************************************************
+      ******
+   3  *   This model is a dispatch and investment model for PROSUMAGE households
+   4  *   PROSUMAGE households PROduce, conSUMe electricity and usage storAGE
+   5  *
+   6  *   Date of this version: August 6, 2018
+   7  *
+   8  **************************************************************************
+      ******
+   9  **************************************************************************
+      ******
+  10   
+  11   
+  12  ******************* Format and model run specifications ******************
+      ******
+  13   
+  14  * ------------- household selection---------------------------------------
+      ------
+  15  * Select a household profile between V1 and V74:
+  16   
+  18   
+  19   
+  20  * ------------- Base year selection---------------------------------------
+      ------
+  21  * Select year between 2010 and 2016:
+  22   
+  24   
+  25   
+  26   
+  27  * ------------- Set data import and export options -----------------------
+      ------
+  28   
+  29  * mark offXcel with a star to turn off excel import and import gdx file
+  30  * mark modelkill to create a gdx file only without model run
+  31   
+  34   
+  35  * Set column index (alphabetic) in excel file furthest to the right
+  36  * to speed up data import
+  37   
+  39   
+  40  * Name input file suffix other than "input data"
+  42   
+  43  * Auto set of input file (do not change)
+  45   
+  46  * Auto set of output file (do not change)
+  48   
+  49   
+  50  **************** Sets, variables, parameters declaration *****************
+      ******
+  51   
+  52   
+  53  Sets
+  54  h                Hours                                   /h1*h8760/
+  55  res              Renewable technologies                  /solar/
+  56  sto              Storage technolgies                     /storage/
+  57  year             Base years                              /2010*2016/
+  58  hh_profile       Household load data                     /V1*V74/
+  59   
+  60  ;
+  61   
+  62  Variables
+  63  Z                        Objective
+  64  levelsto(h)
+  65  ;
+  66   
+  67  Positive variables
+  68  G_PV(h)              Generation of pv plant
+  69  CU(h)                Curtailment of pv energy
+  70  N_PV                 PV generation capacities
+  71  N_STO_E             Capacities: storage energy
+  72  N_STO_P             Capacities: storage power
+  73  STO_L(h)             Storage level
+  74  STO_IN(h)            Storage intake
+  75  STO_OUT(h)           Storage generation
+  76  E_buy(h)                 Energy purchased from market
+  77  E_sell(h)                Energy sold to market
+  78  lambda(h)
+  79  mu(h)
+  80  gamma1
+  81  gamma2(h)
+  82  gamma3(h)
+  83  gamma4(h)
+  84   
+  85   
+  86  ;
+  87   
+  88  Parameters
+  89  sto_ini_last           Level of storage in initial and last period
+  90  eta_sto_in             Efficiency: storage in
+  91  eta_sto_out            Efficiency: storage out
+  92  d(h)                        Household load
+  93  d_upload(h,hh_profile)      Household load - upload parameter
+  94  avail_solar(h)              Hourly capacity factor for pv
+  95  avail_solar_upload(h,year)  Hourly capacity factor pv - upload parameter
+  96  pv_cap_max             PV capacity maximum
+  97  price_market(h)             Price for selling energy per kWh
+  98  price_market_upload(h,year) Price for selling energy per MWh - upload para
+      meter
+  99  price_buy                   Price for energy consumption per kWh
+ 100  c_i_sto_e              Cost: investment into storage energy
+ 101  c_i_sto_p             Cost: investment into storage power
+ 102  c_i_pv                Cost: investment into renewable capacity
+ 103  c_var_sto              Cost: variable generation costs storage
+ 104  penalty                     Penalty term
+ 105  lev_Z
+ 106  lev_EB
+ 107  lev_ES
+ 108   
+ 109  ;
+ 110   
+ 111   
+ 112  * Declare efficiency parameters
+ 113  sto_ini_last  =  0.5 ;
+ 114  eta_sto_in    =  0.81 ;
+ 115  eta_sto_out   =  0.926 ;
+ 116  penalty = 0 ;
+ 117   
+ 118   
+ 119  * Declare cost parameters
+ 120  c_i_sto_e  =  5418.14/1000 ;
+ 121  c_i_sto_p  = 50995.48/1000 ;
+ 122  c_i_pv           = 60526.64/1000 ;
+ 123  c_var_sto  =     0.5/1000*365/20 ;
+ 124  price_buy       =     0.30*365/20 ;
+ 125   
+ 126  * Declare further restrictions
+ 127  pv_cap_max = 10;
+ 128   
+ 129   
+ 130  ***************************** Upload data ********************************
+      ******
+ 131   
+ 139   
+ 140   
+ 141  *$call "gdxxrw data\input_data.xlsx squeeze=N @data\input_data.tmp  o=data
+      \input_data.gdx  ";
+GDXIN   C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\data\input
+        _data.gdx
+--- LOAD  d_upload = 1:d_upload
+--- LOAD  avail_solar_upload = 2:avail_solar_upload
+--- LOAD  price_market_upload = 3:price_market_upload
+ 144  ;
+ 145   
+ 146  * Load data for specific household and base year
+ 147  d(h)                   = d_upload(h,'V17') ;
+ 148  avail_solar(h)         = avail_solar_upload(h,'2014') ;
+ 149   
+ 150  *Load market price as price per kWh
+ 151  price_market(h)        = price_market_upload(h,'2014')/1000 ;
+ 152  *price_market(h)        = 0.12 ;
+ 153   
+ 155   
+ 156  ****************************** Model setup *******************************
+      ******
+ 157   
+ 158  Equations
+ 159  objective                  Objective function
+ 160  hh_energy_balance          Household energy balance
+ 161  pv_generation              Household use of pv energy generation
+ 162  pv_install_max        PV capacity constraint
+ 163  energy_tomarket            Amount of energy sold to market
+ 164  energy_frommarket          Amount of energy purchased from market
+ 165  stolev_no_freelunch        Storage level in initial and last period
+ 166  stolevel                   Storage level dynamics
+ 167  stolev_max_energy          Storage capacity constraint on maximum energy
+ 168  stoin_max_power            Storage capacity constraint on maximum power - 
+      storing in
+ 169  stoout_max_power           Storage capacity constraint on maximum power - 
+      storing out
+ 170  KKTNPV
+ 171  KKTNSTOE
+ 172  KKTNSTOP
+ 173  KKTEB
+ 174  KKTES
+ 175  KKTG
+ 176  KKTSTOIN
+ 177  KKTSTOUT
+ 178  KKTSTOLEV
+ 179  KKTCU
+ 180  foresight_24h
+ 181   
+ 182  ;
+ 183   
+ 184   
+ 185  *** Objective function: Minimize total system costs
+ 186  objective..
+ 187   
+ 188     Z =E=
+ 189   
+ 190            c_i_pv * N_PV
+ 191           + c_i_sto_e * N_STO_E + c_i_sto_p * N_STO_P
+ 192           + sum( (h) , c_var_sto * (STO_IN(h) + STO_OUT(h)) )
+ 193           + sum(  h , price_buy * E_buy(h))
+ 194           - sum(  h , price_market(h) * E_sell(h))
+ 195  ;
+ 196   
+ 197  *** Household energy balance: Satisfy load with own generation, storage an
+      d grid
+ 198  hh_energy_balance(h)..
+ 199   
+ 200   
+ 201             G_PV(h)
+ 202           + STO_OUT(h)
+ 203           + E_buy(h)   =G=
+ 204            d(h)
+ 205  ;
+ 206   
+ 207  *** Household PV generation usage: Directly consumed, curtailed,stored or 
+      sold
+ 208  pv_generation(h)..
+ 209   
+ 210        avail_solar(h) * N_PV =G=
+ 211          G_PV(h)
+ 212        + CU(h)
+ 213        + STO_IN(h)
+ 214        + E_sell(h)
+ 215  ;
+ 216   
+ 217  *** Restrict PV capacity
+ 218  pv_install_max..
+ 219   
+ 220            pv_cap_max - N_PV =G= 0
+ 221  ;
+ 222   
+ 223   
+ 224   
+ 225   
+ 226  *** Technical constraints on storage
+ 227  *Storage level in first and last period must be the same
+      stolev_no_freelunch..
+       
+                STO_L('h8760') - STO_L('h1') =E= 0
+      ;
+       
+ 235   
+ 236  *Storage level for all hours except first: Prio level plus intake minus ou
+      tflow
+ 237   
+ 238  stolevel(h)$( ord(h) > 1 )..
+ 239   
+ 240           STO_L(h-1)
+ 241           + STO_IN(h) * eta_sto_in
+ 242           - STO_OUT(h)/eta_sto_out
+ 243           =E=  STO_L(h)
+ 244  ;
+ 245   
+ 246   
+ 247   
+ 248  * Storage maximum energy capacity
+ 249  stolev_max_energy(h)..
+ 250   
+ 251            N_STO_E  - STO_L(h) =G= 0
+ 252  ;
+ 253   
+ 254  * Storage maximum charging capacity (power in)
+ 255  stoin_max_power(h)..
+ 256   
+ 257             N_STO_P - STO_IN(h) =G= 0
+ 258  ;
+ 259   
+ 260  * Storage maximum discharging capacity (power out)
+ 261  stoout_max_power(h)..
+ 262   
+ 263            N_STO_P  - STO_OUT(h) =G= 0
+ 264  ;
+ 265   
+ 266   
+ 267  KKTNPV..
+ 268   
+ 269    c_i_pv - sum( h, mu(h)*avail_solar(h)) + gamma1 =G= 0
+ 270   
+ 271  ;
+ 272  KKTNSTOE..
+ 273   
+ 274    c_i_sto_e  - sum(h, gamma2(h)) =G= 0
+ 275   
+ 276  ;
+ 277  KKTNSTOP..
+ 278   
+ 279      c_i_sto_p  - sum(h, gamma3(h)) - sum(h, gamma4(h)) =G= 0
+ 280   
+ 281  ;
+ 282   
+ 283  KKTEB(h)..
+ 284   
+ 285           price_buy - lambda(h) =G= 0
+ 286   
+ 287  ;
+ 288   
+ 289  KKTES(h)..
+ 290   
+ 291             -price_market(h)   + mu(h) =G=  0
+ 292   
+ 293  ;
+ 294   
+ 295  KKTG(h)..
+ 296   
+ 297        - lambda(h) + mu(h) =G= 0
+ 298   
+ 299   
+ 300  ;
+ 301   
+ 302  KKTCU(h)..
+ 303   
+ 304        + mu(h) =G= 0
+ 305  ;
+ 306   
+ 307  KKTSTOIN(h)..
+ 308   
+ 309           c_var_sto + mu(h) + gamma3(h) - levelsto(h)*eta_sto_in =G= 0
+ 310   
+ 311  ;
+ 312  KKTSTOUT(h)..
+ 313   
+ 314            c_var_sto -lambda(h) + gamma4(h) + levelsto(h)/eta_sto_out =G= 0
+ 315   
+ 316   
+ 317  ;
+ 318   
+ 319  KKTSTOLEV(h)..
+ 320   
+ 321   
+ 322       gamma2(h) + levelsto(h) - levelsto(h+1) =G= 0
+ 323   
+ 324  ;
+ 325   
+ 326   
+ 327   
+ 328  ***************************** Initialize model ***************************
+      ******
+ 329  Model prosumodmcp /
+ 330   
+ 331  hh_energy_balance.lambda
+ 332  pv_generation.mu
+ 333  pv_install_max.gamma1
+ 334  stolevel.levelsto
+ 335  stolev_max_energy.gamma2
+ 336  stoin_max_power.gamma3
+ 337  stoout_max_power.gamma4
+ 338  KKTNPV.N_PV
+ 339  KKTNSTOE.N_STO_E
+ 340  KKTNSTOP.N_STO_P
+ 341  KKTEB.E_buy
+ 342  KKTES.E_sell
+ 343  KKTG.G_PV
+ 344  KKTSTOIN.STO_IN
+ 345  KKTSTOUT.STO_OUT
+ 346  KKTSTOLEV.STO_L
+ 347  KKTCU.CU
+ 348  /
+ 349   
+ 350   
+ 351  options
+ 352  optcr = 0.00
+ 353  reslim = 10000000
+ 354  lp = cplex
+ 355  mip = cplex
+ 356  nlp = conopt
+ 357  dispwidth = 15
+ 358  limrow = 0
+ 359  limcol = 0
+ 360  solprint = off
+ 361  sysout = off
+ 362  optcr = 1e-3
+ 363  optca = 10
+ 364  *PROFILETOL = 10
+ 365   
+ 366  ;
+ 367   
+ 375   
+ 376  * Set up initial values for speed up
+ 377  STO_L.l(h) = 4.367
+ 378  ;
+ 379  *N_PV.fx       = 8    ;
+ 380  *N_STO_E.fx    = 10   ;
+ 381  *N_STO_P.fx    = 1.5  ;
+ 382   
+ 383  levelsto.fx('h1') = 10000000;
+ 384  *levelsto.fx('h8760') = 0.277;
+ 385   
+ 386   
+ 387  solve prosumodmcp using mcp;
+ 388   
+ 389  display d , N_PV.l , E_buy.l , E_sell.l ,  G_PV.l,
+ 390          price_market, hh_energy_balance.m,  levelsto.l,
+ 391          pv_install_max.m, pv_generation.m, N_STO_E.l, N_STO_P.l
+ 392   
+ 393   
+ 394  ***************************** Set up reporting ***************************
+      ******
+ 395   
+ 396   
+GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 10/14/18 19:08:42 Page 2
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Include File Summary
+
+
+   SEQ   GLOBAL TYPE      PARENT   LOCAL  FILENAME
+
+     1        1 INPUT          0       0  C:\Users\Lenovo\Documents\GitHub\prosu
+                                          mage\Code\Prosumage_Opt\Test_MCP2_v2.g
+                                          ms
+     2      142 GDXIN          1     142  C:\Users\Lenovo\Documents\GitHub\prosu
+                                          mage\Code\Prosumage_Opt\data\input_dat
+                                          a.gdx
+
+
+COMPILATION TIME     =        0.109 SECONDS     28 MB  24.7.4 r58773 WEX-WEI
+GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 10/14/18 19:08:42 Page 3
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Model Statistics    SOLVE prosumodmcp Using MCP From line 387
+
+
+MODEL STATISTICS
+
+BLOCKS OF EQUATIONS          17     SINGLE EQUATIONS      113,883
+BLOCKS OF VARIABLES          17     SINGLE VARIABLES      113,884
+NON ZERO ELEMENTS       306,489     NON LINEAR N-Z              0
+DERIVATIVE POOL              20     CONSTANT POOL              16
+CODE LENGTH                   0
+
+
+GENERATION TIME      =        0.235 SECONDS     58 MB  24.7.4 r58773 WEX-WEI
+
+
+EXECUTION TIME       =        0.235 SECONDS     58 MB  24.7.4 r58773 WEX-WEI
