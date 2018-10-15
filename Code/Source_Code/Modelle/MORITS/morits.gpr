@@ -56,9 +56,6 @@ PlaneRownr=-1
 [RP:SECOND_HOUR]
 1=
 
-[RP:MORITS_MCP]
-1=
-
 [RP:NBES_1]
 1=
 
@@ -68,6 +65,12 @@ PlaneRownr=-1
 [RP:ABRELL]
 1=
 
+[RP:DIETER]
+1=
+
+[RP:MORITS_MCP]
+1=
+
 [OPENWINDOW_1]
 MAXIM=0
 TOP=53
@@ -75,16 +78,16 @@ LEFT=105
 HEIGHT=915
 WIDTH=1390
 
-[RP:DIETER]
+[RP:MORITS_MCP_ONLINE]
 1=
 
 [MRUFILES]
-1=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Test_MCP\NBES_2.gms
-2=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Test_MCP\NBES_1.gms
-3=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\MORITS_MCP.lst
-4=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\MORITS_MCP.gms
-5=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\DIETER_Prosumage\DIETER kalibriert für EU Referenzszenario 2030\DIETER.gms
-6=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Test_MCP\abrell.gms
-7=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\NBES_2.lst
-8=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\DIETER_Prosumage\second_hour.gms
-9=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\DIETER_Prosumage\DIETER_v1.2.0.gms
+1=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\MORITS_MCP_online.lst
+2=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\MORITS_MCP_online.gms
+3=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Test_MCP2.lst
+4=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\PROSUMOD.lst
+5=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\MORITS_MCP.lst
+6=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\MORITS_MCP.gms
+7=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Test_MCP\NBES_2.gms
+8=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Test_MCP\NBES_1.gms
+9=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\MORITS_MCP.lst

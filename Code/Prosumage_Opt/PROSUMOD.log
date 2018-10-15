@@ -1,85 +1,65 @@
 
---- Job PROSUMOD.gms Start 09/18/18 17:10:13 24.2.3 r46072 WEX-WEI x86_64/MS Windows
-GAMS 24.2.3   Copyright (C) 1987-2014 GAMS Development. All rights reserved
-Licensee: Abteilung Energie, Verkehr, Umwelt, 5 User     S131220:0515AN-GEN
-          Deutsches Institut fuer Wirtschaftsforschung DIW           DC3975
+--- Job PROSUMOD.gms Start 10/14/18 21:37:28 24.7.4 r58773 WEX-WEI x86 64bit/MS Windows
+GAMS 24.7.4   Copyright (C) 1987-2016 GAMS Development. All rights reserved
+Licensee: Medium MUD - 10 User License                   S170316:1123AO-GEN
+          Deutsches Institut fuer Wirtschaftsforschung DIW, AbteilungDC3975
           License for teaching and research at degree granting institutions
+          License Admin: Claudia Kemfert, bbibra@diw.de                    
 --- Starting compilation
 --- PROSUMOD.gms(135) 3 Mb
---- GDXin=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\data\input_data.gdx
---- PROSUMOD.gms(297) 28 Mb
---- Starting execution: elapsed 0:00:00.072
---- PROSUMOD.gms(267) 29 Mb
+--- GDXin=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\data\input_data.gdx
+--- PROSUMOD.gms(299) 11 Mb
+--- Starting execution: elapsed 0:00:00.264
+--- PROSUMOD.gms(269) 12 Mb
 --- Generating LP model prosumod
---- PROSUMOD.gms(290) 44 Mb
----   52,562 rows  52,564 columns  179,529 non-zeroes
---- Executing CPLEX: elapsed 0:00:00.521
+--- PROSUMOD.gms(292) 17 Mb
+---   16,561 rows  19,324 columns  59,162 non-zeroes
+--- Executing CPLEX: elapsed 0:00:00.366
 
-IBM ILOG CPLEX   24.2.3 r46072 Released May 22, 2014 WEI x86_64/MS Windows    
+IBM ILOG CPLEX   24.7.4 r58773 Released Sep 19, 2016 WEI x86 64bit/MS Windows 
 --- GAMS/Cplex licensed for continuous and discrete problems.
-Cplex 12.6.0.0
+Cplex 12.6.3.0
 
 Reading data...
 Starting Cplex...
-Space for names approximately 3.15 Mb
+Space for names approximately 1.05 Mb
 Use option 'names no' to turn use of names off
 Tried aggregator 1 time.
-LP Presolve eliminated 8871 rows and 13326 columns.
-Aggregator did 8707 substitutions.
-Reduced LP has 34984 rows, 30531 columns, and 120124 nonzeros.
-Presolve time = 0.05 sec. (42.28 ticks)
+LP Presolve eliminated 3120 rows and 7445 columns.
+Aggregator did 3045 substitutions.
+Reduced LP has 10396 rows, 8834 columns, and 37151 nonzeros.
+Presolve time = 0.03 sec. (13.94 ticks)
 Initializing dual steep norms . . .
 
 Iteration log . . .
-Iteration:     1   Dual objective     =          -363.814139
-Iteration:   237   Dual objective     =          -197.693881
-Iteration:   942   Dual objective     =            -8.649517
-Iteration:  1458   Dual objective     =           128.886187
-Perturbation started.
-Iteration:  1515   Dual objective     =           128.886187
-Iteration:  2337   Dual objective     =           239.361480
-Iteration:  2894   Dual objective     =           360.075004
-Iteration:  3177   Dual objective     =           407.694917
-Iteration:  3502   Dual objective     =           449.464563
-Iteration:  3783   Dual objective     =           495.432859
-Iteration:  4106   Dual objective     =           529.939431
-Iteration:  4397   Dual objective     =           568.487693
-Iteration:  4689   Dual objective     =           600.084806
-Iteration:  4957   Dual objective     =           632.192158
-Iteration:  5256   Dual objective     =           670.454509
-Iteration:  5514   Dual objective     =           701.403651
-Iteration:  5763   Dual objective     =           724.951303
-Iteration:  6013   Dual objective     =           755.955586
-Iteration:  6260   Dual objective     =           774.191670
-Iteration:  6546   Dual objective     =           795.654218
-Iteration:  6952   Dual objective     =           827.156114
-Iteration:  7362   Dual objective     =           852.891347
-Iteration:  7696   Dual objective     =           863.905155
-Iteration:  8068   Dual objective     =           873.273718
-Iteration:  8412   Dual objective     =           883.967712
-Iteration:  8734   Dual objective     =           894.734169
-Iteration:  9075   Dual objective     =           903.193062
-Iteration:  9417   Dual objective     =           912.152437
-Iteration:  9766   Dual objective     =           916.767554
-Iteration: 10137   Dual objective     =           920.902134
-Iteration: 10441   Dual objective     =           924.721565
-Iteration: 10776   Dual objective     =           929.194432
-Iteration: 11103   Dual objective     =           933.361664
-Iteration: 11457   Dual objective     =           935.513967
-Iteration: 11836   Dual objective     =           937.535303
-Iteration: 12159   Dual objective     =           938.962876
-Removing perturbation.
+Iteration:     1   Dual objective     =           -88.016141
+Iteration:   218   Dual objective     =            69.181923
+Iteration:   630   Dual objective     =           203.997988
+Iteration:   990   Dual objective     =           276.656038
+Iteration:  1206   Dual objective     =           340.322847
+Iteration:  1592   Dual objective     =           385.282391
+Iteration:  2053   Dual objective     =           433.261030
+Iteration:  2489   Dual objective     =           514.527733
+Iteration:  2673   Dual objective     =           571.588785
+Iteration:  2924   Dual objective     =           624.972304
+Iteration:  3135   Dual objective     =           653.051535
+Iteration:  3349   Dual objective     =           679.629342
+Iteration:  3552   Dual objective     =           697.163766
+Iteration:  3739   Dual objective     =           706.278305
+Iteration:  4022   Dual objective     =           716.235445
+Iteration:  4253   Dual objective     =           721.902532
+Iteration:  4435   Dual objective     =           723.969960
 LP status(1): optimal
-Cplex Time: 2.93sec (det. 5059.11 ticks)
+Cplex Time: 0.59sec (det. 455.46 ticks)
 
 Optimal solution found.
-Objective :         939.079854
+Objective :         724.935454
 
 --- Restarting execution
---- PROSUMOD.gms(290) 31 Mb
+--- PROSUMOD.gms(292) 11 Mb
 --- Reading solution for model prosumod
---- PROSUMOD.gms(290) 35 Mb
---- Executing after solve: elapsed 0:00:03.838
---- PROSUMOD.gms(291) 35 Mb
+--- PROSUMOD.gms(292) 12 Mb
+--- Executing after solve: elapsed 0:00:01.267
+--- PROSUMOD.gms(293) 13 Mb
 *** Status: Normal completion
---- Job PROSUMOD.gms Stop 09/18/18 17:10:17 elapsed 0:00:04.056
+--- Job PROSUMOD.gms Stop 10/14/18 21:37:29 elapsed 0:00:01.279

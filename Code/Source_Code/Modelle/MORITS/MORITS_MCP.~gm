@@ -52,7 +52,7 @@ $setglobal outputfile "results\%modelrun%_results_MCP"
 
 
 Sets
-h                hour                                    /h1*h1000/
+h                hour                                    /h1*h4000/
 res              Renewable technologies                  /renewable/
 sto              Storage technolgies                     /storage/
 year             Base years                              /2010*2016/

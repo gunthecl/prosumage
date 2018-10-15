@@ -61,6 +61,7 @@ hh_profile       Household load data                     /V1*V74/
 
 Variables
 Z                        Objective
+lambda(h)
 ;
 
 Positive variables
@@ -74,7 +75,6 @@ STO_IN(h)            Storage intake
 STO_OUT(h)           Storage generation
 E_buy(h)                 Energy purchased from market
 E_sell(h)                Energy sold to market
-lambda(h)
 mu(h)
 gamma1
 gamma2(h)
@@ -206,7 +206,7 @@ hh_energy_balance(h)..
 *** Household PV generation usage: Directly consumed, curtailed,stored or sold
 pv_generation(h)..
 
-      avail_solar(h) * N_PV =E=
+      avail_solar(h) * N_PV =G=
         G_PV(h)
       + CU(h)
       + STO_IN(h)

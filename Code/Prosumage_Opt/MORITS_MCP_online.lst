@@ -1,0 +1,794 @@
+GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 10/14/18 21:39:11 Page 1
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+C o m p i l a t i o n
+
+
+   1  **************************************************************************
+      ******
+   2  **************************************************************************
+      ******
+   3  *   This model is a dispatch and investment model for PROSUMAGE households
+   4  *   PROSUMAGE households PROduce, conSUMe electricity and usage storAGE
+   5  *
+   6  *   Date of this version: August 6, 2018
+   7  *
+   8  **************************************************************************
+      ******
+   9  **************************************************************************
+      ******
+  10   
+  11   
+  12  ******************* Format and model run specifications ******************
+      ******
+  13   
+  14  * ------------- household selection---------------------------------------
+      ------
+  15  * Select a household profile between V1 and V74:
+  16   
+  18   
+  19   
+  20  * ------------- Base year selection---------------------------------------
+      ------
+  21  * Select year between 2010 and 2016:
+  22   
+  24   
+  25   
+  26   
+  27  * ------------- Set data import and export options -----------------------
+      ------
+  28   
+  29  * mark offXcel with a star to turn off excel import and import gdx file
+  30  * mark modelkill to create a gdx file only without model run
+  31   
+  34   
+  35  * Set column index (alphabetic) in excel file furthest to the right
+  36  * to speed up data import
+  37   
+  39   
+  40  * Name input file suffix other than "input data"
+  42   
+  43  * Auto set of input file (do not change)
+  45   
+  46  * Auto set of output file (do not change)
+  48   
+  49   
+  50  **************** Sets, variables, parameters declaration *****************
+      ******
+  51   
+  52   
+  53   
+  54  Sets
+  55  h                hour                                    /h1*h2760/
+  56  res              Renewable technologies                  /renewable/
+  57  sto              Storage technolgies                     /storage/
+  58  year             Base years                              /2010*2016/
+  59  hh_profile       Household load data                     /V1*V74/
+  60  ct               Dispatchable Technologies               /base, peak/
+  61   
+  62  ;
+  63   
+  64  Variables
+  65  Z_hh                         Objective household
+  66  Z_sys                        Objective System
+  67  ;
+  68   
+  69  Positive variables
+  70  *Household variables
+  71  G_PV_hh(h)              Generation of pv plant
+  72  CU_hh(h)                Curtailment of pv energy
+  73  N_PV_hh                 PV generation capacities
+  74  N_STO_E_hh             Capacities: storage energy
+  75  N_STO_P_hh             Capacities: storage power
+  76  STO_L_hh(h)             Storage level
+  77  STO_IN_hh(h)            Storage intake
+  78  STO_OUT_hh(h)           Storage generation
+  79  E_buy_hh(h)                 Energy purchased from market
+  80  E_sell_hh(h)                Energy sold to market
+  81  lambda_hh(h)
+  82  gamma1_hh
+  83  gamma2_hh(h)
+  84  gamma3_hh(h)
+  85  gamma4_hh(h)
+  86  ;
+  87   
+  88  Variables
+  89  mu_hh(h)
+  90  levelsto_hh(h);
+  91   
+  92  Positive variables
+  93  *System variables
+  94  G_CON(ct,h)              Generation of conventional electricity
+  95  G_RENEWABLE(h)       Generation of renewable energy
+  96  CU( h)                Curtailment of renewable energy
+  97  N_RENEWABLE         Capacities: renewable energy
+  98  N_CON(ct)                Capacities: conventional energy
+  99  N_STO_E          Capacities: storage energy
+ 100  N_STO_P          Capacities: storage power
+ 101  STO_L(h)          Storage level
+ 102  STO_IN(h)         Storage intake
+ 103  STO_OUT(h)        Storage generation
+ 104  lambda(h)
+ 105  gamma1(ct,h)
+ 106  gamma2(h)
+ 107  gamma3(h)
+ 108  gamma4(h)
+ 109  resshare
+ 110  ;
+ 111   
+ 112  Variables
+ 113  mu
+ 114  levelsto(h);
+ 115   
+ 116  Parameters
+ 117  * Household Parameters
+ 118  sto_ini_last_hh             Level of storage in first and last period of t
+      he analysis
+ 119  eta_sto_in_hh               Efficiency: storage in
+ 120  eta_sto_out_hh              Efficiency: storage out
+ 121  d_hh(h)                     Household load
+ 122  d_upload_hh(h,hh_profile)   Household load - upload parameter
+ 123  avail_solar(h)              Hourly capacity factor for pv
+ 124  avail_solar_upload(h,year)  Hourly capacity factor pv - upload parameter
+ 125  pv_cap_max                  PV capacity maximum
+ 126  price_market_upload(h,year) Price for selling energy per MWh - upload para
+      meter
+ 127  price_buy                   Price for energy consumption per kWh
+ 128  c_i_sto_e_hh                Cost: investment into storage energy
+ 129  c_i_sto_p_hh                Cost: investment into storage power
+ 130  c_i_pv_hh                   Cost: investment into renewable capacity
+ 131  c_var_sto_hh                Cost: variable generation costs storage
+ 132  lev_Z                       Objective value: Annual electricity costs
+ 133  lev_EB                      Level of purchased electricity from grid
+ 134  lev_ES                      Level of sold electricity to grid
+ 135  price_market(h)             Price for selling energy per kWh
+ 136  days /365/
+ 137  ;
+ 138   
+ 139   
+ 140  Parameters
+ 141  *System Parameters
+ 142  phi_sto_ini              Level of storage in first and last period of the 
+      analysis
+ 143  eta_sto_in               Efficiency: storage in
+ 144  eta_sto_out              Efficiency: storage out
+ 145  phi_min_res              Minimum share of renewable electricity in net con
+      sumption
+ 146  phi_max_curt             Maximum share of renewable electricity curtailed 
+      over the year
+ 147  d(h)                     Electricity demand
+ 148  d_upload(h,year)         Electricity demand - upload parameter
+ 149  phi_res( h)              Hourly capacity factor renewable energy
+ 150  phi_res_upload(h,year)   Hourly capacity factor renewable energy - upload 
+      parameter
+ 151  c_i_sto_e                Cost: investment into storage energy
+ 152  c_i_sto_p                Cost: investment into storage power
+ 153  c_i_res                  Cost: investment into renewable capacity
+ 154  c_i_con(ct)              Cost: investment into conventional capacity
+ 155  c_var_con(ct)            Cost: variable generation costs conventional ener
+      gy
+ 156  c_var_sto                Cost: variable generation costs storage
+ 157  penalty                  Penalty term
+ 158  share_solar(year)        Share of solar energy among total variable renewa
+      ble energy
+ 159  share_wind(year)         Share of wind energy among total variable renewab
+      le energy
+ 160  ;
+ 161   
+ 162  **************** Specify Parameters ***********************
+ 163   
+ 164  * Specify household Parameters
+ 165  * Declare efficiency parameters
+ 166  sto_ini_last_hh  =  0.5 ;
+ 167  eta_sto_in_hh    =  0.81 ;
+ 168  eta_sto_out_hh   =  0.926 ;
+ 169  penalty          =  0 ;
+ 170   
+ 171   
+ 172  * Declare cost parameters for household
+ 173  c_i_sto_e_hh  =  5418.14/1000  ;
+ 174  c_i_sto_p_hh  = 50995.48/1000  ;
+ 175  c_i_pv_hh     = 60526.64/1000  ;
+ 176  c_var_sto_hh  =     0.5 /1000*365/days   ;
+ 177  price_buy     =     0.30*365/days ;
+ 178   
+ 179  * Declare further restrictions
+ 180  pv_cap_max = 10       ;
+ 181   
+ 182   
+ 183  * Specify System Parameters
+ 184  phi_sto_ini = 0.5 ;
+ 185  eta_sto_in  = 0.81 ;
+ 186  eta_sto_out = 0.926 ;
+ 187  penalty     = 0 ;
+ 188  phi_min_res = 0.6;
+ 189   
+ 190  *Historical energy shares of wind and solar PV in base years
+ 191  *Source: OPSD (2017), see upload_data.xlsx
+ 192  share_solar('2012') = 0.378304182 ;
+ 193  share_solar('2013') = 0.385519442 ;
+ 194  share_solar('2014') = 0.390535228 ;
+ 195  share_solar('2015') = 0.310511627 ;
+ 196  share_solar('2016') = 0.310454625 ;
+ 197   
+ 198  share_wind('2012') = 0.621795818 ;
+ 199  share_wind('2013') = 0.614480558 ;
+ 200  share_wind('2014') = 0.609464772 ;
+ 201  share_wind('2015') = 0.689488373 ;
+ 202  share_wind('2016') = 0.689545375 ;
+ 203   
+ 204  * Specify system costs
+ 205  c_i_sto_e           = 5418.14 ;
+ 206  c_i_sto_p           = 50995.48 ;
+ 207  c_i_res             = share_solar('2014') * 60526.64 + share_wind('2014') 
+      * 108869.81 ;
+ 208  c_i_con('base')     = 102393.68 ;
+ 209  c_i_con('peak')     = 47840.27 ;
+ 210  c_var_con('base')   = 31.03 *365/days;
+ 211  c_var_con('peak')   = 78.36*365/days ;
+ 212  c_var_sto           = 0.5*365/days ;
+ 213   
+ 214  ***************************** Upload data ********************************
+      ******
+ 215   
+ 216  * Upload household data
+ 226   
+ 227  *$call "gdxxrw in.xlsx squeeze=N @in.tmp  o=in.gdx  ";
+**** File: C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\in.gdx
+**** Msg : No such file or directory
+ 228  $GDXin in.gdx
+****              $510
+ 229  $load d_upload_hh avail_solar_upload price_market_upload
+****      $502
+ 230  $load d_upload phi_res_upload
+****      $502
+ 231  ;
+ 232   
+ 233  * Load data for specific household and base year in MWh
+ 234  d_hh(h)                = d_upload_hh(h,'V17') ;
+****                                     $141
+ 235  avail_solar(h)         = avail_solar_upload(h,'2014') ;
+****                                            $141
+ 236   
+ 237  *Load market price as price per kWh
+ 238  price_market(h)        = price_market_upload(h,'2014')/1000  ;
+****                                             $141
+ 239  *price_market(h)        = 0.12 ;
+ 240   
+ 241   
+ 242  * Upload system relevant data
+ 243  *$onecho >temp.tmp
+ 244  *par=d_upload             rng=data!a3:f8763       rdim=1 cdim=1
+ 245  *par=phi_res_upload       rng=data!h3:m8763       rdim=1 cdim=1
+ 246   
+ 247  *$offecho
+ 248   
+ 249  *$call "gdxxrw data/upload_data.xlsx @temp.tmp o=Data_input";
+ 250  *$GDXin Data_input.gdx
+ 251  *$load d_upload phi_res_upload
+ 252  *;
+ 253   
+ 254  * Initialize base year
+ 255  phi_res(h)    = phi_res_upload(h,'2014') ;
+****                               $141
+ 256  d(h)          = d_upload(h,'2014') ;
+****                         $141
+ 257   
+ 259   
+ 260  ****************************** Model setup *******************************
+      ******
+ 261   
+ 262  Equations
+ 263  *Household
+ 264  objective_hh                  Objective function
+ 265  hh_energy_balance_hh          Household energy balance
+ 266  pv_generation_hh              Household use of pv energy generation
+ 267  pv_install_max_hh             PV capacity constraint
+ 268  stolev_no_freelunch_hh        Storage level in initial and last period
+ 269  stolevel_hh                   Storage level dynamics
+ 270  stolev_max_energy_hh          Storage capacity constraint on maximum energ
+      y
+ 271  stoin_max_power_hh            Storage capacity constraint on maximum power
+       - storing in
+ 272  stoout_max_power_hh           Storage capacity constraint on maximum power
+       - storing out
+ 273  KKTNPV_hh
+ 274  KKTNSTOE_hh
+ 275  KKTNSTOP_hh
+ 276  KKTEB_hh
+ 277  KKTES_hh
+ 278  KKTG_hh
+ 279  KKTSTOIN_hh
+ 280  KKTSTOUT_hh
+ 281  KKTSTOLEV_hh
+ 282  KKTCU_hh
+ 283  ;
+ 284   
+ 285   
+ 286  Equations
+ 287  *System
+ 288  *objective                Objective function
+ 289  energy_balance           Energy balance (market clearing)
+ 290  renewable_generation     Use of renewable energy generation
+ 291  minRES                   Constraint on minimum share of renewables
+ 292  *maximum_curtailment      Constraint on maximum share of renewables curtai
+      lment
+ 293  *maximum_loss             Constraint on maximum share of renewable energy 
+      loss
+ 294  maximum_generation_con   Capacity constraint - conventional generation
+ 295  *stolev_start_end         Storage: storage level in the first and last per
+      iod
+ 296  stolev                   Storage: storage level dynamics
+ 297  stolev_max               Storage: capacity constraint on maximum energy
+ 298  maxin_power              Storage: capacity constraint on maximum power - s
+      toring in
+ 299  maxout_power             Storage: capacity constraint on maximum power - s
+      toring out
+ 300  KKTNRES
+ 301  KKTNSTOE
+ 302  KKTNSTOP
+ 303  KKTNCON
+ 304  KKTGCON
+ 305  KKTGRES
+ 306  KKTSTOIN
+ 307  KKTSTOUT
+ 308  KKTSTOLEV
+ 309  KKTCU
+ 310   
+ 311  ;
+ 312   
+ 313   
+ 314   
+ 315  ************************* Declare household Equations ********************
+      ******
+ 316  *** Objective function: Minimize total household electricity costs
+ 317  objective_hh..
+ 318   
+ 319     Z_hh =E=
+ 320   
+ 321            c_i_pv_hh* N_PV_hh
+ 322           + c_i_sto_e_hh * N_STO_E_hh + c_i_sto_p_hh * N_STO_P_hh
+ 323           + sum( (h) , c_var_sto_hh * (STO_IN_hh(h) + STO_OUT_hh(h)) )
+ 324           + sum(  h , price_buy * E_buy_hh(h))
+ 325           - sum(  h , lambda(h) * E_sell_hh(h))
+ 326  ;
+ 327   
+ 328  *** Household energy balance: Satisfy load with own generation, storage an
+      d grid
+ 329  hh_energy_balance_hh(h)..
+ 330   
+ 331   
+ 332             G_PV_hh(h)
+ 333           + STO_OUT_hh(h)
+ 334           + E_buy_hh(h)    =G=
+ 335            d_hh(h)
+ 336  ;
+ 337   
+ 338  *** Household PV generation usage: Directly consumed, CU_hhrtailed,stored 
+      or sold
+ 339  pv_generation_hh(h)..
+ 340   
+ 341        avail_solar(h) * N_PV_hh =E=
+ 342          G_PV_hh(h)
+ 343        + CU_hh(h)
+ 344        + STO_IN_hh(h)
+ 345        + E_sell_hh(h)
+ 346  ;
+ 347   
+ 348  *** Restrict PV capacity
+ 349  pv_install_max_hh..
+ 350   
+ 351            pv_cap_max - N_PV_hh =G= 0
+ 352  ;
+ 353   
+ 354   
+ 355   
+ 356   
+ 357  *** Technical constraints on storage
+ 358  *Storage level in first and last period must be the same
+      stolev_no_freelunch..
+       
+                STO_L_hh('h8760') - STO_L_hh('h1') =E= 0
+      ;
+       
+ 366   
+ 367  *Storage level for all hours except first: Prio level plus intake minus ou
+      tflow
+ 368  stolevel_hh(h)..
+ 369   
+ 370   
+ 371           STO_L_hh(h--1)
+ 372           + STO_IN_hh(h) * eta_sto_in_hh
+ 373           - STO_OUT_hh(h)/eta_sto_out_hh
+ 374           =E=  STO_L_hh(h)
+ 375  ;
+ 376   
+ 377  * Storage maximum energy capacity
+ 378  stolev_max_energy_hh(h)..
+ 379   
+ 380            N_STO_E_hh  - STO_L_hh(h) =G= 0
+ 381  ;
+ 382   
+ 383  * Storage maximum charging capacity (power in)
+ 384  stoin_max_power_hh(h)..
+ 385   
+ 386             N_STO_P_hh - STO_IN_hh(h) =G= 0
+ 387  ;
+ 388   
+ 389  * Storage maximum discharging capacity (power out)
+ 390  stoout_max_power_hh(h)..
+ 391   
+ 392            N_STO_P_hh  - STO_OUT_hh(h) =G= 0
+ 393  ;
+ 394   
+ 395   
+ 396  KKTNPV_hh..
+ 397   
+ 398    c_i_pv_hh- sum( h, mu_hh(h)*avail_solar(h)) + gamma1_hh =G= 0
+ 399   
+ 400  ;
+ 401  KKTNSTOE_hh..
+ 402   
+ 403    c_i_sto_e_hh  - sum(h, gamma2_hh(h)) =G= 0
+ 404   
+ 405  ;
+ 406  KKTNSTOP_hh..
+ 407   
+ 408      c_i_sto_p_hh  - sum(h, gamma3_hh(h)) - sum(h, gamma4_hh(h)) =G= 0
+ 409   
+ 410  ;
+ 411   
+ 412  KKTEB_hh(h)..
+ 413   
+ 414           price_buy - lambda_hh(h) =G= 0
+ 415   
+ 416  ;
+ 417   
+ 418  KKTES_hh(h)..
+ 419   
+ 420             -price_market(h)
+ 421  *           -lambda(h)/1000
+ 422             + mu_hh(h) =G=  0
+ 423   
+ 424  ;
+ 425   
+ 426  KKTG_hh(h)..
+ 427   
+ 428        - lambda_hh(h) + mu_hh(h) =G= 0
+ 429   
+ 430   
+ 431  ;
+ 432   
+ 433  KKTCU_hh(h)..
+ 434   
+ 435        + mu_hh(h) =G= 0
+ 436  ;
+ 437   
+ 438  KKTSTOIN_hh(h)..
+ 439   
+ 440           c_var_sto_hh + mu_hh(h) + gamma3_hh(h) - levelsto_hh(h)*eta_sto_i
+      n_hh =G= 0
+ 441   
+ 442  ;
+ 443  KKTSTOUT_hh(h)..
+ 444   
+ 445            c_var_sto_hh -lambda_hh(h) + gamma4_hh(h) + levelsto_hh(h)/eta_s
+      to_out_hh =G= 0
+ 446   
+ 447   
+ 448  ;
+ 449   
+ 450  KKTSTOLEV_hh(h)..
+ 451   
+ 452   
+ 453       gamma2_hh(h) + levelsto_hh(h) - levelsto_hh(h++1) =G= 0
+ 454   
+ 455  ;
+ 456   
+ 457  ************************* Declare System Equations ***********************
+      ******
+ 458   
+      objective..
+               Z =E= sum( sto , c_i_sto_e  * N_STO_E  + c_i_sto_p  * N_STO_P  )
+               + sum( res , c_i_res(res) * N_RENEWABLE(res) )
+               + sum( ct , c_i_con(ct) * N_CON(ct) )
+               + sum( (ct,h) , c_var_con(ct) * G_CON(ct,h) )
+               + sum( ( h) , c_var_sto  * (STO_IN( h) + STO_OUT( h)) )
+      ;
+ 468   
+ 469   
+ 470  energy_balance(h)..
+ 471   
+ 472           sum( ct , G_CON(ct,h))
+ 473          + G_RENEWABLE(h)
+ 474          + STO_OUT(h)
+ 475          + E_sell_hh(h)/1000
+ 476           =G= d(h)
+ 477          + E_buy_hh(h)/1000
+ 478  ;
+ 479   
+ 480  renewable_generation(h)..
+ 481   
+ 482   
+ 483            phi_res(h) * N_RENEWABLE
+ 484           =E= G_RENEWABLE(h) + CU(h) +  STO_IN(h)
+ 485  ;
+ 486   
+ 487   
+ 488  minRES..
+ 489           (1-phi_min_res) * sum( h , d(h) )  =G= sum( (ct,h) , G_CON(ct,h) 
+      )
+ 490  ;
+ 491   
+ 492  maximum_generation_con(ct,h)..
+ 493   
+ 494           N_CON(ct) =G= G_CON(ct,h)
+ 495  ;
+ 496   
+ 497   
+ 498  stolev(h)..
+ 499          STO_L(h--1)
+ 500        + STO_IN(h) * eta_sto_in
+ 501        - STO_OUT(h)/eta_sto_out
+ 502        =E=  STO_L(h)
+ 503  ;
+ 504   
+ 505  stolev_max(h)..
+ 506   
+ 507            N_STO_E  =G= STO_L( h)
+ 508  ;
+ 509   
+ 510   
+ 511  maxin_power(h)..
+ 512   
+ 513           N_STO_P  =G=  STO_IN( h)
+ 514  ;
+ 515   
+ 516  maxout_power(h)..
+ 517   
+ 518         N_STO_P   =G=  STO_OUT( h)
+ 519  ;
+ 520   
+ 521   
+ 522  KKTNRES..
+ 523   
+ 524   
+ 525    c_i_res - sum( h, mu(h)*phi_res(h)) =G= 0
+ 526   
+ 527  ;
+ 528  KKTNSTOE..
+ 529   
+ 530         c_i_sto_e  - sum(h, gamma2(h)) =G= 0
+ 531  ;
+ 532   
+ 533  KKTNSTOP..
+ 534         c_i_sto_p  - sum(h, gamma3(h)) - sum(h, gamma4(h)) =G= 0
+ 535   
+ 536  ;
+ 537   
+ 538  KKTNCON(ct)..
+ 539   
+ 540      c_i_con(ct) - sum(h, gamma1(ct,h))  =G= 0
+ 541   
+ 542  ;
+ 543   
+ 544  KKTGCON(ct,h)..
+ 545   
+ 546        c_var_con(ct)
+ 547        - lambda(h)
+ 548        + resshare + gamma1(ct,h)  =G= 0
+ 549   
+ 550  ;
+ 551   
+ 552  KKTGRES(h)..
+ 553   
+ 554                   - lambda(h)
+ 555                   + mu(h) =G= 0
+ 556   
+ 557  ;
+ 558   
+ 559  KKTSTOIN(h)..
+ 560   
+ 561                 c_var_sto + mu(h) + gamma3(h) - levelsto(h)*eta_sto_in =G= 
+      0
+ 562   
+ 563  ;
+ 564   
+ 565  KKTSTOUT(h)..
+ 566   
+ 567   
+ 568    c_var_sto
+ 569    - lambda(h)
+ 570    + gamma4(h)
+ 571    + levelsto(h)/eta_sto_out =G= 0
+ 572   
+ 573   
+ 574   
+ 575  ;
+ 576   
+ 577  KKTSTOLEV(h)..
+ 578   
+ 579   
+ 580        gamma2(h) + levelsto(h) - levelsto(h++1) =G= 0
+ 581   
+ 582   
+ 583  ;
+ 584   
+ 585   
+ 586  KKTCU(h)..
+ 587   
+ 588        mu(h) =G= 0
+ 589   
+ 590  ;
+ 591   
+ 592   
+ 593   
+ 594  ***************************** Initialize model ***************************
+      ******
+ 595  Model prosumodmcp /
+ 596   
+ 597  hh_energy_balance_hh.lambda_hh
+ 598  pv_generation_hh.mu_hh
+ 599  pv_install_max_hh.gamma1_hh
+ 600  stolevel_hh.levelsto_hh
+ 601  stolev_max_energy_hh.gamma2_hh
+ 602  stoin_max_power_hh.gamma3_hh
+ 603  stoout_max_power_hh.gamma4_hh
+ 604  KKTNPV_hh.N_PV_hh
+ 605  KKTNSTOE_hh.N_STO_E_hh
+ 606  KKTNSTOP_hh.N_STO_P_hh
+ 607  KKTEB_hh.E_buy_hh
+ 608  KKTES_hh.E_sell_hh
+ 609  KKTG_hh.G_PV_hh
+ 610  KKTSTOIN_hh.STO_IN_hh
+ 611  KKTSTOUT_hh.STO_OUT_hh
+ 612  KKTSTOLEV_hh.STO_L_hh
+ 613  KKTCU_hh.CU_hh
+ 614   
+      energy_balance.lambda
+      renewable_generation.mu
+      minRES.resshare
+      maximum_generation_con.gamma1
+      stolev.levelsto
+      stolev_max.gamma2
+      maxin_power.gamma3
+      maxout_power.gamma4
+      KKTNRES.N_RENEWABLE
+      KKTNSTOE.N_STO_E
+      KKTNSTOP.N_STO_P
+      KKTNCON.N_CON
+      KKTGCON.G_CON
+      KKTGRES.G_RENEWABLE
+      KKTSTOIN.STO_IN
+      KKTSTOUT.STO_OUT
+      KKTSTOLEV.STO_L
+      KKTCU.CU
+ 635   
+ 636  /
+ 637   
+ 638   
+ 639  options
+ 640  optcr = 0.00
+ 641  reslim = 10000000
+ 642  lp = cplex
+ 643  mip = cplex
+ 644  nlp = conopt
+ 645  dispwidth = 15
+ 646  limrow = 0
+ 647  limcol = 0
+ 648  solprint = off
+ 649  sysout = off
+ 650  optcr = 1e-3
+ 651  optca = 10
+ 652  *PROFILETOL = 10
+ 653   
+ 654  ;
+ 655   
+ 663   
+ 664  * Set up lower bounds for speed up
+ 665  * Household Variables
+ 666  G_PV_hh.up(h)              = 10  ;
+ 667  CU_hh.up(h)                = 10  ;
+ 668  N_PV_hh.up                 = 10  ;
+ 669  N_STO_E_hh.up              = 20  ;
+ 670  N_STO_P_hh.up              = 20  ;
+ 671  STO_L_hh.up(h)             = 20  ;
+ 672  STO_IN_hh.up(h)            = 20  ;
+ 673  STO_OUT_hh.up(h)           = 20  ;
+ 674  E_buy_hh.up(h)             = 50  ;
+ 675  E_sell_hh.up(h)            = 30  ;
+ 676  * System Variables
+ 677  G_CON.up(ct,h)             = 100000 ;
+ 678  G_RENEWABLE.up(h)          = 300000 ;
+ 679  CU.up(h)                   = 150000 ;
+ 680  N_RENEWABLE.up             = 300000 ;
+ 681  N_CON.up(ct)               = 100000 ;
+ 682  N_STO_E.up                 = 150000 ;
+ 683  N_STO_P.up                 = 100000 ;
+ 684  STO_L.up(h)                = 150000 ;
+ 685  STO_IN.up(h)               = 100000  ;
+ 686  STO_OUT.up(h)              = 100000  ;
+ 687   
+ 688  * Set up initial values for speed up
+ 689  STO_L_hh.l(h)   = 4.367;
+ 690  N_PV_hh.l       = 8    ;
+ 691  N_STO_E_hh.l    = 10   ;
+ 692  N_STO_P_hh.l    = 10   ;
+ 693  N_RENEWABLE.l              = 43000  ;
+ 694  N_CON.l(ct)                = 100000  ;
+ 695  N_STO_E.l                  = 120000 ;
+ 696  N_STO_P.l                  = 100000  ;
+ 697  lambda.l(h)                = 1  ;
+ 698  price_market(h)            = lambda.l(h)/1000 ;
+ 699   
+ 700  solve prosumodmcp using mcp;
+****                             $257
+ 701   
+ 702  * Determine costs for system and household
+ 703  Z_sys.l                      =
+ 704           sum( sto , c_i_sto_e  * N_STO_E.l  + c_i_sto_p  * N_STO_P.l  )
+ 705           + c_i_res * N_RENEWABLE.l
+ 706           + sum( ct , c_i_con(ct) * N_CON.l(ct) )
+ 707           + sum( (ct,h) , c_var_con(ct) * G_CON.l(ct,h) )
+ 708           + sum( ( h) , c_var_sto  * (STO_IN.l( h) + STO_OUT.l( h)) )
+ 709  ;
+ 710   
+ 711   
+ 712  Z_hh.l                      =
+ 713   
+ 714            c_i_pv_hh* N_PV_hh.l
+ 715           + c_i_sto_e_hh * N_STO_E_hh.l  + c_i_sto_p_hh * N_STO_P_hh.l
+ 716           + sum( (h) , c_var_sto_hh * (STO_IN_hh.l (h) + STO_OUT_hh.l (h)) 
+      )
+ 717           + sum(  h , price_buy * E_buy_hh.l (h))
+ 718           - sum(  h , lambda.l(h)/1000 * E_sell_hh.l (h))
+ 719  ;
+ 720   
+ 721  display d_hh , N_PV_hh.l , E_buy_hh.l , E_sell_hh.l ,  G_PV_hh.l,
+ 722          N_STO_E_hh.l, N_STO_P_hh.l, G_PV_hh.l,
+ 723          hh_energy_balance_hh.l, hh_energy_balance_hh.m,
+****                               $141
+ 724          price_market,  CU_hh.l, N_RENEWABLE.l, d, G_RENEWABLE.l,
+ 725  *        G_CON.l, STO_OUT.l, lambda.l, lambda.m, mu.l, mu.m, energy_balanc
+      e.m,
+ 726  *        N_CON.l, Z_sys.l ,
+ 727   Z_hh.l  ;
+ 728   
+ 729   
+ 730  ***************************** Set up reporting ***************************
+      ******
+ 731   
+      pv_install_max_hh.m, pv_generation_hh.m, N_STO_E_hh.l, N_STO_P_hh.l,
+         hh_energy_balance_hh.m
+GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 10/14/18 21:39:11 Page 2
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Error Messages
+
+
+141  Symbol declared but no values have been assigned. Check for missing
+        data definition, assignment, data loading or implicit assignment
+        via a solve statement.
+        A wild shot: You may have spurious commas in the explanatory
+        text of a declaration. Check symbol reference list.
+257  Solve statement not checked because of previous errors
+502  GDXIN  file not open - ignore rest of line
+510  Unable to open gdx file for $GDXIN
+
+**** 10 ERROR(S)   0 WARNING(S)
+
+
+COMPILATION TIME     =        0.125 SECONDS      3 MB  24.7.4 r58773 WEX-WEI
+
+
+USER: Medium MUD - 10 User License                   S170316:1123AO-GEN
+      Deutsches Institut fuer Wirtschaftsforschung DIW, AbteilungDC3975
+      License for teaching and research at degree granting institutions
+
+
+**** FILE SUMMARY
+
+Input      C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Source_Code\Modelle\M
+           ORITS\MORITS_MCP_online.gms
+Output     C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\MORITS_
+           MCP_online.lst
+
+**** USER ERROR(S) ENCOUNTERED

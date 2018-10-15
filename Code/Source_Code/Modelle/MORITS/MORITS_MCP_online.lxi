@@ -4,18 +4,18 @@ B 771 Model Statistics    SOLVE prosumodmcp Using MCP From line 700
 B 789 Solution Report     SOLVE prosumodmcp Using MCP From line 700
 B 844 E x e c u t i o n
 I 845 d_hh
-I 2603 N_PV_hh
-I 2605 E_buy_hh
-I 3487 E_sell_hh
-I 3889 G_PV_hh
-I 4760 N_STO_E_hh
-I 4762 N_STO_P_hh
-I 4764 G_PV_hh
-I 5634 hh_energy_balance_hh
-I 7390 hh_energy_balance_hh
-I 10314 price_market
-I 12070 CU_hh
-I 12076 N_RENEWABLE
-I 12078 d
-I 14272 G_RENEWABLE
-I 14278 Z_hh
+I 1403 N_PV_hh
+I 1405 E_buy_hh
+I 1916 E_sell_hh
+I 1965 G_PV_hh
+I 2211 N_STO_E_hh
+I 2213 N_STO_P_hh
+I 2215 G_PV_hh
+I 2460 hh_energy_balance_hh
+I 3016 hh_energy_balance_hh
+I 3572 price_market
+I 4496 CU_hh
+I 4502 N_RENEWABLE
+I 4504 d
+I 5198 G_RENEWABLE
+I 5204 Z_hh

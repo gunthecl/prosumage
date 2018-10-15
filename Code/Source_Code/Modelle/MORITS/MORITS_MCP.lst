@@ -1,4 +1,4 @@
-GAMS 24.2.1  r43572 Released Dec  9, 2013 WEX-WEI x86_64/MS Windows 10/05/18 13:54:14 Page 1
+GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 10/14/18 21:39:46 Page 1
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
@@ -58,7 +58,7 @@ C o m p i l a t i o n
   52   
   53   
   54  Sets
-  55  h                hour                                    /h1*h4000/
+  55  h                hour                                    /h1*h2760/
   56  res              Renewable technologies                  /renewable/
   57  sto              Storage technolgies                     /storage/
   58  year             Base years                              /2010*2016/
@@ -231,8 +231,8 @@ C o m p i l a t i o n
  214   
  215  * Upload household data
  223   
-GDXIN   C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\M
-        ORITS\data\input_data.gdx
+GDXIN   C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORI
+        TS\data\input_data.gdx
 --- LOAD  d_upload_hh = 1:d_upload_hh
 --- LOAD  avail_solar_upload = 2:avail_solar_upload
 --- LOAD  price_market_upload = 3:price_market_upload
@@ -249,8 +249,8 @@ GDXIN   C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\M
  237   
  238  * Upload system relevant data
  244   
-GDXIN   C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\M
-        ORITS\Data_input.gdx
+GDXIN   C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORI
+        TS\Data_input.gdx
 --- LOAD  d_upload = 1:d_upload
 --- LOAD  phi_res_upload = 2:phi_res_upload
  248  ;
@@ -743,45 +743,45 @@ GDXIN   C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\M
  725   
       pv_install_max_hh.m, pv_generation_hh.m, N_STO_E_hh.l, N_STO_P_hh.l,
          hh_energy_balance_hh.m
-GAMS 24.2.1  r43572 Released Dec  9, 2013 WEX-WEI x86_64/MS Windows 10/05/18 13:54:14 Page 2
+GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 10/14/18 21:39:46 Page 2
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Include File Summary
 
 
    SEQ   GLOBAL TYPE      PARENT   LOCAL  FILENAME
 
-     1        1 INPUT          0       0  C:\Users\cguenther\Documents\GitHub\pr
-                                          osumage\Code\Source_Code\Modelle\MORIT
-                                          S\MORITS_MCP.gms
+     1        1 INPUT          0       0  C:\Users\Lenovo\Documents\GitHub\prosu
+                                          mage\Code\Source_Code\Modelle\MORITS\M
+                                          ORITS_MCP.gms
      2      224 CALL           1     224  gdxxrw data\input_data.xlsx squeeze=N 
                                           @data\input_data.tmp  o=data\input_dat
                                           a.gdx  
-     3      225 GDXIN          1     225  C:\Users\cguenther\Documents\GitHub\pr
-                                          osumage\Code\Source_Code\Modelle\MORIT
-                                          S\data\input_data.gdx
+     3      225 GDXIN          1     225  C:\Users\Lenovo\Documents\GitHub\prosu
+                                          mage\Code\Source_Code\Modelle\MORITS\d
+                                          ata\input_data.gdx
      4      245 CALL           1     245  gdxxrw data/upload_data.xlsx @temp.tmp
                                           o=Data_input
-     5      246 GDXIN          1     246  C:\Users\cguenther\Documents\GitHub\pr
-                                          osumage\Code\Source_Code\Modelle\MORIT
-                                          S\Data_input.gdx
+     5      246 GDXIN          1     246  C:\Users\Lenovo\Documents\GitHub\prosu
+                                          mage\Code\Source_Code\Modelle\MORITS\D
+                                          ata_input.gdx
 
 
-COMPILATION TIME     =       12.714 SECONDS     16 MB  24.2.1 r43572 WEX-WEI
-GAMS 24.2.1  r43572 Released Dec  9, 2013 WEX-WEI x86_64/MS Windows 10/05/18 13:54:14 Page 3
+COMPILATION TIME     =       10.078 SECONDS     12 MB  24.7.4 r58773 WEX-WEI
+GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 10/14/18 21:39:46 Page 3
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Model Statistics    SOLVE prosumodmcp Using MCP From line 695
 
 
 MODEL STATISTICS
 
-BLOCKS OF EQUATIONS          35     SINGLE EQUATIONS      112,010
-BLOCKS OF VARIABLES          35     SINGLE VARIABLES      112,010
-NON ZERO ELEMENTS       344,000     NON LINEAR N-Z              0
-DERIVATIVE POOL              10     CONSTANT POOL              16
+BLOCKS OF EQUATIONS          35     SINGLE EQUATIONS       77,290
+BLOCKS OF VARIABLES          35     SINGLE VARIABLES       77,290
+NON ZERO ELEMENTS       237,004     NON LINEAR N-Z              0
+DERIVATIVE POOL              20     CONSTANT POOL              16
 CODE LENGTH                   0
 
 
-GENERATION TIME      =        1.030 SECONDS     50 MB  24.2.1 r43572 WEX-WEI
+GENERATION TIME      =        0.406 SECONDS     35 MB  24.7.4 r58773 WEX-WEI
 
 
-EXECUTION TIME       =        1.045 SECONDS     50 MB  24.2.1 r43572 WEX-WEI
+EXECUTION TIME       =        0.406 SECONDS     35 MB  24.7.4 r58773 WEX-WEI

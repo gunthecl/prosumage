@@ -55,7 +55,7 @@ $setglobal outputfile "results\%modelrun%_results"
 
 
 Sets
-h                Hours                                   /h1*h8760/
+h                Hours                                   /h1*h2760/
 res              Renewable technologies                  /solar/
 sto              Storage technolgies                     /storage/
 year             Base years                              /2010*2016/
@@ -190,7 +190,7 @@ pv_generation(res,h)..
 
       avail_solar(h) * N_PV(res) =G=
         G_PV(res,h)
-*      + CU(res,h)
+      + CU(res,h)
       + sum( sto , STO_IN(sto,h))
       + E_sell(h)
 ;
@@ -206,6 +206,7 @@ pv_install_max(res)..
 
 *** Technical constraints on storage
 *Storage level in first and last period must be the same
+
 stolev_no_freelunch(sto)..
 
          STO_L(sto,'h1') =E= STO_L(sto,'h8760')
@@ -252,7 +253,7 @@ Model prosumod /
 objective
 hh_energy_balance
 pv_generation
-stolev_no_freelunch
+*stolev_no_freelunch
 stolevel
 stolev_max_energy
 stoin_max_power

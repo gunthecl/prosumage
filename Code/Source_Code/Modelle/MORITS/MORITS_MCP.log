@@ -1,133 +1,138 @@
 
---- Job MORITS_MCP.gms Start 10/05/18 13:54:14 24.2.1 r43572 WEX-WEI x86_64/MS Windows
-GAMS 24.2.1   Copyright (C) 1987-2013 GAMS Development. All rights reserved
-Licensee: Abteilung Energie, Verkehr, Umwelt, 5 User     S131220:0515AN-GEN
-          Deutsches Institut fuer Wirtschaftsforschung DIW           DC3975
+--- Job MORITS_MCP.gms Start 10/14/18 21:39:46 24.7.4 r58773 WEX-WEI x86 64bit/MS Windows
+GAMS 24.7.4   Copyright (C) 1987-2016 GAMS Development. All rights reserved
+Licensee: Medium MUD - 10 User License                   S170316:1123AO-GEN
+          Deutsches Institut fuer Wirtschaftsforschung DIW, AbteilungDC3975
           License for teaching and research at degree granting institutions
+          License Admin: Claudia Kemfert, bbibra@diw.de                    
 --- Starting compilation
 --- MORITS_MCP.gms(224) 3 Mb
 --- call gdxxrw data\input_data.xlsx squeeze=N @data\input_data.tmp  o=data\input_data.gdx  
 
-GDXXRW           24.2.1 r43572 Released Dec  9, 2013 VS8 x86/MS Windows       
-Input file : C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\data\input_data.xlsx
-Output file: C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\data\input_data.gdx
-Total time = 10109 Ms
+GDXXRW           24.7.4 r58773 Released Sep 19, 2016 VS8 x86 32bit/MS Windows 
+Input file : C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\data\input_data.xlsx
+Output file: C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\data\input_data.gdx
+Total time = 7328 Ms
 --- MORITS_MCP.gms(225) 3 Mb
---- GDXin=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\data\input_data.gdx
---- MORITS_MCP.gms(245) 14 Mb
+--- GDXin=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\data\input_data.gdx
+--- MORITS_MCP.gms(245) 11 Mb
 --- call gdxxrw data/upload_data.xlsx @temp.tmp o=Data_input
 
-GDXXRW           24.2.1 r43572 Released Dec  9, 2013 VS8 x86/MS Windows       
-Input file : C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\data\upload_data.xlsx
-Output file: C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\Data_input.gdx
-Total time = 1591 Ms
---- MORITS_MCP.gms(246) 14 Mb
---- GDXin=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\Data_input.gdx
---- MORITS_MCP.gms(729) 16 Mb
---- Starting execution: elapsed 0:00:12.721
---- MORITS_MCP.gms(693) 21 Mb
+GDXXRW           24.7.4 r58773 Released Sep 19, 2016 VS8 x86 32bit/MS Windows 
+Input file : C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\data\upload_data.xlsx
+Output file: C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\Data_input.gdx
+Total time = 2046 Ms
+--- MORITS_MCP.gms(246) 11 Mb
+--- GDXin=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\Data_input.gdx
+--- MORITS_MCP.gms(729) 12 Mb
+--- Starting execution: elapsed 0:00:10.083
+--- MORITS_MCP.gms(693) 15 Mb
 --- Generating MCP model prosumodmcp
---- MORITS_MCP.gms(695) 52 Mb
----   112,010 rows  112,010 columns  344,000 non-zeroes
+--- MORITS_MCP.gms(695) 38 Mb
+---   77,290 rows  77,290 columns  237,004 non-zeroes
 ---   0 nl-code  0 nl-non-zeroes
---- MORITS_MCP.gms(695) 50 Mb
---- Executing PATH: elapsed 0:00:13.751
+--- MORITS_MCP.gms(695) 35 Mb
+--- Executing PATH: elapsed 0:00:10.495
 Reading dictionary...
 Reading row data...
 Evaluating functions...
 Checking model...
 Calculating Jacobian...
 
-PATH             24.2.1 r43572 Released Dec  9, 2013 WEI x86_64/MS Windows    
+PATH             24.7.4 r58773 Released Sep 19, 2016 WEI x86 64bit/MS Windows 
 
-112010 row/cols, 344000 non-zeros, 0.00% dense.
+77290 row/cols, 237004 non-zeros, 0.00% dense.
 
-Path 4.7.02 (Mon Dec 09 08:54:09 2013)
+Path 4.7.04 (Mon Sep 19 11:18:59 2016)
 Written by Todd Munson, Steven Dirkse, and Michael Ferris
 
-Zero:     0 Single:  8001 Double:     0
-Forced:  8004 Redundant:  2001
-Preprocessed size   : 94004
+Zero:     0 Single:  5521 Double:     0
+Forced:  6236 Redundant:  1559
+Preprocessed size   : 63974
 
 INITIAL POINT STATISTICS
 Maximum of X. . . . . . . . . .  1.2000e+005 var: (N_STO_E)
-Maximum of F. . . . . . . . . .  9.3671e+007 eqn: (minRES)
+Maximum of F. . . . . . . . . .  6.6328e+007 eqn: (minRES)
 Maximum of Grad F . . . . . . .  1.0799e+000 eqn: (KKTSTOUT_hh(h1))
                                             var: (levelsto_hh(h1))
 
 INITIAL JACOBIAN NORM STATISTICS
-Maximum Row Norm. . . . . . . .  8.0000e+003 eqn: (minRES)
+Maximum Row Norm. . . . . . . .  5.5200e+003 eqn: (minRES)
 Minimum Row Norm. . . . . . . .  1.0000e+000 eqn: (KKTEB_hh(h1))
-Maximum Column Norm . . . . . .  8.0000e+003 var: (resshare)
+Maximum Column Norm . . . . . .  5.5200e+003 var: (resshare)
 Minimum Column Norm . . . . . .  1.0010e+000 var: (E_buy_hh(h1))
 
 Crash Log
 major  func  diff  size  residual    step       prox   (label)
-    0     0             7.5210e+006             0.0e+000 (energy_balance(h691))
-    1     1 33363 22007 7.1611e+006  1.0e+000    1.0e+001 (energy_balance(h691))
-    2     2 31347 41368 6.6010e+006  1.0e+000    9.0e+000 (energy_balance(h691))
-    3     3 19847 52460 5.9806e+006  1.0e+000    8.1e+000 (energy_balance(h691))
-    4     4  9099 58611 5.3340e+006  1.0e+000    7.3e+000 (KKTNRES)
-    5     5  4198 60178 4.7620e+006  1.0e+000    6.6e+000 (KKTNRES)
-    6     9   868 58789 4.5019e+006  4.1e-001    5.9e+000 (KKTNRES)
-    7    10  5550 58940 3.1948e+006  1.0e+000    5.3e+000 (minRES)
-    8    11  8216 59671 2.9173e+006  1.0e+000    4.8e+000 (KKTNCON(base))
-    9    12  5619 61614 2.5921e+006  1.0e+000    4.3e+000 (KKTNCON(base))
-   10    13  4431 58750 2.2246e+006  1.0e+000    3.9e+000 (KKTNCON(base))
-   11    14  5738 58808 1.9348e+006  1.0e+000    3.5e+000 (KKTNSTOP)
-   12    15  6130 59934 1.6490e+006  1.0e+000    3.1e+000 (KKTNCON(peak))
-   13    16  4657 60456 1.2877e+006  1.0e+000    2.8e+000 (KKTNSTOP)
-   14    17  4589 59030 9.7338e+005  1.0e+000    2.5e+000 (KKTNSTOP)
-   15    18  6602 56418 8.5727e+005  1.0e+000    2.3e+000 (minRES)
+    0     0             6.4025e+006             0.0e+000 (energy_balance(h691))
+    1     1 22650 15009 6.0960e+006  1.0e+000    1.0e+001 (energy_balance(h691))
+    2     2 21309 28175 5.6183e+006  1.0e+000    9.0e+000 (energy_balance(h691))
+    3     3 13644 35723 5.0882e+006  1.0e+000    8.1e+000 (energy_balance(h691))
+    4     4  6202 40292 4.5345e+006  1.0e+000    7.3e+000 (KKTNRES)
+    5     5  1631 41249 4.0442e+006  1.0e+000    6.6e+000 (KKTNRES)
+    6     9   439 41144 3.8224e+006  4.1e-001    5.9e+000 (KKTNRES)
+    7    10  4034 41197 2.7179e+006  1.0e+000    5.3e+000 (minRES)
+    8    11  6107 41659 2.4774e+006  1.0e+000    4.8e+000 (KKTNCON(base))
+    9    12  4087 42642 2.1977e+006  1.0e+000    4.3e+000 (KKTNCON(base))
+   10    13  3333 40588 1.9343e+006  1.0e+000    3.9e+000 (KKTNCON(base))
+   11    14  4290 40567 1.6874e+006  1.0e+000    3.5e+000 (KKTNSTOP)
+   12    15  4488 41371 1.4365e+006  1.0e+000    3.1e+000 (KKTNCON(peak))
+   13    16  3349 41703 1.1284e+006  1.0e+000    2.8e+000 (KKTNSTOP)
+   14    17  3233 40644 8.4984e+005  1.0e+000    2.5e+000 (KKTNSTOP)
+   15    18  4697 38758 7.7601e+005  1.0e+000    2.3e+000 (minRES)
 pn_search terminated: no progress.
 
 Major Iteration Log
 major minor  func  grad  residual    step  type prox    inorm  (label)
-    0     0    31    16 8.5727e+005           I 2.1e+000 4.0e+005 (minRES)
+    0     0    31    16 7.7601e+005           I 2.1e+000 4.2e+005 (minRES)
 
 Minor Iteration Log
 minor      t          z     w     v   art ckpts  enter    leave
-  500  2.8947e-007 52368 41633     2     0     9 z[19676] w[17941]
- 1000  5.6963e-002 52045 41956     2     0    19 w[76502] z[75780]
- 1500  1.2594e-001 51677 42324     2     0    30 w[70224] z[32990]
- 2000  1.9884e-001 51283 42718     2     0    42 z[21978] z[71625]
- 2500  2.7832e-001 50883 43118     2     0    51 z[92188] z[31949]
- 3000  3.6918e-001 50506 43495     2     0    61 w[33865] w[11611]
- 3500  4.6300e-001 50173 43828     2     0    72 w[71098] z[71094]
- 4000  5.6250e-001 49864 44137     2     0    82 w[91612] w[83369]
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500 -8.0419e+004   499 93504     0     0     9 z[40322] w[39497]
- 1000 -7.5177e+004   999 93004     0     0    19 z[40336] w[40227]
- 1500 -7.2340e+004  1499 92504     0     0    29 z[41752] w[40551]
- 2000 -6.8022e+004  1999 92004     0     0    39 z[38043] w[70502]
- 2500 -6.3983e+004  2499 91504     0     0    49 z[39603] w[40038]
- 3000 -6.0429e+004  2999 91004     0     0    58 z[39628] w[38892]
- 3500 -5.8634e+004  3499 90504     0     0    68 z[78908] w[40939]
- 4000 -5.7312e+004  3999 90004     0     0    78 z[41809] w[70491]
- 4500 -5.5978e+004  4499 89504     0     0    88 z[39118] w[39033]
- 5000 -5.4460e+004  4999 89004     0     0    98 z[70828] w[78885]
- 5500 -5.2749e+004  5499 88504     0     0   107 z[79572] w[78758]
- 6000 -5.1064e+004  5999 88004     0     0   117 z[74812] w[72196]
- 6500 -4.9211e+004  6499 87504     0     0   127 z[81192] w[79835]
- 7000 -4.7386e+004  6999 87004     0     0   137 z[78701] w[81116]
- 7500 -4.5739e+004  7499 86504     0     0   147 z[78563] w[74794]
- 8000 -4.4310e+004  7999 86004     0     0   156 z[70289] w[80501]
- 8500 -4.2819e+004  8499 85504     0     0   166 z[77771] w[78058]
- 9000 -4.1381e+004  8999 85004     0     0   176 z[80902] w[78946]
- 9500 -3.9637e+004  9499 84504     0     0   186 z[80642] w[77586]
-10000 -3.7797e+004  9999 84004     0     0   196 z[79354] w[73319]
+  500  2.7612e-002 35802 28169     2     0     9 w[20650] z[21398]
+ 1000  1.3342e-001 35424 28547     2     0    19 w[20826] z[21012]
+ 1500  2.5123e-001 35107 28864     2     0    30 z[ 9522] w[ 9523]
+ 2000  2.5123e-001 35607 28364     2     0    39 z[10022] w[10023]
+ 2500  2.5123e-001 36107 27864     2     0    49 z[10522] w[10523]
+ 3000  2.5131e-001 36607 27364     2     0    59 z[11087] w[11088]
+ 3500  2.5131e-001 37107 26864     2     0    69 z[11671] w[11672]
+ 4000  2.5131e-001 37607 26364     2     0    79 z[12300] w[12301]
+ 4500  2.5132e-001 38107 25864     2     0    88 z[13218] w[13219]
+ 5000  3.4222e-001 37972 25999     2     0    98 w[12890] z[44381]
+ 5500  4.8854e-001 37630 26341     2     0   108 w[55333] z[49512]
+ 6000  6.2672e-001 37300 26671     2     0   119 w[61649] z[38998]
+ 6500  6.7512e-001 37012 26959     2     0   129 w[51649] z[48889]
+ 7000  7.3708e-001 36628 27343     2     0   139 w[62116] z[37277]
+ 7500  8.1349e-001 36248 27723     2     0   148 z[63349] z[12999]
+ 8000  8.3024e-001 35772 28199     2     0   159 w[ 9919] z[ 9920]
+ 8500  8.3025e-001 35272 28699     2     0   169 w[10419] z[10420]
+ 9000  8.3025e-001 34772 29199     2     0   179 w[10964] z[10965]
+ 9500  8.3025e-001 34272 29699     2     0   188 w[11549] z[11550]
+10000  8.3025e-001 33772 30199     2     0   198 w[12167] z[12168]
+10500  8.3026e-001 33272 30699     2     0   208 w[13072] z[13074]
+11000  8.9410e-001 32870 31101     2     0   218 w[38591] z[47550]
 
 Major Iteration Log
 major minor  func  grad  residual    step  type prox    inorm  (label)
-    1 10000    35    17 3.0648e+006  5.1e-001 IB 8.2e-001 1.2e+005 (KKTNSTOP)
+    1 11370    32    17 3.6241e+005  1.0e+000 SM 8.2e-001 9.6e+003 (KKTSTOLEV(h2104)
 
 Minor Iteration Log
 minor      t          z     w     v   art ckpts  enter    leave
-  500  1.7065e-011 52109 41894     0     0     9 z[86414] w[92563]
- 1000  9.5351e-010 52609 41394     0     0    19 z[24271] w[25241]
- 1500  1.6167e-007 53109 40894     0     0    29 z[18493] w[19418]
+  500  2.6059e-001 32685 31286     2     0     9 z[56179] z[59726]
+ 1000  5.2599e-001 32792 31179     2     0    19 z[62750] w[58285]
+ 1500  7.1003e-001 32910 31061     2     0    29 z[37281] w[62125]
+ 2000  8.4350e-001 32928 31043     2     0    39 w[25473] w[10552]
+ 2500  9.3509e-001 32957 31014     2     0    49 w[26221] z[57763]
+
+Major Iteration Log
+major minor  func  grad  residual    step  type prox    inorm  (label)
+    2  2851    33    18 1.5430e+005  1.0e+000 SO 3.3e-001 6.1e+003 (KKTSTOLEV(h1312)
+
+Minor Iteration Log
+minor      t          z     w     v   art ckpts  enter    leave
+  500  1.6443e-001 33013 30958     2     0    10 z[18366] z[ 9471]
+ 1000  3.1947e-001 33107 30864     2     0    20 z[10213] z[48459]
+ 1500  5.0097e-001 33172 30799     2     0    30 w[ 3644] w[55215]
+ 2000  6.7500e-001 33162 30809     2     0    40 z[61704] w[32368]
 Sending CtrlBreakp signal
 Batchvorgang abbrechen (J/N)? 
 ^CERROR: Solver "PATH" returned with nonzero exitcode -1073741510 
