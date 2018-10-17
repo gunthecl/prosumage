@@ -52,7 +52,7 @@ $setglobal outputfile "results_MCP"
 
 
 Sets
-h                hour                                    /h1*h8760/
+h                hour                                    /h1*h4800/
 res              Renewable technologies                  /renewable/
 sto              Storage technolgies                     /storage/
 year             Base years                              /2010*2016/
@@ -133,7 +133,7 @@ lev_Z                       Objective value: Annual electricity costs
 lev_EB                      Level of purchased electricity from grid
 lev_ES                      Level of sold electricity to grid
 price_market(h)             Price for selling energy per kWh
-days /365/
+days /100/
 ;
 
 
@@ -173,8 +173,8 @@ penalty          =  0 ;
 c_i_sto_e_hh  =  5418.14/1000  ;
 c_i_sto_p_hh  = 50995.48/1000  ;
 c_i_pv_hh     = 60526.64/1000  ;
-c_var_sto_hh  =     0.5 /1000  ;
-price_buy     =     0.30 ;
+c_var_sto_hh  =     0.5 /1000*365/days  ;
+price_buy     =     0.30*365/days ;
 
 * Declare further restrictions
 pv_cap_max = 10       ;
@@ -207,9 +207,9 @@ c_i_sto_p           = 50995.48 ;
 c_i_res             = share_solar('%base_year%') * 60526.64 + share_wind('%base_year%') * 108869.81 ;
 c_i_con('base')     = 102393.68 ;
 c_i_con('peak')     = 47840.27 ;
-c_var_con('base')   = 31.03 ;
-c_var_con('peak')   = 78.36 ;
-c_var_sto           = 0.5 ;
+c_var_con('base')   = 31.03*365/days ;
+c_var_con('peak')   = 78.36*365/days ;
+c_var_sto           = 0.5*365/days ;
 
 ***************************** Upload data **************************************
 
@@ -417,8 +417,8 @@ KKTEB_hh(h)..
 
 KKTES_hh(h)..
 
-           -price_market(h)
-*           -lambda(h)/1000
+*           -price_market(h)
+           -lambda(h)/1000
            + mu_hh(h) =G=  0
 
 ;
@@ -612,7 +612,7 @@ KKTSTOUT_hh.STO_OUT_hh
 KKTSTOLEV_hh.STO_L_hh
 KKTCU_hh.CU_hh
 
-$ontext
+
 energy_balance.lambda
 renewable_generation.mu
 minRES.resshare
@@ -631,7 +631,6 @@ KKTSTOIN.STO_IN
 KKTSTOUT.STO_OUT
 KKTSTOLEV.STO_L
 KKTCU.CU
-$offtext
 
 /
 

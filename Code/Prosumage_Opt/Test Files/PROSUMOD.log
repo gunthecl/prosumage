@@ -1,0 +1,65 @@
+
+--- Job PROSUMOD.gms Start 10/14/18 21:37:28 24.7.4 r58773 WEX-WEI x86 64bit/MS Windows
+GAMS 24.7.4   Copyright (C) 1987-2016 GAMS Development. All rights reserved
+Licensee: Medium MUD - 10 User License                   S170316:1123AO-GEN
+          Deutsches Institut fuer Wirtschaftsforschung DIW, AbteilungDC3975
+          License for teaching and research at degree granting institutions
+          License Admin: Claudia Kemfert, bbibra@diw.de                    
+--- Starting compilation
+--- PROSUMOD.gms(135) 3 Mb
+--- GDXin=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\data\input_data.gdx
+--- PROSUMOD.gms(299) 11 Mb
+--- Starting execution: elapsed 0:00:00.264
+--- PROSUMOD.gms(269) 12 Mb
+--- Generating LP model prosumod
+--- PROSUMOD.gms(292) 17 Mb
+---   16,561 rows  19,324 columns  59,162 non-zeroes
+--- Executing CPLEX: elapsed 0:00:00.366
+
+IBM ILOG CPLEX   24.7.4 r58773 Released Sep 19, 2016 WEI x86 64bit/MS Windows 
+--- GAMS/Cplex licensed for continuous and discrete problems.
+Cplex 12.6.3.0
+
+Reading data...
+Starting Cplex...
+Space for names approximately 1.05 Mb
+Use option 'names no' to turn use of names off
+Tried aggregator 1 time.
+LP Presolve eliminated 3120 rows and 7445 columns.
+Aggregator did 3045 substitutions.
+Reduced LP has 10396 rows, 8834 columns, and 37151 nonzeros.
+Presolve time = 0.03 sec. (13.94 ticks)
+Initializing dual steep norms . . .
+
+Iteration log . . .
+Iteration:     1   Dual objective     =           -88.016141
+Iteration:   218   Dual objective     =            69.181923
+Iteration:   630   Dual objective     =           203.997988
+Iteration:   990   Dual objective     =           276.656038
+Iteration:  1206   Dual objective     =           340.322847
+Iteration:  1592   Dual objective     =           385.282391
+Iteration:  2053   Dual objective     =           433.261030
+Iteration:  2489   Dual objective     =           514.527733
+Iteration:  2673   Dual objective     =           571.588785
+Iteration:  2924   Dual objective     =           624.972304
+Iteration:  3135   Dual objective     =           653.051535
+Iteration:  3349   Dual objective     =           679.629342
+Iteration:  3552   Dual objective     =           697.163766
+Iteration:  3739   Dual objective     =           706.278305
+Iteration:  4022   Dual objective     =           716.235445
+Iteration:  4253   Dual objective     =           721.902532
+Iteration:  4435   Dual objective     =           723.969960
+LP status(1): optimal
+Cplex Time: 0.59sec (det. 455.46 ticks)
+
+Optimal solution found.
+Objective :         724.935454
+
+--- Restarting execution
+--- PROSUMOD.gms(292) 11 Mb
+--- Reading solution for model prosumod
+--- PROSUMOD.gms(292) 12 Mb
+--- Executing after solve: elapsed 0:00:01.267
+--- PROSUMOD.gms(293) 13 Mb
+*** Status: Normal completion
+--- Job PROSUMOD.gms Stop 10/14/18 21:37:29 elapsed 0:00:01.279

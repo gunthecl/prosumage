@@ -1,3 +1,0 @@
-par=report            rng=report!A1             rdim=2 cdim=1
-par=report_tech       rng=report_tech!A1        rdim=3 cdim=1
-

@@ -1,0 +1,73 @@
+
+--- Job Test_MCP2.gms Start 10/14/18 21:37:54 24.7.4 r58773 WEX-WEI x86 64bit/MS Windows
+GAMS 24.7.4   Copyright (C) 1987-2016 GAMS Development. All rights reserved
+Licensee: Medium MUD - 10 User License                   S170316:1123AO-GEN
+          Deutsches Institut fuer Wirtschaftsforschung DIW, AbteilungDC3975
+          License for teaching and research at degree granting institutions
+          License Admin: Claudia Kemfert, bbibra@diw.de                    
+--- Starting compilation
+--- Test_MCP2.gms(141) 3 Mb
+--- GDXin=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\data\input_data.gdx
+--- Test_MCP2.gms(389) 28 Mb
+--- Starting execution: elapsed 0:00:00.135
+--- Test_MCP2.gms(378) 30 Mb
+--- Generating MCP model prosumodmcp
+--- Test_MCP2.gms(380) 60 Mb
+---   113,884 rows  113,884 columns  306,494 non-zeroes
+---   0 nl-code  0 nl-non-zeroes
+--- Test_MCP2.gms(380) 58 Mb
+--- Executing PATH: elapsed 0:00:00.407
+Reading dictionary...
+Reading row data...
+Evaluating functions...
+Checking model...
+Calculating Jacobian...
+
+PATH             24.7.4 r58773 Released Sep 19, 2016 WEI x86 64bit/MS Windows 
+
+113884 row/cols, 306494 non-zeros, 0.00% dense.
+
+Path 4.7.04 (Mon Sep 19 11:18:59 2016)
+Written by Todd Munson, Steven Dirkse, and Michael Ferris
+
+Zero:     0 Single: 35149 Double: 13302
+Preprocessed size   : 65433
+
+INITIAL POINT STATISTICS
+Maximum of X. . . . . . . . . .  1.0000e+001 var: (N_STO_E)
+Maximum of F. . . . . . . . . .  5.0995e+001 eqn: (KKTNSTOP)
+Maximum of Grad F . . . . . . .  1.0799e+000 eqn: (KKTSTOUT(h1))
+                                            var: (levelsto(h1))
+
+INITIAL JACOBIAN NORM STATISTICS
+Maximum Row Norm. . . . . . . .  1.3086e+004 eqn: (KKTNSTOP)
+Minimum Row Norm. . . . . . . .  2.0000e+000 eqn: (hh_energy_balance(h8))
+Maximum Column Norm . . . . . .  1.3086e+004 var: (N_STO_P)
+Minimum Column Norm . . . . . .  2.0000e+000 var: (lambda(h8))
+
+Crash Log
+major  func  diff  size  residual    step       prox   (label)
+    0     0             3.2302e+001             0.0e+000 (KKTNPV)
+    1     6 17035 17523 3.0498e+001  1.7e-001    3.2e-001 (KKTNPV)
+    2    12 17310 30124 3.0000e+001  1.7e-001    2.9e-001 (KKTNPV)
+    3    17  8718 34898 2.5546e+001  2.6e-001    2.6e-001 (KKTNPV)
+    4    24  3815 38741 2.4354e+001  6.9e-002    2.4e-001 (KKTNPV)
+    5    30  2023 39410 2.3767e+001  1.7e-001    2.1e-001 (KKTNPV)
+    6    36  1432 39932 2.2939e+001  1.7e-001    1.9e-001 (KKTNPV)
+    7    43   494 40154 2.2685e+001  6.9e-002    1.7e-001 (KKTNPV)
+    8    52    83 40192 2.2680e+001  1.2e-002    1.5e-001 (KKTNPV)
+pn_search terminated: no progress.
+
+Major Iteration Log
+major minor  func  grad  residual    step  type prox    inorm  (label)
+    0     0    65     9 2.2680e+001           I 1.4e-001 3.1e+000 (KKTNPV)
+
+Minor Iteration Log
+minor      t          z     w     v   art ckpts  enter    leave
+  500  3.3057e-002 39742 25637    53     0     9 w[54834] w[ 6810]
+ 1000  5.5022e-002 39347 25960   125     0    19 w[44106] z[55149]
+ 1500  7.9036e-002 38989 26234   209     0    29 w[53473] z[55272]
+Sending CtrlBreakp signal
+Batchvorgang abbrechen (J/N)? 
+^CERROR: Solver "PATH" returned with nonzero exitcode -1073741510 
+Exit code = -1073741510

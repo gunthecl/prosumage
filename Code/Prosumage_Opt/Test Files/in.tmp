@@ -1,0 +1,7 @@
+
+par=d_upload_hh          rng=demand!a3:bw8764             rdim=1 cdim=1
+par=avail_solar_upload   rng=solar!a3:H8764      rdim=1 cdim=1
+par=price_market_upload  rng=price!a3:H8764      rdim=1 cdim=1
+par=d_upload             rng=data!a3:f8763       rdim=1 cdim=1
+par=phi_res_upload       rng=data!h3:m8763       rdim=1 cdim=1
+

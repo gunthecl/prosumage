@@ -1,0 +1,17 @@
+B 2 C o m p i l a t i o n
+B 353 Include File Summary
+B 369 Model Statistics    SOLVE prosumod Using LP From line 320
+B 385 Solution Report     SOLVE prosumod Using LP From line 320
+B 419 E x e c u t i o n
+I 420 d
+I 2177 N_RES_PRO
+I 2182 N_STO_E_PRO
+I 2187 N_STO_P_PRO
+I 2193 Z
+I 2194 G_MARKET_M2PRO
+I 2571 G_MARKET_PRO2M
+I 4679 STO_L_all
+I 12310 price_market
+I 15234 hh_energy_balance
+I 18158 STO_IN_M
+I 18163 STO_OUT_M
