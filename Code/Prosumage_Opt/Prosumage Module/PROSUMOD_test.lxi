@@ -1,15 +1,17 @@
 B 2 C o m p i l a t i o n
-B 309 Include File Summary
-B 325 Model Statistics    SOLVE prosumod Using LP From line 291
-B 341 Solution Report     SOLVE prosumod Using LP From line 291
-B 375 E x e c u t i o n
-I 376 d
-I 2133 N_PV
-I 2138 N_STO_E
-I 2143 N_STO_P
-I 2149 Z
-I 2150 E_buy
-I 2554 E_sell
-I 3283 STO_L
-I 11378 price_market
-I 14302 hh_energy_balance
+B 324 Include File Summary
+B 340 Model Statistics    SOLVE prosumod Using LP From line 295
+B 356 Solution Report     SOLVE prosumod Using LP From line 295
+B 390 E x e c u t i o n
+I 391 d
+I 2148 N_PV
+I 2153 N_STO_E
+I 2158 N_STO_P
+I 2164 Z
+I 2165 E_buy
+I 2780 E_sell
+I 3509 STO_L
+I 11624 price_market
+I 14548 hh_energy_balance
+I 17473 E_purchased
+I 17474 E_sold

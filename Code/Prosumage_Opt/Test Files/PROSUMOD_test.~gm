@@ -253,7 +253,7 @@ Model prosumod /
 objective
 hh_energy_balance
 pv_generation
-*stolev_no_freelunch
+stolev_no_freelunch
 stolevel
 stolev_max_energy
 stoin_max_power
@@ -288,9 +288,24 @@ parallelmode -1
 $offecho
 
 
+*Try different startin values
+STO_L.l(sto,'h1')= 1.464;
+E_buy.l('h2')=  0.651;
+
 solve   prosumod using lp min Z;
+
+*Reporting Parameters
+Parameters
+E_purchased
+E_sold;
+
+E_purchased = sum((h),E_buy.l(h) );
+E_sold      = sum((h),  E_sell.l(h));
+
+
+
 display d , N_PV.l , N_STO_E.l, N_STO_P.l, Z.l, E_buy.l , E_sell.l ,
-        STO_L.l, price_market, hh_energy_balance.m
+        STO_L.l, price_market, hh_energy_balance.m , E_purchased, E_sold;
 
 
 ***************************** Set up reporting *********************************
