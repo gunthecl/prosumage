@@ -1,56 +1,56 @@
-46
-1 8843 0 0 242  0.00000000000000E+0000 5  0.00000000000000E+0000 0 1
-52562 0 0 0 8761 26281 0 26281 0 0 0 0
-61324 0 0 0 0 0 0 0
-188289 0
-61324 0 0 0 0 0 0 61323 0 1
-0 0 0 0 0 0 0
-0 17521 0
-0 0 10
+48
+5 8843 0 0 247  0.00000000000000E+0000 5  0.00000000000000E+0000 0 1
+114249 0 0 0 43804 26645 87604 0 0 0 0 0
+114250 0 0 0 0 0 0 0
+307221 0
+114250 0 0 0 0 0 0 87604 0 26646
+1 0 0 0 0 0 0
+0 17520 0
+0 16 20
  1.00000000000000E-0003  1.00000000000000E+0001 0
 0  0.00000000000000E+0000 0  0.00000000000000E+0000
  1.00000000000000E+0007 2000000000 0
-1011 0
- 0.00000000000000E+0000 0 0 0  1.00000000000000E+0000 0 1
-1 100
+100001 0
+ 0.00000000000000E+0000 0 0 0  1.00000000000000E+0000 0 1 0 0  1.00000000000000E-0005
+0 100
 0 0 0 0 0
  0.00000000000000E+0000  0.00000000000000E+0000  0.00000000000000E+0000  0.00000000000000E+0000  0.00000000000000E+0000
-C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage Module\225a\gamsmatr.dat
-C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage Module\225a\gamsinst.dat
-C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage Module\cplex.opt
-C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage Module\225a\gamsstat.dat
-C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage Module\225a\gamssolu.dat
+C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage Module\225a\gamsmatr.dat
+C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage Module\225a\gamsinst.dat
+C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage Module\path.opt
+C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage Module\225a\gamsstat.dat
+C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage Module\225a\gamssolu.dat
 
-C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage Module\225a\gamsdict.dat
+C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage Module\225a\gamsdict.dat
 3
-16:41:38
-10/17/18
-C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage Module\
-C:\GAMS\win64\24.2\
-C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage Module\225a\
+14:25:38
+10/18/18
+C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage Module\
+C:\GAMS\win64\24.7\
+C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage Module\225a\
 80 2147483647
-0 0 1762 43389 41627 65498
-Abteilung Energie, Verkehr, Umwelt, 5 User     S131220:0515AN-GEN0
-Deutsches Institut fuer Wirtschaftsforschung DIW                 0
-1523935701BACOCPM5PT                                       0000000
-0 1 1 0
+0 0 581 43390 42809 66966
+Medium MUD - 10 User License                   S170316:1123AO-GEN0
+Deutsches Institut fuer Wirtschaftsforschung DIW, Abteilung Energ0
+2008601301COCPPT                                             00000
+0 0 0 0
 225a\gmsprmNT.dat
-15 76 24
+15 80 68
 LP          24 24
 MIP         24 24
 RMIP        24 0
 NLP         17 17
-MCP         66 0
-MPEC        58 0
-RMPEC       58 0
+MCP         68 0
+MPEC        60 0
+RMPEC       60 0
 CNS         17 0
 DNLP        17 0
 RMINLP      17 0
-MINLP       30 0
+MINLP       31 0
 QCP         17 0
-MIQCP       69 0
+MIQCP       73 0
 RMIQCP      17 0
-EMP         39 0
+EMP         40 0
 ALPHAECP    111 5 1 0 0 0 0 0 0 0 0 0 0 1 0 1 0 0
 gmsecpnt.cmd
 gmsecpnx.exe
@@ -72,16 +72,16 @@ gmsgennx.exe
 BENCH       101111 5 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0
 gmsbncnt.cmd
 gmsbncnx.exe
-BONMIN      111 0 1 0 1 0 0 0 0 0 0 0 0 1 0 1 0 0
+BONMIN      111 0 1 0 0 0 0 0 0 0 0 0 0 1 0 1 0 0
 gmsgennt.cmd
 gmsgennx.exe
-BONMINH     111 0 1 0 1 0 0 0 0 0 0 0 0 1 0 1 0 0
+BONMINH     111 0 1 0 0 0 0 0 0 0 0 0 0 1 0 1 0 0
 gmsgennt.cmd
 gmsgennx.exe
 CBC         2111 5 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0
 gmsgennt.cmd
 gmsgennx.exe
-COINBONMIN  111 0 1 0 1 0 0 0 0 0 0 0 0 1 0 1 0 0
+COINBONMIN  111 0 1 0 0 0 0 0 0 0 0 0 0 1 0 1 0 0
 gmsgennt.cmd
 gmsgennx.exe
 COINCBC     2111 5 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0
@@ -114,7 +114,7 @@ gmsgennx.exe
 CONVERT     101011 5 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0
 gmscv_nt.cmd
 gmscv_nx.exe
-CONVERTD    101011 5 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0
+CONVERTD    101011 5 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
 gmsgennt.cmd
 gmsgennx.exe
 COUENNE     111 0 1 0 0 0 1 0 0 0 1 1 1 1 1 1 1 0
@@ -124,6 +124,9 @@ CPLEX       1011 5 1 1 1 1 0 0 0 0 0 0 0 0 1 1 1 0
 gmsgennt.cmd
 gmsgennx.exe
 CPLEXD      11 5 1 1 1 1 0 0 0 0 0 0 0 0 1 1 1 0
+gmsgennt.cmd
+gmsgennx.exe
+CPOPTIMIZER 11 5 1 0 1 0 0 0 0 0 0 0 0 1 0 1 0 0
 gmsgennt.cmd
 gmsgennx.exe
 DE          101011 5 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1
@@ -187,6 +190,9 @@ gmsgennx.exe
 LINGO       100001 0 1 1 1 1 1 0 0 0 0 1 1 1 0 0 0 0
 gmscvlnt.cmd
 gmscvlnx.exe
+LOCALSOLVER 11 5 1 0 1 0 1 0 0 0 1 1 1 1 1 1 1 0
+gmsgennt.cmd
+gmsgennx.exe
 LOGMIP      101011 5 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1
 gmsja_nt.cmd
 gmsja_nx.exe
@@ -252,6 +258,12 @@ gmsgennx.exe
 PATHNLP     111 5 1 1 0 1 1 0 0 0 0 1 1 0 1 0 1 0
 gmsptnnt.cmd
 gmsptnnx.exe
+PYOMO       100001 0 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0
+gmscvpnt.cmd
+gmscvpnx.exe
+QUADMINOS   101 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+gmsgennt.cmd
+gmsgennx.exe
 SBB         111 5 1 0 0 0 0 0 0 0 0 0 0 1 0 1 0 0
 gmssb_nt.cmd
 gmssb_nx.exe
@@ -276,18 +288,19 @@ gmsxa_nx.exe
 XPRESS      11 5 1 1 1 1 0 0 0 0 0 0 0 0 1 1 1 0
 gmsgennt.cmd
 gmsgennx.exe
-10289509101210101210                           G131220:00  AN   00
-DC3975       l 5, m 1, b 1, q 1, p 4, g 2      A Invoice         0
-C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage Module\PROSUMOD.dat
+1020972612121212                               G170316:00  AO   00
+DC3975       l 5, m 1, b 1, q 1, p 4, g 3      A Invoice         0
+C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage Module\PROSUMOD.dat
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0 0  1.00000000000000E+0000 0 0
-0 0 0
+114249 0 0
 0 0 0 1 0
-C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage Module\prosumod_lp.dll
-C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage Module\225a\sbbinfo.dat
-C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage Module\225a\gamscntr.dat
-C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage Module\
+C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage Module\prosumod_mcp.dll
+C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage Module\225a\sbbinfo.dat
+C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage Module\225a\gamscntr.dat
+C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage Module\
 dat
- 1.00000000000000E+0020
+ 1.00000000000000E+0299
 
 
+C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage Module\PROSUMOD.gms

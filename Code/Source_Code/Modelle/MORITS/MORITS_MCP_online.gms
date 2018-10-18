@@ -52,13 +52,14 @@ $setglobal outputfile "results_MCP"
 
 
 Sets
-h                hour                                    /h1*h4800/
+h                hour                                    /h1*h8760/
 res              Renewable technologies                  /renewable/
 sto              Storage technolgies                     /storage/
 year             Base years                              /2010*2016/
 hh_profile       Household load data                     /V1*V74/
 ct               Dispatchable Technologies               /base, peak/
-
+* Include subset of all first hours of days within a year
+$include 24h_FirstHours.gms
 ;
 
 Variables
@@ -87,7 +88,8 @@ gamma4_hh(h)
 
 Variables
 mu_hh(h)
-levelsto_hh(h);
+levelsto_hh(h)
+lambda_stolev24h_hh(h) ;
 
 Positive variables
 *System variables
@@ -133,7 +135,7 @@ lev_Z                       Objective value: Annual electricity costs
 lev_EB                      Level of purchased electricity from grid
 lev_ES                      Level of sold electricity to grid
 price_market(h)             Price for selling energy per kWh
-days /100/
+days /365/
 ;
 
 
@@ -280,6 +282,7 @@ KKTSTOIN_hh
 KKTSTOUT_hh
 KKTSTOLEV_hh
 KKTCU_hh
+stolev_24h_hh
 ;
 
 
@@ -331,18 +334,18 @@ hh_energy_balance_hh(h)..
 
            G_PV_hh(h)
          + STO_OUT_hh(h)
-         + E_buy_hh(h)    =G=
-          d_hh(h)
+         + E_buy_hh(h)  -  d_hh(h)       =G=    0
+
 ;
 
 *** Household PV generation usage: Directly consumed, CU_hhrtailed,stored or sold
 pv_generation_hh(h)..
 
-      avail_solar(h) * N_PV_hh =E=
-        G_PV_hh(h)
-      + CU_hh(h)
-      + STO_IN_hh(h)
-      + E_sell_hh(h)
+      avail_solar(h) * N_PV_hh
+       - G_PV_hh(h)
+       - CU_hh(h)
+       - STO_IN_hh(h)
+       - E_sell_hh(h)  =E= 0
 ;
 
 *** Restrict PV capacity
@@ -365,14 +368,20 @@ stolev_no_freelunch..
 $offtext
 
 *Storage level for all hours except first: Prio level plus intake minus outflow
-stolevel_hh(h)..
+stolevel_hh(h)$((ord(h)>1) )..
 
 
-         STO_L_hh(h--1)
+         STO_L_hh(h-1)
          + STO_IN_hh(h) * eta_sto_in_hh
          - STO_OUT_hh(h)/eta_sto_out_hh
-         =E=  STO_L_hh(h)
+         - STO_L_hh(h)
+         =E=  0
 ;
+
+stolev_24h_hh(h)..
+        - STO_L_hh(h)$(h24(h)) =E= 0
+;
+
 
 * Storage maximum energy capacity
 stolev_max_energy_hh(h)..
@@ -450,7 +459,8 @@ KKTSTOUT_hh(h)..
 KKTSTOLEV_hh(h)..
 
 
-     gamma2_hh(h) + levelsto_hh(h) - levelsto_hh(h++1) =G= 0
+     gamma2_hh(h) + levelsto_hh(h) - levelsto_hh(h+1)
+    + (lambda_stolev24h_hh(h))$h24(h)  =G= 0
 
 ;
 
@@ -473,49 +483,51 @@ energy_balance(h)..
         + G_RENEWABLE(h)
         + STO_OUT(h)
         + E_sell_hh(h)/1000
-         =G= d(h)
-        + E_buy_hh(h)/1000
+        - d(h)
+        - E_buy_hh(h)/1000
+         =G= 0
 ;
 
 renewable_generation(h)..
 
 
           phi_res(h) * N_RENEWABLE
-         =E= G_RENEWABLE(h) + CU(h) +  STO_IN(h)
+         - G_RENEWABLE(h) - CU(h) - STO_IN(h)  =E= 0
 ;
 
 
 minRES..
-         (1-phi_min_res) * sum( h , d(h) )  =G= sum( (ct,h) , G_CON(ct,h) )
+         (1-phi_min_res) * sum( h , d(h) ) - sum( (ct,h) , G_CON(ct,h) )  =G= 0
 ;
 
 maximum_generation_con(ct,h)..
 
-         N_CON(ct) =G= G_CON(ct,h)
+         N_CON(ct) - G_CON(ct,h) =G= 0
 ;
 
 
-stolev(h)..
-        STO_L(h--1)
+stolev(h)$((ord(h)>1) )..
+        STO_L(h-1)
       + STO_IN(h) * eta_sto_in
       - STO_OUT(h)/eta_sto_out
-      =E=  STO_L(h)
+      - STO_L(h)
+      =E=  0
 ;
 
 stolev_max(h)..
 
-          N_STO_E  =G= STO_L( h)
+          N_STO_E  - STO_L( h)  =G= 0
 ;
 
 
 maxin_power(h)..
 
-         N_STO_P  =G=  STO_IN( h)
+         N_STO_P - STO_IN( h) =G= 0
 ;
 
 maxout_power(h)..
 
-       N_STO_P   =G=  STO_OUT( h)
+       N_STO_P   -  STO_OUT( h)   =G= 0
 ;
 
 
@@ -577,7 +589,7 @@ KKTSTOUT(h)..
 KKTSTOLEV(h)..
 
 
-      gamma2(h) + levelsto(h) - levelsto(h++1) =G= 0
+      gamma2(h) + levelsto(h) - levelsto(h+1) =G= 0
 
 
 ;
@@ -611,7 +623,7 @@ KKTSTOIN_hh.STO_IN_hh
 KKTSTOUT_hh.STO_OUT_hh
 KKTSTOLEV_hh.STO_L_hh
 KKTCU_hh.CU_hh
-
+stolev_24h_hh.lambda_stolev24h_hh
 
 energy_balance.lambda
 renewable_generation.mu
@@ -695,6 +707,12 @@ N_STO_E.l                  = 120000 ;
 N_STO_P.l                  = 100000  ;
 *lambda.l(h)                = 1  ;
 *price_market(h)            = lambda.l(h)/1000 ;
+
+
+* First first storage level duals
+levelsto_hh.fx('h1') = 100;
+levelsto.fx('h1')  = 100;
+
 
 solve prosumodmcp using mcp;
 

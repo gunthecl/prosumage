@@ -762,33 +762,29 @@ PlaneRownr=-1
 [RP:PROSUMOD]
 1=
 
-[RP:TEST_MCP2]
+[OPENWINDOW_1]
+MAXIM=0
+TOP=0
+LEFT=0
+HEIGHT=637
+WIDTH=1390
+
+[RP:TEST_MCP2_V2]
 1=
 
 [RP:MORITS_MCP_ONLINE]
 1=
 
-[MRUFILES]
-1=H:\Modelle\Untitled_1.gms
-2=H:\Modelle\MORITS_MCP.gms
-3=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\prosumage.gpr
-4=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\PROSUMOD.gms
-5=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Test_MCP1.gms
-6=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Test_MCP1.lst
-7=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Test_MCP2.gms
-8=H:\Modelle\MORITS.gms
+[RP:TEST_MCP2]
+1=
 
-[OPENWINDOW_1]
-FILE0=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\MORITS_MCP_online.lst
-FILE1=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\PROSUMOD.gms
-FILE2=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\PROSUMOD.lst
-FILE3=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Test_MCP2.gms
-FILE4=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Test_MCP2.lst
-FILE5=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\MORITS_MCP_online.gms
-FILE6=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\MORITS_MCP_online.lst
-FILE7=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\MORITS_MCP_online.lst
-MAXIM=1
-TOP=0
-LEFT=0
-HEIGHT=637
-WIDTH=1390
+[MRUFILES]
+1=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Test Files\Test_MCP2.gms
+2=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Test Files\Test_MCP2.lst
+3=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\MORITS_MCP_online.lst
+4=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\MORITS_MCP_online.gms
+5=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Test Files\Test_MCP2_v2.gms
+6=H:\Modelle\Untitled_1.gms
+7=H:\Modelle\MORITS_MCP.gms
+8=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\prosumage.gpr
+9=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\PROSUMOD.gms

@@ -51,7 +51,7 @@ $setglobal outputfile "results\%modelrun%_results"
 
 
 Sets
-h                Hours                                   /h1*h8760/
+h                Hours                                   /h1*h3000/
 res              Renewable technologies                  /solar/
 sto              Storage technolgies                     /storage/
 year             Base years                              /2010*2016/
@@ -62,6 +62,7 @@ hh_profile       Household load data                     /V1*V74/
 Variables
 Z                        Objective
 lambda(h)
+levelsto(h)
 ;
 
 Positive variables
@@ -80,7 +81,7 @@ gamma1
 gamma2(h)
 gamma3(h)
 gamma4(h)
-levelsto(h)
+
 
 ;
 
@@ -199,18 +200,18 @@ hh_energy_balance(h)..
 
            G_PV(h)
          + STO_OUT(h)
-         + E_buy(h)   =E=
-          d(h)
+         + E_buy(h) - d(h)   =E=     0
+
 ;
 
 *** Household PV generation usage: Directly consumed, curtailed,stored or sold
 pv_generation(h)..
 
-      avail_solar(h) * N_PV =G=
-        G_PV(h)
-      + CU(h)
-      + STO_IN(h)
-      + E_sell(h)
+      avail_solar(h) * N_PV
+      - G_PV(h)
+      -  CU(h)
+      - STO_IN(h)
+      - E_sell(h)    =E= 0
 ;
 
 *** Restrict PV capacity
@@ -239,7 +240,8 @@ stolevel(h)..
          STO_L(h--1)
          + STO_IN(h) * eta_sto_in
          - STO_OUT(h)/eta_sto_out
-         =E=  STO_L(h)
+         - STO_L(h)
+         =E=  0
 ;
 
 * Storage maximum energy capacity

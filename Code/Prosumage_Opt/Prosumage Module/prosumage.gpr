@@ -753,9 +753,6 @@ PlaneRownr=-1
 [RP:MORITS_MCP]
 1=
 
-[RP:UNTITLED_1]
-1=
-
 [RP:MORITS_MCP_ONLINE]
 1=
 
@@ -765,6 +762,15 @@ PlaneRownr=-1
 [RP:PROSUMOD_TEST]
 1=
 
+[RP:MIXEDCOMPLEMENTARITY]
+1=
+
+[RP:TEST_MCP2]
+1=
+
+[RP:UNTITLED_1]
+1=
+
 [OPENWINDOW_1]
 MAXIM=0
 TOP=0
@@ -772,19 +778,19 @@ LEFT=0
 HEIGHT=637
 WIDTH=1390
 
-[RP:TEST_MCP2]
+[RP:24H_FIRSTHOURS]
 1=
 
 [RP:PROSUMOD]
 1=
 
 [MRUFILES]
-1=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage Module\PROSUMOD.lst
-2=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage Module\PROSUMOD.gms
-3=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Test Files\Test_MCP2.gms
-4=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage Module\PROSUMOD_test.lst
-5=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Test Files\PROSUMOD_test.gms
-6=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Test Files\PROSUMOD_test.gms
-7=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage Module\PROSUMOD_test.lst
-8=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage Module\PROSUMOD.lst
-9=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage Module\PROSUMOD.gms
+1=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage Module\PROSUMOD.lst
+2=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage Module\PROSUMOD.gms
+3=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage Module\24h_FirstHours.gms
+4=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage Module\Untitled_1.gms
+5=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Test Files\Test_MCP2.gms
+6=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage Module\Test_MCP2.lst
+7=C:\Users\Lenovo\Dropbox\OR4_2018_Public\In-class models\MixedComplementarity.gms
+8=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Test Files\PROSUMOD_test.gms
+9=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage Module\PROSUMOD.lst

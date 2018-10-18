@@ -1,17 +1,17 @@
 B 2 C o m p i l a t i o n
-B 486 Include File Summary
-B 505 Model Statistics    SOLVE prosumod_mcp Using MCP From line 421
-B 523 Solution Report     SOLVE prosumod_mcp Using MCP From line 421
-B 584 E x e c u t i o n
-I 585 d_PRO
-I 610 N_PV_PRO
-I 615 N_STO_E_PRO
-I 621 N_STO_P_PRO
-I 627 E_M2PRO_PRO
-I 652 G_PRO2M_PRO
-I 658 STO_L_PRO
-I 753 price_produce_PRO
-I 792 energy_balance_PRO
-I 832 E_purchased
-I 833 E_sold
-I 834 Z_PRO_mcp
+B 527 Include File Summary
+B 546 Model Statistics    SOLVE prosumod_mcp Using MCP From line 442
+B 564 Solution Report     SOLVE prosumod_mcp Using MCP From line 442
+B 627 E x e c u t i o n
+I 628 d_PRO
+I 2385 N_PV_PRO
+I 2390 N_STO_E_PRO
+I 2396 N_STO_P_PRO
+I 2402 E_M2PRO_PRO
+I 3547 G_PRO2M_PRO
+I 5923 STO_L_PRO
+I 11498 price_produce_PRO
+I 14423 energy_balance_PRO
+I 17344 E_purchased
+I 17345 E_sold
+I 17346 Z_PRO_mcp
