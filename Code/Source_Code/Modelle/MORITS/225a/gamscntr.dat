@@ -1,10 +1,10 @@
 48
 5 2485 0 0 247  0.00000000000000E+0000 5  0.00000000000000E+0000 0 1
-67210 0 0 0 21610 9600 57610 0 0 0 0 0
-67210 0 0 0 0 0 0 0
-205988 0
-67210 0 0 0 0 0 0 57610 0 9600
-0 0 0 0 0 0 0
+67410 0 0 0 21610 9800 57610 0 0 0 0 0
+67412 0 0 0 0 0 0 0
+206382 0
+67412 0 0 0 0 0 0 57610 0 9802
+2 0 0 0 0 0 0
 0 4800 0
 0 16 20
  1.00000000000000E-0003  1.00000000000000E+0001 0
@@ -23,13 +23,13 @@ C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\225a\
 
 C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\225a\gamsdict.dat
 3
-16:20:10
-10/18/18
+18:31:04
+10/21/18
 C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\
 C:\GAMS\win64\24.7\
 C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\225a\
 80 2147483647
-0 0 581 43390 42809 60608
+0 0 584 43393 42809 60609
 Medium MUD - 10 User License                   S170316:1123AO-GEN0
 Deutsches Institut fuer Wirtschaftsforschung DIW, Abteilung Energ0
 2008601301COCPPT                                             00000
@@ -293,7 +293,7 @@ DC3975       l 5, m 1, b 1, q 1, p 4, g 3      A Invoice         0
 C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\MORITS_MCP_online.dat
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0 0  1.00000000000000E+0000 0 0
-67210 0 0
+67410 0 0
 0 0 0 1 0
 C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\prosumodmcp.dll
 C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\225a\sbbinfo.dat

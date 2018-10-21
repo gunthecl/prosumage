@@ -52,7 +52,7 @@ $setglobal outputfile "results_MCP"
 
 
 Sets
-h                hour                                    /h1*h8760/
+h                hour                                    /h1*h2400/
 res              Renewable technologies                  /renewable/
 sto              Storage technolgies                     /storage/
 year             Base years                              /2010*2016/
@@ -77,8 +77,8 @@ N_STO_P_hh             Capacities: storage power
 STO_L_hh(h)             Storage level
 STO_IN_hh(h)            Storage intake
 STO_OUT_hh(h)           Storage generation
-E_buy_hh(h)                 Energy purchased from market
-E_sell_hh(h)                Energy sold to market
+E_buy_hh(h)             Energy purchased from market
+E_sell_hh(h)            Energy sold to market
 lambda_hh(h)
 gamma1_hh
 gamma2_hh(h)
@@ -113,7 +113,8 @@ resshare
 
 Variables
 mu
-levelsto(h);
+levelsto(h)
+lambda_stolev24h(h);
 
 Parameters
 * Household Parameters
@@ -310,7 +311,7 @@ KKTSTOIN
 KKTSTOUT
 KKTSTOLEV
 KKTCU
-
+stolev_24h
 ;
 
 
@@ -514,6 +515,10 @@ stolev(h)$((ord(h)>1) )..
       =E=  0
 ;
 
+stolev_24h(h)..
+        - STO_L(h)$(h24(h)) =E= 0
+;
+
 stolev_max(h)..
 
           N_STO_E  - STO_L( h)  =G= 0
@@ -589,7 +594,8 @@ KKTSTOUT(h)..
 KKTSTOLEV(h)..
 
 
-      gamma2(h) + levelsto(h) - levelsto(h+1) =G= 0
+      gamma2(h) + levelsto(h) - levelsto(h+1)
+      + (lambda_stolev24h(h))$h24(h)     =G= 0
 
 
 ;
@@ -643,7 +649,7 @@ KKTSTOIN.STO_IN
 KKTSTOUT.STO_OUT
 KKTSTOLEV.STO_L
 KKTCU.CU
-
+stolev_24h.lambda_stolev24h
 /
 
 

@@ -1,11 +1,11 @@
 =0PATH             24.7.4 r58773 Released Sep 19, 2016 WEI x86 64bit/MS Windows 
 =1
-67210 row/cols, 205988 non-zeros, 0.00% dense.
+67410 row/cols, 206376 non-zeros, 0.00% dense.
 
 =2
 convergence_tolerance 1e-006
 major_iteration_limit 500
-minor_iteration_limit 134420
+minor_iteration_limit 134820
 crash_iteration_limit 50
 cumulative_iteration_limit 2000000000
 time_limit 1e+007
@@ -62,7 +62,7 @@ Written by Todd Munson, Steven Dirkse, and Michael Ferris
 =2
 MCP modified basis.
   ** WARNING **
-Basis modifications: 58767
+Basis modifications: 54709
 
 INITIAL STATISTICS
 Inf-Norm of Complementarity . .  1.0239e+010 eqn: (KKTNCON(base))
@@ -82,8 +82,8 @@ Maximum of X. . . . . . . . . .  1.2000e+005 var: (N_STO_E)
 Maximum of F. . . . . . . . . .  5.8388e+007 eqn: (minRES)
 =2
 =1
-Maximum of Grad F . . . . . . .  1.0799e+000 eqn: (KKTSTOUT_hh(h1))
-                                            var: (levelsto_hh(h1))
+Maximum of Grad F . . . . . . .  1.0799e+000 eqn: (KKTSTOUT_hh(h8))
+                                            var: (levelsto_hh(h8))
 =2
 =1
 
@@ -105,15 +105,9 @@ Minimum Column Norm . . . . . .  1.0000e+000 var: (CU_hh(h8))
 Crash Log
 major  func  diff  size  residual    step       prox   (label)
     0     0             6.0510e+006             0.0e+000 (energy_balance(h691))
-Factorization: number of singularities 10599(15401)
-Crash: Factor: 10599 singularities.
+Factorization: number of singularities 10172(13734)
+Crash: Factor: 10172 singularities.
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h2)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h3)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h4)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h5)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h6)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h7)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h8)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h9)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h10)
@@ -132,13 +126,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h22)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h23)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h24)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h25)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h26)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h27)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h28)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h29)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h30)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h31)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h32)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h33)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h34)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h35)
@@ -156,13 +143,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h46)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h47)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h48)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h49)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h50)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h51)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h52)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h53)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h54)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h55)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h56)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h57)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h58)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h59)
@@ -180,13 +160,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h70)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h71)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h72)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h73)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h74)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h75)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h76)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h77)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h78)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h79)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h80)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h81)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h82)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h83)
@@ -204,13 +177,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h94)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h95)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h96)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h97)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h98)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h99)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h100)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h101)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h102)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h103)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h104)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h105)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h106)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h107)
@@ -228,12 +194,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h118)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h119)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h120)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h121)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h122)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h123)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h124)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h125)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h126)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h127)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h128)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h129)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h130)
@@ -252,12 +212,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h142)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h143)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h144)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h145)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h146)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h147)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h148)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h149)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h150)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h151)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h152)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h153)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h154)
@@ -276,13 +230,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h166)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h167)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h168)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h169)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h170)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h171)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h172)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h173)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h174)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h175)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h176)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h177)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h178)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h179)
@@ -300,13 +247,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h190)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h191)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h192)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h193)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h194)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h195)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h196)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h197)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h198)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h199)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h200)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h201)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h202)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h203)
@@ -324,12 +264,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h214)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h215)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h216)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h217)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h218)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h219)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h220)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h221)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h222)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h223)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h224)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h225)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h226)
@@ -348,12 +282,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h238)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h239)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h240)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h241)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h242)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h243)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h244)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h245)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h246)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h247)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h248)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h249)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h250)
@@ -372,12 +300,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h262)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h263)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h264)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h265)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h266)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h267)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h268)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h269)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h270)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h271)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h272)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h273)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h274)
@@ -396,12 +318,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h286)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h287)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h288)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h289)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h290)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h291)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h292)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h293)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h294)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h295)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h296)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h297)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h298)
@@ -420,12 +336,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h310)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h311)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h312)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h313)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h314)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h315)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h316)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h317)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h318)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h319)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h320)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h321)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h322)
@@ -444,12 +354,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h334)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h335)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h336)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h337)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h338)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h339)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h340)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h341)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h342)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h343)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h344)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h345)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h346)
@@ -468,13 +372,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h358)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h359)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h360)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h361)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h362)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h363)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h364)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h365)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h366)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h367)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h368)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h369)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h370)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h371)
@@ -492,12 +389,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h382)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h383)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h384)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h385)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h386)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h387)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h388)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h389)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h390)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h391)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h392)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h393)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h394)
@@ -516,12 +407,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h406)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h407)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h408)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h409)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h410)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h411)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h412)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h413)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h414)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h415)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h416)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h417)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h418)
@@ -540,12 +425,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h430)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h431)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h432)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h433)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h434)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h435)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h436)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h437)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h438)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h439)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h440)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h441)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h442)
@@ -564,13 +443,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h454)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h455)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h456)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h457)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h458)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h459)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h460)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h461)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h462)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h463)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h464)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h465)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h466)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h467)
@@ -588,12 +460,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h478)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h479)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h480)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h481)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h482)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h483)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h484)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h485)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h486)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h487)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h488)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h489)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h490)
@@ -612,12 +478,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h502)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h503)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h504)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h505)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h506)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h507)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h508)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h509)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h510)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h511)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h512)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h513)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h514)
@@ -636,12 +496,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h526)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h527)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h528)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h529)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h530)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h531)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h532)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h533)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h534)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h535)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h536)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h537)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h538)
@@ -660,12 +514,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h550)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h551)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h552)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h553)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h554)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h555)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h556)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h557)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h558)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h559)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h560)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h561)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h562)
@@ -684,12 +532,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h574)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h575)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h576)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h577)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h578)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h579)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h580)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h581)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h582)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h583)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h584)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h585)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h586)
@@ -708,12 +550,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h598)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h599)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h600)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h601)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h602)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h603)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h604)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h605)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h606)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h607)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h608)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h609)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h610)
@@ -732,12 +568,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h622)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h623)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h624)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h625)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h626)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h627)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h628)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h629)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h630)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h631)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h632)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h633)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h634)
@@ -756,12 +586,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h646)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h647)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h648)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h649)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h650)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h651)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h652)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h653)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h654)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h655)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h656)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h657)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h658)
@@ -780,12 +604,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h670)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h671)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h672)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h673)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h674)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h675)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h676)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h677)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h678)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h679)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h680)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h681)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h682)
@@ -804,12 +622,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h694)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h695)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h696)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h697)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h698)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h699)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h700)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h701)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h702)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h703)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h704)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h705)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h706)
@@ -828,12 +640,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h718)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h719)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h720)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h721)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h722)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h723)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h724)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h725)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h726)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h727)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h728)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h729)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h730)
@@ -852,12 +658,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h742)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h743)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h744)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h745)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h746)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h747)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h748)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h749)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h750)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h751)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h752)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h753)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h754)
@@ -876,12 +676,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h766)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h767)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h768)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h769)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h770)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h771)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h772)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h773)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h774)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h775)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h776)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h777)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h778)
@@ -900,12 +694,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h790)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h791)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h792)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h793)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h794)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h795)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h796)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h797)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h798)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h799)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h800)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h801)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h802)
@@ -924,12 +712,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h814)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h815)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h816)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h817)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h818)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h819)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h820)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h821)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h822)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h823)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h824)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h825)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h826)
@@ -948,12 +730,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h838)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h839)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h840)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h841)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h842)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h843)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h844)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h845)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h846)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h847)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h848)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h849)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h850)
@@ -972,12 +748,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h862)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h863)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h864)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h865)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h866)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h867)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h868)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h869)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h870)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h871)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h872)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h873)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h874)
@@ -996,12 +766,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h886)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h887)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h888)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h889)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h890)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h891)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h892)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h893)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h894)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h895)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h896)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h897)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h898)
@@ -1020,12 +784,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h910)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h911)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h912)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h913)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h914)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h915)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h916)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h917)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h918)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h919)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h920)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h921)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h922)
@@ -1044,11 +802,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h934)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h935)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h936)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h937)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h938)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h939)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h940)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h941)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h942)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h943)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h944)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h945)
@@ -1068,11 +821,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h958)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h959)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h960)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h961)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h962)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h963)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h964)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h965)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h966)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h967)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h968)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h969)
@@ -1092,11 +840,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h982)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h983)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h984)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h985)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h986)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h987)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h988)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h989)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h990)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h991)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h992)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h993)
@@ -1116,11 +859,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h1006)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1007)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1008)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1009)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1010)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1011)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1012)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1013)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1014)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1015)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1016)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1017)
@@ -1140,11 +878,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h1030)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1031)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1032)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1033)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1034)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1035)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1036)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1037)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1038)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1039)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1040)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1041)
@@ -1164,12 +897,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h1054)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1055)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1056)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1057)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1058)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1059)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1060)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1061)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1062)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1063)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1064)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1065)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1066)
@@ -1188,11 +915,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h1078)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1079)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1080)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1081)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1082)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1083)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1084)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1085)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1086)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1087)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1088)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1089)
@@ -1212,11 +934,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h1102)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1103)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1104)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1105)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1106)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1107)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1108)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1109)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1110)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1111)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1112)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1113)
@@ -1236,11 +953,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h1126)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1127)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1128)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1129)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1130)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1131)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1132)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1133)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1134)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1135)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1136)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1137)
@@ -1260,11 +972,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h1150)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1151)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1152)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1153)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1154)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1155)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1156)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1157)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1158)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1159)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1160)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1161)
@@ -1284,12 +991,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h1174)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1175)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1176)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1177)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1178)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1179)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1180)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1181)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1182)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1183)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1184)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1185)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1186)
@@ -1308,11 +1009,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h1198)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1199)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1200)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1201)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1202)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1203)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1204)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1205)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1206)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1207)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1208)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1209)
@@ -1332,11 +1028,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h1222)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1223)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1224)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1225)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1226)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1227)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1228)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1229)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1230)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1231)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1232)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1233)
@@ -1356,11 +1047,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h1246)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1247)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1248)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1249)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1250)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1251)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1252)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1253)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1254)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1255)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1256)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1257)
@@ -1380,11 +1066,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h1270)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1271)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1272)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1273)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1274)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1275)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1276)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1277)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1278)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1279)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1280)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1281)
@@ -1404,11 +1085,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h1294)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1295)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1296)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1297)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1298)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1299)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1300)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1301)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1302)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1303)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1304)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1305)
@@ -1428,11 +1104,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h1318)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1319)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1320)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1321)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1322)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1323)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1324)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1325)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1326)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1327)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1328)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1329)
@@ -1452,11 +1123,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h1342)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1343)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1344)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1345)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1346)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1347)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1348)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1349)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1350)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1351)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1352)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1353)
@@ -1476,11 +1142,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h1366)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1367)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1368)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1369)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1370)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1371)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1372)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1373)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1374)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1375)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1376)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1377)
@@ -1500,11 +1161,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h1390)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1391)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1392)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1393)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1394)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1395)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1396)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1397)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1398)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1399)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1400)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1401)
@@ -1524,11 +1180,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h1414)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1415)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1416)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1417)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1418)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1419)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1420)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1421)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1422)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1423)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1424)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1425)
@@ -1548,11 +1199,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h1438)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1439)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1440)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1441)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1442)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1443)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1444)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1445)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1446)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1447)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1448)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1449)
@@ -1572,11 +1218,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h1462)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1463)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1464)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1465)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1466)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1467)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1468)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1469)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1470)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1471)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1472)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1473)
@@ -1596,11 +1237,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h1486)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1487)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1488)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1489)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1490)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1491)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1492)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1493)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1494)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1495)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1496)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1497)
@@ -1620,11 +1256,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h1510)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1511)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1512)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1513)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1514)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1515)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1516)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1517)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1518)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1519)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1520)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1521)
@@ -1644,11 +1275,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h1534)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1535)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1536)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1537)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1538)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1539)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1540)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1541)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1542)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1543)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1544)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1545)
@@ -1668,11 +1294,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h1558)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1559)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1560)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1561)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1562)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1563)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1564)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1565)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1566)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1567)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1568)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1569)
@@ -1692,11 +1313,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h1582)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1583)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1584)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1585)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1586)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1587)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1588)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1589)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1590)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1591)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1592)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1593)
@@ -1716,11 +1332,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h1606)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1607)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1608)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1609)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1610)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1611)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1612)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1613)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1614)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1615)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1616)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1617)
@@ -1740,10 +1351,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h1630)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1631)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1632)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1633)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1634)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1635)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1636)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1637)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1638)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1639)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1640)
@@ -1764,11 +1371,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h1654)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1655)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1656)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1657)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1658)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1659)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1660)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1661)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1662)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1663)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1664)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1665)
@@ -1788,10 +1390,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h1678)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1679)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1680)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1681)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1682)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1683)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1684)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1685)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1686)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1687)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1688)
@@ -1812,10 +1410,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h1702)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1703)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1704)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1705)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1706)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1707)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1708)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1709)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1710)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1711)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1712)
@@ -1836,11 +1430,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h1726)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1727)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1728)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1729)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1730)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1731)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1732)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1733)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1734)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1735)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1736)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1737)
@@ -1860,11 +1449,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h1750)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1751)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1752)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1753)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1754)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1755)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1756)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1757)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1758)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1759)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1760)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1761)
@@ -1884,11 +1468,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h1774)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1775)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1776)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1777)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1778)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1779)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1780)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1781)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1782)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1783)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1784)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1785)
@@ -1908,10 +1487,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h1798)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1799)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1800)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1801)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1802)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1803)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1804)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1805)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1806)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1807)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1808)
@@ -1932,10 +1507,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h1822)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1823)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1824)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1825)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1826)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1827)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1828)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1829)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1830)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1831)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1832)
@@ -1956,11 +1527,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h1846)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1847)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1848)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1849)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1850)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1851)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1852)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1853)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1854)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1855)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1856)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1857)
@@ -1980,10 +1546,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h1870)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1871)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1872)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1873)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1874)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1875)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1876)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1877)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1878)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1879)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1880)
@@ -2004,10 +1566,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h1894)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1895)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1896)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1897)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1898)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1899)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1900)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1901)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1902)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1903)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1904)
@@ -2028,10 +1586,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h1918)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1919)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1920)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1921)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1922)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1923)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1924)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1925)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1926)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1927)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1928)
@@ -2052,10 +1606,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h1942)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1943)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1944)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1945)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1946)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1947)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1948)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1949)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1950)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1951)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1952)
@@ -2076,10 +1626,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h1966)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1967)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1968)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1969)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1970)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1971)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1972)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1973)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1974)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1975)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1976)
@@ -2100,10 +1646,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h1990)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1991)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1992)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1993)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1994)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1995)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1996)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h1997)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1998)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1999)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2000)
@@ -2124,10 +1666,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h2014)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2015)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2016)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2017)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h2018)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h2019)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h2020)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h2021)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2022)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2023)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2024)
@@ -2148,10 +1686,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h2038)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2039)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2040)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2041)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h2042)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h2043)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h2044)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h2045)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2046)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2047)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2048)
@@ -2172,10 +1706,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h2062)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2063)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2064)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2065)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h2066)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h2067)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h2068)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h2069)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2070)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2071)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2072)
@@ -2196,10 +1726,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h2086)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2087)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2088)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2089)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h2090)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h2091)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h2092)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h2093)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2094)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2095)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2096)
@@ -2220,10 +1746,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h2110)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2111)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2112)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2113)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h2114)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h2115)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h2116)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h2117)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2118)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2119)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2120)
@@ -2244,10 +1766,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h2134)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2135)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2136)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2137)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h2138)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h2139)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h2140)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h2141)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2142)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2143)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2144)
@@ -2268,10 +1786,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h2158)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2159)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2160)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2161)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h2162)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h2163)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h2164)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h2165)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2166)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2167)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2168)
@@ -2292,10 +1806,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h2182)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2183)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2184)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2185)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h2186)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h2187)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h2188)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h2189)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2190)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2191)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2192)
@@ -2316,10 +1826,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h2206)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2207)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2208)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2209)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h2210)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h2211)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h2212)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h2213)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2214)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2215)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2216)
@@ -2340,10 +1846,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h2230)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2231)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2232)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2233)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h2234)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h2235)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h2236)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h2237)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2238)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2239)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2240)
@@ -2364,10 +1866,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h2254)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2255)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2256)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2257)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h2258)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h2259)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h2260)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h2261)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2262)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2263)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2264)
@@ -2388,10 +1886,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h2278)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2279)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2280)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2281)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h2282)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h2283)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h2284)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h2285)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2286)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2287)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2288)
@@ -2412,10 +1906,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h2302)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2303)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2304)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2305)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h2306)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h2307)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h2308)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h2309)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2310)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2311)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2312)
@@ -2436,10 +1926,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h2326)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2327)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2328)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2329)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h2330)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h2331)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h2332)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h2333)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2334)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2335)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2336)
@@ -2460,10 +1946,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h2350)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2351)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2352)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2353)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h2354)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h2355)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h2356)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h2357)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2358)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2359)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2360)
@@ -2484,10 +1966,6 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h2374)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2375)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2376)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2377)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h2378)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h2379)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h2380)
-Crash: Factor: singular constraint: hh_energy_balance_hh(h2381)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2382)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2383)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2384)
@@ -2508,6 +1986,7 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h2398)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2399)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2400)
 Crash: Factor: singular constraint: pv_generation_hh(h9)
+Crash: Factor: singular constraint: pv_generation_hh(h10)
 Crash: Factor: singular constraint: pv_generation_hh(h11)
 Crash: Factor: singular constraint: pv_generation_hh(h12)
 Crash: Factor: singular constraint: pv_generation_hh(h13)
@@ -3113,7 +2592,6 @@ Crash: Factor: singular constraint: pv_generation_hh(h1623)
 Crash: Factor: singular constraint: pv_generation_hh(h1624)
 Crash: Factor: singular constraint: pv_generation_hh(h1625)
 Crash: Factor: singular constraint: pv_generation_hh(h1638)
-Crash: Factor: singular constraint: pv_generation_hh(h1639)
 Crash: Factor: singular constraint: pv_generation_hh(h1640)
 Crash: Factor: singular constraint: pv_generation_hh(h1641)
 Crash: Factor: singular constraint: pv_generation_hh(h1642)
@@ -3498,6 +2976,74 @@ Crash: Factor: singular constraint: pv_generation_hh(h2391)
 Crash: Factor: singular constraint: pv_generation_hh(h2392)
 Crash: Factor: singular constraint: pv_generation_hh(h2393)
 Crash: Factor: singular constraint: pv_generation_hh(h2394)
+Crash: Factor: singular constraint: stolevel_hh(h17)
+Crash: Factor: singular constraint: stolevel_hh(h41)
+Crash: Factor: singular constraint: stolevel_hh(h65)
+Crash: Factor: singular constraint: stolevel_hh(h89)
+Crash: Factor: singular constraint: stolevel_hh(h113)
+Crash: Factor: singular constraint: stolevel_hh(h161)
+Crash: Factor: singular constraint: stolevel_hh(h185)
+Crash: Factor: singular constraint: stolevel_hh(h209)
+Crash: Factor: singular constraint: stolevel_hh(h233)
+Crash: Factor: singular constraint: stolevel_hh(h257)
+Crash: Factor: singular constraint: stolevel_hh(h281)
+Crash: Factor: singular constraint: stolevel_hh(h353)
+Crash: Factor: singular constraint: stolevel_hh(h377)
+Crash: Factor: singular constraint: stolevel_hh(h424)
+Crash: Factor: singular constraint: stolevel_hh(h448)
+Crash: Factor: singular constraint: stolevel_hh(h473)
+Crash: Factor: singular constraint: stolevel_hh(h593)
+Crash: Factor: singular constraint: stolevel_hh(h617)
+Crash: Factor: singular constraint: stolevel_hh(h641)
+Crash: Factor: singular constraint: stolevel_hh(h689)
+Crash: Factor: singular constraint: stolevel_hh(h737)
+Crash: Factor: singular constraint: stolevel_hh(h785)
+Crash: Factor: singular constraint: stolevel_hh(h809)
+Crash: Factor: singular constraint: stolevel_hh(h833)
+Crash: Factor: singular constraint: stolevel_hh(h857)
+Crash: Factor: singular constraint: stolevel_hh(h881)
+Crash: Factor: singular constraint: stolevel_hh(h905)
+Crash: Factor: singular constraint: stolevel_hh(h929)
+Crash: Factor: singular constraint: stolevel_hh(h952)
+Crash: Factor: singular constraint: stolevel_hh(h976)
+Crash: Factor: singular constraint: stolevel_hh(h1000)
+Crash: Factor: singular constraint: stolevel_hh(h1024)
+Crash: Factor: singular constraint: stolevel_hh(h1048)
+Crash: Factor: singular constraint: stolevel_hh(h1072)
+Crash: Factor: singular constraint: stolevel_hh(h1096)
+Crash: Factor: singular constraint: stolevel_hh(h1120)
+Crash: Factor: singular constraint: stolevel_hh(h1168)
+Crash: Factor: singular constraint: stolevel_hh(h1216)
+Crash: Factor: singular constraint: stolevel_hh(h1240)
+Crash: Factor: singular constraint: stolevel_hh(h1264)
+Crash: Factor: singular constraint: stolevel_hh(h1336)
+Crash: Factor: singular constraint: stolevel_hh(h1360)
+Crash: Factor: singular constraint: stolevel_hh(h1384)
+Crash: Factor: singular constraint: stolevel_hh(h1408)
+Crash: Factor: singular constraint: stolevel_hh(h1432)
+Crash: Factor: singular constraint: stolevel_hh(h1456)
+Crash: Factor: singular constraint: stolevel_hh(h1480)
+Crash: Factor: singular constraint: stolevel_hh(h1528)
+Crash: Factor: singular constraint: stolevel_hh(h1552)
+Crash: Factor: singular constraint: stolevel_hh(h1576)
+Crash: Factor: singular constraint: stolevel_hh(h1600)
+Crash: Factor: singular constraint: stolevel_hh(h1624)
+Crash: Factor: singular constraint: stolevel_hh(h1647)
+Crash: Factor: singular constraint: stolevel_hh(h1672)
+Crash: Factor: singular constraint: stolevel_hh(h1695)
+Crash: Factor: singular constraint: stolevel_hh(h1744)
+Crash: Factor: singular constraint: stolevel_hh(h1768)
+Crash: Factor: singular constraint: stolevel_hh(h1792)
+Crash: Factor: singular constraint: stolevel_hh(h1815)
+Crash: Factor: singular constraint: stolevel_hh(h1864)
+Crash: Factor: singular constraint: stolevel_hh(h1960)
+Crash: Factor: singular constraint: stolevel_hh(h1984)
+Crash: Factor: singular constraint: stolevel_hh(h2128)
+Crash: Factor: singular constraint: stolevel_hh(h2224)
+Crash: Factor: singular constraint: stolevel_hh(h2272)
+Crash: Factor: singular constraint: stolevel_hh(h2296)
+Crash: Factor: singular constraint: stolevel_hh(h2320)
+Crash: Factor: singular constraint: stolevel_hh(h2344)
 Crash: Factor: singular constraint: KKTNSTOE_hh
 Crash: Factor: singular constraint: KKTNSTOP_hh
 Crash: Factor: singular constraint: energy_balance(h1)
@@ -5900,7 +5446,7 @@ Crash: Factor: singular constraint: energy_balance(h2397)
 Crash: Factor: singular constraint: energy_balance(h2398)
 Crash: Factor: singular constraint: energy_balance(h2399)
 Crash: Factor: singular constraint: energy_balance(h2400)
-Crash: Factor: singular constraint: renewable_generation(h2)
+Crash: Factor: singular constraint: renewable_generation(h3)
 Crash: Factor: singular constraint: renewable_generation(h4)
 Crash: Factor: singular constraint: renewable_generation(h5)
 Crash: Factor: singular constraint: renewable_generation(h6)
@@ -6507,7 +6053,6 @@ Crash: Factor: singular constraint: renewable_generation(h606)
 Crash: Factor: singular constraint: renewable_generation(h607)
 Crash: Factor: singular constraint: renewable_generation(h608)
 Crash: Factor: singular constraint: renewable_generation(h609)
-Crash: Factor: singular constraint: renewable_generation(h610)
 Crash: Factor: singular constraint: renewable_generation(h611)
 Crash: Factor: singular constraint: renewable_generation(h612)
 Crash: Factor: singular constraint: renewable_generation(h613)
@@ -8298,7 +7843,6 @@ Crash: Factor: singular constraint: renewable_generation(h2397)
 Crash: Factor: singular constraint: renewable_generation(h2398)
 Crash: Factor: singular constraint: renewable_generation(h2399)
 Crash: Factor: singular constraint: renewable_generation(h2400)
-Crash: Factor: singular constraint: stolev(h1)
 Crash: Factor: singular constraint: stolev(h2)
 Crash: Factor: singular constraint: stolev(h3)
 Crash: Factor: singular constraint: stolev(h4)
@@ -10703,1562 +10247,171 @@ Crash: Factor: singular constraint: KKTNSTOP
 Crash: Factor: singular constraint: KKTNCON(base)
 Crash: Factor: singular constraint: KKTNCON(peak)
 Crash: Factor: singular constraint: pv_generation_hh(h8)
-Crash: Factor: singular constraint: stolevel_hh(h20)
-Crash: Factor: singular constraint: KKTSTOLEV_hh(h2)
-Crash: Factor: singular constraint: renewable_generation(h1)
-    1     1 25463 15401 5.8725e+006  1.0e+000    1.0e+001 (energy_balance(h691))
-    2     2 24128 36061 5.4109e+006  1.0e+000    9.0e+000 (energy_balance(h691))
-    3     3  5139 36460 4.8853e+006  1.0e+000    8.1e+000 (energy_balance(h691))
-    4     4  1088 34813 4.3290e+006  1.0e+000    7.3e+000 (KKTNRES)
-    5     5  1116 34021 3.7945e+006  1.0e+000    6.6e+000 (KKTNRES)
-    6    10   616 33773 3.6343e+006  2.6e-001    5.9e+000 (KKTNRES)
-    7    17   255 33984 3.5862e+006  6.9e-002    5.3e+000 (KKTNRES)
-    8    25    66 34028 3.5636e+006  2.8e-002    4.8e+000 (KKTNRES)
-    9    26  3880 34050 2.4278e+006  1.0e+000    4.3e+000 (minRES)
-   10    27  6145 36006 2.0386e+006  1.0e+000    3.9e+000 (KKTNCON(base))
-   11    28  3805 37059 1.7439e+006  1.0e+000    3.5e+000 (KKTNCON(base))
-   12    30  3755 35517 1.6786e+006  8.0e-001    3.1e+000 (KKTNCON(base))
-   13    31  5407 39007 1.3288e+006  1.0e+000    2.8e+000 (KKTNSTOP)
-   14    32  1881 35499 1.1509e+006  1.0e+000    2.5e+000 (minRES)
-   15    38   443 34593 1.1458e+006  1.7e-001    2.3e+000 (minRES)
+Crash: Factor: singular constraint: stolevel_hh(h136)
+Crash: Factor: singular constraint: stolevel_hh(h304)
+Crash: Factor: singular constraint: stolevel_hh(h328)
+Crash: Factor: singular constraint: stolevel_hh(h401)
+Crash: Factor: singular constraint: stolevel_hh(h497)
+Crash: Factor: singular constraint: stolevel_hh(h520)
+Crash: Factor: singular constraint: stolevel_hh(h544)
+Crash: Factor: singular constraint: stolevel_hh(h568)
+Crash: Factor: singular constraint: stolevel_hh(h664)
+Crash: Factor: singular constraint: stolevel_hh(h712)
+Crash: Factor: singular constraint: stolevel_hh(h760)
+Crash: Factor: singular constraint: stolevel_hh(h1145)
+Crash: Factor: singular constraint: stolevel_hh(h1193)
+Crash: Factor: singular constraint: stolevel_hh(h1287)
+Crash: Factor: singular constraint: stolevel_hh(h1313)
+Crash: Factor: singular constraint: stolevel_hh(h1503)
+Crash: Factor: singular constraint: stolevel_hh(h1719)
+Crash: Factor: singular constraint: stolevel_hh(h1840)
+Crash: Factor: singular constraint: stolevel_hh(h1888)
+Crash: Factor: singular constraint: stolevel_hh(h1911)
+Crash: Factor: singular constraint: stolevel_hh(h1935)
+Crash: Factor: singular constraint: stolevel_hh(h2007)
+Crash: Factor: singular constraint: stolevel_hh(h2031)
+Crash: Factor: singular constraint: stolevel_hh(h2055)
+Crash: Factor: singular constraint: stolevel_hh(h2079)
+Crash: Factor: singular constraint: stolevel_hh(h2103)
+Crash: Factor: singular constraint: stolevel_hh(h2151)
+Crash: Factor: singular constraint: stolevel_hh(h2175)
+Crash: Factor: singular constraint: stolevel_hh(h2199)
+Crash: Factor: singular constraint: stolevel_hh(h2247)
+Crash: Factor: singular constraint: stolevel_hh(h2367)
+Crash: Factor: singular constraint: renewable_generation(h2)
+    1     1 24416 13734 5.8751e+006  1.0e+000    1.0e+001 (energy_balance(h691))
+    2     2 23382 33868 5.4126e+006  1.0e+000    9.0e+000 (energy_balance(h691))
+    3     3  5485 34071 4.8859e+006  1.0e+000    8.1e+000 (energy_balance(h691))
+    4     4  7932 32951 4.3985e+006  1.0e+000    7.3e+000 (energy_balance(h1111))
+    5     5 11832 32910 3.8690e+006  1.0e+000    6.6e+000 (energy_balance(h1111))
+    6     9  3647 26916 3.6641e+006  4.1e-001    5.9e+000 (energy_balance(h1111))
+    7    10  3491 27258 2.5912e+006  1.0e+000    5.3e+000 (energy_balance(h1111))
+    8    11  4861 26147 2.4008e+006  1.0e+000    4.8e+000 (energy_balance(h1111))
+    9    12  3291 27709 2.1256e+006  1.0e+000    4.3e+000 (energy_balance(h1111))
+   10    13  1310 26941 1.8987e+006  1.0e+000    3.9e+000 (energy_balance(h1111))
+   11    14   691 26470 1.7040e+006  1.0e+000    3.5e+000 (energy_balance(h1111))
+   12    15   433 26160 1.5121e+006  1.0e+000    3.1e+000 (energy_balance(h1111))
+   13    16   707 26050 1.4349e+006  1.0e+000    2.8e+000 (minRES)
+   14    21    96 25586 1.4342e+006  2.6e-001    2.5e+000 (minRES)
 pn_search terminated: no progress.
   ** WARNING **
-Basis modifications: 18803
+Basis modifications: 20583
 
 Major Iteration Log
 major minor  func  grad  residual    step  type prox    inorm  (label)
-    0     0    51    16 1.1458e+006           I 2.1e+000 5.6e+005 (minRES)
+    0     0    34    15 1.4342e+006           I 2.3e+000 8.1e+005 (minRES)
   ** WARNING **
-Residual scaled (1.285454e+006).
-Basis: update  1: LU: 269030 z: 0 dmin: 0.173302
-Basis: update 21: LU: 269880 z: 0 dmin: 0.00066985
-Basis: update 41: LU: 271490 z: 0 dmin: 0.00066985
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 269245 z: 0 dmin: 6.60583e-006
-Basis: update 21: LU: 270288 z: 0 dmin: 6.60583e-006
-Basis: update 41: LU: 272142 z: 0 dmin: 6.60583e-006
+Residual scaled (5.565560e+005).
+Basis: update  1: LU: 192485 z: 0 dmin: 3.42853e-007
+Basis: update 21: LU: 192883 z: 0 dmin: 3.42853e-007
+Basis: update 41: LU: 193831 z: 0 dmin: 3.42853e-007
   ** WARNING **
 Basis refactored.
-Basis: update  1: LU: 269553 z: 0 dmin: 0.0868604
-Basis: update 21: LU: 270438 z: 0 dmin: 5.07081e-005
-Basis: update 41: LU: 272005 z: 0 dmin: 5.07081e-005
+Basis: update  1: LU: 192294 z: 0 dmin: 0.0338922
+Basis: update 21: LU: 192758 z: 0 dmin: 0.00176791
+Basis: update 41: LU: 193804 z: 0 dmin: 0.00176791
   ** WARNING **
 Basis refactored.
-Basis: update  1: LU: 269412 z: 0 dmin: 0.00142092
-Basis: update 21: LU: 270242 z: 0 dmin: 2.60715e-005
-Basis: update 41: LU: 271694 z: 0 dmin: 2.34867e-005
+Basis: update  1: LU: 192142 z: 0 dmin: 0.0202009
+Basis: update 21: LU: 192525 z: 0 dmin: 0.0136496
+Basis: update 41: LU: 193376 z: 0 dmin: 0.000782525
   ** WARNING **
 Basis refactored.
-Basis: update  1: LU: 269351 z: 0 dmin: 0.000746382
-Basis: update 21: LU: 270215 z: 0 dmin: 0.000716378
-Basis: update 41: LU: 271665 z: 0 dmin: 0.000716378
+Basis: update  1: LU: 191901 z: 0 dmin: 0.81
+Basis: update 21: LU: 192264 z: 0 dmin: 0.0281218
+Basis: update 41: LU: 193195 z: 0 dmin: 1.90266e-005
   ** WARNING **
 Basis refactored.
-Basis: update  1: LU: 269280 z: 0 dmin: 0.000482981
-Basis: update 21: LU: 270225 z: 0 dmin: 1.58119e-005
-Basis: update 41: LU: 271891 z: 0 dmin: 1.58119e-005
+Basis: update  1: LU: 191727 z: 0 dmin: 0.81
+Basis: update 21: LU: 192092 z: 0 dmin: 0.000629138
+Basis: update 41: LU: 192914 z: 0 dmin: 0.000629138
   ** WARNING **
 Basis refactored.
-Basis: update  1: LU: 269009 z: 0 dmin: 0.00347016
-Basis: update 21: LU: 269823 z: 0 dmin: 5.24758e-005
-Basis: update 41: LU: 271211 z: 0 dmin: 5.24758e-005
+Basis: update  1: LU: 191516 z: 0 dmin: 0.0499995
+Basis: update 21: LU: 191862 z: 0 dmin: 1.94661e-005
+Basis: update 41: LU: 192626 z: 0 dmin: 1.94661e-005
   ** WARNING **
 Basis refactored.
-Basis: update  1: LU: 269030 z: 0 dmin: 1.99122e-005
-Basis: update 21: LU: 269713 z: 0 dmin: 8.39051e-006
-Basis: update 41: LU: 271084 z: 0 dmin: 8.39051e-006
+Basis: update  1: LU: 191308 z: 0 dmin: 0.0238361
+Basis: update 21: LU: 191610 z: 0 dmin: 0.000922444
+Basis: update 41: LU: 192227 z: 0 dmin: 0.000922444
   ** WARNING **
 Basis refactored.
-Basis: update  1: LU: 268946 z: 0 dmin: 0.00159235
-Basis: update 21: LU: 269934 z: 0 dmin: 7.54196e-005
-Basis: update 41: LU: 271448 z: 0 dmin: 7.54196e-005
+Basis: update  1: LU: 191210 z: 0 dmin: 0.00520767
+Basis: update 21: LU: 191641 z: 0 dmin: 0.00163463
+Basis: update 41: LU: 192626 z: 0 dmin: 0.00105147
   ** WARNING **
 Basis refactored.
-Basis: update  1: LU: 268870 z: 0 dmin: 0.000329099
-Basis: update 21: LU: 269618 z: 0 dmin: 0.000329099
+Basis: update  1: LU: 191047 z: 0 dmin: 2.89498e-005
+Basis: update 21: LU: 191403 z: 0 dmin: 2.89498e-005
+Basis: update 41: LU: 192395 z: 0 dmin: 2.89498e-005
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 190828 z: 0 dmin: 0.0334782
+Basis: update 21: LU: 191223 z: 0 dmin: 2.08092e-005
 
 Minor Iteration Log
 minor      t          z     w     v   art ckpts  enter    leave
-  500  9.5248e-002 34533 24231     2     0     9 z[55829] z[51138]
-Basis: update 41: LU: 271014 z: 0 dmin: 0.000329099
+  500  2.0268e-001 25228 23555  5925     0     9 w[39816] z[40632]
+Basis: update 41: LU: 192248 z: 0 dmin: 2.08092e-005
   ** WARNING **
 Basis refactored.
-Basis: update  1: LU: 268793 z: 0 dmin: 1.75132e-005
-Basis: update 21: LU: 269581 z: 0 dmin: 1.75132e-005
-Basis: update 41: LU: 271162 z: 0 dmin: 1.75132e-005
+Basis: update  1: LU: 190683 z: 0 dmin: 0.00935329
+Basis: update 21: LU: 191169 z: 0 dmin: 0.00935329
+Basis: update 41: LU: 192048 z: 0 dmin: 1.78556e-005
   ** WARNING **
 Basis refactored.
-Basis: update  1: LU: 268773 z: 0 dmin: 1.57917e-005
-Basis: update 21: LU: 269731 z: 0 dmin: 1.57917e-005
-Basis: update 41: LU: 271431 z: 0 dmin: 1.57917e-005
+Basis: update  1: LU: 190532 z: 0 dmin: 0.00737714
+Basis: update 21: LU: 191018 z: 0 dmin: 0.00737714
+Basis: update 41: LU: 192200 z: 0 dmin: 0.00737714
   ** WARNING **
 Basis refactored.
-Basis: update  1: LU: 268679 z: 0 dmin: 0.00510022
-Basis: update 21: LU: 269559 z: 0 dmin: 0.000440712
-Basis: update 41: LU: 270949 z: 0 dmin: 0.000127854
+Basis: update  1: LU: 190343 z: 0 dmin: 0.024837
+Basis: update 21: LU: 190720 z: 0 dmin: 0.024837
+Basis: update 41: LU: 191517 z: 0 dmin: 0.024837
   ** WARNING **
 Basis refactored.
-Basis: update  1: LU: 268592 z: 0 dmin: 0.000219587
-Basis: update 21: LU: 269451 z: 0 dmin: 0.000219587
-Basis: update 41: LU: 270972 z: 0 dmin: 0.000219587
+Basis: update  1: LU: 190120 z: 0 dmin: 0.0139793
+Basis: update 21: LU: 190424 z: 0 dmin: 0.00210985
+Basis: update 41: LU: 190921 z: 0 dmin: 0.00189793
   ** WARNING **
 Basis refactored.
-Basis: update  1: LU: 268533 z: 0 dmin: 0.0145049
-Basis: update 21: LU: 269494 z: 0 dmin: 6.22404e-005
-Basis: update 41: LU: 271177 z: 0 dmin: 6.22404e-005
+Basis: update  1: LU: 189933 z: 0 dmin: 0.0354142
+Basis: update 21: LU: 190169 z: 0 dmin: 0.0012793
+Basis: update 41: LU: 190695 z: 0 dmin: 0.00120519
   ** WARNING **
 Basis refactored.
-Basis: update  1: LU: 268460 z: 0 dmin: 0.00989307
-Basis: update 21: LU: 269304 z: 0 dmin: 7.7223e-005
-Basis: update 41: LU: 270892 z: 0 dmin: 6.55526e-005
+Basis: update  1: LU: 189820 z: 0 dmin: 0.0337812
+Basis: update 21: LU: 190236 z: 0 dmin: 0.0337812
+Basis: update 41: LU: 191035 z: 0 dmin: 0.0337812
   ** WARNING **
 Basis refactored.
-Basis: update  1: LU: 268371 z: 0 dmin: 3.8446e-005
-Basis: update 21: LU: 269265 z: 0 dmin: 3.8446e-005
-Basis: update 41: LU: 270968 z: 0 dmin: 3.8446e-005
+Basis: update  1: LU: 189584 z: 0 dmin: 0.0155557
+Basis: update 21: LU: 189970 z: 0 dmin: 0.0155557
+Basis: update 41: LU: 190665 z: 0 dmin: 0.0155557
   ** WARNING **
 Basis refactored.
-Basis: update  1: LU: 268155 z: 0 dmin: 0.0285249
-Basis: update 21: LU: 268908 z: 0 dmin: 1.97241e-005
-Basis: update 41: LU: 270420 z: 0 dmin: 1.97241e-005
+Basis: update  1: LU: 189389 z: 0 dmin: 0.00865019
+Basis: update 21: LU: 189796 z: 0 dmin: 1.0948e-005
+Basis: update 41: LU: 190968 z: 0 dmin: 1.0948e-005
   ** WARNING **
 Basis refactored.
-Basis: update  1: LU: 268135 z: 0 dmin: 6.98956e-005
-Basis: update 21: LU: 269005 z: 0 dmin: 6.98956e-005
-Basis: update 41: LU: 270624 z: 0 dmin: 6.98956e-005
+Basis: update  1: LU: 189164 z: 0 dmin: 0.11658
+Basis: update 21: LU: 189536 z: 0 dmin: 0.0887976
+Basis: update 41: LU: 190394 z: 0 dmin: 0.000959389
   ** WARNING **
 Basis refactored.
-Basis: update  1: LU: 267989 z: 0 dmin: 6.44469e-006
-Basis: update 21: LU: 268860 z: 0 dmin: 6.44469e-006
- 1000  2.0327e-001 34311 24453     2     0    19 w[49689] z[14307]
-Basis: update 41: LU: 270336 z: 0 dmin: 6.44469e-006
+Basis: update  1: LU: 188961 z: 0 dmin: 0.0148116
+Basis: update 21: LU: 189251 z: 0 dmin: 0.0030729
+ 1000  4.2211e-001 24842 23925  5941     0    19 w[50111] z[38090]
+Basis: update 41: LU: 189725 z: 0 dmin: 0.0030729
   ** WARNING **
 Basis refactored.
-Basis: update  1: LU: 267945 z: 0 dmin: 0.00363535
-Basis: update 21: LU: 268904 z: 0 dmin: 0.00038154
-Basis: update 41: LU: 270652 z: 0 dmin: 0.000330528
+Basis: update  1: LU: 188747 z: 0 dmin: 0.0333801
+Basis: update 21: LU: 189265 z: 0 dmin: 0.0333801
+Basis: update 41: LU: 190470 z: 0 dmin: 0.0333801
   ** WARNING **
 Basis refactored.
-Basis: update  1: LU: 267697 z: 0 dmin: 0.00288443
-Basis: update 21: LU: 268367 z: 0 dmin: 5.49343e-005
-Basis: update 41: LU: 269902 z: 0 dmin: 5.49343e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 267626 z: 0 dmin: 2.13383e-006
-Basis: update 21: LU: 268338 z: 0 dmin: 2.13383e-006
-Basis: update 41: LU: 269803 z: 0 dmin: 2.13383e-006
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 267423 z: 0 dmin: 2.43366e-005
-Basis: update 21: LU: 268253 z: 0 dmin: 2.43366e-005
-Basis: update 41: LU: 269826 z: 0 dmin: 2.43366e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 267270 z: 0 dmin: 0.107115
-Basis: update 21: LU: 268100 z: 0 dmin: 0.00124686
-Basis: update 41: LU: 269692 z: 0 dmin: 5.9658e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 267249 z: 0 dmin: 0.153625
-Basis: update 21: LU: 268023 z: 0 dmin: 1.40209e-005
-Basis: update 41: LU: 269488 z: 0 dmin: 1.40209e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 267215 z: 0 dmin: 1.03077e-005
-Basis: update 21: LU: 267929 z: 0 dmin: 1.03077e-005
-Basis: update 41: LU: 269434 z: 0 dmin: 1.03077e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 267079 z: 0 dmin: 2.92988e-005
-Basis: update 21: LU: 267904 z: 0 dmin: 2.92988e-005
-Basis: update 41: LU: 269363 z: 0 dmin: 8.7438e-006
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 266944 z: 0 dmin: 0.00185339
-Basis: update 21: LU: 267707 z: 0 dmin: 3.47782e-005
-Basis: update 41: LU: 269290 z: 0 dmin: 1.12542e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 266931 z: 0 dmin: 0.000931336
- 1500  3.0787e-001 34062 24702     2     0    29 w[49478] w[53973]
-Basis: update 21: LU: 267837 z: 0 dmin: 6.12264e-005
-Basis: update 41: LU: 269251 z: 0 dmin: 6.12264e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 266763 z: 0 dmin: 0.00255661
-Basis: update 21: LU: 267544 z: 0 dmin: 4.16689e-005
-Basis: update 41: LU: 269026 z: 0 dmin: 4.16689e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 266561 z: 0 dmin: 1.96158e-005
-Basis: update 21: LU: 267345 z: 0 dmin: 1.96158e-005
-Basis: update 41: LU: 268771 z: 0 dmin: 1.96158e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 266457 z: 0 dmin: 1.49318e-005
-Basis: update 21: LU: 267215 z: 0 dmin: 1.49318e-005
-Basis: update 41: LU: 268667 z: 0 dmin: 1.49318e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 266314 z: 0 dmin: 0.120706
-Basis: update 21: LU: 267145 z: 0 dmin: 0.000188258
-Basis: update 41: LU: 268761 z: 0 dmin: 0.000188258
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 266209 z: 0 dmin: 0.0115127
-Basis: update 21: LU: 267030 z: 0 dmin: 0.000328504
-Basis: update 41: LU: 268732 z: 0 dmin: 0.000128814
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 266010 z: 0 dmin: 0.0030724
-Basis: update 21: LU: 266777 z: 0 dmin: 0.000443878
-Basis: update 41: LU: 268301 z: 0 dmin: 0.000149203
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 265865 z: 0 dmin: 1.77663e-005
-Basis: update 21: LU: 266600 z: 0 dmin: 1.77663e-005
-Basis: update 41: LU: 268161 z: 0 dmin: 1.77663e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 265794 z: 0 dmin: 0.00944928
-Basis: update 21: LU: 266550 z: 0 dmin: 0.000954631
-Basis: update 41: LU: 268032 z: 0 dmin: 0.000346849
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 265692 z: 0 dmin: 0.00211161
-Basis: update 21: LU: 266560 z: 0 dmin: 0.000111876
-Basis: update 41: LU: 268036 z: 0 dmin: 0.000111876
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 265499 z: 0 dmin: 0.000134358
- 2000  4.2586e-001 33787 24977     2     0    39 z[12441] z[23706]
-Basis: update 21: LU: 266386 z: 0 dmin: 0.000134358
-Basis: update 41: LU: 267920 z: 0 dmin: 7.12102e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 265564 z: 0 dmin: 1.40258e-005
-Basis: update 21: LU: 266493 z: 0 dmin: 1.40258e-005
-Basis: update 41: LU: 268138 z: 0 dmin: 1.40258e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 265375 z: 0 dmin: 9.10582e-005
-Basis: update 21: LU: 266313 z: 0 dmin: 9.10582e-005
-Basis: update 41: LU: 267851 z: 0 dmin: 4.30544e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 265344 z: 0 dmin: 2.17913e-005
-Basis: update 21: LU: 266172 z: 0 dmin: 2.17913e-005
-Basis: update 41: LU: 267798 z: 0 dmin: 1.91103e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 265136 z: 0 dmin: 3.38034e-005
-Basis: update 21: LU: 265785 z: 0 dmin: 3.38034e-005
-Basis: update 41: LU: 267233 z: 0 dmin: 3.38034e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 265004 z: 0 dmin: 0.00963155
-Basis: update 21: LU: 265796 z: 0 dmin: 0.00107929
-Basis: update 41: LU: 267113 z: 0 dmin: 0.00100168
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 264820 z: 0 dmin: 0.000118873
-Basis: update 21: LU: 265699 z: 0 dmin: 0.000118873
-Basis: update 41: LU: 267297 z: 0 dmin: 0.000118873
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 264696 z: 0 dmin: 0.0316244
-Basis: update 21: LU: 265510 z: 0 dmin: 5.93777e-005
-Basis: update 41: LU: 267081 z: 0 dmin: 5.93777e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 264408 z: 0 dmin: 0.00309405
-Basis: update 21: LU: 265225 z: 0 dmin: 0.00126442
-Basis: update 41: LU: 266899 z: 0 dmin: 5.49243e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 264311 z: 0 dmin: 1.39211e-005
-Basis: update 21: LU: 265284 z: 0 dmin: 1.39211e-005
-Basis: update 41: LU: 266902 z: 0 dmin: 1.39211e-005
-  ** WARNING **
-Basis refactored.
- 2500  5.2154e-001 33471 25293     2     0    49 w[14792] z[51875]
-Basis: update  1: LU: 264143 z: 0 dmin: 1.9175e-005
-Basis: update 21: LU: 264861 z: 0 dmin: 1.9175e-005
-Basis: update 41: LU: 266275 z: 0 dmin: 1.9175e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 263990 z: 0 dmin: 0.000334824
-Basis: update 21: LU: 264654 z: 0 dmin: 0.000334824
-Basis: update 41: LU: 265954 z: 0 dmin: 2.32657e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 263908 z: 0 dmin: 2.17987e-005
-Basis: update 21: LU: 264779 z: 0 dmin: 2.17987e-005
-Basis: update 41: LU: 266459 z: 0 dmin: 2.17987e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 263706 z: 0 dmin: 0.3075
-Basis: update 21: LU: 264576 z: 0 dmin: 0.000923048
-Basis: update 41: LU: 266277 z: 0 dmin: 0.000128662
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 263660 z: 0 dmin: 0.0382514
-Basis: update 21: LU: 264476 z: 0 dmin: 4.86984e-005
-Basis: update 41: LU: 266060 z: 0 dmin: 4.86984e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 263448 z: 0 dmin: 1.2475e-005
-Basis: update 21: LU: 264364 z: 0 dmin: 1.2475e-005
-Basis: update 41: LU: 265850 z: 0 dmin: 1.2475e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 263248 z: 0 dmin: 0.000324148
-Basis: update 21: LU: 264090 z: 0 dmin: 6.44031e-005
-Basis: update 41: LU: 265607 z: 0 dmin: 6.44031e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 263092 z: 0 dmin: 1.69552e-005
-Basis: update 21: LU: 263917 z: 0 dmin: 1.69552e-005
-Basis: update 41: LU: 265373 z: 0 dmin: 1.69552e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 262963 z: 0 dmin: 0.0184085
-Basis: update 21: LU: 263890 z: 0 dmin: 2.84403e-005
-Basis: update 41: LU: 265517 z: 0 dmin: 2.84403e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 262722 z: 0 dmin: 1.89166e-005
-Basis: update 21: LU: 263517 z: 0 dmin: 1.89166e-005
-Basis: update 41: LU: 264906 z: 0 dmin: 1.89166e-005
- 3000  6.0025e-001 33117 25647     2     0    58 w[14123] z[52078]
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 262503 z: 0 dmin: 0.0821828
-Basis: update 21: LU: 263356 z: 0 dmin: 0.000655137
-Basis: update 41: LU: 264800 z: 0 dmin: 3.17452e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 262425 z: 0 dmin: 0.3075
-Basis: update 21: LU: 263352 z: 0 dmin: 6.92814e-005
-Basis: update 41: LU: 265027 z: 0 dmin: 6.92814e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 262260 z: 0 dmin: 0.00260216
-Basis: update 21: LU: 263130 z: 0 dmin: 0.000166229
-Basis: update 41: LU: 264657 z: 0 dmin: 0.000166229
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 262089 z: 0 dmin: 0.0030273
-Basis: update 21: LU: 262913 z: 0 dmin: 4.27931e-005
-Basis: update 41: LU: 264371 z: 0 dmin: 4.27931e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 261857 z: 0 dmin: 0.000143141
-Basis: update 21: LU: 262773 z: 0 dmin: 3.54747e-005
-Basis: update 41: LU: 264438 z: 0 dmin: 3.54747e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 261637 z: 0 dmin: 2.00626e-005
-Basis: update 21: LU: 262404 z: 0 dmin: 2.00626e-005
-Basis: update 41: LU: 263800 z: 0 dmin: 2.00626e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 261352 z: 0 dmin: 0.110513
-Basis: update 21: LU: 262158 z: 0 dmin: 0.00133158
-Basis: update 41: LU: 263699 z: 0 dmin: 0.00133158
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 261110 z: 0 dmin: 0.0969538
-Basis: update 21: LU: 261858 z: 0 dmin: 4.68777e-005
-Basis: update 41: LU: 263401 z: 0 dmin: 4.68777e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 260863 z: 0 dmin: 0.00507994
-Basis: update 21: LU: 261644 z: 0 dmin: 0.000109099
-Basis: update 41: LU: 263193 z: 0 dmin: 0.000109099
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 260522 z: 0 dmin: 0.202841
-Basis: update 21: LU: 261328 z: 0 dmin: 1.79718e-005
- 3500  6.7445e-001 32749 26015     2     0    68 w[44323] z[42029]
-Basis: update 41: LU: 262825 z: 0 dmin: 1.79718e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 260353 z: 0 dmin: 0.00377624
-Basis: update 21: LU: 261242 z: 0 dmin: 0.00118051
-Basis: update 41: LU: 262912 z: 0 dmin: 0.00118051
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 260021 z: 0 dmin: 0.00413645
-Basis: update 21: LU: 260894 z: 0 dmin: 0.000240738
-Basis: update 41: LU: 262622 z: 0 dmin: 8.84423e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 259917 z: 0 dmin: 8.7988e-005
-Basis: update 21: LU: 260770 z: 0 dmin: 4.86212e-005
-Basis: update 41: LU: 262450 z: 0 dmin: 4.86212e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 259642 z: 0 dmin: 7.55428e-005
-Basis: update 21: LU: 260629 z: 0 dmin: 7.55428e-005
-Basis: update 41: LU: 262249 z: 0 dmin: 2.89442e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 259408 z: 0 dmin: 8.3548e-005
-Basis: update 21: LU: 260339 z: 0 dmin: 8.3548e-005
-Basis: update 41: LU: 262058 z: 0 dmin: 2.03685e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 259074 z: 0 dmin: 0.0988077
-Basis: update 21: LU: 259992 z: 0 dmin: 0.00025486
-Basis: update 41: LU: 261714 z: 0 dmin: 0.00025486
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 258858 z: 0 dmin: 0.0340821
-Basis: update 21: LU: 259701 z: 0 dmin: 3.89442e-005
-Basis: update 41: LU: 261366 z: 0 dmin: 3.89442e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 258681 z: 0 dmin: 0.356181
-Basis: update 21: LU: 259573 z: 0 dmin: 0.00162996
-Basis: update 41: LU: 261142 z: 0 dmin: 1.78237e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 258433 z: 0 dmin: 0.0291468
-Basis: update 21: LU: 259371 z: 0 dmin: 0.00099977
-Basis: update 41: LU: 261100 z: 0 dmin: 0.000122536
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 258190 z: 0 dmin: 1.1134e-005
-Basis: update 21: LU: 259028 z: 0 dmin: 1.1134e-005
- 4000  7.4453e-001 32391 26373     2     0    78 w[53778] z[14519]
-Basis: update 41: LU: 260718 z: 0 dmin: 1.1134e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 258039 z: 0 dmin: 1.26954e-006
-Basis: update 21: LU: 259129 z: 0 dmin: 1.26954e-006
-Basis: update 41: LU: 261023 z: 0 dmin: 1.26954e-006
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 257659 z: 0 dmin: 0.0133967
-Basis: update 21: LU: 258617 z: 0 dmin: 6.24678e-005
-Basis: update 41: LU: 259896 z: 0 dmin: 2.70963e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 257422 z: 0 dmin: 0.0725969
-Basis: update 21: LU: 258429 z: 0 dmin: 5.44121e-005
-Basis: update 41: LU: 260199 z: 0 dmin: 5.44121e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 257312 z: 0 dmin: 0.252381
-Basis: update 21: LU: 258226 z: 0 dmin: 0.00013415
-Basis: update 41: LU: 259877 z: 0 dmin: 1.37536e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 256915 z: 0 dmin: 0.135757
-Basis: update 21: LU: 257931 z: 0 dmin: 0.00126074
-Basis: update 41: LU: 259743 z: 0 dmin: 0.00088302
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 256772 z: 0 dmin: 0.000746131
-Basis: update 21: LU: 257610 z: 0 dmin: 0.000127795
-Basis: update 41: LU: 259162 z: 0 dmin: 0.000127795
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 256736 z: 0 dmin: 1.3081e-005
-Basis: update 21: LU: 257984 z: 0 dmin: 1.3081e-005
-Basis: update 41: LU: 259985 z: 0 dmin: 1.3081e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 256436 z: 0 dmin: 2.281e-005
-Basis: update 21: LU: 257236 z: 0 dmin: 2.281e-005
-Basis: update 41: LU: 258675 z: 0 dmin: 2.281e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 256189 z: 0 dmin: 0.301005
-Basis: update 21: LU: 257079 z: 0 dmin: 0.000227146
-Basis: update 41: LU: 258582 z: 0 dmin: 0.000227146
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 255932 z: 0 dmin: 1.60449e-005
- 4500  8.0977e-001 32037 26727     2     0    88 w[ 6001] z[30282]
-Basis: update 21: LU: 256815 z: 0 dmin: 1.60449e-005
-Basis: update 41: LU: 258220 z: 0 dmin: 1.60449e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 255803 z: 0 dmin: 2.04455e-005
-Basis: update 21: LU: 256516 z: 0 dmin: 1.95248e-005
-Basis: update 41: LU: 257902 z: 0 dmin: 1.95248e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 255652 z: 0 dmin: 0.0177165
-Basis: update 21: LU: 256492 z: 0 dmin: 0.000721422
-Basis: update 41: LU: 258086 z: 0 dmin: 0.000101362
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 255405 z: 0 dmin: 0.00184362
-Basis: update 21: LU: 256246 z: 0 dmin: 5.27947e-005
-Basis: update 41: LU: 257722 z: 0 dmin: 5.27947e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 255279 z: 0 dmin: 0.356181
-Basis: update 21: LU: 256098 z: 0 dmin: 4.8071e-006
-Basis: update 41: LU: 257664 z: 0 dmin: 4.8071e-006
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 255083 z: 0 dmin: 9.85762e-005
-Basis: update 21: LU: 255984 z: 0 dmin: 9.85762e-005
-Basis: update 41: LU: 257429 z: 0 dmin: 9.85762e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 254927 z: 0 dmin: 0.0599799
-Basis: update 21: LU: 255800 z: 0 dmin: 0.000270255
-Basis: update 41: LU: 257263 z: 0 dmin: 9.65857e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 254704 z: 0 dmin: 0.284865
-Basis: update 21: LU: 255683 z: 0 dmin: 5.87896e-005
-Basis: update 41: LU: 257436 z: 0 dmin: 1.6128e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 254424 z: 0 dmin: 0.000980718
-Basis: update 21: LU: 255376 z: 0 dmin: 2.91292e-005
-Basis: update 41: LU: 257172 z: 0 dmin: 2.91292e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 254195 z: 0 dmin: 0.000973094
-Basis: update 21: LU: 254919 z: 0 dmin: 0.000480411
-Basis: update 41: LU: 256360 z: 0 dmin: 4.26762e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 254049 z: 0 dmin: 0.00126167
- 5000  8.9649e-001 31678 27086     2     0    98 w[14897] w[12883]
-Basis: update 21: LU: 254935 z: 0 dmin: 5.56391e-005
-Basis: update 41: LU: 256585 z: 0 dmin: 5.55527e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 253810 z: 0 dmin: 0.356181
-Basis: update 21: LU: 254736 z: 0 dmin: 5.67475e-005
-Basis: update 41: LU: 256444 z: 0 dmin: 5.67475e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 253475 z: 0 dmin: 1.5349e-006
-Basis: update 21: LU: 254365 z: 0 dmin: 1.5349e-006
-Basis: update 41: LU: 256064 z: 0 dmin: 1.5349e-006
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 253189 z: 0 dmin: 0.000818048
-Basis: update 21: LU: 253993 z: 0 dmin: 2.18396e-005
-Basis: update 41: LU: 255364 z: 0 dmin: 2.18396e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 252950 z: 0 dmin: 0.00139837
-Basis: update 21: LU: 253836 z: 0 dmin: 0.000138387
-Basis: update 41: LU: 255601 z: 0 dmin: 0.000138387
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 252837 z: 0 dmin: 0.0675116
-Basis: update 21: LU: 253691 z: 0 dmin: 0.000290573
-Basis: update 41: LU: 255167 z: 0 dmin: 6.15392e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 252561 z: 0 dmin: 0.00629194
-Basis: update 21: LU: 253437 z: 0 dmin: 3.87418e-005
-Basis: update 41: LU: 254718 z: 0 dmin: 3.87418e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 252376 z: 0 dmin: 8.0896e-005
-Basis: update 21: LU: 253272 z: 0 dmin: 2.81206e-005
-Basis: update 41: LU: 254928 z: 0 dmin: 2.81206e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 252159 z: 0 dmin: 2.11869e-005
-Basis: update 21: LU: 253030 z: 0 dmin: 2.11869e-005
-Basis: update 41: LU: 254466 z: 0 dmin: 2.11869e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 251956 z: 0 dmin: 0.0152681
-Basis: update 21: LU: 252706 z: 0 dmin: 0.00162786
-Basis: update 41: LU: 254252 z: 0 dmin: 3.61656e-005
- 5500  9.8596e-001 31311 27453     2     0   107 w[24860] z[53745]
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 251766 z: 0 dmin: 0.0157087
-Basis: update 21: LU: 252593 z: 0 dmin: 0.0017973
-Basis: update 41: LU: 254122 z: 0 dmin: 0.000124399
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 251531 z: 0 dmin: 1.60192e-005
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-    1  5572    52    17 4.7056e+005  1.0e+000 SM 8.2e-001 1.5e+004 (renewable_gener)
-  ** WARNING **
-Residual scaled (1.520285e+004).
-Basis: update  1: LU: 248322 z: 0 dmin: 0.13935
-Basis: update 21: LU: 249363 z: 0 dmin: 2.51153e-005
-Basis: update 41: LU: 251097 z: 0 dmin: 2.51153e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 248121 z: 0 dmin: 0.00140494
-Basis: update 21: LU: 248896 z: 0 dmin: 8.7725e-005
-Basis: update 41: LU: 250403 z: 0 dmin: 8.7725e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 248008 z: 0 dmin: 0.000988413
-Basis: update 21: LU: 249207 z: 0 dmin: 0.000261977
-Basis: update 41: LU: 251151 z: 0 dmin: 0.000205097
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 247990 z: 0 dmin: 0.0032665
-Basis: update 21: LU: 248915 z: 0 dmin: 4.05247e-005
-Basis: update 41: LU: 250857 z: 0 dmin: 4.05247e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 247948 z: 0 dmin: 2.20452e-005
-Basis: update 21: LU: 249084 z: 0 dmin: 1.74439e-005
-Basis: update 41: LU: 250923 z: 0 dmin: 1.74439e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 247742 z: 0 dmin: 0.00860885
-Basis: update 21: LU: 248828 z: 0 dmin: 4.21926e-005
-Basis: update 41: LU: 250691 z: 0 dmin: 3.90628e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 247749 z: 0 dmin: 2.25758e-005
-Basis: update 21: LU: 248633 z: 0 dmin: 2.25758e-005
-Basis: update 41: LU: 250213 z: 0 dmin: 2.25758e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 247654 z: 0 dmin: 2.27392e-005
-Basis: update 21: LU: 248680 z: 0 dmin: 2.27392e-005
-Basis: update 41: LU: 250370 z: 0 dmin: 2.27392e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 247685 z: 0 dmin: 0.22709
-Basis: update 21: LU: 248732 z: 0 dmin: 0.000132907
-Basis: update 41: LU: 250491 z: 0 dmin: 0.000116823
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 247708 z: 0 dmin: 0.00803342
-Basis: update 21: LU: 248578 z: 0 dmin: 7.9146e-005
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  1.6373e-001 31109 27655     2     0     9 w[44534] w[ 9258]
-Basis: update 41: LU: 250285 z: 0 dmin: 4.75335e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 247459 z: 0 dmin: 0.000108146
-Basis: update 21: LU: 248424 z: 0 dmin: 0.000108146
-Basis: update 41: LU: 250115 z: 0 dmin: 8.10476e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 247585 z: 0 dmin: 0.00839201
-Basis: update 21: LU: 248615 z: 0 dmin: 3.09256e-005
-Basis: update 41: LU: 250172 z: 0 dmin: 3.09256e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 247292 z: 0 dmin: 0.00434701
-Basis: update 21: LU: 248186 z: 0 dmin: 0.000262172
-Basis: update 41: LU: 249700 z: 0 dmin: 0.000262172
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 247460 z: 0 dmin: 0.000271744
-Basis: update 21: LU: 248343 z: 0 dmin: 0.000144923
-Basis: update 41: LU: 249971 z: 0 dmin: 5.98195e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 247339 z: 0 dmin: 0.00106466
-Basis: update 21: LU: 248202 z: 0 dmin: 0.000312029
-Basis: update 41: LU: 249690 z: 0 dmin: 2.23357e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 247317 z: 0 dmin: 0.167728
-Basis: update 21: LU: 248291 z: 0 dmin: 0.000250551
-Basis: update 41: LU: 250004 z: 0 dmin: 0.000111566
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 247292 z: 0 dmin: 0.167728
-Basis: update 21: LU: 248148 z: 0 dmin: 0.000543941
-Basis: update 41: LU: 249741 z: 0 dmin: 0.000153712
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 247151 z: 0 dmin: 0.000948903
-Basis: update 21: LU: 248192 z: 0 dmin: 1.3377e-005
-Basis: update 41: LU: 249802 z: 0 dmin: 1.3377e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 247030 z: 0 dmin: 0.198926
-Basis: update 21: LU: 247925 z: 0 dmin: 2.43426e-005
-Basis: update 41: LU: 249492 z: 0 dmin: 2.43426e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 247096 z: 0 dmin: 0.00111529
-Basis: update 21: LU: 247987 z: 0 dmin: 0.000288822
- 1000  3.0415e-001 30977 27787     2     0    19 z[13513] w[55948]
-Basis: update 41: LU: 249460 z: 0 dmin: 4.02566e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 246942 z: 0 dmin: 6.11261e-005
-Basis: update 21: LU: 247784 z: 0 dmin: 2.34743e-005
-Basis: update 41: LU: 249166 z: 0 dmin: 2.34743e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 246746 z: 0 dmin: 0.000606988
-Basis: update 21: LU: 247483 z: 0 dmin: 0.00037295
-Basis: update 41: LU: 249059 z: 0 dmin: 4.0939e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 246683 z: 0 dmin: 0.00264817
-Basis: update 21: LU: 247701 z: 0 dmin: 0.000289153
-Basis: update 41: LU: 249384 z: 0 dmin: 9.97859e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 246791 z: 0 dmin: 0.00822131
-Basis: update 21: LU: 247798 z: 0 dmin: 5.9258e-005
-Basis: update 41: LU: 249563 z: 0 dmin: 4.40954e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 246780 z: 0 dmin: 0.0135088
-Basis: update 21: LU: 247670 z: 0 dmin: 0.000162394
-Basis: update 41: LU: 249199 z: 0 dmin: 3.5507e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 246611 z: 0 dmin: 0.00150222
-Basis: update 21: LU: 247477 z: 0 dmin: 8.02871e-005
-Basis: update 41: LU: 249115 z: 0 dmin: 8.02871e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 246679 z: 0 dmin: 0.00209154
-Basis: update 21: LU: 247541 z: 0 dmin: 6.97636e-005
-Basis: update 41: LU: 249086 z: 0 dmin: 6.97636e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 246606 z: 0 dmin: 0.011762
-Basis: update 21: LU: 247504 z: 0 dmin: 3.42565e-005
-Basis: update 41: LU: 248935 z: 0 dmin: 3.42565e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 246201 z: 0 dmin: 0.000223379
-Basis: update 21: LU: 247049 z: 0 dmin: 4.58758e-005
-Basis: update 41: LU: 248593 z: 0 dmin: 4.58758e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 246038 z: 0 dmin: 0.00526727
- 1500  4.2556e-001 30805 27959     2     0    29 w[17628] w[51566]
-Basis: update 21: LU: 246961 z: 0 dmin: 8.17729e-005
-Basis: update 41: LU: 248495 z: 0 dmin: 8.17729e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 246142 z: 0 dmin: 0.000522263
-Basis: update 21: LU: 247014 z: 0 dmin: 1.53229e-005
-Basis: update 41: LU: 248609 z: 0 dmin: 1.53229e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 245952 z: 0 dmin: 6.58815e-005
-Basis: update 21: LU: 246758 z: 0 dmin: 6.58815e-005
-Basis: update 41: LU: 248330 z: 0 dmin: 6.58815e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 245892 z: 0 dmin: 0.00147508
-Basis: update 21: LU: 246799 z: 0 dmin: 4.87144e-005
-Basis: update 41: LU: 248442 z: 0 dmin: 4.87144e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 245750 z: 0 dmin: 6.73201e-005
-Basis: update 21: LU: 246519 z: 0 dmin: 2.1249e-005
-Basis: update 41: LU: 247857 z: 0 dmin: 2.1249e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 245646 z: 0 dmin: 0.00175882
-Basis: update 21: LU: 246506 z: 0 dmin: 0.000119015
-Basis: update 41: LU: 248035 z: 0 dmin: 0.000119015
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 245549 z: 0 dmin: 0.13935
-Basis: update 21: LU: 246222 z: 0 dmin: 2.16873e-005
-Basis: update 41: LU: 247860 z: 0 dmin: 2.16873e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 245341 z: 0 dmin: 0.000174231
-Basis: update 21: LU: 246185 z: 0 dmin: 0.000174231
-Basis: update 41: LU: 247664 z: 0 dmin: 0.000174231
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 245315 z: 0 dmin: 0.0126913
-Basis: update 21: LU: 246212 z: 0 dmin: 8.49311e-005
-Basis: update 41: LU: 248022 z: 0 dmin: 3.3303e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 245107 z: 0 dmin: 0.0100367
-Basis: update 21: LU: 245931 z: 0 dmin: 7.87121e-005
-Basis: update 41: LU: 247641 z: 0 dmin: 7.87121e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 244938 z: 0 dmin: 0.000141219
- 2000  5.3020e-001 30638 28126     2     0    39 w[17050] z[19084]
-Basis: update 21: LU: 245660 z: 0 dmin: 2.12051e-005
-Basis: update 41: LU: 246938 z: 0 dmin: 2.12051e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 244818 z: 0 dmin: 0.000313368
-Basis: update 21: LU: 245704 z: 0 dmin: 1.4718e-005
-Basis: update 41: LU: 247065 z: 0 dmin: 1.4718e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 244672 z: 0 dmin: 0.0109571
-Basis: update 21: LU: 245473 z: 0 dmin: 0.000565519
-Basis: update 41: LU: 246949 z: 0 dmin: 2.55869e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 244401 z: 0 dmin: 0.00893639
-Basis: update 21: LU: 245274 z: 0 dmin: 7.83663e-005
-Basis: update 41: LU: 246731 z: 0 dmin: 5.93217e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 244259 z: 0 dmin: 3.57439e-005
-Basis: update 21: LU: 245087 z: 0 dmin: 3.57439e-005
-Basis: update 41: LU: 246563 z: 0 dmin: 3.57439e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 244121 z: 0 dmin: 0.00792866
-Basis: update 21: LU: 244968 z: 0 dmin: 3.09088e-005
-Basis: update 41: LU: 246463 z: 0 dmin: 3.09088e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 243822 z: 0 dmin: 0.000279972
-Basis: update 21: LU: 244626 z: 0 dmin: 7.96175e-005
-Basis: update 41: LU: 246086 z: 0 dmin: 7.96175e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 243663 z: 0 dmin: 0.000265281
-Basis: update 21: LU: 244373 z: 0 dmin: 0.000214682
-Basis: update 41: LU: 245795 z: 0 dmin: 0.000214682
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 243520 z: 0 dmin: 0.000896697
-Basis: update 21: LU: 244289 z: 0 dmin: 6.94812e-005
-Basis: update 41: LU: 245689 z: 0 dmin: 6.94812e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 243361 z: 0 dmin: 0.0184167
-Basis: update 21: LU: 244171 z: 0 dmin: 0.00122814
-Basis: update 41: LU: 245564 z: 0 dmin: 4.61222e-005
-  ** WARNING **
-Basis refactored.
- 2500  6.2847e-001 30448 28316     2     0    49 w[57364] z[17283]
-Basis: update  1: LU: 243312 z: 0 dmin: 0.00013774
-Basis: update 21: LU: 244172 z: 0 dmin: 0.00013774
-Basis: update 41: LU: 245751 z: 0 dmin: 0.00013774
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 243155 z: 0 dmin: 0.13935
-Basis: update 21: LU: 243884 z: 0 dmin: 0.000182977
-Basis: update 41: LU: 245415 z: 0 dmin: 0.000167257
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 242897 z: 0 dmin: 0.000460697
-Basis: update 21: LU: 243684 z: 0 dmin: 0.000119459
-Basis: update 41: LU: 245260 z: 0 dmin: 8.45471e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 242654 z: 0 dmin: 0.00023934
-Basis: update 21: LU: 243367 z: 0 dmin: 0.00023934
-Basis: update 41: LU: 244711 z: 0 dmin: 4.12715e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 242474 z: 0 dmin: 6.88949e-005
-Basis: update 21: LU: 243317 z: 0 dmin: 6.88949e-005
-Basis: update 41: LU: 244931 z: 0 dmin: 6.88949e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 242397 z: 0 dmin: 0.000403431
-Basis: update 21: LU: 243237 z: 0 dmin: 4.6025e-005
-Basis: update 41: LU: 244605 z: 0 dmin: 4.6025e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 242236 z: 0 dmin: 0.00471773
-Basis: update 21: LU: 243017 z: 0 dmin: 0.00471773
-Basis: update 41: LU: 244574 z: 0 dmin: 4.71197e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 241983 z: 0 dmin: 0.000441545
-Basis: update 21: LU: 242594 z: 0 dmin: 0.000156817
-Basis: update 41: LU: 243911 z: 0 dmin: 0.000156817
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 241777 z: 0 dmin: 0.018772
-Basis: update 21: LU: 242610 z: 0 dmin: 0.000122504
-Basis: update 41: LU: 243874 z: 0 dmin: 0.000122504
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 241537 z: 0 dmin: 0.000215637
-Basis: update 21: LU: 242313 z: 0 dmin: 0.000215637
-Basis: update 41: LU: 243829 z: 0 dmin: 3.28e-005
- 3000  7.0811e-001 30226 28538     2     0    58 z[ 9129] z[10553]
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 241412 z: 0 dmin: 1.48349e-005
-Basis: update 21: LU: 242151 z: 0 dmin: 1.48349e-005
-Basis: update 41: LU: 243535 z: 0 dmin: 1.48349e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 241307 z: 0 dmin: 0.0138209
-Basis: update 21: LU: 242400 z: 0 dmin: 7.08085e-005
-Basis: update 41: LU: 243996 z: 0 dmin: 7.08085e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 241023 z: 0 dmin: 0.0202144
-Basis: update 21: LU: 241896 z: 0 dmin: 2.61848e-005
-Basis: update 41: LU: 243231 z: 0 dmin: 2.61848e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 240829 z: 0 dmin: 0.0121621
-Basis: update 21: LU: 241787 z: 0 dmin: 0.000354788
-Basis: update 41: LU: 243411 z: 0 dmin: 4.01932e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 240539 z: 0 dmin: 0.13992
-Basis: update 21: LU: 241348 z: 0 dmin: 0.00131881
-Basis: update 41: LU: 242733 z: 0 dmin: 0.000377653
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 240401 z: 0 dmin: 0.108842
-Basis: update 21: LU: 241158 z: 0 dmin: 0.000784529
-Basis: update 41: LU: 242616 z: 0 dmin: 4.42839e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 240265 z: 0 dmin: 4.82196e-005
-Basis: update 21: LU: 241314 z: 0 dmin: 4.82196e-005
-Basis: update 41: LU: 242846 z: 0 dmin: 2.46838e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 240242 z: 0 dmin: 0.00925059
-Basis: update 21: LU: 240963 z: 0 dmin: 0.00112299
-Basis: update 41: LU: 242275 z: 0 dmin: 9.84361e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 240019 z: 0 dmin: 0.00246844
-Basis: update 21: LU: 240861 z: 0 dmin: 2.60491e-005
-Basis: update 41: LU: 242397 z: 0 dmin: 2.60491e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 239779 z: 0 dmin: 0.00064294
-Basis: update 21: LU: 240456 z: 0 dmin: 0.00064294
- 3500  7.9101e-001 30042 28722     2     0    68 z[ 8934] z[47245]
-Basis: update 41: LU: 241893 z: 0 dmin: 0.00021797
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 239513 z: 0 dmin: 0.00672664
-Basis: update 21: LU: 240405 z: 0 dmin: 0.000626179
-Basis: update 41: LU: 241840 z: 0 dmin: 0.000262203
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 239338 z: 0 dmin: 0.000193863
-Basis: update 21: LU: 240489 z: 0 dmin: 1.49895e-005
-Basis: update 41: LU: 242415 z: 0 dmin: 1.49895e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 239247 z: 0 dmin: 0.000132135
-Basis: update 21: LU: 240097 z: 0 dmin: 0.000132135
-Basis: update 41: LU: 241589 z: 0 dmin: 2.03072e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 239059 z: 0 dmin: 0.00220732
-Basis: update 21: LU: 240000 z: 0 dmin: 0.000460667
-Basis: update 41: LU: 241576 z: 0 dmin: 4.2496e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 238901 z: 0 dmin: 0.0921299
-Basis: update 21: LU: 239693 z: 0 dmin: 0.000760074
-Basis: update 41: LU: 241141 z: 0 dmin: 7.35123e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 238726 z: 0 dmin: 0.00169772
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 238622 z: 0 dmin: 0.0015752
-Basis: update 21: LU: 239321 z: 0 dmin: 0.000972523
-Basis: update 41: LU: 240620 z: 0 dmin: 4.32856e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 238657 z: 0 dmin: 0.00269733
-Basis: update 21: LU: 239392 z: 0 dmin: 0.000496729
-Basis: update 41: LU: 240799 z: 0 dmin: 0.00021686
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 238465 z: 0 dmin: 0.000930873
-Basis: update 21: LU: 239318 z: 0 dmin: 8.71857e-005
-Basis: update 41: LU: 240812 z: 0 dmin: 8.71857e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 238304 z: 0 dmin: 6.09167e-005
-Basis: update 21: LU: 239072 z: 0 dmin: 6.09167e-005
-Basis: update 41: LU: 240491 z: 0 dmin: 6.09167e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 238271 z: 0 dmin: 0.00874749
- 4000  8.7957e-001 29913 28851     2     0    79 z[15575] w[16636]
-Basis: update 21: LU: 238995 z: 0 dmin: 0.000569603
-Basis: update 41: LU: 240526 z: 0 dmin: 0.000476848
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 238162 z: 0 dmin: 0.00269616
-Basis: update 21: LU: 239112 z: 0 dmin: 2.63221e-005
-Basis: update 41: LU: 240814 z: 0 dmin: 2.63221e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 238023 z: 0 dmin: 0.000250171
-Basis: update 21: LU: 238861 z: 0 dmin: 6.07567e-005
-Basis: update 41: LU: 240228 z: 0 dmin: 6.07567e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 238199 z: 0 dmin: 0.00438882
-Basis: update 21: LU: 239055 z: 0 dmin: 0.00037633
-Basis: update 41: LU: 240488 z: 0 dmin: 0.00037633
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 237961 z: 0 dmin: 0.00533288
-Basis: update 21: LU: 238773 z: 0 dmin: 0.000951547
-Basis: update 41: LU: 239893 z: 0 dmin: 0.000939768
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 238050 z: 0 dmin: 0.137471
-Basis: update 21: LU: 238975 z: 0 dmin: 0.000194865
-Basis: update 41: LU: 240287 z: 0 dmin: 0.000153371
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 237886 z: 0 dmin: 0.0969911
-Basis: update 21: LU: 238664 z: 0 dmin: 0.000520344
-Basis: update 41: LU: 239923 z: 0 dmin: 8.87965e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 237881 z: 0 dmin: 0.00467021
-Basis: update 21: LU: 239012 z: 0 dmin: 0.00021052
-Basis: update 41: LU: 240227 z: 0 dmin: 7.24541e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 237682 z: 0 dmin: 0.00186167
-Basis: update 21: LU: 238302 z: 0 dmin: 7.88354e-005
-Basis: update 41: LU: 239639 z: 0 dmin: 7.88354e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 237721 z: 0 dmin: 0.131038
-Basis: update 21: LU: 239234 z: 0 dmin: 7.39635e-005
-Basis: update 41: LU: 241603 z: 0 dmin: 7.39635e-005
- 4500  9.7046e-001 29791 28973     2     0    88 z[13486] w[ 7558]
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 237678 z: 0 dmin: 0.0140369
-Basis: update 21: LU: 238789 z: 0 dmin: 0.00139667
-Basis: update 41: LU: 240526 z: 0 dmin: 5.55901e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 237469 z: 0 dmin: 0.00072935
-Basis: update 21: LU: 238435 z: 0 dmin: 0.000391121
-Basis: update 41: LU: 240011 z: 0 dmin: 0.000219713
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 237400 z: 0 dmin: 0.0464815
-Basis: update 21: LU: 238560 z: 0 dmin: 0.00120708
-Basis: update 41: LU: 240171 z: 0 dmin: 5.88315e-005
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-    2  4652    53    18 1.6272e+005  1.0e+000 SO 3.3e-001 6.1e+003 (KKTSTOLEV(h2104)
-  ** WARNING **
-Residual scaled (5.772773e+003).
-Basis: update  1: LU: 235808 z: 0 dmin: 0.000272841
-Basis: update 21: LU: 236618 z: 0 dmin: 7.09726e-005
-Basis: update 41: LU: 238039 z: 0 dmin: 4.80049e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 236007 z: 0 dmin: 0.0167155
-Basis: update 21: LU: 237165 z: 0 dmin: 4.04795e-005
-Basis: update 41: LU: 239039 z: 0 dmin: 2.89801e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 235900 z: 0 dmin: 0.00229204
-Basis: update 21: LU: 236942 z: 0 dmin: 0.000203231
-Basis: update 41: LU: 238547 z: 0 dmin: 0.000203231
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 235793 z: 0 dmin: 0.0111691
-Basis: update 21: LU: 236792 z: 0 dmin: 0.00689439
-Basis: update 41: LU: 238796 z: 0 dmin: 0.000332613
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 235814 z: 0 dmin: 0.0104045
-Basis: update 21: LU: 236840 z: 0 dmin: 0.000201909
-Basis: update 41: LU: 238529 z: 0 dmin: 0.000201909
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 235917 z: 0 dmin: 0.0162071
-Basis: update 21: LU: 236914 z: 0 dmin: 0.000165707
-Basis: update 41: LU: 238577 z: 0 dmin: 4.58337e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 235758 z: 0 dmin: 0.00317985
-Basis: update 21: LU: 236698 z: 0 dmin: 0.000762873
-Basis: update 41: LU: 238299 z: 0 dmin: 0.000139116
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 235862 z: 0 dmin: 0.00340187
-Basis: update 21: LU: 236658 z: 0 dmin: 0.000307862
-Basis: update 41: LU: 238359 z: 0 dmin: 2.02273e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 235745 z: 0 dmin: 0.00129347
-Basis: update 21: LU: 236560 z: 0 dmin: 6.91923e-005
-Basis: update 41: LU: 238024 z: 0 dmin: 6.91923e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 235670 z: 0 dmin: 0.0835261
-Basis: update 21: LU: 236552 z: 0 dmin: 9.13678e-005
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  1.3119e-001 29768 28996     2     0     9 z[19332] w[54588]
-Basis: update 41: LU: 238229 z: 0 dmin: 3.45538e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 235509 z: 0 dmin: 0.000417921
-Basis: update 21: LU: 236183 z: 0 dmin: 0.000417921
-Basis: update 41: LU: 237515 z: 0 dmin: 0.000166181
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 235476 z: 0 dmin: 0.00690571
-Basis: update 21: LU: 236425 z: 0 dmin: 0.00086561
-Basis: update 41: LU: 238002 z: 0 dmin: 0.000446045
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 235488 z: 0 dmin: 0.0122382
-Basis: update 21: LU: 236451 z: 0 dmin: 9.85722e-005
-Basis: update 41: LU: 237815 z: 0 dmin: 2.03949e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 235608 z: 0 dmin: 3.99996e-005
-Basis: update 21: LU: 236634 z: 0 dmin: 3.99996e-005
-Basis: update 41: LU: 238522 z: 0 dmin: 3.99996e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 235605 z: 0 dmin: 0.0242307
-Basis: update 21: LU: 236650 z: 0 dmin: 0.000301183
-Basis: update 41: LU: 238277 z: 0 dmin: 0.000301183
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 235597 z: 0 dmin: 0.0190966
-Basis: update 21: LU: 236392 z: 0 dmin: 0.000383334
-Basis: update 41: LU: 237949 z: 0 dmin: 0.000383334
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 235444 z: 0 dmin: 0.0179244
-Basis: update 21: LU: 236413 z: 0 dmin: 0.000143148
-Basis: update 41: LU: 238040 z: 0 dmin: 0.000143148
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 235735 z: 0 dmin: 0.000663178
-Basis: update 21: LU: 236611 z: 0 dmin: 0.000663178
-Basis: update 41: LU: 238196 z: 0 dmin: 8.24728e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 235768 z: 0 dmin: 0.000202742
-Basis: update 21: LU: 236544 z: 0 dmin: 0.000202742
-Basis: update 41: LU: 238167 z: 0 dmin: 5.67139e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 235731 z: 0 dmin: 0.117752
-Basis: update 21: LU: 236521 z: 0 dmin: 0.000163918
- 1000  2.6800e-001 29815 28949     2     0    19 w[18840] z[52232]
-Basis: update 41: LU: 238253 z: 0 dmin: 0.000163918
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 235717 z: 0 dmin: 0.0010706
-Basis: update 21: LU: 236605 z: 0 dmin: 0.000145512
-Basis: update 41: LU: 238124 z: 0 dmin: 0.000145512
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 235675 z: 0 dmin: 0.00118853
-Basis: update 21: LU: 236556 z: 0 dmin: 0.000254025
-Basis: update 41: LU: 238128 z: 0 dmin: 0.000254025
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 235688 z: 0 dmin: 0.00060027
-Basis: update 21: LU: 236668 z: 0 dmin: 0.000381046
-Basis: update 41: LU: 238181 z: 0 dmin: 3.49626e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 235483 z: 0 dmin: 0.0161121
-Basis: update 21: LU: 236306 z: 0 dmin: 0.00273256
-Basis: update 41: LU: 237851 z: 0 dmin: 4.25295e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 235641 z: 0 dmin: 0.00996829
-Basis: update 21: LU: 236605 z: 0 dmin: 6.67148e-005
-Basis: update 41: LU: 238342 z: 0 dmin: 6.67148e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 235618 z: 0 dmin: 0.11767
-Basis: update 21: LU: 236537 z: 0 dmin: 6.87047e-005
-Basis: update 41: LU: 238126 z: 0 dmin: 6.87047e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 235653 z: 0 dmin: 0.00629224
-Basis: update 21: LU: 236490 z: 0 dmin: 6.28864e-005
-Basis: update 41: LU: 237987 z: 0 dmin: 6.28864e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 235630 z: 0 dmin: 0.0835261
-Basis: update 21: LU: 236567 z: 0 dmin: 0.000357216
-Basis: update 41: LU: 238208 z: 0 dmin: 0.000357216
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 235722 z: 0 dmin: 0.00016319
-Basis: update 21: LU: 236560 z: 0 dmin: 0.00016319
-Basis: update 41: LU: 238104 z: 0 dmin: 0.000134344
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 235809 z: 0 dmin: 0.0110002
- 1500  4.1141e-001 29842 28922     2     0    29 z[19326] w[15020]
-Basis: update 21: LU: 236679 z: 0 dmin: 0.000636829
-Basis: update 41: LU: 238202 z: 0 dmin: 0.000172566
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 235648 z: 0 dmin: 0.0491357
-Basis: update 21: LU: 236416 z: 0 dmin: 0.00221204
-Basis: update 41: LU: 238134 z: 0 dmin: 0.000349629
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 235702 z: 0 dmin: 0.0569447
-Basis: update 21: LU: 236502 z: 0 dmin: 8.5982e-006
-Basis: update 41: LU: 238072 z: 0 dmin: 8.5982e-006
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 235582 z: 0 dmin: 0.0152738
-Basis: update 21: LU: 236577 z: 0 dmin: 0.000429322
-Basis: update 41: LU: 238042 z: 0 dmin: 0.000429322
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 235634 z: 0 dmin: 0.00168803
-Basis: update 21: LU: 236435 z: 0 dmin: 3.04702e-005
-Basis: update 41: LU: 238011 z: 0 dmin: 3.04702e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 235859 z: 0 dmin: 0.0139914
-Basis: update 21: LU: 236781 z: 0 dmin: 3.33879e-005
-Basis: update 41: LU: 238449 z: 0 dmin: 3.33879e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 235872 z: 0 dmin: 0.000968146
-Basis: update 21: LU: 236745 z: 0 dmin: 0.000815189
-Basis: update 41: LU: 238392 z: 0 dmin: 5.06619e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 235923 z: 0 dmin: 0.0835261
-Basis: update 21: LU: 236739 z: 0 dmin: 0.00123516
-Basis: update 41: LU: 238175 z: 0 dmin: 0.0004099
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 235855 z: 0 dmin: 0.00438271
-Basis: update 21: LU: 236618 z: 0 dmin: 0.000122766
-Basis: update 41: LU: 238237 z: 0 dmin: 0.000122766
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 235848 z: 0 dmin: 0.0291881
-Basis: update 21: LU: 236641 z: 0 dmin: 0.000161505
-Basis: update 41: LU: 238291 z: 0 dmin: 6.43249e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 235775 z: 0 dmin: 1.91416e-005
- 2000  5.5202e-001 29851 28913     2     0    39 w[52864] z[51471]
-Basis: update 21: LU: 236630 z: 0 dmin: 1.91416e-005
-Basis: update 41: LU: 238276 z: 0 dmin: 1.91416e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 236024 z: 0 dmin: 0.00530987
-Basis: update 21: LU: 236841 z: 0 dmin: 8.09605e-005
-Basis: update 41: LU: 238362 z: 0 dmin: 8.09605e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 236003 z: 0 dmin: 0.00177294
-Basis: update 21: LU: 236809 z: 0 dmin: 0.000274296
-Basis: update 41: LU: 238511 z: 0 dmin: 7.31228e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 236112 z: 0 dmin: 0.000302527
-Basis: update 21: LU: 236993 z: 0 dmin: 8.49314e-005
-Basis: update 41: LU: 238671 z: 0 dmin: 3.50044e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 236129 z: 0 dmin: 0.117752
-Basis: update 21: LU: 237042 z: 0 dmin: 6.52794e-005
-Basis: update 41: LU: 238741 z: 0 dmin: 6.52794e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 236322 z: 0 dmin: 0.0767044
-Basis: update 21: LU: 237234 z: 0 dmin: 0.000352648
-Basis: update 41: LU: 238820 z: 0 dmin: 0.000252475
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 236314 z: 0 dmin: 0.0310755
-Basis: update 21: LU: 237049 z: 0 dmin: 0.000577267
-Basis: update 41: LU: 238733 z: 0 dmin: 0.000512124
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 236314 z: 0 dmin: 0.0638925
-Basis: update 21: LU: 237241 z: 0 dmin: 0.00240237
-Basis: update 41: LU: 238890 z: 0 dmin: 3.82448e-006
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 236546 z: 0 dmin: 0.0355104
-Basis: update 21: LU: 237455 z: 0 dmin: 5.53022e-005
-Basis: update 41: LU: 239020 z: 0 dmin: 5.53022e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 236497 z: 0 dmin: 0.0812276
-Basis: update 21: LU: 237349 z: 0 dmin: 0.0033897
-Basis: update 41: LU: 238835 z: 0 dmin: 0.000195442
-  ** WARNING **
-Basis refactored.
- 2500  7.0716e-001 29917 28847     2     0    49 z[14888] z[ 1761]
-Basis: update  1: LU: 236669 z: 0 dmin: 0.000423779
-Basis: update 21: LU: 237571 z: 0 dmin: 0.000148148
-Basis: update 41: LU: 239317 z: 0 dmin: 2.34418e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 236783 z: 0 dmin: 0.0644824
-Basis: update 21: LU: 237668 z: 0 dmin: 0.000171971
-Basis: update 41: LU: 239183 z: 0 dmin: 0.000171971
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 236769 z: 0 dmin: 0.00566794
-Basis: update 21: LU: 237731 z: 0 dmin: 4.21509e-005
-Basis: update 41: LU: 239327 z: 0 dmin: 4.21509e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 236927 z: 0 dmin: 0.0812276
-Basis: update 21: LU: 237849 z: 0 dmin: 0.00106089
-Basis: update 41: LU: 239317 z: 0 dmin: 0.00106089
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 237030 z: 0 dmin: 0.000568819
-Basis: update 21: LU: 237952 z: 0 dmin: 0.000234568
-Basis: update 41: LU: 239592 z: 0 dmin: 0.000234568
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 236943 z: 0 dmin: 0.0356059
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 237075 z: 0 dmin: 0.00117176
-Basis: update 21: LU: 237931 z: 0 dmin: 9.55338e-005
-Basis: update 41: LU: 239393 z: 0 dmin: 9.55338e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 236931 z: 0 dmin: 0.0662506
-Basis: update 21: LU: 237887 z: 0 dmin: 2.67017e-005
-Basis: update 41: LU: 239513 z: 0 dmin: 2.67017e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 236943 z: 0 dmin: 0.000116787
-Basis: update 21: LU: 237651 z: 0 dmin: 0.000116787
-Basis: update 41: LU: 239415 z: 0 dmin: 3.47637e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 237074 z: 0 dmin: 0.00787302
-Basis: update 21: LU: 238107 z: 0 dmin: 0.000478516
-Basis: update 41: LU: 239650 z: 0 dmin: 1.83072e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 237145 z: 0 dmin: 0.0806989
-Basis: update 21: LU: 238197 z: 0 dmin: 8.34833e-005
- 3000  8.6326e-001 30014 28750     2     0    59 w[42728] w[15052]
-Basis: update 41: LU: 239680 z: 0 dmin: 8.34833e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 237167 z: 0 dmin: 0.00276312
-Basis: update 21: LU: 238028 z: 0 dmin: 0.000316785
-Basis: update 41: LU: 239692 z: 0 dmin: 0.000316785
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 237453 z: 0 dmin: 0.0812276
-Basis: update 21: LU: 238453 z: 0 dmin: 8.23815e-005
-Basis: update 41: LU: 240021 z: 0 dmin: 2.10076e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 237310 z: 0 dmin: 0.00594916
-Basis: update 21: LU: 238301 z: 0 dmin: 4.08223e-005
-Basis: update 41: LU: 239759 z: 0 dmin: 4.08223e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 237380 z: 0 dmin: 0.0375959
-Basis: update 21: LU: 238253 z: 0 dmin: 0.000431425
-Basis: update 41: LU: 239875 z: 0 dmin: 7.99837e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 237415 z: 0 dmin: 0.000647167
-Basis: update 21: LU: 238349 z: 0 dmin: 0.000601993
-Basis: update 41: LU: 239824 z: 0 dmin: 7.68589e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 237535 z: 0 dmin: 0.0111051
-Basis: update 21: LU: 238391 z: 0 dmin: 9.82228e-005
-Basis: update 41: LU: 240137 z: 0 dmin: 1.32106e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 237759 z: 0 dmin: 0.0653181
-Basis: update 21: LU: 238697 z: 0 dmin: 0.000254834
-Basis: update 41: LU: 240372 z: 0 dmin: 0.000254834
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 237686 z: 0 dmin: 0.0375959
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-    3  3397    54    19 8.9226e+004  1.0e+000 SO 1.3e-001 4.9e+003 (KKTNSTOE)
-  ** WARNING **
-Residual scaled (5.085933e+003).
-Basis: update  1: LU: 248103 z: 0 dmin: 0.0229694
-Basis: update 21: LU: 249310 z: 0 dmin: 8.076e-005
-Basis: update 41: LU: 251330 z: 0 dmin: 8.076e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 248679 z: 0 dmin: 0.000385407
-Basis: update 21: LU: 249828 z: 0 dmin: 3.76222e-006
-Basis: update 41: LU: 251742 z: 0 dmin: 3.76222e-006
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 248340 z: 0 dmin: 0.00155808
-Basis: update 21: LU: 249309 z: 0 dmin: 3.91472e-006
-Basis: update 41: LU: 251024 z: 0 dmin: 3.91472e-006
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 248643 z: 0 dmin: 0.0228758
-Basis: update 21: LU: 249734 z: 0 dmin: 0.000714816
-Basis: update 41: LU: 251490 z: 0 dmin: 0.000138582
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 248950 z: 0 dmin: 0.00281941
-Basis: update 21: LU: 250145 z: 0 dmin: 0.00093167
-Basis: update 41: LU: 252104 z: 0 dmin: 0.00045665
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 249246 z: 0 dmin: 0.000316127
-Basis: update 21: LU: 250392 z: 0 dmin: 0.000208659
-Basis: update 41: LU: 252230 z: 0 dmin: 0.000151195
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 249496 z: 0 dmin: 0.0211536
-Basis: update 21: LU: 250556 z: 0 dmin: 0.000112669
-Basis: update 41: LU: 252405 z: 0 dmin: 0.000112669
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 249716 z: 0 dmin: 0.0226416
-Basis: update 21: LU: 250866 z: 0 dmin: 7.64413e-006
-Basis: update 41: LU: 252552 z: 0 dmin: 7.64413e-006
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 249402 z: 0 dmin: 0.000726781
-Basis: update 21: LU: 250532 z: 0 dmin: 0.000240481
-Basis: update 41: LU: 252438 z: 0 dmin: 9.6959e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 249577 z: 0 dmin: 0.00297956
-Basis: update 21: LU: 250915 z: 0 dmin: 0.000122315
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  2.4801e-001 30217 28547     2     0     9 w[54938] z[13451]
-Basis: update 41: LU: 252763 z: 0 dmin: 7.0588e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 249935 z: 0 dmin: 0.00369347
-Basis: update 21: LU: 251048 z: 0 dmin: 0.000162403
-Basis: update 41: LU: 253147 z: 0 dmin: 1.70611e-006
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 250442 z: 0 dmin: 0.00970724
-Basis: update 21: LU: 251547 z: 0 dmin: 1.58632e-005
-Basis: update 41: LU: 253565 z: 0 dmin: 1.58632e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 250443 z: 0 dmin: 0.000362908
-Basis: update 21: LU: 251527 z: 0 dmin: 3.8789e-005
-Basis: update 41: LU: 253446 z: 0 dmin: 3.8789e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 250828 z: 0 dmin: 0.000478267
-Basis: update 21: LU: 251989 z: 0 dmin: 1.908e-005
-Basis: update 41: LU: 253812 z: 0 dmin: 1.908e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 251187 z: 0 dmin: 0.0228758
-Basis: update 21: LU: 252317 z: 0 dmin: 4.9419e-005
-Basis: update 41: LU: 254336 z: 0 dmin: 7.55103e-006
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 251443 z: 0 dmin: 0.0228758
-Basis: update 21: LU: 252526 z: 0 dmin: 3.5957e-005
-Basis: update 41: LU: 254333 z: 0 dmin: 3.5957e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 251979 z: 0 dmin: 0.000424511
-Basis: update 21: LU: 253199 z: 0 dmin: 2.38674e-005
-Basis: update 41: LU: 255037 z: 0 dmin: 2.38674e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 252392 z: 0 dmin: 0.000117267
-Basis: update 21: LU: 253437 z: 0 dmin: 5.58731e-005
-Basis: update 41: LU: 255247 z: 0 dmin: 2.17138e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 252452 z: 0 dmin: 0.000616308
-Basis: update 21: LU: 253637 z: 0 dmin: 0.000119993
-Basis: update 41: LU: 255545 z: 0 dmin: 5.72492e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 252996 z: 0 dmin: 0.00536463
-Basis: update 21: LU: 254021 z: 0 dmin: 6.64873e-005
- 1000  4.0663e-001 30452 28312     2     0    19 z[18788] w[52256]
-Basis: update 41: LU: 255835 z: 0 dmin: 5.85557e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 253693 z: 0 dmin: 3.01692e-005
-Basis: update 21: LU: 254763 z: 0 dmin: 1.83851e-005
-Basis: update 41: LU: 256619 z: 0 dmin: 1.83851e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 254011 z: 0 dmin: 0.0130334
-Basis: update 21: LU: 255169 z: 0 dmin: 0.000829324
-Basis: update 41: LU: 257013 z: 0 dmin: 4.61939e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 253781 z: 0 dmin: 0.00434983
-Basis: update 21: LU: 254969 z: 0 dmin: 1.06353e-005
-Basis: update 41: LU: 256950 z: 0 dmin: 1.06353e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 254288 z: 0 dmin: 0.00630781
-Basis: update 21: LU: 255482 z: 0 dmin: 3.93924e-005
-Basis: update 41: LU: 257443 z: 0 dmin: 3.93924e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 254632 z: 0 dmin: 0.0228759
-Basis: update 21: LU: 255771 z: 0 dmin: 0.000185352
-Basis: update 41: LU: 257631 z: 0 dmin: 0.000185352
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 254479 z: 0 dmin: 9.69837e-006
-Basis: update 21: LU: 255646 z: 0 dmin: 9.69837e-006
-Basis: update 41: LU: 257583 z: 0 dmin: 9.69837e-006
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 255120 z: 0 dmin: 0.00807618
-Basis: update 21: LU: 256432 z: 0 dmin: 5.55481e-005
-Basis: update 41: LU: 258211 z: 0 dmin: 5.06031e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 255076 z: 0 dmin: 8.41324e-005
-Basis: update 21: LU: 256183 z: 0 dmin: 8.41324e-005
-Basis: update 41: LU: 258084 z: 0 dmin: 9.25541e-006
+Basis: update  1: LU: 188498 z: 0 dmin: 0.0269138
+Basis: update 21: LU: 188932 z: 0 dmin: 1.08356e-005
+Basis: update 41: LU: 189723 z: 0 dmin: 1.
