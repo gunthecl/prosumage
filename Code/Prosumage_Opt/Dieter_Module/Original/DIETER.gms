@@ -19,7 +19,7 @@ $offtext
 **************************
 
 * Set star to skip Excel upload and load data from gdx
-$setglobal skip_Excel ""
+$setglobal skip_Excel "*"
 
 * Choose base year
 $setglobal base_year "'2030'"
@@ -48,8 +48,8 @@ $setglobal EV_FREE ""
 * if nothing is selected, ROR capacity will be set to zero
 * if parameter option is selected, set appropriate values in fix.gmx
 * if variable option is selected, set appropriate bound in data_input excel
-$setglobal ror_parameter ""
-$setglobal ror_variable "*"
+$setglobal ror_parameter "*"
+$setglobal ror_variable ""
 
 * Set star to determine loops, otherwise default 100% renewables
 $setglobal loop_over_renewable_share "*"
@@ -95,7 +95,7 @@ $if "%EV_EXOG%" == "*" $if "%EV_DEFAULT%%EV_100RES%%EV_FREE%" == "***" $abort Ch
 
 sets
 %loop_over_renewable_share%$ontext
-loop_res_share   Solution loop for different shares of renewables       /10/
+loop_res_share   Solution loop for different shares of renewables       /50/
 $ontext
 $offtext
 
@@ -109,7 +109,7 @@ loop_prosumage   Solution loop for different prosumer self-consumption levels   
 $ontext
 $offtext
 
-%loop_over_renewable_share%      loop_res_share                          /100/
+%loop_over_renewable_share%      loop_res_share                          /50/
 %EV%                             loop_ev                                 /0/
 %prosumage%                      loop_prosumage                          /0/
 ;

@@ -1,4 +1,4 @@
-GAMS 24.2.1  r43572 Released Dec  9, 2013 WEX-WEI x86_64/MS Windows 10/22/18 10:13:29 Page 1
+GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 10/22/18 18:15:18 Page 1
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
@@ -79,7 +79,7 @@ C o m p i l a t i o n
   95   
   96  sets
   97  *$ontext
-  98  loop_res_share   Solution loop for different shares of renewables       /1
+  98  loop_res_share   Solution loop for different shares of renewables       /5
       0/
  101   
       loop_ev          Solution loop for different fleets of EVs              /4
@@ -90,7 +90,7 @@ C o m p i l a t i o n
       els    /50/
       $ontext
  111   
- 112  *      loop_res_share                          /100/
+ 112  *      loop_res_share                          /50/
  113                               loop_ev                                 /0/
  114                        loop_prosumage                          /0/
  115  ;
@@ -133,8 +133,8 @@ C o m p i l a t i o n
  150  ***** Dataload *****
  151  **************************
  152   
-INCLUDE    C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Diet
-           er_Module\Original\dataload.gms
+INCLUDE    C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_
+           Module\Original\dataload.gms
  154   
  155  **************************************************************************
       ******
@@ -574,9 +574,10 @@ INCLUDE    C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Diet
       ******
  495   
  555   
+ 556  *$call "gdxxrw data_input.xlsx @temp.tmp o=Data_input maxdupeerrors=100";
  557   
-GDXIN   C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_
-        Module\Original\Data_input.gdx
+GDXIN   C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Mod
+        ule\Original\Data_input.gdx
 --- LOAD  n = 1:n
 --- LOAD  tech = 2:tech
 --- LOAD  headers_tech = 3:headers_tech
@@ -630,9 +631,10 @@ GDXIN   C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_
       ******
  581   
  607   
+ 608  *$call "gdxxrw time_series.xlsx @temp2.tmp o=time_series";
  609   
-GDXIN   C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_
-        Module\Original\time_series.gdx
+GDXIN   C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Mod
+        ule\Original\time_series.gdx
 --- LOAD  h = 1:h
 --- LOAD  headers_time = 2:headers_time
 --- LOAD  year = 3:year
@@ -1200,8 +1202,8 @@ GDXIN   C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_
 1081  **************************************************************************
       ******
 1082   
-INCLUDE    C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Diet
-           er_Module\Original\model.gms
+INCLUDE    C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_
+           Module\Original\model.gms
 1084   
 1085  **************************************************************************
       ******
@@ -2942,8 +2944,8 @@ INCLUDE    C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Diet
 2606   
 2607   
 2608  * Inclusion of scenario and fixing
-INCLUDE    C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Diet
-           er_Module\Original\fix.gms
+INCLUDE    C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_
+           Module\Original\fix.gms
 2610   
 2611  **************************************************************************
       ******
@@ -2971,9 +2973,9 @@ INCLUDE    C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Diet
 2629  * If $setglobal ror_parameter "*": choose appropriate value for N_CON.fx('
       ror') (but no reserve provision):
 2630   
-      N_TECH.fx(n,'ror') = 5857.47 ;
-      G_RES.fx(n,'ror',h) = N_TECH.l(n,'ror') * phi_res(n,'ror',h) ;
-      %reserves%$ontext
+2631  *$ontext
+2632  N_TECH.fx(n,'ror') = 5857.47 ;
+2633  G_RES.fx(n,'ror',h) = N_TECH.l(n,'ror') * phi_res(n,'ror',h) ;
       RP_NONDIS.fx(n,reserves,'ror',h) = 0 ;
       $ontext
 2638   
@@ -3270,10 +3272,10 @@ INCLUDE    C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Diet
 2902   
 2903   
 2904  * Fixing of report parameters for run-of-river
-      lev_N_TECH(scen,n,'ror') = 5857.47 ;
-      lev_G_RES(scen,n,'ror',h) = lev_N_TECH(scen,n,'ror') * phi_res(n,'ror',h) 
+2905  *$ontext
+2906  lev_N_TECH(scen,n,'ror') = 5857.47 ;
+2907  lev_G_RES(scen,n,'ror',h) = lev_N_TECH(scen,n,'ror') * phi_res(n,'ror',h) 
       ;
-      %reserves%$ontext
       lev_RP_NONDIS(scen,n,reserves,'ror',h) = 0 ;
       $ontext
 2912   
@@ -3287,8 +3289,8 @@ INCLUDE    C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Diet
 2922   
 2923   
 2924   
-INCLUDE    C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Diet
-           er_Module\Original\scenario.gms
+INCLUDE    C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_
+           Module\Original\scenario.gms
 2926   
 2927  **************************************************************************
       ******
@@ -3552,8 +3554,8 @@ INCLUDE    C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Diet
 3203   
 3204   
 3205  * Reporting
-INCLUDE    C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Diet
-           er_Module\Original\report.gms
+INCLUDE    C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_
+           Module\Original\report.gms
 3207   
 3208  **************************************************************************
       ******
@@ -8048,8 +8050,8 @@ INCLUDE    C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Diet
 4637  ;
 4638   
 4639  *$ontext
-INCLUDE    C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Diet
-           er_Module\Original\report_to_excel.gms
+INCLUDE    C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_
+           Module\Original\report_to_excel.gms
 4641   
 4642  **************************************************************************
       ******
@@ -8522,48 +8524,44 @@ INCLUDE    C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Diet
       ---- *
 4844  * ------------------------------------------------------------------------
       ---- *
-GAMS 24.2.1  r43572 Released Dec  9, 2013 WEX-WEI x86_64/MS Windows 10/22/18 10:13:29 Page 2
+GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 10/22/18 18:15:18 Page 2
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Include File Summary
 
 
    SEQ   GLOBAL TYPE      PARENT   LOCAL  FILENAME
 
-     1        1 INPUT          0       0  C:\Users\cguenther\Documents\GitHub\pr
-                                          osumage\Code\Prosumage_Opt\Dieter_Modu
-                                          le\Original\DIETER.gms
-     2      153 INCLUDE        1     153  .C:\Users\cguenther\Documents\GitHub\p
-                                           rosumage\Code\Prosumage_Opt\Dieter_Mo
-                                           dule\Original\dataload.gms
-     3      556 CALL           2     403  .gdxxrw data_input.xlsx @temp.tmp o=Da
-                                           ta_input maxdupeerrors=100
-     4      558 GDXIN          2     405  .C:\Users\cguenther\Documents\GitHub\p
-                                           rosumage\Code\Prosumage_Opt\Dieter_Mo
-                                           dule\Original\Data_input.gdx
-     5      608 CALL           2     455  .gdxxrw time_series.xlsx @temp2.tmp o=
-                                           time_series
-     6      610 GDXIN          2     457  .C:\Users\cguenther\Documents\GitHub\p
-                                           rosumage\Code\Prosumage_Opt\Dieter_Mo
-                                           dule\Original\time_series.gdx
-     7     1083 INCLUDE        1     296  .C:\Users\cguenther\Documents\GitHub\p
-                                           rosumage\Code\Prosumage_Opt\Dieter_Mo
-                                           dule\Original\model.gms
-     8     2609 INCLUDE        1     475  .C:\Users\cguenther\Documents\GitHub\p
-                                           rosumage\Code\Prosumage_Opt\Dieter_Mo
-                                           dule\Original\fix.gms
-     9     2925 INCLUDE        1     476  .C:\Users\cguenther\Documents\GitHub\p
-                                           rosumage\Code\Prosumage_Opt\Dieter_Mo
-                                           dule\Original\scenario.gms
-    10     3206 INCLUDE        1     635  .C:\Users\cguenther\Documents\GitHub\p
-                                           rosumage\Code\Prosumage_Opt\Dieter_Mo
-                                           dule\Original\report.gms
-    11     4640 INCLUDE        1     658  .C:\Users\cguenther\Documents\GitHub\p
-                                           rosumage\Code\Prosumage_Opt\Dieter_Mo
-                                           dule\Original\report_to_excel.gms
+     1        1 INPUT          0       0  C:\Users\Lenovo\Documents\GitHub\prosu
+                                          mage\Code\Prosumage_Opt\Dieter_Module\
+                                          Original\DIETER.gms
+     2      153 INCLUDE        1     153  .C:\Users\Lenovo\Documents\GitHub\pros
+                                           umage\Code\Prosumage_Opt\Dieter_Modul
+                                           e\Original\dataload.gms
+     3      558 GDXIN          2     405  .C:\Users\Lenovo\Documents\GitHub\pros
+                                           umage\Code\Prosumage_Opt\Dieter_Modul
+                                           e\Original\Data_input.gdx
+     4      610 GDXIN          2     457  .C:\Users\Lenovo\Documents\GitHub\pros
+                                           umage\Code\Prosumage_Opt\Dieter_Modul
+                                           e\Original\time_series.gdx
+     5     1083 INCLUDE        1     296  .C:\Users\Lenovo\Documents\GitHub\pros
+                                           umage\Code\Prosumage_Opt\Dieter_Modul
+                                           e\Original\model.gms
+     6     2609 INCLUDE        1     475  .C:\Users\Lenovo\Documents\GitHub\pros
+                                           umage\Code\Prosumage_Opt\Dieter_Modul
+                                           e\Original\fix.gms
+     7     2925 INCLUDE        1     476  .C:\Users\Lenovo\Documents\GitHub\pros
+                                           umage\Code\Prosumage_Opt\Dieter_Modul
+                                           e\Original\scenario.gms
+     8     3206 INCLUDE        1     635  .C:\Users\Lenovo\Documents\GitHub\pros
+                                           umage\Code\Prosumage_Opt\Dieter_Modul
+                                           e\Original\report.gms
+     9     4640 INCLUDE        1     658  .C:\Users\Lenovo\Documents\GitHub\pros
+                                           umage\Code\Prosumage_Opt\Dieter_Modul
+                                           e\Original\report_to_excel.gms
 
 
-COMPILATION TIME     =       29.219 SECONDS     25 MB  24.2.1 r43572 WEX-WEI
-GAMS 24.2.1  r43572 Released Dec  9, 2013 WEX-WEI x86_64/MS Windows 10/22/18 10:13:29 Page 3
+COMPILATION TIME     =        0.125 SECONDS     25 MB  24.7.4 r58773 WEX-WEI
+GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 10/22/18 18:15:18 Page 3
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Model Statistics    SOLVE DIETER Using LP From line 3202
 
@@ -8571,13 +8569,84 @@ Model Statistics    SOLVE DIETER Using LP From line 3202
 MODEL STATISTICS
 
 BLOCKS OF EQUATIONS          33     SINGLE EQUATIONS      324,152
-BLOCKS OF VARIABLES          13     SINGLE VARIABLES      332,896  5 projected
-NON ZERO ELEMENTS     1,406,509     NON LINEAR N-Z         96,361
-DERIVATIVE POOL              10     CONSTANT POOL              16
-CODE LENGTH             140,165
+BLOCKS OF VARIABLES          13     SINGLE VARIABLES      324,136  5 projected
+NON ZERO ELEMENTS     1,380,229     NON LINEAR N-Z         87,601
+DERIVATIVE POOL              20     CONSTANT POOL              17
+CODE LENGTH             122,646
 
 
-GENERATION TIME      =       59.530 SECONDS    235 MB  24.2.1 r43572 WEX-WEI
+GENERATION TIME      =       55.016 SECONDS    234 MB  24.7.4 r58773 WEX-WEI
 
 
-EXECUTION TIME       =       60.700 SECONDS    235 MB  24.2.1 r43572 WEX-WEI
+EXECUTION TIME       =       56.219 SECONDS    234 MB  24.7.4 r58773 WEX-WEI
+GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 10/22/18 18:15:18 Page 4
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Solution Report     SOLVE DIETER Using LP From line 3202
+
+
+               S O L V E      S U M M A R Y
+
+     MODEL   DIETER              OBJECTIVE  Z
+     TYPE    LP                  DIRECTION  MINIMIZE
+     SOLVER  CPLEX               FROM LINE  3202
+
+**** SOLVER STATUS     1 Normal Completion         
+**** MODEL STATUS      14 No Solution Returned     
+**** OBJECTIVE VALUE                0.0000
+
+ RESOURCE USAGE, LIMIT         46.922  10000000.000
+ ITERATION COUNT, LIMIT         0    2000000000
+
+GUSS             24.7.4 r58773 Released Sep 19, 2016 WEI x86 64bit/MS Windows 
+Reading parameter(s) from scenario dictionary
+>>  Logoption 2
+>>  Optfile 1
+>>  Skipbasecase 1
+--- Scenario Variable with potential updates identified: phi_min_res
+
+IBM ILOG CPLEX   24.7.4 r58773 Released Sep 19, 2016 WEI x86 64bit/MS Windows 
+--- GAMS/Cplex licensed for continuous and discrete problems.
+Cplex 12.6.3.0
+
+Reading parameter(s) from "C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosu
+                                      mage_Opt\Dieter_Module\Original\cplex.opt"
+>>  lpmethod 4
+>>  threads 4
+>>  epgap 1e-3
+Finished reading from "C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage
+                                          _Opt\Dieter_Module\Original\cplex.opt"
+Space for names approximately 21.24 Mb
+Use option 'names no' to turn use of names off
+LP status(1): optimal
+Cplex Time: 46.33sec (det. 20339.53 ticks)
+Optimal solution found.
+Objective : 33544542852.728607
+
+--- Scenario scen1:     Records read:    1
+--- Solution statistics for scenario scen1
+---   Solver Status    1 Normal Completion         
+---   Model Status     1 Optimal                   
+---   Objective Value  33544542852.7286
+---   Resource Usage   46985
+---   Total Time (ms)  47156
+
+No solution returned
+GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 10/22/18 18:15:18 Page 5
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+E x e c u t i o n
+
+
+EXECUTION TIME       =       14.953 SECONDS    148 MB  24.7.4 r58773 WEX-WEI
+
+
+USER: Medium MUD - 10 User License                   S170316:1123AO-GEN
+      Deutsches Institut fuer Wirtschaftsforschung DIW, AbteilungDC3975
+      License for teaching and research at degree granting institutions
+
+
+**** FILE SUMMARY
+
+Input      C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_
+           Module\Original\DIETER.gms
+Output     C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_
+           Module\Original\DIETER.lst

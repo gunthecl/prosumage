@@ -129,7 +129,7 @@ con2b_loadlevelstart     Load change costs: Level for first period
 
 * Capacity contraints and flexibility constraints
 con3a_maxprod_dispatchable       Capacity Constraint conventionals
-con3e_maxprod_res
+con3e_maxprod_res                Capacity constraints renewables 
 
 * Storage constraints
 con4a_stolev_start        Storage Level Dynamics Initial Condition
