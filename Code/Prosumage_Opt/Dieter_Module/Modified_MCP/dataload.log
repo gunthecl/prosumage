@@ -1,0 +1,31 @@
+
+--- Job dataload.gms Start 10/22/18 14:23:16 24.2.1 r43572 WEX-WEI x86_64/MS Windows
+GAMS 24.2.1   Copyright (C) 1987-2013 GAMS Development. All rights reserved
+Licensee: Abteilung Energie, Verkehr, Umwelt, 5 User     S131220:0515AN-GEN
+          Deutsches Institut fuer Wirtschaftsforschung DIW           DC3975
+          License for teaching and research at degree granting institutions
+--- Starting compilation
+--- dataload.gms(403) 2 Mb 1 Error
+*** Error 409 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\dataload.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- dataload.gms(405) 2 Mb
+--- GDXin=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\Data_input.gdx
+--- dataload.gms(409) 3 Mb 2 Errors
+*** Error 409 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\dataload.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- dataload.gms(420) 3 Mb 3 Errors
+*** Error 409 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\dataload.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- dataload.gms(455) 3 Mb 4 Errors
+*** Error 409 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\dataload.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- dataload.gms(457) 3 Mb
+--- GDXin=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\time_series.gdx
+--- dataload.gms(787) 25 Mb 4 Errors
+*** Status: Compilation error(s)
+--- Job dataload.gms Stop 10/22/18 14:23:16 elapsed 0:00:00.140
+Exit code = 2

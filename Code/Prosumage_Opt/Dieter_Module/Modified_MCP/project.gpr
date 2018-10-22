@@ -1421,9 +1421,6 @@ PlaneRownr=-1
 [RP:SCENARIO]
 1=
 
-[RP:MODEL]
-1=
-
 [RP:UNTITLED_1]
 1=
 
@@ -1442,23 +1439,27 @@ PlaneRownr=-1
 9=-gdx = pre
 10=-gdx = test
 
+[RP:MODEL]
+1=
+
 [MRUFILES]
-1=W:\DIETER\Dieter-Heat\model_clean\post\Untitled_1.gms
-2=W:\DIETER\Dieter-Heat\model_clean\pre\model.gms
-3=W:\DIETER\Dieter-Heat\model_clean\post\scenario.gms
-4=W:\DIETER\Dieter-Heat\model_clean\post\report_to_excel.gms
-5=W:\DIETER\Dieter-Heat\model_clean\post\report.gms
-6=W:\DIETER\Dieter-Heat\model_clean\post\model.gms
-7=W:\DIETER\Dieter-Heat\model_clean\post\fix.gms
+1=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.lst
+2=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\model.gms
+3=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\dataload.lst
+4=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\dataload.gms
+5=W:\DIETER\Dieter-Heat\model_clean\post\Untitled_1.gms
+6=W:\DIETER\Dieter-Heat\model_clean\pre\model.gms
+7=W:\DIETER\Dieter-Heat\model_clean\post\scenario.gms
+8=W:\DIETER\Dieter-Heat\model_clean\post\report_to_excel.gms
 
 [OPENWINDOW_1]
-FILE0=W:\DIETER\__neuneuneu_fabian_p2x\dataload.gms
-FILE1=W:\DIETER\__neuneuneu_fabian_p2x\DIETER.gms
-FILE2=W:\DIETER\Dieter-Heat\model_clean\post\DIETER.lst
-FILE3=W:\DIETER\Dieter-Heat\model_clean\post\test.gdx
-FILE4=W:\DIETER\Dieter-Heat\model_clean\post\test.gdx
+FILE0=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\DIETER.gms
+FILE1=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\DIETER.lst
+FILE2=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+FILE3=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\results.gdx
+FILE4=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\results.gdx
 MAXIM=1
-TOP=313
-LEFT=81
+TOP=2
+LEFT=135
 HEIGHT=876
 WIDTH=1511
