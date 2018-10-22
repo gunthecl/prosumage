@@ -19,7 +19,7 @@ $offtext
 **************************
 
 * Set star to skip Excel upload and load data from gdx
-$setglobal skip_Excel "*"
+$setglobal skip_Excel ""
 
 * Choose base year
 $setglobal base_year "'2030'"
@@ -31,11 +31,11 @@ $setglobal GER_only "*"
 $setglobal DSM ""
 
 $setglobal reserves_endogenous ""
-$setglobal reserves_exogenous "*"
+$setglobal reserves_exogenous ""
 
 $setglobal prosumage ""
 
-$setglobal heat "*"
+$setglobal heat ""
 
 $setglobal EV ""
 $setglobal EV_EXOG ""
@@ -95,7 +95,7 @@ $if "%EV_EXOG%" == "*" $if "%EV_DEFAULT%%EV_100RES%%EV_FREE%" == "***" $abort Ch
 
 sets
 %loop_over_renewable_share%$ontext
-loop_res_share   Solution loop for different shares of renewables       /1/
+loop_res_share   Solution loop for different shares of renewables       /10/
 $ontext
 $offtext
 

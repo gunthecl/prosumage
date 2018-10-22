@@ -1442,13 +1442,6 @@ PlaneRownr=-1
 9=-gdx = pre
 10=-gdx = test
 
-[OPENWINDOW_1]
-MAXIM=1
-TOP=313
-LEFT=81
-HEIGHT=876
-WIDTH=1511
-
 [MRUFILES]
 1=W:\DIETER\Dieter-Heat\model_clean\post\Untitled_1.gms
 2=W:\DIETER\Dieter-Heat\model_clean\pre\model.gms
@@ -1457,3 +1450,15 @@ WIDTH=1511
 5=W:\DIETER\Dieter-Heat\model_clean\post\report.gms
 6=W:\DIETER\Dieter-Heat\model_clean\post\model.gms
 7=W:\DIETER\Dieter-Heat\model_clean\post\fix.gms
+
+[OPENWINDOW_1]
+FILE0=W:\DIETER\__neuneuneu_fabian_p2x\dataload.gms
+FILE1=W:\DIETER\__neuneuneu_fabian_p2x\DIETER.gms
+FILE2=W:\DIETER\Dieter-Heat\model_clean\post\DIETER.lst
+FILE3=W:\DIETER\Dieter-Heat\model_clean\post\test.gdx
+FILE4=W:\DIETER\Dieter-Heat\model_clean\post\test.gdx
+MAXIM=1
+TOP=313
+LEFT=81
+HEIGHT=876
+WIDTH=1511

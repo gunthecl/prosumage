@@ -268,70 +268,70 @@ con14v_storage_maxlev            Hybrid electric heating - maximum storage level
 
 obj..
          Z =E=
-                   sum( (h,n,dis) , c_m(n,dis)*G_L(n,dis,h) )
-                 + sum( (h,n,dis)$(ord(h)>1) , c_up(n,dis)*G_UP(n,dis,h) )
-                 + sum( (h,n,dis) , c_do(n,dis)*G_DO(n,dis,h) )
-                 + sum( (h,n,nondis) , c_cu(n,nondis)*CU(n,nondis,h) )
-                 + sum( (h,n,sto) , c_m_sto(n,sto) * ( STO_OUT(n,sto,h) + STO_IN(n,sto,h) ) )
+                   sum( (h,map_n_tech(n,dis)) , c_m(n,dis)*G_L(n,dis,h) )
+                 + sum( (h,map_n_tech(n,dis))$(ord(h)>1) , c_up(n,dis)*G_UP(n,dis,h) )
+                 + sum( (h,map_n_tech(n,dis)) , c_do(n,dis)*G_DO(n,dis,h) )
+                 + sum( (h,map_n_tech(n,nondis)) , c_cu(n,nondis)*CU(n,nondis,h) )
+                 + sum( (h,map_n_sto(n,sto)) , c_m_sto(n,sto) * ( STO_OUT(n,sto,h) + STO_IN(n,sto,h) ) )
 %DSM%$ontext
-                 + sum( (h,n,dsm_curt) , c_m_dsm_cu(n,dsm_curt)*DSM_CU(n,dsm_curt,h) )
-                 + sum( (h,n,dsm_shift) , c_m_dsm_shift(n,dsm_shift) * DSM_UP_DEMAND(n,dsm_shift,h) )
-                 + sum( (h,n,dsm_shift) , c_m_dsm_shift(n,dsm_shift) * DSM_DO_DEMAND(n,dsm_shift,h) )
+                 + sum( (h,map_n_dsm(n,dsm_curt)) , c_m_dsm_cu(n,dsm_curt)*DSM_CU(n,dsm_curt,h) )
+                 + sum( (h,map_n_dsm(n,dsm_shift)) , c_m_dsm_shift(n,dsm_shift) * DSM_UP_DEMAND(n,dsm_shift,h) )
+                 + sum( (h,map_n_dsm(n,dsm_shift)) , c_m_dsm_shift(n,dsm_shift) * DSM_DO_DEMAND(n,dsm_shift,h) )
 $ontext
 $offtext
 %EV%$ontext
-                 + sum( (h,n,ev) , c_m_ev(n,ev) * EV_DISCHARGE(n,ev,h) )
-                 + sum( (h,n,ev) , pen_phevfuel(n,ev) * EV_PHEVFUEL(n,ev,h) )
+                 + sum( (h,map_n_ev(n,ev)) , c_m_ev(n,ev) * EV_DISCHARGE(n,ev,h) )
+                 + sum( (h,map_n_ev(n,ev)) , pen_phevfuel(n,ev) * EV_PHEVFUEL(n,ev,h) )
 $ontext
 $offtext
-                 + sum( n,tech , c_i(n,tech)*N_TECH(n,tech) )
-                 + sum( n,tech , c_fix(n,tech)*N_TECH(n,tech) )
-                 + sum( n,sto , c_i_sto_e(n,sto)*N_STO_E(n,sto) )
-                 + sum( n,sto , c_fix_sto(n,sto)/2*(N_STO_P(n,sto)+N_STO_E(n,sto)) )
-                 + sum( n,sto , c_i_sto_p(n,sto)*N_STO_P(n,sto) )
+                 + sum( map_n_tech(n,tech) , c_i(n,tech)*N_TECH(n,tech) )
+                 + sum( map_n_tech(n,tech) , c_fix(n,tech)*N_TECH(n,tech) )
+                 + sum( map_n_sto(n,sto) , c_i_sto_e(n,sto)*N_STO_E(n,sto) )
+                 + sum( map_n_sto(n,sto) , c_fix_sto(n,sto)/2*(N_STO_P(n,sto)+N_STO_E(n,sto)) )
+                 + sum( map_n_sto(n,sto) , c_i_sto_p(n,sto)*N_STO_P(n,sto) )
 %DSM%$ontext
-                 + sum( n,dsm_curt , c_i_dsm_cu(n,dsm_curt)*N_DSM_CU(n,dsm_curt) )
-                 + sum( n,dsm_curt , c_fix_dsm_cu(n,dsm_curt)*N_DSM_CU(n,dsm_curt) )
-                 + sum( n,dsm_shift , c_i_dsm_shift(n,dsm_shift)*N_DSM_SHIFT(n,dsm_shift) )
-                 + sum( n,dsm_shift , c_fix_dsm_shift(n,dsm_shift)*N_DSM_SHIFT(n,dsm_shift) )
+                 + sum( map_n_dsm(n,dsm_curt) , c_i_dsm_cu(n,dsm_curt)*N_DSM_CU(n,dsm_curt) )
+                 + sum( map_n_dsm(n,dsm_curt) , c_fix_dsm_cu(n,dsm_curt)*N_DSM_CU(n,dsm_curt) )
+                 + sum( map_n_dsm(n,dsm_shift) , c_i_dsm_shift(n,dsm_shift)*N_DSM_SHIFT(n,dsm_shift) )
+                 + sum( map_n_dsm(n,dsm_shift) , c_fix_dsm_shift(n,dsm_shift)*N_DSM_SHIFT(n,dsm_shift) )
 $ontext
 $offtext
 %reserves%$ontext
-                 + sum( (h,n,sto,reserves_up) , phi_reserves_call(n,reserves_up,h) * c_m_sto(n,sto) * (RP_STO_OUT(n,reserves_up,sto,h) - RP_STO_IN(n,reserves_up,sto,h)) )
-                 - sum( (h,n,sto,reserves_do) , phi_reserves_call(n,reserves_do,h) * c_m_sto(n,sto) * (RP_STO_OUT(n,reserves_do,sto,h) - RP_STO_IN(n,reserves_do,sto,h)) )
-                 + sum( (h,n,rsvr,reserves_up) , RP_RSVR(n,reserves_up,rsvr,h) * phi_reserves_call(n,reserves_up,h) * c_m_rsvr(n,rsvr) )
-                 - sum( (h,n,rsvr,reserves_do) , RP_RSVR(n,reserves_do,rsvr,h) * phi_reserves_call(n,reserves_do,h) * c_m_rsvr(n,rsvr) )
+                 + sum( (h,map_n_sto(n,sto),reserves_up) , phi_reserves_call(n,reserves_up,h) * c_m_sto(n,sto) * (RP_STO_OUT(n,reserves_up,sto,h) - RP_STO_IN(n,reserves_up,sto,h)) )
+                 - sum( (h,map_n_sto(n,sto),reserves_do) , phi_reserves_call(n,reserves_do,h) * c_m_sto(n,sto) * (RP_STO_OUT(n,reserves_do,sto,h) - RP_STO_IN(n,reserves_do,sto,h)) )
+                 + sum( (h,map_n_rsvr(n,rsvr),reserves_up) , RP_RSVR(n,reserves_up,rsvr,h) * phi_reserves_call(n,reserves_up,h) * c_m_rsvr(n,rsvr) )
+                 - sum( (h,map_n_rsvr(n,rsvr),reserves_do) , RP_RSVR(n,reserves_do,rsvr,h) * phi_reserves_call(n,reserves_do,h) * c_m_rsvr(n,rsvr) )
 $ontext
 $offtext
 %reserves%$ontext
 %EV%$ontext
-%EV_EXOG%        + sum( (h,n,ev,reserves_up) , RP_EV_V2G(n,reserves_up,ev,h) * phi_reserves_call(n,reserves_up,h) * c_m_ev(n,ev) )
-%EV_EXOG%        - sum( (h,n,ev,reserves_do) , RP_EV_V2G(n,reserves_do,ev,h) * phi_reserves_call(n,reserves_do,h) * c_m_ev(n,ev) )
+%EV_EXOG%        + sum( (h,map_n_ev(n,ev),reserves_up) , RP_EV_V2G(n,reserves_up,ev,h) * phi_reserves_call(n,reserves_up,h) * c_m_ev(n,ev) )
+%EV_EXOG%        - sum( (h,map_n_ev(n,ev),reserves_do) , RP_EV_V2G(n,reserves_do,ev,h) * phi_reserves_call(n,reserves_do,h) * c_m_ev(n,ev) )
 $ontext
 $offtext
 %DSM%$ontext
 %reserves%$ontext
-                 + sum( (h,n,dsm_curt,reserves_up) , RP_DSM_CU(n,reserves_up,dsm_curt,h) * phi_reserves_call(n,reserves_up,h) * c_m_dsm_cu(n,dsm_curt) )
-                 + sum( (h,n,dsm_shift,reserves) , RP_DSM_SHIFT(n,reserves,dsm_shift,h) * phi_reserves_call(n,reserves,h) * c_m_dsm_shift(n,dsm_shift) )
+                 + sum( (h,map_n_dsm(n,dsm_curt),reserves_up) , RP_DSM_CU(n,reserves_up,dsm_curt,h) * phi_reserves_call(n,reserves_up,h) * c_m_dsm_cu(n,dsm_curt) )
+                 + sum( (h,map_n_dsm(n,dsm_shift),reserves) , RP_DSM_SHIFT(n,reserves,dsm_shift,h) * phi_reserves_call(n,reserves,h) * c_m_dsm_shift(n,dsm_shift) )
 $ontext
 $offtext
 %prosumage%$ontext
-                 + sum( n,res , c_i(n,res)*N_RES_PRO(n,res) )
-                 + sum( n,res , c_fix(n,res)*N_RES_PRO(n,res) )
+                 + sum( map_n_res_pro(n,res) , c_i(n,res)*N_RES_PRO(n,res) )
+                 + sum( map_n_res_pro(n,res) , c_fix(n,res)*N_RES_PRO(n,res) )
 
-                 + sum( n,sto , c_i_sto_e(n,sto)*N_STO_E_PRO(n,sto) )
-                 + sum( n,sto , c_fix_sto(n,sto)/2*(N_STO_P_PRO(n,sto) + N_STO_E_PRO(n,sto)) )
-                 + sum( n,sto , c_i_sto_p(n,sto)*N_STO_P_PRO(n,sto) )
+                 + sum( map_n_sto_pro(n,sto) , c_i_sto_e(n,sto)*N_STO_E_PRO(n,sto) )
+                 + sum( map_n_sto_pro(n,sto) , c_fix_sto(n,sto)/2*(N_STO_P_PRO(n,sto) + N_STO_E_PRO(n,sto)) )
+                 + sum( map_n_sto_pro(n,sto) , c_i_sto_p(n,sto)*N_STO_P_PRO(n,sto) )
 
-                 + sum( (h,n,sto) , c_m_sto(n,sto) * ( STO_OUT_PRO2PRO(n,sto,h) + STO_OUT_M2PRO(n,sto,h) + STO_OUT_PRO2M(n,sto,h) + STO_OUT_M2M(n,sto,h) + sum( res , STO_IN_PRO2PRO(n,res,sto,h) + STO_IN_PRO2M(n,res,sto,h)) + STO_OUT_PRO2M(n,sto,h) + STO_OUT_M2M(n,sto,h) ) )
+                 + sum( (h,map_n_sto_pro(n,sto)) , c_m_sto(n,sto) * ( STO_OUT_PRO2PRO(n,sto,h) + STO_OUT_M2PRO(n,sto,h) + STO_OUT_PRO2M(n,sto,h) + STO_OUT_M2M(n,sto,h) + sum( res , STO_IN_PRO2PRO(n,res,sto,h) + STO_IN_PRO2M(n,res,sto,h)) + STO_OUT_PRO2M(n,sto,h) + STO_OUT_M2M(n,sto,h) ) )
 $ontext
 $offtext
-                 + sum( l , c_i_ntc(l) * NTC(l)*dist(l) )
+                 + sum( map_l(l) , c_i_ntc(l) * NTC(l)*dist(l) )
 
-                 + sum( (h,n,rsvr), c_m_rsvr(n,rsvr) * RSVR_OUT(n,rsvr,h) )
-                 + sum( n,rsvr , c_i_rsvr_e(n,rsvr) * N_RSVR_E(n,rsvr) )
-                 + sum( n,rsvr , c_i_rsvr_p(n,rsvr) * N_RSVR_P(n,rsvr) )
-                 + sum( n,rsvr , c_fix_rsvr(n,rsvr) * N_RSVR_P(n,rsvr) )
+                 + sum( (h,map_n_rsvr(n,rsvr)), c_m_rsvr(n,rsvr) * RSVR_OUT(n,rsvr,h) )
+                 + sum( map_n_rsvr(n,rsvr) , c_i_rsvr_e(n,rsvr) * N_RSVR_E(n,rsvr) )
+                 + sum( map_n_rsvr(n,rsvr) , c_i_rsvr_p(n,rsvr) * N_RSVR_P(n,rsvr) )
+                 + sum( map_n_rsvr(n,rsvr) , c_fix_rsvr(n,rsvr) * N_RSVR_P(n,rsvr) )
 %heat%$ontext
                  + sum( (h,n,bu,hfo) , pen_heat_fuel(n,bu,hfo) * H_STO_IN_FOSSIL(n,bu,hfo,h))
 $ontext
@@ -345,19 +345,19 @@ $offtext
 
 * Energy balance
 con1a_bal(n,hh)..
-         ( 1 - phi_pro_load(n) ) * d(n,hh) + sum( n,sto , STO_IN(n,sto,hh) )
+         ( 1 - phi_pro_load(n) ) * d(n,hh) + sum( map_n_sto(n,sto) , STO_IN(n,sto,hh) )
 %DSM%$ontext
-         + sum( n,dsm_shift , DSM_UP_DEMAND(n,dsm_shift,hh) )
+         + sum( map_n_dsm(n,dsm_shift) , DSM_UP_DEMAND(n,dsm_shift,hh) )
 $ontext
 $offtext
 %EV%$ontext
-         + sum( n,ev , EV_CHARGE(n,ev,hh) )
+         + sum( map_n_ev(n,ev) , EV_CHARGE(n,ev,hh) )
 $ontext
 $offtext
 %prosumage%$ontext
          + G_MARKET_M2PRO(n,hh)
-         + sum( n,sto , STO_IN_M2PRO(n,sto,hh))
-         + sum( n,sto , STO_IN_M2M(n,sto,hh))
+         + sum( map_n_sto_pro(n,sto) , STO_IN_M2PRO(n,sto,hh))
+         + sum( map_n_sto_pro(n,sto) , STO_IN_M2M(n,sto,hh))
 $ontext
 $offtext
 %heat%$ontext
@@ -368,39 +368,39 @@ $offtext
 $ontext
 $offtext
          =E=
-         sum( n,dis , G_L(n,dis,hh)) + sum( n,nondis , G_RES(n,nondis,hh)) + sum( sto , STO_OUT(n,sto,hh) ) + sum( n,rsvr , RSVR_OUT(n,rsvr,hh))
-%GER_only%       + sum( l , inc(l,n) * F(l,hh))
+         sum( map_n_tech(n,dis) , G_L(n,dis,hh)) + sum( map_n_tech(n,nondis) , G_RES(n,nondis,hh)) + sum( sto , STO_OUT(n,sto,hh) ) + sum( map_n_rsvr(n,rsvr) , RSVR_OUT(n,rsvr,hh))
+%GER_only%       + sum( map_l(l) , inc(l,n) * F(l,hh))
 %reserves%$ontext
 *Balancing Correction Factor
-        + sum( n,dis ,
+        + sum( map_n_tech(n,dis) ,
           sum( reserves_do ,  RP_DIS(n,reserves_do,dis,hh) * phi_reserves_call(n,reserves_do,hh))
         - sum( reserves_up ,  RP_DIS(n,reserves_up,dis,hh) * phi_reserves_call(n,reserves_up,hh))
          )
 $ontext
 $offtext
 %DSM%$ontext
-         + sum( n,dsm_curt , DSM_CU(n,dsm_curt,hh))
-         + sum( n,dsm_shift , DSM_DO_DEMAND(n,dsm_shift,hh))
+         + sum( map_n_dsm(n,dsm_curt) , DSM_CU(n,dsm_curt,hh))
+         + sum( map_n_dsm(n,dsm_shift) , DSM_DO_DEMAND(n,dsm_shift,hh))
 $ontext
 $offtext
 %EV%$ontext
-        + sum( n,ev , EV_DISCHARGE(n,ev,hh) )
+        + sum( map_n_ev(n,ev) , EV_DISCHARGE(n,ev,hh) )
 $ontext
 $offtext
 %prosumage%$ontext
-         + sum( n,res , G_MARKET_PRO2M(n,res,hh) )
-         + sum( n,sto , STO_OUT_PRO2M(n,sto,hh))
-         + sum( n,sto , STO_OUT_M2M(n,sto,hh))
+         + sum( map_n_res_pro(n,res) , G_MARKET_PRO2M(n,res,hh) )
+         + sum( map_n_sto_pro(n,sto) , STO_OUT_PRO2M(n,sto,hh))
+         + sum( map_n_sto_pro(n,sto) , STO_OUT_M2M(n,sto,hh))
 $ontext
 $offtext
          + G_INFES(n,hh)
 ;
 
-con2a_loadlevel(n,dis,h)$(ord(h) > 1 AND n,dis)..
+con2a_loadlevel(n,dis,h)$(ord(h) > 1 AND map_n_tech(n,dis))..
         G_L(n,dis,h) =E= G_L(n,dis,h-1) + G_UP(n,dis,h) - G_DO(n,dis,h)
 ;
 
-con2b_loadlevelstart(n,dis,h)$(ord(h) = 1 AND n,dis)..
+con2b_loadlevelstart(n,dis,h)$(ord(h) = 1 AND map_n_tech(n,dis))..
          G_L(n,dis,h) =E= G_UP(n,dis,h)
 ;
 
@@ -408,7 +408,7 @@ con2b_loadlevelstart(n,dis,h)$(ord(h) = 1 AND n,dis)..
 ***** Hourly maximum generation caps and constraints related to reserves   *****
 * ---------------------------------------------------------------------------- *
 
-con3a_maxprod_dispatchable(n,dis,h)$(n,dis)..
+con3a_maxprod_dispatchable(n,dis,h)$(map_n_tech(n,dis))..
         G_L(n,dis,h)
 %reserves%$ontext
         + sum( reserves_up , RP_DIS(n,reserves_up,dis,h))
@@ -420,7 +420,7 @@ $offtext
         =L= N_TECH(n,dis)
 ;
 
-con3b_minprod_dispatchable(n,dis,h)$(n,dis)..
+con3b_minprod_dispatchable(n,dis,h)$(map_n_tech(n,dis))..
         sum( reserves_do , RP_DIS(n,reserves_do,dis,h))
         =L= G_L(n,dis,h)
 * Balancing Correction Factor
@@ -428,7 +428,7 @@ con3b_minprod_dispatchable(n,dis,h)$(n,dis)..
         - sum( reserves_up ,  RP_DIS(n,reserves_up,dis,h) * phi_reserves_call(n,reserves_up,h))
 ;
 
-con3c_flex_reserves_spin(n,dis,reserves_spin,h)$(n,dis)..
+con3c_flex_reserves_spin(n,dis,reserves_spin,h)$(map_n_tech(n,dis))..
         RP_DIS(n,reserves_spin,dis,h)
         =L= grad_per_min(n,dis) * reserves_reaction(n,reserves_spin) * ( G_L(n,dis,h)
 * Balancing Correction Factor
@@ -436,12 +436,12 @@ con3c_flex_reserves_spin(n,dis,reserves_spin,h)$(n,dis)..
         - sum( reserves_up ,  RP_DIS(n,reserves_up,dis,h) * phi_reserves_call(n,reserves_up,h)) )
 ;
 
-con3d_flex_reserves_nonspin(n,dis,reserves_nonspin,h)$(n,dis)..
+con3d_flex_reserves_nonspin(n,dis,reserves_nonspin,h)$(map_n_tech(n,dis))..
         RP_DIS(n,reserves_nonspin,dis,h)
         =L= grad_per_min(n,dis) * reserves_reaction(n,reserves_nonspin) * N_TECH(n,dis)
 ;
 
-con3e_maxprod_res(n,nondis,h)$(n,nondis)..
+con3e_maxprod_res(n,nondis,h)$(map_n_tech(n,nondis))..
         G_RES(n,nondis,h) + CU(n,nondis,h)
 %reserves%$ontext
         + sum( reserves_up , RP_NONDIS(n,reserves_up,nondis,h))
@@ -450,7 +450,7 @@ $offtext
         =E= phi_res(n,nondis,h) * N_TECH(n,nondis)
 ;
 
-con3f_minprod_res(n,nondis,h)$(n,nondis)..
+con3f_minprod_res(n,nondis,h)$(map_n_tech(n,nondis))..
         sum( reserves_do , RP_NONDIS(n,reserves_do,nondis,h))
         =L= G_RES(n,nondis,h)
 ;
@@ -459,11 +459,11 @@ con3f_minprod_res(n,nondis,h)$(n,nondis)..
 ***** Storage constraints *****
 * ---------------------------------------------------------------------------- *
 
-con4a_stolev_start(n,sto,h)$(n,sto AND ord(h) = 1)..
+con4a_stolev_start(n,sto,h)$(map_n_sto(n,sto) AND ord(h) = 1)..
         STO_L(n,sto,h) =E= phi_sto_ini(n,sto) * N_STO_E(n,sto) + STO_IN(n,sto,h)*(1+eta_sto(n,sto))/2 - STO_OUT(n,sto,h)/(1+eta_sto(n,sto))*2
 ;
 
-con4b_stolev(n,sto,h)$((ord(h)>1) AND n,sto)..
+con4b_stolev(n,sto,h)$((ord(h)>1) AND map_n_sto(n,sto))..
          STO_L(n,sto,h) =E= STO_L(n,sto,h-1) + STO_IN(n,sto,h)*(1+eta_sto(n,sto))/2 - STO_OUT(n,sto,h)/(1+eta_sto(n,sto))*2
 %reserves%$ontext
          + sum( reserves_do , phi_reserves_call(n,reserves_do,h) * ( RP_STO_IN(n,reserves_do,sto,h)*(1+eta_sto(n,sto))/2 + RP_STO_OUT(n,reserves_do,sto,h)/(1+eta_sto(n,sto))*2 ))
@@ -472,11 +472,11 @@ $ontext
 $offtext
 ;
 
-con4c_stolev_max(n,sto,h)$(n,sto)..
+con4c_stolev_max(n,sto,h)$(map_n_sto(n,sto))..
         STO_L(n,sto,h) =L= N_STO_E(n,sto)
 ;
 
-con4d_maxin_sto(n,sto,h)$(n,sto)..
+con4d_maxin_sto(n,sto,h)$(map_n_sto(n,sto))..
         STO_IN(n,sto,h)
 %reserves%$ontext
         + sum( reserves_do , RP_STO_IN(n,reserves_do,sto,h))
@@ -485,7 +485,7 @@ $offtext
         =L= N_STO_P(n,sto)
 ;
 
-con4e_maxout_sto(n,sto,h)$(n,sto)..
+con4e_maxout_sto(n,sto,h)$(map_n_sto(n,sto))..
         STO_OUT(n,sto,h)
 %reserves%$ontext
         + sum( reserves_up , RP_STO_OUT(n,reserves_up,sto,h))
@@ -494,17 +494,17 @@ $offtext
         =L= N_STO_P(n,sto)
 ;
 
-con4f_resrv_sto(n,sto,h)$(n,sto)..
+con4f_resrv_sto(n,sto,h)$(map_n_sto(n,sto))..
         sum( reserves_up , RP_STO_IN(n,reserves_up,sto,h))
         =L= STO_IN(n,sto,h)
 ;
 
-con4g_resrv_sto(n,sto,h)$(n,sto)..
+con4g_resrv_sto(n,sto,h)$(map_n_sto(n,sto))..
         sum( reserves_do , RP_STO_OUT(n,reserves_do,sto,h))
         =L= STO_OUT(n,sto,h)
 ;
 
-con4h_maxout_lev(n,sto,h)$(n,sto)..
+con4h_maxout_lev(n,sto,h)$(map_n_sto(n,sto))..
         ( STO_OUT(n,sto,h)
 %reserves%$ontext
         + sum( reserves_up , RP_STO_OUT(n,reserves_up,sto,h))
@@ -514,7 +514,7 @@ $offtext
         =L= STO_L(n,sto,h-1)
 ;
 
-con4i_maxin_lev(n,sto,h)$(n,sto)..
+con4i_maxin_lev(n,sto,h)$(map_n_sto(n,sto))..
         ( STO_IN(n,sto,h)
 %reserves%$ontext
         + sum( reserves_do , RP_STO_IN(n,reserves_do,sto,h))
@@ -524,11 +524,11 @@ $offtext
         =L= N_STO_E(n,sto) - STO_L(n,sto,h-1)
 ;
 
-con4j_ending(n,sto,h)$(ord(h) = card(h) AND n,sto)..
+con4j_ending(n,sto,h)$(ord(h) = card(h) AND map_n_sto(n,sto))..
          STO_L(n,sto,h) =E= phi_sto_ini(n,sto) * N_STO_E(n,sto)
 ;
 
-con4k_PHS_EtoP(n,sto)$(n,sto)..
+con4k_PHS_EtoP(n,sto)$(map_n_sto(n,sto))..
         N_STO_E(n,sto) =L= etop_max(n,sto) * N_STO_P(n,sto)
 ;
 
@@ -537,32 +537,32 @@ con4k_PHS_EtoP(n,sto)$(n,sto)..
 * ---------------------------------------------------------------------------- *
 
 con5a_minRES(n)..
-sum( h , G_L(n,'bio',h) + sum( n,nondis , G_RES(n,nondis,h)) + sum( n,rsvr , RSVR_OUT(n,rsvr,h))
+sum( h , G_L(n,'bio',h) + sum( map_n_tech(n,nondis) , G_RES(n,nondis,h)) + sum( map_n_rsvr(n,rsvr) , RSVR_OUT(n,rsvr,h))
 %reserves%$ontext
-         - sum( reserves_do , (sum( n,nondis , RP_NONDIS(n,reserves_do,nondis,h)) + sum( n,rsvr , RP_RSVR(n,reserves_do,rsvr,h))) * phi_reserves_call(n,reserves_do,h))
-         + sum( reserves_up , (sum( n,nondis , RP_NONDIS(n,reserves_up,nondis,h)) + sum( n,rsvr , RP_RSVR(n,reserves_up,rsvr,h))) * phi_reserves_call(n,reserves_up,h))
+         - sum( reserves_do , (sum( map_n_tech(n,nondis) , RP_NONDIS(n,reserves_do,nondis,h)) + sum( map_n_rsvr(n,rsvr) , RP_RSVR(n,reserves_do,rsvr,h))) * phi_reserves_call(n,reserves_do,h))
+         + sum( reserves_up , (sum( map_n_tech(n,nondis) , RP_NONDIS(n,reserves_up,nondis,h)) + sum( map_n_rsvr(n,rsvr) , RP_RSVR(n,reserves_up,rsvr,h))) * phi_reserves_call(n,reserves_up,h))
 $ontext
 $offtext
 %prosumage%$ontext
-         + sum( n,sto , STO_OUT_PRO2PRO(n,sto,h) + STO_OUT_PRO2M(n,sto,h)) + sum( n,res , G_MARKET_PRO2M(n,res,h) + G_RES_PRO(n,res,h))
+         + sum( map_n_sto_pro(n,sto) , STO_OUT_PRO2PRO(n,sto,h) + STO_OUT_PRO2M(n,sto,h)) + sum( map_n_res_pro(n,res) , G_MARKET_PRO2M(n,res,h) + G_RES_PRO(n,res,h))
 $ontext
 $offtext
 )
         =G= phi_min_res * phi_min_res_exog(n) * sum( h ,
-         sum( n,dis , G_L(n,dis,h)) + sum( n,nondis , G_RES(n,nondis,h)) + sum( n,rsvr , RSVR_OUT(n,rsvr,h))
+         sum( map_n_tech(n,dis) , G_L(n,dis,h)) + sum( map_n_tech(n,nondis) , G_RES(n,nondis,h)) + sum( map_n_rsvr(n,rsvr) , RSVR_OUT(n,rsvr,h))
 %reserves%$ontext
-         - sum( reserves_do , (sum( n,nondis , RP_NONDIS(n,reserves_do,nondis,h)) + sum( n,rsvr , RP_RSVR(n,reserves_do,rsvr,h))) * phi_reserves_call(n,reserves_do,h))
-         + sum( reserves_up , (sum( n,nondis , RP_NONDIS(n,reserves_up,nondis,h)) + sum( n,rsvr , RP_RSVR(n,reserves_up,rsvr,h))) * phi_reserves_call(n,reserves_up,h))
+         - sum( reserves_do , (sum( map_n_tech(n,nondis) , RP_NONDIS(n,reserves_do,nondis,h)) + sum( map_n_rsvr(n,rsvr) , RP_RSVR(n,reserves_do,rsvr,h))) * phi_reserves_call(n,reserves_do,h))
+         + sum( reserves_up , (sum( map_n_tech(n,nondis) , RP_NONDIS(n,reserves_up,nondis,h)) + sum( map_n_rsvr(n,rsvr) , RP_RSVR(n,reserves_up,rsvr,h))) * phi_reserves_call(n,reserves_up,h))
 $ontext
 $offtext
 %prosumage%$ontext
-         + sum( n,res , phi_res(n,res,h) * N_RES_PRO(n,res) - CU_PRO(n,res,h))
+         + sum( map_n_res_pro(n,res) , phi_res(n,res,h) * N_RES_PRO(n,res) - CU_PRO(n,res,h))
 $ontext
 $offtext
          )
 ;
 
-con5b_max_energy(n,dis)$(n,dis AND m_e(n,dis))..
+con5b_max_energy(n,dis)$(map_n_tech(n,dis) AND m_e(n,dis))..
          sum( h , G_L(n,dis,h) ) =L= m_e(n,dis)
 ;
 
@@ -570,7 +570,7 @@ con5b_max_energy(n,dis)$(n,dis AND m_e(n,dis))..
 ***** DSM constraints - curtailment *****
 * ---------------------------------------------------------------------------- *
 
-con6a_DSMcurt_duration_max(n,dsm_curt,h)$(n,dsm_curt)..
+con6a_DSMcurt_duration_max(n,dsm_curt,h)$(map_n_dsm(n,dsm_curt))..
          sum( hh$( ord(hh) >= ord(h) AND ord(hh) < ord(h) + t_off_dsm_cu(n,dsm_curt) ) , DSM_CU(n,dsm_curt,hh)
 %reserves%$ontext
         + sum( reserves_up , RP_DSM_CU(n,reserves_up,dsm_curt,hh) * phi_reserves_call(n,reserves_up,hh) )
@@ -580,7 +580,7 @@ $offtext
          =L= N_DSM_CU(n,dsm_curt) * t_dur_dsm_cu(n,dsm_curt)
 ;
 
-con6b_DSMcurt_max(n,dsm_curt,h)$(n,dsm_curt)..
+con6b_DSMcurt_max(n,dsm_curt,h)$(map_n_dsm(n,dsm_curt))..
         DSM_CU(n,dsm_curt,h)
 %reserves%$ontext
         + sum( reserves_up , RP_DSM_CU(n,reserves_up,dsm_curt,h) )
@@ -593,11 +593,11 @@ $offtext
 ***** DSM constraints - shifting *****
 * ---------------------------------------------------------------------------- *
 
-con7a_DSMshift_upanddown(n,dsm_shift,h)$(n,dsm_shift)..
+con7a_DSMshift_upanddown(n,dsm_shift,h)$(map_n_dsm(n,dsm_shift))..
          DSM_UP(n,dsm_shift,h) * (1 + eta_dsm_shift(n,dsm_shift))/2 =E= 2/(1+eta_dsm_shift(n,dsm_shift)) * sum( hh$( ord(hh) >= ord(h) - t_dur_dsm_shift(n,dsm_shift) AND ord(hh) <= ord(h) + t_dur_dsm_shift(n,dsm_shift) ) , DSM_DO(n,dsm_shift,h,hh))
 ;
 
-con7b_DSMshift_granular_max(n,dsm_shift,h)$(n,dsm_shift)..
+con7b_DSMshift_granular_max(n,dsm_shift,h)$(map_n_dsm(n,dsm_shift))..
          DSM_UP_DEMAND(n,dsm_shift,h) + DSM_DO_DEMAND(n,dsm_shift,h)
 %reserves%$ontext
          + sum( reserves , RP_DSM_SHIFT(n,reserves,dsm_shift,h) )
@@ -606,7 +606,7 @@ $offtext
          =L= N_DSM_SHIFT(n,dsm_shift)
 ;
 
-con7c_DSM_distrib_up(n,dsm_shift,h)$(n,dsm_shift)..
+con7c_DSM_distrib_up(n,dsm_shift,h)$(map_n_dsm(n,dsm_shift))..
          DSM_UP(n,dsm_shift,h) =E= DSM_UP_DEMAND(n,dsm_shift,h)
 %reserves%$ontext
          + sum( reserves_do , RP_DSM_SHIFT(n,reserves_do,dsm_shift,h) * phi_reserves_call(n,reserves_do,h))
@@ -614,7 +614,7 @@ $ontext
 $offtext
 ;
 
-con7d_DSM_distrib_do(n,dsm_shift,h)$(n,dsm_shift)..
+con7d_DSM_distrib_do(n,dsm_shift,h)$(map_n_dsm(n,dsm_shift))..
          sum( hh$( ord(hh) >= ord(h) - t_dur_dsm_shift(n,dsm_shift) AND ord(hh) <= ord(h) + t_dur_dsm_shift(n,dsm_shift) ) , DSM_DO(n,dsm_shift,hh,h) )
                  =E=
          DSM_DO_DEMAND(n,dsm_shift,h)
@@ -624,7 +624,7 @@ $ontext
 $offtext
 ;
 
-con7e_DSMshift_recovery(n,dsm_shift,h)$(n,dsm_shift)..
+con7e_DSMshift_recovery(n,dsm_shift,h)$(map_n_dsm(n,dsm_shift))..
          sum( hh$( ord(hh) >= ord(h) AND ord(hh) < ord(h) + t_off_dsm_shift(n,dsm_shift) ) , DSM_UP(n,dsm_shift,hh))
          =L= N_DSM_SHIFT(n,dsm_shift) * t_dur_dsm_shift(n,dsm_shift)
 ;
@@ -633,47 +633,47 @@ con7e_DSMshift_recovery(n,dsm_shift,h)$(n,dsm_shift)..
 ***** Maximum installation constraints *****
 * ---------------------------------------------------------------------------- *
 
-con8a_max_I_power(n,tech)$n,tech)..
+con8a_max_I_power(n,tech)$(map_n_tech(n,tech))..
          N_TECH(n,tech) =L= m_p(n,tech)
 ;
 
-con8b_max_I_sto_e(n,sto)$(n,sto)..
+con8b_max_I_sto_e(n,sto)$(map_n_sto(n,sto))..
          N_STO_E(n,sto) =L= m_sto_e(n,sto)
 ;
 
-con8c_max_I_sto_p(n,sto)$(n,sto)..
+con8c_max_I_sto_p(n,sto)$(map_n_sto(n,sto))..
          N_STO_P(n,sto) =L= m_sto_p(n,sto)
 ;
 
-con8d_max_I_dsm_cu(n,dsm_curt)$(n,dsm_curt)..
+con8d_max_I_dsm_cu(n,dsm_curt)$(map_n_dsm(n,dsm_curt))..
          N_DSM_CU(n,dsm_curt) =L= m_dsm_cu(n,dsm_curt)
 ;
 
-con8e_max_I_dsm_shift_pos(n,dsm_shift)$(n,dsm_shift)..
+con8e_max_I_dsm_shift_pos(n,dsm_shift)$(map_n_dsm(n,dsm_shift))..
          N_DSM_SHIFT(n,dsm_shift) =L= m_dsm_shift(n,dsm_shift)
 ;
 
-con8f_max_pro_res(n,res)$(n,res)..
+con8f_max_pro_res(n,res)$(map_n_res_pro(n,res))..
          N_RES_PRO(n,res) =L= m_res_pro(n,res)
 ;
 
-con8g_max_pro_sto_e(n,sto)$(n,sto)..
+con8g_max_pro_sto_e(n,sto)$(map_n_sto_pro(n,sto))..
          N_STO_E_PRO(n,sto) =L= m_sto_pro_e(n,sto)
 ;
 
-con8h_max_sto_pro_p(n,sto)$(n,sto)..
+con8h_max_sto_pro_p(n,sto)$(map_n_sto_pro(n,sto))..
          N_STO_P_PRO(n,sto) =L= m_sto_pro_p(n,sto)
 ;
 
-con8i_max_I_ntc(l)$(l)..
+con8i_max_I_ntc(l)$(map_l(l))..
          NTC(l) =L= m_ntc(l)
 ;
 
-con8j_max_I_rsvr_e(n,rsvr)$(n,rsvr)..
+con8j_max_I_rsvr_e(n,rsvr)$(map_n_rsvr(n,rsvr))..
          N_RSVR_E(n,rsvr) =L= m_rsvr_e(n,rsvr)
 ;
 
-con8k_max_I_rsvr_p(n,rsvr)$(n,rsvr)..
+con8k_max_I_rsvr_p(n,rsvr)$(map_n_rsvr(n,rsvr))..
          N_RSVR_P(n,rsvr) =L= m_rsvr_p(n,rsvr)
 ;
 
@@ -682,17 +682,17 @@ con8k_max_I_rsvr_p(n,rsvr)$(n,rsvr)..
 * ---------------------------------------------------------------------------- *
 
 con9a_reserve_prov_endogenous(n,reserves_nonprim,h)..
-          sum( n,dis , RP_DIS(n,reserves_nonprim,dis,h))
-        + sum( n,nondis , RP_NONDIS(n,reserves_nonprim,nondis,h))
-        + sum( n,rsvr , RP_RSVR(n,reserves_nonprim,rsvr,h))
-        + sum( n,sto , RP_STO_IN(n,reserves_nonprim,sto,h) + RP_STO_OUT(n,reserves_nonprim,sto,h))
+          sum( map_n_tech(n,dis) , RP_DIS(n,reserves_nonprim,dis,h))
+        + sum( map_n_tech(n,nondis) , RP_NONDIS(n,reserves_nonprim,nondis,h))
+        + sum( map_n_rsvr(n,rsvr) , RP_RSVR(n,reserves_nonprim,rsvr,h))
+        + sum( map_n_sto(n,sto) , RP_STO_IN(n,reserves_nonprim,sto,h) + RP_STO_OUT(n,reserves_nonprim,sto,h))
 %DSM%$ontext
-        + sum( n,dsm_curt , RP_DSM_CU(n,reserves_nonprim,dsm_curt,h))
-        + sum( n,dsm_shift , RP_DSM_SHIFT(n,reserves_nonprim,dsm_shift,h) )
+        + sum( map_n_dsm(n,dsm_curt) , RP_DSM_CU(n,reserves_nonprim,dsm_curt,h))
+        + sum( map_n_dsm(n,dsm_shift) , RP_DSM_SHIFT(n,reserves_nonprim,dsm_shift,h) )
 $ontext
 $offtext
 %EV%$ontext
-%EV_EXOG%   + sum( n,ev , RP_EV_G2V(n,reserves_nonprim,ev,h) + RP_EV_V2G(n,reserves_nonprim,ev,h) )
+%EV_EXOG%   + sum( map_n_ev(n,ev) , RP_EV_G2V(n,reserves_nonprim,ev,h) + RP_EV_V2G(n,reserves_nonprim,ev,h) )
 $ontext
 $offtext
 %heat%$ontext
@@ -704,7 +704,7 @@ $offtext
         =E= (
             feat_node('reserves',n) *
             1000 * phi_reserves_share(n,reserves_nonprim) * (
-            reserves_intercept(n,reserves_nonprim) + sum( n,nondis , reserves_slope(n,reserves_nonprim,nondis) * (N_TECH(n,nondis)
+            reserves_intercept(n,reserves_nonprim) + sum( map_n_tech(n,nondis) , reserves_slope(n,reserves_nonprim,nondis) * (N_TECH(n,nondis)
 %prosumage%$ontext
             + N_RES_PRO(n,nondis)
 $ontext
@@ -713,17 +713,17 @@ $offtext
 ;
 
 con9a_reserve_prov_exogenous(n,reserves_nonprim,h)..
-          sum( n,dis , RP_DIS(n,reserves_nonprim,dis,h))
-        + sum( n,nondis , RP_NONDIS(n,reserves_nonprim,nondis,h))
-        + sum( n,rsvr , RP_RSVR(n,reserves_nonprim,rsvr,h))
-        + sum( n,sto , RP_STO_IN(n,reserves_nonprim,sto,h) + RP_STO_OUT(n,reserves_nonprim,sto,h))
+          sum( map_n_tech(n,dis) , RP_DIS(n,reserves_nonprim,dis,h))
+        + sum( map_n_tech(n,nondis) , RP_NONDIS(n,reserves_nonprim,nondis,h))
+        + sum( map_n_rsvr(n,rsvr) , RP_RSVR(n,reserves_nonprim,rsvr,h))
+        + sum( map_n_sto(n,sto) , RP_STO_IN(n,reserves_nonprim,sto,h) + RP_STO_OUT(n,reserves_nonprim,sto,h))
 %DSM%$ontext
-        + sum( n,dsm_curt , RP_DSM_CU(n,reserves_nonprim,dsm_curt,h))
-        + sum( n,dsm_shift , RP_DSM_SHIFT(n,reserves_nonprim,dsm_shift,h) )
+        + sum( map_n_dsm(n,dsm_curt) , RP_DSM_CU(n,reserves_nonprim,dsm_curt,h))
+        + sum( map_n_dsm(n,dsm_shift) , RP_DSM_SHIFT(n,reserves_nonprim,dsm_shift,h) )
 $ontext
 $offtext
 %EV%$ontext
-%EV_EXOG%   + sum( n,ev , RP_EV_G2V(n,reserves_nonprim,ev,h) + RP_EV_V2G(n,reserves_nonprim,ev,h) )
+%EV_EXOG%   + sum( map_n_ev(n,ev) , RP_EV_G2V(n,reserves_nonprim,ev,h) + RP_EV_V2G(n,reserves_nonprim,ev,h) )
 $ontext
 $offtext
 %heat%$ontext
@@ -736,18 +736,18 @@ $offtext
 ;
 
 con9b_reserve_prov_PR_endogenous(n,reserves_prim,h)..
-          sum( n,dis , RP_DIS(n,reserves_prim,dis,h))
-        + sum( n,nondis , RP_NONDIS(n,reserves_prim,nondis,h))
-        + sum( n,rsvr , RP_RSVR(n,reserves_prim,rsvr,h))
-        + sum( n,sto , RP_STO_IN(n,reserves_prim,sto,h) + RP_STO_OUT(n,reserves_prim,sto,h) )
+          sum( map_n_tech(n,dis) , RP_DIS(n,reserves_prim,dis,h))
+        + sum( map_n_tech(n,nondis) , RP_NONDIS(n,reserves_prim,nondis,h))
+        + sum( map_n_rsvr(n,rsvr) , RP_RSVR(n,reserves_prim,rsvr,h))
+        + sum( map_n_sto(n,sto) , RP_STO_IN(n,reserves_prim,sto,h) + RP_STO_OUT(n,reserves_prim,sto,h) )
 %EV%$ontext
-%EV_EXOG%   + sum( n,ev , RP_EV_G2V(n,reserves_prim,ev,h) + RP_EV_V2G(n,reserves_prim,ev,h) )
+%EV_EXOG%   + sum( map_n_ev(n,ev) , RP_EV_G2V(n,reserves_prim,ev,h) + RP_EV_V2G(n,reserves_prim,ev,h) )
 $ontext
 $offtext
          =E=
              feat_node('reserves',n) *
              phi_reserves_pr_up(n)* sum( reserves_nonprim , 1000 * phi_reserves_share(n,reserves_nonprim) * (
-             reserves_intercept(n,reserves_nonprim) + sum( n,nondis , reserves_slope(n,reserves_nonprim,nondis) * (N_TECH(n,nondis)
+             reserves_intercept(n,reserves_nonprim) + sum( map_n_tech(n,nondis) , reserves_slope(n,reserves_nonprim,nondis) * (N_TECH(n,nondis)
 %prosumage%$ontext
              + N_RES_PRO(n,nondis)
 $ontext
@@ -756,12 +756,12 @@ $offtext
 ;
 
 con9b_reserve_prov_PR_exogenous(n,reserves_prim,h)..
-          sum( n,dis , RP_DIS(n,reserves_prim,dis,h))
-        + sum( n,nondis , RP_NONDIS(n,reserves_prim,nondis,h))
-        + sum( n,rsvr , RP_RSVR(n,reserves_prim,rsvr,h))
-        + sum( n,sto , RP_STO_IN(n,reserves_prim,sto,h) + RP_STO_OUT(n,reserves_prim,sto,h) )
+          sum( map_n_tech(n,dis) , RP_DIS(n,reserves_prim,dis,h))
+        + sum( map_n_tech(n,nondis) , RP_NONDIS(n,reserves_prim,nondis,h))
+        + sum( map_n_rsvr(n,rsvr) , RP_RSVR(n,reserves_prim,rsvr,h))
+        + sum( map_n_sto(n,sto) , RP_STO_IN(n,reserves_prim,sto,h) + RP_STO_OUT(n,reserves_prim,sto,h) )
 %EV%$ontext
-%EV_EXOG%   + sum( n,ev , RP_EV_G2V(n,reserves_prim,ev,h) + RP_EV_V2G(n,reserves_prim,ev,h) )
+%EV_EXOG%   + sum( map_n_ev(n,ev) , RP_EV_G2V(n,reserves_prim,ev,h) + RP_EV_V2G(n,reserves_prim,ev,h) )
 $ontext
 $offtext
          =E= feat_node('reserves',n) * reserves_exogenous(n,reserves_prim,h)$(ord(h) > 1)
@@ -771,20 +771,20 @@ $offtext
 ***** Electric vehicle constraints *****
 * ---------------------------------------------------------------------------- *
 
-con10a_ev_ed(n,ev,h)$(n,ev)..
+con10a_ev_ed(n,ev,h)$(map_n_ev(n,ev))..
          feat_node('ev',n) *
          ev_ed(n,ev,h) * phi_ev(n,ev) * ev_quant
          =e= EV_GED(n,ev,h) + EV_PHEVFUEL(n,ev,h)$(ev_phev(n,ev)=1)
 ;
 
-con10b_ev_chargelev_start(ev,h,n)$(n,ev AND ord(h) = 1 AND feat_node('ev',n))..
+con10b_ev_chargelev_start(ev,h,n)$(map_n_ev(n,ev) AND ord(h) = 1 AND feat_node('ev',n))..
          EV_L(n,ev,h) =E= feat_node('ev',n) * phi_ev_ini(n,ev) * n_ev_e(n,ev) * phi_ev(n,ev) * ev_quant
          + EV_CHARGE(n,ev,h) * eta_ev_in(n,ev)
          - EV_DISCHARGE(n,ev,h) / eta_ev_out(n,ev)
          - EV_GED(n,ev,h)
 ;
 
-con10c_ev_chargelev(n,ev,h)$(n,ev AND ord(h) > 1 AND feat_node('ev',n))..
+con10c_ev_chargelev(n,ev,h)$(map_n_ev(n,ev) AND ord(h) > 1 AND feat_node('ev',n))..
          EV_L(n,ev,h) =E= EV_L(n,ev,h-1)
          + EV_CHARGE(n,ev,h) * eta_ev_in(n,ev)
          - EV_DISCHARGE(n,ev,h) / eta_ev_out(n,ev)
@@ -796,13 +796,13 @@ $offtext
          - EV_GED(n,ev,h)
 ;
 
-con10d_ev_chargelev_max(n,ev,h)$(n,ev AND feat_node('ev',n))..
+con10d_ev_chargelev_max(n,ev,h)$(map_n_ev(n,ev) AND feat_node('ev',n))..
          EV_L(n,ev,h)
          =L= n_ev_e(n,ev) * phi_ev(n,ev) * ev_quant
              * feat_node('ev',n)
 ;
 
-con10e_ev_maxin(n,ev,h)$(n,ev AND feat_node('ev',n))..
+con10e_ev_maxin(n,ev,h)$(map_n_ev(n,ev) AND feat_node('ev',n))..
         EV_CHARGE(n,ev,h)
 %reserves%$ontext
         + sum( reserves_do , RP_EV_G2V(n,reserves_do,ev,h))
@@ -812,7 +812,7 @@ $offtext
             * feat_node('ev',n)
 ;
 
-con10f_ev_maxout(n,ev,h)$(n,ev AND feat_node('ev',n))..
+con10f_ev_maxout(n,ev,h)$(map_n_ev(n,ev) AND feat_node('ev',n))..
         EV_DISCHARGE(n,ev,h)
 %reserves%$ontext
         + sum( reserves_up , RP_EV_V2G(n,reserves_up,ev,h))
@@ -822,35 +822,35 @@ $offtext
             * feat_node('ev',n)
 ;
 
-con10g_ev_chargelev_ending(n,ev,h)$(n,ev AND ord(h) = card(h) AND feat_node('ev',n))..
+con10g_ev_chargelev_ending(n,ev,h)$(map_n_ev(n,ev) AND ord(h) = card(h) AND feat_node('ev',n))..
          EV_L(n,ev,h) =E= phi_ev_ini(n,ev) * n_ev_e(n,ev) * phi_ev(n,ev) * ev_quant * feat_node('ev',n)
 ;
 
-con10h_ev_minin(n,ev,h)$(n,ev AND feat_node('ev',n))..
+con10h_ev_minin(n,ev,h)$(map_n_ev(n,ev) AND feat_node('ev',n))..
          0 =L= EV_CHARGE(n,ev,h)
         - sum( reserves_up , RP_EV_G2V(n,reserves_up,ev,h))
 ;
 
-con10i_ev_maxin_lev(n,ev,h)$(n,ev)..
+con10i_ev_maxin_lev(n,ev,h)$(map_n_ev(n,ev))..
         ( EV_CHARGE(n,ev,h)
         + sum( reserves_do , RP_EV_G2V(n,reserves_do,ev,h))
         ) * eta_ev_in(n,ev)
         =L= n_ev_e(n,ev) * phi_ev(n,ev) * ev_quant - EV_L(n,ev,h-1)
 ;
 
-con10j_ev_minout(n,ev,h)$(n,ev AND feat_node('ev',n))..
+con10j_ev_minout(n,ev,h)$(map_n_ev(n,ev) AND feat_node('ev',n))..
          0 =L= EV_DISCHARGE(n,ev,h)
         - sum( reserves_do , RP_EV_V2G(n,reserves_do,ev,h))
 ;
 
-con10k_ev_maxout_lev(n,ev,h)$(n,ev AND feat_node('ev',n))..
+con10k_ev_maxout_lev(n,ev,h)$(map_n_ev(n,ev) AND feat_node('ev',n))..
         ( EV_DISCHARGE(n,ev,h)
         + sum( reserves_up , RP_EV_V2G(n,reserves_up,ev,h))
 ) / eta_ev_out(n,ev)
         =L= EV_L(n,ev,h-1)
 ;
 
-con10l_ev_exog(n,ev,h)$(n,ev AND feat_node('ev',n))..
+con10l_ev_exog(n,ev,h)$(map_n_ev(n,ev) AND feat_node('ev',n))..
          EV_CHARGE(n,ev,h)
          =E=
          ev_ged_exog(n,ev,h) * phi_ev(n,ev) * ev_quant
@@ -861,33 +861,33 @@ con10l_ev_exog(n,ev,h)$(n,ev AND feat_node('ev',n))..
 ***** Prosumage constraints *****
 * ---------------------------------------------------------------------------- *
 
-con11a_pro_distrib(n,res,h)$(n,res)..
+con11a_pro_distrib(n,res,h)$(map_n_res_pro(n,res))..
          phi_res(n,res,h) * N_RES_PRO(n,res)
          =E=
-         CU_PRO(n,res,h) + G_MARKET_PRO2M(n,res,h) + G_RES_PRO(n,res,h) + sum( n,sto , STO_IN_PRO2PRO(n,res,sto,h) + STO_IN_PRO2M(n,res,sto,h) )
+         CU_PRO(n,res,h) + G_MARKET_PRO2M(n,res,h) + G_RES_PRO(n,res,h) + sum( map_n_sto_pro(n,sto) , STO_IN_PRO2PRO(n,res,sto,h) + STO_IN_PRO2M(n,res,sto,h) )
 ;
 
 con11b_pro_balance(n,h)..
          phi_pro_load(n) * d(n,h)
          =E=
-         sum( n,res , G_RES_PRO(n,res,h)) + sum( n,sto , STO_OUT_PRO2PRO(n,sto,h) + STO_OUT_M2PRO(n,sto,h) ) + G_MARKET_M2PRO(n,h)
+         sum( map_n_res_pro(n,res) , G_RES_PRO(n,res,h)) + sum( map_n_sto_pro(n,sto) , STO_OUT_PRO2PRO(n,sto,h) + STO_OUT_M2PRO(n,sto,h) ) + G_MARKET_M2PRO(n,h)
 ;
 
 con11c_pro_selfcon(n)..
-         sum( (h,n,res) , G_RES_PRO(n,res,h) ) + sum( (h,sto) , STO_OUT_PRO2PRO(n,sto,h) )
+         sum( (h,map_n_res_pro(n,res)) , G_RES_PRO(n,res,h) ) + sum( (h,sto) , STO_OUT_PRO2PRO(n,sto,h) )
          =G=
          phi_pro_self * sum( h , phi_pro_load(n) * d(n,h))
 ;
 
-con11d_pro_stolev_PRO2PRO(n,sto,h)$(n,sto AND ord(h) > 1 )..
-         STO_L_PRO2PRO(n,sto,h) =E= STO_L_PRO2PRO(n,sto,h-1) + sum( n,res , STO_IN_PRO2PRO(n,res,sto,h))*(1+eta_sto(n,sto))/2 - STO_OUT_PRO2PRO(n,sto,h)/(1+eta_sto(n,sto))*2
+con11d_pro_stolev_PRO2PRO(n,sto,h)$(map_n_sto_pro(n,sto) AND ord(h) > 1 )..
+         STO_L_PRO2PRO(n,sto,h) =E= STO_L_PRO2PRO(n,sto,h-1) + sum( map_n_res_pro(n,res) , STO_IN_PRO2PRO(n,res,sto,h))*(1+eta_sto(n,sto))/2 - STO_OUT_PRO2PRO(n,sto,h)/(1+eta_sto(n,sto))*2
 ;
 
-con11e_pro_stolev_PRO2M(n,sto,h)$(n,sto AND ord(h) > 1)..
-         STO_L_PRO2M(n,sto,h) =E= STO_L_PRO2M(n,sto,h-1) + sum( n,res , STO_IN_PRO2M(n,res,sto,h))*(1+eta_sto(n,sto))/2 - STO_OUT_PRO2M(n,sto,h)/(1+eta_sto(n,sto))*2
+con11e_pro_stolev_PRO2M(n,sto,h)$(map_n_sto_pro(n,sto) AND ord(h) > 1)..
+         STO_L_PRO2M(n,sto,h) =E= STO_L_PRO2M(n,sto,h-1) + sum( map_n_res_pro(n,res) , STO_IN_PRO2M(n,res,sto,h))*(1+eta_sto(n,sto))/2 - STO_OUT_PRO2M(n,sto,h)/(1+eta_sto(n,sto))*2
 ;
 
-con11f_pro_stolev_M2PRO(n,sto,h)$(n,sto AND ord(h) > 1)..
+con11f_pro_stolev_M2PRO(n,sto,h)$(map_n_sto_pro(n,sto) AND ord(h) > 1)..
          STO_L_M2PRO(n,sto,h) =E= STO_L_M2PRO(n,sto,h-1) + STO_IN_M2PRO(n,sto,h)*(1+eta_sto(n,sto))/2 - STO_OUT_M2PRO(n,sto,h)/(1+eta_sto(n,sto))*2
 ;
 
@@ -895,23 +895,23 @@ con11g_pro_stolev_M2M(n,sto,h)$(ord(h) > 1)..
          STO_L_M2M(n,sto,h) =E= STO_L_M2M(n,sto,h-1) + STO_IN_M2M(n,sto,h)*(1+eta_sto(n,sto))/2 - STO_OUT_M2M(n,sto,h)/(1+eta_sto(n,sto))*2
 ;
 
-con11h_1_pro_stolev_start_PRO2PRO(n,sto,h)$(n,sto AND ord(h) = 1)..
-        STO_L_PRO2PRO(n,sto,h) =E= 0.25 * phi_sto_pro_ini(n,sto) * N_STO_E_PRO(n,sto) + sum( n,res , STO_IN_PRO2PRO(n,res,sto,h))*(1+eta_sto(n,sto))/2 - STO_OUT_PRO2PRO(n,sto,h)/(1+eta_sto(n,sto))*2
+con11h_1_pro_stolev_start_PRO2PRO(n,sto,h)$(map_n_sto_pro(n,sto) AND ord(h) = 1)..
+        STO_L_PRO2PRO(n,sto,h) =E= 0.25 * phi_sto_pro_ini(n,sto) * N_STO_E_PRO(n,sto) + sum( map_n_res_pro(n,res) , STO_IN_PRO2PRO(n,res,sto,h))*(1+eta_sto(n,sto))/2 - STO_OUT_PRO2PRO(n,sto,h)/(1+eta_sto(n,sto))*2
 ;
 
-con11h_2_pro_stolev_start_PRO2M(n,sto,h)$(n,sto AND ord(h) = 1)..
-        STO_L_PRO2M(n,sto,h) =E= 0.25 * phi_sto_pro_ini(n,sto) * N_STO_E_PRO(n,sto) + sum( n,res , STO_IN_PRO2M(n,res,sto,h))*(1+eta_sto(n,sto))/2 - STO_OUT_PRO2M(n,sto,h)/(1+eta_sto(n,sto))*2
+con11h_2_pro_stolev_start_PRO2M(n,sto,h)$(map_n_sto_pro(n,sto) AND ord(h) = 1)..
+        STO_L_PRO2M(n,sto,h) =E= 0.25 * phi_sto_pro_ini(n,sto) * N_STO_E_PRO(n,sto) + sum( map_n_res_pro(n,res) , STO_IN_PRO2M(n,res,sto,h))*(1+eta_sto(n,sto))/2 - STO_OUT_PRO2M(n,sto,h)/(1+eta_sto(n,sto))*2
 ;
 
-con11h_3_pro_stolev_start_M2PRO(n,sto,h)$(n,sto AND ord(h) = 1)..
+con11h_3_pro_stolev_start_M2PRO(n,sto,h)$(map_n_sto_pro(n,sto) AND ord(h) = 1)..
         STO_L_M2PRO(n,sto,h) =E= 0.25 * phi_sto_pro_ini(n,sto) * N_STO_E_PRO(n,sto) + STO_IN_M2PRO(n,sto,h)*(1+eta_sto(n,sto))/2 - STO_OUT_M2PRO(n,sto,h)/(1+eta_sto(n,sto))*2
 ;
 
-con11h_4_pro_stolev_start_M2M(n,sto,h)$(n,sto AND ord(h) = 1)..
+con11h_4_pro_stolev_start_M2M(n,sto,h)$(map_n_sto_pro(n,sto) AND ord(h) = 1)..
         STO_L_M2M(n,sto,h) =E= 0.25 * phi_sto_pro_ini(n,sto) * N_STO_E_PRO(n,sto) + STO_IN_M2M(n,sto,h)*(1+eta_sto(n,sto))/2 - STO_OUT_M2M(n,sto,h)/(1+eta_sto(n,sto))*2
 ;
 
-con11i_pro_stolev(n,sto,h)$(n,sto AND ord(h)>1)..
+con11i_pro_stolev(n,sto,h)$(map_n_sto_pro(n,sto) AND ord(h)>1)..
          STO_L_PRO(n,sto,h) =E=   STO_L_PRO2PRO(n,sto,h) +  STO_L_PRO2M(n,sto,h) + STO_L_M2PRO(n,sto,h) + STO_L_M2M(n,sto,h)
 ;
 
@@ -919,27 +919,27 @@ con11j_pro_stolev_max(n,sto,h)..
         STO_L_PRO(n,sto,h) =L= N_STO_E_PRO(n,sto)
 ;
 
-con11k_pro_maxin_sto(n,sto,h)$(n,sto)..
-        sum( n,res , STO_IN_PRO2PRO(n,res,sto,h) + STO_IN_PRO2M(n,res,sto,h) ) + STO_IN_M2PRO(n,sto,h) + STO_IN_M2M(n,sto,h)
+con11k_pro_maxin_sto(n,sto,h)$(map_n_sto_pro(n,sto))..
+        sum( map_n_res_pro(n,res) , STO_IN_PRO2PRO(n,res,sto,h) + STO_IN_PRO2M(n,res,sto,h) ) + STO_IN_M2PRO(n,sto,h) + STO_IN_M2M(n,sto,h)
         =L= N_STO_P_PRO(n,sto)
 ;
 
-con11l_pro_maxout_sto(n,sto,h)$(n,sto)..
+con11l_pro_maxout_sto(n,sto,h)$(map_n_sto_pro(n,sto))..
         STO_OUT_PRO2PRO(n,sto,h) + STO_OUT_PRO2M(n,sto,h) + STO_OUT_M2PRO(n,sto,h) + STO_OUT_M2M(n,sto,h)
         =L= N_STO_P_PRO(n,sto)
 ;
 
-con11m_pro_maxout_lev(n,sto,h)$(n,sto)..
+con11m_pro_maxout_lev(n,sto,h)$(map_n_sto_pro(n,sto))..
         ( STO_OUT_PRO2PRO(n,sto,h) + STO_OUT_M2PRO(n,sto,h) + STO_OUT_PRO2M(n,sto,h) + STO_OUT_M2M(n,sto,h) ) / (1+eta_sto(n,sto))*2
         =L= STO_L_PRO(n,sto,h-1)
 ;
 
-con11n_pro_maxin_lev(n,sto,h)$(n,sto)..
-        ( sum( n,res , STO_IN_PRO2PRO(n,res,sto,h) + STO_IN_PRO2M(n,res,sto,h) ) + STO_IN_M2PRO(n,sto,h) + STO_IN_M2M(n,sto,h) ) * (1+eta_sto(n,sto))/2
+con11n_pro_maxin_lev(n,sto,h)$(map_n_sto_pro(n,sto))..
+        ( sum( map_n_res_pro(n,res) , STO_IN_PRO2PRO(n,res,sto,h) + STO_IN_PRO2M(n,res,sto,h) ) + STO_IN_M2PRO(n,sto,h) + STO_IN_M2M(n,sto,h) ) * (1+eta_sto(n,sto))/2
         =L= N_STO_E_PRO(n,sto) - STO_L_PRO(n,sto,h-1)
 ;
 
-con11o_pro_ending(n,sto,h)$(n,sto AND ord(h) = card(h))..
+con11o_pro_ending(n,sto,h)$(map_n_sto_pro(n,sto) AND ord(h) = card(h))..
          STO_L_PRO(n,sto,h) =E= phi_sto_pro_ini(n,sto) * N_STO_E_PRO(n,sto)
 ;
 
@@ -948,11 +948,11 @@ con11o_pro_ending(n,sto,h)$(n,sto AND ord(h) = card(h))..
 * ---------------------------------------------------------------------------- *
 
 ***** Constraint on energy flow between nodes ******
-con12a_max_f(l,h)$(l)..
+con12a_max_f(l,h)$(map_l(l))..
          F(l,h) =L= NTC(l)
 ;
 
-con12b_min_f(l,h)$(l)..
+con12b_min_f(l,h)$(map_l(l))..
          F(l,h) =G= -NTC(l)
 ;
 
@@ -960,11 +960,11 @@ con12b_min_f(l,h)$(l)..
 ***** Reservoir constraints *****
 * ---------------------------------------------------------------------------- *
 
-con13a_rsvrlev_start(n,rsvr,h)$(n,rsvr AND ord(h) = 1)..
+con13a_rsvrlev_start(n,rsvr,h)$(map_n_rsvr(n,rsvr) AND ord(h) = 1)..
         RSVR_L(n,rsvr,h) =E= phi_rsvr_ini(n,rsvr) * N_RSVR_E(n,rsvr) + rsvr_in(n,rsvr,h)/1000 * N_RSVR_E(n,rsvr) - RSVR_OUT(n,rsvr,h)
 ;
 
-con13b_rsvrlev(rsvr,h,n)$(ord(h) > 1 AND n,rsvr)..
+con13b_rsvrlev(rsvr,h,n)$(ord(h) > 1 AND map_n_rsvr(n,rsvr))..
          RSVR_L(n,rsvr,h) =E= RSVR_L(n,rsvr,h-1) + rsvr_in(n,rsvr,h)/1000 * N_RSVR_E(n,rsvr) - RSVR_OUT(n,rsvr,h)
 %reserves%$ontext
                 - sum( reserves_up , RP_RSVR(n,reserves_up,rsvr,h) * phi_reserves_call(n,reserves_up,h) )
@@ -973,11 +973,11 @@ $ontext
 $offtext
 ;
 
-con13c_rsvrlev_max(n,rsvr,h)$(n,rsvr)..
+con13c_rsvrlev_max(n,rsvr,h)$(map_n_rsvr(n,rsvr))..
         RSVR_L(n,rsvr,h) =L= N_RSVR_E(n,rsvr)
 ;
 
-con13d_maxout_rsvr(rsvr,h,n)$(n,rsvr)..
+con13d_maxout_rsvr(rsvr,h,n)$(map_n_rsvr(n,rsvr))..
         RSVR_OUT(n,rsvr,h)
 %reserves%$ontext
         + sum( reserves_up , RP_RSVR(n,reserves_up,rsvr,h))
@@ -986,12 +986,12 @@ $offtext
         =L= N_RSVR_P(n,rsvr)
 ;
 
-con13e_resrv_rsvr(n,rsvr,h)$(n,rsvr)..
+con13e_resrv_rsvr(n,rsvr,h)$(map_n_rsvr(n,rsvr))..
         sum( reserves_do , RP_RSVR(n,reserves_do,rsvr,h))
         =L= RSVR_OUT(n,rsvr,h)
 ;
 
-con13f_maxout_lev(n,rsvr,h)$(n,rsvr)..
+con13f_maxout_lev(n,rsvr,h)$(map_n_rsvr(n,rsvr))..
         RSVR_OUT(n,rsvr,h)
 %reserves%$ontext
         + sum( reserves_up , RP_RSVR(n,reserves_up,rsvr,h))
@@ -1000,19 +1000,19 @@ $offtext
         =L= RSVR_L(n,rsvr,h-1)
 ;
 
-con13g_ending(n,rsvr,h)$(n,rsvr AND ord(h) = card(h))..
+con13g_ending(n,rsvr,h)$(map_n_rsvr(n,rsvr) AND ord(h) = card(h))..
          RSVR_L(n,rsvr,h) =E= phi_rsvr_ini(n,rsvr) * N_RSVR_E(n,rsvr)
 ;
 
-con13h_smooth(n,rsvr,h)$(n,rsvr AND feat_node('rsvr_outflow',n))..
+con13h_smooth(n,rsvr,h)$(map_n_rsvr(n,rsvr) AND feat_node('rsvr_outflow',n))..
          RSVR_OUT(n,rsvr,h) =G= phi_rsvr_min(n) * sum( hh , rsvr_in(n,rsvr,hh)/1000/card(hh)) * N_RSVR_E(n,rsvr)
 ;
 
-con13i_min_level(n,rsvr,h)$(n,rsvr)..
+con13i_min_level(n,rsvr,h)$(map_n_rsvr(n,rsvr))..
          RSVR_L(n,rsvr,h) =G= phi_rsvr_lev_min(n,rsvr) * N_RSVR_E(n,rsvr)
 ;
 
-con13j_min_FLH(n,rsvr)$(n,rsvr)..
+con13j_min_FLH(n,rsvr)$(map_n_rsvr(n,rsvr))..
          sum( h , RSVR_OUT(n,rsvr,h) ) =G= min_flh(n,rsvr) * N_RSVR_P(n,rsvr)
 ;
 
