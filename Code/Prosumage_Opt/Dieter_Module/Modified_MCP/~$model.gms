@@ -284,8 +284,8 @@ $offtext
                  + sum( (h,n,ev) , pen_phevfuel(n,ev) * EV_PHEVFUEL(n,ev,h) )
 $ontext
 $offtext
-                 + sum( n,tech , c_i(n,tech)*N_TECH(n,tech) )
-                 + sum( n,tech , c_fix(n,tech)*N_TECH(n,tech) )
+                 + sum( map_n_tech(n,tech) , c_i(n,tech)*N_TECH(n,tech) )
+                 + sum( map_n_tech(n,tech) , c_fix(n,tech)*N_TECH(n,tech) )
                  + sum( n,sto , c_i_sto_e(n,sto)*N_STO_E(n,sto) )
                  + sum( n,sto , c_fix_sto(n,sto)/2*(N_STO_P(n,sto)+N_STO_E(n,sto)) )
                  + sum( n,sto , c_i_sto_p(n,sto)*N_STO_P(n,sto) )
