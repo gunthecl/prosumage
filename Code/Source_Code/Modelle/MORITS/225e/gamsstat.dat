@@ -1,11 +1,11 @@
 =0PATH             24.7.4 r58773 Released Sep 19, 2016 WEI x86 64bit/MS Windows 
 =1
-67410 row/cols, 206376 non-zeros, 0.00% dense.
+67402 row/cols, 161188 non-zeros, 0.00% dense.
 
 =2
 convergence_tolerance 1e-006
 major_iteration_limit 500
-minor_iteration_limit 134820
+minor_iteration_limit 134804
 crash_iteration_limit 50
 cumulative_iteration_limit 2000000000
 time_limit 1e+007
@@ -62,21 +62,21 @@ Written by Todd Munson, Steven Dirkse, and Michael Ferris
 =2
 MCP modified basis.
   ** WARNING **
-Basis modifications: 54709
+Basis modifications: 38153
 
 INITIAL STATISTICS
-Inf-Norm of Complementarity . .  1.0239e+010 eqn: (KKTNCON(base))
-Inf-Norm of Normal Map. . . . .  1.0239e+005 eqn: (KKTNCON(base))
-Inf-Norm of Minimum Map . . . .  1.0000e+005 eqn: (KKTNCON(base))
+Inf-Norm of Complementarity . .  1.3089e+005 eqn: (renewable_generation(h2364))
+Inf-Norm of Normal Map. . . . .  1.3089e+005 eqn: (renewable_generation(h2364))
+Inf-Norm of Minimum Map . . . .  1.3089e+005 eqn: (renewable_generation(h2364))
 Inf-Norm of Fischer Function. .  1.5654e+005 eqn: (energy_balance(h691))
-Inf-Norm of Grad Fischer Fcn. .  3.4786e+006 eqn: (KKTNRES)
-Two-Norm of Grad Fischer Fcn. .  2.5479e+007
+Inf-Norm of Grad Fischer Fcn. .  4.1613e+005 eqn: (KKTGRES(h2364))
+Two-Norm of Grad Fischer Fcn. .  2.6255e+007
 =1
 
 INITIAL POINT STATISTICS
 =2
 =1
-Maximum of X. . . . . . . . . .  1.2000e+005 var: (N_STO_E)
+Maximum of X. . . . . . . . . .  4.3670e+000 var: (STO_L_hh(h8))
 =2
 =1
 Maximum of F. . . . . . . . . .  5.8388e+007 eqn: (minRES)
@@ -99,14 +99,14 @@ Minimum Row Norm. . . . . . . .  1.0000e+000 eqn: (KKTEB_hh(h1))
 Maximum Column Norm . . . . . .  4.8000e+003 var: (resshare)
 =2
 =1
-Minimum Column Norm . . . . . .  1.0000e+000 var: (CU_hh(h8))
+Minimum Column Norm . . . . . .  1.0000e+000 var: (STO_OUT_hh(h1))
 =2
 
 Crash Log
 major  func  diff  size  residual    step       prox   (label)
-    0     0             6.0510e+006             0.0e+000 (energy_balance(h691))
-Factorization: number of singularities 10172(13734)
-Crash: Factor: 10172 singularities.
+    0     0             6.5410e+006             0.0e+000 (energy_balance(h691))
+Factorization: number of singularities 10168(13726)
+Crash: Factor: 10168 singularities.
 Crash: Factor: singular constraint: hh_energy_balance_hh(h1)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h8)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h9)
@@ -1985,6 +1985,7 @@ Crash: Factor: singular constraint: hh_energy_balance_hh(h2397)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2398)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2399)
 Crash: Factor: singular constraint: hh_energy_balance_hh(h2400)
+Crash: Factor: singular constraint: pv_generation_hh(h8)
 Crash: Factor: singular constraint: pv_generation_hh(h9)
 Crash: Factor: singular constraint: pv_generation_hh(h10)
 Crash: Factor: singular constraint: pv_generation_hh(h11)
@@ -2592,6 +2593,7 @@ Crash: Factor: singular constraint: pv_generation_hh(h1623)
 Crash: Factor: singular constraint: pv_generation_hh(h1624)
 Crash: Factor: singular constraint: pv_generation_hh(h1625)
 Crash: Factor: singular constraint: pv_generation_hh(h1638)
+Crash: Factor: singular constraint: pv_generation_hh(h1639)
 Crash: Factor: singular constraint: pv_generation_hh(h1640)
 Crash: Factor: singular constraint: pv_generation_hh(h1641)
 Crash: Factor: singular constraint: pv_generation_hh(h1642)
@@ -2981,22 +2983,32 @@ Crash: Factor: singular constraint: stolevel_hh(h41)
 Crash: Factor: singular constraint: stolevel_hh(h65)
 Crash: Factor: singular constraint: stolevel_hh(h89)
 Crash: Factor: singular constraint: stolevel_hh(h113)
+Crash: Factor: singular constraint: stolevel_hh(h137)
 Crash: Factor: singular constraint: stolevel_hh(h161)
 Crash: Factor: singular constraint: stolevel_hh(h185)
 Crash: Factor: singular constraint: stolevel_hh(h209)
 Crash: Factor: singular constraint: stolevel_hh(h233)
 Crash: Factor: singular constraint: stolevel_hh(h257)
 Crash: Factor: singular constraint: stolevel_hh(h281)
+Crash: Factor: singular constraint: stolevel_hh(h305)
+Crash: Factor: singular constraint: stolevel_hh(h329)
 Crash: Factor: singular constraint: stolevel_hh(h353)
 Crash: Factor: singular constraint: stolevel_hh(h377)
+Crash: Factor: singular constraint: stolevel_hh(h400)
 Crash: Factor: singular constraint: stolevel_hh(h424)
 Crash: Factor: singular constraint: stolevel_hh(h448)
 Crash: Factor: singular constraint: stolevel_hh(h473)
+Crash: Factor: singular constraint: stolevel_hh(h521)
+Crash: Factor: singular constraint: stolevel_hh(h545)
+Crash: Factor: singular constraint: stolevel_hh(h569)
 Crash: Factor: singular constraint: stolevel_hh(h593)
 Crash: Factor: singular constraint: stolevel_hh(h617)
 Crash: Factor: singular constraint: stolevel_hh(h641)
+Crash: Factor: singular constraint: stolevel_hh(h665)
 Crash: Factor: singular constraint: stolevel_hh(h689)
+Crash: Factor: singular constraint: stolevel_hh(h713)
 Crash: Factor: singular constraint: stolevel_hh(h737)
+Crash: Factor: singular constraint: stolevel_hh(h761)
 Crash: Factor: singular constraint: stolevel_hh(h785)
 Crash: Factor: singular constraint: stolevel_hh(h809)
 Crash: Factor: singular constraint: stolevel_hh(h833)
@@ -3005,47 +3017,27 @@ Crash: Factor: singular constraint: stolevel_hh(h881)
 Crash: Factor: singular constraint: stolevel_hh(h905)
 Crash: Factor: singular constraint: stolevel_hh(h929)
 Crash: Factor: singular constraint: stolevel_hh(h952)
-Crash: Factor: singular constraint: stolevel_hh(h976)
 Crash: Factor: singular constraint: stolevel_hh(h1000)
-Crash: Factor: singular constraint: stolevel_hh(h1024)
 Crash: Factor: singular constraint: stolevel_hh(h1048)
 Crash: Factor: singular constraint: stolevel_hh(h1072)
-Crash: Factor: singular constraint: stolevel_hh(h1096)
 Crash: Factor: singular constraint: stolevel_hh(h1120)
 Crash: Factor: singular constraint: stolevel_hh(h1168)
-Crash: Factor: singular constraint: stolevel_hh(h1216)
+Crash: Factor: singular constraint: stolevel_hh(h1192)
 Crash: Factor: singular constraint: stolevel_hh(h1240)
-Crash: Factor: singular constraint: stolevel_hh(h1264)
+Crash: Factor: singular constraint: stolevel_hh(h1288)
 Crash: Factor: singular constraint: stolevel_hh(h1336)
-Crash: Factor: singular constraint: stolevel_hh(h1360)
 Crash: Factor: singular constraint: stolevel_hh(h1384)
-Crash: Factor: singular constraint: stolevel_hh(h1408)
 Crash: Factor: singular constraint: stolevel_hh(h1432)
-Crash: Factor: singular constraint: stolevel_hh(h1456)
 Crash: Factor: singular constraint: stolevel_hh(h1480)
 Crash: Factor: singular constraint: stolevel_hh(h1528)
-Crash: Factor: singular constraint: stolevel_hh(h1552)
 Crash: Factor: singular constraint: stolevel_hh(h1576)
-Crash: Factor: singular constraint: stolevel_hh(h1600)
 Crash: Factor: singular constraint: stolevel_hh(h1624)
-Crash: Factor: singular constraint: stolevel_hh(h1647)
 Crash: Factor: singular constraint: stolevel_hh(h1672)
 Crash: Factor: singular constraint: stolevel_hh(h1695)
 Crash: Factor: singular constraint: stolevel_hh(h1744)
-Crash: Factor: singular constraint: stolevel_hh(h1768)
 Crash: Factor: singular constraint: stolevel_hh(h1792)
-Crash: Factor: singular constraint: stolevel_hh(h1815)
 Crash: Factor: singular constraint: stolevel_hh(h1864)
-Crash: Factor: singular constraint: stolevel_hh(h1960)
-Crash: Factor: singular constraint: stolevel_hh(h1984)
-Crash: Factor: singular constraint: stolevel_hh(h2128)
-Crash: Factor: singular constraint: stolevel_hh(h2224)
-Crash: Factor: singular constraint: stolevel_hh(h2272)
-Crash: Factor: singular constraint: stolevel_hh(h2296)
-Crash: Factor: singular constraint: stolevel_hh(h2320)
-Crash: Factor: singular constraint: stolevel_hh(h2344)
-Crash: Factor: singular constraint: KKTNSTOE_hh
-Crash: Factor: singular constraint: KKTNSTOP_hh
+Crash: Factor: singular constraint: stolevel_hh(h1887)
 Crash: Factor: singular constraint: energy_balance(h1)
 Crash: Factor: singular constraint: energy_balance(h2)
 Crash: Factor: singular constraint: energy_balance(h3)
@@ -5446,6 +5438,7 @@ Crash: Factor: singular constraint: energy_balance(h2397)
 Crash: Factor: singular constraint: energy_balance(h2398)
 Crash: Factor: singular constraint: energy_balance(h2399)
 Crash: Factor: singular constraint: energy_balance(h2400)
+Crash: Factor: singular constraint: renewable_generation(h2)
 Crash: Factor: singular constraint: renewable_generation(h3)
 Crash: Factor: singular constraint: renewable_generation(h4)
 Crash: Factor: singular constraint: renewable_generation(h5)
@@ -6053,6 +6046,7 @@ Crash: Factor: singular constraint: renewable_generation(h606)
 Crash: Factor: singular constraint: renewable_generation(h607)
 Crash: Factor: singular constraint: renewable_generation(h608)
 Crash: Factor: singular constraint: renewable_generation(h609)
+Crash: Factor: singular constraint: renewable_generation(h610)
 Crash: Factor: singular constraint: renewable_generation(h611)
 Crash: Factor: singular constraint: renewable_generation(h612)
 Crash: Factor: singular constraint: renewable_generation(h613)
@@ -10242,914 +10236,200 @@ Crash: Factor: singular constraint: stolev(h2397)
 Crash: Factor: singular constraint: stolev(h2398)
 Crash: Factor: singular constraint: stolev(h2399)
 Crash: Factor: singular constraint: stolev(h2400)
-Crash: Factor: singular constraint: KKTNSTOE
-Crash: Factor: singular constraint: KKTNSTOP
-Crash: Factor: singular constraint: KKTNCON(base)
-Crash: Factor: singular constraint: KKTNCON(peak)
-Crash: Factor: singular constraint: pv_generation_hh(h8)
-Crash: Factor: singular constraint: stolevel_hh(h136)
-Crash: Factor: singular constraint: stolevel_hh(h304)
-Crash: Factor: singular constraint: stolevel_hh(h328)
-Crash: Factor: singular constraint: stolevel_hh(h401)
-Crash: Factor: singular constraint: stolevel_hh(h497)
-Crash: Factor: singular constraint: stolevel_hh(h520)
-Crash: Factor: singular constraint: stolevel_hh(h544)
-Crash: Factor: singular constraint: stolevel_hh(h568)
-Crash: Factor: singular constraint: stolevel_hh(h664)
-Crash: Factor: singular constraint: stolevel_hh(h712)
-Crash: Factor: singular constraint: stolevel_hh(h760)
-Crash: Factor: singular constraint: stolevel_hh(h1145)
-Crash: Factor: singular constraint: stolevel_hh(h1193)
-Crash: Factor: singular constraint: stolevel_hh(h1287)
-Crash: Factor: singular constraint: stolevel_hh(h1313)
+Crash: Factor: singular constraint: stolevel_hh(h495)
+Crash: Factor: singular constraint: stolevel_hh(h975)
+Crash: Factor: singular constraint: stolevel_hh(h1023)
+Crash: Factor: singular constraint: stolevel_hh(h1095)
+Crash: Factor: singular constraint: stolevel_hh(h1143)
+Crash: Factor: singular constraint: stolevel_hh(h1215)
+Crash: Factor: singular constraint: stolevel_hh(h1263)
+Crash: Factor: singular constraint: stolevel_hh(h1311)
+Crash: Factor: singular constraint: stolevel_hh(h1359)
+Crash: Factor: singular constraint: stolevel_hh(h1407)
+Crash: Factor: singular constraint: stolevel_hh(h1455)
 Crash: Factor: singular constraint: stolevel_hh(h1503)
+Crash: Factor: singular constraint: stolevel_hh(h1551)
+Crash: Factor: singular constraint: stolevel_hh(h1599)
+Crash: Factor: singular constraint: stolevel_hh(h1646)
 Crash: Factor: singular constraint: stolevel_hh(h1719)
+Crash: Factor: singular constraint: stolevel_hh(h1767)
+Crash: Factor: singular constraint: stolevel_hh(h1814)
 Crash: Factor: singular constraint: stolevel_hh(h1840)
-Crash: Factor: singular constraint: stolevel_hh(h1888)
 Crash: Factor: singular constraint: stolevel_hh(h1911)
 Crash: Factor: singular constraint: stolevel_hh(h1935)
+Crash: Factor: singular constraint: stolevel_hh(h1959)
+Crash: Factor: singular constraint: stolevel_hh(h1983)
 Crash: Factor: singular constraint: stolevel_hh(h2007)
 Crash: Factor: singular constraint: stolevel_hh(h2031)
 Crash: Factor: singular constraint: stolevel_hh(h2055)
 Crash: Factor: singular constraint: stolevel_hh(h2079)
 Crash: Factor: singular constraint: stolevel_hh(h2103)
+Crash: Factor: singular constraint: stolevel_hh(h2127)
 Crash: Factor: singular constraint: stolevel_hh(h2151)
 Crash: Factor: singular constraint: stolevel_hh(h2175)
 Crash: Factor: singular constraint: stolevel_hh(h2199)
+Crash: Factor: singular constraint: stolevel_hh(h2223)
 Crash: Factor: singular constraint: stolevel_hh(h2247)
+Crash: Factor: singular constraint: stolevel_hh(h2271)
+Crash: Factor: singular constraint: stolevel_hh(h2295)
+Crash: Factor: singular constraint: stolevel_hh(h2319)
+Crash: Factor: singular constraint: stolevel_hh(h2343)
 Crash: Factor: singular constraint: stolevel_hh(h2367)
-Crash: Factor: singular constraint: renewable_generation(h2)
-    1     1 24416 13734 5.8751e+006  1.0e+000    1.0e+001 (energy_balance(h691))
-    2     2 23382 33868 5.4126e+006  1.0e+000    9.0e+000 (energy_balance(h691))
-    3     3  5485 34071 4.8859e+006  1.0e+000    8.1e+000 (energy_balance(h691))
-    4     4  7932 32951 4.3985e+006  1.0e+000    7.3e+000 (energy_balance(h1111))
-    5     5 11832 32910 3.8690e+006  1.0e+000    6.6e+000 (energy_balance(h1111))
-    6     9  3647 26916 3.6641e+006  4.1e-001    5.9e+000 (energy_balance(h1111))
-    7    10  3491 27258 2.5912e+006  1.0e+000    5.3e+000 (energy_balance(h1111))
-    8    11  4861 26147 2.4008e+006  1.0e+000    4.8e+000 (energy_balance(h1111))
-    9    12  3291 27709 2.1256e+006  1.0e+000    4.3e+000 (energy_balance(h1111))
-   10    13  1310 26941 1.8987e+006  1.0e+000    3.9e+000 (energy_balance(h1111))
-   11    14   691 26470 1.7040e+006  1.0e+000    3.5e+000 (energy_balance(h1111))
-   12    15   433 26160 1.5121e+006  1.0e+000    3.1e+000 (energy_balance(h1111))
-   13    16   707 26050 1.4349e+006  1.0e+000    2.8e+000 (minRES)
-   14    21    96 25586 1.4342e+006  2.6e-001    2.5e+000 (minRES)
+    1     1 24422 13726 6.4372e+006  1.0e+000    1.0e+001 (energy_balance(h691))
+    2     2 21228 33869 5.9386e+006  1.0e+000    9.0e+000 (energy_balance(h691))
+    3     3  1844 34385 5.3179e+006  1.0e+000    8.1e+000 (renewable_generation(h2)
+    4     4  3635 33645 4.7338e+006  1.0e+000    7.3e+000 (KKTGRES(h2364))
+    5     5  1663 30193 4.2333e+006  1.0e+000    6.6e+000 (KKTGRES(h2364))
+    6     9   295 29061 3.9918e+006  4.1e-001    5.9e+000 (KKTGRES(h2364))
+    7    16    93 29129 3.9438e+006  6.9e-002    5.3e+000 (KKTGRES(h2364))
+    8    17  1700 29149 3.3290e+006  1.0e+000    4.8e+000 (minRES)
+    9    18   897 27925 2.8188e+006  1.0e+000    4.3e+000 (KKTGRES(h2364))
+   10    19  1244 27718 2.2920e+006  1.0e+000    3.9e+000 (minRES)
+   11    20  2312 27822 1.9316e+006  1.0e+000    3.5e+000 (minRES)
+   12    21  3156 27801 1.6773e+006  1.0e+000    3.1e+000 (minRES)
+   13    22  3909 27524 1.3394e+006  1.0e+000    2.8e+000 (minRES)
+   14    23  4751 27442 9.7581e+005  1.0e+000    2.5e+000 (minRES)
+   15    24  3170 26921 7.6019e+005  1.0e+000    2.3e+000 (KKTGRES(h2364))
+   16    25  2309 26348 7.2141e+005  1.0e+000    2.1e+000 (energy_balance(h1068))
+   17    26  2959 25900 6.3286e+005  1.0e+000    1.9e+000 (renewable_generation(h2)
+   18    27  3199 26735 4.8407e+005  1.0e+000    1.7e+000 (minRES)
+   19    28  2817 27363 3.8129e+005  1.0e+000    1.5e+000 (minRES)
+   20    29  3017 27667 3.7062e+005  1.0e+000    1.4e+000 (minRES)
+   21    31  1328 26827 3.6756e+005  8.0e-001    1.2e+000 (minRES)
 pn_search terminated: no progress.
   ** WARNING **
-Basis modifications: 20583
+Basis modifications: 14421
 
 Major Iteration Log
 major minor  func  grad  residual    step  type prox    inorm  (label)
-    0     0    34    15 1.4342e+006           I 2.3e+000 8.1e+005 (minRES)
+    0     0    44    22 3.6756e+005           I 1.1e+000 3.2e+005 (minRES)
   ** WARNING **
-Residual scaled (5.565560e+005).
-Basis: update  1: LU: 192485 z: 0 dmin: 3.42853e-007
-Basis: update 21: LU: 192883 z: 0 dmin: 3.42853e-007
-Basis: update 41: LU: 193831 z: 0 dmin: 3.42853e-007
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 192294 z: 0 dmin: 0.0338922
-Basis: update 21: LU: 192758 z: 0 dmin: 0.00176791
-Basis: update 41: LU: 193804 z: 0 dmin: 0.00176791
+Residual scaled (1.636474e+005).
+Basis: update  1: LU: 162658 z: 0 dmin: 0.0975153
+Basis: update 21: LU: 163280 z: 0 dmin: 0.0975153
+Basis: update 41: LU: 164725 z: 0 dmin: 0.0975153
   ** WARNING **
 Basis refactored.
-Basis: update  1: LU: 192142 z: 0 dmin: 0.0202009
-Basis: update 21: LU: 192525 z: 0 dmin: 0.0136496
-Basis: update 41: LU: 193376 z: 0 dmin: 0.000782525
+Basis: update  1: LU: 163279 z: 0 dmin: 0.00137537
+Basis: update 21: LU: 163821 z: 0 dmin: 0.00137537
+Basis: update 41: LU: 164350 z: 0 dmin: 0.00137537
   ** WARNING **
 Basis refactored.
-Basis: update  1: LU: 191901 z: 0 dmin: 0.81
-Basis: update 21: LU: 192264 z: 0 dmin: 0.0281218
-Basis: update 41: LU: 193195 z: 0 dmin: 1.90266e-005
+Basis: update  1: LU: 163503 z: 0 dmin: 5.01154e-005
+Basis: update 21: LU: 164134 z: 0 dmin: 5.01154e-005
+Basis: update 41: LU: 165478 z: 0 dmin: 5.01154e-005
   ** WARNING **
 Basis refactored.
-Basis: update  1: LU: 191727 z: 0 dmin: 0.81
-Basis: update 21: LU: 192092 z: 0 dmin: 0.000629138
-Basis: update 41: LU: 192914 z: 0 dmin: 0.000629138
+Basis: update  1: LU: 163457 z: 0 dmin: 0.371947
+Basis: update 21: LU: 163852 z: 0 dmin: 0.000171681
+Basis: update 41: LU: 164629 z: 0 dmin: 0.000171681
   ** WARNING **
 Basis refactored.
-Basis: update  1: LU: 191516 z: 0 dmin: 0.0499995
-Basis: update 21: LU: 191862 z: 0 dmin: 1.94661e-005
-Basis: update 41: LU: 192626 z: 0 dmin: 1.94661e-005
+Basis: update  1: LU: 163238 z: 0 dmin: 0.23766
+Basis: update 21: LU: 163677 z: 0 dmin: 0.0236111
+Basis: update 41: LU: 164573 z: 0 dmin: 0.00049857
   ** WARNING **
 Basis refactored.
-Basis: update  1: LU: 191308 z: 0 dmin: 0.0238361
-Basis: update 21: LU: 191610 z: 0 dmin: 0.000922444
-Basis: update 41: LU: 192227 z: 0 dmin: 0.000922444
+Basis: update  1: LU: 162951 z: 0 dmin: 0.0204976
+Basis: update 21: LU: 163673 z: 0 dmin: 5.7729e-005
+Basis: update 41: LU: 164893 z: 0 dmin: 5.7729e-005
   ** WARNING **
 Basis refactored.
-Basis: update  1: LU: 191210 z: 0 dmin: 0.00520767
-Basis: update 21: LU: 191641 z: 0 dmin: 0.00163463
-Basis: update 41: LU: 192626 z: 0 dmin: 0.00105147
+Basis: update  1: LU: 162702 z: 0 dmin: 0.16308
+Basis: update 21: LU: 163286 z: 0 dmin: 0.16308
+Basis: update 41: LU: 164390 z: 0 dmin: 3.59711e-005
   ** WARNING **
 Basis refactored.
-Basis: update  1: LU: 191047 z: 0 dmin: 2.89498e-005
-Basis: update 21: LU: 191403 z: 0 dmin: 2.89498e-005
-Basis: update 41: LU: 192395 z: 0 dmin: 2.89498e-005
+Basis: update  1: LU: 162438 z: 0 dmin: 0.127622
+Basis: update 21: LU: 162812 z: 0 dmin: 0.0019244
+Basis: update 41: LU: 163818 z: 0 dmin: 0.0019244
   ** WARNING **
 Basis refactored.
-Basis: update  1: LU: 190828 z: 0 dmin: 0.0334782
-Basis: update 21: LU: 191223 z: 0 dmin: 2.08092e-005
+Basis: update  1: LU: 162121 z: 0 dmin: 0.0204008
+Basis: update 21: LU: 162674 z: 0 dmin: 0.0204008
+Basis: update 41: LU: 164028 z: 0 dmin: 0.0204008
+  ** WARNING **
+Basis refactored.
+Basis: update  1: LU: 161940 z: 0 dmin: 0.283502
+Basis: update 21: LU: 162515 z: 0 dmin: 0.000856543
 
 Minor Iteration Log
 minor      t          z     w     v   art ckpts  enter    leave
-  500  2.0268e-001 25228 23555  5925     0     9 w[39816] z[40632]
-Basis: update 41: LU: 192248 z: 0 dmin: 2.08092e-005
+  500  2.5088e-002 27141 10425   586     0     9 w[31399] z[32041]
+Basis: update 41: LU: 163843 z: 0 dmin: 0.000525511
   ** WARNING **
 Basis refactored.
-Basis: update  1: LU: 190683 z: 0 dmin: 0.00935329
-Basis: update 21: LU: 191169 z: 0 dmin: 0.00935329
-Basis: update 41: LU: 192048 z: 0 dmin: 1.78556e-005
+Basis: update  1: LU: 161775 z: 0 dmin: 0.000226347
+Basis: update 21: LU: 162359 z: 0 dmin: 0.000226347
+Basis: update 41: LU: 163618 z: 0 dmin: 0.000226347
   ** WARNING **
 Basis refactored.
-Basis: update  1: LU: 190532 z: 0 dmin: 0.00737714
-Basis: update 21: LU: 191018 z: 0 dmin: 0.00737714
-Basis: update 41: LU: 192200 z: 0 dmin: 0.00737714
+Basis: update  1: LU: 161526 z: 0 dmin: 0.236536
+Basis: update 21: LU: 162181 z: 0 dmin: 9.31333e-006
+Basis: update 41: LU: 163627 z: 0 dmin: 9.31333e-006
   ** WARNING **
 Basis refactored.
-Basis: update  1: LU: 190343 z: 0 dmin: 0.024837
-Basis: update 21: LU: 190720 z: 0 dmin: 0.024837
-Basis: update 41: LU: 191517 z: 0 dmin: 0.024837
+Basis: update  1: LU: 161262 z: 0 dmin: 0.0417845
+Basis: update 21: LU: 161779 z: 0 dmin: 0.0417845
+Basis: update 41: LU: 162943 z: 0 dmin: 0.0417845
   ** WARNING **
 Basis refactored.
-Basis: update  1: LU: 190120 z: 0 dmin: 0.0139793
-Basis: update 21: LU: 190424 z: 0 dmin: 0.00210985
-Basis: update 41: LU: 190921 z: 0 dmin: 0.00189793
+Basis: update  1: LU: 161006 z: 0 dmin: 0.134924
+Basis: update 21: LU: 161607 z: 0 dmin: 0.000491067
+Basis: update 41: LU: 162289 z: 0 dmin: 0.000491067
   ** WARNING **
 Basis refactored.
-Basis: update  1: LU: 189933 z: 0 dmin: 0.0354142
-Basis: update 21: LU: 190169 z: 0 dmin: 0.0012793
-Basis: update 41: LU: 190695 z: 0 dmin: 0.00120519
+Basis: update  1: LU: 160830 z: 0 dmin: 0.158638
+Basis: update 21: LU: 161593 z: 0 dmin: 0.000285447
+Basis: update 41: LU: 162424 z: 0 dmin: 0.000285447
   ** WARNING **
 Basis refactored.
-Basis: update  1: LU: 189820 z: 0 dmin: 0.0337812
-Basis: update 21: LU: 190236 z: 0 dmin: 0.0337812
-Basis: update 41: LU: 191035 z: 0 dmin: 0.0337812
+Basis: update  1: LU: 160553 z: 0 dmin: 0.0366976
+Basis: update 21: LU: 161104 z: 0 dmin: 0.000346233
+Basis: update 41: LU: 162006 z: 0 dmin: 8.3363e-005
   ** WARNING **
 Basis refactored.
-Basis: update  1: LU: 189584 z: 0 dmin: 0.0155557
-Basis: update 21: LU: 189970 z: 0 dmin: 0.0155557
-Basis: update 41: LU: 190665 z: 0 dmin: 0.0155557
+Basis: update  1: LU: 160235 z: 0 dmin: 0.134924
+Basis: update 21: LU: 160752 z: 0 dmin: 0.134924
+Basis: update 41: LU: 161955 z: 0 dmin: 0.00519063
   ** WARNING **
 Basis refactored.
-Basis: update  1: LU: 189389 z: 0 dmin: 0.00865019
-Basis: update 21: LU: 189796 z: 0 dmin: 1.0948e-005
-Basis: update 41: LU: 190968 z: 0 dmin: 1.0948e-005
+Basis: update  1: LU: 159946 z: 0 dmin: 0.371947
+Basis: update 21: LU: 160467 z: 0 dmin: 0.000268882
+Basis: update 41: LU: 161357 z: 0 dmin: 0.000268882
   ** WARNING **
 Basis refactored.
-Basis: update  1: LU: 189164 z: 0 dmin: 0.11658
-Basis: update 21: LU: 189536 z: 0 dmin: 0.0887976
-Basis: update 41: LU: 190394 z: 0 dmin: 0.000959389
+Basis: update  1: LU: 159642 z: 0 dmin: 7.42168e-006
+Basis: update 21: LU: 160309 z: 0 dmin: 7.42168e-006
+Basis: update 41: LU: 161593 z: 0 dmin: 7.42168e-006
   ** WARNING **
 Basis refactored.
-Basis: update  1: LU: 188961 z: 0 dmin: 0.0148116
-Basis: update 21: LU: 189251 z: 0 dmin: 0.0030729
- 1000  4.2211e-001 24842 23925  5941     0    19 w[50111] z[38090]
-Basis: update 41: LU: 189725 z: 0 dmin: 0.0030729
+Basis: update  1: LU: 159334 z: 0 dmin: 0.236536
+Basis: update 21: LU: 159858 z: 0 dmin: 3.24631e-005
+ 1000  7.6329e-002 26741 10835   576     0    19 w[31697] z[30573]
+Basis: update 41: LU: 161028 z: 0 dmin: 1.69332e-005
   ** WARNING **
 Basis refactored.
-Basis: update  1: LU: 188747 z: 0 dmin: 0.0333801
-Basis: update 21: LU: 189265 z: 0 dmin: 0.0333801
-Basis: update 41: LU: 190470 z: 0 dmin: 0.0333801
+Basis: update  1: LU: 159041 z: 0 dmin: 0.236536
+Basis: update 21: LU: 159457 z: 0 dmin: 0.236536
+Basis: update 41: LU: 160115 z: 0 dmin: 7.87449e-005
   ** WARNING **
 Basis refactored.
-Basis: update  1: LU: 188498 z: 0 dmin: 0.0269138
-Basis: update 21: LU: 188932 z: 0 dmin: 1.08356e-005
-Basis: update 41: LU: 189723 z: 0 dmin: 1.08356e-005
+Basis: update  1: LU: 158692 z: 0 dmin: 0.210473
+Basis: update 21: LU: 159303 z: 0 dmin: 2.42812e-005
+Basis: update 41: LU: 160063 z: 0 dmin: 2.42812e-005
   ** WARNING **
 Basis refactored.
-Basis: update  1: LU: 188233 z: 0 dmin: 0.81
-Basis: update 21: LU: 188661 z: 0 dmin: 0.443254
-Basis: update 41: LU: 189731 z: 0 dmin: 0.0925984
+Basis: update  1: LU: 158490 z: 0 dmin: 0.032503
+Basis: update 21: LU: 159187 z: 0 dmin: 0.00103527
+Basis: update 41: LU: 160476 z: 0 dmin: 0.000252591
   ** WARNING **
 Basis refactored.
-Basis: update  1: LU: 188005 z: 0 dmin: 0.0239091
-Basis: update 21: LU: 188379 z: 0 dmin: 0.00207001
-Basis: update 41: LU: 189495 z: 0 dmin: 0.00207001
+Basis: update  1: LU: 158334 z: 0 dmin: 0.134924
+Basis: update 21: LU: 158970 z: 0 dmin: 0.000582516
+Basis: update 41: LU: 160280 z: 0 dmin: 0.000582516
   ** WARNING **
 Basis refactored.
-Basis: update  1: LU: 187791 z: 0 dmin: 0.0392926
-Basis: update 21: LU: 188281 z: 0 dmin: 0.0392926
-Basis: update 41: LU: 189240 z: 0 dmin: 0.00111155
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 187583 z: 0 dmin: 0.81
-Basis: update 21: LU: 188028 z: 0 dmin: 0.132914
-Basis: update 41: LU: 188859 z: 0 dmin: 0.064242
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 187405 z: 0 dmin: 0.0262727
-Basis: update 21: LU: 187791 z: 0 dmin: 0.00147689
-Basis: update 41: LU: 188857 z: 0 dmin: 0.00147689
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 187137 z: 0 dmin: 0.0272915
-Basis: update 21: LU: 187616 z: 0 dmin: 0.0272915
-Basis: update 41: LU: 188838 z: 0 dmin: 0.0272915
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 186832 z: 0 dmin: 0.124097
-Basis: update 21: LU: 187301 z: 0 dmin: 0.111947
-Basis: update 41: LU: 188572 z: 0 dmin: 0.111947
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 186649 z: 0 dmin: 0.00665343
- 1500  5.6609e-001 24462 24298  5948     0    29 w[50560] z[48981]
-Basis: update 21: LU: 187053 z: 0 dmin: 0.00665343
-Basis: update 41: LU: 188133 z: 0 dmin: 0.00665343
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 186412 z: 0 dmin: 0.0297205
-Basis: update 21: LU: 186837 z: 0 dmin: 0.0297205
-Basis: update 41: LU: 187912 z: 0 dmin: 0.00110051
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 186223 z: 0 dmin: 0.81
-Basis: update 21: LU: 186632 z: 0 dmin: 0.296471
-Basis: update 41: LU: 187761 z: 0 dmin: 0.296471
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 185876 z: 0 dmin: 0.0328873
-Basis: update 21: LU: 186335 z: 0 dmin: 0.0328873
-Basis: update 41: LU: 187495 z: 0 dmin: 0.00138503
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 185614 z: 0 dmin: 0.0466557
-Basis: update 21: LU: 186019 z: 0 dmin: 0.0278353
-Basis: update 41: LU: 187054 z: 0 dmin: 0.00132673
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 185415 z: 0 dmin: 0.0330419
-Basis: update 21: LU: 185805 z: 0 dmin: 0.0330419
-Basis: update 41: LU: 186451 z: 0 dmin: 0.00116994
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 185223 z: 0 dmin: 0.02169
-Basis: update 21: LU: 185563 z: 0 dmin: 0.00106861
-Basis: update 41: LU: 186556 z: 0 dmin: 0.00106861
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 185032 z: 0 dmin: 0.81
-Basis: update 21: LU: 185476 z: 0 dmin: 0.0272273
-Basis: update 41: LU: 186192 z: 0 dmin: 0.0272273
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 184749 z: 0 dmin: 0.0282268
-Basis: update 21: LU: 185166 z: 0 dmin: 0.0011106
-Basis: update 41: LU: 186212 z: 0 dmin: 0.0011106
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 184628 z: 0 dmin: 0.0206723
-Basis: update 21: LU: 184995 z: 0 dmin: 0.0206723
-Basis: update 41: LU: 185644 z: 0 dmin: 0.00127855
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 184377 z: 0 dmin: 0.0134869
- 2000  7.1581e-001 24100 24643  5965     0    39 w[48791] z[42152]
-Basis: update 21: LU: 184775 z: 0 dmin: 0.00206902
-Basis: update 41: LU: 185923 z: 0 dmin: 0.00206902
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 184165 z: 0 dmin: 0.54426
-Basis: update 21: LU: 184484 z: 0 dmin: 0.00197731
-Basis: update 41: LU: 185188 z: 0 dmin: 0.00197731
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 183921 z: 0 dmin: 0.0215648
-Basis: update 21: LU: 184327 z: 0 dmin: 0.0215648
-Basis: update 41: LU: 185232 z: 0 dmin: 0.00173554
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 183724 z: 0 dmin: 0.00187493
-Basis: update 21: LU: 184008 z: 0 dmin: 0.00127542
-Basis: update 41: LU: 182278 z: 0 dmin: 8.71587e-006
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 181181 z: 0 dmin: 0.81
-Basis: update 21: LU: 181619 z: 0 dmin: 0.00163693
-Basis: update 41: LU: 182721 z: 0 dmin: 0.00163693
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 180979 z: 0 dmin: 0.001015
-Basis: update 21: LU: 181383 z: 0 dmin: 0.001015
-Basis: update 41: LU: 182386 z: 0 dmin: 0.001015
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 180828 z: 0 dmin: 0.0270849
-Basis: update 21: LU: 181322 z: 0 dmin: 0.0270849
-Basis: update 41: LU: 182590 z: 0 dmin: 6.21712e-006
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 180552 z: 0 dmin: 0.0214842
-Basis: update 21: LU: 180899 z: 0 dmin: 0.0167499
-Basis: update 41: LU: 181663 z: 0 dmin: 0.0167499
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 180342 z: 0 dmin: 0.54426
-Basis: update 21: LU: 180788 z: 0 dmin: 0.464519
-Basis: update 41: LU: 181899 z: 0 dmin: 0.00175777
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 180106 z: 0 dmin: 0.0157824
-Basis: update 21: LU: 180612 z: 0 dmin: 0.0157824
-Basis: update 41: LU: 181715 z: 0 dmin: 0.00112374
-  ** WARNING **
-Basis refactored.
- 2500  8.9797e-001 23708 25024  5976     0    49 w[21275] z[49837]
-Basis: update  1: LU: 179968 z: 0 dmin: 0.254187
-Basis: update 21: LU: 180424 z: 0 dmin: 0.00222523
-Basis: update 41: LU: 181095 z: 0 dmin: 0.00222523
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 179787 z: 0 dmin: 0.0209227
-Basis: update 21: LU: 180128 z: 0 dmin: 0.0197595
-Basis: update 41: LU: 181164 z: 0 dmin: 0.0197595
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 179581 z: 0 dmin: 0.440851
-Basis: update 21: LU: 179914 z: 0 dmin: 0.00158264
-Basis: update 41: LU: 180854 z: 0 dmin: 0.0012201
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 179376 z: 0 dmin: 4.6503e-005
-Basis: update 21: LU: 179876 z: 0 dmin: 4.6503e-005
-Basis: update 41: LU: 180815 z: 0 dmin: 4.6503e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 184089 z: 0 dmin: 0.81
-Basis: update 21: LU: 184580 z: 0 dmin: 0.0145274
-Basis: update 41: LU: 183057 z: 0 dmin: 6.89123e-007
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 181575 z: 0 dmin: 0.81
-Basis: update 21: LU: 182000 z: 0 dmin: 1.8727e-005
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-    1  2787    35    16 8.0116e+005  1.0e+000 SM 9.2e-001 5.6e+005 (energy_balance()
-  ** WARNING **
-Residual scaled (5.565560e+005).
-Basis: update  1: LU: 179128 z: 0 dmin: 0.013635
-Basis: update 21: LU: 179652 z: 0 dmin: 0.013635
-Basis: update 41: LU: 180797 z: 0 dmin: 0.00210695
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 179060 z: 0 dmin: 0.0873582
-Basis: update 21: LU: 179593 z: 0 dmin: 0.0602997
-Basis: update 41: LU: 180808 z: 0 dmin: 0.014485
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 178993 z: 0 dmin: 0.0310944
-Basis: update 21: LU: 179650 z: 0 dmin: 0.0257235
-Basis: update 41: LU: 181161 z: 0 dmin: 0.0257235
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 179113 z: 0 dmin: 0.00404309
-Basis: update 21: LU: 179692 z: 0 dmin: 0.00404309
-Basis: update 41: LU: 180898 z: 0 dmin: 6.84295e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 179173 z: 0 dmin: 0.0040986
-Basis: update 21: LU: 179734 z: 0 dmin: 0.00165627
-Basis: update 41: LU: 181082 z: 0 dmin: 0.00165627
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 179214 z: 0 dmin: 0.0155156
-Basis: update 21: LU: 179904 z: 0 dmin: 0.0155156
-Basis: update 41: LU: 181371 z: 0 dmin: 0.0155156
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 179425 z: 0 dmin: 0.0481874
-Basis: update 21: LU: 179898 z: 0 dmin: 0.00135492
-Basis: update 41: LU: 181201 z: 0 dmin: 0.00135492
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 179582 z: 0 dmin: 0.00383069
-Basis: update 21: LU: 180113 z: 0 dmin: 0.00383069
-Basis: update 41: LU: 181478 z: 0 dmin: 0.00383069
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 179609 z: 0 dmin: 0.00693041
-Basis: update 21: LU: 180162 z: 0 dmin: 0.00194479
-Basis: update 41: LU: 181372 z: 0 dmin: 0.00194479
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 179631 z: 0 dmin: 0.0426921
-Basis: update 21: LU: 180095 z: 0 dmin: 0.000720737
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  3.0635e-001 23429 25279  6000     0     9 w[53308] w[46704]
-Basis: update 41: LU: 181049 z: 0 dmin: 0.000720737
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 179585 z: 0 dmin: 0.0401082
-Basis: update 21: LU: 180062 z: 0 dmin: 0.00156019
-Basis: update 41: LU: 180906 z: 0 dmin: 0.00156019
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 185240 z: 0 dmin: 0.366029
-Basis: update 21: LU: 185862 z: 0 dmin: 0.0745279
-Basis: update 41: LU: 187154 z: 0 dmin: 0.0745279
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 179869 z: 0 dmin: 0.366029
-Basis: update 21: LU: 180437 z: 0 dmin: 0.137291
-Basis: update 41: LU: 181690 z: 0 dmin: 0.0183195
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 179889 z: 0 dmin: 0.033341
-Basis: update 21: LU: 180536 z: 0 dmin: 0.033341
-Basis: update 41: LU: 181673 z: 0 dmin: 0.00196153
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 179993 z: 0 dmin: 0.0130873
-Basis: update 21: LU: 180532 z: 0 dmin: 0.0130873
-Basis: update 41: LU: 181631 z: 0 dmin: 0.0103926
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 179966 z: 0 dmin: 0.0640903
-Basis: update 21: LU: 180350 z: 0 dmin: 0.00155084
-Basis: update 41: LU: 181470 z: 0 dmin: 0.00155084
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 179969 z: 0 dmin: 0.0124036
-Basis: update 21: LU: 180473 z: 0 dmin: 0.0124036
-Basis: update 41: LU: 181770 z: 0 dmin: 0.0124036
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 179884 z: 0 dmin: 0.00351369
-Basis: update 21: LU: 180275 z: 0 dmin: 0.00351369
-Basis: update 41: LU: 181218 z: 0 dmin: 0.000880067
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 179794 z: 0 dmin: 0.0284611
-Basis: update 21: LU: 180320 z: 0 dmin: 0.0284611
-Basis: update 41: LU: 181369 z: 0 dmin: 0.00170541
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 179769 z: 0 dmin: 0.019761
-Basis: update 21: LU: 180304 z: 0 dmin: 0.019761
- 1000  6.4022e-001 23346 25349  6013     0    19 w[49561] z[49989]
-Basis: update 41: LU: 181009 z: 0 dmin: 0.019761
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 179671 z: 0 dmin: 0.00749071
-Basis: update 21: LU: 180150 z: 0 dmin: 0.00749071
-Basis: update 41: LU: 180975 z: 0 dmin: 0.00749071
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 179646 z: 0 dmin: 0.00113584
-Basis: update 21: LU: 180070 z: 0 dmin: 0.00113584
-Basis: update 41: LU: 180911 z: 0 dmin: 0.00113584
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 179496 z: 0 dmin: 0.0491192
-Basis: update 21: LU: 179874 z: 0 dmin: 0.00279668
-Basis: update 41: LU: 180608 z: 0 dmin: 0.00279668
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 179353 z: 0 dmin: 0.0237234
-Basis: update 21: LU: 179824 z: 0 dmin: 0.0237234
-Basis: update 41: LU: 180752 z: 0 dmin: 0.0237234
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 179166 z: 0 dmin: 0.0881738
-Basis: update 21: LU: 179532 z: 0 dmin: 0.0506003
-Basis: update 41: LU: 180192 z: 0 dmin: 0.0506003
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 178989 z: 0 dmin: 0.00413587
-Basis: update 21: LU: 179442 z: 0 dmin: 0.00413587
-Basis: update 41: LU: 180243 z: 0 dmin: 0.0010276
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 179044 z: 0 dmin: 0.0198817
-Basis: update 21: LU: 179523 z: 0 dmin: 0.0198817
-Basis: update 41: LU: 180506 z: 0 dmin: 0.0198817
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 184273 z: 0 dmin: 0.322783
-Basis: update 21: LU: 189992 z: 0 dmin: 0.0874857
-Basis: update 41: LU: 190816 z: 0 dmin: 0.0278618
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 179171 z: 0 dmin: 0.0339675
-Basis: update 21: LU: 179578 z: 0 dmin: 0.0339675
-Basis: update 41: LU: 180669 z: 0 dmin: 0.0339675
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 179105 z: 0 dmin: 0.0386051
- 1500  9.4811e-001 23288 25402  6018     0    29 z[50911] z[46379]
-Basis: update 21: LU: 179566 z: 0 dmin: 0.0386051
-Basis: update 41: LU: 180628 z: 0 dmin: 0.0386051
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 179083 z: 0 dmin: 0.366029
-Basis: update 21: LU: 179622 z: 0 dmin: 0.340845
-Basis: update 41: LU: 180673 z: 0 dmin: 0.0441611
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 179082 z: 0 dmin: 0.0373232
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-    2  1593    36    17 6.2195e+005  1.0e+000 SO 3.7e-001 5.5e+005 (energy_balance()
-  ** WARNING **
-Residual scaled (5.565559e+005).
-Basis: update  1: LU: 178625 z: 0 dmin: 0.143339
-Basis: update 21: LU: 179248 z: 0 dmin: 0.143339
-Basis: update 41: LU: 180508 z: 0 dmin: 0.0226655
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 178668 z: 0 dmin: 0.00116259
-Basis: update 21: LU: 179245 z: 0 dmin: 0.00116259
-Basis: update 41: LU: 180469 z: 0 dmin: 0.00116259
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 178639 z: 0 dmin: 0.002818
-Basis: update 21: LU: 179201 z: 0 dmin: 0.002818
-Basis: update 41: LU: 180477 z: 0 dmin: 0.002818
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 178555 z: 0 dmin: 0.00418183
-Basis: update 21: LU: 179096 z: 0 dmin: 0.0038675
-Basis: update 41: LU: 180347 z: 0 dmin: 0.0038675
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 178466 z: 0 dmin: 0.00379631
-Basis: update 21: LU: 179031 z: 0 dmin: 0.00260864
-Basis: update 41: LU: 180199 z: 0 dmin: 0.00260864
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 178353 z: 0 dmin: 0.146411
-Basis: update 21: LU: 179021 z: 0 dmin: 0.0613326
-Basis: update 41: LU: 180331 z: 0 dmin: 0.0121348
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 178234 z: 0 dmin: 0.146411
-Basis: update 21: LU: 178891 z: 0 dmin: 0.103197
-Basis: update 41: LU: 180191 z: 0 dmin: 0.0185552
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 178223 z: 0 dmin: 0.0243846
-Basis: update 21: LU: 178957 z: 0 dmin: 0.0243846
-Basis: update 41: LU: 180291 z: 0 dmin: 0.0243846
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 178240 z: 0 dmin: 0.143339
-Basis: update 21: LU: 178796 z: 0 dmin: 9.73433e-005
-Basis: update 41: LU: 180095 z: 0 dmin: 9.73433e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 178067 z: 0 dmin: 0.0839121
-Basis: update 21: LU: 178645 z: 0 dmin: 0.0657278
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  4.3838e-001 23164 25530  6014     0     9 w[54027] z[50464]
-Basis: update 41: LU: 179955 z: 0 dmin: 0.0657278
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 177965 z: 0 dmin: 0.143309
-Basis: update 21: LU: 178556 z: 0 dmin: 0.0220801
-Basis: update 41: LU: 179694 z: 0 dmin: 0.0220801
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 177915 z: 0 dmin: 0.000239596
-Basis: update 21: LU: 178621 z: 0 dmin: 0.000239596
-Basis: update 41: LU: 179950 z: 0 dmin: 0.000239596
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 177871 z: 0 dmin: 0.00376269
-Basis: update 21: LU: 178498 z: 0 dmin: 0.00376269
-Basis: update 41: LU: 179961 z: 0 dmin: 0.00376269
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 177856 z: 0 dmin: 0.146411
-Basis: update 21: LU: 178550 z: 0 dmin: 0.00682461
-Basis: update 41: LU: 179749 z: 0 dmin: 0.00682461
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 191592 z: 0 dmin: 0.00712307
-Basis: update 21: LU: 192276 z: 0 dmin: 0.0044473
-Basis: update 41: LU: 193731 z: 0 dmin: 0.0044473
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 177755 z: 0 dmin: 0.00989015
-Basis: update 21: LU: 178363 z: 0 dmin: 0.00989015
-Basis: update 41: LU: 179652 z: 0 dmin: 0.00989015
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 177744 z: 0 dmin: 0.00512294
-Basis: update 21: LU: 178400 z: 0 dmin: 0.00512294
-Basis: update 41: LU: 179859 z: 0 dmin: 0.00512294
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 177781 z: 0 dmin: 0.146411
-Basis: update 21: LU: 178377 z: 0 dmin: 0.0698546
-Basis: update 41: LU: 179463 z: 0 dmin: 0.0200746
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 177703 z: 0 dmin: 0.000801852
-Basis: update 21: LU: 178366 z: 0 dmin: 0.000801852
-Basis: update 41: LU: 179642 z: 0 dmin: 0.000801852
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 177762 z: 0 dmin: 0.0392075
-Basis: update 21: LU: 178496 z: 0 dmin: 0.0118109
- 1000  6.9489e-001 23143 25551  6014     0    19 z[51765] w[51209]
-Basis: update 41: LU: 179539 z: 0 dmin: 0.0118109
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 177756 z: 0 dmin: 0.00668167
-Basis: update 21: LU: 178355 z: 0 dmin: 0.00668167
-Basis: update 41: LU: 179433 z: 0 dmin: 0.00668167
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 177743 z: 0 dmin: 0.00264001
-Basis: update 21: LU: 178323 z: 0 dmin: 0.00264001
-Basis: update 41: LU: 179374 z: 0 dmin: 0.00264001
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 177688 z: 0 dmin: 0.00177212
-Basis: update 21: LU: 178402 z: 0 dmin: 0.00177212
-Basis: update 41: LU: 179700 z: 0 dmin: 0.00177212
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 177593 z: 0 dmin: 0.0260816
-Basis: update 21: LU: 178290 z: 0 dmin: 0.0260816
-Basis: update 41: LU: 179381 z: 0 dmin: 0.0260816
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 177373 z: 0 dmin: 0.012854
-Basis: update 21: LU: 178029 z: 0 dmin: 0.012854
-Basis: update 41: LU: 179225 z: 0 dmin: 0.012854
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 177258 z: 0 dmin: 0.00418145
-Basis: update 21: LU: 177859 z: 0 dmin: 0.00418145
-Basis: update 41: LU: 178981 z: 0 dmin: 0.00418145
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 177135 z: 0 dmin: 0.028282
-Basis: update 21: LU: 177657 z: 0 dmin: 0.028282
-Basis: update 41: LU: 178980 z: 0 dmin: 0.028282
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 176847 z: 0 dmin: 0.0688881
-Basis: update 21: LU: 177383 z: 0 dmin: 0.0688881
-Basis: update 41: LU: 178652 z: 0 dmin: 0.0688881
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 176665 z: 0 dmin: 0.00302603
-Basis: update 21: LU: 177207 z: 0 dmin: 0.00302603
-Basis: update 41: LU: 178327 z: 0 dmin: 0.00302603
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 176514 z: 0 dmin: 0.146411
- 1500  9.5783e-001 23023 25672  6013     0    29 w[46504] w[16944]
-Basis: update 21: LU: 177103 z: 0 dmin: 0.0756987
-Basis: update 41: LU: 178291 z: 0 dmin: 0.0504683
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 176560 z: 0 dmin: 0.00836966
-Basis: update 21: LU: 177196 z: 0 dmin: 0.00836966
-Basis: update 41: LU: 178451 z: 0 dmin: 0.00836966
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 176744 z: 0 dmin: 0.0126412
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-    3  1588    37    18 6.0154e+005  1.0e+000 SO 1.5e-001 5.5e+005 (energy_balance()
-  ** WARNING **
-Residual scaled (5.565560e+005).
-Basis: update  1: LU: 183238 z: 0 dmin: 3.10621e-005
-Basis: update 21: LU: 184029 z: 0 dmin: 3.10621e-005
-Basis: update 41: LU: 185574 z: 0 dmin: 3.10621e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 183628 z: 0 dmin: 0.0129187
-Basis: update 21: LU: 184329 z: 0 dmin: 0.0129187
-Basis: update 41: LU: 185727 z: 0 dmin: 0.0129187
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 183898 z: 0 dmin: 0.000763639
-Basis: update 21: LU: 184614 z: 0 dmin: 0.000763639
-Basis: update 41: LU: 186113 z: 0 dmin: 0.000763639
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 184197 z: 0 dmin: 0.00217465
-Basis: update 21: LU: 184992 z: 0 dmin: 0.00217465
-Basis: update 41: LU: 186395 z: 0 dmin: 0.00217465
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 184177 z: 0 dmin: 0.00678666
-Basis: update 21: LU: 184829 z: 0 dmin: 0.00678666
-Basis: update 41: LU: 186094 z: 0 dmin: 0.00678666
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 184405 z: 0 dmin: 0.0234682
-Basis: update 21: LU: 185191 z: 0 dmin: 0.0234682
-Basis: update 41: LU: 186717 z: 0 dmin: 0.0073011
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 184929 z: 0 dmin: 0.000633059
-Basis: update 21: LU: 185658 z: 0 dmin: 0.000633059
-Basis: update 41: LU: 187155 z: 0 dmin: 0.000295938
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 185682 z: 0 dmin: 0.00854878
-Basis: update 21: LU: 186524 z: 0 dmin: 0.00631793
-Basis: update 41: LU: 188053 z: 0 dmin: 0.00631793
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 185971 z: 0 dmin: 0.00241547
-Basis: update 21: LU: 186893 z: 0 dmin: 0.00241547
-Basis: update 41: LU: 187784 z: 0 dmin: 0.00241547
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 186422 z: 0 dmin: 0.00309191
-Basis: update 21: LU: 186895 z: 0 dmin: 0.00103513
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  5.2242e-001 23330 25420  5958     0     9 z[17292] v[17254]
-Basis: update 41: LU: 187377 z: 0 dmin: 0.00103513
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 186650 z: 0 dmin: 3.59353e-005
-Basis: update 21: LU: 186895 z: 0 dmin: 3.59353e-005
-Basis: update 41: LU: 187961 z: 0 dmin: 3.59353e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 187011 z: 0 dmin: 0.00950169
-Basis: update 21: LU: 187781 z: 0 dmin: 0.00138653
-Basis: update 41: LU: 188880 z: 0 dmin: 0.00116482
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 187513 z: 0 dmin: 0.0250599
-Basis: update 21: LU: 188215 z: 0 dmin: 0.00138971
-Basis: update 41: LU: 189223 z: 0 dmin: 0.00138971
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 188035 z: 0 dmin: 0.00860636
-Basis: update 21: LU: 188841 z: 0 dmin: 0.00145128
-Basis: update 41: LU: 190031 z: 0 dmin: 0.00102655
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 188375 z: 0 dmin: 3.59353e-005
-Basis: update 21: LU: 189081 z: 0 dmin: 3.59353e-005
-Basis: update 41: LU: 190600 z: 0 dmin: 3.59353e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 188922 z: 0 dmin: 0.00170029
-Basis: update 21: LU: 189855 z: 0 dmin: 0.00170029
-Basis: update 41: LU: 191638 z: 0 dmin: 0.00170029
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 189137 z: 0 dmin: 0.043927
-Basis: update 21: LU: 190125 z: 0 dmin: 0.0372775
-Basis: update 41: LU: 191815 z: 0 dmin: 0.0164431
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 190126 z: 0 dmin: 0.0115516
-Basis: update 21: LU: 190943 z: 0 dmin: 0.00292691
-Basis: update 41: LU: 192456 z: 0 dmin: 0.00292691
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 190594 z: 0 dmin: 0.043927
-Basis: update 21: LU: 191539 z: 0 dmin: 0.0436543
-Basis: update 41: LU: 193282 z: 0 dmin: 0.0436543
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 191384 z: 0 dmin: 0.00657619
-Basis: update 21: LU: 192327 z: 0 dmin: 0.00657619
- 1000  6.0688e-001 23796 25018  5894     0    19 z[47981] w[47297]
-Basis: update 41: LU: 194061 z: 0 dmin: 0.00657619
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 192161 z: 0 dmin: 0.0030625
-Basis: update 21: LU: 193002 z: 0 dmin: 0.0030625
-Basis: update 41: LU: 194578 z: 0 dmin: 0.0030625
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 192534 z: 0 dmin: 0.010925
-Basis: update 21: LU: 193408 z: 0 dmin: 0.00316587
-Basis: update 41: LU: 195000 z: 0 dmin: 0.000961305
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 193199 z: 0 dmin: 3.59353e-005
-Basis: update 21: LU: 194058 z: 0 dmin: 3.59353e-005
-Basis: update 41: LU: 195748 z: 0 dmin: 3.59353e-005
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 193492 z: 0 dmin: 0.0234682
-Basis: update 21: LU: 194281 z: 0 dmin: 0.0017279
-Basis: update 41: LU: 195602 z: 0 dmin: 0.00129241
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 195089 z: 0 dmin: 0.0174729
-Basis: update 21: LU: 196099 z: 0 dmin: 0.00118684
-Basis: update 41: LU: 197228 z: 0 dmin: 0.000971633
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 195122 z: 0 dmin: 0.0251213
-Basis: update 21: LU: 196053 z: 0 dmin: 0.00107391
-Basis: update 41: LU: 197502 z: 0 dmin: 0.00107391
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 195465 z: 0 dmin: 0.0083376
-Basis: update 21: LU: 196293 z: 0 dmin: 0.0066669
-Basis: update 41: LU: 197844 z: 0 dmin: 0.00106247
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 196566 z: 0 dmin: 0.0251213
-Basis: update 21: LU: 197378 z: 0 dmin: 0.0251213
-Basis: update 41: LU: 199077 z: 0 dmin: 0.00150653
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 196385 z: 0 dmin: 0.0234682
-Basis: update 21: LU: 197312 z: 0 dmin: 0.00158688
-Basis: update 41: LU: 198877 z: 0 dmin: 0.00107535
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 197478 z: 0 dmin: 0.00138198
- 1500  6.5935e-001 24276 24592  5840     0    29 w[20238] v[16330]
-Basis: update 21: LU: 198208 z: 0 dmin: 0.000552496
-Basis: update 41: LU: 199650 z: 0 dmin: 0.000552496
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 197853 z: 0 dmin: 0.0251213
-Basis: update 21: LU: 198801 z: 0 dmin: 0.00354777
-Basis: update 41: LU: 200528 z: 0 dmin: 0.00354777
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 199082 z: 0 dmin: 0.00768411
-Basis: update 21: LU: 199920 z: 0 dmin: 0.00106951
-Basis: update 41: LU: 201574 z: 0 dmin: 0.00106951
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 198642 z: 0 dmin: 0.00307821
-Basis: update 21: LU: 199536 z: 0 dmin: 0.00307821
-Basis: update 41: LU: 201003 z: 0 dmin: 0.00307821
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 199794 z: 0 dmin: 0.0204405
-Basis: update 21: LU: 200765 z: 0 dmin: 0.000907205
-Basis: update 41: LU: 202458 z: 0 dmin: 0.000907205
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 200393 z: 0 dmin: 0.0110241
-Basis: update 21: LU: 201320 z: 0 dmin: 0.00261466
-Basis: update 41: LU: 202711 z: 0 dmin: 0.00186536
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 200712 z: 0 dmin: 0.0144191
-Basis: update 21: LU: 201853 z: 0 dmin: 0.0144191
-Basis: update 41: LU: 203426 z: 0 dmin: 0.00165788
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 201230 z: 0 dmin: 0.00278311
-Basis: update 21: LU: 202234 z: 0 dmin: 0.00278311
-Basis: update 41: LU: 203978 z: 0 dmin: 0.00278311
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 202093 z: 0 dmin: 0.00870047
-Basis: update 21: LU: 203031 z: 0 dmin: 0.00169861
-Basis: update 41: LU: 204747 z: 0 dmin: 0.00148197
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 202608 z: 0 dmin: 0.00429362
-Basis: update 21: LU: 203506 z: 0 dmin: 0.00120699
-Basis: update 41: LU: 205140 z: 0 dmin: 0.00120699
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 203423 z: 0 dmin: 0.0234682
- 2000  7.0436e-001 24744 24140  5824     0    39 z[49871] w[46404]
-Basis: update 21: LU: 204264 z: 0 dmin: 0.00541711
-Basis: update 41: LU: 205746 z: 0 dmin: 0.00158669
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 203336 z: 0 dmin: 0.00341405
-Basis: update 21: LU: 204116 z: 0 dmin: 0.00161414
-Basis: update 41: LU: 205562 z: 0 dmin: 0.00161414
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 201948 z: 0 dmin: 0.0185938
-Basis: update 21: LU: 202794 z: 0 dmin: 0.0185938
-Basis: update 41: LU: 204409 z: 0 dmin: 0.000653564
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 205306 z: 0 dmin: 0.0201089
-Basis: update 21: LU: 206216 z: 0 dmin: 0.0201089
-Basis: update 41: LU: 207991 z: 0 dmin: 0.0201089
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 206051 z: 0 dmin: 0.0207314
-Basis: update 21: LU: 206936 z: 0 dmin: 0.0136098
-Basis: update 41: LU: 208158 z: 0 dmin: 0.000616742
-  ** WARNING **
-Basis refactored.
-Basis: update  1: LU: 206375 z: 0 dmin: 0.00466233
-Basis: update 21: LU: 206993 z: 0 dmin: 0.000797226
+Basis: update  1: LU: 158166 z: 0 dmin: 0.210473
+Basis: update 21: LU: 158871 z: 0 dmin: 0.000417572
+Basis: update 41: LU: 159975 z: 0 dmin: 0.000417572

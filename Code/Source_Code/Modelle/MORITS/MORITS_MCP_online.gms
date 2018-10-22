@@ -52,7 +52,7 @@ $setglobal outputfile "results_MCP"
 
 
 Sets
-h                hour                                    /h1*h2400/
+h                hour                                    /h1*h4800/
 res              Renewable technologies                  /renewable/
 sto              Storage technolgies                     /storage/
 year             Base years                              /2010*2016/
@@ -136,7 +136,7 @@ lev_Z                       Objective value: Annual electricity costs
 lev_EB                      Level of purchased electricity from grid
 lev_ES                      Level of sold electricity to grid
 price_market(h)             Price for selling energy per kWh
-days /365/
+days /100/
 ;
 
 
@@ -614,14 +614,14 @@ Model prosumodmcp /
 
 hh_energy_balance_hh.lambda_hh
 pv_generation_hh.mu_hh
-pv_install_max_hh.gamma1_hh
+*pv_install_max_hh.gamma1_hh
 stolevel_hh.levelsto_hh
 stolev_max_energy_hh.gamma2_hh
 stoin_max_power_hh.gamma3_hh
 stoout_max_power_hh.gamma4_hh
-KKTNPV_hh.N_PV_hh
-KKTNSTOE_hh.N_STO_E_hh
-KKTNSTOP_hh.N_STO_P_hh
+*KKTNPV_hh.N_PV_hh
+*KKTNSTOE_hh.N_STO_E_hh
+*KKTNSTOP_hh.N_STO_P_hh
 KKTEB_hh.E_buy_hh
 KKTES_hh.E_sell_hh
 KKTG_hh.G_PV_hh
@@ -639,10 +639,10 @@ stolev.levelsto
 stolev_max.gamma2
 maxin_power.gamma3
 maxout_power.gamma4
-KKTNRES.N_RENEWABLE
-KKTNSTOE.N_STO_E
-KKTNSTOP.N_STO_P
-KKTNCON.N_CON
+*KKTNRES.N_RENEWABLE
+*KKTNSTOE.N_STO_E
+*KKTNSTOP.N_STO_P
+*KKTNCON.N_CON
 KKTGCON.G_CON
 KKTGRES.G_RENEWABLE
 KKTSTOIN.STO_IN
@@ -658,6 +658,7 @@ optcr = 0.00
 reslim = 10000000
 lp = cplex
 mip = cplex
+mcp = path
 nlp = conopt
 dispwidth = 15
 limrow = 0
@@ -682,9 +683,9 @@ $offecho
 * Household Variables
 G_PV_hh.up(h)              = 10  ;
 CU_hh.up(h)                = 10  ;
-N_PV_hh.up                 = 10  ;
-N_STO_E_hh.up              = 20  ;
-N_STO_P_hh.up              = 20  ;
+N_PV_hh.fx                 = 10  ;
+N_STO_E_hh.fx              = 10  ;
+N_STO_P_hh.fx              = 2  ;
 STO_L_hh.up(h)             = 20  ;
 STO_IN_hh.up(h)            = 20  ;
 STO_OUT_hh.up(h)           = 20  ;
@@ -704,13 +705,13 @@ STO_OUT.up(h)              = 100000  ;
 
 * Set up initial values for speed up
 STO_L_hh.l(h)   = 4.367;
-N_PV_hh.l       = 8    ;
-N_STO_E_hh.l    = 10   ;
-N_STO_P_hh.l    = 10   ;
-N_RENEWABLE.l              = 43000  ;
-N_CON.l(ct)                = 100000  ;
-N_STO_E.l                  = 120000 ;
-N_STO_P.l                  = 100000  ;
+*N_PV_hh.l       = 8    ;
+*N_STO_E_hh.l    = 10   ;
+*N_STO_P_hh.l    = 10   ;
+*N_RENEWABLE.l              = 43000  ;
+*N_CON.l(ct)                = 100000  ;
+*N_STO_E.l                  = 120000 ;
+*N_STO_P.l                  = 100000  ;
 *lambda.l(h)                = 1  ;
 *price_market(h)            = lambda.l(h)/1000 ;
 
@@ -719,6 +720,16 @@ N_STO_P.l                  = 100000  ;
 levelsto_hh.fx('h1') = 100;
 levelsto.fx('h1')  = 100;
 
+* Fix capacity values of system
+*$ontext
+N_RENEWABLE.fx      =    280669.140  ;
+N_STO_E.fx          =     28031.069  ;
+N_STO_P.fx          =     4867.384   ;
+N_CON.fx('base')    =     48116.000  ;
+N_CON.fx('peak')    =     22981.618  ;
+*$offtext
+
+*prosumodmcp.optfile = 1;
 
 solve prosumodmcp using mcp;
 
@@ -747,7 +758,8 @@ display d_hh , N_PV_hh.l , E_buy_hh.l , E_sell_hh.l ,  G_PV_hh.l,
         price_market,  CU_hh.l, N_RENEWABLE.l, d, G_RENEWABLE.l,
 *        G_CON.l, STO_OUT.l, lambda.l, lambda.m, mu.l, mu.m, energy_balance.m,
 *        N_CON.l, Z_sys.l ,
- Z_hh.l  ;
+        Z_hh.l ,N_RENEWABLE.l , N_STO_E.l,N_STO_P.l,
+         N_CON.l;
 
 
 ***************************** Set up reporting *********************************
