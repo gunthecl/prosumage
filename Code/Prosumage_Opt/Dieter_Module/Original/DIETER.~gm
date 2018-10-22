@@ -48,8 +48,8 @@ $setglobal EV_FREE ""
 * if nothing is selected, ROR capacity will be set to zero
 * if parameter option is selected, set appropriate values in fix.gmx
 * if variable option is selected, set appropriate bound in data_input excel
-$setglobal ror_parameter ""
-$setglobal ror_variable "*"
+$setglobal ror_parameter "*"
+$setglobal ror_variable ""
 
 * Set star to determine loops, otherwise default 100% renewables
 $setglobal loop_over_renewable_share "*"
@@ -58,7 +58,7 @@ $setglobal loop_over_renewable_share "*"
 $setglobal no_crossover ""
 
 * Set star for reporting to Excel
-$setglobal report_to_excel "*"
+$setglobal report_to_excel ""
 
 
 ********************************************************************************

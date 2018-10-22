@@ -60,8 +60,8 @@ N_TECH.lo(n,'wind_off') = m_exog_p(n,'wind_off') ;
 N_TECH.lo(n,'pv') = m_exog_p(n,'pv') ;
 N_STO_P.lo(n,sto) = m_exog_sto_p(n,sto) ;
 N_STO_E.lo(n,sto) = m_exog_sto_e(n,sto) ;
-N_RSVR_P.lo(n,rsvr) =  m_exog_rsvr_p(n,rsvr) ;
-NTC.lo(l) = m_exog_ntc(l) ;
+*N_RSVR_P.lo(n,rsvr) =  m_exog_rsvr_p(n,rsvr) ;
+*NTC.lo(l) = m_exog_ntc(l) ;
 
 N_TECH.up(n,tech) = m_exog_p(n,tech) + 0.1 ;
 N_TECH.up(n,'wind_on') = inf ;
@@ -75,8 +75,8 @@ N_STO_P.up(n,'sto7') = inf ;
 N_STO_E.up(n,'sto1') = inf ;
 N_STO_E.up(n,'sto5') = inf ;
 N_STO_E.up(n,'sto7') = inf ;
-N_RSVR_P.up(n,rsvr) =  m_exog_rsvr_p(n,rsvr) + 0.1 ;
-NTC.up(l) = m_exog_ntc(l) + 0.1 ;
+*N_RSVR_P.up(n,rsvr) =  m_exog_rsvr_p(n,rsvr) + 0.1 ;
+*NTC.up(l) = m_exog_ntc(l) + 0.1 ;
 *$offtext
 
 
@@ -88,9 +88,9 @@ NTC.up(l) = m_exog_ntc(l) + 0.1 ;
 
 
 *** Germany only, no infeasibility
-NTC.fx(l) = 0 ;
-F.fx(l,h) = 0 ;
-G_INFES.fx(n,h) = 0 ;
+*NTC.fx(l) = 0 ;
+*F.fx(l,h) = 0 ;
+*G_INFES.fx(n,h) = 0 ;
 
 
 *** Heating

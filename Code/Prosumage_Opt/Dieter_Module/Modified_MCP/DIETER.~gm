@@ -19,7 +19,7 @@ $offtext
 **************************
 
 * Set star to skip Excel upload and load data from gdx
-$setglobal skip_Excel "*"
+$setglobal skip_Excel ""
 
 * Choose base year
 $setglobal base_year "'2030'"
@@ -48,8 +48,8 @@ $setglobal EV_FREE ""
 * if nothing is selected, ROR capacity will be set to zero
 * if parameter option is selected, set appropriate values in fix.gmx
 * if variable option is selected, set appropriate bound in data_input excel
-$setglobal ror_parameter ""
-$setglobal ror_variable "*"
+$setglobal ror_parameter "*"
+$setglobal ror_variable ""
 
 * Set star to determine loops, otherwise default 100% renewables
 $setglobal loop_over_renewable_share "*"
@@ -58,7 +58,7 @@ $setglobal loop_over_renewable_share "*"
 $setglobal no_crossover ""
 
 * Set star for reporting to Excel
-$setglobal report_to_excel "*"
+$setglobal report_to_excel ""
 
 
 ********************************************************************************
@@ -95,7 +95,7 @@ $if "%EV_EXOG%" == "*" $if "%EV_DEFAULT%%EV_100RES%%EV_FREE%" == "***" $abort Ch
 
 sets
 %loop_over_renewable_share%$ontext
-loop_res_share   Solution loop for different shares of renewables       /10/
+loop_res_share   Solution loop for different shares of renewables       /50/
 $ontext
 $offtext
 
@@ -109,7 +109,7 @@ loop_prosumage   Solution loop for different prosumer self-consumption levels   
 $ontext
 $offtext
 
-%loop_over_renewable_share%      loop_res_share                          /100/
+%loop_over_renewable_share%      loop_res_share                          /50/
 %EV%                             loop_ev                                 /0/
 %prosumage%                      loop_prosumage                          /0/
 ;
@@ -507,11 +507,65 @@ N_TECH           .level          .lev_N_TECH
 N_STO_E          .level          .lev_N_STO_E
 N_STO_P          .level          .lev_N_STO_P
 *NTC              .level          .lev_NTC
-F                .level          .lev_F
+*F                .level          .lev_F
 *RSVR_OUT         .level          .lev_RSVR_OUT
 *RSVR_L           .level          .lev_RSVR_L
 *N_RSVR_E         .level          .lev_N_RSVR_E
 *N_RSVR_P         .level          .lev_N_RSVR_P
+
+%EV%$ontext
+EV_CHARGE        .level          .lev_EV_CHARGE
+EV_DISCHARGE     .level          .lev_EV_DISCHARGE
+EV_L             .level          .lev_EV_L
+EV_PHEVFUEL      .level          .lev_EV_PHEVFUEL
+EV_GED           .level          .lev_EV_GED
+$ontext
+$offtext
+
+%DSM%$ontext
+DSM_CU           .level          .lev_DSM_CU
+DSM_UP           .level          .lev_DSM_UP
+DSM_DO           .level          .lev_DSM_DO
+DSM_UP_DEMAND    .level          .lev_DSM_UP_DEMAND
+DSM_DO_DEMAND    .level          .lev_DSM_DO_DEMAND
+N_DSM_CU         .level          .lev_N_DSM_CU
+N_DSM_SHIFT      .level          .lev_N_DSM_SHIFT
+$ontext
+$offtext
+
+%reserves%$ontext
+RP_DIS           .level          .lev_RP_DIS
+RP_NONDIS        .level          .lev_RP_NONDIS
+RP_STO_IN        .level          .lev_RP_STO_IN
+RP_STO_OUT       .level          .lev_RP_STO_OUT
+RP_RSVR          .level          .lev_RP_RSVR
+$ontext
+$offtext
+
+%reserves_endogenous%$ontext
+con9a_reserve_prov_endogenous    .marginal       .marginal_con9a
+con9b_reserve_prov_PR_endogenous .marginal       .marginal_con9b
+$ontext
+$offtext
+%reserves_exogenous%$ontext
+con9a_reserve_prov_exogenous     .marginal       .marginal_con9a
+con9b_reserve_prov_PR_exogenous  .marginal       .marginal_con9b
+$ontext
+$offtext
+
+%reserves%$ontext
+%EV%$ontext
+%EV_EXOG% RP_EV_V2G      .level          .lev_RP_EV_V2G
+%EV_EXOG% RP_EV_G2V      .level          .lev_RP_EV_G2V
+$ontext
+$offtext
+
+%reserves%$ontext
+%DSM%$ontext
+RP_DSM_CU        .level          .lev_RP_DSM_CU
+RP_DSM_SHIFT     .level          .lev_RP_DSM_SHIFT
+$ontext
+$offtext
 
 %prosumage%$ontext
 CU_PRO           .level          .lev_CU_PRO
@@ -537,6 +591,39 @@ N_RES_PRO        .level          .lev_N_RES_PRO
 $ontext
 $offtext
 
+%heat%$ontext
+H_DIR                    .level          .lev_H_DIR
+H_SETS_LEV               .level          .lev_H_SETS_LEV
+H_SETS_IN                .level          .lev_H_SETS_IN
+H_SETS_OUT               .level          .lev_H_SETS_OUT
+H_HP_IN                  .level          .lev_H_HP_IN
+H_STO_LEV                .level          .lev_H_STO_LEV
+H_STO_IN_HP              .level          .lev_H_STO_IN_HP
+H_STO_IN_ELECTRIC        .level          .lev_H_STO_IN_ELECTRIC
+H_ELECTRIC_IN            .level          .lev_H_ELECTRIC_IN
+H_STO_IN_FOSSIL          .level          .lev_H_STO_IN_FOSSIL
+H_STO_OUT                .level          .lev_H_STO_OUT
+
+H_DHW_STO_OUT            .level          .lev_H_DHW_STO_OUT
+H_DHW_DIR                .level          .lev_H_DHW_DIR
+
+H_DHW_AUX_ELEC_IN        .level          .lev_H_DHW_AUX_ELEC_IN
+H_DHW_AUX_LEV            .level          .lev_H_DHW_AUX_LEV
+H_DHW_AUX_OUT            .level          .lev_H_DHW_AUX_OUT
+
+$ontext
+$offtext
+
+%heat%$ontext
+%reserves%$ontext
+RP_SETS          .level          .lev_RP_SETS
+RP_SETS_AUX      .level          .lev_RP_SETS_AUX
+RP_HP            .level          .lev_RP_HP
+RP_H_ELEC        .level          .lev_RP_H_ELEC
+$ontext
+$offtext
+
+*G_INFES          .level          .lev_G_INFES
 /
 ;
 
@@ -553,7 +640,18 @@ execute_unload "results", report, report_tech, report_node, report_line, report_
 , report_prosumage, report_prosumage_tech, report_prosumage_tech_hours, report_market, report_market_tech, report_market_tech_hours
 $ontext
 $offtext
-
+%heat%$ontext
+, report_heat_tech_hours, report_heat_tech
+$ontext
+$offtext
+%reserves_endogenous%$ontext
+, report_reserves, report_reserves_tech, report_reserves_tech_hours
+$ontext
+$offtext
+%reserves_exogenous%$ontext
+, report_reserves_tech, report_reserves_tech_hours, report_reserves_hours
+$ontext
+$offtext
 ;
 
 %report_to_excel%$ontext

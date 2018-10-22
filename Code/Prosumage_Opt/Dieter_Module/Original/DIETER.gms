@@ -58,7 +58,7 @@ $setglobal loop_over_renewable_share "*"
 $setglobal no_crossover ""
 
 * Set star for reporting to Excel
-$setglobal report_to_excel "*"
+$setglobal report_to_excel ""
 
 
 ********************************************************************************

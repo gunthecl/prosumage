@@ -99,7 +99,7 @@ $offtext
 ********************************************************************************
 
 F.fx(l,h)$(m_ntc(l) = 0) = 0 ;
-NTC.fx(l)$(m_ntc(l) = 0) = 0 ;
+*NTC.fx(l)$(m_ntc(l) = 0) = 0 ;
 
 G_L.fx(n,tech,h)$(m_p(n,tech) = 0) = 0 ;
 G_UP.fx(n,tech,h)$(m_p(n,tech) = 0) = 0 ;
@@ -113,14 +113,15 @@ N_STO_E.fx(n,sto)$(m_sto_e(n,sto) = 0) = 0 ;
 STO_IN.fx(n,sto,h)$(m_sto_p(n,sto) = 0) = 0 ;
 STO_OUT.fx(n,sto,h)$(m_sto_p(n,sto) = 0) = 0 ;
 STO_L.fx(n,sto,h)$(m_sto_p(n,sto) = 0) = 0 ;
-RP_STO_IN.fx(n,reserves,sto,h)$(m_sto_p(n,sto) = 0) = 0 ;
-RP_STO_OUT.fx(n,reserves,sto,h)$(m_sto_p(n,sto) = 0) = 0 ;
+*RP_STO_IN.fx(n,reserves,sto,h)$(m_sto_p(n,sto) = 0) = 0 ;
+*RP_STO_OUT.fx(n,reserves,sto,h)$(m_sto_p(n,sto) = 0) = 0 ;
 
-RSVR_OUT.fx(n,rsvr,h)$(m_rsvr_p(n,rsvr) = 0) = 0 ;
-RSVR_L.fx(n,rsvr,h)$(m_rsvr_p(n,rsvr) = 0) = 0 ;
-N_RSVR_E.fx(n,rsvr)$(m_rsvr_p(n,rsvr) = 0) = 0 ;
-N_RSVR_P.fx(n,rsvr)$(m_rsvr_p(n,rsvr) = 0) = 0 ;
+*RSVR_OUT.fx(n,rsvr,h)$(m_rsvr_p(n,rsvr) = 0) = 0 ;
+*RSVR_L.fx(n,rsvr,h)$(m_rsvr_p(n,rsvr) = 0) = 0 ;
+*N_RSVR_E.fx(n,rsvr)$(m_rsvr_p(n,rsvr) = 0) = 0 ;
+*N_RSVR_P.fx(n,rsvr)$(m_rsvr_p(n,rsvr) = 0) = 0 ;
 
+$ontext
 %reserves%$ontext
 RP_DIS.fx(n,reserves,tech,h)$(feat_node('reserves',n) = 0 OR m_p(n,tech) = 0) = 0 ;
 RP_NONDIS.fx(n,reserves,tech,h)$(feat_node('reserves',n) = 0 OR m_p(n,tech) = 0) = 0 ;
@@ -158,6 +159,7 @@ N_RES_PRO.fx(n,res)$(feat_node('prosumage',n) = 0 OR m_res_pro(n,res) = 0) = 0 ;
 $ontext
 $offtext
 
+$ontext
 %EV%$ontext
 EV_CHARGE.fx(n,ev,h)$(feat_node('ev',n) = 0) = 0 ;
 EV_DISCHARGE.fx(n,ev,h)$(feat_node('ev',n) = 0) = 0 ;
