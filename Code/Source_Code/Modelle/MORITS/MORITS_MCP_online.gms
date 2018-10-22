@@ -52,7 +52,7 @@ $setglobal outputfile "results_MCP"
 
 
 Sets
-h                hour                                    /h1*h4800/
+h                hour                                    /h1*h800/
 res              Renewable technologies                  /renewable/
 sto              Storage technolgies                     /storage/
 year             Base years                              /2010*2016/
@@ -136,7 +136,7 @@ lev_Z                       Objective value: Annual electricity costs
 lev_EB                      Level of purchased electricity from grid
 lev_ES                      Level of sold electricity to grid
 price_market(h)             Price for selling energy per kWh
-days /100/
+days /10/
 ;
 
 
