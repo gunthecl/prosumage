@@ -444,8 +444,8 @@ $offtext
 /
 ;
 
-
 solve DIETER using lp min Z scenario dict;
+
 
 * Reporting
 $include report.gms
@@ -460,9 +460,9 @@ $ontext
 $offtext
 ;
 
-$ontext
+
 %report_to_excel%$ontext
-*$include report_to_excel.gms
+$include report_to_excel.gms
 $ontext
 $offtext
 

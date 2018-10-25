@@ -1,11 +1,11 @@
-Input=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\DIETER.gms
+Input=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\DIETER.gms
 PageWidth=80
 PageSize=0
 PageContr=3
 Action=CE
 ScrDir=225a
-SysDir=C:\GAMS\win64\24.2
-WorkDir=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\
+SysDir=C:\GAMS\win64\24.7
+WorkDir=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\
 ScriptNext=225a\gamsnext.cmd
 LogOption=3
 DFormat=0

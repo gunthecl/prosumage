@@ -199,7 +199,7 @@ $offtext
 
                  report_tech_hours('generation conventional',loop_res_share,loop_ev,loop_prosumage,con,h)$(report_tech_hours('generation conventional',loop_res_share,loop_ev,loop_prosumage,con,h)< eps_rep_abs) = 0 ;
                  report_tech_hours('generation renewable',loop_res_share,loop_ev,loop_prosumage,res,h)$(report_tech_hours('generation renewable',loop_res_share,loop_ev,loop_prosumage,res,h)< eps_rep_abs) = 0 ;
-                 report_tech_hours('generation renewable',loop_res_share,loop_ev,loop_prosumage,rsvr,h)$(report_tech_hours('generation renewable',loop_res_share,loop_ev,loop_prosumage,rsvr,h)< eps_rep_abs) = 0 ;
+*  star added        report_tech_hours('generation renewable',loop_res_share,loop_ev,loop_prosumage,rsvr,h)$(report_tech_hours('generation renewable',loop_res_share,loop_ev,loop_prosumage,rsvr,h)< eps_rep_abs) = 0 ;
                  report_tech_hours('curtailment of fluct res',loop_res_share,loop_ev,loop_prosumage,res,h)$(report_tech_hours('curtailment of fluct res',loop_res_share,loop_ev,loop_prosumage,res,h)< eps_rep_abs) = 0 ;
                  report_tech_hours('generation storage',loop_res_share,loop_ev,loop_prosumage,sto,h)$(report_tech_hours('generation storage',loop_res_share,loop_ev,loop_prosumage,sto,h)< eps_rep_abs) = 0 ;
                  report_tech_hours('storage loading',loop_res_share,loop_ev,loop_prosumage,sto,h)$(report_tech_hours('storage loading',loop_res_share,loop_ev,loop_prosumage,sto,h)< eps_rep_abs) = 0 ;
@@ -213,14 +213,7 @@ $offtext
 * ----------------------------------------------------------------------------
 
 * RPEORT LINE
-$ontext
-         report_line('NTC',loop_res_share,loop_ev,loop_prosumage,l) = sum( scen$(map(scen,loop_res_share,loop_ev,loop_prosumage)) , lev_NTC(scen,l) ) ;
-                         report_line('NTC',loop_res_share,loop_ev,loop_prosumage,l)$(report_line('NTC',loop_res_share,loop_ev,loop_prosumage,l) < eps_rep_ins ) = 0 ;
 
-         report_line('average line use',loop_res_share,loop_ev,loop_prosumage,l)$report_line('NTC',loop_res_share,loop_ev,loop_prosumage,l) = sum( scen$(map(scen,loop_res_share,loop_ev,loop_prosumage)) , sum( h, abs(lev_F(scen,l,h)))) / sum( h , report_line('NTC',loop_res_share,loop_ev,loop_prosumage,l)) ;
-                 report_line('avergae line use',loop_res_share,loop_ev,loop_prosumage,l)$(report_line('average line use',loop_res_share,loop_ev,loop_prosumage,l) < eps_rep_rel) = 0 ;
-
-$offtext
 * ----------------------------------------------------------------------------
 
 * REPORT NODE
@@ -423,7 +416,6 @@ $offtext
 
 * RPEORT
         report('curtailment of fluct res absolute',loop_res_share,loop_ev,loop_prosumage) = report_node('curtailment of fluct res absolute',loop_res_share,loop_ev,loop_prosumage)  ;
-*** IS "ABSOLUTE" an error???
         report('curtailment of fluct res relative',loop_res_share,loop_ev,loop_prosumage) = report_node('curtailment of fluct res absolute',loop_res_share,loop_ev,loop_prosumage) / sum((res,h), sum(scen$(map(scen,loop_res_share,loop_ev,loop_prosumage)) , phi_res(res,h) * (lev_N_TECH(scen,res) + lev_N_RES_PRO(scen,res)) )) ;
         report('bio not utilized absolute',loop_res_share,loop_ev,loop_prosumage)$( m_e('bio')) = report_node('bio not utilized absolute',loop_res_share,loop_ev,loop_prosumage)  ;
         report('bio not utilized relative',loop_res_share,loop_ev,loop_prosumage)$( m_e('bio')) = report('bio not utilized absolute',loop_res_share,loop_ev,loop_prosumage) /m_e('bio') ;

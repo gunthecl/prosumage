@@ -444,23 +444,29 @@ $offtext
 /
 ;
 
+*Test: Get exact same result as in orignal DIETER
+CU.fx('pv','h3086') = 0;
+CU.fx('pv','h8649') = 0;
 
 solve DIETER using lp min Z scenario dict;
+
 
 * Reporting
 $include report.gms
 
 
-execute_unload "results", report, report_tech, report_node, report_line, report_tech_hours, report_hours, report_cost
+execute_unload "results", report, report_tech, report_node,
+*report_line,
+report_tech_hours, report_hours, report_cost
 %prosumage%$ontext
 , report_prosumage, report_prosumage_tech, report_prosumage_tech_hours, report_market, report_market_tech, report_market_tech_hours
 $ontext
 $offtext
 ;
 
-$ontext
+
 %report_to_excel%$ontext
-*$include report_to_excel.gms
+$include report_to_excel.gms
 $ontext
 $offtext
 
