@@ -1,0 +1,1185 @@
+
+--- Job report.gms Start 10/24/18 19:37:08 24.2.3 r46072 WEX-WEI x86_64/MS Windows
+GAMS 24.2.3   Copyright (C) 1987-2014 GAMS Development. All rights reserved
+Licensee: Medium MUD - 10 User License                   S170316:1123AO-GEN
+          Deutsches Institut fuer Wirtschaftsforschung DIW, AbteilungDC3975
+          License for teaching and research at degree granting institutions
+          License_Admin:_Claudia_Kemfert,_bbibra@diw.de____________________
+--- Starting compilation
+--- report.gms(96) 3 Mb 3 Errors
+*** Error 120 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown identifier entered as set
+*** Error 120 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown identifier entered as set
+*** Error 120 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown identifier entered as set
+--- report.gms(97) 3 Mb 4 Errors
+*** Error 120 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown identifier entered as set
+--- report.gms(98) 3 Mb 5 Errors
+*** Error 120 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown identifier entered as set
+--- report.gms(123) 3 Mb 6 Errors
+*** Error 409 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- report.gms(125) 3 Mb 9 Errors
+*** Error 120 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown identifier entered as set
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown symbol
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown symbol
+--- report.gms(126) 3 Mb 11 Errors
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown symbol
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown symbol
+--- report.gms(141) 3 Mb 14 Errors
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown symbol
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown symbol
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown symbol
+--- report.gms(142) 3 Mb 16 Errors
+*** Error   8 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    ')' expected
+*** Error 409 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- report.gms(157) 3 Mb 25 Errors
+*** Error 120 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown identifier entered as set
+*** Error 340 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    A label/element with the same name exist. You may have forgotten
+       to quote a label/element reference. For example,
+       set i / a,b,c /; parameter x(i); x('a') = 10;
+*** Error 120 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown identifier entered as set
+*** Error 340 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    A label/element with the same name exist. You may have forgotten
+       to quote a label/element reference. For example,
+       set i / a,b,c /; parameter x(i); x('a') = 10;
+*** Error 120 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown identifier entered as set
+*** Error 340 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    A label/element with the same name exist. You may have forgotten
+       to quote a label/element reference. For example,
+       set i / a,b,c /; parameter x(i); x('a') = 10;
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown symbol
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown symbol
+*** Error 116 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Label is unknown
+--- report.gms(158) 3 Mb 26 Errors
+*** Error 116 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Label is unknown
+--- report.gms(159) 3 Mb 31 Errors
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown symbol
+*** Error 119 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Number (primary) expected
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown symbol
+*** Error   8 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    ')' expected
+*** Error 409 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- report.gms(166) 3 Mb 33 Errors
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown symbol
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown symbol
+--- report.gms(170) 3 Mb 38 Errors
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown symbol
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown symbol
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown symbol
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown symbol
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown symbol
+--- report.gms(174) 3 Mb 39 Errors
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown symbol
+--- report.gms(188) 3 Mb 41 Errors
+*** Error 120 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown identifier entered as set
+*** Error 340 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    A label/element with the same name exist. You may have forgotten
+       to quote a label/element reference. For example,
+       set i / a,b,c /; parameter x(i); x('a') = 10;
+--- report.gms(194) 3 Mb 43 Errors
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown symbol
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown symbol
+--- report.gms(196) 3 Mb 45 Errors
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown symbol
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown symbol
+--- report.gms(197) 3 Mb 47 Errors
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown symbol
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown symbol
+--- report.gms(202) 3 Mb 49 Errors
+*** Error 120 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown identifier entered as set
+*** Error 340 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    A label/element with the same name exist. You may have forgotten
+       to quote a label/element reference. For example,
+       set i / a,b,c /; parameter x(i); x('a') = 10;
+--- report.gms(227) 3 Mb 51 Errors
+*** Error 119 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Number (primary) expected
+*** Error 409 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- report.gms(233) 3 Mb 53 Errors
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown symbol
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown symbol
+--- report.gms(247) 3 Mb 58 Errors
+*** Error 120 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown identifier entered as set
+*** Error 340 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    A label/element with the same name exist. You may have forgotten
+       to quote a label/element reference. For example,
+       set i / a,b,c /; parameter x(i); x('a') = 10;
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown symbol
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown symbol
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown symbol
+--- report.gms(251) 3 Mb 60 Errors
+*** Error 119 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Number (primary) expected
+*** Error 409 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- report.gms(252) 3 Mb 62 Errors
+*** Error 119 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Number (primary) expected
+*** Error 409 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- report.gms(253) 3 Mb 66 Errors
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown symbol
+*** Error 116 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Label is unknown
+*** Error 119 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Number (primary) expected
+*** Error 409 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- report.gms(260) 3 Mb 70 Errors
+*** Error 119 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Number (primary) expected
+*** Error   8 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    ')' expected
+*** Error  36 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    '=' or '..' or ':=' or '$=' operator expected
+    rest of statement ignored
+*** Error 409 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- report.gms(262) 3 Mb 74 Errors
+*** Error 119 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Number (primary) expected
+*** Error   8 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    ')' expected
+*** Error  36 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    '=' or '..' or ':=' or '$=' operator expected
+    rest of statement ignored
+*** Error 409 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- report.gms(281) 3 Mb 81 Errors
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown symbol
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown symbol
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown symbol
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown symbol
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown symbol
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown symbol
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown symbol
+--- report.gms(284) 3 Mb 87 Errors
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown symbol
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown symbol
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown symbol
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown symbol
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown symbol
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown symbol
+--- report.gms(287) 3 Mb 89 Errors
+*** Error   8 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    ')' expected
+*** Error 409 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- report.gms(296) 3 Mb 94 Errors
+*** Error 116 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Label is unknown
+*** Error 120 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown identifier entered as set
+*** Error 340 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    A label/element with the same name exist. You may have forgotten
+       to quote a label/element reference. For example,
+       set i / a,b,c /; parameter x(i); x('a') = 10;
+*** Error 149 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Uncontrolled set entered as constant
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(320) 3 Mb 97 Errors
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown symbol
+*** Error 119 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Number (primary) expected
+*** Error 409 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- report.gms(322) 3 Mb 100 Errors
+*** Error 120 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown identifier entered as set
+*** Error 340 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    A label/element with the same name exist. You may have forgotten
+       to quote a label/element reference. For example,
+       set i / a,b,c /; parameter x(i); x('a') = 10;
+*** Error 149 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Uncontrolled set entered as constant
+--- report.gms(335) 3 Mb 102 Errors
+*** Error 119 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Number (primary) expected
+*** Error 409 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- report.gms(338) 3 Mb 104 Errors
+*** Error 119 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Number (primary) expected
+*** Error 409 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- report.gms(339) 3 Mb 106 Errors
+*** Error 119 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Number (primary) expected
+*** Error 409 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- report.gms(344) 3 Mb 108 Errors
+*** Error 149 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Uncontrolled set entered as constant
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(359) 3 Mb 112 Errors
+*** Error 119 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Number (primary) expected
+*** Error   8 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    ')' expected
+*** Error  36 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    '=' or '..' or ':=' or '$=' operator expected
+    rest of statement ignored
+*** Error 409 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- report.gms(369) 3 Mb 116 Errors
+*** Error 119 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Number (primary) expected
+*** Error   8 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    ')' expected
+*** Error  36 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    '=' or '..' or ':=' or '$=' operator expected
+    rest of statement ignored
+*** Error 409 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- report.gms(370) 3 Mb 120 Errors
+*** Error 119 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Number (primary) expected
+*** Error   8 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    ')' expected
+*** Error  36 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    '=' or '..' or ':=' or '$=' operator expected
+    rest of statement ignored
+*** Error 409 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- report.gms(376) 3 Mb 122 Errors
+*** Error 149 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Uncontrolled set entered as constant
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(381) 3 Mb 124 Errors
+*** Error 149 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Uncontrolled set entered as constant
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(401) 3 Mb 126 Errors
+*** Error 119 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Number (primary) expected
+*** Error 409 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- report.gms(402) 3 Mb 128 Errors
+*** Error 119 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Number (primary) expected
+*** Error 409 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- report.gms(404) 3 Mb 130 Errors
+*** Error 119 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Number (primary) expected
+*** Error 409 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- report.gms(405) 3 Mb 131 Errors
+*** Error 409 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- report.gms(406) 3 Mb 132 Errors
+*** Error 409 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- report.gms(417) 3 Mb 133 Errors
+*** Error 409 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- report.gms(418) 3 Mb 134 Errors
+*** Error 409 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- report.gms(425) 3 Mb 136 Errors
+*** Error 408 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Too many ),] or }
+*** Error 409 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- report.gms(436) 3 Mb 137 Errors
+*** Error   8 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    ')' expected
+--- report.gms(437) 3 Mb 138 Errors
+*** Error 408 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Too many ),] or }
+--- report.gms(479) 3 Mb 139 Errors
+*** Error 409 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- report.gms(481) 3 Mb 142 Errors
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown symbol
+*** Error 116 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Label is unknown
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown symbol
+--- report.gms(498) 3 Mb 143 Errors
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown symbol
+--- report.gms(499) 3 Mb 144 Errors
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown symbol
+--- report.gms(500) 3 Mb 145 Errors
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown symbol
+--- report.gms(501) 3 Mb 146 Errors
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown symbol
+--- report.gms(505) 3 Mb 148 Errors
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown symbol
+*** Error 141 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Symbol neither initialized nor assigned
+       A wild shot: You may have spurious commas in the explanatory
+       text of a declaration. Check symbol reference list.
+--- report.gms(517) 3 Mb 150 Errors
+*** Error 149 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Uncontrolled set entered as constant
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(518) 3 Mb 152 Errors
+*** Error 149 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Uncontrolled set entered as constant
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(522) 3 Mb 155 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+*** Error 119 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Number (primary) expected
+*** Error 409 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- report.gms(523) 3 Mb 156 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(524) 3 Mb 157 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(525) 3 Mb 158 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(526) 3 Mb 159 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(527) 3 Mb 160 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(528) 3 Mb 161 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(529) 3 Mb 162 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(530) 3 Mb 163 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(531) 3 Mb 164 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(532) 3 Mb 165 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(533) 3 Mb 166 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(534) 3 Mb 167 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(535) 3 Mb 168 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(536) 3 Mb 169 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(537) 3 Mb 170 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(538) 3 Mb 171 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(539) 3 Mb 174 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+*** Error 119 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Number (primary) expected
+*** Error 409 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- report.gms(540) 3 Mb 175 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(541) 3 Mb 176 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(542) 3 Mb 177 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(543) 3 Mb 178 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(544) 3 Mb 179 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(545) 3 Mb 180 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(546) 3 Mb 181 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(547) 3 Mb 182 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(548) 3 Mb 183 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(549) 3 Mb 184 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(550) 3 Mb 185 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(551) 3 Mb 186 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(552) 3 Mb 187 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(553) 3 Mb 188 Errors
+*** Error 409 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- report.gms(554) 3 Mb 189 Errors
+*** Error 409 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- report.gms(555) 3 Mb 194 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+*** Error 119 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Number (primary) expected
+*** Error   8 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    ')' expected
+*** Error  36 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    '=' or '..' or ':=' or '$=' operator expected
+    rest of statement ignored
+*** Error 409 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- report.gms(558) 3 Mb 195 Errors
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown symbol
+--- report.gms(559) 3 Mb 196 Errors
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown symbol
+--- report.gms(561) 3 Mb 198 Errors
+*** Error 119 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Number (primary) expected
+*** Error 409 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- report.gms(562) 3 Mb 200 Errors
+*** Error 119 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Number (primary) expected
+*** Error 409 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- report.gms(563) 3 Mb 201 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(565) 3 Mb 203 Errors
+*** Error 119 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Number (primary) expected
+*** Error 409 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- report.gms(566) 3 Mb 205 Errors
+*** Error 119 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Number (primary) expected
+*** Error 409 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- report.gms(569) 3 Mb 206 Errors
+*** Error 409 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- report.gms(570) 3 Mb 207 Errors
+*** Error 409 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- report.gms(571) 3 Mb 211 Errors
+*** Error 119 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Number (primary) expected
+*** Error   8 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    ')' expected
+*** Error  36 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    '=' or '..' or ':=' or '$=' operator expected
+    rest of statement ignored
+*** Error 409 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- report.gms(573) 3 Mb 212 Errors
+*** Error 141 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Symbol neither initialized nor assigned
+       A wild shot: You may have spurious commas in the explanatory
+       text of a declaration. Check symbol reference list.
+--- report.gms(574) 3 Mb 213 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(575) 3 Mb 214 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(576) 3 Mb 217 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(577) 3 Mb 220 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(578) 3 Mb 222 Errors
+*** Error 119 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Number (primary) expected
+*** Error 409 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- report.gms(587) 3 Mb 225 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(588) 3 Mb 228 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(590) 3 Mb 229 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(591) 3 Mb 231 Errors
+*** Error 119 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Number (primary) expected
+*** Error 409 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- report.gms(599) 3 Mb 237 Errors
+*** Error 120 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown identifier entered as set
+*** Error 340 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    A label/element with the same name exist. You may have forgotten
+       to quote a label/element reference. For example,
+       set i / a,b,c /; parameter x(i); x('a') = 10;
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown symbol
+*** Error 120 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown identifier entered as set
+*** Error 340 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    A label/element with the same name exist. You may have forgotten
+       to quote a label/element reference. For example,
+       set i / a,b,c /; parameter x(i); x('a') = 10;
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown symbol
+--- report.gms(600) 3 Mb 239 Errors
+*** Error 119 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Number (primary) expected
+*** Error 409 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- report.gms(606) 3 Mb 246 Errors
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown symbol
+*** Error 141 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Symbol neither initialized nor assigned
+       A wild shot: You may have spurious commas in the explanatory
+       text of a declaration. Check symbol reference list.
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown symbol
+*** Error 120 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown identifier entered as set
+*** Error 340 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    A label/element with the same name exist. You may have forgotten
+       to quote a label/element reference. For example,
+       set i / a,b,c /; parameter x(i); x('a') = 10;
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unknown symbol
+*** Error 141 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Symbol neither initialized nor assigned
+       A wild shot: You may have spurious commas in the explanatory
+       text of a declaration. Check symbol reference list.
+--- report.gms(608) 3 Mb 249 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+*** Error 149 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Uncontrolled set entered as constant
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(609) 3 Mb 250 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(610) 3 Mb 251 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(611) 3 Mb 254 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+*** Error 119 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Number (primary) expected
+*** Error 409 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- report.gms(612) 3 Mb 257 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+*** Error 119 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Number (primary) expected
+*** Error 409 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- report.gms(613) 3 Mb 260 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+*** Error 119 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Number (primary) expected
+*** Error 409 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- report.gms(614) 3 Mb 263 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+*** Error 119 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Number (primary) expected
+*** Error 409 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- report.gms(652) 3 Mb 264 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(653) 3 Mb 265 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(654) 3 Mb 266 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(655) 3 Mb 267 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(656) 3 Mb 268 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(657) 3 Mb 269 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(658) 3 Mb 270 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(659) 3 Mb 271 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(660) 3 Mb 273 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(661) 3 Mb 275 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(662) 3 Mb 277 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(663) 3 Mb 279 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(664) 3 Mb 281 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(665) 3 Mb 283 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(666) 3 Mb 285 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(667) 3 Mb 287 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(668) 3 Mb 289 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(669) 3 Mb 290 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(670) 3 Mb 291 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(671) 3 Mb 292 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(672) 3 Mb 293 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(673) 3 Mb 294 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(674) 3 Mb 295 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(675) 3 Mb 296 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(676) 3 Mb 297 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(677) 3 Mb 298 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(678) 3 Mb 299 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(679) 3 Mb 300 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(680) 3 Mb 301 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(681) 3 Mb 302 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(682) 3 Mb 303 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(683) 3 Mb 304 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(684) 3 Mb 305 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(685) 3 Mb 306 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(686) 3 Mb 307 Errors
+*** Error 409 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- report.gms(687) 3 Mb 308 Errors
+*** Error 409 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- report.gms(688) 3 Mb 309 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(690) 3 Mb 310 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(691) 3 Mb 311 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(692) 3 Mb 312 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(693) 3 Mb 313 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(694) 3 Mb 314 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(695) 3 Mb 315 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(696) 3 Mb 316 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(697) 3 Mb 317 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(698) 3 Mb 318 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(699) 3 Mb 319 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(700) 3 Mb 320 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(701) 3 Mb 321 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(702) 3 Mb 322 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(703) 3 Mb 323 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(704) 3 Mb 324 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(705) 3 Mb 325 Errors
+*** Error 409 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- report.gms(706) 3 Mb 326 Errors
+*** Error 409 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- report.gms(707) 3 Mb 327 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(709) 3 Mb 328 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(710) 3 Mb 329 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(711) 3 Mb 330 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(712) 3 Mb 331 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(713) 3 Mb 332 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(714) 3 Mb 333 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(715) 3 Mb 334 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(716) 3 Mb 335 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(717) 3 Mb 336 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(718) 3 Mb 337 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(719) 3 Mb 338 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(720) 3 Mb 339 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(721) 3 Mb 340 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(723) 3 Mb 341 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(724) 3 Mb 342 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(725) 3 Mb 343 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(726) 3 Mb 344 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(727) 3 Mb 345 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(728) 3 Mb 346 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(729) 3 Mb 347 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(730) 3 Mb 348 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(731) 3 Mb 349 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(732) 3 Mb 350 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(733) 3 Mb 351 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(734) 3 Mb 352 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(736) 3 Mb 354 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(737) 3 Mb 355 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(738) 3 Mb 356 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(739) 3 Mb 357 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(740) 3 Mb 358 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(741) 3 Mb 359 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(742) 3 Mb 360 Errors
+*** Error 148 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report.gms(768) 3 Mb 360 Errors
+*** Status: Compilation error(s)
+--- Job report.gms Stop 10/24/18 19:37:09 elapsed 0:00:00.730
+Exit code = 2

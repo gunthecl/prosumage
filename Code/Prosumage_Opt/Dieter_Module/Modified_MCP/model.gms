@@ -18,41 +18,41 @@ F(l,h)           Energy flow over link l in hour h [MWh]
 ;
 
 Positive Variables
-G_L(n,tech,h)            Generation level in hour h [MWh]
-G_UP(n,tech,h)           Generation upshift in hour h [MWh]
-G_DO(n,tech,h)           Generation downshift in hour h [MWh]
+G_L(tech,h)            Generation level in hour h [MWh]
+G_UP(tech,h)           Generation upshift in hour h [MWh]
+G_DO(tech,h)           Generation downshift in hour h [MWh]
 
-G_RES(n,tech,h)          Generation renewables type res in hour h [MWh]
-CU(n,tech,h)             Renewables curtailment technology res in hour h [MWh]
+G_RES(tech,h)          Generation renewables type res in hour h [MWh]
+CU(tech,h)             Renewables curtailment technology res in hour h [MWh]
 
-STO_IN(n,sto,h)          Storage inflow technology sto hour h [MWh]
-STO_OUT(n,sto,h)         Storage outflow technology sto hour h [MWh]
-STO_L(n,sto,h)           Storage level technology sto hour h [MWh]
+STO_IN(sto,h)          Storage inflow technology sto hour h [MWh]
+STO_OUT(sto,h)         Storage outflow technology sto hour h [MWh]
+STO_L(sto,h)           Storage level technology sto hour h [MWh]
 
-N_TECH(n,tech)           Technology tech built [MW]
-N_STO_E(n,sto)           Storage technology built - Energy [MWh]
-N_STO_P(n,sto)           Storage loading and discharging capacity built - Capacity [MW]
+N_TECH(tech)           Technology tech built [MW]
+N_STO_E(sto)           Storage technology built - Energy [MWh]
+N_STO_P(sto)           Storage loading and discharging capacity built - Capacity [MW]
 
-CU_PRO(n,tech,h)                 Prosumage: curtailment of renewable generation in hour h [MWh]
-G_MARKET_PRO2M(n,tech,h)         Prosumage. energy sent to market in hour h [MWh]
-G_MARKET_M2PRO(n,h)              Prosumage: withdrawal of energy from market in hour h [MWh]
-G_RES_PRO(n,tech,h)              Prosumage: hourly renewables generation in hour h [MWh]
-STO_IN_PRO2PRO(n,tech,sto,h)     Prosumage: storage loading from generation for discharging to consumption in hour h [MWh]
-STO_IN_PRO2M(n,tech,sto,h)       Prosumage: storage loading from generation for discharging to market in hour h [MWh]
-STO_IN_M2PRO(n,sto,h)            Prosumage: storage loading from market for discharging to consumption in hour h [MWh]
-STO_IN_M2M(n,sto,h)              Prosumage: storage loading from market for discharging to market in hour h [MWh]
-STO_OUT_PRO2PRO(n,sto,h)         Prosumage: storage discharging to consumption from generation in hour h [MWh]
-STO_OUT_PRO2M(n,sto,h)           Prosumage: storage discharging to market from generation in hour h [MWh]
-STO_OUT_M2PRO(n,sto,h)           Prosumage: storage discharging to consumption from market in hour h [MWh]
-STO_OUT_M2M(n,sto,h)             Prosumage: storage discharging to market from market in hour h [MWh]
-STO_L_PRO2PRO(n,sto,h)           Prosumage: storage level generation to consumption in hour h [MWh]
-STO_L_PRO2M(n,sto,h)             Prosumage: storage level generation to market in hour h [MWh]
-STO_L_M2PRO(n,sto,h)             Prosumage: storage level market to consumotion in hour h [MWh]
-STO_L_M2M(n,sto,h)               Prosumage: storage level market to market in hour h [MWh]
-N_STO_E_PRO(n,sto)               Prosumage: installed storage energy [MWh]
-N_STO_P_PRO(n,sto)               Prosumage: installed storage power [MW]
-STO_L_PRO(n,sto,h)               Prosumage: overall storage level in hour h [MWh]
-N_RES_PRO(n,tech)                Prosumage: installed renewables capacities [MW]
+CU_PRO(tech,h)                 Prosumage: curtailment of renewable generation in hour h [MWh]
+G_MARKET_PRO2M(tech,h)         Prosumage. energy sent to market in hour h [MWh]
+G_MARKET_M2PRO(h)              Prosumage: withdrawal of energy from market in hour h [MWh]
+G_RES_PRO(tech,h)              Prosumage: hourly renewables generation in hour h [MWh]
+STO_IN_PRO2PRO(tech,sto,h)     Prosumage: storage loading from generation for discharging to consumption in hour h [MWh]
+STO_IN_PRO2M(tech,sto,h)       Prosumage: storage loading from generation for discharging to market in hour h [MWh]
+STO_IN_M2PRO(sto,h)            Prosumage: storage loading from market for discharging to consumption in hour h [MWh]
+STO_IN_M2M(sto,h)              Prosumage: storage loading from market for discharging to market in hour h [MWh]
+STO_OUT_PRO2PRO(sto,h)         Prosumage: storage discharging to consumption from generation in hour h [MWh]
+STO_OUT_PRO2M(sto,h)           Prosumage: storage discharging to market from generation in hour h [MWh]
+STO_OUT_M2PRO(sto,h)           Prosumage: storage discharging to consumption from market in hour h [MWh]
+STO_OUT_M2M(sto,h)             Prosumage: storage discharging to market from market in hour h [MWh]
+STO_L_PRO2PRO(sto,h)           Prosumage: storage level generation to consumption in hour h [MWh]
+STO_L_PRO2M(sto,h)             Prosumage: storage level generation to market in hour h [MWh]
+STO_L_M2PRO(sto,h)             Prosumage: storage level market to consumotion in hour h [MWh]
+STO_L_M2M(sto,h)               Prosumage: storage level market to market in hour h [MWh]
+N_STO_E_PRO(sto)               Prosumage: installed storage energy [MWh]
+N_STO_P_PRO(sto)               Prosumage: installed storage power [MW]
+STO_L_PRO(sto,h)               Prosumage: overall storage level in hour h [MWh]
+N_RES_PRO(tech)                Prosumage: installed renewables capacities [MW]
 
 ;
 
@@ -130,26 +130,24 @@ con11o_pro_ending                        Prosumage: storage ending condition
 
 obj..
          Z =E=
-                   sum( (h,map_n_tech(n,dis)) , c_m(n,dis)*G_L(n,dis,h) )
-                 + sum( (h,map_n_tech(n,dis))$(ord(h)>1) , c_up(n,dis)*G_UP(n,dis,h) )
-                 + sum( (h,map_n_tech(n,dis)) , c_do(n,dis)*G_DO(n,dis,h) )
-                 + sum( (h,map_n_tech(n,nondis)) , c_cu(n,nondis)*CU(n,nondis,h) )
-                 + sum( (h,map_n_sto(n,sto)) , c_m_sto(n,sto) * ( STO_OUT(n,sto,h) + STO_IN(n,sto,h) ) )
-
-                 + sum( map_n_tech(n,tech) , c_i(n,tech)*N_TECH(n,tech) )
-                 + sum( map_n_tech(n,tech) , c_fix(n,tech)*N_TECH(n,tech) )
-                 + sum( map_n_sto(n,sto) , c_i_sto_e(n,sto)*N_STO_E(n,sto) )
-                 + sum( map_n_sto(n,sto) , c_fix_sto(n,sto)/2*(N_STO_P(n,sto)+N_STO_E(n,sto)) )
-                 + sum( map_n_sto(n,sto) , c_i_sto_p(n,sto)*N_STO_P(n,sto) )
+                   sum( (h,dis) , c_m(dis)*G_L(dis,h) )
+                 + sum( (h,dis)$(ord(h)>1) , c_up(dis)*G_UP(dis,h) )
+                 + sum( (h,dis) , c_do(dis)*G_DO(dis,h) )
+                 + sum( (h,nondis) , c_cu(nondis)*CU(nondis,h) )
+                 + sum( (h,sto) , c_m_sto(sto) * ( STO_OUT(sto,h) + STO_IN(sto,h) ) )
+                 + sum( tech , c_i(tech)*N_TECH(tech) )
+                 + sum( tech , c_fix(tech)*N_TECH(tech) )
+                 + sum( sto , c_i_sto_e(sto)*N_STO_E(sto) )
+                 + sum( sto , c_fix_sto(sto)/2*(N_STO_P(sto)+ N_STO_E(sto)) )
+                 + sum( sto , c_i_sto_p(sto)*N_STO_P(sto) )
 %prosumage%$ontext
-                 + sum( map_n_res_pro(n,res) , c_i(n,res)*N_RES_PRO(n,res) )
-                 + sum( map_n_res_pro(n,res) , c_fix(n,res)*N_RES_PRO(n,res) )
+                 + sum( res , c_i(res)*N_RES_PRO(res) )
+                 + sum( res , c_fix(res)*N_RES_PRO(res) )
 
-                 + sum( map_n_sto_pro(n,sto) , c_i_sto_e(n,sto)*N_STO_E_PRO(n,sto) )
-                 + sum( map_n_sto_pro(n,sto) , c_fix_sto(n,sto)/2*(N_STO_P_PRO(n,sto) + N_STO_E_PRO(n,sto)) )
-                 + sum( map_n_sto_pro(n,sto) , c_i_sto_p(n,sto)*N_STO_P_PRO(n,sto) )
-
-                 + sum( (h,map_n_sto_pro(n,sto)) , c_m_sto(n,sto) * ( STO_OUT_PRO2PRO(n,sto,h) + STO_OUT_M2PRO(n,sto,h) + STO_OUT_PRO2M(n,sto,h) + STO_OUT_M2M(n,sto,h) + sum( res , STO_IN_PRO2PRO(n,res,sto,h) + STO_IN_PRO2M(n,res,sto,h)) + STO_OUT_PRO2M(n,sto,h) + STO_OUT_M2M(n,sto,h) ) )
+                 + sum( sto , c_i_sto_e(sto)*N_STO_E_PRO(sto) )
+                 + sum( sto , c_fix_sto(sto)/2*(N_STO_P_PRO(sto) + N_STO_E_PRO(sto)) )
+                 + sum( sto , c_i_sto_p(sto)*N_STO_P_PRO(sto) )
+                 + sum( (h,sto) , c_m_sto(sto) * ( STO_OUT_PRO2PRO(sto,h) + STO_OUT_M2PRO(sto,h) + STO_OUT_PRO2M(sto,h) + STO_OUT_M2M(sto,h) + sum( res , STO_IN_PRO2PRO(res,sto,h) + STO_IN_PRO2M(res,sto,h)) + STO_OUT_PRO2M(sto,h) + STO_OUT_M2M(sto,h) ) )
 $ontext
 $offtext
 ;
@@ -159,112 +157,112 @@ $offtext
 * ---------------------------------------------------------------------------- *
 
 * Energy balance
-con1a_bal(n,hh)..
-         ( 1 - phi_pro_load(n) ) * d(n,hh) + sum( map_n_sto(n,sto) , STO_IN(n,sto,hh) )
+con1a_bal(hh)..
+         ( 1 - phi_pro_load )* d(hh) + sum( sto , STO_IN(sto,hh) )
 %prosumage%$ontext
-         + G_MARKET_M2PRO(n,hh)
-         + sum( map_n_sto_pro(n,sto) , STO_IN_M2PRO(n,sto,hh))
-         + sum( map_n_sto_pro(n,sto) , STO_IN_M2M(n,sto,hh))
+         + G_MARKET_M2PRO(hh)
+         + sum( sto , STO_IN_M2PRO(sto,hh))
+         + sum( sto , STO_IN_M2M(sto,hh))
 $ontext
 $offtext
 
          =E=
-         sum( map_n_tech(n,dis) , G_L(n,dis,hh)) + sum( map_n_tech(n,nondis) , G_RES(n,nondis,hh)) + sum( sto , STO_OUT(n,sto,hh) )
+         sum( dis , G_L(dis,hh)) + sum( nondis , G_RES(nondis,hh)) + sum( sto , STO_OUT(sto,hh) )
 
 %prosumage%$ontext
-         + sum( map_n_res_pro(n,res) , G_MARKET_PRO2M(n,res,hh) )
-         + sum( map_n_sto_pro(n,sto) , STO_OUT_PRO2M(n,sto,hh))
-         + sum( map_n_sto_pro(n,sto) , STO_OUT_M2M(n,sto,hh))
+         + sum( res , G_MARKET_PRO2M(res,hh) )
+         + sum( sto , STO_OUT_PRO2M(sto,hh))
+         + sum( sto , STO_OUT_M2M(sto,hh))
 $ontext
 $offtext
 
 ;
 
-con2a_loadlevel(n,dis,h)$(ord(h) > 1 AND map_n_tech(n,dis))..
-        G_L(n,dis,h) =E= G_L(n,dis,h-1) + G_UP(n,dis,h) - G_DO(n,dis,h)
+con2a_loadlevel(dis,h)$(ord(h) > 1)..
+        G_L(dis,h) =E= G_L(dis,h-1) + G_UP(dis,h) - G_DO(dis,h)
 ;
 
-con2b_loadlevelstart(n,dis,h)$(ord(h) = 1 AND map_n_tech(n,dis))..
-         G_L(n,dis,h) =E= G_UP(n,dis,h)
+con2b_loadlevelstart(dis,h)$(ord(h) = 1)..
+         G_L(dis,h) =E= G_UP(dis,h)
 ;
 
 * ---------------------------------------------------------------------------- *
 ***** Hourly maximum generation caps and constraints related to reserves   *****
 * ---------------------------------------------------------------------------- *
 
-con3a_maxprod_dispatchable(n,dis,h)$(map_n_tech(n,dis))..
-        G_L(n,dis,h)
+con3a_maxprod_dispatchable(dis,h)..
+        G_L(dis,h)
 
-        =L= N_TECH(n,dis)
+        =L= N_TECH(dis)
 ;
 
-con3e_maxprod_res(n,nondis,h)$(map_n_tech(n,nondis))..
-        G_RES(n,nondis,h) + CU(n,nondis,h)
+con3e_maxprod_res(nondis,h)..
+        G_RES(nondis,h) + CU(nondis,h)
 
-        =E= phi_res(n,nondis,h) * N_TECH(n,nondis)
+        =E= phi_res(nondis,h) * N_TECH(nondis)
 ;
 
 * ---------------------------------------------------------------------------- *
 ***** Storage constraints *****
 * ---------------------------------------------------------------------------- *
 
-con4a_stolev_start(n,sto,h)$(map_n_sto(n,sto) AND ord(h) = 1)..
-        STO_L(n,sto,h) =E= phi_sto_ini(n,sto) * N_STO_E(n,sto) + STO_IN(n,sto,h)*(1+eta_sto(n,sto))/2 - STO_OUT(n,sto,h)/(1+eta_sto(n,sto))*2
+con4a_stolev_start(sto,h)$(ord(h) = 1)..
+        STO_L(sto,h) =E= phi_sto_ini(sto) * N_STO_E(sto) + STO_IN(sto,h)*(1+eta_sto(sto))/2 - STO_OUT(sto,h)/(1+eta_sto(sto))*2
 ;
 
-con4b_stolev(n,sto,h)$((ord(h)>1) AND map_n_sto(n,sto))..
-         STO_L(n,sto,h) =E= STO_L(n,sto,h-1) + STO_IN(n,sto,h)*(1+eta_sto(n,sto))/2 - STO_OUT(n,sto,h)/(1+eta_sto(n,sto))*2
+con4b_stolev(sto,h)$((ord(h)>1))..
+         STO_L(sto,h) =E= STO_L(sto,h-1) + STO_IN(sto,h)*(1+eta_sto(sto))/2 - STO_OUT(sto,h)/(1+eta_sto(sto))*2
 
 ;
 
-con4c_stolev_max(n,sto,h)$(map_n_sto(n,sto))..
-        STO_L(n,sto,h) =L= N_STO_E(n,sto)
+con4c_stolev_max(sto,h)..
+        STO_L(sto,h) =L= N_STO_E(sto)
 ;
 
-con4d_maxin_sto(n,sto,h)$(map_n_sto(n,sto))..
-        STO_IN(n,sto,h)
+con4d_maxin_sto(sto,h)..
+        STO_IN(sto,h)
 
-        =L= N_STO_P(n,sto)
+        =L= N_STO_P(sto)
 ;
 
-con4e_maxout_sto(n,sto,h)$(map_n_sto(n,sto))..
-        STO_OUT(n,sto,h)
+con4e_maxout_sto(sto,h)..
+        STO_OUT(sto,h)
 
-        =L= N_STO_P(n,sto)
+        =L= N_STO_P(sto)
 ;
 
-con4j_ending(n,sto,h)$(ord(h) = card(h) AND map_n_sto(n,sto))..
-         STO_L(n,sto,h) =E= phi_sto_ini(n,sto) * N_STO_E(n,sto)
+con4j_ending(sto,h)$(ord(h) = card(h))..
+         STO_L(sto,h) =E= phi_sto_ini(sto) * N_STO_E(sto)
 ;
 
-con4k_PHS_EtoP(n,sto)$(map_n_sto(n,sto))..
-        N_STO_E(n,sto) =L= etop_max(n,sto) * N_STO_P(n,sto)
+con4k_PHS_EtoP(sto)..
+        N_STO_E(sto) =L= etop_max(sto) * N_STO_P(sto)
 ;
 
 * ---------------------------------------------------------------------------- *
 ***** Quotas for renewables and biomass *****
 * ---------------------------------------------------------------------------- *
 
-con5a_minRES(n)..
-sum( h , G_L(n,'bio',h) + sum( map_n_tech(n,nondis) , G_RES(n,nondis,h))
+con5a_minRES..
+sum( h , G_L('bio',h) + sum( nondis , G_RES(nondis,h))
 
 %prosumage%$ontext
-         + sum( map_n_sto_pro(n,sto) , STO_OUT_PRO2PRO(n,sto,h) + STO_OUT_PRO2M(n,sto,h)) + sum( map_n_res_pro(n,res) , G_MARKET_PRO2M(n,res,h) + G_RES_PRO(n,res,h))
+         + sum( sto , STO_OUT_PRO2PRO(sto,h) + STO_OUT_PRO2M(sto,h)) + sum( res , G_MARKET_PRO2M(res,h) + G_RES_PRO(res,h))
 $ontext
 $offtext
 )
-        =G= phi_min_res * phi_min_res_exog(n) * sum( h ,
-         sum( map_n_tech(n,dis) , G_L(n,dis,h)) + sum( map_n_tech(n,nondis) , G_RES(n,nondis,h))
+        =G= phi_min_res * phi_min_res_exog * sum( h ,
+         sum( dis , G_L(dis,h)) + sum( nondis , G_RES(nondis,h))
 
 %prosumage%$ontext
-         + sum( map_n_res_pro(n,res) , phi_res(n,res,h) * N_RES_PRO(n,res) - CU_PRO(n,res,h))
+         + sum( res , phi_res(res,h) * N_RES_PRO(res) - CU_PRO(res,h))
 $ontext
 $offtext
          )
 ;
 
-con5b_max_energy(n,dis)$(map_n_tech(n,dis) AND m_e(n,dis))..
-         sum( h , G_L(n,dis,h) ) =L= m_e(n,dis)
+con5b_max_energy(dis)$(m_e(dis))..
+         sum( h , G_L(dis,h) ) =L= m_e(dis)
 ;
 
 
@@ -272,30 +270,30 @@ con5b_max_energy(n,dis)$(map_n_tech(n,dis) AND m_e(n,dis))..
 ***** Maximum installation constraints *****
 * ---------------------------------------------------------------------------- *
 
-con8a_max_I_power(n,tech)$(map_n_tech(n,tech))..
-         N_TECH(n,tech) =L= m_p(n,tech)
+con8a_max_I_power(tech)..
+         N_TECH(tech) =L= m_p(tech)
 ;
 
-con8b_max_I_sto_e(n,sto)$(map_n_sto(n,sto))..
-         N_STO_E(n,sto) =L= m_sto_e(n,sto)
+con8b_max_I_sto_e(sto)..
+         N_STO_E(sto) =L= m_sto_e(sto)
 ;
 
-con8c_max_I_sto_p(n,sto)$(map_n_sto(n,sto))..
-         N_STO_P(n,sto) =L= m_sto_p(n,sto)
+con8c_max_I_sto_p(sto)..
+         N_STO_P(sto) =L= m_sto_p(sto)
 ;
 
 
 
-con8f_max_pro_res(n,res)$(map_n_res_pro(n,res))..
-         N_RES_PRO(n,res) =L= m_res_pro(n,res)
+con8f_max_pro_res(res)..
+         N_RES_PRO(res) =L= m_res_pro(res)
 ;
 
-con8g_max_pro_sto_e(n,sto)$(map_n_sto_pro(n,sto))..
-         N_STO_E_PRO(n,sto) =L= m_sto_pro_e(n,sto)
+con8g_max_pro_sto_e(sto)..
+         N_STO_E_PRO(sto) =L= m_sto_pro_e(sto)
 ;
 
-con8h_max_sto_pro_p(n,sto)$(map_n_sto_pro(n,sto))..
-         N_STO_P_PRO(n,sto) =L= m_sto_pro_p(n,sto)
+con8h_max_sto_pro_p(sto)..
+         N_STO_P_PRO(sto) =L= m_sto_pro_p(sto)
 ;
 
 
@@ -304,86 +302,86 @@ con8h_max_sto_pro_p(n,sto)$(map_n_sto_pro(n,sto))..
 ***** Prosumage constraints *****
 * ---------------------------------------------------------------------------- *
 
-con11a_pro_distrib(n,res,h)$(map_n_res_pro(n,res))..
-         phi_res(n,res,h) * N_RES_PRO(n,res)
+con11a_pro_distrib(res,h)..
+         phi_res(res,h) * N_RES_PRO(res)
          =E=
-         CU_PRO(n,res,h) + G_MARKET_PRO2M(n,res,h) + G_RES_PRO(n,res,h) + sum( map_n_sto_pro(n,sto) , STO_IN_PRO2PRO(n,res,sto,h) + STO_IN_PRO2M(n,res,sto,h) )
+         CU_PRO(res,h) + G_MARKET_PRO2M(res,h) + G_RES_PRO(res,h) + sum( sto , STO_IN_PRO2PRO(res,sto,h) + STO_IN_PRO2M(res,sto,h) )
 ;
 
-con11b_pro_balance(n,h)..
-         phi_pro_load(n) * d(n,h)
+con11b_pro_balance(h)..
+         phi_pro_load * d(h)
          =E=
-         sum( map_n_res_pro(n,res) , G_RES_PRO(n,res,h)) + sum( map_n_sto_pro(n,sto) , STO_OUT_PRO2PRO(n,sto,h) + STO_OUT_M2PRO(n,sto,h) ) + G_MARKET_M2PRO(n,h)
+         sum( res , G_RES_PRO(res,h)) + sum( sto , STO_OUT_PRO2PRO(sto,h) + STO_OUT_M2PRO(sto,h) ) + G_MARKET_M2PRO(h)
 ;
 
-con11c_pro_selfcon(n)..
-         sum( (h,map_n_res_pro(n,res)) , G_RES_PRO(n,res,h) ) + sum( (h,sto) , STO_OUT_PRO2PRO(n,sto,h) )
+con11c_pro_selfcon..
+         sum( (h,res) , G_RES_PRO(res,h) ) + sum( (h,sto) , STO_OUT_PRO2PRO(sto,h) )
          =G=
-         phi_pro_self * sum( h , phi_pro_load(n) * d(n,h))
+         phi_pro_self * sum( h , phi_pro_load * d(h))
 ;
 
-con11d_pro_stolev_PRO2PRO(n,sto,h)$(map_n_sto_pro(n,sto) AND ord(h) > 1 )..
-         STO_L_PRO2PRO(n,sto,h) =E= STO_L_PRO2PRO(n,sto,h-1) + sum( map_n_res_pro(n,res) , STO_IN_PRO2PRO(n,res,sto,h))*(1+eta_sto(n,sto))/2 - STO_OUT_PRO2PRO(n,sto,h)/(1+eta_sto(n,sto))*2
+con11d_pro_stolev_PRO2PRO(sto,h)$(ord(h) > 1 )..
+         STO_L_PRO2PRO(sto,h) =E= STO_L_PRO2PRO(sto,h-1) + sum( res , STO_IN_PRO2PRO(res,sto,h))*(1+eta_sto(sto))/2 - STO_OUT_PRO2PRO(sto,h)/(1+eta_sto(sto))*2
 ;
 
-con11e_pro_stolev_PRO2M(n,sto,h)$(map_n_sto_pro(n,sto) AND ord(h) > 1)..
-         STO_L_PRO2M(n,sto,h) =E= STO_L_PRO2M(n,sto,h-1) + sum( map_n_res_pro(n,res) , STO_IN_PRO2M(n,res,sto,h))*(1+eta_sto(n,sto))/2 - STO_OUT_PRO2M(n,sto,h)/(1+eta_sto(n,sto))*2
+con11e_pro_stolev_PRO2M(sto,h)$(ord(h) > 1)..
+         STO_L_PRO2M(sto,h) =E= STO_L_PRO2M(sto,h-1) + sum( res , STO_IN_PRO2M(res,sto,h))*(1+eta_sto(sto))/2 - STO_OUT_PRO2M(sto,h)/(1+eta_sto(sto))*2
 ;
 
-con11f_pro_stolev_M2PRO(n,sto,h)$(map_n_sto_pro(n,sto) AND ord(h) > 1)..
-         STO_L_M2PRO(n,sto,h) =E= STO_L_M2PRO(n,sto,h-1) + STO_IN_M2PRO(n,sto,h)*(1+eta_sto(n,sto))/2 - STO_OUT_M2PRO(n,sto,h)/(1+eta_sto(n,sto))*2
+con11f_pro_stolev_M2PRO(sto,h)$(ord(h) > 1)..
+         STO_L_M2PRO(sto,h) =E= STO_L_M2PRO(sto,h-1) + STO_IN_M2PRO(sto,h)*(1+eta_sto(sto))/2 - STO_OUT_M2PRO(sto,h)/(1+eta_sto(sto))*2
 ;
 
-con11g_pro_stolev_M2M(n,sto,h)$(ord(h) > 1)..
-         STO_L_M2M(n,sto,h) =E= STO_L_M2M(n,sto,h-1) + STO_IN_M2M(n,sto,h)*(1+eta_sto(n,sto))/2 - STO_OUT_M2M(n,sto,h)/(1+eta_sto(n,sto))*2
+con11g_pro_stolev_M2M(sto,h)$(ord(h) > 1)..
+         STO_L_M2M(sto,h) =E= STO_L_M2M(sto,h-1) + STO_IN_M2M(sto,h)*(1+eta_sto(sto))/2 - STO_OUT_M2M(sto,h)/(1+eta_sto(sto))*2
 ;
 
-con11h_1_pro_stolev_start_PRO2PRO(n,sto,h)$(map_n_sto_pro(n,sto) AND ord(h) = 1)..
-        STO_L_PRO2PRO(n,sto,h) =E= 0.25 * phi_sto_pro_ini(n,sto) * N_STO_E_PRO(n,sto) + sum( map_n_res_pro(n,res) , STO_IN_PRO2PRO(n,res,sto,h))*(1+eta_sto(n,sto))/2 - STO_OUT_PRO2PRO(n,sto,h)/(1+eta_sto(n,sto))*2
+con11h_1_pro_stolev_start_PRO2PRO(sto,h)$( ord(h) = 1)..
+        STO_L_PRO2PRO(sto,h) =E= 0.25 * phi_sto_pro_ini(sto) * N_STO_E_PRO(sto) + sum( res , STO_IN_PRO2PRO(res,sto,h))*(1+eta_sto(sto))/2 - STO_OUT_PRO2PRO(sto,h)/(1+eta_sto(sto))*2
 ;
 
-con11h_2_pro_stolev_start_PRO2M(n,sto,h)$(map_n_sto_pro(n,sto) AND ord(h) = 1)..
-        STO_L_PRO2M(n,sto,h) =E= 0.25 * phi_sto_pro_ini(n,sto) * N_STO_E_PRO(n,sto) + sum( map_n_res_pro(n,res) , STO_IN_PRO2M(n,res,sto,h))*(1+eta_sto(n,sto))/2 - STO_OUT_PRO2M(n,sto,h)/(1+eta_sto(n,sto))*2
+con11h_2_pro_stolev_start_PRO2M(sto,h)$(ord(h) = 1)..
+        STO_L_PRO2M(sto,h) =E= 0.25 * phi_sto_pro_ini(sto) * N_STO_E_PRO(sto) + sum( res , STO_IN_PRO2M(res,sto,h))*(1+eta_sto(sto))/2 - STO_OUT_PRO2M(sto,h)/(1+eta_sto(sto))*2
 ;
 
-con11h_3_pro_stolev_start_M2PRO(n,sto,h)$(map_n_sto_pro(n,sto) AND ord(h) = 1)..
-        STO_L_M2PRO(n,sto,h) =E= 0.25 * phi_sto_pro_ini(n,sto) * N_STO_E_PRO(n,sto) + STO_IN_M2PRO(n,sto,h)*(1+eta_sto(n,sto))/2 - STO_OUT_M2PRO(n,sto,h)/(1+eta_sto(n,sto))*2
+con11h_3_pro_stolev_start_M2PRO(sto,h)$( ord(h) = 1)..
+        STO_L_M2PRO(sto,h) =E= 0.25 * phi_sto_pro_ini(sto) * N_STO_E_PRO(sto) + STO_IN_M2PRO(sto,h)*(1+eta_sto(sto))/2 - STO_OUT_M2PRO(sto,h)/(1+eta_sto(sto))*2
 ;
 
-con11h_4_pro_stolev_start_M2M(n,sto,h)$(map_n_sto_pro(n,sto) AND ord(h) = 1)..
-        STO_L_M2M(n,sto,h) =E= 0.25 * phi_sto_pro_ini(n,sto) * N_STO_E_PRO(n,sto) + STO_IN_M2M(n,sto,h)*(1+eta_sto(n,sto))/2 - STO_OUT_M2M(n,sto,h)/(1+eta_sto(n,sto))*2
+con11h_4_pro_stolev_start_M2M(sto,h)$(ord(h) = 1)..
+        STO_L_M2M(sto,h) =E= 0.25 * phi_sto_pro_ini(sto) * N_STO_E_PRO(sto) + STO_IN_M2M(sto,h)*(1+eta_sto(sto))/2 - STO_OUT_M2M(sto,h)/(1+eta_sto(sto))*2
 ;
 
-con11i_pro_stolev(n,sto,h)$(map_n_sto_pro(n,sto) AND ord(h)>1)..
-         STO_L_PRO(n,sto,h) =E=   STO_L_PRO2PRO(n,sto,h) +  STO_L_PRO2M(n,sto,h) + STO_L_M2PRO(n,sto,h) + STO_L_M2M(n,sto,h)
+con11i_pro_stolev(sto,h)$(ord(h)>1)..
+         STO_L_PRO(sto,h) =E=   STO_L_PRO2PRO(sto,h) +  STO_L_PRO2M(sto,h) + STO_L_M2PRO(sto,h) + STO_L_M2M(sto,h)
 ;
 
-con11j_pro_stolev_max(n,sto,h)..
-        STO_L_PRO(n,sto,h) =L= N_STO_E_PRO(n,sto)
+con11j_pro_stolev_max(sto,h)..
+        STO_L_PRO(sto,h) =L= N_STO_E_PRO(sto)
 ;
 
-con11k_pro_maxin_sto(n,sto,h)$(map_n_sto_pro(n,sto))..
-        sum( map_n_res_pro(n,res) , STO_IN_PRO2PRO(n,res,sto,h) + STO_IN_PRO2M(n,res,sto,h) ) + STO_IN_M2PRO(n,sto,h) + STO_IN_M2M(n,sto,h)
-        =L= N_STO_P_PRO(n,sto)
+con11k_pro_maxin_sto(sto,h)..
+        sum( res , STO_IN_PRO2PRO(res,sto,h) + STO_IN_PRO2M(res,sto,h) ) + STO_IN_M2PRO(sto,h) + STO_IN_M2M(sto,h)
+        =L= N_STO_P_PRO(sto)
 ;
 
-con11l_pro_maxout_sto(n,sto,h)$(map_n_sto_pro(n,sto))..
-        STO_OUT_PRO2PRO(n,sto,h) + STO_OUT_PRO2M(n,sto,h) + STO_OUT_M2PRO(n,sto,h) + STO_OUT_M2M(n,sto,h)
-        =L= N_STO_P_PRO(n,sto)
+con11l_pro_maxout_sto(sto,h)..
+        STO_OUT_PRO2PRO(sto,h) + STO_OUT_PRO2M(sto,h) + STO_OUT_M2PRO(sto,h) + STO_OUT_M2M(sto,h)
+        =L= N_STO_P_PRO(sto)
 ;
 
-con11m_pro_maxout_lev(n,sto,h)$(map_n_sto_pro(n,sto))..
-        ( STO_OUT_PRO2PRO(n,sto,h) + STO_OUT_M2PRO(n,sto,h) + STO_OUT_PRO2M(n,sto,h) + STO_OUT_M2M(n,sto,h) ) / (1+eta_sto(n,sto))*2
-        =L= STO_L_PRO(n,sto,h-1)
+con11m_pro_maxout_lev(sto,h)..
+        ( STO_OUT_PRO2PRO(sto,h) + STO_OUT_M2PRO(sto,h) + STO_OUT_PRO2M(sto,h) + STO_OUT_M2M(sto,h) ) / (1+eta_sto(sto))*2
+        =L= STO_L_PRO(sto,h-1)
 ;
 
-con11n_pro_maxin_lev(n,sto,h)$(map_n_sto_pro(n,sto))..
-        ( sum( map_n_res_pro(n,res) , STO_IN_PRO2PRO(n,res,sto,h) + STO_IN_PRO2M(n,res,sto,h) ) + STO_IN_M2PRO(n,sto,h) + STO_IN_M2M(n,sto,h) ) * (1+eta_sto(n,sto))/2
-        =L= N_STO_E_PRO(n,sto) - STO_L_PRO(n,sto,h-1)
+con11n_pro_maxin_lev(sto,h)..
+        ( sum( res , STO_IN_PRO2PRO(res,sto,h) + STO_IN_PRO2M(res,sto,h) ) + STO_IN_M2PRO(sto,h) + STO_IN_M2M(sto,h) ) * (1+eta_sto(sto))/2
+        =L= N_STO_E_PRO(sto) - STO_L_PRO(sto,h-1)
 ;
 
-con11o_pro_ending(n,sto,h)$(map_n_sto_pro(n,sto) AND ord(h) = card(h))..
-         STO_L_PRO(n,sto,h) =E= phi_sto_pro_ini(n,sto) * N_STO_E_PRO(n,sto)
+con11o_pro_ending(sto,h)$( ord(h) = card(h))..
+         STO_L_PRO(sto,h) =E= phi_sto_pro_ini(sto) * N_STO_E_PRO(sto)
 ;
 
 

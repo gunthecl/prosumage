@@ -1,0 +1,207 @@
+
+--- Job model.gms Start 10/24/18 17:28:56 24.2.3 r46072 WEX-WEI x86_64/MS Windows
+GAMS 24.2.3   Copyright (C) 1987-2014 GAMS Development. All rights reserved
+Licensee: Medium MUD - 10 User License                   S170316:1123AO-GEN
+          Deutsches Institut fuer Wirtschaftsforschung DIW, AbteilungDC3975
+          License for teaching and research at degree granting institutions
+          License_Admin:_Claudia_Kemfert,_bbibra@diw.de____________________
+--- Starting compilation
+--- model.gms(17) 2 Mb 2 Errors
+*** Error 120 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unknown identifier entered as set
+*** Error 120 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unknown identifier entered as set
+--- model.gms(21) 2 Mb 3 Errors
+*** Error 120 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unknown identifier entered as set
+--- model.gms(28) 2 Mb 4 Errors
+*** Error 120 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unknown identifier entered as set
+--- model.gms(133) 3 Mb 6 Errors
+*** Error 120 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unknown identifier entered as set
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unknown symbol
+--- model.gms(134) 3 Mb 8 Errors
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unknown symbol
+*** Error 171 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Domain violation for set
+--- model.gms(135) 3 Mb 10 Errors
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unknown symbol
+*** Error 171 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Domain violation for set
+--- model.gms(136) 3 Mb 13 Errors
+*** Error 120 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unknown identifier entered as set
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unknown symbol
+*** Error 171 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Domain violation for set
+--- model.gms(137) 3 Mb 14 Errors
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unknown symbol
+--- model.gms(139) 3 Mb 15 Errors
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unknown symbol
+--- model.gms(140) 3 Mb 16 Errors
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unknown symbol
+--- model.gms(141) 3 Mb 17 Errors
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unknown symbol
+--- model.gms(142) 3 Mb 18 Errors
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unknown symbol
+--- model.gms(143) 3 Mb 19 Errors
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unknown symbol
+--- model.gms(144) 3 Mb 20 Errors
+*** Error 409 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- model.gms(162) 3 Mb 21 Errors
+*** Error 120 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unknown identifier entered as set
+--- model.gms(163) 3 Mb 23 Errors
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unknown symbol
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unknown symbol
+--- model.gms(164) 3 Mb 25 Errors
+*** Error  37 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    '=l=' or '=e=' or '=g=' operator expected
+*** Error 409 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- model.gms(184) 3 Mb 27 Errors
+*** Error 171 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Domain violation for set
+*** Error 171 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Domain violation for set
+--- model.gms(188) 3 Mb 28 Errors
+*** Error 171 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Domain violation for set
+--- model.gms(198) 3 Mb 29 Errors
+*** Error 171 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Domain violation for set
+--- model.gms(202) 3 Mb 31 Errors
+*** Error 171 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Domain violation for set
+*** Error 171 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Domain violation for set
+--- model.gms(204) 3 Mb 33 Errors
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unknown symbol
+*** Error 171 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Domain violation for set
+--- model.gms(212) 3 Mb 35 Errors
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unknown symbol
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unknown symbol
+--- model.gms(241) 3 Mb 36 Errors
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unknown symbol
+--- model.gms(249) 3 Mb 37 Errors
+*** Error 171 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Domain violation for set
+--- model.gms(251) 3 Mb 40 Errors
+*** Error   8 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    ')' expected
+*** Error  37 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    '=l=' or '=e=' or '=g=' operator expected
+*** Error 409 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- model.gms(266) 3 Mb 41 Errors
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unknown symbol
+--- model.gms(276) 3 Mb 42 Errors
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unknown symbol
+--- model.gms(280) 3 Mb 43 Errors
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unknown symbol
+--- model.gms(284) 3 Mb 44 Errors
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unknown symbol
+--- model.gms(289) 3 Mb 46 Errors
+*** Error 120 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unknown identifier entered as set
+*** Error 340 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    A label/element with the same name exist. You may have forgotten
+       to quote a label/element reference. For example,
+       set i / a,b,c /; parameter x(i); x('a') = 10;
+--- model.gms(290) 3 Mb 48 Errors
+*** Error 171 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Domain violation for set
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unknown symbol
+--- model.gms(294) 3 Mb 49 Errors
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unknown symbol
+--- model.gms(298) 3 Mb 50 Errors
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unknown symbol
+--- model.gms(308) 3 Mb 51 Errors
+*** Error 171 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Domain violation for set
+--- model.gms(310) 3 Mb 56 Errors
+*** Error 171 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Domain violation for set
+*** Error 171 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Domain violation for set
+*** Error 171 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Domain violation for set
+*** Error 171 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Domain violation for set
+*** Error 171 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Domain violation for set
+--- model.gms(316) 3 Mb 57 Errors
+*** Error 171 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Domain violation for set
+--- model.gms(320) 3 Mb 58 Errors
+*** Error 171 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Domain violation for set
+--- model.gms(322) 3 Mb 59 Errors
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unknown symbol
+--- model.gms(326) 3 Mb 60 Errors
+*** Error 171 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Domain violation for set
+--- model.gms(330) 3 Mb 61 Errors
+*** Error 171 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Domain violation for set
+--- model.gms(342) 3 Mb 63 Errors
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unknown symbol
+*** Error 171 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Domain violation for set
+--- model.gms(346) 3 Mb 64 Errors
+*** Error 171 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Domain violation for set
+--- model.gms(366) 3 Mb 66 Errors
+*** Error 171 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Domain violation for set
+*** Error 171 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Domain violation for set
+--- model.gms(381) 3 Mb 68 Errors
+*** Error 171 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Domain violation for set
+*** Error 171 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Domain violation for set
+--- model.gms(422) 3 Mb 72 Errors
+*** Error   2 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Identifier expected
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unknown symbol
+*** Error   2 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Identifier expected
+*** Error 140 in C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unknown symbol
+--- model.gms(447) 3 Mb 72 Errors
+*** Status: Compilation error(s)
+--- Job model.gms Stop 10/24/18 17:28:56 elapsed 0:00:00.144
+Exit code = 2

@@ -1,87 +1,86 @@
 
---- Job DIETER.gms Start 10/22/18 21:51:09 24.7.4 r58773 WEX-WEI x86 64bit/MS Windows
-GAMS 24.7.4   Copyright (C) 1987-2016 GAMS Development. All rights reserved
+--- Job DIETER.gms Start 10/24/18 19:54:02 24.2.3 r46072 WEX-WEI x86_64/MS Windows
+GAMS 24.2.3   Copyright (C) 1987-2014 GAMS Development. All rights reserved
 Licensee: Medium MUD - 10 User License                   S170316:1123AO-GEN
           Deutsches Institut fuer Wirtschaftsforschung DIW, AbteilungDC3975
           License for teaching and research at degree granting institutions
-          License Admin: Claudia Kemfert, bbibra@diw.de                    
+          License_Admin:_Claudia_Kemfert,_bbibra@diw.de____________________
 --- Starting compilation
 --- DIETER.gms(153) 3 Mb
---- .dataload.gms(403) 3 Mb
+--- .dataload.gms(407) 3 Mb
 --- call gdxxrw data_input.xlsx @temp.tmp o=Data_input maxdupeerrors=100
 
-GDXXRW           24.7.4 r58773 Released Sep 19, 2016 VS8 x86 32bit/MS Windows 
-Input file : C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\data_input.xlsx
-Output file: C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\Data_input.gdx
-Total time = 1859 Ms
---- .dataload.gms(405) 3 Mb
---- GDXin=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\Data_input.gdx
---- .dataload.gms(455) 3 Mb
+GDXXRW           24.2.3 r46072 Released May 22, 2014 VS8 x86/MS Windows       
+Input file : C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\data_input.xlsx
+Output file: C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\Data_input.gdx
+Value expected in cell: spatial!B3; found l1
+Total number of bad values for symbol topology_data = 1
+Total time = 1216 Ms
+--- .dataload.gms(409) 3 Mb
+--- GDXin=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\Data_input.gdx
+--- .dataload.gms(461) 3 Mb
 --- call gdxxrw time_series.xlsx @temp2.tmp o=time_series
 
-GDXXRW           24.7.4 r58773 Released Sep 19, 2016 VS8 x86 32bit/MS Windows 
-Input file : C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\time_series.xlsx
-Output file: C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\time_series.gdx
-Total time = 26422 Ms
---- .dataload.gms(457) 3 Mb
---- GDXin=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\time_series.gdx
---- .dataload.gms(787) 25 Mb
---- DIETER.gms(296) 25 Mb
---- .model.gms(447) 25 Mb
---- DIETER.gms(475) 25 Mb
---- .fix.gms(317) 25 Mb
---- DIETER.gms(476) 25 Mb
---- .scenario.gms(122) 25 Mb
---- DIETER.gms(635) 25 Mb
---- .report.gms(1411) 25 Mb
---- DIETER.gms(666) 26 Mb
---- Starting execution: elapsed 0:00:28.586
---- DIETER.gms(2304) 93 Mb
+GDXXRW           24.2.3 r46072 Released May 22, 2014 VS8 x86/MS Windows       
+Input file : C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\time_series.xlsx
+Output file: C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\time_series.gdx
+Total time = 19874 Ms
+--- .dataload.gms(462) 3 Mb
+--- GDXin=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\time_series.gdx
+--- .dataload.gms(776) 5 Mb
+--- DIETER.gms(273) 5 Mb
+--- .model.gms(445) 5 Mb
+--- DIETER.gms(386) 5 Mb
+--- .fix.gms(175) 5 Mb
+--- DIETER.gms(387) 5 Mb
+--- .scenario.gms(125) 5 Mb
+--- DIETER.gms(451) 5 Mb
+--- .report.gms(770) 5 Mb
+--- DIETER.gms(473) 6 Mb
+--- Starting execution: elapsed 0:00:21.745
+--- DIETER.gms(1969) 20 Mb
 ---
 --- collecting and writing gdx file 
 ---
 --- Generating LP model DIETER
---- DIETER.gms(1214) 109 Mb  14 secs
---- DIETER.gms(1245) 134 Mb  20 secs
---- DIETER.gms(1331) 189 Mb  23 secs
---- DIETER.gms(2304) 192 Mb
----   271,592 rows  324,136 columns  1,248,838 non-zeroes
+--- DIETER.gms(1969) 127 Mb
+---   385,493 rows  324,145 columns  1,362,752 non-zeroes
 ---   122,646 nl-code  87,601 nl-non-zeroes
---- DIETER.gms(2304) 190 Mb
---- Executing CPLEX: elapsed 0:01:32.105
+--- DIETER.gms(1969) 125 Mb
+--- Executing CPLEX: elapsed 0:01:13.559
 
-GUSS             24.7.4 r58773 Released Sep 19, 2016 WEI x86 64bit/MS Windows 
+GUSS             24.2.3 r46072 Released May 22, 2014 WEI x86_64/MS Windows    
 Reading parameter(s) from scenario dictionary
 >>  Logoption 2
 >>  Optfile 1
 >>  Skipbasecase 1
 --- Scenario Variable with potential updates identified: phi_min_res
 
-IBM ILOG CPLEX   24.7.4 r58773 Released Sep 19, 2016 WEI x86 64bit/MS Windows 
+IBM ILOG CPLEX   24.2.3 r46072 Released May 22, 2014 WEI x86_64/MS Windows    
 --- GAMS/Cplex licensed for continuous and discrete problems.
-Cplex 12.6.3.0
+Cplex 12.6.0.0
 
-Reading parameter(s) from "C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\cplex.opt"
+Reading parameter(s) from "C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\cplex.opt"
 >>  lpmethod 4
 >>  threads 4
 >>  epgap 1e-3
-Finished reading from "C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\cplex.opt"
+Finished reading from "C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\cplex.opt"
 Reading data...
 Starting Cplex...
-Space for names approximately 19.27 Mb
+Space for names approximately 21.61 Mb
 Use option 'names no' to turn use of names off
 Tried aggregator 1 time.
-LP Presolve eliminated 12655 rows and 38914 columns.
+LP Presolve eliminated 126556 rows and 38923 columns.
 Aggregator did 3 substitutions.
 Reduced LP has 258934 rows, 285219 columns, and 904330 nonzeros.
-Presolve time = 0.58 sec. (343.07 ticks)
+Presolve time = 0.45 sec. (357.30 ticks)
 Parallel mode: using up to 4 threads for barrier.
 
 ***NOTE: Found 16 dense columns.
 
 Number of nonzeros in lower triangle of A*A' = 780622
 Using Approximate Minimum Degree ordering
-Total time for automatic ordering = 0.27 sec. (102.75 ticks)
+Total time for automatic ordering = 0.22 sec. (102.75 ticks)
 Summary statistics for Cholesky factor:
   Threads                   = 4
   Rows in Factor            = 258950
@@ -159,7 +158,7 @@ Summary statistics for Cholesky factor:
   67  3.3544544e+010  3.3544544e+010 3.90e+002 1.50e-003 7.42e-001 1.60e+002
   68  3.3544543e+010  3.3544543e+010 8.53e+002 4.35e-004 1.98e-001 6.40e+002
   69  3.3544543e+010  3.3544543e+010 1.40e+003 3.22e-005 1.65e-002 7.71e+003
-Barrier time = 32.03 sec. (11162.01 ticks)
+Barrier time = 17.63 sec. (11145.05 ticks)
 Parallel mode: deterministic, using up to 4 threads for concurrent optimization.
 
 Dual crossover.
@@ -188,7 +187,7 @@ Dual crossover.
        37 PMoves:  Infeasibility 2.41016096e-011  Objective 3.35445429e+010
         0 PMoves:  Infeasibility 2.41016096e-011  Objective 3.35445429e+010
   Primal:  Pushed 780, exchanged 3815.
-Elapsed time = 39.19 sec. (17145.48 ticks, 1 iterations)
+Elapsed time = 22.07 sec. (17131.57 ticks, 1 iterations)
 
 Iteration log . . .
 Iteration:     1   Dual objective     =   33544542852.732597
@@ -196,11 +195,11 @@ Using devex.
 
 Primal simplex solved model.
 
-Total crossover time = 7.39 sec. (6164.40 ticks)
+Total crossover time = 4.54 sec. (6179.77 ticks)
 
-Total time on 4 threads = 40.09 sec. (17679.26 ticks)
+Total time on 4 threads = 22.67 sec. (17692.98 ticks)
 LP status(1): optimal
-Cplex Time: 40.09sec (det. 17680.03 ticks)
+Cplex Time: 22.67sec (det. 17694.09 ticks)
 
 Optimal solution found.
 Objective : 33544542852.728622
@@ -210,17 +209,17 @@ Objective : 33544542852.728622
 ---   Solver Status    1 Normal Completion         
 ---   Model Status     1 Optimal                   
 ---   Objective Value  33544542852.7286
----   Resource Usage   40750
----   Total Time (ms)  40875
+---   Resource Usage   23213
+---   Total Time (ms)  23306
 --- Restarting execution
---- DIETER.gms(2304) 107 Mb
+--- DIETER.gms(1969) 38 Mb
 --- Reading solution for model DIETER
---- Executing after solve: elapsed 0:02:14.194
---- DIETER.gms(2304) 107 Mb
+--- Executing after solve: elapsed 0:01:37.628
+--- DIETER.gms(1969) 39 Mb
 ---
---- scattering and reading gdx file
+--- scattering and reading gdx file 
 ---
---- DIETER.gms(2304) 108 Mb
+--- DIETER.gms(1969) 39 Mb
 --- marginal Id = con5a_minRES maps to marginal_con5a
 --- marginal Id = con1a_bal maps to marginal_con1a
 --- level    Id = Z maps to lev_Z
@@ -235,11 +234,9 @@ Objective : 33544542852.728622
 --- level    Id = N_TECH maps to lev_N_TECH
 --- level    Id = N_STO_E maps to lev_N_STO_E
 --- level    Id = N_STO_P maps to lev_N_STO_P
---- DIETER.gms(2304) 109 Mb
---- GDXin=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\225a\scenrep.dat
+--- DIETER.gms(1969) 40 Mb
 --- Scatter finished in 47 ms
---- DIETER.gms(3722) 111 Mb
---- GDX File C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\results.gdx
---- GDX File C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\test.gdx
+--- DIETER.gms(2745) 41 Mb
+--- GDX File C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\test.gdx
 *** Status: Normal completion
---- Job DIETER.gms Stop 10/22/18 21:53:25 elapsed 0:02:15.916
+--- Job DIETER.gms Stop 10/24/18 19:55:40 elapsed 0:01:38.446

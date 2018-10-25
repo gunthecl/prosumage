@@ -1,0 +1,286 @@
+GAMS 24.2.3  r46072 Released May 22, 2014 WEX-WEI x86_64/MS Windows 10/24/18 17:28:03 Page 1
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+C o m p i l a t i o n
+
+
+   1   
+   2  **************************************************************************
+      ******
+      The Dispatch and Investment Evaluation Tool with Endogenous Renewables (DI
+      ETER).
+      Version 1.3.0, October 2017.
+      Written by Alexander Zerrahn and Wolf-Peter Schill.
+      This work is licensed under the MIT License (MIT).
+      For more information on this license, visit http://opensource.org/licenses
+      /mit-license.php.
+      Whenever you use this code, please refer to http://www.diw.de/dieter.
+      We are happy to receive feedback under azerrahn@diw.de and wschill@diw.de.
+  12  **************************************************************************
+      ******
+  13   
+  14   
+  15   
+  16  **************************************************************************
+      ******
+  17  **** Run of river  *******************************************************
+      ******
+  18  **************************************************************************
+      ******
+  19   
+  20  * If $setglobal ror_parameter "*": choose appropriate value for N_CON.fx('
+      ror') (but no reserve provision):
+  21   
+  22  %ror_parameter$ontext
+****  $409
+  23  N_TECH.fx('ror') = 5857.47 ;
+  24  G_RES.fx('ror',h) = N_TECH.l('ror') * phi_res('ror',h) ;
+****         $140    $120,340    $140             $140
+  25  %reserves$ontext
+****  $409
+  26  *RP_NONDIS.fx(reserves,'ror',h) = 0 ;
+  29   
+  30  * Fix everything to zero in case no ROR option is selected:
+  31  %ror_parameter%%ror_variable%N_TECH.fx('ror') = 0 ;
+  32  %ror_parameter%%ror_variable%G_RES.fx('ror',h) = 0 ;
+****  $409
+  33  *%ror_parameter%%ror_variable%RP_NONDIS.fx('ror',h) = 0 ;
+  34   
+  35   
+  36   
+  37  **************************************************************************
+      ******
+  38  **** Exogenous EV  *******************************************************
+      ******
+  39  **************************************************************************
+      ******
+  40   
+  41   
+  42   
+  43  **************************************************************************
+      ******
+  44  **** No storage and DSM in first period  *********************************
+      ******
+  45  **************************************************************************
+      ******
+  46   
+  47  ** No storage inflow in first period **
+  48  STO_IN.fx(sto,h)$(ord(h) = 1) = 0;
+****          $140$120,340
+  49   
+  50   
+  51   
+  52  **************************************************************************
+      ******
+  53  **** No primary reserves by heating devices  *****************************
+      ******
+  54  **************************************************************************
+      ******
+  55   
+  56   
+  57  **************************************************************************
+      ******
+  58  **** Fixing to reduce model size  ****************************************
+      ******
+  59  **************************************************************************
+      ******
+  60   
+  61  *F.fx(l,h)$(m_ntc(l) = 0) = 0 ;
+  62  *NTC.fx(l)$(m_ntc(l) = 0) = 0 ;
+  63   
+  64  G_L.fx(tech,h)$(m_p(tech) = 0) = 0 ;
+****       $140 $120,340$140
+  65  G_UP.fx(tech,h)$(m_p(tech) = 0) = 0 ;
+****        $140
+  66  G_DO.fx(tech,h)$(m_p(tech) = 0) = 0 ;
+****        $140
+  67  N_TECH.fx(tech)$(m_p(tech) = 0) = 0 ;
+  68  G_RES.fx(tech,h)$(m_p(tech) = 0) = 0 ;
+  69  CU.fx(tech,h)$(m_p(tech) = 0) = 0 ;
+****      $140
+  70   
+  71  N_STO_P.fx(sto)$(m_sto_p(sto) = 0) = 0 ;
+****           $140          $140
+  72  N_STO_E.fx(sto)$(m_sto_e(sto) = 0) = 0 ;
+****           $140          $140
+  73  STO_IN.fx(sto,h)$(m_sto_p(sto) = 0) = 0 ;
+  74  STO_OUT.fx(sto,h)$(m_sto_p(sto) = 0) = 0 ;
+****           $140
+  75  STO_L.fx(sto,h)$(m_sto_p(sto) = 0) = 0 ;
+****         $140
+  76   
+  77   
+  78  %prosumage$ontext
+****  $409
+  79  CU_PRO.fx(res,h)$(feat_node('prosumage',n) = 0 OR m_res_pro(res) = 0) = 0 
+      ;
+  80  G_MARKET_PRO2M.fx(res,h)$(feat_node('prosumage',n) = 0 OR m_res_pro(res) =
+****                  $140$120,340      $140        $116,120,340,149    $140
+       0) = 0 ;
+  81  G_MARKET_M2PRO.fx(h)$(feat_node('prosumage',n) = 0) = 0 ;
+****                  $140                         $149
+  82  G_RES_PRO.fx(res,h)$(feat_node('prosumage',n) = 0 OR m_res_pro(res) = 0) =
+****             $140                             $149
+       0 ;
+  83  STO_IN_PRO2PRO.fx(res,sto,h)$(feat_node('prosumage',n) = 0 OR m_sto_pro_p(
+****                  $140                                 $149               $1
+      sto) = 0) = 0 ;
+      40
+  84  STO_IN_PRO2M.fx(res,sto,h)$(feat_node('prosumage',n) = 0 OR m_sto_pro_p(st
+****                $140                                 $149
+      o) = 0) = 0 ;
+  85  STO_IN_M2PRO.fx(sto,h)$(feat_node('prosumage',n) = 0 OR m_sto_pro_p(sto) =
+****                $140                             $149
+       0) = 0 ;
+  86  STO_IN_M2M.fx(sto,h)$(feat_node('prosumage',n) = 0 OR m_sto_pro_p(sto) = 0
+****              $140                             $149
+      ) = 0 ;
+  87  STO_OUT_PRO2PRO.fx(sto,h)$(feat_node('prosumage',n) = 0 OR m_sto_pro_p(sto
+****                   $140                             $149
+      ) = 0) = 0 ;
+  88  STO_OUT_PRO2M.fx(sto,h)$(feat_node('prosumage',n) = 0 OR m_sto_pro_p(sto) 
+****                 $140                             $149
+      = 0) = 0 ;
+  89  STO_OUT_M2PRO.fx(sto,h)$(feat_node('prosumage',n) = 0 OR m_sto_pro_p(sto) 
+****                 $140                             $149
+      = 0) = 0 ;
+  90  STO_OUT_M2M.fx(sto,h)$(feat_node('prosumage',n) = 0 OR m_sto_pro_p(sto) = 
+****               $140                             $149
+      0) = 0 ;
+  91  STO_L_PRO2PRO.fx(sto,h)$(feat_node('prosumage',n) = 0 OR m_sto_pro_p(sto) 
+****                 $140                             $149
+      = 0) = 0 ;
+  92  STO_L_PRO2M.fx(sto,h)$(feat_node('prosumage',n) = 0 OR m_sto_pro_p(sto) = 
+****               $140                             $149
+      0) = 0 ;
+  93  STO_L_M2PRO.fx(sto,h)$(feat_node('prosumage',n) = 0 OR m_sto_pro_p(sto) = 
+****               $140                             $149
+      0) = 0 ;
+  94  STO_L_M2M.fx(sto,h)$(feat_node('prosumage',n) = 0 OR m_sto_pro_p(sto) = 0)
+****             $140                             $149
+       = 0 ;
+  95  N_STO_E_PRO.fx(sto)$(feat_node('prosumage',n) = 0 OR m_sto_pro_p(sto) = 0)
+****               $140                           $149
+       = 0 ;
+  96  N_STO_P_PRO.fx(sto)$(feat_node('prosumage',n) = 0 OR m_sto_pro_p(sto) = 0)
+****               $140                           $149
+       = 0 ;
+  97  STO_L_PRO.fx(sto,h)$(feat_node('prosumage',n) = 0 OR m_sto_pro_p(sto) = 0)
+****             $140                             $149
+       = 0 ;
+  98  N_RES_PRO.fx(res)$(feat_node('prosumage',n) = 0 OR m_res_pro(res) = 0) = 0
+****             $140                           $149
+       ;
+ 101   
+ 102   
+ 103   
+ 104  **************************************************************************
+      ******
+ 105  **** DEFAULT LEVELS FOR REPORT PARAMETERS  *******************************
+      ******
+ 106  **************************************************************************
+      ******
+      * Default level zero for report parameters
+      lev_Z(scen) = 0 ;
+      lev_G_L(scentech,h) = 0 ;
+      lev_G_UP(scentech,h) = 0 ;
+      lev_G_DO(scentech,h) = 0 ;
+      lev_G_RES(scentech,h) = 0 ;
+      lev_CU(scentech,h) = 0 ;
+      lev_STO_IN(scensto,h) = 0 ;
+      lev_STO_OUT(scensto,h) = 0 ;
+      lev_STO_L(scensto,h) = 0 ;
+      lev_N_TECH(scentech) = 0 ;
+      lev_N_STO_E(scensto) = 0 ;
+      lev_N_STO_P(scensto) = 0 ;
+      marginal_con1a(scen,h,n) = 0 ;
+      marginal_con5a(superscen,n) = 0 ;
+      lev_NTC(superscen,l) = 0 ;
+      lev_F(superscen,l,h) = 0 ;
+      lev_RSVR_OUT(superscenrsvr,h) = 0 ;
+      lev_RSVR_L(superscenrsvr,h) = 0 ;
+      lev_N_RSVR_E(superscenrsvr) = 0 ;
+      lev_N_RSVR_P(superscenrsvr) = 0 ;
+      lev_G_INFES(superscenh) = 0 ;
+       
+      * Prosumage
+      lev_CU_PRO(scentech,h) = 0 ;
+      lev_G_MARKET_PRO2M(scentech,h) = 0  ;
+      lev_G_MARKET_M2PRO(scenh) = 0  ;
+      lev_G_RES_PRO(scentech,h) = 0  ;
+      lev_STO_IN_PRO2PRO(scentech,sto,h) = 0  ;
+      lev_STO_IN_PRO2M(scentech,sto,h) = 0  ;
+      lev_STO_IN_M2PRO(scensto,h) = 0   ;
+      lev_STO_IN_M2M(scensto,h) = 0  ;
+      lev_STO_OUT_PRO2PRO(scensto,h) = 0  ;
+      lev_STO_OUT_PRO2M(scensto,h) = 0  ;
+      lev_STO_OUT_M2PRO(scensto,h) = 0  ;
+      lev_STO_OUT_M2M(scensto,h) = 0  ;
+      lev_STO_L_PRO2PRO(scensto,h) = 0  ;
+      lev_STO_L_PRO2M(scensto,h) = 0  ;
+      lev_STO_L_M2PRO(scensto,h) = 0  ;
+      lev_STO_L_M2M(scensto,h) = 0  ;
+      lev_N_STO_E_PRO(scensto) = 0  ;
+      lev_N_STO_P_PRO(scensto) = 0  ;
+      lev_STO_L_PRO(scensto,h) = 0  ;
+      lev_N_RES_PRO(scentech) = 0  ;
+       
+ 154   
+ 155  * Fixing of report parameters for run-of-river
+ 156  %ror_parameter$ontext
+****  $409
+ 157  lev_N_TECH(scen'ror') = 5857.47 ;
+ 158  lev_G_RES(scen'ror',h) = lev_N_TECH(scen'ror') * phi_res('ror',h) ;
+****          $140 $120,340,8,36,409
+ 159  %reserves$ontext
+****  $409
+ 160  *lev_RP_NONDIS(scenreserves,'ror',h) = 0 ;
+ 163   
+ 164  %ror_parameter%%ror_variable%lev_N_TECH(scen'ror') = 0 ;
+ 165  %ror_parameter%%ror_variable%lev_G_RES(scen'ror',h) = 0 ;
+****  $409
+ 166  %reserves$ontext
+****  $409
+ 167  *%ror_parameter%%ror_variable%lev_RP_CON(scenreserves,'ror',h) = 0 ;
+ 170   
+ 171   
+ 172   
+ 173   
+ 174   
+ 175   
+GAMS 24.2.3  r46072 Released May 22, 2014 WEX-WEI x86_64/MS Windows 10/24/18 17:28:03 Page 2
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Error Messages
+
+
+  8  ')' expected
+ 36  '=' or '..' or ':=' or '$=' operator expected
+     rest of statement ignored
+116  Label is unknown
+120  Unknown identifier entered as set
+140  Unknown symbol
+149  Uncontrolled set entered as constant
+340  A label/element with the same name exist. You may have forgotten
+        to quote a label/element reference. For example,
+        set i / a,b,c /; parameter x(i); x('a') = 10;
+409  Unrecognizable item - skip to find a new statement
+       looking for a ';' or a key word to get started again
+
+**** 81 ERROR(S)   0 WARNING(S)
+
+
+COMPILATION TIME     =        0.156 SECONDS      3 MB  24.2.3 r46072 WEX-WEI
+
+
+USER: Medium MUD - 10 User License                   S170316:1123AO-GEN
+      Deutsches Institut fuer Wirtschaftsforschung DIW, AbteilungDC3975
+      License for teaching and research at degree granting institutions
+
+
+**** FILE SUMMARY
+
+Input      C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Diet
+           er_Module\Modified_MCP\fix.gms
+Output     C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Diet
+           er_Module\Modified_MCP\fix.lst
+
+**** USER ERROR(S) ENCOUNTERED
