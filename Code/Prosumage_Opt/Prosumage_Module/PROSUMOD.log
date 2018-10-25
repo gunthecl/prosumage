@@ -1,5 +1,5 @@
 
---- Job PROSUMOD.gms Start 10/18/18 15:34:06 24.7.4 r58773 WEX-WEI x86 64bit/MS Windows
+--- Job PROSUMOD.gms Start 10/25/18 14:38:33 24.7.4 r58773 WEX-WEI x86 64bit/MS Windows
 GAMS 24.7.4   Copyright (C) 1987-2016 GAMS Development. All rights reserved
 Licensee: Medium MUD - 10 User License                   S170316:1123AO-GEN
           Deutsches Institut fuer Wirtschaftsforschung DIW, AbteilungDC3975
@@ -9,223 +9,66 @@ Licensee: Medium MUD - 10 User License                   S170316:1123AO-GEN
 --- PROSUMOD.gms(71) 3 Mb
 --- .24h_FirstHours.gms(3) 3 Mb
 --- PROSUMOD.gms(152) 4 Mb
---- GDXin=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage Module\data\input_data.gdx
---- PROSUMOD.gms(464) 28 Mb
---- Starting execution: elapsed 0:00:00.110
---- PROSUMOD.gms(433) 30 Mb
---- Generating MCP model prosumod_mcp
---- PROSUMOD.gms(442) 60 Mb
----   114,249 rows  114,250 columns  307,221 non-zeroes
----   0 nl-code  0 nl-non-zeroes
---- PROSUMOD.gms(442) 58 Mb
---- Executing PATH: elapsed 0:00:01.612
-Reading dictionary...
-Reading row data...
-Evaluating functions...
-Checking model...
-Calculating Jacobian...
+--- GDXin=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage_Module\data\input_data.gdx
+--- PROSUMOD.gms(472) 28 Mb
+--- Starting execution: elapsed 0:00:00.106
+--- PROSUMOD.gms(432) 30 Mb
+--- Generating LP model prosumod_lp
+--- PROSUMOD.gms(436) 47 Mb
+---   52,927 rows  61,324 columns  188,653 non-zeroes
+--- Executing CPLEX: elapsed 0:00:00.756
 
-PATH             24.7.4 r58773 Released Sep 19, 2016 WEI x86 64bit/MS Windows 
+IBM ILOG CPLEX   24.7.4 r58773 Released Sep 19, 2016 WEI x86 64bit/MS Windows 
+--- GAMS/Cplex licensed for continuous and discrete problems.
+Cplex 12.6.3.0
 
-114249 row/cols, 307218 non-zeros, 0.00% dense.
+Reading data...
+Starting Cplex...
+Space for names approximately 4.06 Mb
+Use option 'names no' to turn use of names off
+Tried aggregator 1 time.
+LP Presolve eliminated 15725 rows and 27044 columns.
+Aggregator did 6170 substitutions.
+Reduced LP has 31032 rows, 28110 columns, and 96742 nonzeros.
+Presolve time = 0.13 sec. (40.72 ticks)
+Initializing dual steep norms . . .
 
-Path 4.7.04 (Mon Sep 19 11:18:59 2016)
-Written by Todd Munson, Steven Dirkse, and Michael Ferris
+Iteration log . . .
+Iteration:     1   Dual objective     =          -154.360825
+Iteration:  1028   Dual objective     =           119.084469
+Iteration:  1917   Dual objective     =           309.585526
+Iteration:  2356   Dual objective     =           385.207922
+Iteration:  3127   Dual objective     =           516.217062
+Iteration:  3291   Dual objective     =           533.351546
+Iteration:  4008   Dual objective     =           648.122531
+Iteration:  4780   Dual objective     =           743.941039
+Iteration:  5476   Dual objective     =           830.567235
+Iteration:  5937   Dual objective     =           860.383444
+Iteration:  6534   Dual objective     =           889.622179
+Iteration:  6934   Dual objective     =           911.643230
+Iteration:  7306   Dual objective     =           922.080880
+Iteration:  7653   Dual objective     =           938.080180
+Iteration:  7971   Dual objective     =           949.246346
+Iteration:  8317   Dual objective     =           962.583160
+Iteration:  8670   Dual objective     =           971.149024
+Iteration:  9067   Dual objective     =           979.235069
+Iteration:  9442   Dual objective     =           985.670301
+Iteration:  9779   Dual objective     =           989.374125
+Iteration: 10081   Dual objective     =           993.104604
+Iteration: 10463   Dual objective     =           996.763269
+Iteration: 10762   Dual objective     =          1001.927396
+Iteration: 11104   Dual objective     =          1004.136353
+LP status(1): optimal
+Cplex Time: 2.16sec (det. 2000.58 ticks)
 
-Zero:     1 Single: 38943 Double: 17893
-Preprocessed size   : 57045
-
-INITIAL POINT STATISTICS
-Maximum of X. . . . . . . . . .  7.2940e-002 var: (lambda_pvgen_PRO(solar,h800))
-Maximum of F. . . . . . . . . .  5.0995e+001 eqn: (KKT_N_STO_P_PRO(storage))
-Maximum of Grad F . . . . . . .  1.0799e+000 eqn: (KKT_STO_OUT_PRO2PRO_PRO(stora)
-                                            var: (lambda_stolev_PRO(storage,h8))
-
-INITIAL JACOBIAN NORM STATISTICS
-Maximum Row Norm. . . . . . . .  1.1554e+004 eqn: (KKT_N_STO_P_PRO(storage))
-Minimum Row Norm. . . . . . . .  2.0000e+000 eqn: (energy_balance_PRO(h8))
-Maximum Column Norm . . . . . .  1.1554e+004 var: (N_STO_P_PRO(storage))
-Minimum Column Norm . . . . . .  2.0000e+000 var: (lambda_enerbal_PRO(h8))
-
-Crash Log
-major  func  diff  size  residual    step       prox   (label)
-    0     0             2.7905e+001             0.0e+000 (KKT_STO_OUT_PRO2PRO_PRO)
-    1     4 14998 14456 2.6867e+001  4.1e-001    2.8e-001 (KKT_STO_OUT_PRO2PRO_PRO)
-    2    11 22776 26552 2.5623e+001  6.9e-002    2.5e-001 (KKT_STO_L_PRO(storage,h)
-    3    20 12752 37670 2.3834e+001  1.2e-002    2.3e-001 (pv_generation_PRO(solar)
-    4    31  2995 40147 2.3783e+001  3.2e-004    2.0e-001 (pv_generation_PRO(solar)
-    5    43   403 40546 2.3774e+001  5.4e-005    1.8e-001 (pv_generation_PRO(solar)
-    6    54    66 40559 2.3740e+001  3.2e-004    1.6e-001 (KKT_N_STO_P_PRO(storage)
-    7    66    35 40577 2.3739e+001  5.4e-005    1.5e-001 (KKT_N_STO_P_PRO(storage)
-pn_search terminated: no progress.
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-    0     0    79     8 2.3739e+001           I 1.3e-001 1.4e+000 (KKT_N_STO_P_PRO)
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  2.0492e-008 46042 11002     0     0     9 w[20244] z[17713]
- 1000  5.2561e-006 45580 11464     0     0    19 w[56823] z[56808]
- 1500  6.9019e-005 45166 11878     0     0    29 w[33639] z[56058]
- 2000  2.3056e-004 44874 12170     0     0    39 w[52541] z[53142]
- 2500  4.6938e-004 44552 12492     0     0    49 w[54064] z[20573]
- 3000  8.8226e-004 44204 12840     0     0    58 w[ 7951] z[ 7986]
- 3500  1.3643e-003 43838 13206     0     0    68 w[32769] z[51962]
- 4000  2.0194e-003 43465 13579     0     0    78 w[27647] w[54761]
- 4500  2.6359e-003 43070 13974     0     0    88 w[30236] z[ 8621]
- 5000  2.9054e-003 42656 14388     0     0    98 w[16635] z[16830]
- 5500  2.9054e-003 42156 14888     0     0   107 w[19724] z[19725]
- 6000  2.9054e-003 41656 15388     0     0   117 w[18051] z[22344]
- 6500  2.9059e-003 41156 15888     0     0   127 w[21506] z[21505]
- 7000  2.9059e-003 40656 16388     0     0   137 w[21079] z[17330]
- 7500  2.9066e-003 40156 16888     0     0   147 w[20048] z[20047]
- 8000  2.9087e-003 39660 17384     0     0   156 w[16260] z[16747]
- 8500  2.9625e-003 39226 17818     0     0   166 w[53857] z[31590]
- 9000  3.2693e-003 38922 18122     0     0   176 w[27827] z[17175]
- 9500  3.6336e-003 38574 18470     0     0   186 w[32187] z[30378]
-10000  4.0556e-003 38256 18788     0     0   196 w[18575] z[17642]
-10500  4.5304e-003 37916 19128     0     0   205 w[27624] z[32028]
-11000  5.0721e-003 37547 19497     0     0   215 w[ 5504] w[51204]
-11500  5.7467e-003 37192 19852     0     0   225 w[28151] z[ 4782]
-12000  6.4980e-003 36830 20214     0     0   235 w[31330] z[17287]
-12500  7.1398e-003 36456 20587     1     0   245 w[19667] z[49031]
-13000  7.5475e-003 36044 20999     1     0   254 w[31389] z[29594]
-13500  7.5513e-003 35544 21498     2     0   264 w[27596] z[27470]
-14000  7.5620e-003 35050 21992     2     0   274 w[33933] z[27800]
-14500  7.5700e-003 34555 22487     2     0   284 z[53631] w[56061]
-15000  7.9049e-003 34142 22900     2     0   294 w[49855] z[48672]
-15500  8.5671e-003 33790 23246     8     0   303 w[33503] z[33303]
-16000  9.2463e-003 33424 23610    10     0   313 w[ 7503] z[32871]
-16500  1.0111e-002 33089 23938    17     0   323 w[28645] w[20380]
-17000  1.1108e-002 32783 24233    28     0   333 w[27195] w[25697]
-17500  1.2284e-002 32481 24518    45     0   343 z[52900] w[40159]
-18000  1.3519e-002 32188 24797    59     0   352 z[53888] z[32850]
-18500  1.4988e-002 31900 25065    79     0   362 w[46003] z[27322]
-19000  1.6665e-002 31619 25319   106     0   372 w[ 7593] w[17983]
-19500  1.8498e-002 31362 25537   145     0   382 w[44554] z[46981]
-20000  2.0647e-002 31094 25764   186     0   392 w[31186] z[  458]
-20500  2.3253e-002 30842 25960   242     0   401 w[ 6754] z[29793]
-21000  2.6252e-002 30622 26129   293     0   411 z[39166] z[ 7142]
-21500  2.9536e-002 30364 26334   346     0   421 w[20999] z[ 2865]
-22000  3.3490e-002 30147 26482   415     0   431 z[30156] w[40071]
-22500  3.7381e-002 29897 26673   474     0   441 w[28105] w[41637]
-23000  4.2752e-002 29721 26783   540     0   450 w[48070] w[39699]
-23500  4.9012e-002 29524 26897   623     0   460 w[50709] z[  534]
-24000  5.6060e-002 29342 26999   703     0   470 v[ 2921] z[ 1160]
-24500  6.5514e-002 29198 27064   782     0   480 z[39907] z[  460]
-25000  7.5935e-002 29067 27116   861     0   490 v[ 1244] w[ 5943]
-25500  8.7969e-002 29019 27099   926     0   500 z[51388] w[38795]
-26000  1.0318e-001 29024 27026   994     0   509 w[27804] z[46535]
-26500  1.2178e-001 29079 26908  1057     0   519 z[41074] w[42070]
-27000  1.4307e-001 29171 26754  1119     0   529 w[26474] w[23561]
-27500  1.6905e-001 29279 26574  1191     0   539 z[39539] w[33205]
-28000  1.9657e-001 29413 26383  1248     0   549 w[43061] w[40451]
-28500  2.3108e-001 29586 26164  1294     0   558 z[53869] z[  701]
-29000  2.7491e-001 29775 25931  1338     0   568 z[45317] w[42295]
-29500  3.3255e-001 29963 25702  1379     0   578 z[28882] w[24360]
-30000  3.9705e-001 30220 25421  1403     0   588 z[25501] z[53393]
-30500  4.6683e-001 30513 25106  1425     0   598 z[40936] w[50234]
-31000  5.4318e-001 30779 24821  1444     0   607 z[47573] w[53769]
-31500  6.1369e-001 31048 24540  1456     0   617 z[46182] z[53816]
-32000  6.8100e-001 31313 24265  1466     0   627 w[51715] w[39390]
-32500  7.4259e-001 31657 23911  1476     0   637 z[39889] w[45786]
-33000  8.0716e-001 31971 23589  1484     0   647 z[40637] w[46695]
-33500  9.1092e-001 32277 23285  1482     0   656 w[56898] w[52554]
-34000  9.8398e-001 32546 23020  1478     0   666 z[54344] z[30969]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-    1 34171    80     9 2.8631e+000  1.0e+000 SM 5.3e-002 2.8e-001 (KKT_N_PV_PRO(so)
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  9.1093e-002 32560 23013  1471     0     9 z[18269] z[31720]
- 1000  1.9705e-001 32408 23187  1449     0    19 z[ 2112] z[48498]
- 1500  2.7694e-001 32391 23222  1431     0    29 z[ 4062] w[29233]
- 2000  3.7258e-001 32196 23428  1420     0    39 v[48340] z[42114]
- 2500  4.7285e-001 31995 23633  1416     0    49 w[46931] w[ 4702]
- 3000  5.9529e-001 31830 23818  1396     0    58 z[23290] z[40904]
- 3500  7.0688e-001 31684 23993  1367     0    68 w[28901] z[17868]
- 4000  8.2214e-001 31496 24202  1346     0    78 w[43953] z[30531]
- 4500  9.0059e-001 31306 24397  1341     0    88 w[45828] z[52869]
- 5000  9.6927e-001 31166 24538  1340     0    98 w[47058] z[43819]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-    2  5491    81    10 1.2734e+000  1.0e+000 SO 2.1e-002 4.1e-002 (KKT_STO_L_PRO(s)
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  1.1339e-001 30730 24957  1357     0     9 z[ 4409] z[23670]
- 1000  2.4088e-001 30676 24965  1403     0    19 z[23473] z[47158]
- 1500  3.8241e-001 30554 25004  1486     0    29 v[48603] z[46520]
- 2000  5.3610e-001 30475 25012  1557     0    39 z[53014] w[38905]
- 2500  7.0942e-001 30294 25073  1677     0    49 v[48964] z[46438]
- 3000  8.6427e-001 30080 25193  1771     0    58 w[45208] z[44412]
- 3500  9.0128e-001 29616 25628  1800     0    68 w[39961] z[49090]
- 4000  9.8015e-001 29357 25831  1856     0    78 w[54612] w[51678]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-    3  4135    82    11 8.9039e-001  1.0e+000 SO 8.5e-003 2.7e-002 (KKT_STO_L_PRO(s)
-
-Minor Iteration Log
-minor      t          z     w     v   art ckpts  enter    leave
-  500  1.3539e-001 29218 25818  2008     0     9 v[45437] z[48997]
- 1000  3.3356e-001 29008 25908  2128     0    19 w[52443] z[52745]
- 1500  5.7818e-001 28794 26054  2196     0    29 v[49618] z[47794]
- 2000  8.1790e-001 28516 26268  2260     0    39 z[39310] z[51473]
- 2500  9.7456e-001 28264 26476  2304     0    49 w[41694] z[40142]
-
-Major Iteration Log
-major minor  func  grad  residual    step  type prox    inorm  (label)
-    4  2592    83    12 2.2235e-001  1.0e+000 SO 3.4e-003 8.6e-003 (KKT_STO_L_PRO(s)
-    5   404    84    13 1.3512e-001  1.0e+000 SO 2.2e-002 5.7e-003 (KKT_STO_L_PRO(s)
-    6   308    85    14 5.5146e-002  1.0e+000 SO 8.9e-003 3.0e-003 (KKT_STO_IN_PRO2)
-    7   395    86    15 2.2238e-002  1.0e+000 SO 3.6e-003 1.8e-003 (KKT_STO_L_PRO(s)
-    8   425    87    16 1.1667e-002  1.0e+000 SO 1.4e-003 1.1e-003 (KKT_STO_L_PRO(s)
-    9   250    88    17 6.2084e-003  1.0e+000 SO 5.7e-004 6.2e-004 (KKT_STO_L_PRO(s)
-   10   138    89    18 2.1013e-003  1.0e+000 SO 2.3e-004 2.6e-004 (KKT_STO_L_PRO(s)
-   11    60    90    19 4.9331e-004  1.0e+000 SO 9.1e-005 9.3e-005 (KKT_STO_L_PRO(s)
-   12    25    91    20 1.1298e-004  1.0e+000 SO 3.6e-005 2.1e-005 (KKT_STO_IN_PRO2)
-   13     9    92    21 3.1383e-005  1.0e+000 SO 1.1e-005 7.1e-006 (KKT_STO_IN_PRO2)
-   14     6    93    22 7.8585e-006  1.0e+000 SO 3.1e-006 2.0e-006 (KKT_STO_IN_PRO2)
-   15     2    94    23 8.2516e-007  1.0e+000 SO 7.9e-007 3.9e-007 (KKT_STO_IN_PRO2)
-
-FINAL STATISTICS
-Inf-Norm of Complementarity . .  3.9074e-007 eqn: (KKT_STO_IN_PRO2PRO_PRO(storag)
-Inf-Norm of Normal Map. . . . .  3.9074e-007 eqn: (KKT_STO_IN_PRO2PRO_PRO(storag)
-Inf-Norm of Minimum Map . . . .  3.9074e-007 eqn: (KKT_STO_IN_PRO2PRO_PRO(storag)
-Inf-Norm of Fischer Function. .  3.9074e-007 eqn: (KKT_STO_IN_PRO2PRO_PRO(storag)
-Inf-Norm of Grad Fischer Fcn. .  3.9074e-007 eqn: (stoin_max_power_PRO(storage,h)
-Two-Norm of Grad Fischer Fcn. .  1.1234e-006
-
-FINAL POINT STATISTICS
-Maximum of X. . . . . . . . . .  8.1571e+000 var: (N_PV_PRO(solar))
-Maximum of F. . . . . . . . . .  7.9158e+000 eqn: (stolev_max_energy_PRO(storage)
-Maximum of Grad F . . . . . . .  1.0799e+000 eqn: (KKT_STO_OUT_PRO2PRO_PRO(stora)
-                                            var: (lambda_stolev_PRO(storage,h8))
-
- ** EXIT - solution found.
-
-Major Iterations. . . . 15
-Minor Iterations. . . . 48513
-Restarts. . . . . . . . 0
-Crash Iterations. . . . 7
-Gradient Steps. . . . . 0
-Function Evaluations. . 94
-Gradient Evaluations. . 23
-Basis Time. . . . . . . 1342.354000
-Total Time. . . . . . . 1371.172000
-Residual. . . . . . . . 8.251575e-007
-Postsolved residual: 8.2516e-007
+Optimal solution found.
+Objective :        1004.402229
 
 --- Restarting execution
---- PROSUMOD.gms(442) 34 Mb
---- Reading solution for model prosumod_mcp
---- PROSUMOD.gms(442) 44 Mb
---- Executing after solve: elapsed 0:22:53.437
---- PROSUMOD.gms(463) 44 Mb
+--- PROSUMOD.gms(436) 31 Mb
+--- Reading solution for model prosumod_lp
+--- PROSUMOD.gms(436) 36 Mb
+--- Executing after solve: elapsed 0:00:03.571
+--- PROSUMOD.gms(471) 37 Mb
 *** Status: Normal completion
---- Job PROSUMOD.gms Stop 10/18/18 15:57:00 elapsed 0:22:53.682
+--- Job PROSUMOD.gms Stop 10/25/18 14:38:37 elapsed 0:00:03.795

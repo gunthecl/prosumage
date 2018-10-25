@@ -25,7 +25,7 @@ $setglobal base_year "2014"
 * ----------------- Select if to use MCP or LP format --------------------------
 
 * Set to "*" to select linear program, leave blank to select MCP
-$setglobal LP ""
+$setglobal LP "*"
 
 * Do not change these two lines
 $if "%LP%" == "" $setglobal MCP "*"
@@ -445,7 +445,10 @@ $offtext
 Parameters
 E_purchased
 E_sold
-Z_PRO_mcp;
+Z_PRO_mcp
+mean_price
+full_load
+self_cons_rate;
 
 E_purchased = sum((sto_pro,h), E_M2PRO_PRO.l(h) );
 E_sold      = sum((res_pro,sto_pro,h), G_PRO2M_PRO.l(res_pro,h));
@@ -454,10 +457,16 @@ Z_PRO_mcp   = sum( res_pro , c_i_pv_PRO(res_pro) * N_PV_PRO.l(res_pro) )
                  + sum( (sto_pro,res_pro,h) , c_var_sto_pro_PRO(sto_pro) * ( STO_IN_PRO2PRO_PRO.l(sto_pro,res_pro,h)))
                  + sum( (sto_pro,h) , c_var_sto_pro_PRO(sto_pro) *  STO_OUT_PRO2PRO_PRO.l(sto_pro,h) )
                  + sum(  h , price_consume_PRO(h) * (E_M2PRO_PRO.l(h) ))
-                 - sum(  (res_pro,h) , price_produce_PRO(h) * G_PRO2M_PRO.l(res_pro,h) )
+                 - sum(  (res_pro,h) , price_produce_PRO(h) * G_PRO2M_PRO.l(res_pro,h) )  ;
+
+mean_price = sum( h,  price_produce_PRO(h))/card(h)*1000;
+full_load  = sum(h, avail_solar_PRO(h));
+self_cons_rate(res_pro) = sum(h, G_PRO2PRO_PRO.l(res_pro,h)
++ sum(sto_pro, STO_IN_PRO2PRO_PRO.l(sto_pro,res_pro,h)*eta_sto_pro_in_PRO(sto_pro)) ) / sum(h, avail_solar_PRO(h)*N_PV_PRO.l(res_pro));
+
 
 display d_PRO , N_PV_PRO.l , N_STO_E_PRO.l, N_STO_P_PRO.l,
           E_M2PRO_PRO.l , G_PRO2M_PRO.l ,
         STO_L_PRO.l, price_produce_PRO, energy_balance_PRO.m ,
-        E_purchased , E_sold, Z_PRO_mcp
+        E_purchased , E_sold, Z_PRO_mcp , mean_price , full_load, self_cons_rate
 ;

@@ -1613,13 +1613,6 @@ PlaneRownr=-1
 [RP:DATALOAD_SINGLE]
 1=
 
-[OPENWINDOW_1]
-MAXIM=0
-TOP=-25
-LEFT=0
-HEIGHT=872
-WIDTH=1449
-
 [GDXDISP: storage_data Par 2]
 PlaneDim=0
 RowDim=2
@@ -2230,3 +2223,12 @@ PlaneRownr=-1
 7=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report_to_excel.gms
 8=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
 9=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report_to_excel.lst
+
+[OPENWINDOW_1]
+FILE0=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage_Module\PROSUMOD.gms
+FILE1=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage_Module\PROSUMOD.gms
+MAXIM=0
+TOP=-25
+LEFT=0
+HEIGHT=872
+WIDTH=1449
