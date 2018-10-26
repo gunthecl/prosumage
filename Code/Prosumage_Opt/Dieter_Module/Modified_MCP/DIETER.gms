@@ -323,7 +323,7 @@ Parameters
 gussoptions                              /Logoption 2, Optfile 1, Skipbasecase 1/
 modstats(superscen, modelstats)
 min_res
-number_ev
+*number_ev
 pro_selfcon
 ;
 

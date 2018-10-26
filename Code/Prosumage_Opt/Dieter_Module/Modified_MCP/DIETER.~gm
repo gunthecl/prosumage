@@ -99,11 +99,6 @@ loop_res_share   Solution loop for different shares of renewables       /50/
 $ontext
 $offtext
 
-%EV%$ontext
-loop_ev          Solution loop for different fleets of EVs              /4e+6/
-$ontext
-$offtext
-
 %prosumage%$ontext
 loop_prosumage   Solution loop for different prosumer self-consumption levels    /50/
 $ontext
@@ -333,7 +328,7 @@ pro_selfcon
 ;
 
 min_res(scen) = sum( (loop_res_share,loop_prosumage)$map(scen,loop_res_share,loop_prosumage) , loop_res_share.val/100 ) ;
-number_ev(scen) = sum( (loop_res_share,loop_prosumage)$map(scen,loop_res_share,loop_prosumage) , loop_ev.val ) ;
+*number_ev(scen) = sum( (loop_res_share,loop_prosumage)$map(scen,loop_res_share,loop_prosumage) , loop_ev.val ) ;
 pro_selfcon(scen) = sum( (loop_res_share,loop_prosumage)$map(scen,loop_res_share,loop_prosumage) , loop_prosumage.val/100 ) ;
 
 Parameters
