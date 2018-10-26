@@ -11,7 +11,7 @@ We are happy to receive feedback under azerrahn@diw.de and wschill@diw.de.
 $offtext
 ********************************************************************************
 
-     zesz
+
 Variables
 Z                Value objective function [Euro]
 F(l,h)           Energy flow over link l in hour h [MWh]
