@@ -111,7 +111,7 @@ loop_prosumage   Solution loop for different prosumer self-consumption levels   
 $ontext
 $offtext
 
-%loop_over_renewable_share%      loop_res_share                          /0/
+%loop_over_renewable_share%      loop_res_share                          /50/
 %EV%                             loop_ev                                 /0/
 %prosumage%                      loop_prosumage                          /0/
 ;
