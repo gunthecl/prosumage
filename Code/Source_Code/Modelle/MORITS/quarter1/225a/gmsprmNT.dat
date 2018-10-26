@@ -1,0 +1,17 @@
+Input=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\quarter1\MORITS_MCP_online.gms
+Output=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\quarter1\MORITS_MCP_online.lst
+Action=R
+SubSys=C:\GAMS\win64\24.2\gmscmpnt.txt
+ScrDir=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\quarter1\225a\
+SysDir=C:\GAMS\win64\24.2\
+CurDir=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\quarter1\
+WorkDir=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\quarter1\
+PutDir=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\quarter1\
+GridDir=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\quarter1\225a\
+ScriptNext=225a\gamsnext.cmd
+ScriptFrst="@echo off"
+LogOption=2
+LogFile=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\quarter1\MORITS_MCP_online.log
+AppendOut=1
+LibIncDir=C:\GAMS\win64\24.2\inclib\
+SysIncDir=C:\GAMS\win64\24.2\

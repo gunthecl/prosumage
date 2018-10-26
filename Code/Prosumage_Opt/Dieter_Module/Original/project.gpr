@@ -1427,13 +1427,6 @@ PlaneRownr=-1
 [RP:DATALOAD]
 1=
 
-[OPENWINDOW_1]
-MAXIM=0
-TOP=-19
-LEFT=169
-HEIGHT=876
-WIDTH=1222
-
 [RP:MODEL]
 1=
 
@@ -1449,13 +1442,35 @@ WIDTH=1222
 9=-gdx = pre
 10=-gdx = test
 
+[RP:PROSUMOD]
+1=
+
+[RP:MORITS_MCP]
+1=
+
+[RP:MORITS_MCP_ONLINE]
+1=
+
+[RP:24H_FIRSTHOURS]
+1=
+
 [MRUFILES]
-1=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\DIETER.lst
-2=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\DIETER.gms
-3=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\DIETER.lst
-4=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\results.gdx
-5=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\DIETER.gms
-6=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
-7=W:\DIETER\Dieter-Heat\model_clean\post\Untitled_1.gms
-8=W:\DIETER\Dieter-Heat\model_clean\pre\model.gms
-9=W:\DIETER\Dieter-Heat\model_clean\post\scenario.gms
+1=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\MORITS_MCP.gms
+2=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage_Module\PROSUMOD.gms
+3=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\DIETER.lst
+4=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\DIETER.gms
+5=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\DIETER.lst
+6=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\results.gdx
+7=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\DIETER.gms
+8=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+9=W:\DIETER\Dieter-Heat\model_clean\post\Untitled_1.gms
+
+[OPENWINDOW_1]
+FILE0=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\24h_FirstHours.gms
+FILE1=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\MORITS_MCP_online.gms
+FILE2=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\MORITS_MCP_online.gms
+MAXIM=0
+TOP=-19
+LEFT=169
+HEIGHT=876
+WIDTH=1222
