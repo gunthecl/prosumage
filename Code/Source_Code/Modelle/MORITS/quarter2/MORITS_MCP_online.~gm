@@ -136,7 +136,7 @@ lev_Z                       Objective value: Annual electricity costs
 lev_EB                      Level of purchased electricity from grid
 lev_ES                      Level of sold electricity to grid
 price_market(h)             Price for selling energy per kWh
-days /300/
+days /91/
 ;
 
 
@@ -717,8 +717,8 @@ STO_L_hh.l(h)   = 4.367;
 
 
 * First first storage level duals
-levelsto_hh.fx('h1') = 100;
-levelsto.fx('h1')  = 100;
+*levelsto_hh.fx('h2191') = 100;
+*levelsto.fx('h2191')  = 100;
 
 * Fix capacity values of system
 *$ontext

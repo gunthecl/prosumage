@@ -717,8 +717,8 @@ STO_L_hh.l(h)   = 4.367;
 
 
 * First first storage level duals
-levelsto_hh.fx('h1') = 100;
-levelsto.fx('h1')  = 100;
+levelsto_hh.fx('h6571') = 100;
+levelsto.fx('h6571')  = 100;
 
 * Fix capacity values of system
 *$ontext

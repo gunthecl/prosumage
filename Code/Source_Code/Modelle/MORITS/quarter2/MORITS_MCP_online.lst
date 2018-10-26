@@ -1,4 +1,4 @@
-GAMS 24.2.3  r46072 Released May 22, 2014 WEX-WEI x86_64/MS Windows                                                                                                                                                                    10/26/18 15:22:30 Page 1
+GAMS 24.2.3  r46072 Released May 22, 2014 WEX-WEI x86_64/MS Windows                                                                                                                                                                    10/26/18 15:50:36 Page 1
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
@@ -56,19 +56,16 @@ C o m p i l a t i o n
   59  hh_profile       Household load data                     /V1*V74/
   60  ct               Dispatchable Technologies               /base, peak/
   61  * Include subset of all first hours of days within a year
-GAMS 24.2.3  r46072 Released May 22, 2014 WEX-WEI x86_64/MS Windows                                                                                                                                                                    10/26/18 15:22:30 Page 2
+GAMS 24.2.3  r46072 Released May 22, 2014 WEX-WEI x86_64/MS Windows                                                                                                                                                                    10/26/18 15:50:36 Page 2
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
 
 INCLUDE    C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\quarter2\24h_FirstHours.gms
   63  Set
-  64  h24(h)           Subset: First hour of day                  /h2185,h2209,h2233,h2257,h2281,h2305,h2329,h2353,h2377,h2401,h2425,h2449,h2473,h2497,h2521,h2545,h2569,h2593,h2617,h2641,h2665,h2689,h2713,h2737,h2761,h2785,h2809,h2833,h2857,h2881,h2905,h2
-****                                                                   $170
-      929,h2953,h2977,h3001,h3025,h3049,h3073,h3097,h3121,h3145,h3169,h3193,h3217,h3241,h3265,h3289,h3313,h3337,h3361,h3385,h3409,h3433,h3457,h3481,h3505,h3529,h3553,h3577,h3601,h3625,h3649,h3673,h3697,h3721,h3745,h3769,h3793,h3817,h3841,h3865,h3889,h3913
-      ,h3937,h3961,h3985,h4009,h4033,h4057,h4081,h4105,h4129,h4153,h4177,h4201,h4225,h4249,h4273,h4297,h4321,h4345,h4369/
-**** LINE      2 INCLUDE     C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\quarter2\24h_FirstHours.gms
-**** LINE     62 INPUT       C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\quarter2\MORITS_MCP_online.gms
+  64  h24(h)           Subset: First hour of day                  /h2209,h2233,h2257,h2281,h2305,h2329,h2353,h2377,h2401,h2425,h2449,h2473,h2497,h2521,h2545,h2569,h2593,h2617,h2641,h2665,h2689,h2713,h2737,h2761,h2785,h2809,h2833,h2857,h2881,h2905,h2929,h2
+      953,h2977,h3001,h3025,h3049,h3073,h3097,h3121,h3145,h3169,h3193,h3217,h3241,h3265,h3289,h3313,h3337,h3361,h3385,h3409,h3433,h3457,h3481,h3505,h3529,h3553,h3577,h3601,h3625,h3649,h3673,h3697,h3721,h3745,h3769,h3793,h3817,h3841,h3865,h3889,h3913,h3937
+      ,h3961,h3985,h4009,h4033,h4057,h4081,h4105,h4129,h4153,h4177,h4201,h4225,h4249,h4273,h4297,h4321,h4345,h4369/
   65  *h4393,h4417,h4441,h4465,h4489,h4513,h4537,h4561,h4585,h4609,h4633,h4657,h4681,h4705,h4729,h4753,h4777, h4801,h4825,h4849,h4873,h4897,h4921,h4945,h4969,h4993,h5017,h5041,h5065,h5089,h5113,h5137,h5161,h5185,h5209,h5233,h5257,h5281,h5305,h5329,h5353,h
       5377,h5401,h5425,h5449,h5473,h5497,h5521,h5545,h5569,h5593,h5617,h5641,h5665,h5689,h5713,h5737,h5761,h5785,h5809,h5833,h5857,h5881,h5905,h5929,h5953,h5977,h6001,h6025,h6049,h6073,h6097,h6121,h6145,h6169,h6193,h6217,h6241,h6265,h6289,h6313,h6337,h636
       1,h6385,h6409,h6433,h6457,h6481,h6505,h6529,h6553,h6577,h6601,h6625,h6649,h6673,h6697,h6721,h6745,h6769,h6793,h6817,h6841,h6865,h6889,h6913,h6937,h6961,h6985,h7009,h7033,h7057,h7081,h7105,h7129,h7153,h7177/
@@ -114,14 +111,14 @@ INCLUDE    C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modell
  104  N_RENEWABLE         Capacities: renewable energy
  105  N_CON(ct)                Capacities: conventional energy
  106  N_STO_E          Capacities: storage energy
-GAMS 24.2.3  r46072 Released May 22, 2014 WEX-WEI x86_64/MS Windows                                                                                                                                                                    10/26/18 15:22:30 Page 3
+ 107  N_STO_P          Capacities: storage power
+ 108  STO_L(h)          Storage level
+ 109  STO_IN(h)         Storage intake
+GAMS 24.2.3  r46072 Released May 22, 2014 WEX-WEI x86_64/MS Windows                                                                                                                                                                    10/26/18 15:50:36 Page 3
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
 
- 107  N_STO_P          Capacities: storage power
- 108  STO_L(h)          Storage level
- 109  STO_IN(h)         Storage intake
  110  STO_OUT(h)        Storage generation
  111  lambda(h)
  112  gamma1(ct,h)
@@ -172,14 +169,14 @@ C o m p i l a t i o n
  157  phi_res( h)              Hourly capacity factor renewable energy
  158  phi_res_upload(h,year)   Hourly capacity factor renewable energy - upload parameter
  159  c_i_sto_e                Cost: investment into storage energy
-GAMS 24.2.3  r46072 Released May 22, 2014 WEX-WEI x86_64/MS Windows                                                                                                                                                                    10/26/18 15:22:30 Page 4
+ 160  c_i_sto_p                Cost: investment into storage power
+ 161  c_i_res                  Cost: investment into renewable capacity
+ 162  c_i_con(ct)              Cost: investment into conventional capacity
+GAMS 24.2.3  r46072 Released May 22, 2014 WEX-WEI x86_64/MS Windows                                                                                                                                                                    10/26/18 15:50:36 Page 4
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
 
- 160  c_i_sto_p                Cost: investment into storage power
- 161  c_i_res                  Cost: investment into renewable capacity
- 162  c_i_con(ct)              Cost: investment into conventional capacity
  163  c_var_con(ct)            Cost: variable generation costs conventional energy
  164  c_var_sto                Cost: variable generation costs storage
  165  penalty                  Penalty term
@@ -230,14 +227,14 @@ C o m p i l a t i o n
  210  share_wind('2016') = 0.689545375 ;
  211   
  212  * Specify system costs
-GAMS 24.2.3  r46072 Released May 22, 2014 WEX-WEI x86_64/MS Windows                                                                                                                                                                    10/26/18 15:22:30 Page 5
+ 213  c_i_sto_e           = 5418.14 ;
+ 214  c_i_sto_p           = 50995.48 ;
+ 215  c_i_res             = share_solar('2014') * 60526.64 + share_wind('2014') * 108869.81 ;
+GAMS 24.2.3  r46072 Released May 22, 2014 WEX-WEI x86_64/MS Windows                                                                                                                                                                    10/26/18 15:50:36 Page 5
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
 
- 213  c_i_sto_e           = 5418.14 ;
- 214  c_i_sto_p           = 50995.48 ;
- 215  c_i_res             = share_solar('2014') * 60526.64 + share_wind('2014') * 108869.81 ;
  216  c_i_con('base')     = 102393.68 ;
  217  c_i_con('peak')     = 47840.27 ;
  218  c_var_con('base')   = 31.03*365/days ;
@@ -288,14 +285,14 @@ GDXIN   C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\M
  270  Equations
  271  *Household
  272  objective_hh                  Objective function
-GAMS 24.2.3  r46072 Released May 22, 2014 WEX-WEI x86_64/MS Windows                                                                                                                                                                    10/26/18 15:22:30 Page 6
+ 273  hh_energy_balance_hh          Household energy balance
+ 274  pv_generation_hh              Household use of pv energy generation
+ 275  pv_install_max_hh             PV capacity constraint
+GAMS 24.2.3  r46072 Released May 22, 2014 WEX-WEI x86_64/MS Windows                                                                                                                                                                    10/26/18 15:50:36 Page 6
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
 
- 273  hh_energy_balance_hh          Household energy balance
- 274  pv_generation_hh              Household use of pv energy generation
- 275  pv_install_max_hh             PV capacity constraint
  276  stolev_no_freelunch_hh        Storage level in initial and last period
  277  stolevel_hh                   Storage level dynamics
  278  stolev_max_energy_hh          Storage capacity constraint on maximum energy
@@ -346,14 +343,14 @@ C o m p i l a t i o n
  323   
  324  ************************* Declare household Equations **************************
  325  *** Objective function: Minimize total household electricity costs
-GAMS 24.2.3  r46072 Released May 22, 2014 WEX-WEI x86_64/MS Windows                                                                                                                                                                    10/26/18 15:22:30 Page 7
+ 326  objective_hh..
+ 327   
+ 328     Z_hh =E=
+GAMS 24.2.3  r46072 Released May 22, 2014 WEX-WEI x86_64/MS Windows                                                                                                                                                                    10/26/18 15:50:36 Page 7
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
 
- 326  objective_hh..
- 327   
- 328     Z_hh =E=
  329   
  330            c_i_pv_hh* N_PV_hh
  331           + c_i_sto_e_hh * N_STO_E_hh + c_i_sto_p_hh * N_STO_P_hh
@@ -404,14 +401,14 @@ C o m p i l a t i o n
  378   
  379   
  380           STO_L_hh(h-1)
-GAMS 24.2.3  r46072 Released May 22, 2014 WEX-WEI x86_64/MS Windows                                                                                                                                                                    10/26/18 15:22:30 Page 8
+ 381           + STO_IN_hh(h) * eta_sto_in_hh
+ 382           - STO_OUT_hh(h)/eta_sto_out_hh
+ 383           - STO_L_hh(h)
+GAMS 24.2.3  r46072 Released May 22, 2014 WEX-WEI x86_64/MS Windows                                                                                                                                                                    10/26/18 15:50:36 Page 8
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
 
- 381           + STO_IN_hh(h) * eta_sto_in_hh
- 382           - STO_OUT_hh(h)/eta_sto_out_hh
- 383           - STO_L_hh(h)
  384           =E=  0
  385  ;
  386   
@@ -462,14 +459,14 @@ C o m p i l a t i o n
  431  ;
  432   
  433  KKTES_hh(h)..
-GAMS 24.2.3  r46072 Released May 22, 2014 WEX-WEI x86_64/MS Windows                                                                                                                                                                    10/26/18 15:22:30 Page 9
+ 434   
+ 435  *           -price_market(h)
+ 436             -lambda(h)/1000
+GAMS 24.2.3  r46072 Released May 22, 2014 WEX-WEI x86_64/MS Windows                                                                                                                                                                    10/26/18 15:50:36 Page 9
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
 
- 434   
- 435  *           -price_market(h)
- 436             -lambda(h)/1000
  437             + mu_hh(h) =G=  0
  438   
  439  ;
@@ -520,14 +517,14 @@ C o m p i l a t i o n
  486  energy_balance(h)..
  487   
  488           sum( ct , G_CON(ct,h))
-GAMS 24.2.3  r46072 Released May 22, 2014 WEX-WEI x86_64/MS Windows                                                                                                                                                                   10/26/18 15:22:30 Page 10
+ 489          + G_RENEWABLE(h)
+ 490          + STO_OUT(h)
+ 491          + E_sell_hh(h)/1000
+GAMS 24.2.3  r46072 Released May 22, 2014 WEX-WEI x86_64/MS Windows                                                                                                                                                                   10/26/18 15:50:36 Page 10
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
 
- 489          + G_RENEWABLE(h)
- 490          + STO_OUT(h)
- 491          + E_sell_hh(h)/1000
  492          - d(h)
  493          - E_buy_hh(h)/1000
  494           =G= 0
@@ -578,14 +575,14 @@ C o m p i l a t i o n
  539   
  540         N_STO_P   -  STO_OUT( h)   =G= 0
  541  ;
-GAMS 24.2.3  r46072 Released May 22, 2014 WEX-WEI x86_64/MS Windows                                                                                                                                                                   10/26/18 15:22:30 Page 11
+ 542   
+ 543   
+ 544  KKTNRES..
+GAMS 24.2.3  r46072 Released May 22, 2014 WEX-WEI x86_64/MS Windows                                                                                                                                                                   10/26/18 15:50:36 Page 11
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
 
- 542   
- 543   
- 544  KKTNRES..
  545   
  546   
  547    c_i_res - sum( h, mu(h)*phi_res(h)) =G= 0
@@ -636,14 +633,14 @@ C o m p i l a t i o n
  592    + gamma4(h)
  593    + levelsto(h)/eta_sto_out =G= 0
  594   
-GAMS 24.2.3  r46072 Released May 22, 2014 WEX-WEI x86_64/MS Windows                                                                                                                                                                   10/26/18 15:22:30 Page 12
+ 595   
+ 596   
+ 597  ;
+GAMS 24.2.3  r46072 Released May 22, 2014 WEX-WEI x86_64/MS Windows                                                                                                                                                                   10/26/18 15:50:36 Page 12
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
 
- 595   
- 596   
- 597  ;
  598   
  599  KKTSTOLEV(h)..
  600   
@@ -694,14 +691,14 @@ C o m p i l a t i o n
  645  maxin_power.gamma3
  646  maxout_power.gamma4
  647  *KKTNRES.N_RENEWABLE
-GAMS 24.2.3  r46072 Released May 22, 2014 WEX-WEI x86_64/MS Windows                                                                                                                                                                   10/26/18 15:22:30 Page 13
+ 648  *KKTNSTOE.N_STO_E
+ 649  *KKTNSTOP.N_STO_P
+ 650  *KKTNCON.N_CON
+GAMS 24.2.3  r46072 Released May 22, 2014 WEX-WEI x86_64/MS Windows                                                                                                                                                                   10/26/18 15:50:36 Page 13
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
 
- 648  *KKTNSTOE.N_STO_E
- 649  *KKTNSTOP.N_STO_P
- 650  *KKTNCON.N_CON
  651  KKTGCON.G_CON
  652  KKTGRES.G_RENEWABLE
  653  KKTSTOIN.STO_IN
@@ -752,14 +749,14 @@ C o m p i l a t i o n
  705  N_STO_E.up                 = 150000 ;
  706  N_STO_P.up                 = 100000 ;
  707  STO_L.up(h)                = 150000 ;
-GAMS 24.2.3  r46072 Released May 22, 2014 WEX-WEI x86_64/MS Windows                                                                                                                                                                   10/26/18 15:22:30 Page 14
+ 708  STO_IN.up(h)               = 100000  ;
+ 709  STO_OUT.up(h)              = 100000  ;
+ 710   
+GAMS 24.2.3  r46072 Released May 22, 2014 WEX-WEI x86_64/MS Windows                                                                                                                                                                   10/26/18 15:50:36 Page 14
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
 
- 708  STO_IN.up(h)               = 100000  ;
- 709  STO_OUT.up(h)              = 100000  ;
- 710   
  711  * Set up initial values for speed up
  712  STO_L_hh.l(h)   = 4.367;
  713  *N_PV_hh.l       = 8    ;
@@ -774,12 +771,8 @@ C o m p i l a t i o n
  722   
  723   
  724  * First first storage level duals
- 725  levelsto_hh.fx('h1') = 100;
-****                    $170
-**** LINE    720 INPUT       C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\quarter2\MORITS_MCP_online.gms
- 726  levelsto.fx('h1')  = 100;
-****                 $170
-**** LINE    721 INPUT       C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\quarter2\MORITS_MCP_online.gms
+ 725  levelsto_hh.fx('h2191') = 100;
+ 726  levelsto.fx('h2191')  = 100;
  727   
  728  * Fix capacity values of system
  729  *$ontext
@@ -793,8 +786,6 @@ C o m p i l a t i o n
  737  *prosumodmcp.optfile = 1;
  738   
  739  solve prosumodmcp using mcp;
-****                             $257
-**** LINE    734 INPUT       C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\quarter2\MORITS_MCP_online.gms
  740   
  741  * Determine costs for system and household
  742  Z_sys.l                      =
@@ -810,11 +801,6 @@ C o m p i l a t i o n
  752   
  753            c_i_pv_hh* N_PV_hh.l
  754           + c_i_sto_e_hh * N_STO_E_hh.l  + c_i_sto_p_hh * N_STO_P_hh.l
-GAMS 24.2.3  r46072 Released May 22, 2014 WEX-WEI x86_64/MS Windows                                                                                                                                                                   10/26/18 15:22:30 Page 15
-G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
-C o m p i l a t i o n
-
-
  755           + sum( (h) , c_var_sto_hh * (STO_IN_hh.l (h) + STO_OUT_hh.l (h)) )
  756           + sum(  h , price_buy * E_buy_hh.l (h))
  757           - sum(  h , price_market(h)/1000 * E_sell_hh.l (h))
@@ -823,9 +809,12 @@ C o m p i l a t i o n
  760  display d_hh , N_PV_hh.l , E_buy_hh.l , E_sell_hh.l ,  G_PV_hh.l,
  761          N_STO_E_hh.l, N_STO_P_hh.l, G_PV_hh.l,
  762          hh_energy_balance_hh.l, hh_energy_balance_hh.m,
-****                               $141
-**** LINE    757 INPUT       C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\quarter2\MORITS_MCP_online.gms
  763          price_market,  CU_hh.l, N_RENEWABLE.l, d, G_RENEWABLE.l,
+GAMS 24.2.3  r46072 Released May 22, 2014 WEX-WEI x86_64/MS Windows                                                                                                                                                                   10/26/18 15:50:36 Page 15
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+C o m p i l a t i o n
+
+
  764  *        G_CON.l, STO_OUT.l, lambda.l, lambda.m, mu.l, mu.m, energy_balance.m,
  765  *        N_CON.l, Z_sys.l ,
  766          Z_hh.l ,N_RENEWABLE.l , N_STO_E.l,N_STO_P.l,
@@ -836,19 +825,7 @@ C o m p i l a t i o n
  771   
       pv_install_max_hh.m, pv_generation_hh.m, N_STO_E_hh.l, N_STO_P_hh.l,
          hh_energy_balance_hh.m
-GAMS 24.2.3  r46072 Released May 22, 2014 WEX-WEI x86_64/MS Windows                                                                                                                                                                   10/26/18 15:22:30 Page 16
-G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
-Error Messages
-
-
-141  Symbol neither initialized nor assigned
-        A wild shot: You may have spurious commas in the explanatory
-        text of a declaration. Check symbol reference list.
-170  Domain violation for element
-257  Solve statement not checked because of previous errors
-
-**** 5 ERROR(S)   0 WARNING(S)
-GAMS 24.2.3  r46072 Released May 22, 2014 WEX-WEI x86_64/MS Windows                                                                                                                                                                   10/26/18 15:22:30 Page 17
+GAMS 24.2.3  r46072 Released May 22, 2014 WEX-WEI x86_64/MS Windows                                                                                                                                                                   10/26/18 15:50:36 Page 16
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Include File Summary
 
@@ -860,17 +837,22 @@ Include File Summary
      3      236 GDXIN          1     231  C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\quarter2\in.gdx
 
 
-COMPILATION TIME     =        0.078 SECONDS     10 MB  24.2.3 r46072 WEX-WEI
+COMPILATION TIME     =        0.047 SECONDS     10 MB  24.2.3 r46072 WEX-WEI
+GAMS 24.2.3  r46072 Released May 22, 2014 WEX-WEI x86_64/MS Windows                                                                                                                                                                   10/26/18 15:50:36 Page 17
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Model Statistics    SOLVE prosumodmcp Using MCP From line 739
 
 
-USER: Medium MUD - 10 User License                   S170316:1123AO-GEN
-      Deutsches Institut fuer Wirtschaftsforschung DIW, AbteilungDC3975
-      License for teaching and research at degree granting institutions
+MODEL STATISTICS
+
+BLOCKS OF EQUATIONS          29     SINGLE EQUATIONS       61,501
+BLOCKS OF VARIABLES          36     SINGLE VARIABLES       61,511
+NON ZERO ELEMENTS       168,166     NON LINEAR N-Z              0
+DERIVATIVE POOL              10     CONSTANT POOL              16
+CODE LENGTH                   0
 
 
-**** FILE SUMMARY
+GENERATION TIME      =        0.171 SECONDS     28 MB  24.2.3 r46072 WEX-WEI
 
-Input      C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\quarter2\MORITS_MCP_online.gms
-Output     C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\quarter2\MORITS_MCP_online.lst
 
-**** USER ERROR(S) ENCOUNTERED
+EXECUTION TIME       =        0.171 SECONDS     28 MB  24.2.3 r46072 WEX-WEI

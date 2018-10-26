@@ -136,7 +136,7 @@ lev_Z                       Objective value: Annual electricity costs
 lev_EB                      Level of purchased electricity from grid
 lev_ES                      Level of sold electricity to grid
 price_market(h)             Price for selling energy per kWh
-days /300/
+days /92/
 ;
 
 

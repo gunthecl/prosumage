@@ -1,14 +1,10 @@
---- Job MORITS_MCP_online.gms Start 10/26/18 15:35:12 24.2.3 r46072 WEX-WEI x86_64/MS Windows
+--- Job morits.gpr Start 10/26/18 15:50:36 24.2.3 r46072 WEX-WEI x86_64/MS Windows
 GAMS 24.2.3   Copyright (C) 1987-2014 GAMS Development. All rights reserved
 Licensee: Medium MUD - 10 User License                   S170316:1123AO-GEN
           Deutsches Institut fuer Wirtschaftsforschung DIW, AbteilungDC3975
           License for teaching and research at degree granting institutions
           License_Admin:_Claudia_Kemfert,_bbibra@diw.de____________________
 --- Starting compilation
---- MORITS_MCP_online.gms(62) 3 Mb
---- .24h_FirstHours.gms(5) 3 Mb
---- MORITS_MCP_online.gms(231) 3 Mb
---- GDXin=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\quarter3\in.gdx
---- MORITS_MCP_online.gms(770) 10 Mb 4 Errors
+--- morits.gpr(123) 2 Mb 2 Errors
 *** Status: Compilation error(s)
---- Job MORITS_MCP_online.gms Stop 10/26/18 15:35:12 elapsed 0:00:00.063
+--- Job morits.gpr Stop 10/26/18 15:50:36 elapsed 0:00:00.006

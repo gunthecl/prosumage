@@ -6,9 +6,9 @@ Licensee: Medium MUD - 10 User License                   S170316:1123AO-GEN
           License_Admin:_Claudia_Kemfert,_bbibra@diw.de____________________
 --- Starting compilation
 --- MORITS_MCP_online.gms(62) 3 Mb
---- .24h_FirstHours.gms(5) 3 Mb
+--- .24h_FirstHours.gms(3) 3 Mb
 --- MORITS_MCP_online.gms(231) 3 Mb
---- GDXin=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\quarter3\in.gdx
+--- GDXin=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\quarter4\in.gdx
 --- MORITS_MCP_online.gms(770) 10 Mb 4 Errors
 *** Status: Compilation error(s)
---- Job MORITS_MCP_online.gms Stop 10/26/18 15:35:12 elapsed 0:00:00.063
+--- Job MORITS_MCP_online.gms Stop 10/26/18 15:35:12 elapsed 0:00:00.059

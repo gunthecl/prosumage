@@ -1,0 +1,868 @@
+GAMS 24.2.3  r46072 Released May 22, 2014 WEX-WEI x86_64/MS Windows                                                                                                                                                                    10/26/18 15:35:12 Page 1
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+C o m p i l a t i o n
+
+
+   1  ********************************************************************************
+   2  ********************************************************************************
+   3  *   This model is a dispatch and investment model for PROSUMAGE households
+   4  *   PROSUMAGE households PROduce, conSUMe electricity and usage storAGE
+   5  *
+   6  *   Date of this version: August 6, 2018
+   7  *
+   8  ********************************************************************************
+   9  ********************************************************************************
+  10   
+  11   
+  12  ******************* Format and model run specifications ************************
+  13   
+  14  * ------------- household selection---------------------------------------------
+  15  * Select a household profile between V1 and V74:
+  16   
+  18   
+  19   
+  20  * ------------- Base year selection---------------------------------------------
+  21  * Select year between 2010 and 2016:
+  22   
+  24   
+  25   
+  26   
+  27  * ------------- Set data import and export options -----------------------------
+  28   
+  29  * mark offXcel with a star to turn off excel import and import gdx file
+  30  * mark modelkill to create a gdx file only without model run
+  31   
+  34   
+  35  * Set column index (alphabetic) in excel file furthest to the right
+  36  * to speed up data import
+  37   
+  39   
+  40  * Name input file suffix other than "input data"
+  42   
+  43  * Auto set of input file (do not change)
+  45   
+  46  * Auto set of output file (do not change)
+  48   
+  49   
+  50  **************** Sets, variables, parameters declaration ***********************
+  51   
+  52   
+  53   
+  54  Sets
+  55  h                hour                                    /h6571*h8760/
+  56  res              Renewable technologies                  /renewable/
+  57  sto              Storage technolgies                     /storage/
+  58  year             Base years                              /2010*2016/
+  59  hh_profile       Household load data                     /V1*V74/
+  60  ct               Dispatchable Technologies               /base, peak/
+  61  * Include subset of all first hours of days within a year
+GAMS 24.2.3  r46072 Released May 22, 2014 WEX-WEI x86_64/MS Windows                                                                                                                                                                    10/26/18 15:35:12 Page 2
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+C o m p i l a t i o n
+
+
+INCLUDE    C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\quarter4\24h_FirstHours.gms
+  63  Set
+  64  h24(h)           Subset: First hour of day                  /h6577,h6601,h6625,h6649,h6673,h6697,h6721,h6745,h6769,h6793,h6817,h6841,h6865,h6889,h6913,h6937,h6961,h6985,h7009,h7033,h7057,h7081,h7105,h7129,h7153,h7177,h7201,h7225,h7249,h7273,h7297,h7
+      321,h7345,h7369,h7393,h7417,h7441,h7465,h7489,h7513,h7537,h7561,h7585,h7609,h7633,h7657,h7681,h7705,h7729,h7753,h7777,h7801,h7825,h7849,h7873,h7897,h7921,h7945,h7969,h7993,h8017,h8041,h8065,h8089,h8113,h8137,h8161,h8185,h8209,h8233,h8257,h8281,h8305
+      ,h8329,h8353,h8377,h8401,h8425,h8449,h8473,h8497,h8521,h8545,h8569,h8593,h8617,h8641,h8665,h8689,h8713,h8737/
+  65  ;
+  66  ;
+  67   
+  68  Variables
+  69  Z_hh                         Objective household
+  70  Z_sys                        Objective System
+  71  ;
+  72   
+  73  Positive variables
+  74  *Household variables
+  75  G_PV_hh(h)              Generation of pv plant
+  76  CU_hh(h)                Curtailment of pv energy
+  77  N_PV_hh                 PV generation capacities
+  78  N_STO_E_hh             Capacities: storage energy
+  79  N_STO_P_hh             Capacities: storage power
+  80  STO_L_hh(h)             Storage level
+  81  STO_IN_hh(h)            Storage intake
+  82  STO_OUT_hh(h)           Storage generation
+  83  E_buy_hh(h)             Energy purchased from market
+  84  E_sell_hh(h)            Energy sold to market
+  85  lambda_hh(h)
+  86  gamma1_hh
+  87  gamma2_hh(h)
+  88  gamma3_hh(h)
+  89  gamma4_hh(h)
+  90  ;
+  91   
+  92  Variables
+  93  mu_hh(h)
+  94  levelsto_hh(h)
+  95  lambda_stolev24h_hh(h) ;
+  96   
+  97  Positive variables
+  98  *System variables
+  99  G_CON(ct,h)              Generation of conventional electricity
+ 100  G_RENEWABLE(h)       Generation of renewable energy
+ 101  CU( h)                Curtailment of renewable energy
+ 102  N_RENEWABLE         Capacities: renewable energy
+ 103  N_CON(ct)                Capacities: conventional energy
+ 104  N_STO_E          Capacities: storage energy
+ 105  N_STO_P          Capacities: storage power
+ 106  STO_L(h)          Storage level
+ 107  STO_IN(h)         Storage intake
+ 108  STO_OUT(h)        Storage generation
+ 109  lambda(h)
+ 110  gamma1(ct,h)
+ 111  gamma2(h)
+ 112  gamma3(h)
+GAMS 24.2.3  r46072 Released May 22, 2014 WEX-WEI x86_64/MS Windows                                                                                                                                                                    10/26/18 15:35:12 Page 3
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+C o m p i l a t i o n
+
+
+ 113  gamma4(h)
+ 114  resshare
+ 115  ;
+ 116   
+ 117  Variables
+ 118  mu
+ 119  levelsto(h)
+ 120  lambda_stolev24h(h);
+ 121   
+ 122  Parameters
+ 123  * Household Parameters
+ 124  sto_ini_last_hh             Level of storage in first and last period of the analysis
+ 125  eta_sto_in_hh               Efficiency: storage in
+ 126  eta_sto_out_hh              Efficiency: storage out
+ 127  d_hh(h)                     Household load
+ 128  d_upload_hh(h,hh_profile)   Household load - upload parameter
+ 129  avail_solar(h)              Hourly capacity factor for pv
+ 130  avail_solar_upload(h,year)  Hourly capacity factor pv - upload parameter
+ 131  pv_cap_max                  PV capacity maximum
+ 132  price_market_upload(h,year) Price for selling energy per MWh - upload parameter
+ 133  price_buy                   Price for energy consumption per kWh
+ 134  c_i_sto_e_hh                Cost: investment into storage energy
+ 135  c_i_sto_p_hh                Cost: investment into storage power
+ 136  c_i_pv_hh                   Cost: investment into renewable capacity
+ 137  c_var_sto_hh                Cost: variable generation costs storage
+ 138  lev_Z                       Objective value: Annual electricity costs
+ 139  lev_EB                      Level of purchased electricity from grid
+ 140  lev_ES                      Level of sold electricity to grid
+ 141  price_market(h)             Price for selling energy per kWh
+ 142  days /91/
+ 143  ;
+ 144   
+ 145   
+ 146  Parameters
+ 147  *System Parameters
+ 148  phi_sto_ini              Level of storage in first and last period of the analysis
+ 149  eta_sto_in               Efficiency: storage in
+ 150  eta_sto_out              Efficiency: storage out
+ 151  phi_min_res              Minimum share of renewable electricity in net consumption
+ 152  phi_max_curt             Maximum share of renewable electricity curtailed over the year
+ 153  d(h)                     Electricity demand
+ 154  d_upload(h,year)         Electricity demand - upload parameter
+ 155  phi_res( h)              Hourly capacity factor renewable energy
+ 156  phi_res_upload(h,year)   Hourly capacity factor renewable energy - upload parameter
+ 157  c_i_sto_e                Cost: investment into storage energy
+ 158  c_i_sto_p                Cost: investment into storage power
+ 159  c_i_res                  Cost: investment into renewable capacity
+ 160  c_i_con(ct)              Cost: investment into conventional capacity
+ 161  c_var_con(ct)            Cost: variable generation costs conventional energy
+ 162  c_var_sto                Cost: variable generation costs storage
+ 163  penalty                  Penalty term
+ 164  share_solar(year)        Share of solar energy among total variable renewable energy
+ 165  share_wind(year)         Share of wind energy among total variable renewable energy
+GAMS 24.2.3  r46072 Released May 22, 2014 WEX-WEI x86_64/MS Windows                                                                                                                                                                    10/26/18 15:35:12 Page 4
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+C o m p i l a t i o n
+
+
+ 166  ;
+ 167   
+ 168  **************** Specify Parameters ***********************
+ 169   
+ 170  * Specify household Parameters
+ 171  * Declare efficiency parameters
+ 172  sto_ini_last_hh  =  0.5 ;
+ 173  eta_sto_in_hh    =  0.81 ;
+ 174  eta_sto_out_hh   =  0.926 ;
+ 175  penalty          =  0 ;
+ 176   
+ 177   
+ 178  * Declare cost parameters for household
+ 179  c_i_sto_e_hh  =  5418.14/1000  ;
+ 180  c_i_sto_p_hh  = 50995.48/1000  ;
+ 181  c_i_pv_hh     = 60526.64/1000  ;
+ 182  c_var_sto_hh  =     0.5 /1000*365/days  ;
+ 183  price_buy     =     0.30*365/days ;
+ 184   
+ 185  * Declare further restrictions
+ 186  pv_cap_max = 10       ;
+ 187   
+ 188   
+ 189  * Specify System Parameters
+ 190  phi_sto_ini = 0.5 ;
+ 191  eta_sto_in  = 0.81 ;
+ 192  eta_sto_out = 0.926 ;
+ 193  penalty     = 0 ;
+ 194  phi_min_res = 0.6;
+ 195   
+ 196  *Historical energy shares of wind and solar PV in base years
+ 197  *Source: OPSD (2017), see upload_data.xlsx
+ 198  share_solar('2012') = 0.378304182 ;
+ 199  share_solar('2013') = 0.385519442 ;
+ 200  share_solar('2014') = 0.390535228 ;
+ 201  share_solar('2015') = 0.310511627 ;
+ 202  share_solar('2016') = 0.310454625 ;
+ 203   
+ 204  share_wind('2012') = 0.621795818 ;
+ 205  share_wind('2013') = 0.614480558 ;
+ 206  share_wind('2014') = 0.609464772 ;
+ 207  share_wind('2015') = 0.689488373 ;
+ 208  share_wind('2016') = 0.689545375 ;
+ 209   
+ 210  * Specify system costs
+ 211  c_i_sto_e           = 5418.14 ;
+ 212  c_i_sto_p           = 50995.48 ;
+ 213  c_i_res             = share_solar('2014') * 60526.64 + share_wind('2014') * 108869.81 ;
+ 214  c_i_con('base')     = 102393.68 ;
+ 215  c_i_con('peak')     = 47840.27 ;
+ 216  c_var_con('base')   = 31.03*365/days ;
+ 217  c_var_con('peak')   = 78.36*365/days ;
+ 218  c_var_sto           = 0.5*365/days ;
+GAMS 24.2.3  r46072 Released May 22, 2014 WEX-WEI x86_64/MS Windows                                                                                                                                                                    10/26/18 15:35:12 Page 5
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+C o m p i l a t i o n
+
+
+ 219   
+ 220  ***************************** Upload data **************************************
+ 221   
+ 222  * Upload household data
+ 232   
+ 233  *$call "gdxxrw in.xlsx squeeze=N @in.tmp  o=in.gdx  ";
+GDXIN   C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\quarter4\in.gdx
+--- LOAD  d_upload_hh = 1:d_upload_hh
+--- LOAD  avail_solar_upload = 2:avail_solar_upload
+--- LOAD  price_market_upload = 3:price_market_upload
+--- LOAD  d_upload = 4:d_upload
+--- LOAD  phi_res_upload = 5:phi_res_upload
+ 237  ;
+ 238   
+ 239  * Load data for specific household and base year in MWh
+ 240  d_hh(h)                = d_upload_hh(h,'V17') ;
+ 241  avail_solar(h)         = avail_solar_upload(h,'2014') ;
+ 242   
+ 243  *Load market price as price per kWh
+ 244  price_market(h)        = price_market_upload(h,'2014')/1000  ;
+ 245  *price_market(h)        = 0.12 ;
+ 246   
+ 247   
+ 248  * Upload system relevant data
+ 249  *$onecho >temp.tmp
+ 250  *par=d_upload             rng=data!a3:f8763       rdim=1 cdim=1
+ 251  *par=phi_res_upload       rng=data!h3:m8763       rdim=1 cdim=1
+ 252   
+ 253  *$offecho
+ 254   
+ 255  *$call "gdxxrw data/upload_data.xlsx @temp.tmp o=Data_input";
+ 256  *$GDXin Data_input.gdx
+ 257  *$load d_upload phi_res_upload
+ 258  *;
+ 259   
+ 260  * Initialize base year
+ 261  phi_res(h)    = phi_res_upload(h,'2014') ;
+ 262  d(h)          = d_upload(h,'2014') ;
+ 263   
+ 265   
+ 266  ****************************** Model setup *************************************
+ 267   
+ 268  Equations
+ 269  *Household
+ 270  objective_hh                  Objective function
+ 271  hh_energy_balance_hh          Household energy balance
+ 272  pv_generation_hh              Household use of pv energy generation
+ 273  pv_install_max_hh             PV capacity constraint
+ 274  stolev_no_freelunch_hh        Storage level in initial and last period
+ 275  stolevel_hh                   Storage level dynamics
+ 276  stolev_max_energy_hh          Storage capacity constraint on maximum energy
+ 277  stoin_max_power_hh            Storage capacity constraint on maximum power - storing in
+ 278  stoout_max_power_hh           Storage capacity constraint on maximum power - storing out
+GAMS 24.2.3  r46072 Released May 22, 2014 WEX-WEI x86_64/MS Windows                                                                                                                                                                    10/26/18 15:35:12 Page 6
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+C o m p i l a t i o n
+
+
+ 279  KKTNPV_hh
+ 280  KKTNSTOE_hh
+ 281  KKTNSTOP_hh
+ 282  KKTEB_hh
+ 283  KKTES_hh
+ 284  KKTG_hh
+ 285  KKTSTOIN_hh
+ 286  KKTSTOUT_hh
+ 287  KKTSTOLEV_hh
+ 288  KKTCU_hh
+ 289  stolev_24h_hh
+ 290  ;
+ 291   
+ 292   
+ 293  Equations
+ 294  *System
+ 295  *objective                Objective function
+ 296  energy_balance           Energy balance (market clearing)
+ 297  renewable_generation     Use of renewable energy generation
+ 298  minRES                   Constraint on minimum share of renewables
+ 299  *maximum_curtailment      Constraint on maximum share of renewables curtailment
+ 300  *maximum_loss             Constraint on maximum share of renewable energy loss
+ 301  maximum_generation_con   Capacity constraint - conventional generation
+ 302  *stolev_start_end         Storage: storage level in the first and last period
+ 303  stolev                   Storage: storage level dynamics
+ 304  stolev_max               Storage: capacity constraint on maximum energy
+ 305  maxin_power              Storage: capacity constraint on maximum power - storing in
+ 306  maxout_power             Storage: capacity constraint on maximum power - storing out
+ 307  KKTNRES
+ 308  KKTNSTOE
+ 309  KKTNSTOP
+ 310  KKTNCON
+ 311  KKTGCON
+ 312  KKTGRES
+ 313  KKTSTOIN
+ 314  KKTSTOUT
+ 315  KKTSTOLEV
+ 316  KKTCU
+ 317  stolev_24h
+ 318  ;
+ 319   
+ 320   
+ 321   
+ 322  ************************* Declare household Equations **************************
+ 323  *** Objective function: Minimize total household electricity costs
+ 324  objective_hh..
+ 325   
+ 326     Z_hh =E=
+ 327   
+ 328            c_i_pv_hh* N_PV_hh
+ 329           + c_i_sto_e_hh * N_STO_E_hh + c_i_sto_p_hh * N_STO_P_hh
+ 330           + sum( (h) , c_var_sto_hh * (STO_IN_hh(h) + STO_OUT_hh(h)) )
+ 331           + sum(  h , price_buy * E_buy_hh(h))
+GAMS 24.2.3  r46072 Released May 22, 2014 WEX-WEI x86_64/MS Windows                                                                                                                                                                    10/26/18 15:35:12 Page 7
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+C o m p i l a t i o n
+
+
+ 332           - sum(  h , lambda(h) * E_sell_hh(h))
+ 333  ;
+ 334   
+ 335  *** Household energy balance: Satisfy load with own generation, storage and grid
+ 336  hh_energy_balance_hh(h)..
+ 337   
+ 338   
+ 339             G_PV_hh(h)
+ 340           + STO_OUT_hh(h)
+ 341           + E_buy_hh(h)  -  d_hh(h)       =G=    0
+ 342   
+ 343  ;
+ 344   
+ 345  *** Household PV generation usage: Directly consumed, CU_hhrtailed,stored or sold
+ 346  pv_generation_hh(h)..
+ 347   
+ 348        avail_solar(h) * N_PV_hh
+ 349         - G_PV_hh(h)
+ 350         - CU_hh(h)
+ 351         - STO_IN_hh(h)
+ 352         - E_sell_hh(h)  =E= 0
+ 353  ;
+ 354   
+ 355  *** Restrict PV capacity
+ 356  pv_install_max_hh..
+ 357   
+ 358            pv_cap_max - N_PV_hh =G= 0
+ 359  ;
+ 360   
+ 361   
+ 362   
+ 363   
+ 364  *** Technical constraints on storage
+ 365  *Storage level in first and last period must be the same
+      stolev_no_freelunch..
+       
+                STO_L_hh('h8760') - STO_L_hh('h1') =E= 0
+      ;
+       
+ 373   
+ 374  *Storage level for all hours except first: Prio level plus intake minus outflow
+ 375  stolevel_hh(h)$((ord(h)>1) )..
+ 376   
+ 377   
+ 378           STO_L_hh(h-1)
+ 379           + STO_IN_hh(h) * eta_sto_in_hh
+ 380           - STO_OUT_hh(h)/eta_sto_out_hh
+ 381           - STO_L_hh(h)
+ 382           =E=  0
+ 383  ;
+ 384   
+ 385  stolev_24h_hh(h)..
+ 386          - STO_L_hh(h)$(h24(h)) =E= 0
+GAMS 24.2.3  r46072 Released May 22, 2014 WEX-WEI x86_64/MS Windows                                                                                                                                                                    10/26/18 15:35:12 Page 8
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+C o m p i l a t i o n
+
+
+ 387  ;
+ 388   
+ 389   
+ 390  * Storage maximum energy capacity
+ 391  stolev_max_energy_hh(h)..
+ 392   
+ 393            N_STO_E_hh  - STO_L_hh(h) =G= 0
+ 394  ;
+ 395   
+ 396  * Storage maximum charging capacity (power in)
+ 397  stoin_max_power_hh(h)..
+ 398   
+ 399             N_STO_P_hh - STO_IN_hh(h) =G= 0
+ 400  ;
+ 401   
+ 402  * Storage maximum discharging capacity (power out)
+ 403  stoout_max_power_hh(h)..
+ 404   
+ 405            N_STO_P_hh  - STO_OUT_hh(h) =G= 0
+ 406  ;
+ 407   
+ 408   
+ 409  KKTNPV_hh..
+ 410   
+ 411    c_i_pv_hh- sum( h, mu_hh(h)*avail_solar(h)) + gamma1_hh =G= 0
+ 412   
+ 413  ;
+ 414  KKTNSTOE_hh..
+ 415   
+ 416    c_i_sto_e_hh  - sum(h, gamma2_hh(h)) =G= 0
+ 417   
+ 418  ;
+ 419  KKTNSTOP_hh..
+ 420   
+ 421      c_i_sto_p_hh  - sum(h, gamma3_hh(h)) - sum(h, gamma4_hh(h)) =G= 0
+ 422   
+ 423  ;
+ 424   
+ 425  KKTEB_hh(h)..
+ 426   
+ 427           price_buy - lambda_hh(h) =G= 0
+ 428   
+ 429  ;
+ 430   
+ 431  KKTES_hh(h)..
+ 432   
+ 433  *           -price_market(h)
+ 434             -lambda(h)/1000
+ 435             + mu_hh(h) =G=  0
+ 436   
+ 437  ;
+ 438   
+ 439  KKTG_hh(h)..
+GAMS 24.2.3  r46072 Released May 22, 2014 WEX-WEI x86_64/MS Windows                                                                                                                                                                    10/26/18 15:35:12 Page 9
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+C o m p i l a t i o n
+
+
+ 440   
+ 441        - lambda_hh(h) + mu_hh(h) =G= 0
+ 442   
+ 443   
+ 444  ;
+ 445   
+ 446  KKTCU_hh(h)..
+ 447   
+ 448        + mu_hh(h) =G= 0
+ 449  ;
+ 450   
+ 451  KKTSTOIN_hh(h)..
+ 452   
+ 453           c_var_sto_hh + mu_hh(h) + gamma3_hh(h) - levelsto_hh(h)*eta_sto_in_hh =G= 0
+ 454   
+ 455  ;
+ 456  KKTSTOUT_hh(h)..
+ 457   
+ 458            c_var_sto_hh -lambda_hh(h) + gamma4_hh(h) + levelsto_hh(h)/eta_sto_out_hh =G= 0
+ 459   
+ 460   
+ 461  ;
+ 462   
+ 463  KKTSTOLEV_hh(h)..
+ 464   
+ 465   
+ 466       gamma2_hh(h) + levelsto_hh(h) - levelsto_hh(h+1)
+ 467      + (lambda_stolev24h_hh(h))$h24(h)  =G= 0
+ 468   
+ 469  ;
+ 470   
+ 471  ************************* Declare System Equations *****************************
+ 472   
+      objective..
+               Z =E= sum( sto , c_i_sto_e  * N_STO_E  + c_i_sto_p  * N_STO_P  )
+               + sum( res , c_i_res(res) * N_RENEWABLE(res) )
+               + sum( ct , c_i_con(ct) * N_CON(ct) )
+               + sum( (ct,h) , c_var_con(ct) * G_CON(ct,h) )
+               + sum( ( h) , c_var_sto  * (STO_IN( h) + STO_OUT( h)) )
+      ;
+ 482   
+ 483   
+ 484  energy_balance(h)..
+ 485   
+ 486           sum( ct , G_CON(ct,h))
+ 487          + G_RENEWABLE(h)
+ 488          + STO_OUT(h)
+ 489          + E_sell_hh(h)/1000
+ 490          - d(h)
+ 491          - E_buy_hh(h)/1000
+ 492           =G= 0
+ 493  ;
+ 494   
+GAMS 24.2.3  r46072 Released May 22, 2014 WEX-WEI x86_64/MS Windows                                                                                                                                                                   10/26/18 15:35:12 Page 10
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+C o m p i l a t i o n
+
+
+ 495  renewable_generation(h)..
+ 496   
+ 497   
+ 498            phi_res(h) * N_RENEWABLE
+ 499           - G_RENEWABLE(h) - CU(h) - STO_IN(h)  =E= 0
+ 500  ;
+ 501   
+ 502   
+ 503  minRES..
+ 504           (1-phi_min_res) * sum( h , d(h) ) - sum( (ct,h) , G_CON(ct,h) )  =G= 0
+ 505  ;
+ 506   
+ 507  maximum_generation_con(ct,h)..
+ 508   
+ 509           N_CON(ct) - G_CON(ct,h) =G= 0
+ 510  ;
+ 511   
+ 512   
+ 513  stolev(h)$((ord(h)>1) )..
+ 514          STO_L(h-1)
+ 515        + STO_IN(h) * eta_sto_in
+ 516        - STO_OUT(h)/eta_sto_out
+ 517        - STO_L(h)
+ 518        =E=  0
+ 519  ;
+ 520   
+ 521  stolev_24h(h)..
+ 522          - STO_L(h)$(h24(h)) =E= 0
+ 523  ;
+ 524   
+ 525  stolev_max(h)..
+ 526   
+ 527            N_STO_E  - STO_L( h)  =G= 0
+ 528  ;
+ 529   
+ 530   
+ 531  maxin_power(h)..
+ 532   
+ 533           N_STO_P - STO_IN( h) =G= 0
+ 534  ;
+ 535   
+ 536  maxout_power(h)..
+ 537   
+ 538         N_STO_P   -  STO_OUT( h)   =G= 0
+ 539  ;
+ 540   
+ 541   
+ 542  KKTNRES..
+ 543   
+ 544   
+ 545    c_i_res - sum( h, mu(h)*phi_res(h)) =G= 0
+ 546   
+ 547  ;
+GAMS 24.2.3  r46072 Released May 22, 2014 WEX-WEI x86_64/MS Windows                                                                                                                                                                   10/26/18 15:35:12 Page 11
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+C o m p i l a t i o n
+
+
+ 548  KKTNSTOE..
+ 549   
+ 550         c_i_sto_e  - sum(h, gamma2(h)) =G= 0
+ 551  ;
+ 552   
+ 553  KKTNSTOP..
+ 554         c_i_sto_p  - sum(h, gamma3(h)) - sum(h, gamma4(h)) =G= 0
+ 555   
+ 556  ;
+ 557   
+ 558  KKTNCON(ct)..
+ 559   
+ 560      c_i_con(ct) - sum(h, gamma1(ct,h))  =G= 0
+ 561   
+ 562  ;
+ 563   
+ 564  KKTGCON(ct,h)..
+ 565   
+ 566        c_var_con(ct)
+ 567        - lambda(h)
+ 568        + resshare + gamma1(ct,h)  =G= 0
+ 569   
+ 570  ;
+ 571   
+ 572  KKTGRES(h)..
+ 573   
+ 574                   - lambda(h)
+ 575                   + mu(h) =G= 0
+ 576   
+ 577  ;
+ 578   
+ 579  KKTSTOIN(h)..
+ 580   
+ 581                 c_var_sto + mu(h) + gamma3(h) - levelsto(h)*eta_sto_in =G= 0
+ 582   
+ 583  ;
+ 584   
+ 585  KKTSTOUT(h)..
+ 586   
+ 587   
+ 588    c_var_sto
+ 589    - lambda(h)
+ 590    + gamma4(h)
+ 591    + levelsto(h)/eta_sto_out =G= 0
+ 592   
+ 593   
+ 594   
+ 595  ;
+ 596   
+ 597  KKTSTOLEV(h)..
+ 598   
+ 599   
+ 600        gamma2(h) + levelsto(h) - levelsto(h+1)
+GAMS 24.2.3  r46072 Released May 22, 2014 WEX-WEI x86_64/MS Windows                                                                                                                                                                   10/26/18 15:35:12 Page 12
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+C o m p i l a t i o n
+
+
+ 601        + (lambda_stolev24h(h))$h24(h)     =G= 0
+ 602   
+ 603   
+ 604  ;
+ 605   
+ 606   
+ 607  KKTCU(h)..
+ 608   
+ 609        mu(h) =G= 0
+ 610   
+ 611  ;
+ 612   
+ 613   
+ 614   
+ 615  ***************************** Initialize model *********************************
+ 616  Model prosumodmcp /
+ 617   
+ 618  hh_energy_balance_hh.lambda_hh
+ 619  pv_generation_hh.mu_hh
+ 620  *pv_install_max_hh.gamma1_hh
+ 621  stolevel_hh.levelsto_hh
+ 622  stolev_max_energy_hh.gamma2_hh
+ 623  stoin_max_power_hh.gamma3_hh
+ 624  stoout_max_power_hh.gamma4_hh
+ 625  *KKTNPV_hh.N_PV_hh
+ 626  *KKTNSTOE_hh.N_STO_E_hh
+ 627  *KKTNSTOP_hh.N_STO_P_hh
+ 628  KKTEB_hh.E_buy_hh
+ 629  KKTES_hh.E_sell_hh
+ 630  KKTG_hh.G_PV_hh
+ 631  KKTSTOIN_hh.STO_IN_hh
+ 632  KKTSTOUT_hh.STO_OUT_hh
+ 633  KKTSTOLEV_hh.STO_L_hh
+ 634  KKTCU_hh.CU_hh
+ 635  stolev_24h_hh.lambda_stolev24h_hh
+ 636   
+ 637  energy_balance.lambda
+ 638  renewable_generation.mu
+ 639  minRES.resshare
+ 640  maximum_generation_con.gamma1
+ 641  stolev.levelsto
+ 642  stolev_max.gamma2
+ 643  maxin_power.gamma3
+ 644  maxout_power.gamma4
+ 645  *KKTNRES.N_RENEWABLE
+ 646  *KKTNSTOE.N_STO_E
+ 647  *KKTNSTOP.N_STO_P
+ 648  *KKTNCON.N_CON
+ 649  KKTGCON.G_CON
+ 650  KKTGRES.G_RENEWABLE
+ 651  KKTSTOIN.STO_IN
+ 652  KKTSTOUT.STO_OUT
+ 653  KKTSTOLEV.STO_L
+GAMS 24.2.3  r46072 Released May 22, 2014 WEX-WEI x86_64/MS Windows                                                                                                                                                                   10/26/18 15:35:12 Page 13
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+C o m p i l a t i o n
+
+
+ 654  KKTCU.CU
+ 655  stolev_24h.lambda_stolev24h
+ 656  /
+ 657   
+ 658   
+ 659  options
+ 660  optcr = 0.00
+ 661  reslim = 10000000
+ 662  lp = cplex
+ 663  mip = cplex
+ 664  mcp = path
+ 665  nlp = conopt
+ 666  dispwidth = 15
+ 667  limrow = 0
+ 668  limcol = 0
+ 669  solprint = off
+ 670  sysout = off
+ 671  optcr = 1e-3
+ 672  optca = 10
+ 673  *PROFILETOL = 10
+ 674   
+ 675  ;
+ 676   
+ 684   
+ 685  * Set up lower bounds for speed up
+ 686  * Household Variables
+ 687  G_PV_hh.up(h)              = 10  ;
+ 688  CU_hh.up(h)                = 10  ;
+ 689  N_PV_hh.fx                 = 10  ;
+ 690  N_STO_E_hh.fx              = 10  ;
+ 691  N_STO_P_hh.fx              = 2  ;
+ 692  STO_L_hh.up(h)             = 20  ;
+ 693  STO_IN_hh.up(h)            = 20  ;
+ 694  STO_OUT_hh.up(h)           = 20  ;
+ 695  E_buy_hh.up(h)             = 50  ;
+ 696  E_sell_hh.up(h)            = 30  ;
+ 697  * System Variables
+ 698  G_CON.up(ct,h)             = 100000 ;
+ 699  G_RENEWABLE.up(h)          = 300000 ;
+ 700  CU.up(h)                   = 150000 ;
+ 701  N_RENEWABLE.up             = 300000 ;
+ 702  N_CON.up(ct)               = 100000 ;
+ 703  N_STO_E.up                 = 150000 ;
+ 704  N_STO_P.up                 = 100000 ;
+ 705  STO_L.up(h)                = 150000 ;
+ 706  STO_IN.up(h)               = 100000  ;
+ 707  STO_OUT.up(h)              = 100000  ;
+ 708   
+ 709  * Set up initial values for speed up
+ 710  STO_L_hh.l(h)   = 4.367;
+ 711  *N_PV_hh.l       = 8    ;
+ 712  *N_STO_E_hh.l    = 10   ;
+ 713  *N_STO_P_hh.l    = 10   ;
+GAMS 24.2.3  r46072 Released May 22, 2014 WEX-WEI x86_64/MS Windows                                                                                                                                                                   10/26/18 15:35:12 Page 14
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+C o m p i l a t i o n
+
+
+ 714  *N_RENEWABLE.l              = 43000  ;
+ 715  *N_CON.l(ct)                = 100000  ;
+ 716  *N_STO_E.l                  = 120000 ;
+ 717  *N_STO_P.l                  = 100000  ;
+ 718  *lambda.l(h)                = 1  ;
+ 719  *price_market(h)            = lambda.l(h)/1000 ;
+ 720   
+ 721   
+ 722  * First first storage level duals
+ 723  levelsto_hh.fx('h1') = 100;
+****                    $170
+**** LINE    720 INPUT       C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\quarter4\MORITS_MCP_online.gms
+ 724  levelsto.fx('h1')  = 100;
+****                 $170
+**** LINE    721 INPUT       C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\quarter4\MORITS_MCP_online.gms
+ 725   
+ 726  * Fix capacity values of system
+ 727  *$ontext
+ 728  N_RENEWABLE.fx      =    280669.140  ;
+ 729  N_STO_E.fx          =     28031.069  ;
+ 730  N_STO_P.fx          =     4867.384   ;
+ 731  N_CON.fx('base')    =     48116.000  ;
+ 732  N_CON.fx('peak')    =     22981.618  ;
+ 733  *$offtext
+ 734   
+ 735  *prosumodmcp.optfile = 1;
+ 736   
+ 737  solve prosumodmcp using mcp;
+****                             $257
+**** LINE    734 INPUT       C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\quarter4\MORITS_MCP_online.gms
+ 738   
+ 739  * Determine costs for system and household
+ 740  Z_sys.l                      =
+ 741           sum( sto , c_i_sto_e  * N_STO_E.l  + c_i_sto_p  * N_STO_P.l  )
+ 742           + c_i_res * N_RENEWABLE.l
+ 743           + sum( ct , c_i_con(ct) * N_CON.l(ct) )
+ 744           + sum( (ct,h) , c_var_con(ct) * G_CON.l(ct,h) )
+ 745           + sum( ( h) , c_var_sto  * (STO_IN.l( h) + STO_OUT.l( h)) )
+ 746  ;
+ 747   
+ 748   
+ 749  Z_hh.l                      =
+ 750   
+ 751            c_i_pv_hh* N_PV_hh.l
+ 752           + c_i_sto_e_hh * N_STO_E_hh.l  + c_i_sto_p_hh * N_STO_P_hh.l
+ 753           + sum( (h) , c_var_sto_hh * (STO_IN_hh.l (h) + STO_OUT_hh.l (h)) )
+ 754           + sum(  h , price_buy * E_buy_hh.l (h))
+ 755           - sum(  h , price_market(h)/1000 * E_sell_hh.l (h))
+ 756  ;
+ 757   
+ 758  display d_hh , N_PV_hh.l , E_buy_hh.l , E_sell_hh.l ,  G_PV_hh.l,
+ 759          N_STO_E_hh.l, N_STO_P_hh.l, G_PV_hh.l,
+GAMS 24.2.3  r46072 Released May 22, 2014 WEX-WEI x86_64/MS Windows                                                                                                                                                                   10/26/18 15:35:12 Page 15
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+C o m p i l a t i o n
+
+
+ 760          hh_energy_balance_hh.l, hh_energy_balance_hh.m,
+****                               $141
+**** LINE    757 INPUT       C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\quarter4\MORITS_MCP_online.gms
+ 761          price_market,  CU_hh.l, N_RENEWABLE.l, d, G_RENEWABLE.l,
+ 762  *        G_CON.l, STO_OUT.l, lambda.l, lambda.m, mu.l, mu.m, energy_balance.m,
+ 763  *        N_CON.l, Z_sys.l ,
+ 764          Z_hh.l ,N_RENEWABLE.l , N_STO_E.l,N_STO_P.l,
+ 765           N_CON.l;
+ 766   
+ 767   
+ 768  ***************************** Set up reporting *********************************
+ 769   
+      pv_install_max_hh.m, pv_generation_hh.m, N_STO_E_hh.l, N_STO_P_hh.l,
+         hh_energy_balance_hh.m
+GAMS 24.2.3  r46072 Released May 22, 2014 WEX-WEI x86_64/MS Windows                                                                                                                                                                   10/26/18 15:35:12 Page 16
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Error Messages
+
+
+141  Symbol neither initialized nor assigned
+        A wild shot: You may have spurious commas in the explanatory
+        text of a declaration. Check symbol reference list.
+170  Domain violation for element
+257  Solve statement not checked because of previous errors
+
+**** 4 ERROR(S)   0 WARNING(S)
+GAMS 24.2.3  r46072 Released May 22, 2014 WEX-WEI x86_64/MS Windows                                                                                                                                                                   10/26/18 15:35:12 Page 17
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Include File Summary
+
+
+   SEQ   GLOBAL TYPE      PARENT   LOCAL  FILENAME
+
+     1        1 INPUT          0       0  C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\quarter4\MORITS_MCP_online.gms
+     2       62 INCLUDE        1      62  .C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\quarter4\24h_FirstHours.gms
+     3      234 GDXIN          1     231  C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\quarter4\in.gdx
+
+
+COMPILATION TIME     =        0.047 SECONDS     10 MB  24.2.3 r46072 WEX-WEI
+
+
+USER: Medium MUD - 10 User License                   S170316:1123AO-GEN
+      Deutsches Institut fuer Wirtschaftsforschung DIW, AbteilungDC3975
+      License for teaching and research at degree granting institutions
+
+
+**** FILE SUMMARY
+
+Input      C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\quarter4\MORITS_MCP_online.gms
+Output     C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\quarter4\MORITS_MCP_online.lst
+
+**** USER ERROR(S) ENCOUNTERED

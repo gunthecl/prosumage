@@ -52,7 +52,7 @@ $setglobal outputfile "results_MCP"
 
 
 Sets
-h                hour                                    /h1*h7200/
+h                hour                                    /h6571*h8760/
 res              Renewable technologies                  /renewable/
 sto              Storage technolgies                     /storage/
 year             Base years                              /2010*2016/
@@ -717,8 +717,8 @@ STO_L_hh.l(h)   = 4.367;
 
 
 * First first storage level duals
-levelsto_hh.fx('h1') = 100;
-levelsto.fx('h1')  = 100;
+levelsto_hh.fx('h6571') = 100;
+levelsto.fx('h6571')  = 100;
 
 * Fix capacity values of system
 *$ontext
