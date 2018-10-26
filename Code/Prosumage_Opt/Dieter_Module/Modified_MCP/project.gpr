@@ -2189,16 +2189,19 @@ Order=1,2,3,4,5,6
 Decim=7
 PlaneRownr=-1
 
-[RP:REPORT]
+[RP:FEAT_NODE]
 1=
 
-[RP:FEAT_NODE]
+[RP:MODEL]
 1=
 
 [RP:FIX]
 1=
 
-[RP:MODEL]
+[RP:~$REPORT]
+1=
+
+[RP:REPORT]
 1=
 
 [RP:DIETER]
@@ -2214,19 +2217,22 @@ PlaneRownr=-1
 10=-gdx = test
 
 [MRUFILES]
-1=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP - Kopie\model.gms
-2=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\fix.gms
+1=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\~$report.gms
+2=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP - Kopie\model.gms
 3=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\feat_node.gms
 4=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\results.gdx
 5=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
 6=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\DIETER.lst
 7=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\DIETER.gms
-8=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\DIETER.gms
 
 [OPENWINDOW_1]
 FILE0=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\DIETER.gms
 FILE1=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\DIETER.lst
-FILE2=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\DIETER.gms
+FILE2=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\fix.gms
+FILE3=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\fix.lst
+FILE4=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+FILE5=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.lst
+FILE6=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\DIETER.lst
 MAXIM=0
 TOP=-25
 LEFT=0

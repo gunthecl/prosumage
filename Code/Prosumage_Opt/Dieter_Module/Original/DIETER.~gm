@@ -33,7 +33,7 @@ $setglobal DSM ""
 $setglobal reserves_endogenous ""
 $setglobal reserves_exogenous ""
 
-$setglobal prosumage ""
+$setglobal prosumage "*"
 
 $setglobal heat ""
 

@@ -1434,6 +1434,9 @@ LEFT=169
 HEIGHT=876
 WIDTH=1222
 
+[RP:MODEL]
+1=
+
 [RP:DIETER]
 1=-gdx=test
 2=-gdx = test5_exo
@@ -1446,16 +1449,13 @@ WIDTH=1222
 9=-gdx = pre
 10=-gdx = test
 
-[RP:MODEL]
-1=
-
 [MRUFILES]
-1=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\DIETER.lst
-2=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\results.gdx
-3=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\DIETER.gms
-4=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
-5=W:\DIETER\Dieter-Heat\model_clean\post\Untitled_1.gms
-6=W:\DIETER\Dieter-Heat\model_clean\pre\model.gms
-7=W:\DIETER\Dieter-Heat\model_clean\post\scenario.gms
-8=W:\DIETER\Dieter-Heat\model_clean\post\report_to_excel.gms
-9=W:\DIETER\Dieter-Heat\model_clean\post\report.gms
+1=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\DIETER.lst
+2=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\DIETER.gms
+3=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\DIETER.lst
+4=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\results.gdx
+5=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\DIETER.gms
+6=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+7=W:\DIETER\Dieter-Heat\model_clean\post\Untitled_1.gms
+8=W:\DIETER\Dieter-Heat\model_clean\pre\model.gms
+9=W:\DIETER\Dieter-Heat\model_clean\post\scenario.gms

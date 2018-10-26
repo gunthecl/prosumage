@@ -22,8 +22,6 @@ $offtext
 %ror_parameter%$ontext
 N_TECH.fx('ror') = 5857.47 ;
 G_RES.fx('ror',h) = N_TECH.l('ror') * phi_res('ror',h) ;
-%reserves%$ontext
-*RP_NONDIS.fx(reserves,'ror',h) = 0 ;
 $ontext
 $offtext
 
@@ -78,7 +76,7 @@ STO_L.fx(sto,h)$(m_sto_p(sto) = 0) = 0 ;
 %prosumage%$ontext
 CU_PRO.fx(res,h)$(m_res_pro(res) = 0) = 0 ;
 G_MARKET_PRO2M.fx(res,h)$( m_res_pro(res) = 0) = 0 ;
-G_MARKET_M2PRO.fx(h)$(feat_node('prosumage',n) = 0) = 0 ;
+*G_MARKET_M2PRO.fx(h)$(feat_node('prosumage',n) = 0) = 0 ;
 G_RES_PRO.fx(res,h)$( m_res_pro(res) = 0) = 0 ;
 STO_IN_PRO2PRO.fx(res,sto,h)$( m_sto_pro_p(sto) = 0) = 0 ;
 STO_IN_PRO2M.fx(res,sto,h)$( m_sto_pro_p(sto) = 0) = 0 ;
@@ -156,8 +154,6 @@ lev_N_RES_PRO(scen,tech) = 0  ;
 %ror_parameter%$ontext
 lev_N_TECH(scen,'ror') = 5857.47 ;
 lev_G_RES(scen,'ror',h) = lev_N_TECH(scen,'ror') * phi_res('ror',h) ;
-%reserves%$ontext
-*lev_RP_NONDIS(scenreserves,'ror',h) = 0 ;
 $ontext
 $offtext
 $ontext

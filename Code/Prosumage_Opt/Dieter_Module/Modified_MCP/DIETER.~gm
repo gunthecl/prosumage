@@ -28,21 +28,11 @@ $setglobal base_year "'2030'"
 $setglobal GER_only "*"
 
 * Set star to activate options
-$setglobal DSM ""
 
 $setglobal reserves_endogenous ""
 $setglobal reserves_exogenous ""
 
-$setglobal prosumage ""
-
-$setglobal heat ""
-
-$setglobal EV ""
-$setglobal EV_EXOG ""
-* Set star to indicate renewables constraint on electric vehicles - DEFAULT is same quota as for the rest of the electricity system
-$setglobal EV_DEFAULT ""
-$setglobal EV_100RES ""
-$setglobal EV_FREE ""
+$setglobal prosumage "*"
 
 * Set star to select run-of-river options either as exogenous parameter or as endogenous variable including reserve provision:
 * if nothing is selected, ROR capacity will be set to zero
@@ -67,25 +57,8 @@ $setglobal report_to_excel ""
 * (Do not change settings below)
 $setglobal sec_hour "1"
 
-$setglobal reserves "%reserves_endogenous%%reserves_exogenous%"
-
 * Sanity checks
 $if "%ror_parameter%" == "*" $if "%ror_variable%" == "*" $abort Choose appropriate ROR option! ;
-
-$if "%reserves%" == "**" $abort Choose only one reserve option (endogenous or exogenous)!
-
-$if "%EV%" == "" $if "%EV_EXOG%" == "*" $abort Switch on EV! ;
-
-$if "%EV%" == "*" $if "%EV_DEFAULT%%EV_100RES%%EV_FREE%" == "" $abort Choose exactly one EV option! ;
-$if "%EV%" == "*" $if "%EV_DEFAULT%%EV_100RES%%EV_FREE%" == "**" $abort Choose exactly one EV option! ;
-$if "%EV%" == "*" $if "%EV_DEFAULT%%EV_100RES%%EV_FREE%" == "***" $abort Choose exactly one EV option! ;
-
-$if "%EV_EXOG%" == "*" $if "%EV_DEFAULT%%EV_100RES%%EV_FREE%" == "" $abort Choose exactly one EV option! ;
-$if "%EV_EXOG%" == "*" $if "%EV_DEFAULT%%EV_100RES%%EV_FREE%" == "**" $abort Choose exactly one EV option! ;
-$if "%EV_EXOG%" == "*" $if "%EV_DEFAULT%%EV_100RES%%EV_FREE%" == "***" $abort Choose exactly one EV option! ;
-
-
-
 
 ********************************************************************************
 
@@ -323,7 +296,7 @@ Parameters
 gussoptions                              /Logoption 2, Optfile 1, Skipbasecase 1/
 modstats(superscen, modelstats)
 min_res
-number_ev
+*number_ev
 pro_selfcon
 ;
 
