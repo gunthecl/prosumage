@@ -784,13 +784,16 @@ WIDTH=1390
 [RP:PROSUMOD]
 1=
 
+[RP:DIETER]
+1=
+
 [MRUFILES]
-1=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage Module\PROSUMOD.lst
-2=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage Module\PROSUMOD.gms
-3=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage Module\24h_FirstHours.gms
-4=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage Module\Untitled_1.gms
-5=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Test Files\Test_MCP2.gms
-6=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage Module\Test_MCP2.lst
-7=C:\Users\Lenovo\Dropbox\OR4_2018_Public\In-class models\MixedComplementarity.gms
-8=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Test Files\PROSUMOD_test.gms
-9=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage Module\PROSUMOD.lst
+1=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\DIETER.gms
+2=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage Module\PROSUMOD.lst
+3=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage Module\PROSUMOD.gms
+4=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage Module\24h_FirstHours.gms
+5=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage Module\Untitled_1.gms
+6=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Test Files\Test_MCP2.gms
+7=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage Module\Test_MCP2.lst
+8=C:\Users\Lenovo\Dropbox\OR4_2018_Public\In-class models\MixedComplementarity.gms
+9=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Test Files\PROSUMOD_test.gms

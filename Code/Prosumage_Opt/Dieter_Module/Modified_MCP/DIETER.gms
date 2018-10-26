@@ -99,11 +99,6 @@ loop_res_share   Solution loop for different shares of renewables       /50/
 $ontext
 $offtext
 
-%EV%$ontext
-loop_ev          Solution loop for different fleets of EVs              /4e+6/
-$ontext
-$offtext
-
 %prosumage%$ontext
 loop_prosumage   Solution loop for different prosumer self-consumption levels    /50/
 $ontext
@@ -317,12 +312,12 @@ $eval superscencount 1000
 Set
 modelstats       model stats collection                  /modelstat, solvestat, resusd/
 superscen        Scenarios                               /scen1*scen%superscencount%/
-map(superscen,loop_res_share,loop_ev,loop_prosumage)    /#superscen:(#loop_res_share.#loop_ev.#loop_prosumage)/
+map(superscen,loop_res_share,loop_prosumage)    /#superscen:(#loop_res_share.#loop_prosumage)/
 ;
 
 set
 scen(superscen);
-scen(superscen) = yes$( sum((loop_res_share,loop_ev,loop_prosumage) , map(superscen,loop_res_share,loop_ev,loop_prosumage)) )    ;
+scen(superscen) = yes$( sum((loop_res_share,loop_prosumage) , map(superscen,loop_res_share,loop_prosumage)) )    ;
 
 Parameters
 gussoptions                              /Logoption 2, Optfile 1, Skipbasecase 1/
@@ -332,9 +327,9 @@ number_ev
 pro_selfcon
 ;
 
-min_res(scen) = sum( (loop_res_share,loop_ev,loop_prosumage)$map(scen,loop_res_share,loop_ev,loop_prosumage) , loop_res_share.val/100 ) ;
-number_ev(scen) = sum( (loop_res_share,loop_ev,loop_prosumage)$map(scen,loop_res_share,loop_ev,loop_prosumage) , loop_ev.val ) ;
-pro_selfcon(scen) = sum( (loop_res_share,loop_ev,loop_prosumage)$map(scen,loop_res_share,loop_ev,loop_prosumage) , loop_prosumage.val/100 ) ;
+min_res(scen) = sum( (loop_res_share,loop_prosumage)$map(scen,loop_res_share,loop_prosumage) , loop_res_share.val/100 ) ;
+*number_ev(scen) = sum( (loop_res_share,loop_prosumage)$map(scen,loop_res_share,loop_prosumage) , loop_ev.val ) ;
+pro_selfcon(scen) = sum( (loop_res_share,loop_prosumage)$map(scen,loop_res_share,loop_prosumage) , loop_prosumage.val/100 ) ;
 
 Parameters
 * Equations

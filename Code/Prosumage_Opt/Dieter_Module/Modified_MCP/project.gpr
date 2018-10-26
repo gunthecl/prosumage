@@ -2198,9 +2198,6 @@ PlaneRownr=-1
 [RP:REPORT]
 1=
 
-[RP:MODEL]
-1=
-
 [RP:DIETER]
 1=-gdx=test
 2=-gdx = test5_exo
@@ -2212,6 +2209,9 @@ PlaneRownr=-1
 8=-gdx = post_3
 9=-gdx = pre
 10=-gdx = test
+
+[RP:MODEL]
+1=
 
 [MRUFILES]
 1=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\results.gdx
@@ -2226,7 +2226,8 @@ PlaneRownr=-1
 
 [OPENWINDOW_1]
 FILE0=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP - Kopie\model.gms
-FILE1=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP - Kopie\model.gms
+FILE1=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\DIETER.gms
+FILE2=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\DIETER.gms
 MAXIM=0
 TOP=-25
 LEFT=0
