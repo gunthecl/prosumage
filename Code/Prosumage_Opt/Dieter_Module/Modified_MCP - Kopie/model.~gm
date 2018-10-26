@@ -117,48 +117,6 @@ con11l_pro_maxout_sto                    Prosumage: maximum storage outflow
 con11m_pro_maxout_lev                    Prosumage: maximum storage outflow linked to level
 con11n_pro_maxin_lev                     Prosumage: maximum storage inflow linked to level
 con11o_pro_ending                        Prosumage: storage ending condition
-
-$ontext
-* Cross-nodal trade
-con12a_max_f                     Maximum energy flow limited to positive NTC
-con12b_min_f                     Minimum energy flow limited to negative NTC
-
-* Resevoirs
-con13a_rsvrlev_start             Reservoir level law of motion initial condition
-con13b_rsvrlev                   Reservoir level law of motion
-con13c_rsvrlev_max               Maximum reservoir energy level
-con13d_maxout_rsvr               Maximum hourly reservoir outflow in relation to installed power capacity
-con13e_resrv_rsvr                Minimum hourly reservoir outflow in relation to provided negativr reserves
-con13f_maxout_lev                Maximum hourly reservoir outflow in relation tom installed energy capacity
-con13g_ending                    Reservoir level law of motion ending condition
-con13h_smooth                    Smooth reservoir outflow
-con13i_min_level                 Reservoir minimum level
-con13j_min_FLH
-
-* Residential heat
-con14a_heat_balance              Space heating energy balance
-con14b_dhw_balance               Domestic hot water energy balance
-con14c_sets_level                SETS - level law of motion
-con14d_sets_level_start          SETS - storage level initial condition
-con14e_sets_maxin                SETS - maximum energy inflow
-con14f_sets_maxout               SETS - maximum energy outflow
-con14g_sets_minin                SETS - minimum energy inflow if reserves contracted
-con14h_sets_maxlev               SETS - maximum storage level
-con14i_sets_aux_dhw_level        SETS auxiliary DHW module - storage level law of motion
-con14j_sets_aux_dhw_level_start  SETS auxiliary DHW module - storage level initial consition
-con14k_sets_aux_dhw_maxin        SETS auxiliary DHW module - maximum energy inflow
-con14l_sets_aux_dhw_minin        SETS auxiliary DHW module - minimum energy inflow if reserves contracted
-con14m_sets_aux_dhw_maxlev       SETS auxiliary DHW module - maximum storage level
-con14n_hp_in                     Heat pumps - electricity demand
-con14o_hp_maxin                  Heat pumps - maximum electricity demand
-con14p_hp_minin                  Heat pumps - minimum electricity demand if reserves contracted
-con14q_storage_elec_in           Hybrid electric heating - electricity demand
-con14r_storage_elec_maxin        Hybrid electric heating - maximum electricity demand
-con14s_storage_elec_minin        Hybrid electric heating - minimum electricity demand if reserves contracted
-con14t_storage_level             Storage heating - level law of motion
-con14u_storage_level_start       Hybrid electric heating - storage level initial condition
-con14v_storage_maxlev            Hybrid electric heating - maximum storage level
-$offtext
 ;
 
 
