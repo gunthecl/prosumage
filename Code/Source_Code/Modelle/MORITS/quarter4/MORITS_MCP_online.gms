@@ -692,16 +692,16 @@ STO_OUT_hh.up(h)           = 20  ;
 E_buy_hh.up(h)             = 50  ;
 E_sell_hh.up(h)            = 30  ;
 * System Variables
-G_CON.up(ct,h)             = 100000 ;
-G_RENEWABLE.up(h)          = 300000 ;
-CU.up(h)                   = 150000 ;
-N_RENEWABLE.up             = 300000 ;
-N_CON.up(ct)               = 100000 ;
-N_STO_E.up                 = 150000 ;
-N_STO_P.up                 = 100000 ;
-STO_L.up(h)                = 150000 ;
-STO_IN.up(h)               = 100000  ;
-STO_OUT.up(h)              = 100000  ;
+G_CON.up(ct,h)             = 1000000 ;
+G_RENEWABLE.up(h)          = 3000000 ;
+CU.up(h)                   = 1500000 ;
+N_RENEWABLE.up             = 3000000 ;
+N_CON.up(ct)               = 1000000 ;
+N_STO_E.up                 = 1500000 ;
+N_STO_P.up                 = 1000000 ;
+STO_L.up(h)                = 1500000 ;
+STO_IN.up(h)               = 1000000  ;
+STO_OUT.up(h)              = 1000000  ;
 
 * Set up initial values for speed up
 STO_L_hh.l(h)   = 4.367;
@@ -722,11 +722,11 @@ levelsto.fx('h6571')  = 100;
 
 * Fix capacity values of system
 *$ontext
-N_RENEWABLE.fx      =    280669.140  ;
-N_STO_E.fx          =     28031.069  ;
-N_STO_P.fx          =     4867.384   ;
-N_CON.fx('base')    =     48116.000  ;
-N_CON.fx('peak')    =     22981.618  ;
+N_RENEWABLE.fx      =    2806690.140  ;
+N_STO_E.fx          =     280310.069  ;
+N_STO_P.fx          =     48670.384   ;
+N_CON.fx('base')    =     481160.000  ;
+N_CON.fx('peak')    =     229810.618  ;
 *$offtext
 
 *prosumodmcp.optfile = 1;

@@ -1,0 +1,25 @@
+B 2 C o m p i l a t i o n
+B 820 Include File Summary
+B 839 Model Statistics    SOLVE prosumodmcp Using MCP From line 738
+B 857 Solution Report     SOLVE prosumodmcp Using MCP From line 738
+B 912 E x e c u t i o n
+I 913 d_hh
+I 1357 N_PV_hh
+I 1359 E_buy_hh
+I 1810 E_sell_hh
+I 1949 G_PV_hh
+I 2243 N_STO_E_hh
+I 2245 N_STO_P_hh
+I 2247 G_PV_hh
+I 2540 hh_energy_balance_hh
+I 2982 hh_energy_balance_hh
+I 3390 price_market
+I 4124 CU_hh
+I 4187 N_RENEWABLE
+I 4189 d
+I 4741 G_RENEWABLE
+I 5293 Z_hh
+I 5295 N_RENEWABLE
+I 5297 N_STO_E
+I 5299 N_STO_P
+I 5301 N_CON

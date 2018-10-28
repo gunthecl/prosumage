@@ -105,19 +105,19 @@ Order=1,2
 Decim=7
 PlaneRownr=-1
 
-[RP:MORITS_MCP_ONLINE]
-1=
-
 [RP:24H_FIRSTHOURS]
 1=
 
+[RP:MORITS_MCP_ONLINE]
+1=
+
 [MRUFILES]
-1=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\quarter3\MORITS_MCP_online.gms
-2=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\MORITS_MCP_online.lst
-3=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\24h_FirstHours.gms
-4=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\quarter4\24h_FirstHours.gms
-5=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\quarter4\MORITS_MCP_online.gms
-6=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\quarter2\24h_FirstHours.gms
-7=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\quarter2\MORITS_MCP_online.gms
-8=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\quarter3\24h_FirstHours.gms
-9=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\quarter1\MORITS_MCP_online.gms
+1=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\quarter1\MORITS_MCP_online.lst
+2=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\quarter1\MORITS_MCP_online.gms
+3=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\quarter3\MORITS_MCP_online.gms
+4=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\MORITS_MCP_online.lst
+5=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\24h_FirstHours.gms
+6=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\quarter4\24h_FirstHours.gms
+7=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\quarter4\MORITS_MCP_online.gms
+8=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\quarter2\24h_FirstHours.gms
+9=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\quarter2\MORITS_MCP_online.gms

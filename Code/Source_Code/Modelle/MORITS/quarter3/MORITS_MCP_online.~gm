@@ -717,16 +717,16 @@ STO_L_hh.l(h)   = 4.367;
 
 
 * First first storage level duals
-levelsto_hh.fx('h1') = 100;
-levelsto.fx('h1')  = 100;
+levelsto_hh.fx('h4381') = 100;
+levelsto.fx('h4381')  = 100;
 
 * Fix capacity values of system
 *$ontext
-N_RENEWABLE.fx      =    280669.140  ;
-N_STO_E.fx          =     28031.069  ;
-N_STO_P.fx          =     4867.384   ;
-N_CON.fx('base')    =     48116.000  ;
-N_CON.fx('peak')    =     22981.618  ;
+N_RENEWABLE.fx      =    2806690.140  ;
+N_STO_E.fx          =     280310.069  ;
+N_STO_P.fx          =     48670.384   ;
+N_CON.fx('base')    =     481160.000  ;
+N_CON.fx('peak')    =     229810.618  ;
 *$offtext
 
 *prosumodmcp.optfile = 1;
