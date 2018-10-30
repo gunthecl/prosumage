@@ -34,6 +34,7 @@ $setglobal reserves_endogenous ""
 $setglobal reserves_exogenous ""
 
 $setglobal prosumage ""
+$setglobal prosumage_links_restr ""
 
 $setglobal heat ""
 

@@ -896,7 +896,13 @@ con11g_pro_stolev_M2M(n,sto,h)$(ord(h) > 1)..
 ;
 
 con11h_1_pro_stolev_start_PRO2PRO(n,sto,h)$(map_n_sto_pro(n,sto) AND ord(h) = 1)..
-        STO_L_PRO2PRO(n,sto,h) =E= 0.25 * phi_sto_pro_ini(n,sto) * N_STO_E_PRO(n,sto) + sum( map_n_res_pro(n,res) , STO_IN_PRO2PRO(n,res,sto,h))*(1+eta_sto(n,sto))/2 - STO_OUT_PRO2PRO(n,sto,h)/(1+eta_sto(n,sto))*2
+        STO_L_PRO2PRO(n,sto,h) =E=
+%prosumage_links_restr%$ontext
+        4*
+$ontext
+$offtext
+         0.25 * phi_sto_pro_ini(n,sto) * N_STO_E_PRO(n,sto)
+         + sum( map_n_res_pro(n,res) , STO_IN_PRO2PRO(n,res,sto,h))*(1+eta_sto(n,sto))/2 - STO_OUT_PRO2PRO(n,sto,h)/(1+eta_sto(n,sto))*2
 ;
 
 con11h_2_pro_stolev_start_PRO2M(n,sto,h)$(map_n_sto_pro(n,sto) AND ord(h) = 1)..
