@@ -741,9 +741,6 @@ PlaneRownr=-1
 [RP:DATALOAD]
 1=
 
-[RP:DIETER_V1.2.0]
-1=
-
 [GDXDISP: d_upload Par 2]
 PlaneDim=0
 RowDim=2
@@ -762,25 +759,29 @@ Order=1,2,3
 Decim=7
 PlaneRownr=-1
 
-[RP:DOLORES]
-1=
-
-[MRUFILES]
-1=C:\Users\Lenovo\Documents\GitHub\dolores\model\data\Germany1B_v2_upload_data.gdx
-2=C:\Users\Lenovo\Documents\GitHub\dolores\model\data\Germany10K_upload_data.gdx
-3=C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\DIETER_v1.2.0.gms
-4=C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\results.gdx
-5=C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\DIETER_v1.2.0.lst
-6=C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.lst
-7=C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\dataload.gms
-8=C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\Data_input.gdx
-
 [OPENWINDOW_1]
-FILE0=C:\Users\Lenovo\Documents\GitHub\dolores\model\DOLORES.gms
-FILE1=C:\Users\Lenovo\Documents\GitHub\dolores\model\dolores.gpr
-FILE2=C:\Users\Lenovo\Documents\GitHub\dolores\model\DOLORES.gms
 MAXIM=0
 TOP=50
 LEFT=50
 HEIGHT=592
 WIDTH=946
+
+[RP:DOLORES]
+1=
+
+[RP:DIETER_V1.2.0]
+1=
+
+[RP:PROSUMOD]
+1=
+
+[MRUFILES]
+1=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Source_Code\Modelle\DIETER_Prosumage\DIETER_v1.2.0.lst
+2=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Source_Code\Modelle\DIETER_Prosumage\DIETER_v1.2.0.gms
+3=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage Module\PROSUMOD.lst
+4=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage Module\PROSUMOD.gms
+5=C:\Users\Lenovo\Documents\GitHub\dolores\model\dolores.gpr
+6=C:\Users\Lenovo\Documents\GitHub\dolores\model\DOLORES.gms
+7=C:\Users\Lenovo\Documents\GitHub\dolores\model\data\Germany1B_v2_upload_data.gdx
+8=C:\Users\Lenovo\Documents\GitHub\dolores\model\data\Germany10K_upload_data.gdx
+9=C:\Users\Lenovo\Dropbox\ma_prosumage\Code\Source_Code\DIETER_Prosumage\DIETER_v1.2.0.gms

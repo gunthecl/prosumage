@@ -1,0 +1,142 @@
+
+--- Job report_to_excel.gms Start 10/25/18 09:52:38 24.7.4 r58773 WEX-WEI x86 64bit/MS Windows
+GAMS 24.7.4   Copyright (C) 1987-2016 GAMS Development. All rights reserved
+Licensee: Medium MUD - 10 User License                   S170316:1123AO-GEN
+          Deutsches Institut fuer Wirtschaftsforschung DIW, AbteilungDC3975
+          License for teaching and research at degree granting institutions
+          License Admin: Claudia Kemfert, bbibra@diw.de                    
+--- Starting compilation
+--- report_to_excel.gms(34) 3 Mb 9 Errors
+*** Error 120 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report_to_excel.gms
+    Unknown identifier entered as set
+*** Error 340 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report_to_excel.gms
+    A label/element with the same name exist. You may have forgotten
+       to quote a label/element reference. For example,
+       set i / a,b,c /; parameter x(i); x('a') = 10;
+*** Error 120 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report_to_excel.gms
+    Unknown identifier entered as set
+*** Error 340 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report_to_excel.gms
+    A label/element with the same name exist. You may have forgotten
+       to quote a label/element reference. For example,
+       set i / a,b,c /; parameter x(i); x('a') = 10;
+*** Error 120 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report_to_excel.gms
+    Unknown identifier entered as set
+*** Error 340 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report_to_excel.gms
+    A label/element with the same name exist. You may have forgotten
+       to quote a label/element reference. For example,
+       set i / a,b,c /; parameter x(i); x('a') = 10;
+*** Error 140 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report_to_excel.gms
+    Unknown symbol
+*** Error 116 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report_to_excel.gms
+    Label is unknown
+*** Error 116 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report_to_excel.gms
+    Label is unknown
+--- report_to_excel.gms(37) 3 Mb 10 Errors
+*** Error 116 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report_to_excel.gms
+    Label is unknown
+--- report_to_excel.gms(39) 3 Mb 13 Errors
+*** Error 140 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report_to_excel.gms
+    Unknown symbol
+*** Error   8 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report_to_excel.gms
+    ')' expected
+*** Error 409 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report_to_excel.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- report_to_excel.gms(40) 3 Mb 15 Errors
+*** Error 148 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report_to_excel.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+*** Error 409 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report_to_excel.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- report_to_excel.gms(44) 3 Mb 20 Errors
+*** Error 120 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report_to_excel.gms
+    Unknown identifier entered as set
+*** Error 340 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report_to_excel.gms
+    A label/element with the same name exist. You may have forgotten
+       to quote a label/element reference. For example,
+       set i / a,b,c /; parameter x(i); x('a') = 10;
+*** Error 140 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report_to_excel.gms
+    Unknown symbol
+*** Error 116 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report_to_excel.gms
+    Label is unknown
+*** Error 116 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report_to_excel.gms
+    Label is unknown
+--- report_to_excel.gms(45) 3 Mb 23 Errors
+*** Error 120 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report_to_excel.gms
+    Unknown identifier entered as set
+*** Error 340 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report_to_excel.gms
+    A label/element with the same name exist. You may have forgotten
+       to quote a label/element reference. For example,
+       set i / a,b,c /; parameter x(i); x('a') = 10;
+*** Error 116 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report_to_excel.gms
+    Label is unknown
+--- report_to_excel.gms(46) 3 Mb 26 Errors
+*** Error 120 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report_to_excel.gms
+    Unknown identifier entered as set
+*** Error 340 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report_to_excel.gms
+    A label/element with the same name exist. You may have forgotten
+       to quote a label/element reference. For example,
+       set i / a,b,c /; parameter x(i); x('a') = 10;
+*** Error 116 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report_to_excel.gms
+    Label is unknown
+--- report_to_excel.gms(48) 3 Mb 28 Errors
+*** Error 140 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report_to_excel.gms
+    Unknown symbol
+*** Error 116 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report_to_excel.gms
+    Label is unknown
+--- report_to_excel.gms(49) 3 Mb 30 Errors
+*** Error 116 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report_to_excel.gms
+    Label is unknown
+*** Error 148 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report_to_excel.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report_to_excel.gms(50) 3 Mb 32 Errors
+*** Error 116 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report_to_excel.gms
+    Label is unknown
+*** Error 148 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report_to_excel.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- report_to_excel.gms(56) 3 Mb 37 Errors
+*** Error 120 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report_to_excel.gms
+    Unknown identifier entered as set
+*** Error 340 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report_to_excel.gms
+    A label/element with the same name exist. You may have forgotten
+       to quote a label/element reference. For example,
+       set i / a,b,c /; parameter x(i); x('a') = 10;
+*** Error 148 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report_to_excel.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+*** Error   8 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report_to_excel.gms
+    ')' expected
+*** Error 409 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report_to_excel.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- report_to_excel.gms(57) 3 Mb 40 Errors
+*** Error 148 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report_to_excel.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+*** Error   8 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report_to_excel.gms
+    ')' expected
+*** Error 409 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report_to_excel.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- report_to_excel.gms(58) 3 Mb 45 Errors
+*** Error 120 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report_to_excel.gms
+    Unknown identifier entered as set
+*** Error 340 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report_to_excel.gms
+    A label/element with the same name exist. You may have forgotten
+       to quote a label/element reference. For example,
+       set i / a,b,c /; parameter x(i); x('a') = 10;
+*** Error 148 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report_to_excel.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+*** Error   8 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report_to_excel.gms
+    ')' expected
+*** Error 409 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report_to_excel.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- report_to_excel.gms(73) 3 Mb 45 Errors
+*** Status: Compilation error(s)
+--- Job report_to_excel.gms Stop 10/25/18 09:52:38 elapsed 0:00:00.196
+Exit code = 2

@@ -1,0 +1,24 @@
+*****************************************
+**** Reporting to Excel              ****
+*****************************************
+
+
+Parameter
+excel_report
+excel_hours
+;
+
+
+    excel_report('Household demand')       =   report('Household demand')       ;
+    excel_report('Energy from market')     =   report('Energy from market')     ;
+    excel_report('Energy to   market')     =   report('Energy to   market')     ;
+    excel_report('Self consumption rate')  =   report('Self consumption rate')  ;
+    excel_report('Self sufficiency rate')  =   report('Self sufficiency rate')  ;
+
+execute_unload "results_to_excel", excel_report, report_hours
+*excel_hours
+;
+
+
+execute 'gdxxrw.exe results_to_excel.gdx par=excel_report rng=a2 rdim=1' ;
+execute 'gdxxrw.exe results_to_excel.gdx par=report_hours rng=a10' ;

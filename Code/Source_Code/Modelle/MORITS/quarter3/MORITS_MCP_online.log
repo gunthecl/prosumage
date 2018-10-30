@@ -1,0 +1,287 @@
+
+--- Job MORITS_MCP_online.gms Start 10/27/18 12:18:03 24.7.4 r58773 WEX-WEI x86 64bit/MS Windows
+GAMS 24.7.4   Copyright (C) 1987-2016 GAMS Development. All rights reserved
+Licensee: Medium MUD - 10 User License                   S170316:1123AO-GEN
+          Deutsches Institut fuer Wirtschaftsforschung DIW, AbteilungDC3975
+          License for teaching and research at degree granting institutions
+          License Admin: Claudia Kemfert, bbibra@diw.de                    
+--- Starting compilation
+--- MORITS_MCP_online.gms(62) 3 Mb
+--- .24h_FirstHours.gms(5) 3 Mb
+--- MORITS_MCP_online.gms(231) 3 Mb
+--- GDXin=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\quarter3\in.gdx
+--- MORITS_MCP_online.gms(770) 10 Mb
+--- Starting execution: elapsed 0:00:00.106
+--- MORITS_MCP_online.gms(734) 13 Mb
+--- Generating MCP model prosumodmcp
+--- MORITS_MCP_online.gms(739) 30 Mb
+---   61,501 rows  61,511 columns  168,084 non-zeroes
+---   0 nl-code  0 nl-non-zeroes
+--- MORITS_MCP_online.gms(739) 28 Mb
+--- Executing PATH: elapsed 0:00:00.407
+Reading dictionary...
+Reading row data...
+Evaluating functions...
+Checking model...
+Calculating Jacobian...
+
+PATH             24.7.4 r58773 Released Sep 19, 2016 WEI x86 64bit/MS Windows 
+
+61501 row/cols, 147078 non-zeros, 0.00% dense.
+
+Path 4.7.04 (Mon Sep 19 11:18:59 2016)
+Written by Todd Munson, Steven Dirkse, and Michael Ferris
+
+Zero:     0 Single: 17702 Double:     0
+Forced:  5331 Redundant:     0
+Zero:     0 Single:   277 Double:     0
+MCPR: One:    0 Two:    0 Thr:    0 Qua:    0 WBd:    0 Fix:  277 IFx:    0
+Preprocessed size   : 37732
+
+INITIAL POINT STATISTICS
+Maximum of X. . . . . . . . . .  4.3670e+000 var: (STO_L_hh(h4381))
+Maximum of F. . . . . . . . . .  4.8298e+007 eqn: (minRES)
+Maximum of Grad F . . . . . . .  1.0799e+000 eqn: (KKTSTOUT_hh(h4382))
+                                            var: (levelsto_hh(h4382))
+
+INITIAL JACOBIAN NORM STATISTICS
+Maximum Row Norm. . . . . . . .  4.3800e+003 eqn: (minRES)
+Minimum Row Norm. . . . . . . .  1.0000e+000 eqn: (KKTEB_hh(h4381))
+Maximum Column Norm . . . . . .  4.3800e+003 var: (resshare)
+Minimum Column Norm . . . . . .  1.0000e+000 var: (STO_IN_hh(h4381))
+
+Crash Log
+major  func  diff  size  residual    step       prox   (label)
+    0     0             2.1211e+007             0.0e+000 (renewable_generation(h5)
+    1     8 20573 13508 2.1210e+007  2.8e-002    1.0e+001 (renewable_generation(h5)
+    2    10 20954 29976 2.1137e+007  8.0e-001    9.0e+000 (renewable_generation(h5)
+    3    14  4490 34098 2.1135e+007  4.1e-001    8.1e+000 (renewable_generation(h5)
+    4    19     6 34085 2.1118e+007  2.6e-001    7.3e+000 (renewable_generation(h5)
+pn_search terminated: no basis change.
+
+Major Iteration Log
+major minor  func  grad  residual    step  type prox    inorm  (label)
+    0     0    20     5 2.1118e+007           I 6.6e+000 1.2e+006 (renewable_gener)
+
+Minor Iteration Log
+minor      t          z     w     v   art ckpts  enter    leave
+  500  3.1964e-002 33606  4124     1     0     9 w[15082] z[ 9634]
+ 1000  1.0016e-001 33146  4584     1     0    20 w[22998] z[ 7836]
+ 1500  1.5677e-001 32686  5013    32     0    30 w[25635] z[ 7776]
+ 2000  2.0907e-001 32226  5411    94     0    40 w[26197] z[25047]
+ 2500  2.6155e-001 31828  5731   172     0    50 w[24367] z[15832]
+ 3000  3.1140e-001 31556  5921   254     0    60 z[ 7916] z[ 8036]
+ 3500  3.6119e-001 31366  6024   341     0    72 w[26632] z[ 7352]
+ 4000  4.2421e-001 31176  6123   432     0    82 w[26603] z[30865]
+ 4500  5.1683e-001 30978  6194   559     0    91 z[22589] z[16869]
+ 5000  5.3951e-001 31327  5826   578     0   101 w[18015] w[24321]
+ 5500  6.0113e-001 31240  5854   637     0   111 v[30796] z[29499]
+ 6000  7.5202e-001 31115  5846   770     0   121 z[26678] w[24878]
+ 6500  7.8419e-001 31482  5447   802     0   131 z[25635] z[16520]
+
+Major Iteration Log
+major minor  func  grad  residual    step  type prox    inorm  (label)
+    1  6937    21     6 2.0522e+007  1.0e+000 SM 2.6e+000 7.9e+005 (renewable_gener)
+
+Minor Iteration Log
+minor      t          z     w     v   art ckpts  enter    leave
+  500  4.8951e-002 31184  5598   949     0     9 z[ 9304] z[35403]
+ 1000  8.7514e-002 31066  5689   976     0    19 v[29481] z[25770]
+ 1500  1.2644e-001 30885  5845  1001     0    29 w[17264] w[ 9954]
+ 2000  1.6982e-001 30662  6043  1026     0    39 w[25149] z[25122]
+ 2500  2.1213e-001 30482  6197  1052     0    49 w[26692] z[17208]
+ 3000  2.6069e-001 30274  6376  1081     0    58 w[ 7211] z[ 1424]
+ 3500  3.1455e-001 30110  6510  1111     0    68 z[ 8283] z[17527]
+ 4000  3.6854e-001 30007  6583  1141     0    78 w[24651] w[22656]
+ 4500  4.1961e-001 29961  6606  1164     0    88 w[25965] w[24145]
+ 5000  4.6066e-001 30050  6500  1181     0    98 w[25133] z[17592]
+ 5500  5.0956e-001 30141  6392  1198     0   107 z[25921] w[24235]
+ 6000  5.3743e-001 30352  6171  1208     0   117 w[16110] z[33889]
+ 6500  5.9795e-001 30213  6278  1240     0   127 z[33588] w[33914]
+ 7000  6.9241e-001 29850  6506  1375     0   138 w[18025] z[ 8360]
+ 7500  8.4416e-001 29496  6781  1454     0   148 w[10393] z[31002]
+
+Major Iteration Log
+major minor  func  grad  residual    step  type prox    inorm  (label)
+    2  7928    22     7 1.1352e+007  1.0e+000 SO 1.0e+000 5.2e+005 (KKTGRES(h5509))
+
+Minor Iteration Log
+minor      t          z     w     v   art ckpts  enter    leave
+  500  2.5052e-001 28995  7206  1530     0     9 w[ 7713] z[25103]
+ 1000  4.0460e-001 28871  7329  1531     0    19 z[ 8818] z[25097]
+ 1500  5.2334e-001 28804  7396  1531     0    29 w[25673] w[33947]
+ 2000  6.1983e-001 28782  7418  1531     0    39 z[33644] w[ 5926]
+ 2500  7.3440e-001 28677  7523  1531     0    49 z[34821] z[ 8066]
+ 3000  8.5377e-001 28721  7536  1474     0    58 z[29122] z[37717]
+ 3500  9.3023e-001 28792  7658  1281     0    69 w[18078] v[29514]
+ 4000  9.8652e-001 28847  7809  1075     0    78 w[23591] z[23444]
+
+Major Iteration Log
+major minor  func  grad  residual    step  type prox    inorm  (label)
+    3  4150    23     8 2.7431e+006  1.0e+000 SO 4.2e-001 1.8e+005 (renewable_gener)
+
+Minor Iteration Log
+minor      t          z     w     v   art ckpts  enter    leave
+  500  1.9065e-001 28695  8102   934     0     9 z[ 1670] v[29636]
+ 1000  3.4523e-001 28714  8211   806     0    19 z[29860] z[26624]
+ 1500  4.5101e-001 28814  8320   597     0    29 z[34150] z[11451]
+ 2000  5.1181e-001 28978  8393   360     0    39 z[30886] z[34359]
+ 2500  5.6234e-001 29155  8489    87     0    49 z[30196] w[34088]
+ 3000  6.1614e-001 29469  8237    25     0    58 z[33807] w[35257]
+ 3500  7.1415e-001 29272  8446    13     0    68 w[ 9693] z[35445]
+ 4000  8.3352e-001 29168  8558     5     0    78 w[25752] z[24964]
+ 4500  9.7742e-001 29038  8683    10     0    88 w[26521] z[25610]
+
+Major Iteration Log
+major minor  func  grad  residual    step  type prox    inorm  (label)
+    4  4559    24     9 2.9158e+005  1.0e+000 SO 1.7e-001 1.1e+004 (KKTCU(h5509))
+
+Minor Iteration Log
+minor      t          z     w     v   art ckpts  enter    leave
+  500  1.1062e-001 28614  9107    10     0     9 w[23642] z[23360]
+ 1000  2.2695e-001 28250  9470    11     0    19 w[22523] z[24930]
+ 1500  4.5365e-001 27959  9758    14     0    29 w[25347] w[16176]
+ 2000  7.5629e-001 27718  9994    19     0    39 w[23008] z[26380]
+ 2500  9.2273e-001 27734  9978    19     0    49 w[ 1704] z[  434]
+ 3000  9.8318e-001 27839  9873    19     0    58 w[  809] w[15623]
+
+Major Iteration Log
+major minor  func  grad  residual    step  type prox    inorm  (label)
+    5  3150    25    10 1.4780e+004  1.0e+000 SO 6.7e-002 7.3e+002 (renewable_gener)
+
+Minor Iteration Log
+minor      t          z     w     v   art ckpts  enter    leave
+  500  1.9957e-001 27590 10120    21     0     9 w[23252] w[ 7244]
+ 1000  4.1482e-001 27264 10444    23     0    19 w[ 9455] w[ 9073]
+ 1500  6.1194e-001 27006 10702    23     0    29 w[ 1511] w[ 7050]
+ 2000  7.7771e-001 26807 10900    24     0    39 z[ 7836] z[23533]
+ 2500  9.0547e-001 26701 11006    24     0    49 z[34963] z[  407]
+ 3000  9.5060e-001 26926 10781    24     0    58 w[ 1275] w[35077]
+
+Major Iteration Log
+major minor  func  grad  residual    step  type prox    inorm  (label)
+    6  3177    26    11 2.3233e+003  1.0e+000 SO 2.7e-002 1.6e+002 (KKTGCON(peak,h6)
+
+Minor Iteration Log
+minor      t          z     w     v   art ckpts  enter    leave
+  500  4.8289e-001 26627 11083    21     0     9 w[  952] z[10335]
+ 1000  8.8183e-001 26474 11239    18     0    19 w[ 1069] w[  825]
+
+Major Iteration Log
+major minor  func  grad  residual    step  type prox    inorm  (label)
+    7  1175    27    12 1.1915e+003  1.0e+000 SO 1.1e-002 1.0e+002 (KKTGCON(peak,h5)
+
+Minor Iteration Log
+minor      t          z     w     v   art ckpts  enter    leave
+  500  4.9526e-001 26189 11528    14     0     9 w[15099] z[ 7494]
+
+Major Iteration Log
+major minor  func  grad  residual    step  type prox    inorm  (label)
+    8   890    28    13 4.8525e+002  1.0e+000 SO 4.3e-003 5.3e+001 (KKTSTOIN(h4381))
+
+Minor Iteration Log
+minor      t          z     w     v   art ckpts  enter    leave
+  500  7.1279e-001 26217 11499    15     0     9 z[ 1558] w[  647]
+
+Major Iteration Log
+major minor  func  grad  residual    step  type prox    inorm  (label)
+    9   701    29    14 2.8925e+002  1.0e+000 SO 1.7e-003 4.1e+001 (KKTSTOLEV(h5251)
+   10   305    30    15 1.7334e+002  1.0e+000 SO 6.9e-004 2.9e+001 (KKTSTOLEV(h6546)
+   11   209    31    16 1.3067e+002  1.0e+000 SO 2.8e-004 1.7e+001 (KKTSTOLEV(h5249)
+   12     6    32    17 1.3066e+002  1.0e+000 SO 1.0e+001 1.7e+001 (KKTSTOLEV(h5252)
+   13     1    33    18 1.3058e+002  1.0e+000 SO 4.0e+000 1.7e+001 (KKTSTOLEV(h5251)
+   14     3    34    19 1.3024e+002  1.0e+000 SO 1.6e+000 1.7e+001 (KKTSTOLEV(h5251)
+   15     8    35    20 1.2947e+002  1.0e+000 SO 6.4e-001 1.5e+001 (KKTSTOLEV(h5252)
+   16    20    36    21 1.2841e+002  1.0e+000 SO 2.6e-001 1.4e+001 (KKTSTOLEV(h5248)
+   17     8    37    22 1.2705e+002  1.0e+000 SO 1.0e-001 1.3e+001 (KKTSTOLEV(h5254)
+   18    77    38    23 1.2614e+002  1.0e+000 SO 4.1e-002 1.3e+001 (KKTSTOLEV(h5254)
+   19    11    39    24 1.2610e+002  1.0e+000 SO 1.6e-002 1.3e+001 (KKTSTOLEV(h5248)
+   20     9    40    25 1.2585e+002  1.0e+000 SO 6.6e-003 1.3e+001 (KKTSTOLEV(h5248)
+   21    25    41    26 1.2464e+002  1.0e+000 SO 2.6e-003 1.3e+001 (KKTSTOLEV(h5254)
+   22    35    42    27 1.2402e+002  1.0e+000 SO 1.0e-003 1.3e+001 (KKTSTOLEV(h5254)
+   23   157    43    28 1.1838e+002  1.0e+000 SO 4.2e-004 1.1e+001 (KKTSTOLEV(h5254)
+
+Minor Iteration Log
+minor      t          z     w     v   art ckpts  enter    leave
+  500  6.4482e-001 25604 12101    26     0    10 w[31952] z[30633]
+
+Major Iteration Log
+major minor  func  grad  residual    step  type prox    inorm  (label)
+   24   876    44    29 9.6130e+001  1.0e+000 SO 1.7e-004 5.4e+000 (KKTSTOLEV(h5255)
+
+Minor Iteration Log
+minor      t          z     w     v   art ckpts  enter    leave
+  500  1.5122e-001 24799 12910    22     0    10 w[32116] z[30744]
+ 1000  2.9535e-001 24327 13382    22     0    20 w[29748] z[31896]
+ 1500  4.2911e-001 23837 13872    22     0    30 w[32326] z[30892]
+ 2000  5.1782e-001 23353 14356    22     0    40 w[33638] z[30226]
+ 2500  5.5594e-001 22905 14804    22     0    50 w[29177] z[31715]
+ 3000  8.5458e-001 22465 15245    21     0    60 z[  719] z[32368]
+
+Major Iteration Log
+major minor  func  grad  residual    step  type prox    inorm  (label)
+   25  3139    45    30 2.1834e+001  1.0e+000 SO 6.7e-005 1.1e+000 (KKTSTOLEV(h6521)
+
+Minor Iteration Log
+minor      t          z     w     v   art ckpts  enter    leave
+  500  7.1946e-001 21881 15835    15     0     9 w[33603] z[34059]
+ 1000  8.5419e-001 21383 16333    15     0    19 w[34624] z[34386]
+
+Minor Iteration Log
+minor      t          z     w     v   art ckpts  enter    leave
+  500  8.5747e-003 21861 15855    15     0    12 w[34075] z[34448]
+ 1000  3.6799e-002 21371 16345    15     0    22 w[34512] z[34653]
+
+Major Iteration Log
+major minor  func  grad  residual    step  type prox    inorm  (label)
+   26  1300    46    31 1.9434e+001  1.0e+000 SO 2.2e+000 1.0e+000 (KKTSTOIN(h4747))
+   27    97    47    32 1.3975e+001  1.0e+000 SO 8.7e-001 1.1e+000 (KKTSTOLEV(h4747)
+   28   157    48    33 9.6476e+000  1.0e+000 SO 3.5e-001 1.1e+000 (KKTSTOLEV(h5946)
+   29   315    49    34 7.1810e+000  1.0e+000 SO 1.4e-001 1.2e+000 (KKTSTOLEV(h5946)
+   30    97    50    35 6.5521e+000  1.0e+000 SO 5.6e-002 1.1e+000 (KKTSTOLEV(h5946)
+   31   140    51    36 6.1596e+000  1.0e+000 SO 2.2e-002 9.7e-001 (KKTSTOLEV(h5946)
+   32    63    52    37 5.8943e+000  1.0e+000 SO 8.9e-003 9.0e-001 (KKTSTOLEV(h6521)
+   33    80    53    38 5.6265e+000  1.0e+000 SO 3.6e-003 9.0e-001 (KKTSTOLEV(h6522)
+   34    24    54    39 5.1109e+000  1.0e+000 SO 1.4e-003 9.0e-001 (KKTSTOLEV(h5849)
+   35    43    55    40 3.5751e+000  1.0e+000 SO 5.7e-004 6.6e-001 (KKTSTOLEV(h5946)
+   36    93    56    41 1.4281e+000  1.0e+000 SO 2.3e-004 2.8e-001 (KKTSTOIN(h4735))
+   37    85    57    42 5.5487e-002  1.0e+000 SO 9.2e-005 3.1e-002 (KKTGRES(h5947))
+   38     2    58    43 1.7019e-006  1.0e+000 SO 3.7e-005 1.1e-006 (renewable_gener)
+   39     1    59    44 9.1147e-007  1.0e+000 SO 1.7e-007 8.8e-007 (KKTSTOLEV(h5186)
+
+FINAL STATISTICS
+Inf-Norm of Complementarity . .  4.4089e-007 eqn: (KKTSTOLEV(h5186))
+Inf-Norm of Normal Map. . . . .  4.4089e-007 eqn: (KKTSTOLEV(h5186))
+Inf-Norm of Minimum Map . . . .  4.4089e-007 eqn: (KKTSTOLEV(h5186))
+Inf-Norm of Fischer Function. .  8.8177e-007 eqn: (KKTSTOLEV(h5186))
+Inf-Norm of Grad Fischer Fcn. .  1.7635e-006 eqn: (stolev(h5186))
+Two-Norm of Grad Fischer Fcn. .  2.7344e-006
+
+FINAL POINT STATISTICS
+Maximum of X. . . . . . . . . .  6.5074e+005 var: (G_RENEWABLE(h5509))
+Maximum of F. . . . . . . . . .  4.7564e+007 eqn: (minRES)
+Maximum of Grad F . . . . . . .  1.0799e+000 eqn: (KKTSTOUT_hh(h4382))
+                                            var: (levelsto_hh(h4382))
+
+ ** EXIT - solution found.
+
+Major Iterations. . . . 39
+Minor Iterations. . . . 41583
+Restarts. . . . . . . . 0
+Crash Iterations. . . . 4
+Gradient Steps. . . . . 0
+Function Evaluations. . 59
+Gradient Evaluations. . 44
+Basis Time. . . . . . . 708.126000
+Total Time. . . . . . . 730.328000
+Residual. . . . . . . . 9.114727e-007
+Postsolved residual: 9.1147e-007
+
+--- Restarting execution
+--- MORITS_MCP_online.gms(739) 15 Mb
+--- Reading solution for model prosumodmcp
+--- MORITS_MCP_online.gms(739) 18 Mb
+--- Executing after solve: elapsed 0:12:11.167
+--- MORITS_MCP_online.gms(760) 19 Mb
+*** Status: Normal completion
+--- Job MORITS_MCP_online.gms Stop 10/27/18 12:30:14 elapsed 0:12:11.192

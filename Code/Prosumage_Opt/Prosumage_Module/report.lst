@@ -1,0 +1,129 @@
+GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 10/30/18 19:23:21 Page 1
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+C o m p i l a t i o n
+
+
+   1   
+   2   
+   3  **************************************************************************
+      ******
+   4  **** Parameters for report file  *****************************************
+      ******
+   5  **************************************************************************
+      ******
+   6   
+   7  Parameter
+   8  calc_maxprice
+   9  calc_minprice
+  10   
+  11  report
+  12  report_tech(*)
+  13  report_tech_hours
+  14  report_hours
+  15  report_cost
+  16   
+  17  gross_energy_demand
+  18  full_load_hours
+  19  energy_to_market
+  20  energy_from_market
+  21  self_consumption_rate
+  22  self_sufficiency_rate
+  23   
+  24  ;
+  25   
+  26   
+  27   
+  28   
+  29  **************************************************************************
+      ******
+  30  **** Initialize reporting paremetrs  *************************************
+      ******
+  31  **************************************************************************
+      ******
+  32  * ------------------------------------------------------------------------
+      ----
+  33   
+  34  * Define gross energy demand for reporting
+  35  gross_energy_demand = sum( h , d_PRO(h)  )   ;
+****                             $120    $140
+  36   
+  37  * Define full load hours of PV
+  38  full_load_hours(res_pro)     = sum( h , avail_solar_PRO(h)*N_PV_PRO.l(res_
+****                        $120                            $140          $140
+      pro) );
+  39   
+  40  * Define market interaction parameters
+  41  energy_to_market                   = sum ( (res_pro,h),  G_PRO2M_PRO.l(res
+****                                                                       $140
+      _pro,h) )      ;
+  42  energy_from_market                 = sum ( h, E_M2PRO_PRO.l(h) )          
+****                                                            $140
+           ;
+  43  self_consumption_rate              = sum ( (sto_pro,res_pro,h), G_PRO2PRO_
+****                                                    $120                    
+      PRO.l(res_pro,h) + STO_IN_PRO2PRO_PRO.l(sto_pro,res_pro,h) ) / sum(res_pro
+          $140                              $140
+      , full_load_hours(res_pro) );
+  44  self_sufficiency_rate              = sum ( (sto_pro,res_pro,h), G_PRO2PRO_
+      PRO.l(res_pro,h) + STO_IN_PRO2PRO_PRO.l(sto_pro,res_pro,h) ) / gross_energ
+      y_demand   ;
+  45   
+  46   
+  47  ;
+  48   
+  49   
+  50  **************************************************************************
+      ******
+  51  **** Report  *************************************************************
+      ******
+  52  **************************************************************************
+      ******
+  53   
+  54         report('Household demand')      = gross_energy_demand ;
+  55         report('Energy from market')    = energy_from_market ;
+  56         report('Energy to   market')    = energy_to_market ;
+  57         report('Self consumption rate') = self_consumption_rate ;
+  58         report('Self sufficiency rate') = self_sufficiency_rate ;
+  59  * ------------------------------------------------------------------------
+      ----
+  60   
+  61  * REPORT HOURS
+  62          report_hours('demand consumers',h)= d_PRO(h) ;
+  63  *        report_hours('energy generated',h)=
+  64   
+  65  * REPORT TECH
+  66           report_tech('Full load hours')  = full_load_hours(res_pro) ;
+****                                                                    $149
+  67   
+  68  * ------------------------------------------------------------------------
+      ---- *
+  69  * ------------------------------------------------------------------------
+      ---- *
+GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 10/30/18 19:23:21 Page 2
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Error Messages
+
+
+120  Unknown identifier entered as set
+140  Unknown symbol
+149  Uncontrolled set entered as constant
+
+**** 11 ERROR(S)   0 WARNING(S)
+
+
+COMPILATION TIME     =        0.093 SECONDS      3 MB  24.7.4 r58773 WEX-WEI
+
+
+USER: Medium MUD - 10 User License                   S170316:1123AO-GEN
+      Deutsches Institut fuer Wirtschaftsforschung DIW, AbteilungDC3975
+      License for teaching and research at degree granting institutions
+
+
+**** FILE SUMMARY
+
+Input      C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosuma
+           ge_Module\report.gms
+Output     C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosuma
+           ge_Module\report.lst
+
+**** USER ERROR(S) ENCOUNTERED

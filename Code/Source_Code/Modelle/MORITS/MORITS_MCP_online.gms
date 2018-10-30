@@ -58,7 +58,8 @@ sto              Storage technolgies                     /storage/
 year             Base years                              /2010*2016/
 hh_profile       Household load data                     /V1*V74/
 ct               Dispatchable Technologies               /base, peak/
-
+* Include subset of all first hours of days within a year
+$include 24h_FirstHours.gms
 ;
 
 Variables
@@ -76,8 +77,8 @@ N_STO_P_hh             Capacities: storage power
 STO_L_hh(h)             Storage level
 STO_IN_hh(h)            Storage intake
 STO_OUT_hh(h)           Storage generation
-E_buy_hh(h)                 Energy purchased from market
-E_sell_hh(h)                Energy sold to market
+E_buy_hh(h)             Energy purchased from market
+E_sell_hh(h)            Energy sold to market
 lambda_hh(h)
 gamma1_hh
 gamma2_hh(h)
@@ -87,7 +88,8 @@ gamma4_hh(h)
 
 Variables
 mu_hh(h)
-levelsto_hh(h);
+levelsto_hh(h)
+lambda_stolev24h_hh(h) ;
 
 Positive variables
 *System variables
@@ -111,7 +113,8 @@ resshare
 
 Variables
 mu
-levelsto(h);
+levelsto(h)
+lambda_stolev24h(h);
 
 Parameters
 * Household Parameters
@@ -173,8 +176,8 @@ penalty          =  0 ;
 c_i_sto_e_hh  =  5418.14/1000  ;
 c_i_sto_p_hh  = 50995.48/1000  ;
 c_i_pv_hh     = 60526.64/1000  ;
-c_var_sto_hh  =     0.5 /1000  ;
-price_buy     =     0.30 ;
+c_var_sto_hh  =     0.5 /1000*365/days  ;
+price_buy     =     0.30*365/days ;
 
 * Declare further restrictions
 pv_cap_max = 10       ;
@@ -207,9 +210,9 @@ c_i_sto_p           = 50995.48 ;
 c_i_res             = share_solar('%base_year%') * 60526.64 + share_wind('%base_year%') * 108869.81 ;
 c_i_con('base')     = 102393.68 ;
 c_i_con('peak')     = 47840.27 ;
-c_var_con('base')   = 31.03 ;
-c_var_con('peak')   = 78.36 ;
-c_var_sto           = 0.5 ;
+c_var_con('base')   = 31.03*365/days ;
+c_var_con('peak')   = 78.36*365/days ;
+c_var_sto           = 0.5*365/days ;
 
 ***************************** Upload data **************************************
 
@@ -280,6 +283,7 @@ KKTSTOIN_hh
 KKTSTOUT_hh
 KKTSTOLEV_hh
 KKTCU_hh
+stolev_24h_hh
 ;
 
 
@@ -307,7 +311,7 @@ KKTSTOIN
 KKTSTOUT
 KKTSTOLEV
 KKTCU
-
+stolev_24h
 ;
 
 
@@ -331,18 +335,18 @@ hh_energy_balance_hh(h)..
 
            G_PV_hh(h)
          + STO_OUT_hh(h)
-         + E_buy_hh(h)    =G=
-          d_hh(h)
+         + E_buy_hh(h)  -  d_hh(h)       =G=    0
+
 ;
 
 *** Household PV generation usage: Directly consumed, CU_hhrtailed,stored or sold
 pv_generation_hh(h)..
 
-      avail_solar(h) * N_PV_hh =E=
-        G_PV_hh(h)
-      + CU_hh(h)
-      + STO_IN_hh(h)
-      + E_sell_hh(h)
+      avail_solar(h) * N_PV_hh
+       - G_PV_hh(h)
+       - CU_hh(h)
+       - STO_IN_hh(h)
+       - E_sell_hh(h)  =E= 0
 ;
 
 *** Restrict PV capacity
@@ -365,14 +369,20 @@ stolev_no_freelunch..
 $offtext
 
 *Storage level for all hours except first: Prio level plus intake minus outflow
-stolevel_hh(h)..
+stolevel_hh(h)$((ord(h)>1) )..
 
 
-         STO_L_hh(h--1)
+         STO_L_hh(h-1)
          + STO_IN_hh(h) * eta_sto_in_hh
          - STO_OUT_hh(h)/eta_sto_out_hh
-         =E=  STO_L_hh(h)
+         - STO_L_hh(h)
+         =E=  0
 ;
+
+stolev_24h_hh(h)..
+        - STO_L_hh(h)$(h24(h)) =E= 0
+;
+
 
 * Storage maximum energy capacity
 stolev_max_energy_hh(h)..
@@ -417,8 +427,8 @@ KKTEB_hh(h)..
 
 KKTES_hh(h)..
 
-           -price_market(h)
-*           -lambda(h)/1000
+*           -price_market(h)
+           -lambda(h)/1000
            + mu_hh(h) =G=  0
 
 ;
@@ -450,7 +460,8 @@ KKTSTOUT_hh(h)..
 KKTSTOLEV_hh(h)..
 
 
-     gamma2_hh(h) + levelsto_hh(h) - levelsto_hh(h++1) =G= 0
+     gamma2_hh(h) + levelsto_hh(h) - levelsto_hh(h+1)
+    + (lambda_stolev24h_hh(h))$h24(h)  =G= 0
 
 ;
 
@@ -473,49 +484,55 @@ energy_balance(h)..
         + G_RENEWABLE(h)
         + STO_OUT(h)
         + E_sell_hh(h)/1000
-         =G= d(h)
-        + E_buy_hh(h)/1000
+        - d(h)
+        - E_buy_hh(h)/1000
+         =G= 0
 ;
 
 renewable_generation(h)..
 
 
           phi_res(h) * N_RENEWABLE
-         =E= G_RENEWABLE(h) + CU(h) +  STO_IN(h)
+         - G_RENEWABLE(h) - CU(h) - STO_IN(h)  =E= 0
 ;
 
 
 minRES..
-         (1-phi_min_res) * sum( h , d(h) )  =G= sum( (ct,h) , G_CON(ct,h) )
+         (1-phi_min_res) * sum( h , d(h) ) - sum( (ct,h) , G_CON(ct,h) )  =G= 0
 ;
 
 maximum_generation_con(ct,h)..
 
-         N_CON(ct) =G= G_CON(ct,h)
+         N_CON(ct) - G_CON(ct,h) =G= 0
 ;
 
 
-stolev(h)..
-        STO_L(h--1)
+stolev(h)$((ord(h)>1) )..
+        STO_L(h-1)
       + STO_IN(h) * eta_sto_in
       - STO_OUT(h)/eta_sto_out
-      =E=  STO_L(h)
+      - STO_L(h)
+      =E=  0
+;
+
+stolev_24h(h)..
+        - STO_L(h)$(h24(h)) =E= 0
 ;
 
 stolev_max(h)..
 
-          N_STO_E  =G= STO_L( h)
+          N_STO_E  - STO_L( h)  =G= 0
 ;
 
 
 maxin_power(h)..
 
-         N_STO_P  =G=  STO_IN( h)
+         N_STO_P - STO_IN( h) =G= 0
 ;
 
 maxout_power(h)..
 
-       N_STO_P   =G=  STO_OUT( h)
+       N_STO_P   -  STO_OUT( h)   =G= 0
 ;
 
 
@@ -577,7 +594,8 @@ KKTSTOUT(h)..
 KKTSTOLEV(h)..
 
 
-      gamma2(h) + levelsto(h) - levelsto(h++1) =G= 0
+      gamma2(h) + levelsto(h) - levelsto(h+1)
+      + (lambda_stolev24h(h))$h24(h)     =G= 0
 
 
 ;
@@ -611,8 +629,8 @@ KKTSTOIN_hh.STO_IN_hh
 KKTSTOUT_hh.STO_OUT_hh
 KKTSTOLEV_hh.STO_L_hh
 KKTCU_hh.CU_hh
+stolev_24h_hh.lambda_stolev24h_hh
 
-$ontext
 energy_balance.lambda
 renewable_generation.mu
 minRES.resshare
@@ -631,8 +649,7 @@ KKTSTOIN.STO_IN
 KKTSTOUT.STO_OUT
 KKTSTOLEV.STO_L
 KKTCU.CU
-$offtext
-
+stolev_24h.lambda_stolev24h
 /
 
 
@@ -641,6 +658,7 @@ optcr = 0.00
 reslim = 10000000
 lp = cplex
 mip = cplex
+mcp = path
 nlp = conopt
 dispwidth = 15
 limrow = 0
@@ -665,37 +683,53 @@ $offecho
 * Household Variables
 G_PV_hh.up(h)              = 10  ;
 CU_hh.up(h)                = 10  ;
-N_PV_hh.up                 = 10  ;
-N_STO_E_hh.up              = 20  ;
-N_STO_P_hh.up              = 20  ;
+*N_PV_hh.fx                 = 10  ;
+*N_STO_E_hh.fx              = 10  ;
+*N_STO_P_hh.fx              = 2  ;
 STO_L_hh.up(h)             = 20  ;
 STO_IN_hh.up(h)            = 20  ;
 STO_OUT_hh.up(h)           = 20  ;
 E_buy_hh.up(h)             = 50  ;
 E_sell_hh.up(h)            = 30  ;
 * System Variables
-G_CON.up(ct,h)             = 100000 ;
-G_RENEWABLE.up(h)          = 300000 ;
-CU.up(h)                   = 150000 ;
-N_RENEWABLE.up             = 300000 ;
-N_CON.up(ct)               = 100000 ;
-N_STO_E.up                 = 150000 ;
-N_STO_P.up                 = 100000 ;
-STO_L.up(h)                = 150000 ;
-STO_IN.up(h)               = 100000  ;
-STO_OUT.up(h)              = 100000  ;
+G_CON.up(ct,h)             = 1000000 ;
+G_RENEWABLE.up(h)          = 3000000 ;
+CU.up(h)                   = 1500000 ;
+N_RENEWABLE.up             = 3000000 ;
+N_CON.up(ct)               = 1000000 ;
+N_STO_E.up                 = 1500000 ;
+N_STO_P.up                 = 1000000 ;
+STO_L.up(h)                = 1500000 ;
+STO_IN.up(h)               = 1000000  ;
+STO_OUT.up(h)              = 1000000  ;
 
 * Set up initial values for speed up
 STO_L_hh.l(h)   = 4.367;
-N_PV_hh.l       = 8    ;
-N_STO_E_hh.l    = 10   ;
-N_STO_P_hh.l    = 10   ;
-N_RENEWABLE.l              = 43000  ;
-N_CON.l(ct)                = 100000  ;
-N_STO_E.l                  = 120000 ;
-N_STO_P.l                  = 100000  ;
+*N_PV_hh.l       = 8    ;
+*N_STO_E_hh.l    = 10   ;
+*N_STO_P_hh.l    = 10   ;
+*N_RENEWABLE.l              = 43000  ;
+*N_CON.l(ct)                = 100000  ;
+*N_STO_E.l                  = 120000 ;
+*N_STO_P.l                  = 100000  ;
 *lambda.l(h)                = 1  ;
 *price_market(h)            = lambda.l(h)/1000 ;
+
+
+* First first storage level duals
+levelsto_hh.fx('h1') = 100;
+levelsto.fx('h1')  = 100;
+
+* Fix capacity values of system
+*$ontext
+N_RENEWABLE.fx      =    2806690.140  ;
+N_STO_E.fx          =     280310.069  ;
+N_STO_P.fx          =     48670.384   ;
+N_CON.fx('base')    =     481160.000  ;
+N_CON.fx('peak')    =     229810.618  ;
+*$offtext
+
+*prosumodmcp.optfile = 1;
 
 solve prosumodmcp using mcp;
 
@@ -724,7 +758,8 @@ display d_hh , N_PV_hh.l , E_buy_hh.l , E_sell_hh.l ,  G_PV_hh.l,
         price_market,  CU_hh.l, N_RENEWABLE.l, d, G_RENEWABLE.l,
 *        G_CON.l, STO_OUT.l, lambda.l, lambda.m, mu.l, mu.m, energy_balance.m,
 *        N_CON.l, Z_sys.l ,
- Z_hh.l  ;
+        Z_hh.l ,N_RENEWABLE.l , N_STO_E.l,N_STO_P.l,
+         N_CON.l;
 
 
 ***************************** Set up reporting *********************************

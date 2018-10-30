@@ -1,0 +1,194 @@
+
+--- Job model.gms Start 10/30/18 16:37:15 24.7.4 r58773 WEX-WEI x86 64bit/MS Windows
+GAMS 24.7.4   Copyright (C) 1987-2016 GAMS Development. All rights reserved
+Licensee: Medium MUD - 10 User License                   S170316:1123AO-GEN
+          Deutsches Institut fuer Wirtschaftsforschung DIW, AbteilungDC3975
+          License for teaching and research at degree granting institutions
+          License Admin: Claudia Kemfert, bbibra@diw.de                    
+--- Starting compilation
+--- model.gms(20) 2 Mb 2 Errors
+*** Error 120 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unknown identifier entered as set
+*** Error 120 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unknown identifier entered as set
+--- model.gms(27) 2 Mb 3 Errors
+*** Error 120 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unknown identifier entered as set
+--- model.gms(132) 3 Mb 5 Errors
+*** Error 120 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unknown identifier entered as set
+*** Error 140 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unknown symbol
+--- model.gms(133) 3 Mb 7 Errors
+*** Error 140 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unknown symbol
+*** Error 171 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Domain violation for set
+--- model.gms(134) 3 Mb 9 Errors
+*** Error 140 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unknown symbol
+*** Error 171 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Domain violation for set
+--- model.gms(135) 3 Mb 12 Errors
+*** Error 120 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unknown identifier entered as set
+*** Error 140 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unknown symbol
+*** Error 171 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Domain violation for set
+--- model.gms(136) 3 Mb 13 Errors
+*** Error 140 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unknown symbol
+--- model.gms(137) 3 Mb 14 Errors
+*** Error 140 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unknown symbol
+--- model.gms(138) 3 Mb 15 Errors
+*** Error 140 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unknown symbol
+--- model.gms(139) 3 Mb 16 Errors
+*** Error 140 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unknown symbol
+--- model.gms(140) 3 Mb 17 Errors
+*** Error 140 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unknown symbol
+--- model.gms(141) 3 Mb 18 Errors
+*** Error 140 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unknown symbol
+--- model.gms(142) 3 Mb 19 Errors
+*** Error 409 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- model.gms(159) 3 Mb 20 Errors
+*** Error 120 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unknown identifier entered as set
+--- model.gms(160) 3 Mb 22 Errors
+*** Error 140 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unknown symbol
+*** Error 140 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unknown symbol
+--- model.gms(161) 3 Mb 24 Errors
+*** Error  37 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    '=l=' or '=e=' or '=g=' operator expected
+*** Error 409 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- model.gms(177) 3 Mb 26 Errors
+*** Error 171 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Domain violation for set
+*** Error 171 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Domain violation for set
+--- model.gms(181) 3 Mb 27 Errors
+*** Error 171 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Domain violation for set
+--- model.gms(191) 3 Mb 28 Errors
+*** Error 171 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Domain violation for set
+--- model.gms(195) 3 Mb 30 Errors
+*** Error 171 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Domain violation for set
+*** Error 171 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Domain violation for set
+--- model.gms(197) 3 Mb 32 Errors
+*** Error 140 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unknown symbol
+*** Error 171 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Domain violation for set
+--- model.gms(205) 3 Mb 34 Errors
+*** Error 140 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unknown symbol
+*** Error 140 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unknown symbol
+--- model.gms(233) 3 Mb 35 Errors
+*** Error 140 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unknown symbol
+--- model.gms(241) 3 Mb 36 Errors
+*** Error 171 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Domain violation for set
+--- model.gms(243) 3 Mb 39 Errors
+*** Error   8 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    ')' expected
+*** Error  37 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    '=l=' or '=e=' or '=g=' operator expected
+*** Error 409 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- model.gms(258) 3 Mb 40 Errors
+*** Error 140 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unknown symbol
+--- model.gms(268) 3 Mb 41 Errors
+*** Error 140 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unknown symbol
+--- model.gms(272) 3 Mb 42 Errors
+*** Error 140 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unknown symbol
+--- model.gms(276) 3 Mb 43 Errors
+*** Error 140 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unknown symbol
+--- model.gms(281) 3 Mb 45 Errors
+*** Error 120 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unknown identifier entered as set
+*** Error 340 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    A label/element with the same name exist. You may have forgotten
+       to quote a label/element reference. For example,
+       set i / a,b,c /; parameter x(i); x('a') = 10;
+--- model.gms(282) 3 Mb 47 Errors
+*** Error 171 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Domain violation for set
+*** Error 140 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unknown symbol
+--- model.gms(286) 3 Mb 48 Errors
+*** Error 140 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unknown symbol
+--- model.gms(290) 3 Mb 49 Errors
+*** Error 140 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unknown symbol
+--- model.gms(300) 3 Mb 50 Errors
+*** Error 171 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Domain violation for set
+--- model.gms(302) 3 Mb 54 Errors
+*** Error 171 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Domain violation for set
+*** Error 171 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Domain violation for set
+*** Error 171 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Domain violation for set
+*** Error 171 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Domain violation for set
+--- model.gms(308) 3 Mb 55 Errors
+*** Error 171 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Domain violation for set
+--- model.gms(312) 3 Mb 56 Errors
+*** Error 171 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Domain violation for set
+--- model.gms(314) 3 Mb 57 Errors
+*** Error 140 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unknown symbol
+--- model.gms(318) 3 Mb 58 Errors
+*** Error 171 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Domain violation for set
+--- model.gms(323) 3 Mb 61 Errors
+*** Error 119 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Number (primary) expected
+*** Error 140 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unknown symbol
+*** Error 171 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Domain violation for set
+--- model.gms(336) 3 Mb 62 Errors
+*** Error 171 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Domain violation for set
+--- model.gms(351) 3 Mb 63 Errors
+*** Error 171 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Domain violation for set
+--- model.gms(392) 3 Mb 67 Errors
+*** Error   2 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Identifier expected
+*** Error 140 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unknown symbol
+*** Error   2 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Identifier expected
+*** Error 140 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+    Unknown symbol
+--- model.gms(411) 3 Mb 67 Errors
+*** Status: Compilation error(s)
+--- Job model.gms Stop 10/30/18 16:37:15 elapsed 0:00:00.249
+Exit code = 2

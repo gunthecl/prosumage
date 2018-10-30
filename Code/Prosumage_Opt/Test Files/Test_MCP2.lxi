@@ -1,0 +1,17 @@
+B 2 C o m p i l a t i o n
+B 396 Include File Summary
+B 412 Model Statistics    SOLVE prosumodmcp Using MCP From line 382
+B 430 Solution Report     SOLVE prosumodmcp Using MCP From line 382
+B 485 E x e c u t i o n
+I 486 d
+I 1092 N_PV
+I 1094 E_buy
+I 1630 E_sell
+I 1747 G_PV
+I 2020 price_market
+I 3024 hh_energy_balance
+I 3628 levelsto
+I 4233 pv_install_max
+I 4235 pv_generation
+I 4840 N_STO_E
+I 4842 N_STO_P

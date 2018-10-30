@@ -1,0 +1,185 @@
+
+--- Job Test_MCP2.gms Start 10/18/18 09:53:22 24.7.4 r58773 WEX-WEI x86 64bit/MS Windows
+GAMS 24.7.4   Copyright (C) 1987-2016 GAMS Development. All rights reserved
+Licensee: Medium MUD - 10 User License                   S170316:1123AO-GEN
+          Deutsches Institut fuer Wirtschaftsforschung DIW, AbteilungDC3975
+          License for teaching and research at degree granting institutions
+          License Admin: Claudia Kemfert, bbibra@diw.de                    
+--- Starting compilation
+--- Test_MCP2.gms(142) 3 Mb
+--- GDXin=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Test Files\data\input_data.gdx
+--- Test_MCP2.gms(391) 12 Mb
+--- Starting execution: elapsed 0:00:00.114
+--- Test_MCP2.gms(380) 12 Mb
+--- Generating MCP model prosumodmcp
+--- Test_MCP2.gms(382) 24 Mb
+---   39,004 rows  39,004 columns  104,690 non-zeroes
+---   0 nl-code  0 nl-non-zeroes
+--- Test_MCP2.gms(382) 22 Mb
+--- Executing PATH: elapsed 0:00:00.200
+Reading dictionary...
+Reading row data...
+Evaluating functions...
+Checking model...
+Calculating Jacobian...
+
+PATH             24.7.4 r58773 Released Sep 19, 2016 WEI x86 64bit/MS Windows 
+
+39004 row/cols, 104690 non-zeros, 0.01% dense.
+
+Path 4.7.04 (Mon Sep 19 11:18:59 2016)
+Written by Todd Munson, Steven Dirkse, and Michael Ferris
+
+Zero:     0 Single: 12313 Double:  4968
+Preprocessed size   : 21723
+
+INITIAL POINT STATISTICS
+Maximum of X. . . . . . . . . .  1.0000e+001 var: (N_STO_E)
+Maximum of F. . . . . . . . . .  5.0995e+001 eqn: (KKTNSTOP)
+Maximum of Grad F . . . . . . .  1.0799e+000 eqn: (KKTSTOUT(h1))
+                                            var: (levelsto(h1))
+
+INITIAL JACOBIAN NORM STATISTICS
+Maximum Row Norm. . . . . . . .  4.3440e+003 eqn: (KKTNSTOP)
+Minimum Row Norm. . . . . . . .  2.0000e+000 eqn: (hh_energy_balance(h8))
+Maximum Column Norm . . . . . .  4.3440e+003 var: (N_STO_P)
+Minimum Column Norm . . . . . .  2.0000e+000 var: (lambda(h8))
+
+Crash Log
+major  func  diff  size  residual    step       prox   (label)
+    0     0             2.2733e+001             0.0e+000 (KKTNPV)
+    1     4  5541  9003 1.6167e+001  4.1e-001    2.3e-001 (KKTNPV)
+    2    11  3645 12888 1.5015e+001  6.9e-002    1.6e-001 (KKTNPV)
+    3    17   867 13113 1.4926e+001  1.7e-001    1.5e-001 (KKTNPV)
+    4    25   659 13470 1.4864e+001  2.8e-002    1.3e-001 (KKTNPV)
+    5    33   126 13722 1.4835e+001  2.8e-002    1.2e-001 (KKTNPV)
+pn_search terminated: no progress.
+
+Major Iteration Log
+major minor  func  grad  residual    step  type prox    inorm  (label)
+    0     0    46     6 1.4835e+001           I 1.1e-001 3.4e+000 (KKTNPV)
+
+Minor Iteration Log
+minor      t          z     w     v   art ckpts  enter    leave
+  500  3.1557e-002 13259  8454     9     0     9 w[15282] z[17097]
+ 1000  6.2802e-002 12958  8737    27     0    19 z[ 9911] w[10214]
+ 1500  9.2433e-002 12679  8987    56     0    29 w[16889] z[ 1056]
+ 2000  1.1766e-001 12399  9233    90     0    39 w[15119] z[15505]
+ 2500  1.4641e-001 12136  9445   141     0    49 z[ 2212] w[ 8681]
+ 3000  1.7938e-001 11938  9580   204     0    58 w[15037] w[ 2442]
+ 3500  2.1866e-001 11698  9745   279     0    68 w[16757] w[ 8813]
+ 4000  2.6076e-001 11500  9855   367     0    78 v[  301] w[16001]
+ 4500  3.0421e-001 11357  9938   427     0    88 z[ 9678] z[18017]
+ 5000  3.8082e-001 11211  9991   520     0    98 v[  390] z[ 1287]
+ 5500  4.7228e-001 11056 10041   625     0   107 z[ 9337] w[12473]
+ 6000  5.5763e-001 10955 10063   704     0   117 z[12246] z[16071]
+ 6500  6.4347e-001 10821 10127   774     0   127 z[ 9431] z[18050]
+ 7000  7.3357e-001 10722 10158   842     0   137 z[12051] w[10815]
+ 7500  8.0575e-001 10674 10161   887     0   147 w[14905] w[16468]
+ 8000  8.5641e-001 10835  9962   925     0   156 z[17576] z[12400]
+ 8500  8.8938e-001 11140  9648   934     0   166 w[18609] w[16354]
+ 9000  9.2242e-001 11397  9373   952     0   176 z[ 8321] z[16626]
+ 9500  9.6278e-001 11534  9217   971     0   186 z[16447] w[17491]
+
+Major Iteration Log
+major minor  func  grad  residual    step  type prox    inorm  (label)
+    1  9874    47     7 8.0765e-001  1.0e+000 SM 4.2e-002 8.9e-002 (stoout_max_powe)
+
+Minor Iteration Log
+minor      t          z     w     v   art ckpts  enter    leave
+  500  2.1606e-001 11803  8942   977     0     9 z[ 6045] w[ 8348]
+ 1000  2.3720e-001 12293  8453   976     0    19 z[16745] w[ 8472]
+ 1500  3.4949e-001 12749  8001   972     0    29 z[ 8663] w[ 6686]
+ 2000  5.6355e-001 13155  7596   971     0    39 z[16686] w[16369]
+ 2500  7.7977e-001 13587  7173   962     0    49 z[ 5720] w[ 8063]
+ 3000  9.2761e-001 13987  6784   951     0    58 z[17973] w[17488]
+ 3500  9.6922e-001 13800  6972   950     0    68 w[15914] z[ 8251]
+ 4000  9.8097e-001 13372  7400   950     0    78 w[16250] z[16123]
+ 4500  9.8841e-001 12898  7874   950     0    88 w[ 5756] z[16593]
+ 5000  9.9393e-001 12408  8363   951     0    98 w[18384] z[16198]
+ 5500  9.9747e-001 11912  8859   951     0   107 w[17378] z[17545]
+
+Major Iteration Log
+major minor  func  grad  residual    step  type prox    inorm  (label)
+    2  5888    48     8 1.3811e-001  1.0e+000 SO 1.7e-002 1.1e-002 (KKTSTOLEV(h2142)
+
+Minor Iteration Log
+minor      t          z     w     v   art ckpts  enter    leave
+  500  6.3605e-001 11673  9103   946     0     9 v[18174] z[12483]
+ 1000  9.5884e-001 11958  8824   940     0    19 z[ 6421] w[ 6471]
+
+Major Iteration Log
+major minor  func  grad  residual    step  type prox    inorm  (label)
+    3  1139    49     9 1.0641e-001  1.0e+000 SO 6.8e-003 5.1e-003 (KKTSTOLEV(h2141)
+    4   415    50    10 9.9695e-002  1.0e+000 SO 2.7e-003 2.8e-003 (KKTSTOLEV(h2044)
+    5    99    51    11 9.9217e-002  1.0e+000 SO 1.0e-002 2.3e-003 (KKTSTOLEV(h2041)
+    6    74    52    12 9.9014e-002  1.0e+000 SO 9.9e-003 2.2e-003 (KKTSTOLEV(h2041)
+    7    48    53    13 9.8904e-002  1.0e+000 SO 4.0e-003 2.0e-003 (KKTSTOLEV(h2741)
+    8   458    54    14 8.8134e-002  1.0e+000 SO 1.6e-003 1.8e-003 (KKTSTOLEV(h1971)
+    9   125    55    15 8.5948e-002  1.0e+000 SO 8.8e-003 1.7e-003 (stoin_max_power)
+   10   492    56    16 7.8723e-002  1.0e+000 SO 3.5e-003 1.6e-003 (KKTSTOLEV(h1160)
+
+Minor Iteration Log
+minor      t          z     w     v   art ckpts  enter    leave
+  500  5.8559e-001 11849  8904   969     0     9 w[12222] z[21681]
+
+Major Iteration Log
+major minor  func  grad  residual    step  type prox    inorm  (label)
+   11   868    57    17 6.3277e-002  1.0e+000 SO 1.4e-003 1.2e-003 (KKTSTOLEV(h1831)
+
+Minor Iteration Log
+minor      t          z     w     v   art ckpts  enter    leave
+  500  2.0268e-001 11488  9231  1003     0     9 z[ 8643] z[21515]
+ 1000  3.3823e-001 11242  9477  1003     0    19 w[ 6957] z[ 5690]
+ 1500  5.1687e-001 10884  9835  1003     0    29 w[ 5803] z[ 6503]
+ 2000  6.1629e-001 10597 10122  1003     0    39 w[21072] w[ 8292]
+ 2500  6.9005e-001 10366 10353  1003     0    49 w[21564] z[21308]
+ 3000  7.4311e-001 10166 10553  1003     0    58 z[ 6519] z[20902]
+ 3500  7.7274e-001 10084 10635  1003     0    68 w[18800] z[19231]
+ 4000  7.8253e-001  9830 10889  1003     0    78 z[ 5885] z[21393]
+ 4500  8.1618e-001  9736 10983  1003     0    88 w[21027] z[19545]
+ 5000  8.5240e-001  9490 11229  1003     0    98 w[19007] z[19512]
+ 5500  8.8848e-001  9212 11507  1003     0   107 w[18916] z[ 7110]
+ 6000  9.5607e-001  9038 11681  1003     0   117 w[21202] z[20659]
+
+Major Iteration Log
+major minor  func  grad  residual    step  type prox    inorm  (label)
+   12  6302    58    18 4.2812e-003  1.0e+000 SO 5.6e-004 4.3e-003 (KKTNSTOE)
+   13     9    59    19 6.3631e-007  1.0e+000 SO 2.3e-004 4.8e-007 (KKTSTOUT(h847))
+
+FINAL STATISTICS
+Inf-Norm of Complementarity . .  2.3397e-007 eqn: (pv_generation(h277))
+Inf-Norm of Normal Map. . . . .  2.4055e-007 eqn: (KKTSTOUT(h847))
+Inf-Norm of Minimum Map . . . .  2.4055e-007 eqn: (KKTSTOUT(h847))
+Inf-Norm of Fischer Function. .  4.8109e-007 eqn: (KKTSTOUT(h847))
+Inf-Norm of Grad Fischer Fcn. .  2.1463e-006 eqn: (KKTNSTOP)
+Two-Norm of Grad Fischer Fcn. .  2.7034e-006
+
+FINAL POINT STATISTICS
+Maximum of X. . . . . . . . . .  1.7891e+000 var: (N_PV)
+Maximum of F. . . . . . . . . .  3.1509e+000 eqn: (hh_energy_balance(h106))
+Maximum of Grad F . . . . . . .  1.0799e+000 eqn: (KKTSTOUT(h1))
+                                            var: (levelsto(h1))
+
+ ** EXIT - solution found.
+
+Major Iterations. . . . 13
+Minor Iterations. . . . 26050
+Restarts. . . . . . . . 0
+Crash Iterations. . . . 5
+Gradient Steps. . . . . 0
+Function Evaluations. . 59
+Gradient Evaluations. . 19
+Basis Time. . . . . . . 93.849000
+Total Time. . . . . . . 99.750000
+Residual. . . . . . . . 6.363072e-007
+Postsolved residual: 6.3631e-007
+
+--- Restarting execution
+--- Test_MCP2.gms(382) 13 Mb
+--- Reading solution for model prosumodmcp
+--- Test_MCP2.gms(382) 16 Mb
+--- Executing after solve: elapsed 0:01:40.317
+--- Test_MCP2.gms(384) 17 Mb
+*** Status: Normal completion
+--- Job Test_MCP2.gms Stop 10/18/18 09:55:02 elapsed 0:01:40.336
