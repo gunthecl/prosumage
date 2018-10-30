@@ -746,9 +746,6 @@ Order=1,2
 Decim=7
 PlaneRownr=-1
 
-[RP:FIX]
-1=
-
 [GDXDISP: reserves_nonspin Set 1]
 PlaneDim=0
 RowDim=1
@@ -1427,9 +1424,6 @@ PlaneRownr=-1
 [RP:DATALOAD]
 1=
 
-[RP:MODEL]
-1=
-
 [RP:DIETER]
 1=-gdx=test
 2=-gdx = test5_exo
@@ -1454,23 +1448,31 @@ PlaneRownr=-1
 [RP:24H_FIRSTHOURS]
 1=
 
+[RP:FIX]
+1=
+
+[RP:DIETER_PRO_LINKS]
+1=
+
+[RP:MODEL]
+1=
+
 [MRUFILES]
-1=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\MORITS_MCP.gms
-2=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage_Module\PROSUMOD.gms
-3=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\DIETER.lst
-4=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\DIETER.gms
-5=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\DIETER.lst
-6=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\results.gdx
-7=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\DIETER.gms
-8=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
-9=W:\DIETER\Dieter-Heat\model_clean\post\Untitled_1.gms
+1=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\DIETER_pro_links.lst
+2=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\fix.gms
+3=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\DIETER_pro_links.gms
+4=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\MORITS_MCP.gms
+5=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage_Module\PROSUMOD.gms
+6=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\DIETER.lst
+7=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\DIETER.gms
+8=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\DIETER.lst
 
 [OPENWINDOW_1]
-FILE0=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\24h_FirstHours.gms
-FILE1=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\MORITS_MCP_online.gms
-FILE2=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\MORITS_MCP_online.gms
+FILE0=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+FILE1=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\model.gms
+FILE2=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\model.gms
 MAXIM=0
 TOP=-19
 LEFT=169
 HEIGHT=876
-WIDTH=1222
+WIDTH=1408

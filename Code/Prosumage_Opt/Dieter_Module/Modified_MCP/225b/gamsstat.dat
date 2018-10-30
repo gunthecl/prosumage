@@ -1,0 +1,463 @@
+=C
+=CGUSS             24.7.4 r58773 Released Sep 19, 2016 WEI x86 64bit/MS Windows 
+=0GUSS             24.7.4 r58773 Released Sep 19, 2016 WEI x86 64bit/MS Windows 
+=CReading parameter(s) from scenario dictionary
+=C>>  Logoption 2
+=C>>  Optfile 1
+=C>>  Skipbasecase 1
+=C--- Scenario Variable with potential updates identified: phi_min_res
+=C--- Scenario Variable with potential updates identified: phi_pro_self
+=1
+=0IBM ILOG CPLEX   24.7.4 r58773 Released Sep 19, 2016 WEI x86 64bit/MS Windows 
+=1
+
+IBM ILOG CPLEX   24.7.4 r58773 Released Sep 19, 2016 WEI x86 64bit/MS Windows 
+=2
+=1
+--- GAMS/Cplex licensed for continuous and discrete problems.
+=2
+=1
+Cplex 12.6.3.0
+
+=2
+ 
+ 
+--------------------------------------------------------------
+CONTROL FILE STATISTICS
+--------------------------------------------------------------
+Rows : 490621, columns : 420509, nonzeroes : 1823193
+Free Rows          : 0
+Iteration limit    : 2000000000
+Resource  limit    : 1.000000e+007
+Objective variable : 0
+Objective sense    : minimize
+Advanced basis     : no
+ 
+ 
+=1
+Reading parameter(s) from "C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\cplex.opt"
+=2
+=1
+>>  lpmethod 4
+=2
+=1
+>>  threads 4
+=2
+=1
+>>  epgap 1e-3
+=2
+=1
+Finished reading from "C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\cplex.opt"
+=2
+
+
+Option Values:
+----------------------------------------------------
+usebasis              0
+cutoff                0
+tryint                0
+domlim                0
+advind                0
+aggcutlim             3
+aggfill               10
+aggind                -1
+auxrootthreads        0
+baralg                0
+barcolnz              0
+barcrossalg           0
+bardisplay            1
+barepcomp             1e-008
+bargrowth             1e+012
+baritlim              2000000000
+barmaxcor             -1
+barobjrng             1e+020
+barorder              0
+barqcpepcomp          1e-007
+barstartalg           1
+bbinterval            7
+bndstrenind           -1
+bqpcuts               0
+brdir                 0
+bttol                 0.9999
+calcqcpduals          1
+cliques               0
+clocktype             0
+clonelog              0
+coeredind             -1
+computeserver        
+covers                0
+cpumask               auto
+craind                1
+crossoveralg          default
+cutlo                 -1e+075
+cutpass               0
+cuts                  0
+cutsfactor            -1
+cutup                 1e+075
+depind                -1
+dettilim              1e+075
+disjcuts              0
+divetype              0
+divfltup              1e+299
+divfltlo              -1e+299
+.divflt               0
+dpriind               0
+dtprefix              bnd
+dtterm                1
+dumpcuts              0
+dumptree              0
+dumplp                0
+eachcutlim            2100000000
+epagap                1e-006
+epgap                 0.001
+epint                 1e-005
+epmrk                 0.01
+epopt                 1e-006
+epper                 1e-006
+eprelax               1e-006
+eprhs                 1e-006
+feasopt               0
+feasoptmode           0
+.feaspref             1
+fixoptfile            
+flowcovers            0
+flowpaths             0
+flushfiles            0
+fpheur                0
+fraccand              200
+fraccuts              0
+fracpass              0
+freegamsmodel         0
+gubcovers             0
+heurfreq              0
+iafile                
+iatriggerfile         
+iatriggertime         60
+iis                   0
+implbd                0
+interactive           0
+intsollim             2100000000
+itlim                 2100000000
+lbheur                0
+liftprojcuts          0
+lpalg                 default
+lpmethod              4
+ltol                  0
+mcfcuts               0
+memoryemphasis        0
+localimplied          0
+mipdisplay            4
+mipemphasis           0
+mipkappastats         -1
+mipinterval           0
+mipordind             1
+mipordtype            0
+mipsearch             0
+mipstart              0
+miptrace              
+miptracenode          100
+miptracetime          1
+miqcpstrat            0
+mircuts               0
+mpslongnum            1
+mtol                  0
+names                 1
+netdisplay            2
+netepopt              1e-006
+neteprhs              1e-006
+netfind               2
+netitlim              2100000000
+netppriind            0
+nodefileind           1
+nodelim               2100000000
+nodesel               1
+numericalemphasis     0
+objdif                0
+objllim               -1e+075
+objrng               
+objulim               1e+075
+parallelmode          1
+perind                0
+perlim                0
+polishtime            0
+polishafterepagap     0
+polishafterepgap      0
+polishafternode       2100000000
+polishafterintsol     2100000000
+polishaftertime       1e+075
+polishafterdettime    1e+075
+populatelim           20
+ppriind               0
+predual               0
+preind                1
+prelinear             1
+prepass               -1
+preslvnd              0
+pricelim              0
+printoptions          0
+probe                 0
+probetime             1e+075
+probedettime          1e+075
+probread              
+qpmakepsdind          1
+qpmethod              0
+qtolin                -1
+quality               0
+rampupdettimelimit    1e+075
+rampupduration        0
+rampuptimelimit       1e+075
+randomseed            0
+readflt               
+readparams            
+reduce                3
+reinv                 0
+relaxfixedinfeas      0
+relaxpreind           -1
+relobjdif             0
+repairtries           0
+repeatpresolve        -1
+rerun                 yes
+rhsrng               
+rinsheur              0
+rngrestart            
+scaind                0
+secret               
+siftalg               0
+siftdisplay           1
+siftitlim             2100000000
+simdisplay            1
+singlim               10
+solnpool              
+solnpoolmerge         
+solnpoolnumsym        10
+solnpoolagap          1e+075
+solnpoolcapacity      2100000000
+solnpoolgap           1e+075
+solnpoolintensity     0
+solnpoolpop           1
+solnpoolpopdel        
+solnpoolpoprepeat     
+solnpoolprefix        soln
+solnpoolreplace       0
+solutiontype          0
+optimalitytarget      0
+solvefinal            1
+startalg              0
+strongcandlim         10
+strongitlim           0
+subalg                0
+submipnodelim         500
+symmetry              -1
+threads               4
+tilim                 1e+007
+trelim                1e+075
+tuning                
+tuningdisplay         1
+tuningmeasure         1
+tuningrepeat          1
+tuningtilim           2e+006
+tuningdettilim        1e+007
+usercutcall           
+usercutfirst          10
+usercutfreq           10
+usercutinterval       100
+usercutmult           2
+usercutnewint         1
+usergdxin             bchin.gdx
+usergdxsol            bchsol.gdx
+usergdxname           bchout.gdx
+usergdxnameinc        bchout_i.gdx
+usergdxprefix         
+userheurcall          
+userheurfirst         10
+userheurfreq          10
+userheurinterval      100
+userheurmult          2
+userheurnewint        1
+userheurobjfirst      0
+userincbcall          
+userincbicall         
+userjobid             
+userkeep              0
+usercgmaxcols         2147483647
+usercgadvind          1
+usercgsolopt          0
+usercgdumplp          bchcgdump.lp
+userpricingcall       
+usersolvenodelp       
+varsel                0
+waitforenter          0
+workdir               .
+workmem               128
+writebas              
+writeflt              
+writelp               
+writemps              
+writemst              
+writeord              
+writeparam            
+writepre              
+writesav              
+zerohalfcuts          0
+----------------------------------------------------
+
+=1
+Space for names approximately 28.90 Mb
+Use option 'names no' to turn use of names off
+=2
+Infeasible column 'N_STO_E(Sto5)'.
+Presolve time = 0.22 sec. (85.36 ticks)
+=1
+LP status(3): infeasible
+Cplex Time: 0.22sec (det. 86.76 ticks)
+=2
+=1
+Rerunning with presolve turned off and solving with LPMETHOD=0
+=2
+
+Iteration log . . .
+Iteration:     1    Scaled infeas =     646896744.981579
+Iteration: 15330    Scaled infeas =     443863219.773418
+Iteration: 26689    Scaled infeas =     271237643.290509
+Iteration: 26875    Scaled infeas =     267515118.395093
+Iteration: 27623    Scaled infeas =     267515118.395093
+Iteration: 28625    Scaled infeas =     267515118.395093
+Iteration: 28842    Scaled infeas =     267515118.395093
+Perturbation started.
+Switched to devex.
+Iteration: 29477    Scaled infeas =     267515118.395118
+Iteration: 30141    Scaled infeas =     267515118.369795
+Iteration: 30662    Scaled infeas =     267515118.369491
+Iteration: 31230    Scaled infeas =     267515118.368813
+Iteration: 31790    Scaled infeas =     267515118.368290
+Iteration: 32353    Scaled infeas =     267515118.367971
+Iteration: 32969    Scaled infeas =     267515118.367667
+Iteration: 33812    Scaled infeas =     257630958.303643
+Iteration: 34538    Scaled infeas =     257518892.122418
+Iteration: 35568    Scaled infeas =     166947127.549386
+Iteration: 38626    Scaled infeas =     142753915.574880
+Iteration: 40046    Scaled infeas =     140440199.274177
+Iteration: 40969    Scaled infeas =     140146329.040950
+Iteration: 42722    Scaled infeas =     139592094.582625
+Iteration: 43692    Scaled infeas =     139544856.862298
+Iteration: 45596    Scaled infeas =     129254654.918521
+Iteration: 47848    Scaled infeas =     118430196.031704
+Iteration: 50210    Scaled infeas =     106071860.299418
+Iteration: 52571    Scaled infeas =      83374382.080654
+Iteration: 53630    Scaled infeas =      82942101.614838
+Iteration: 55478    Scaled infeas =      82582521.608386
+Iteration: 57956    Scaled infeas =      82257265.923424
+Iteration: 60392    Scaled infeas =      78765079.797533
+Iteration: 62973    Scaled infeas =      77500624.833229
+Iteration: 64305    Scaled infeas =      76326936.809473
+Iteration: 66650    Scaled infeas =      76040318.405608
+Iteration: 69047    Scaled infeas =      74042689.917052
+Iteration: 70706    Scaled infeas =      73161552.235864
+Iteration: 72963    Scaled infeas =      72789299.457566
+Iteration: 74919    Scaled infeas =      71640743.954663
+Iteration: 76669    Scaled infeas =      70818330.849964
+Iteration: 79035    Scaled infeas =      69458200.972508
+Iteration: 81004    Scaled infeas =      68745416.299850
+Iteration: 83214    Scaled infeas =      67527289.342183
+Iteration: 84889    Scaled infeas =      66974128.309508
+Iteration: 86798    Scaled infeas =      65901066.611316
+Iteration: 88245    Scaled infeas =      65294694.088376
+Iteration: 90061    Scaled infeas =      64224784.632628
+Iteration: 91784    Scaled infeas =      63512768.196834
+Iteration: 93545    Scaled infeas =      62583659.918059
+Iteration: 95355    Scaled infeas =      61533798.594332
+Elapsed time = 13.27 sec. (10058.91 ticks, 96636 iterations)
+Iteration: 96636    Scaled infeas =      61102394.792517
+Iteration: 98695    Scaled infeas =      60164692.620036
+Iteration: 99609    Scaled infeas =      59762769.635052
+Iteration: 101379    Scaled infeas =      58740872.112242
+Iteration: 102510    Scaled infeas =      58349426.606355
+Iteration: 104015    Scaled infeas =      57485528.275911
+Iteration: 105947    Scaled infeas =      56595644.287281
+Iteration: 107822    Scaled infeas =      55811329.847630
+Iteration: 109763    Scaled infeas =      54983627.995431
+Iteration: 111439    Scaled infeas =      54377284.384516
+Iteration: 112888    Scaled infeas =      53882238.339262
+Iteration: 114386    Scaled infeas =      53553503.122179
+Iteration: 115504    Scaled infeas =      53429679.113042
+Iteration: 116805    Scaled infeas =      53182333.774320
+Iteration: 117628    Scaled infeas =      52930794.556277
+Iteration: 119034    Scaled infeas =      52146547.286892
+Iteration: 120413    Scaled infeas =      51575530.261860
+Iteration: 121148    Scaled infeas =      51347606.355393
+Iteration: 123885    Scaled infeas =      50224220.239639
+Iteration: 126286    Scaled infeas =      43826265.527863
+Iteration: 129105    Scaled infeas =      39260705.558357
+Iteration: 131976    Scaled infeas =      36506170.567135
+Iteration: 134557    Scaled infeas =      33020918.004210
+Iteration: 136362    Scaled infeas =      30325815.897974
+Iteration: 138444    Scaled infeas =      27474001.561278
+Iteration: 140119    Scaled infeas =      25216026.509432
+Iteration: 142704    Scaled infeas =      21688679.079825
+Iteration: 145126    Scaled infeas =      19741626.778389
+Iteration: 146975    Scaled infeas =      17200140.719557
+Iteration: 149942    Scaled infeas =      14755918.122873
+Iteration: 152458    Scaled infeas =      13525599.001961
+Iteration: 154335    Scaled infeas =      11699715.590804
+Iteration: 155888    Scaled infeas =      10156271.178513
+Iteration: 158330    Scaled infeas =       8793766.176446
+Iteration: 160408    Scaled infeas =       6837924.709942
+Iteration: 161934    Scaled infeas =       5818175.404989
+Iteration: 163641    Scaled infeas =       4805987.648276
+Iteration: 165503    Scaled infeas =       3745712.206045
+Iteration: 167971    Scaled infeas =       2866831.975030
+Iteration: 169106    Scaled infeas =       2278679.594010
+Iteration: 170716    Scaled infeas =       1904983.223762
+Iteration: 172194    Scaled infeas =       1569122.993920
+Iteration: 174137    Scaled infeas =       1107023.836647
+Iteration: 176091    Scaled infeas =        799521.396004
+Iteration: 176997    Scaled infeas =        664375.272960
+Iteration: 178038    Scaled infeas =        518178.764796
+Iteration: 179378    Scaled infeas =        367457.221053
+Iteration: 180390    Scaled infeas =        256498.225782
+Iteration: 181681    Scaled infeas =        164908.812122
+Iteration: 182676    Scaled infeas =        147050.245054
+Iteration: 183503    Scaled infeas =        118088.774455
+Iteration: 185006    Scaled infeas =         73307.227045
+Elapsed time = 30.00 sec. (20065.00 ticks, 185134 iterations)
+Iteration: 185412    Scaled infeas =         64371.113986
+Iteration: 186279    Scaled infeas =         61306.725398
+Iteration: 186944    Scaled infeas =         60806.756443
+Iteration: 187500    Scaled infeas =         60272.208466
+Iteration: 188003    Scaled infeas =         60272.208466
+Iteration: 188506    Scaled infeas =         60272.208465
+Iteration: 189139    Scaled infeas =         59646.686441
+Iteration: 189671    Scaled infeas =         59446.632613
+Iteration: 190180    Scaled infeas =         59446.632612
+Iteration: 190681    Scaled infeas =         59446.632612
+Iteration: 191183    Scaled infeas =         59446.632612
+Iteration: 191845    Scaled infeas =         59385.707695
+Iteration: 192381    Scaled infeas =         59051.093349
+Iteration: 193203    Scaled infeas =         57943.975577
+Iteration: 194278    Scaled infeas =         54964.674645
+Iteration: 195123    Scaled infeas =         53239.631577
+Elapsed time = 55.16 sec. (30086.59 ticks, 195761 iterations)
+Iteration: 195761    Scaled infeas =         52798.495208
+Iteration: 196438    Scaled infeas =         51796.877766
+Iteration: 197078    Scaled infeas =         51392.225309
+Iteration: 197596    Scaled infeas =         51368.258298
+Iteration: 198099    Scaled infeas =         51368.258298
+Iteration: 198732    Scaled infeas =         51011.291587
+Iteration: 199409    Scaled infeas =         50648.274309
+Iteration: 200024    Scaled infeas =         50443.608502
+Elapsed time = 97.50 sec. (40089.06 ticks, 200626 iterations)
+Iteration: 200820    Scaled infeas =         50061.275877
+Iteration: 201462    Scaled infeas =         49679.582696
+Iteration: 202117    Scaled infeas =         49307.905931
+Iteration: 202872    Scaled infeas =         48786.739771
+Iteration: 203541    Scaled infeas =         48307.682012
+Iteration: 204154    Scaled infeas =         47906.956341
+Elapsed time = 139.56 sec. (50089.38 ticks, 204773 iterations)
+Iteration: 204931    Scaled infeas =         47243.026198
+Iteration: 205469    Scaled infeas =         46964.155168
+Iteration: 206078    Scaled infeas =         46653.019601
+Iteration: 206826    Scaled infeas =         46247.497243
+Iteration: 207481    Scaled infeas =         45911.075152
+Iteration: 208073    Scaled infeas =         45663.666812
+Elapsed time = 181.22 sec. (60092.28 ticks, 208474 iterations)
+Iteration: 208853    Scaled infeas =         44975.245234

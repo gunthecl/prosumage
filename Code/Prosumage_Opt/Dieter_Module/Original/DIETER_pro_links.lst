@@ -8048,4 +8048,151 @@ INCLUDE    C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_
       ---- *
 4640   
 4641   
-4642  execute_unload "results", report, report_tech, rep
+4642  execute_unload "results", report, report_tech, report_node, report_line, r
+      eport_tech_hours, report_hours, report_cost
+4643  *$ontext
+4644  , report_prosumage, report_prosumage_tech, report_prosumage_tech_hours, re
+      port_market, report_market_tech, report_market_tech_hours
+      , report_heat_tech_hours, report_heat_tech
+      $ontext
+      , report_reserves, report_reserves_tech, report_reserves_tech_hours
+      $ontext
+      , report_reserves_tech, report_reserves_tech_hours, report_reserves_hours
+      $ontext
+4659  ;
+4660   
+      $include report_to_excel.gms
+      $ontext
+4665   
+4666   
+4667   
+4668  * ------------------------------------------------------------------------
+      ---- *
+4669  * ------------------------------------------------------------------------
+      ---- *
+4670  * ------------------------------------------------------------------------
+      ---- *
+GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 10/30/18 16:25:13 Page 2
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Include File Summary
+
+
+   SEQ   GLOBAL TYPE      PARENT   LOCAL  FILENAME
+
+     1        1 INPUT          0       0  C:\Users\Lenovo\Documents\GitHub\prosu
+                                          mage\Code\Prosumage_Opt\Dieter_Module\
+                                          Original\DIETER_pro_links.gms
+     2      155 INCLUDE        1     155  .C:\Users\Lenovo\Documents\GitHub\pros
+                                           umage\Code\Prosumage_Opt\Dieter_Modul
+                                           e\Original\dataload.gms
+     3      560 GDXIN          2     405  .C:\Users\Lenovo\Documents\GitHub\pros
+                                           umage\Code\Prosumage_Opt\Dieter_Modul
+                                           e\Original\Data_input.gdx
+     4      612 GDXIN          2     457  .C:\Users\Lenovo\Documents\GitHub\pros
+                                           umage\Code\Prosumage_Opt\Dieter_Modul
+                                           e\Original\time_series.gdx
+     5     1085 INCLUDE        1     298  .C:\Users\Lenovo\Documents\GitHub\pros
+                                           umage\Code\Prosumage_Opt\Dieter_Modul
+                                           e\Original\model.gms
+     6     2617 INCLUDE        1     477  .C:\Users\Lenovo\Documents\GitHub\pros
+                                           umage\Code\Prosumage_Opt\Dieter_Modul
+                                           e\Original\fix.gms
+     7     2947 INCLUDE        1     478  .C:\Users\Lenovo\Documents\GitHub\pros
+                                           umage\Code\Prosumage_Opt\Dieter_Modul
+                                           e\Original\scenario.gms
+     8     3228 INCLUDE        1     637  .C:\Users\Lenovo\Documents\GitHub\pros
+                                           umage\Code\Prosumage_Opt\Dieter_Modul
+                                           e\Original\report.gms
+
+
+COMPILATION TIME     =        0.141 SECONDS     25 MB  24.7.4 r58773 WEX-WEI
+GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 10/30/18 16:25:13 Page 3
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Model Statistics    SOLVE DIETER Using LP From line 3224
+
+
+MODEL STATISTICS
+
+BLOCKS OF EQUATIONS          54     SINGLE EQUATIONS      402,996
+BLOCKS OF VARIABLES          25     SINGLE VARIABLES      429,260  5 projected
+NON ZERO ELEMENTS     1,718,022     NON LINEAR N-Z         96,362
+DERIVATIVE POOL              20     CONSTANT POOL              18
+CODE LENGTH             131,408
+
+
+GENERATION TIME      =       93.500 SECONDS    341 MB  24.7.4 r58773 WEX-WEI
+
+
+EXECUTION TIME       =       95.234 SECONDS    340 MB  24.7.4 r58773 WEX-WEI
+GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 10/30/18 16:25:13 Page 4
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Solution Report     SOLVE DIETER Using LP From line 3224
+
+
+               S O L V E      S U M M A R Y
+
+     MODEL   DIETER              OBJECTIVE  Z
+     TYPE    LP                  DIRECTION  MINIMIZE
+     SOLVER  CPLEX               FROM LINE  3224
+
+**** SOLVER STATUS     1 Normal Completion         
+**** MODEL STATUS      14 No Solution Returned     
+**** OBJECTIVE VALUE                0.0000
+
+ RESOURCE USAGE, LIMIT         63.625  10000000.000
+ ITERATION COUNT, LIMIT         0    2000000000
+
+GUSS             24.7.4 r58773 Released Sep 19, 2016 WEI x86 64bit/MS Windows 
+Reading parameter(s) from scenario dictionary
+>>  Logoption 2
+>>  Optfile 1
+>>  Skipbasecase 1
+--- Scenario Variable with potential updates identified: phi_min_res
+--- Scenario Variable with potential updates identified: phi_pro_self
+
+IBM ILOG CPLEX   24.7.4 r58773 Released Sep 19, 2016 WEI x86 64bit/MS Windows 
+--- GAMS/Cplex licensed for continuous and discrete problems.
+Cplex 12.6.3.0
+
+Reading parameter(s) from "C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosu
+                                      mage_Opt\Dieter_Module\Original\cplex.opt"
+>>  lpmethod 4
+>>  threads 4
+>>  epgap 1e-3
+Finished reading from "C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage
+                                          _Opt\Dieter_Module\Original\cplex.opt"
+Space for names approximately 28.28 Mb
+Use option 'names no' to turn use of names off
+LP status(1): optimal
+Cplex Time: 62.88sec (det. 26062.66 ticks)
+Optimal solution found.
+Objective : 36495564680.712967
+
+--- Scenario scen1:     Records read:    1
+--- Solution statistics for scenario scen1
+---   Solver Status    1 Normal Completion         
+---   Model Status     1 Optimal                   
+---   Objective Value  36495564680.713
+---   Resource Usage   63719
+---   Total Time (ms)  63890
+
+No solution returned
+GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 10/30/18 16:25:13 Page 5
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+E x e c u t i o n
+
+
+EXECUTION TIME       =        1.203 SECONDS    239 MB  24.7.4 r58773 WEX-WEI
+
+
+USER: Medium MUD - 10 User License                   S170316:1123AO-GEN
+      Deutsches Institut fuer Wirtschaftsforschung DIW, AbteilungDC3975
+      License for teaching and research at degree granting institutions
+
+
+**** FILE SUMMARY
+
+Input      C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_
+           Module\Original\DIETER_pro_links.gms
+Output     C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_
+           Module\Original\DIETER_pro_links.lst
