@@ -78,7 +78,6 @@ $ontext
 $offtext
 
 %loop_over_renewable_share%      loop_res_share                          /50/
-%EV%                             loop_ev                                 /0/
 %prosumage%                      loop_prosumage                          /0/
 ;
 
@@ -121,73 +120,6 @@ sysout = off
 $include dataload.gms
 
 
-
-
-********************************************************************************
-
-*************************************
-***** Features for single nodes *****
-*************************************
-
-
-*Set
-*features /dsm, ev, reserves, prosumage, rsvr_outflow, heat/
-*;
-
-
-*Table
-*feat_node(features,n)
-*                 DE
-
-*%prosumage%$ontext
-*prosumage        1
-*$ontext
-*$offtext
-*rsvr_outflow     0
-
-*;
-
-
-
-*%prosumage%$ontext
-*m_res_pro(res)$(feat_node('prosumage',n) = 0) = 0 ;
-*m_sto_pro_e(n,sto)$(feat_node('prosumage',n) = 0) = 0 ;
-*m_sto_pro_p(n,sto)$(feat_node('prosumage',n) = 0) = 0 ;
-*$ontext
-*$offtext
-
-*phi_rsvr_min(n) = 0
-*feat_node('rsvr_outflow',n)
-*;
-
-
-
-
-Set
-map_n_tech(tech)
-map_n_sto(sto)
-*map_n_rsvr(n,rsvr)
-*map_n_dsm(n,dsm)
-*map_n_ev(n,ev)
-*map_l(l)
-map_n_sto_pro(sto)
-map_n_res_pro(tech)
-;
-
-map_n_tech(tech) = yes$m_p(tech) ;
-map_n_sto(sto) = yes$m_sto_p(sto) ;
-*map_n_rsvr(n,rsvr) = yes$m_rsvr_p(n,rsvr) ;
-*map_n_dsm(n,dsm_curt) = yes$m_dsm_cu(n,dsm_curt) ;
-*map_n_dsm(n,dsm_shift) = yes$m_dsm_shift(n,dsm_shift) ;
-*map_n_ev(n,ev) = yes$ev_data(n,ev,'share_ev') ;
-*map_l(l) = yes$m_ntc(l) ;
-map_n_sto_pro(sto) = yes$(yes$m_sto_pro_p(sto)) ;
-map_n_res_pro(res) = yes$(yes$m_res_pro(res)) ;
-;
-
-
-
-
 ********************************************************************************
 
 ***************************
@@ -197,22 +129,6 @@ map_n_res_pro(res) = yes$(yes$m_res_pro(res)) ;
 * Parameters for default base year
 d(h) = d_y(%base_year%,h) ;
 phi_res(res,h) = phi_res_y(%base_year%,res,h) ;
-*rsvr_in(n,rsvr,h) = rsvr_in_y(n,%base_year%,rsvr,h) ;
-*phi_reserves_call(n,reserves,h) = phi_reserves_call_y(n,%base_year%,reserves,h) ;
-*phi_mean_reserves_call(n,reserves) = phi_mean_reserves_call_y(n,%base_year%,reserves) ;
-*reserves_exogenous(n,reserves,h) = reserves_exogenous_y(n,%base_year%,reserves,h) ;
-*dh(n,bu,ch,h) = dh_y(n,%base_year%,bu,ch,h) ;
-*d_dhw(n,bu,ch,h) = d_dhw_y(n,%base_year%,bu,ch,h) ;
-
-*dh(n,bu,ch,h) = area_floor(n,bu,ch) * dh(n,bu,ch,h) ;
-*d_dhw(n,bu,ch,h) = area_floor(n,bu,ch) * d_dhw(n,bu,ch,h) ;
-
-
-* No interconnections between non-adjacent or nonuploaded nodes
-*m_ntc(l)$( smax(n,inc(l,n)) = 0 OR smin(n,inc(l,n)) = 0 ) = 0 ;
-
-
-* Set loop parameters to default zero
 phi_min_res = 0 ;
 ev_quant = 0 ;
 phi_pro_self = 0 ;
@@ -225,23 +141,19 @@ $offtext
 
 
 Parameter
-phi_min_res_exog
-*min_flh(n,rsvr)
-;
-
+phi_min_res_exog;
 phi_min_res_exog = 1 ;
-*min_flh(n,rsvr) = 0 ;
 
-
+Sets
+h_ini(h)                       First hour  /h1/
+h_end(h)                       Last hour   /h8760/
+;
 
 ********************************************************************************
 ***** Model *****
 ********************************************************************************
 
 $include model.gms
-
-
-
 
 ********************************************************************************
 ***** Options, fixings, report preparation *****
@@ -269,15 +181,12 @@ dieter.OptFile = 1;
 dieter.holdFixed = 1 ;
 
 
-
-
 ********************************************************************************
 ***** Solve *****
 ********************************************************************************
 
 * Preparation of GUSS tool for scenario analysis
 phi_min_res = eps ;
-ev_quant = eps ;
 phi_pro_self = eps ;
 
 $eval superscencount 1000
@@ -296,12 +205,10 @@ Parameters
 gussoptions                              /Logoption 2, Optfile 1, Skipbasecase 1/
 modstats(superscen, modelstats)
 min_res
-*number_ev
 pro_selfcon
 ;
 
-min_res(scen) = sum( (loop_res_share,loop_prosumage)$map(scen,loop_res_share,loop_prosumage) , loop_res_share.val/100 ) ;
-*number_ev(scen) = sum( (loop_res_share,loop_prosumage)$map(scen,loop_res_share,loop_prosumage) , loop_ev.val ) ;
+min_res(scen)     = sum( (loop_res_share,loop_prosumage)$map(scen,loop_res_share,loop_prosumage) , loop_res_share.val/100 ) ;
 pro_selfcon(scen) = sum( (loop_res_share,loop_prosumage)$map(scen,loop_res_share,loop_prosumage) , loop_prosumage.val/100 ) ;
 
 Parameters
@@ -392,18 +299,18 @@ G_MARKET_PRO2M   .level          .lev_G_MARKET_PRO2M
 G_MARKET_M2PRO   .level          .lev_G_MARKET_M2PRO
 G_RES_PRO        .level          .lev_G_RES_PRO
 STO_IN_PRO2PRO   .level          .lev_STO_IN_PRO2PRO
-STO_IN_PRO2M     .level          .lev_STO_IN_PRO2M
-STO_IN_M2PRO     .level          .lev_STO_IN_M2PRO
-STO_IN_M2M       .level          .lev_STO_IN_M2M
+*STO_IN_PRO2M     .level          .lev_STO_IN_PRO2M
+*STO_IN_M2PRO     .level          .lev_STO_IN_M2PRO
+*STO_IN_M2M       .level          .lev_STO_IN_M2M
 STO_OUT_PRO2PRO  .level          .lev_STO_OUT_PRO2PRO
-STO_OUT_PRO2M    .level          .lev_STO_OUT_PRO2M
-STO_OUT_M2PRO    .level          .lev_STO_OUT_M2PRO
-STO_OUT_M2M      .level          .lev_STO_OUT_M2M
-STO_L_PRO        .level          .lev_STO_L_PRO
+*STO_OUT_PRO2M    .level          .lev_STO_OUT_PRO2M
+*STO_OUT_M2PRO    .level          .lev_STO_OUT_M2PRO
+*STO_OUT_M2M      .level          .lev_STO_OUT_M2M
+*STO_L_PRO        .level          .lev_STO_L_PRO
 STO_L_PRO2PRO    .level          .lev_STO_L_PRO2PRO
-STO_L_PRO2M      .level          .lev_STO_L_PRO2M
-STO_L_M2PRO      .level          .lev_STO_L_M2PRO
-STO_L_M2M        .level          .lev_STO_L_M2M
+*STO_L_PRO2M      .level          .lev_STO_L_PRO2M
+*STO_L_M2PRO      .level          .lev_STO_L_M2PRO
+*STO_L_M2M        .level          .lev_STO_L_M2M
 N_STO_E_PRO      .level          .lev_N_STO_E_PRO
 N_STO_P_PRO      .level          .lev_N_STO_P_PRO
 N_RES_PRO        .level          .lev_N_RES_PRO

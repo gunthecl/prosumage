@@ -31,13 +31,6 @@ $offtext
 *%ror_parameter%%ror_variable%RP_NONDIS.fx('ror',h) = 0 ;
 
 
-
-********************************************************************************
-**** Exogenous EV  *************************************************************
-********************************************************************************
-
-
-
 ********************************************************************************
 **** No storage and DSM in first period  ***************************************
 ********************************************************************************
@@ -73,6 +66,19 @@ STO_OUT.fx(sto,h)$(m_sto_p(sto) = 0) = 0 ;
 STO_L.fx(sto,h)$(m_sto_p(sto) = 0) = 0 ;
 
 
+Variables
+STO_IN_PRO2M(tech,sto,h)
+STO_IN_M2PRO(sto,h)
+STO_IN_M2M(sto,h)
+STO_OUT_PRO2M(sto,h)
+STO_OUT_M2PRO(sto,h)
+STO_OUT_M2M(sto,h)
+STO_L_PRO(sto,h)
+STO_L_PRO2M(sto,h)
+STO_L_M2PRO(sto,h)
+STO_L_M2M(sto,h)
+;
+
 %prosumage%$ontext
 CU_PRO.fx(res,h)$(m_res_pro(res) = 0) = 0 ;
 G_MARKET_PRO2M.fx(res,h)$( m_res_pro(res) = 0) = 0 ;
@@ -97,7 +103,18 @@ N_RES_PRO.fx(res)$( m_res_pro(res) = 0) = 0 ;
 $ontext
 $offtext
 
+* Deactivated market storage links
 
+STO_IN_PRO2M.fx(tech,sto,h) = 0 ;
+STO_IN_M2PRO.fx(sto,h)     = 0 ;
+STO_IN_M2M.fx(sto,h)       = 0 ;
+STO_OUT_PRO2M.fx(sto,h)    = 0 ;
+STO_OUT_M2PRO.fx(sto,h)    = 0 ;
+STO_OUT_M2M.fx(sto,h)      = 0 ;
+STO_L_PRO.fx(sto,h)        = 0 ;                  
+STO_L_PRO2M.fx(sto,h)      = 0 ;
+STO_L_M2PRO.fx(sto,h)      = 0 ;
+STO_L_M2M.fx(sto,h)        = 0 ;
 
 ********************************************************************************
 **** DEFAULT LEVELS FOR REPORT PARAMETERS  *************************************
@@ -118,14 +135,6 @@ lev_N_STO_E(scen,sto) = 0 ;
 lev_N_STO_P(scen,sto) = 0 ;
 marginal_con1a(scen,h) = 0 ;
 marginal_con5a(superscen) = 0 ;
-*lev_NTC(superscen,l) = 0 ;
-*lev_F(superscen,l,h) = 0 ;
-*lev_RSVR_OUT(superscen,rsvr,h) = 0 ;
-*lev_RSVR_L(superscen,rsvr,h) = 0 ;
-*lev_N_RSVR_E(superscen,rsvr) = 0 ;
-*lev_N_RSVR_P(superscen,rsvr) = 0 ;
-*lev_G_INFES(superscen,h) = 0 ;
-
 
 * Prosumage
 lev_CU_PRO(scen,tech,h) = 0 ;

@@ -757,16 +757,7 @@ m_e('bio') = m_e('bio')*card(h)/8760 ;
 
 
 
-***************  Check for parameter sanity ************************************
-
-*Parameter
-*check_heat
-*check_heat_agg ;
-*check_heat(bu) = sum( ch , phi_heat_type(bu,ch)) ;
-*check_heat_agg = smax( (bu) , check_heat(bu) ) ;
-*abort$(check_heat_agg > 1) "DATA: heating technologies for a building type do not add up to 100 percent" ;
-
-
+********************************************************************************
 
 
 

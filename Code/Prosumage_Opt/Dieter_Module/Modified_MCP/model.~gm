@@ -14,7 +14,6 @@ $offtext
 
 Variables
 Z                Value objective function [Euro]
-F(l,h)           Energy flow over link l in hour h [MWh]
 ;
 
 Positive Variables
@@ -38,17 +37,8 @@ G_MARKET_PRO2M(tech,h)         Prosumage. energy sent to market in hour h [MWh]
 G_MARKET_M2PRO(h)              Prosumage: withdrawal of energy from market in hour h [MWh]
 G_RES_PRO(tech,h)              Prosumage: hourly renewables generation in hour h [MWh]
 STO_IN_PRO2PRO(tech,sto,h)     Prosumage: storage loading from generation for discharging to consumption in hour h [MWh]
-STO_IN_PRO2M(tech,sto,h)       Prosumage: storage loading from generation for discharging to market in hour h [MWh]
-STO_IN_M2PRO(sto,h)            Prosumage: storage loading from market for discharging to consumption in hour h [MWh]
-STO_IN_M2M(sto,h)              Prosumage: storage loading from market for discharging to market in hour h [MWh]
 STO_OUT_PRO2PRO(sto,h)         Prosumage: storage discharging to consumption from generation in hour h [MWh]
-STO_OUT_PRO2M(sto,h)           Prosumage: storage discharging to market from generation in hour h [MWh]
-STO_OUT_M2PRO(sto,h)           Prosumage: storage discharging to consumption from market in hour h [MWh]
-STO_OUT_M2M(sto,h)             Prosumage: storage discharging to market from market in hour h [MWh]
 STO_L_PRO2PRO(sto,h)           Prosumage: storage level generation to consumption in hour h [MWh]
-STO_L_PRO2M(sto,h)             Prosumage: storage level generation to market in hour h [MWh]
-STO_L_M2PRO(sto,h)             Prosumage: storage level market to consumotion in hour h [MWh]
-STO_L_M2M(sto,h)               Prosumage: storage level market to market in hour h [MWh]
 N_STO_E_PRO(sto)               Prosumage: installed storage energy [MWh]
 N_STO_P_PRO(sto)               Prosumage: installed storage power [MW]
 STO_L_PRO(sto,h)               Prosumage: overall storage level in hour h [MWh]
@@ -103,19 +93,10 @@ con11a_pro_distrib                       Prosumage: distribution of generated en
 con11b_pro_balance                       Prosumage: energy balance
 con11c_pro_selfcon                       Prosumage: minimum self-generation requirement
 con11d_pro_stolev_PRO2PRO                Prosumage: storage level prosumager-to-prosumagers
-con11e_pro_stolev_PRO2M                  Prosumage: storage level prosumagers-to-market
-con11f_pro_stolev_M2PRO                  Prosumage: storage level market-to-prosumagers
-con11g_pro_stolev_M2M                    Prosumage: storage level market-to-market
 con11h_1_pro_stolev_start_PRO2PRO        Prosumage: storage level initial conditions
-con11h_2_pro_stolev_start_PRO2M          Prosumage: storage level initial conditions
-con11h_3_pro_stolev_start_M2PRO          Prosumage: storage level initial conditions
-con11h_4_pro_stolev_start_M2M            Prosumage: storage level initial conditions
-con11i_pro_stolev                        Prosumage: storage level total
 con11j_pro_stolev_max                    Prosumage: maximum overall storage level
 con11k_pro_maxin_sto                     Prosumage: maximum storage inflow
 con11l_pro_maxout_sto                    Prosumage: maximum storage outflow
-con11m_pro_maxout_lev                    Prosumage: maximum storage outflow linked to level
-con11n_pro_maxin_lev                     Prosumage: maximum storage inflow linked to level
 con11o_pro_ending                        Prosumage: storage ending condition
 ;
 
@@ -147,7 +128,7 @@ obj..
                  + sum( sto , c_i_sto_e(sto)*N_STO_E_PRO(sto) )
                  + sum( sto , c_fix_sto(sto)/2*(N_STO_P_PRO(sto) + N_STO_E_PRO(sto)) )
                  + sum( sto , c_i_sto_p(sto)*N_STO_P_PRO(sto) )
-                 + sum( (h,sto) , c_m_sto(sto) * ( STO_OUT_PRO2PRO(sto,h) + STO_OUT_M2PRO(sto,h) + STO_OUT_PRO2M(sto,h) + STO_OUT_M2M(sto,h) + sum( res , STO_IN_PRO2PRO(res,sto,h) + STO_IN_PRO2M(res,sto,h)) + STO_OUT_PRO2M(sto,h) + STO_OUT_M2M(sto,h) ) )
+                 + sum( (h,sto) , c_m_sto(sto) * ( STO_OUT_PRO2PRO(sto,h) + sum( res , STO_IN_PRO2PRO(res,sto,h)) ) )
 $ontext
 $offtext
 ;
@@ -158,11 +139,9 @@ $offtext
 
 * Energy balance
 con1a_bal(hh)..
-         ( 1 - phi_pro_load ) * d(hh) + sum( sto , STO_IN(sto,hh) )
+         ( 1 - phi_pro_load )* d(hh) + sum( sto , STO_IN(sto,hh) )
 %prosumage%$ontext
          + G_MARKET_M2PRO(hh)
-         + sum( sto , STO_IN_M2PRO(sto,hh))
-         + sum( sto , STO_IN_M2M(sto,hh))
 $ontext
 $offtext
 
@@ -171,8 +150,6 @@ $offtext
 
 %prosumage%$ontext
          + sum( res , G_MARKET_PRO2M(res,hh) )
-         + sum( sto , STO_OUT_PRO2M(sto,hh))
-         + sum( sto , STO_OUT_M2M(sto,hh))
 $ontext
 $offtext
 
@@ -187,7 +164,7 @@ con2b_loadlevelstart(dis,h)$(ord(h) = 1)..
 ;
 
 * ---------------------------------------------------------------------------- *
-***** Hourly maximum generation caps and constraints related to reserves   *****
+***** Hourly maximum generation caps *****
 * ---------------------------------------------------------------------------- *
 
 con3a_maxprod_dispatchable(dis,h)..
@@ -210,9 +187,8 @@ con4a_stolev_start(sto,h)$(ord(h) = 1)..
         STO_L(sto,h) =E= phi_sto_ini(sto) * N_STO_E(sto) + STO_IN(sto,h)*(1+eta_sto(sto))/2 - STO_OUT(sto,h)/(1+eta_sto(sto))*2
 ;
 
-con4b_stolev(sto,h)$((ord(h)>1))..
-         STO_L(sto,h) =E= STO_L(sto,h-1) + STO_IN(sto,h)*(1+eta_sto(sto))/2 - STO_OUT(sto,h)/(1+eta_sto(sto))*2
-
+con4b_stolev(sto,h)$(ord(h)>1)..
+         STO_L(sto,h) =E=  STO_L(sto,h-1) + STO_IN(sto,h)*(1+eta_sto(sto))/2 - STO_OUT(sto,h)/(1+eta_sto(sto))*2
 ;
 
 con4c_stolev_max(sto,h)..
@@ -247,7 +223,7 @@ con5a_minRES..
 sum( h , G_L('bio',h) + sum( nondis , G_RES(nondis,h))
 
 %prosumage%$ontext
-         + sum( sto , STO_OUT_PRO2PRO(sto,h) + STO_OUT_PRO2M(sto,h)) + sum( res , G_MARKET_PRO2M(res,h) + G_RES_PRO(res,h))
+         + sum( sto , STO_OUT_PRO2PRO(sto,h)) + sum( res , G_MARKET_PRO2M(res,h) + G_RES_PRO(res,h))
 $ontext
 $offtext
 )
@@ -297,7 +273,6 @@ con8h_max_sto_pro_p(sto)..
 ;
 
 
-
 * ---------------------------------------------------------------------------- *
 ***** Prosumage constraints *****
 * ---------------------------------------------------------------------------- *
@@ -305,13 +280,13 @@ con8h_max_sto_pro_p(sto)..
 con11a_pro_distrib(res,h)..
          phi_res(res,h) * N_RES_PRO(res)
          =E=
-         CU_PRO(res,h) + G_MARKET_PRO2M(res,h) + G_RES_PRO(res,h) + sum( sto , STO_IN_PRO2PRO(res,sto,h) + STO_IN_PRO2M(res,sto,h) )
+         CU_PRO(res,h) + G_MARKET_PRO2M(res,h) + G_RES_PRO(res,h) + sum( sto , STO_IN_PRO2PRO(res,sto,h) )
 ;
 
 con11b_pro_balance(h)..
          phi_pro_load * d(h)
          =E=
-         sum( res , G_RES_PRO(res,h)) + sum( sto , STO_OUT_PRO2PRO(sto,h) + STO_OUT_M2PRO(sto,h) ) + G_MARKET_M2PRO(h)
+         sum( res , G_RES_PRO(res,h)) + sum( sto , STO_OUT_PRO2PRO(sto,h) ) + G_MARKET_M2PRO(h)
 ;
 
 con11c_pro_selfcon..
@@ -324,64 +299,28 @@ con11d_pro_stolev_PRO2PRO(sto,h)$(ord(h) > 1 )..
          STO_L_PRO2PRO(sto,h) =E= STO_L_PRO2PRO(sto,h-1) + sum( res , STO_IN_PRO2PRO(res,sto,h))*(1+eta_sto(sto))/2 - STO_OUT_PRO2PRO(sto,h)/(1+eta_sto(sto))*2
 ;
 
-con11e_pro_stolev_PRO2M(sto,h)$(ord(h) > 1)..
-         STO_L_PRO2M(sto,h) =E= STO_L_PRO2M(sto,h-1) + sum( res , STO_IN_PRO2M(res,sto,h))*(1+eta_sto(sto))/2 - STO_OUT_PRO2M(sto,h)/(1+eta_sto(sto))*2
-;
-
-con11f_pro_stolev_M2PRO(sto,h)$(ord(h) > 1)..
-         STO_L_M2PRO(sto,h) =E= STO_L_M2PRO(sto,h-1) + STO_IN_M2PRO(sto,h)*(1+eta_sto(sto))/2 - STO_OUT_M2PRO(sto,h)/(1+eta_sto(sto))*2
-;
-
-con11g_pro_stolev_M2M(sto,h)$(ord(h) > 1)..
-         STO_L_M2M(sto,h) =E= STO_L_M2M(sto,h-1) + STO_IN_M2M(sto,h)*(1+eta_sto(sto))/2 - STO_OUT_M2M(sto,h)/(1+eta_sto(sto))*2
-;
 
 con11h_1_pro_stolev_start_PRO2PRO(sto,h)$( ord(h) = 1)..
-        STO_L_PRO2PRO(sto,h) =E= 0.25 * phi_sto_pro_ini(sto) * N_STO_E_PRO(sto) + sum( res , STO_IN_PRO2PRO(res,sto,h))*(1+eta_sto(sto))/2 - STO_OUT_PRO2PRO(sto,h)/(1+eta_sto(sto))*2
+        STO_L_PRO2PRO(sto,h) =E=   phi_sto_pro_ini(sto) * N_STO_E_PRO(sto) + sum( res , STO_IN_PRO2PRO(res,sto,h))*(1+eta_sto(sto))/2 - STO_OUT_PRO2PRO(sto,h)/(1+eta_sto(sto))*2
 ;
 
-con11h_2_pro_stolev_start_PRO2M(sto,h)$(ord(h) = 1)..
-        STO_L_PRO2M(sto,h) =E= 0.25 * phi_sto_pro_ini(sto) * N_STO_E_PRO(sto) + sum( res , STO_IN_PRO2M(res,sto,h))*(1+eta_sto(sto))/2 - STO_OUT_PRO2M(sto,h)/(1+eta_sto(sto))*2
-;
-
-con11h_3_pro_stolev_start_M2PRO(sto,h)$( ord(h) = 1)..
-        STO_L_M2PRO(sto,h) =E= 0.25 * phi_sto_pro_ini(sto) * N_STO_E_PRO(sto) + STO_IN_M2PRO(sto,h)*(1+eta_sto(sto))/2 - STO_OUT_M2PRO(sto,h)/(1+eta_sto(sto))*2
-;
-
-con11h_4_pro_stolev_start_M2M(sto,h)$(ord(h) = 1)..
-        STO_L_M2M(sto,h) =E= 0.25 * phi_sto_pro_ini(sto) * N_STO_E_PRO(sto) + STO_IN_M2M(sto,h)*(1+eta_sto(sto))/2 - STO_OUT_M2M(sto,h)/(1+eta_sto(sto))*2
-;
-
-con11i_pro_stolev(sto,h)$(ord(h)>1)..
-         STO_L_PRO(sto,h) =E=   STO_L_PRO2PRO(sto,h) +  STO_L_PRO2M(sto,h) + STO_L_M2PRO(sto,h) + STO_L_M2M(sto,h)
-;
 
 con11j_pro_stolev_max(sto,h)..
-        STO_L_PRO(sto,h) =L= N_STO_E_PRO(sto)
+        STO_L_PRO2PRO(sto,h) =L= N_STO_E_PRO(sto)
 ;
 
 con11k_pro_maxin_sto(sto,h)..
-        sum( res , STO_IN_PRO2PRO(res,sto,h) + STO_IN_PRO2M(res,sto,h) ) + STO_IN_M2PRO(sto,h) + STO_IN_M2M(sto,h)
+        sum( res , STO_IN_PRO2PRO(res,sto,h) )
         =L= N_STO_P_PRO(sto)
 ;
 
 con11l_pro_maxout_sto(sto,h)..
-        STO_OUT_PRO2PRO(sto,h) + STO_OUT_PRO2M(sto,h) + STO_OUT_M2PRO(sto,h) + STO_OUT_M2M(sto,h)
+        STO_OUT_PRO2PRO(sto,h)
         =L= N_STO_P_PRO(sto)
 ;
 
-con11m_pro_maxout_lev(sto,h)..
-        ( STO_OUT_PRO2PRO(sto,h) + STO_OUT_M2PRO(sto,h) + STO_OUT_PRO2M(sto,h) + STO_OUT_M2M(sto,h) ) / (1+eta_sto(sto))*2
-        =L= STO_L_PRO(sto,h-1)
-;
-
-con11n_pro_maxin_lev(sto,h)..
-        ( sum( res , STO_IN_PRO2PRO(res,sto,h) + STO_IN_PRO2M(res,sto,h) ) + STO_IN_M2PRO(sto,h) + STO_IN_M2M(sto,h) ) * (1+eta_sto(sto))/2
-        =L= N_STO_E_PRO(sto) - STO_L_PRO(sto,h-1)
-;
-
 con11o_pro_ending(sto,h)$( ord(h) = card(h))..
-         STO_L_PRO(sto,h) =E= phi_sto_pro_ini(sto) * N_STO_E_PRO(sto)
+         STO_L_PRO2PRO(sto,h) =E= phi_sto_pro_ini(sto) * N_STO_E_PRO(sto)
 ;
 
 
@@ -425,19 +364,10 @@ con11a_pro_distrib
 con11b_pro_balance
 con11c_pro_selfcon
 con11d_pro_stolev_PRO2PRO
-con11e_pro_stolev_PRO2M
-con11f_pro_stolev_M2PRO
-con11g_pro_stolev_M2M
 con11h_1_pro_stolev_start_PRO2PRO
-con11h_2_pro_stolev_start_PRO2M
-con11h_3_pro_stolev_start_M2PRO
-con11h_4_pro_stolev_start_M2M
-con11i_pro_stolev
 con11j_pro_stolev_max
 con11k_pro_maxin_sto
 con11l_pro_maxout_sto
-con11m_pro_maxout_lev
-con11n_pro_maxin_lev
 con11o_pro_ending
 $ontext
 $offtext
