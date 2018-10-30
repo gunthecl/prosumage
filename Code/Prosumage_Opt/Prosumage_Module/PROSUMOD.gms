@@ -429,6 +429,14 @@ $offecho
 lambda_stolev_PRO.fx(sto_pro,'h1') = 100;
 ;
 
+
+Set dict /
+gussoptions      .opt            .modstats
+/
+
+
+
+
 %LP%$ontext
 solve   prosumod_lp using lp min Z_PRO;
 $ontext
@@ -439,6 +447,9 @@ solve   prosumod_mcp using mcp;
 $ontext
 $offtext
 
+
+* Reporting
+$include report.gms
 
 
 *Reporting Parameters
@@ -470,3 +481,23 @@ display d_PRO , N_PV_PRO.l , N_STO_E_PRO.l, N_STO_P_PRO.l,
         STO_L_PRO.l, price_produce_PRO, energy_balance_PRO.m ,
         E_purchased , E_sold, Z_PRO_mcp , mean_price , full_load, self_cons_rate
 ;
+
+
+********************************************************************************
+****                              Reporting to Excel                        ****
+********************************************************************************
+
+
+execute_unload "results", report, report_tech, report_hours;
+;
+
+Parameter
+results_to_excel;
+
+execute_unload "results_to_excel", report, report_tech, report_hours;
+;
+
+execute 'gdxxrw.exe results_to_excel.gdx par=report rng=a2 rdim=1' ;
+execute 'gdxxrw.exe results_to_excel.gdx par=report_tech rng=a8' ;
+execute 'gdxxrw.exe results_to_excel.gdx par=report_hours rng=a14' ;
+

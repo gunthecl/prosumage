@@ -1,5 +1,5 @@
 
---- Job PROSUMOD.gms Start 10/25/18 14:38:33 24.7.4 r58773 WEX-WEI x86 64bit/MS Windows
+--- Job PROSUMOD.gms Start 10/30/18 21:12:05 24.7.4 r58773 WEX-WEI x86 64bit/MS Windows
 GAMS 24.7.4   Copyright (C) 1987-2016 GAMS Development. All rights reserved
 Licensee: Medium MUD - 10 User License                   S170316:1123AO-GEN
           Deutsches Institut fuer Wirtschaftsforschung DIW, AbteilungDC3975
@@ -10,13 +10,15 @@ Licensee: Medium MUD - 10 User License                   S170316:1123AO-GEN
 --- .24h_FirstHours.gms(3) 3 Mb
 --- PROSUMOD.gms(152) 4 Mb
 --- GDXin=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage_Module\data\input_data.gdx
---- PROSUMOD.gms(472) 28 Mb
---- Starting execution: elapsed 0:00:00.106
+--- PROSUMOD.gms(452) 28 Mb
+--- .report.gms(80) 28 Mb
+--- PROSUMOD.gms(503) 28 Mb
+--- Starting execution: elapsed 0:00:00.127
 --- PROSUMOD.gms(432) 30 Mb
 --- Generating LP model prosumod_lp
---- PROSUMOD.gms(436) 47 Mb
+--- PROSUMOD.gms(444) 47 Mb
 ---   52,927 rows  61,324 columns  188,653 non-zeroes
---- Executing CPLEX: elapsed 0:00:00.756
+--- Executing CPLEX: elapsed 0:00:00.798
 
 IBM ILOG CPLEX   24.7.4 r58773 Released Sep 19, 2016 WEI x86 64bit/MS Windows 
 --- GAMS/Cplex licensed for continuous and discrete problems.
@@ -30,7 +32,7 @@ Tried aggregator 1 time.
 LP Presolve eliminated 15725 rows and 27044 columns.
 Aggregator did 6170 substitutions.
 Reduced LP has 31032 rows, 28110 columns, and 96742 nonzeros.
-Presolve time = 0.13 sec. (40.72 ticks)
+Presolve time = 0.09 sec. (40.72 ticks)
 Initializing dual steep norms . . .
 
 Iteration log . . .
@@ -59,16 +61,37 @@ Iteration: 10463   Dual objective     =           996.763269
 Iteration: 10762   Dual objective     =          1001.927396
 Iteration: 11104   Dual objective     =          1004.136353
 LP status(1): optimal
-Cplex Time: 2.16sec (det. 2000.58 ticks)
+Cplex Time: 2.27sec (det. 2000.58 ticks)
 
 Optimal solution found.
 Objective :        1004.402229
 
 --- Restarting execution
---- PROSUMOD.gms(436) 31 Mb
+--- PROSUMOD.gms(444) 31 Mb
 --- Reading solution for model prosumod_lp
---- PROSUMOD.gms(436) 36 Mb
---- Executing after solve: elapsed 0:00:03.571
---- PROSUMOD.gms(471) 37 Mb
+--- PROSUMOD.gms(444) 36 Mb
+--- Executing after solve: elapsed 0:00:03.667
+--- PROSUMOD.gms(574) 37 Mb
+--- GDX File C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage_Module\results.gdx
+--- PROSUMOD.gms(580) 37 Mb
+--- GDX File C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage_Module\results_to_excel.gdx
+--- PROSUMOD.gms(583) 37 Mb
+
+GDXXRW           24.7.4 r58773 Released Sep 19, 2016 VS8 x86 32bit/MS Windows 
+Input file : C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage_Module\results_to_excel.gdx
+Output file: C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage_Module\results_to_excel.xlsx
+Total time = 2016 Ms
+--- PROSUMOD.gms(584) 37 Mb
+
+GDXXRW           24.7.4 r58773 Released Sep 19, 2016 VS8 x86 32bit/MS Windows 
+Input file : C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage_Module\results_to_excel.gdx
+Output file: C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage_Module\results_to_excel.xlsx
+Total time = 2500 Ms
+--- PROSUMOD.gms(585) 37 Mb
+
+GDXXRW           24.7.4 r58773 Released Sep 19, 2016 VS8 x86 32bit/MS Windows 
+Input file : C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage_Module\results_to_excel.gdx
+Output file: C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage_Module\results_to_excel.xlsx
+Total time = 2125 Ms
 *** Status: Normal completion
---- Job PROSUMOD.gms Stop 10/25/18 14:38:37 elapsed 0:00:03.795
+--- Job PROSUMOD.gms Stop 10/30/18 21:12:16 elapsed 0:00:10.873

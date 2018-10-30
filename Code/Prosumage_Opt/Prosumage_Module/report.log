@@ -1,0 +1,40 @@
+
+--- Job report.gms Start 10/30/18 19:23:21 24.7.4 r58773 WEX-WEI x86 64bit/MS Windows
+GAMS 24.7.4   Copyright (C) 1987-2016 GAMS Development. All rights reserved
+Licensee: Medium MUD - 10 User License                   S170316:1123AO-GEN
+          Deutsches Institut fuer Wirtschaftsforschung DIW, AbteilungDC3975
+          License for teaching and research at degree granting institutions
+          License Admin: Claudia Kemfert, bbibra@diw.de                    
+--- Starting compilation
+--- report.gms(35) 3 Mb 2 Errors
+*** Error 120 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage_Module\report.gms
+    Unknown identifier entered as set
+*** Error 140 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage_Module\report.gms
+    Unknown symbol
+--- report.gms(38) 3 Mb 5 Errors
+*** Error 120 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage_Module\report.gms
+    Unknown identifier entered as set
+*** Error 140 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage_Module\report.gms
+    Unknown symbol
+*** Error 140 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage_Module\report.gms
+    Unknown symbol
+--- report.gms(41) 3 Mb 6 Errors
+*** Error 140 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage_Module\report.gms
+    Unknown symbol
+--- report.gms(42) 3 Mb 7 Errors
+*** Error 140 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage_Module\report.gms
+    Unknown symbol
+--- report.gms(43) 3 Mb 10 Errors
+*** Error 120 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage_Module\report.gms
+    Unknown identifier entered as set
+*** Error 140 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage_Module\report.gms
+    Unknown symbol
+*** Error 140 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage_Module\report.gms
+    Unknown symbol
+--- report.gms(66) 3 Mb 11 Errors
+*** Error 149 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage_Module\report.gms
+    Uncontrolled set entered as constant
+--- report.gms(69) 3 Mb 11 Errors
+*** Status: Compilation error(s)
+--- Job report.gms Stop 10/30/18 19:23:21 elapsed 0:00:00.087
+Exit code = 2

@@ -1,4 +1,4 @@
-GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 10/25/18 14:38:33 Page 1
+GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 10/30/18 21:12:05 Page 1
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
@@ -492,50 +492,193 @@ GDXIN   C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage_
  432  lambda_stolev_PRO.fx(sto_pro,'h1') = 100;
  433  ;
  434   
- 435  *$ontext
- 436  solve   prosumod_lp using lp min Z_PRO;
+ 435   
+ 436  Set dict /
+ 437  gussoptions      .opt            .modstats
+ 438  /
  439   
+ 440   
+ 441   
+ 442   
+ 443  *$ontext
+ 444  solve   prosumod_lp using lp min Z_PRO;
+ 447   
       solve   prosumod_mcp using mcp;
       $ontext
- 444   
- 445   
- 446   
- 447  *Reporting Parameters
- 448  Parameters
- 449  E_purchased
- 450  E_sold
- 451  Z_PRO_mcp
- 452  mean_price
- 453  full_load
- 454  self_cons_rate;
- 455   
- 456  E_purchased = sum((sto_pro,h), E_M2PRO_PRO.l(h) );
- 457  E_sold      = sum((res_pro,sto_pro,h), G_PRO2M_PRO.l(res_pro,h));
- 458  Z_PRO_mcp   = sum( res_pro , c_i_pv_PRO(res_pro) * N_PV_PRO.l(res_pro) )
- 459                   + sum( sto_pro , c_i_sto_pro_e_PRO(sto_pro) * N_STO_E_PRO
+ 452   
+ 453   
+ 454  * Reporting
+INCLUDE    C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosuma
+           ge_Module\report.gms
+ 456   
+ 457   
+ 458  **************************************************************************
+      ******
+ 459  **** Parameters for report file  *****************************************
+      ******
+ 460  **************************************************************************
+      ******
+ 461   
+ 462  Parameter
+ 463  calc_maxprice
+ 464  calc_minprice
+ 465   
+ 466  report
+ 467  report_tech
+ 468  report_tech_hours
+ 469  report_hours
+ 470  report_cost
+ 471   
+ 472  gross_energy_demand
+ 473  full_load_hours
+ 474  energy_to_market
+ 475  energy_from_market
+ 476  self_consumption_rate
+ 477  self_sufficiency_rate
+ 478   
+ 479  ;
+ 480   
+ 481   
+ 482   
+ 483   
+ 484  **************************************************************************
+      ******
+ 485  **** Initialize reporting paremetrs  *************************************
+      ******
+ 486  **************************************************************************
+      ******
+ 487  * ------------------------------------------------------------------------
+      ----
+ 488   
+ 489  * Define gross energy demand for reporting
+ 490  gross_energy_demand = sum( h , d_PRO(h)  )   ;
+ 491   
+ 492  * Define full load hours of PV
+ 493  full_load_hours(res_pro)     = sum( h , avail_solar_PRO(h));
+ 494   
+ 495  * Define market interaction parameters
+ 496  energy_to_market                   = sum ( (res_pro,h),  G_PRO2M_PRO.l(res
+      _pro,h) )      ;
+ 497  energy_from_market                 = sum ( h, E_M2PRO_PRO.l(h) )          
+           ;
+ 498  self_consumption_rate              = sum ( (sto_pro,res_pro,h), G_PRO2PRO_
+      PRO.l(res_pro,h) + STO_IN_PRO2PRO_PRO.l(sto_pro,res_pro,h) ) / sum(res_pro
+      , full_load_hours(res_pro) );
+ 499  self_sufficiency_rate              = sum ( (sto_pro,res_pro,h), G_PRO2PRO_
+      PRO.l(res_pro,h) + STO_IN_PRO2PRO_PRO.l(sto_pro,res_pro,h) ) / gross_energ
+      y_demand   ;
+ 500   
+ 501   
+ 502  ;
+ 503   
+ 504   
+ 505  **************************************************************************
+      ******
+ 506  **** Report  *************************************************************
+      ******
+ 507  **************************************************************************
+      ******
+ 508   
+ 509         report('Household demand')      = gross_energy_demand ;
+ 510         report('Energy from market')    = energy_from_market ;
+ 511         report('Energy to   market')    = energy_to_market ;
+ 512         report('Self consumption rate') = self_consumption_rate ;
+ 513         report('Self sufficiency rate') = self_sufficiency_rate ;
+ 514  * ------------------------------------------------------------------------
+      ----
+ 515   
+ 516  * REPORT HOURS
+ 517          report_hours('demand consumers',h)         = d_PRO(h) ;
+ 518          report_hours('energy generated',h)         =  sum( res_pro, avail_
+      solar_PRO(h)*N_PV_PRO.l(res_pro) ) ;
+ 519          report_hours('energy curtailed',h)         =  sum( res_pro, CU_PRO
+      .l(res_pro, h));
+ 520          report_hours('energy directly consumed',h) =  sum( res_pro, G_PRO2
+      PRO_PRO.l(res_pro,h));
+ 521          report_hours('energy to market',h)         =  sum( res_pro, G_PRO2
+      M_PRO.l(res_pro,h));
+ 522          report_hours('energy from market',h)       =  E_M2PRO_PRO.l(h) ;
+ 523          report_hours('energy stored in',h)         =  sum( (sto_pro,res_pr
+      o), STO_IN_PRO2PRO_PRO.l(sto_pro,res_pro,h));
+ 524          report_hours('energy stored out',h)        =  sum( (sto_pro), STO_
+      OUT_PRO2PRO_PRO.l(sto_pro,h));
+ 525          report_hours('storage level',h)            =  sum( (sto_pro), STO_
+      L_PRO.l(sto_pro,h));
+ 526   
+ 527  * REPORT TECH HOURS
+ 528          report_tech_hours('energy curtailed',res_pro,h)=  CU_PRO.l(res_pro
+      ,h);
+ 529   
+ 530   
+ 531  * REPORT TECH
+ 532           report_tech('Full load hours', res_pro)  = full_load_hours(res_pr
+      o) ;
+ 533   
+ 534  * ------------------------------------------------------------------------
+      ---- *
+ 535  * ------------------------------------------------------------------------
+      ---- *
+ 536   
+ 537   
+ 538  *Reporting Parameters
+ 539  Parameters
+ 540  E_purchased
+ 541  E_sold
+ 542  Z_PRO_mcp
+ 543  mean_price
+ 544  full_load
+ 545  self_cons_rate;
+ 546   
+ 547  E_purchased = sum((sto_pro,h), E_M2PRO_PRO.l(h) );
+ 548  E_sold      = sum((res_pro,sto_pro,h), G_PRO2M_PRO.l(res_pro,h));
+ 549  Z_PRO_mcp   = sum( res_pro , c_i_pv_PRO(res_pro) * N_PV_PRO.l(res_pro) )
+ 550                   + sum( sto_pro , c_i_sto_pro_e_PRO(sto_pro) * N_STO_E_PRO
       .l(sto_pro) + c_i_sto_pro_p_PRO(sto_pro) * N_STO_P_PRO.l(sto_pro) )
- 460                   + sum( (sto_pro,res_pro,h) , c_var_sto_pro_PRO(sto_pro) *
+ 551                   + sum( (sto_pro,res_pro,h) , c_var_sto_pro_PRO(sto_pro) *
        ( STO_IN_PRO2PRO_PRO.l(sto_pro,res_pro,h)))
- 461                   + sum( (sto_pro,h) , c_var_sto_pro_PRO(sto_pro) *  STO_OU
+ 552                   + sum( (sto_pro,h) , c_var_sto_pro_PRO(sto_pro) *  STO_OU
       T_PRO2PRO_PRO.l(sto_pro,h) )
- 462                   + sum(  h , price_consume_PRO(h) * (E_M2PRO_PRO.l(h) ))
- 463                   - sum(  (res_pro,h) , price_produce_PRO(h) * G_PRO2M_PRO.
+ 553                   + sum(  h , price_consume_PRO(h) * (E_M2PRO_PRO.l(h) ))
+ 554                   - sum(  (res_pro,h) , price_produce_PRO(h) * G_PRO2M_PRO.
       l(res_pro,h) )  ;
- 464   
- 465  mean_price = sum( h,  price_produce_PRO(h))/card(h)*1000;
- 466  full_load  = sum(h, avail_solar_PRO(h));
- 467  self_cons_rate(res_pro) = sum(h, G_PRO2PRO_PRO.l(res_pro,h)
- 468  + sum(sto_pro, STO_IN_PRO2PRO_PRO.l(sto_pro,res_pro,h)*eta_sto_pro_in_PRO(
+ 555   
+ 556  mean_price = sum( h,  price_produce_PRO(h))/card(h)*1000;
+ 557  full_load  = sum(h, avail_solar_PRO(h));
+ 558  self_cons_rate(res_pro) = sum(h, G_PRO2PRO_PRO.l(res_pro,h)
+ 559  + sum(sto_pro, STO_IN_PRO2PRO_PRO.l(sto_pro,res_pro,h)*eta_sto_pro_in_PRO(
       sto_pro)) ) / sum(h, avail_solar_PRO(h)*N_PV_PRO.l(res_pro));
- 469   
- 470   
- 471  display d_PRO , N_PV_PRO.l , N_STO_E_PRO.l, N_STO_P_PRO.l,
- 472            E_M2PRO_PRO.l , G_PRO2M_PRO.l ,
- 473          STO_L_PRO.l, price_produce_PRO, energy_balance_PRO.m ,
- 474          E_purchased , E_sold, Z_PRO_mcp , mean_price , full_load, self_con
+ 560   
+ 561   
+ 562  display d_PRO , N_PV_PRO.l , N_STO_E_PRO.l, N_STO_P_PRO.l,
+ 563            E_M2PRO_PRO.l , G_PRO2M_PRO.l ,
+ 564          STO_L_PRO.l, price_produce_PRO, energy_balance_PRO.m ,
+ 565          E_purchased , E_sold, Z_PRO_mcp , mean_price , full_load, self_con
       s_rate
- 475  ;
-GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 10/25/18 14:38:33 Page 2
+ 566  ;
+ 567   
+ 568   
+ 569  **************************************************************************
+      ******
+ 570  ****                              Reporting to Excel                      
+        ****
+ 571  **************************************************************************
+      ******
+ 572   
+ 573   
+ 574  execute_unload "results", report, report_tech, report_hours;
+ 575  ;
+ 576   
+ 577  Parameter
+ 578  results_to_excel;
+ 579   
+ 580  execute_unload "results_to_excel", report, report_tech, report_hours;
+ 581  ;
+ 582   
+ 583  execute 'gdxxrw.exe results_to_excel.gdx par=report rng=a2 rdim=1' ;
+ 584  execute 'gdxxrw.exe results_to_excel.gdx par=report_tech rng=a8' ;
+ 585  execute 'gdxxrw.exe results_to_excel.gdx par=report_hours rng=a14' ;
+ 586   
+GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 10/30/18 21:12:05 Page 2
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Include File Summary
 
@@ -551,12 +694,15 @@ Include File Summary
      3      155 GDXIN          1     152  C:\Users\Lenovo\Documents\GitHub\prosu
                                           mage\Code\Prosumage_Opt\Prosumage_Modu
                                           le\data\input_data.gdx
+     4      455 INCLUDE        1     452  .C:\Users\Lenovo\Documents\GitHub\pros
+                                           umage\Code\Prosumage_Opt\Prosumage_Mo
+                                           dule\report.gms
 
 
-COMPILATION TIME     =        0.094 SECONDS     28 MB  24.7.4 r58773 WEX-WEI
-GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 10/25/18 14:38:33 Page 3
+COMPILATION TIME     =        0.125 SECONDS     28 MB  24.7.4 r58773 WEX-WEI
+GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 10/30/18 21:12:05 Page 3
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
-Model Statistics    SOLVE prosumod_lp Using LP From line 436
+Model Statistics    SOLVE prosumod_lp Using LP From line 444
 
 
 MODEL STATISTICS
@@ -566,26 +712,26 @@ BLOCKS OF VARIABLES          11     SINGLE VARIABLES       61,324
 NON ZERO ELEMENTS       188,653
 
 
-GENERATION TIME      =        0.641 SECONDS     47 MB  24.7.4 r58773 WEX-WEI
+GENERATION TIME      =        0.672 SECONDS     47 MB  24.7.4 r58773 WEX-WEI
 
 
-EXECUTION TIME       =        0.656 SECONDS     47 MB  24.7.4 r58773 WEX-WEI
-GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 10/25/18 14:38:33 Page 4
+EXECUTION TIME       =        0.672 SECONDS     47 MB  24.7.4 r58773 WEX-WEI
+GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 10/30/18 21:12:05 Page 4
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
-Solution Report     SOLVE prosumod_lp Using LP From line 436
+Solution Report     SOLVE prosumod_lp Using LP From line 444
 
 
                S O L V E      S U M M A R Y
 
      MODEL   prosumod_lp         OBJECTIVE  Z_PRO
      TYPE    LP                  DIRECTION  MINIMIZE
-     SOLVER  CPLEX               FROM LINE  436
+     SOLVER  CPLEX               FROM LINE  444
 
 **** SOLVER STATUS     1 Normal Completion         
 **** MODEL STATUS      1 Optimal                   
 **** OBJECTIVE VALUE             1004.4022
 
- RESOURCE USAGE, LIMIT          2.406  10000000.000
+ RESOURCE USAGE, LIMIT          2.422  10000000.000
  ITERATION COUNT, LIMIT     11403    2000000000
 
 IBM ILOG CPLEX   24.7.4 r58773 Released Sep 19, 2016 WEI x86 64bit/MS Windows 
@@ -595,7 +741,7 @@ Cplex 12.6.3.0
 Space for names approximately 4.06 Mb
 Use option 'names no' to turn use of names off
 LP status(1): optimal
-Cplex Time: 2.16sec (det. 2000.58 ticks)
+Cplex Time: 2.27sec (det. 2000.58 ticks)
 Optimal solution found.
 Objective :        1004.402229
 
@@ -604,12 +750,12 @@ Objective :        1004.402229
 **** REPORT SUMMARY :        0     NONOPT
                              0 INFEASIBLE
                              0  UNBOUNDED
-GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 10/25/18 14:38:33 Page 5
+GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 10/30/18 21:12:05 Page 5
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 E x e c u t i o n
 
 
-----    471 PARAMETER d_PRO  Prosumage: Household load
+----    562 PARAMETER d_PRO  Prosumage: Household load
 
 h1    0.613,    h2    0.651,    h3    0.715,    h4    0.573,    h5    0.641
 h6    0.514,    h7    0.556,    h8    0.551,    h9    0.590,    h10   0.695
@@ -2365,24 +2511,24 @@ h8751 0.172,    h8752 1.019,    h8753 1.079,    h8754 1.659,    h8755 0.664
 h8756 0.197,    h8757 0.253,    h8758 0.191,    h8759 0.126,    h8760 0.497
 
 
-----    471 VARIABLE N_PV_PRO.L  Prosumage: PV generation capacities
+----    562 VARIABLE N_PV_PRO.L  Prosumage: PV generation capacities
 
 solar 8.157
 
 
-----    471 VARIABLE N_STO_E_PRO.L  Prosumage: Capacity of prosumage storage ene
+----    562 VARIABLE N_STO_E_PRO.L  Prosumage: Capacity of prosumage storage ene
                                     rgy
 
 storage 7.916
 
 
-----    471 VARIABLE N_STO_P_PRO.L  Prosumage: Capacity of prosumage storage pow
+----    562 VARIABLE N_STO_P_PRO.L  Prosumage: Capacity of prosumage storage pow
                                     er
 
 storage 1.513
 
 
-----    471 VARIABLE E_M2PRO_PRO.L  Prosumage: Energy purchased from market for 
+----    562 VARIABLE E_M2PRO_PRO.L  Prosumage: Energy purchased from market for 
                                     prosumage demand
 
 h2               0.651,    h3               0.715,    h4               0.573
@@ -3458,7 +3604,7 @@ h8756            0.197,    h8757            0.253,    h8758            0.191
 h8759            0.126,    h8760            0.497
 
 
-----    471 VARIABLE G_PRO2M_PRO.L  Prosumage: Energy sold to market from prosum
+----    562 VARIABLE G_PRO2M_PRO.L  Prosumage: Energy sold to market from prosum
                                     age pv generation
 
                   h154             h155             h156             h157
@@ -5834,7 +5980,7 @@ solar            0.103            0.681            2.331            2.313
 solar            1.817            0.649
 
 
-----    471 VARIABLE STO_L_PRO.L  Prosumage: Storage level prosumage household
+----    562 VARIABLE STO_L_PRO.L  Prosumage: Storage level prosumage household
 
                      h10              h11              h12              h13
 
@@ -11185,7 +11331,7 @@ storage            0.438            0.241            0.202            0.374
 storage            0.512            0.521            0.521            0.521
 
 
-----    471 PARAMETER price_produce_PRO  Prosumage: Price for selling energy per
+----    562 PARAMETER price_produce_PRO  Prosumage: Price for selling energy per
                                          kWh
 
 h1               0.013,    h2               0.012,    h3               0.012
@@ -14110,7 +14256,7 @@ h8755            0.031,    h8756            0.029,    h8757            0.029
 h8758            0.030,    h8759            0.028,    h8760            0.025
 
 
-----    471 EQUATION energy_balance_PRO.M  Prosumage: Household energy balance (
+----    562 EQUATION energy_balance_PRO.M  Prosumage: Household energy balance (
                                            lambda_enerbal_PRO )
 
 h1    5.00000000000E-4,    h2               0.300,    h3               0.300
@@ -17035,19 +17181,19 @@ h8755            0.300,    h8756            0.300,    h8757            0.300
 h8758            0.300,    h8759            0.300,    h8760            0.300
 
 
-----    471 PARAMETER E_purchased          =          1790.230  
+----    562 PARAMETER E_purchased          =          1790.230  
             PARAMETER E_sold               =          4484.888  
             PARAMETER Z_PRO_mcp            =          1004.402  
             PARAMETER mean_price           =            32.764  
             PARAMETER full_load            =          1128.182  
 
-----    471 PARAMETER self_cons_rate  
+----    562 PARAMETER self_cons_rate  
 
 solar 0.463
 
 
 
-EXECUTION TIME       =        0.250 SECONDS     37 MB  24.7.4 r58773 WEX-WEI
+EXECUTION TIME       =        7.234 SECONDS     37 MB  24.7.4 r58773 WEX-WEI
 
 
 USER: Medium MUD - 10 User License                   S170316:1123AO-GEN
