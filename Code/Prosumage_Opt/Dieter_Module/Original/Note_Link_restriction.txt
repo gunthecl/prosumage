@@ -1,0 +1,1 @@
+The link restriction option deactivates the market interaction of prosumage household storages. This means that these storages can only be used for storing self-produces and -consumed energy.

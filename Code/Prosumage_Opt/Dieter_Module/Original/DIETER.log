@@ -1,39 +1,44 @@
 
---- Job DIETER.gms Start 10/26/18 12:08:25 24.2.3 r46072 WEX-WEI x86_64/MS Windows
-GAMS 24.2.3   Copyright (C) 1987-2014 GAMS Development. All rights reserved
+--- Job DIETER.gms Start 11/21/18 09:40:54 24.7.4 r58773 WEX-WEI x86 64bit/MS Windows
+GAMS 24.7.4   Copyright (C) 1987-2016 GAMS Development. All rights reserved
 Licensee: Medium MUD - 10 User License                   S170316:1123AO-GEN
           Deutsches Institut fuer Wirtschaftsforschung DIW, AbteilungDC3975
           License for teaching and research at degree granting institutions
-          License_Admin:_Claudia_Kemfert,_bbibra@diw.de____________________
+          License Admin: Claudia Kemfert, bbibra@diw.de                    
 --- Starting compilation
---- DIETER.gms(153) 3 Mb
+--- DIETER.gms(154) 3 Mb
 --- .dataload.gms(405) 3 Mb
---- GDXin=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\Data_input.gdx
+--- GDXin=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\Data_input.gdx
 --- .dataload.gms(457) 3 Mb
---- GDXin=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\time_series.gdx
+--- GDXin=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\time_series.gdx
 --- .dataload.gms(787) 25 Mb
---- DIETER.gms(296) 25 Mb
---- .model.gms(1347) 25 Mb
---- DIETER.gms(475) 25 Mb
---- .fix.gms(315) 25 Mb
+--- DIETER.gms(297) 25 Mb
+--- .model.gms(1353) 25 Mb
 --- DIETER.gms(476) 25 Mb
+--- .fix.gms(329) 25 Mb
+--- DIETER.gms(477) 25 Mb
 --- .scenario.gms(122) 25 Mb
---- DIETER.gms(635) 25 Mb
+--- DIETER.gms(636) 25 Mb
 --- .report.gms(1411) 25 Mb
---- DIETER.gms(666) 26 Mb
---- Starting execution: elapsed 0:00:00.094
---- DIETER.gms(3202) 206 Mb
+--- DIETER.gms(667) 26 Mb
+--- Starting execution: elapsed 0:00:00.143
+--- DIETER.gms(3223) 214 Mb
 ---
 --- collecting and writing gdx file 
 ---
 --- Generating LP model DIETER
---- DIETER.gms(3202) 361 Mb
----   429,276 rows  543,140 columns  2,085,936 non-zeroes
+--- DIETER.gms(1353) 234 Mb  23 secs
+--- DIETER.gms(1431) 264 Mb  30 secs
+--- DIETER.gms(1623) 327 Mb  40 secs
+--- DIETER.gms(1649) 329 Mb  4 secs
+--- DIETER.gms(1960) 332 Mb  3 secs
+--- DIETER.gms(3223) 343 Mb
+---   402,996 rows  429,260 columns  1,718,022 non-zeroes
 ---   131,408 nl-code  96,362 nl-non-zeroes
---- DIETER.gms(3202) 358 Mb
---- Executing CPLEX: elapsed 0:00:45.881
+--- DIETER.gms(3223) 341 Mb
+--- Executing CPLEX: elapsed 0:01:50.582
 
-GUSS             24.2.3 r46072 Released May 22, 2014 WEI x86_64/MS Windows    
+GUSS             24.7.4 r58773 Released Sep 19, 2016 WEI x86 64bit/MS Windows 
 Reading parameter(s) from scenario dictionary
 >>  Logoption 2
 >>  Optfile 1
@@ -41,177 +46,210 @@ Reading parameter(s) from scenario dictionary
 --- Scenario Variable with potential updates identified: phi_min_res
 --- Scenario Variable with potential updates identified: phi_pro_self
 
-IBM ILOG CPLEX   24.2.3 r46072 Released May 22, 2014 WEI x86_64/MS Windows    
+IBM ILOG CPLEX   24.7.4 r58773 Released Sep 19, 2016 WEI x86 64bit/MS Windows 
 --- GAMS/Cplex licensed for continuous and discrete problems.
-Cplex 12.6.0.0
+Cplex 12.6.3.0
 
-Reading parameter(s) from "C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\cplex.opt"
+Reading parameter(s) from "C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\cplex.opt"
 >>  lpmethod 4
 >>  threads 4
 >>  epgap 1e-3
-Finished reading from "C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\cplex.opt"
+Finished reading from "C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\cplex.opt"
 Reading data...
 Starting Cplex...
-Space for names approximately 33.52 Mb
+Space for names approximately 28.28 Mb
 Use option 'names no' to turn use of names off
 Tried aggregator 1 time.
-LP Presolve eliminated 16548 rows and 128295 columns.
-Aggregator did 12953 substitutions.
-Reduced LP has 399775 rows, 401892 columns, and 1601121 nonzeros.
-Presolve time = 0.67 sec. (629.04 ticks)
+LP Presolve eliminated 27696 rows and 89397 columns.
+Aggregator did 16020 substitutions.
+Reduced LP has 359280 rows, 323843 columns, and 1231559 nonzeros.
+Presolve time = 1.01 sec. (533.65 ticks)
 Parallel mode: using up to 4 threads for barrier.
 
 ***NOTE: Found 19 dense columns.
 
-Number of nonzeros in lower triangle of A*A' = 1723100
+Number of nonzeros in lower triangle of A*A' = 1311523
 Using Approximate Minimum Degree ordering
-Total time for automatic ordering = 0.28 sec. (206.70 ticks)
+Total time for automatic ordering = 0.45 sec. (159.56 ticks)
 Summary statistics for Cholesky factor:
   Threads                   = 4
-  Rows in Factor            = 399794
-  Integer space required    = 1268356
-  Total non-zeros in factor = 6080211
-  Total FP ops to factor    = 149381539
+  Rows in Factor            = 359299
+  Integer space required    = 1050658
+  Total non-zeros in factor = 4868876
+  Total FP ops to factor    = 109262820
  Itn      Primal Obj        Dual Obj  Prim Inf Upper Inf  Dual Inf Inf Ratio
-   0  4.6967929e+012 -4.8252835e+012 3.44e+011 2.18e+007 2.94e+010 1.00e+000
-   1  3.0315182e+011 -1.6531113e+012 1.35e+010 8.59e+005 1.06e+010 3.95e-008
-   2  2.5829309e+011 -3.4681112e+011 1.08e+010 6.89e+005 2.58e+009 1.20e-008
-   3  1.9787556e+011 -1.3943621e+011 7.74e+009 4.92e+005 1.22e+009 2.34e-008
-   4  2.9530027e+011 -2.2227091e+011 1.19e+010 7.57e+005 1.87e+009 1.00e-008
-   5  1.3712252e+011 -7.5567735e+009 3.56e+009 2.27e+005 4.94e+008 1.82e-008
-   6  8.3003410e+010  4.7051983e+009 4.99e+008 3.17e+004 4.20e+008 3.58e-008
-   7  7.8434948e+010  5.4674169e+010 2.73e+008 1.73e+004 1.12e+008 2.68e-007
-   8  7.2894955e+010  5.5574499e+010 2.05e+008 1.30e+004 4.96e+007 6.85e-007
-   9  6.4835437e+010  5.3688127e+010 1.44e+008 9.18e+003 4.04e+007 9.05e-007
-  10  5.7689000e+010  5.2604713e+010 8.08e+007 5.14e+003 3.18e+007 1.28e-006
-  11  5.1664555e+010  4.7757464e+010 4.76e+007 3.03e+003 1.57e+007 2.78e-006
-  12  4.7953974e+010  4.5105573e+010 3.30e+007 2.10e+003 1.06e+007 4.41e-006
-  13  4.5220505e+010  4.3416136e+010 2.33e+007 1.48e+003 7.82e+006 6.34e-006
-  14  4.3776628e+010  4.2546227e+010 1.85e+007 1.17e+003 6.50e+006 7.87e-006
-  15  4.2631572e+010  4.1795542e+010 1.48e+007 9.39e+002 5.42e+006 9.77e-006
-  16  4.1944758e+010  4.1531749e+010 1.22e+007 7.77e+002 4.96e+006 1.08e-005
-  17  4.1045028e+010  4.0909785e+010 9.62e+006 6.12e+002 4.16e+006 1.33e-005
-  18  4.0387392e+010  4.0295931e+010 7.81e+006 4.97e+002 3.40e+006 1.70e-005
-  19  3.9814305e+010  3.9834214e+010 6.34e+006 4.03e+002 2.87e+006 2.08e-005
-  20  3.9371553e+010  3.9381564e+010 5.28e+006 3.36e+002 2.38e+006 2.61e-005
-  21  3.8898243e+010  3.9071543e+010 4.22e+006 2.68e+002 2.07e+006 3.08e-005
-  22  3.8659915e+010  3.8800839e+010 3.70e+006 2.35e+002 1.80e+006 3.63e-005
-  23  3.8472465e+010  3.8510402e+010 3.32e+006 2.11e+002 1.53e+006 4.40e-005
-  24  3.8253894e+010  3.8206929e+010 2.89e+006 1.84e+002 1.27e+006 5.52e-005
-  25  3.7948841e+010  3.7947375e+010 2.33e+006 1.48e+002 1.05e+006 6.88e-005
-  26  3.7766560e+010  3.7778007e+010 2.01e+006 1.28e+002 9.18e+005 8.08e-005
-  27  3.7572252e+010  3.7626420e+010 1.69e+006 1.07e+002 8.02e+005 9.47e-005
-  28  3.7430916e+010  3.7499496e+010 1.45e+006 9.22e+001 7.07e+005 1.10e-004
-  29  3.7255966e+010  3.7354033e+010 1.17e+006 7.42e+001 6.00e+005 1.33e-004
-  30  3.7150921e+010  3.7318018e+010 1.00e+006 6.38e+001 5.75e+005 1.40e-004
-  31  3.7092373e+010  3.7220075e+010 9.11e+005 5.79e+001 5.05e+005 1.64e-004
-  32  3.7019496e+010  3.7072886e+010 8.02e+005 5.10e+001 4.04e+005 2.13e-004
-  33  3.6885885e+010  3.6975277e+010 6.17e+005 3.93e+001 3.42e+005 2.59e-004
-  34  3.6830997e+010  3.6928024e+010 5.43e+005 3.45e+001 3.12e+005 2.88e-004
-  35  3.6747787e+010  3.6904786e+010 4.34e+005 2.76e+001 2.98e+005 3.05e-004
-  36  3.6653301e+010  3.6855658e+010 3.08e+005 1.96e+001 2.68e+005 3.47e-004
-  37  3.6646694e+010  3.6833465e+010 2.99e+005 1.90e+001 2.54e+005 3.69e-004
-  38  3.6634449e+010  3.6789006e+010 2.84e+005 1.80e+001 2.27e+005 4.20e-004
-  39  3.6574872e+010  3.6736245e+010 2.12e+005 1.35e+001 1.97e+005 4.99e-004
-  40  3.6535537e+010  3.6654249e+010 1.66e+005 1.06e+001 1.50e+005 6.89e-004
-  41  3.6526484e+010  3.6643687e+010 1.57e+005 9.99e+000 1.44e+005 7.20e-004
-  42  3.6494979e+010  3.6612488e+010 1.25e+005 7.97e+000 1.28e+005 8.31e-004
-  43  3.6449565e+010  3.6575605e+010 8.09e+004 5.14e+000 1.09e+005 1.01e-003
-  44  3.6433387e+010  3.6529308e+010 6.56e+004 4.17e+000 8.48e+004 1.35e-003
-  45  3.6407921e+010  3.6500488e+010 4.43e+004 2.82e+000 7.08e+004 1.67e-003
-  46  3.6400869e+010  3.6479138e+010 3.87e+004 2.46e+000 6.06e+004 2.00e-003
-  47  3.6377624e+010  3.6427939e+010 2.18e+004 1.38e+000 3.70e+004 3.62e-003
-  48  3.6363664e+010  3.6413097e+010 1.35e+004 8.62e-001 3.07e+004 4.49e-003
-  49  3.6357380e+010  3.6394796e+010 9.93e+003 6.36e-001 2.30e+004 6.28e-003
-  50  3.6352025e+010  3.6389333e+010 7.28e+003 4.66e-001 2.09e+004 7.04e-003
-  51  3.6347962e+010  3.6385666e+010 5.08e+003 3.39e-001 1.94e+004 7.67e-003
-  52  3.6345500e+010  3.6369573e+010 3.93e+003 2.63e-001 1.30e+004 1.24e-002
-  53  3.6343245e+010  3.6361503e+010 3.11e+003 2.07e-001 9.96e+003 1.69e-002
-  54  3.6341808e+010  3.6354678e+010 2.87e+003 1.75e-001 7.48e+003 2.34e-002
-  55  3.6338281e+010  3.6347880e+010 2.09e+003 1.02e-001 5.11e+003 3.59e-002
-  56  3.6335625e+010  3.6343292e+010 1.88e+003 5.04e-002 3.53e+003 5.47e-002
-  57  3.6334680e+010  3.6340709e+010 1.21e+003 3.31e-002 2.65e+003 7.59e-002
-  58  3.6333476e+010  3.6336199e+010 5.31e+002 1.46e-002 1.19e+003 1.84e-001
-  59  3.6332877e+010  3.6335599e+010 2.25e+002 5.91e-003 9.99e+002 2.25e-001
-  60  3.6332559e+010  3.6333229e+010 9.47e+001 2.35e-003 2.71e+002 8.88e-001
-  61  3.6332411e+010  3.6332599e+010 3.36e+001 7.84e-004 7.96e+001 3.43e+000
-  62  3.6332356e+010  3.6332413e+010 1.27e+001 2.90e-004 2.58e+001 1.08e+001
-  63  3.6332335e+010  3.6332336e+010 4.65e+000 1.06e-004 3.61e+000 8.37e+001
-  64  3.6332327e+010  3.6332325e+010 1.19e+002 2.80e-005 5.65e-001 5.34e+002
-  65  3.6332324e+010  3.6332323e+010 6.65e+000 1.58e-006 3.11e-002 9.65e+003
-  66  3.6332323e+010  3.6332323e+010 2.13e+001 9.78e-008 1.56e-003 1.92e+005
-Barrier time = 15.90 sec. (13623.28 ticks)
+   0  4.6837918e+012 -6.4294889e+012 2.46e+011 4.08e+009 2.53e+010 1.00e+000
+   1  3.0875081e+011 -2.2599633e+012 1.00e+010 1.66e+008 9.19e+009 3.82e-008
+   2  2.6065949e+011 -4.1959855e+011 7.92e+009 1.32e+008 1.96e+009 1.05e-008
+   3  1.9699858e+011 -1.6458106e+011 5.56e+009 9.22e+007 8.89e+008 2.24e-008
+   4  3.6497654e+011 -2.7555662e+011 1.07e+010 1.78e+008 1.43e+009 7.27e-009
+   5  1.2764066e+011 -1.0714412e+009 2.19e+009 3.63e+007 2.84e+008 1.72e-008
+   6  1.2097942e+011  1.0230479e+010 1.94e+009 3.23e+007 2.38e+008 2.05e-008
+   7  1.1775164e+011  1.9483774e+010 1.79e+009 2.98e+007 2.06e+008 2.35e-008
+   8  7.2896107e+010  4.7822851e+010 2.28e+008 3.78e+006 8.15e+007 7.83e-008
+   9  6.9337250e+010  5.0923594e+010 1.87e+008 3.10e+006 3.16e+007 2.13e-007
+  10  6.2134008e+010  4.6680022e+010 1.40e+008 2.32e+006 1.84e+007 4.09e-007
+  11  5.5313563e+010  4.4930945e+010 9.72e+007 1.61e+006 1.37e+007 5.98e-007
+  12  5.1305472e+010  4.4045807e+010 7.33e+007 1.22e+006 1.17e+007 7.45e-007
+  13  4.8676378e+010  4.3354039e+010 5.78e+007 9.59e+005 1.01e+007 9.05e-007
+  14  4.6615021e+010  4.2708204e+010 4.57e+007 7.59e+005 8.68e+006 1.11e-006
+  15  4.4838413e+010  4.2363643e+010 3.56e+007 5.91e+005 7.96e+006 1.25e-006
+  16  4.3843087e+010  4.2108190e+010 2.98e+007 4.95e+005 7.40e+006 1.38e-006
+  17  4.2994973e+010  4.1608397e+010 2.51e+007 4.16e+005 6.37e+006 1.67e-006
+  18  4.2098467e+010  4.1222368e+010 2.01e+007 3.33e+005 5.58e+006 1.98e-006
+  19  4.1431330e+010  4.1063225e+010 1.66e+007 2.75e+005 5.28e+006 2.13e-006
+  20  4.0939343e+010  4.0838417e+010 1.40e+007 2.32e+005 4.86e+006 2.39e-006
+  21  4.0376669e+010  4.0524877e+010 1.12e+007 1.86e+005 4.30e+006 2.81e-006
+  22  3.9698828e+010  4.0406473e+010 8.05e+006 1.34e+005 4.10e+006 3.02e-006
+  23  3.9571870e+010  4.0171075e+010 7.46e+006 1.24e+005 3.70e+006 3.45e-006
+  24  3.9282694e+010  4.0029958e+010 6.24e+006 1.04e+005 3.48e+006 3.74e-006
+  25  3.8951309e+010  3.9759680e+010 4.90e+006 8.14e+004 3.07e+006 4.42e-006
+  26  3.8686947e+010  3.9682041e+010 3.93e+006 6.52e+004 2.96e+006 4.66e-006
+  27  3.8589154e+010  3.9422799e+010 3.58e+006 5.94e+004 2.59e+006 5.55e-006
+  28  3.8485215e+010  3.9187646e+010 3.26e+006 5.40e+004 2.28e+006 6.55e-006
+  29  3.8192227e+010  3.9012831e+010 2.45e+006 4.06e+004 2.07e+006 7.48e-006
+  30  3.8035221e+010  3.8834848e+010 2.04e+006 3.38e+004 1.86e+006 8.62e-006
+  31  3.7893301e+010  3.8626670e+010 1.70e+006 2.83e+004 1.63e+006 1.03e-005
+  32  3.7787216e+010  3.8530648e+010 1.48e+006 2.46e+004 1.53e+006 1.12e-005
+  33  3.7587155e+010  3.8340763e+010 1.08e+006 1.79e+004 1.33e+006 1.35e-005
+  34  3.7487075e+010  3.8187313e+010 8.94e+005 1.48e+004 1.18e+006 1.59e-005
+  35  3.7419599e+010  3.8036583e+010 7.85e+005 1.30e+004 1.04e+006 1.88e-005
+  36  3.7374692e+010  3.7904385e+010 7.20e+005 1.20e+004 9.19e+005 2.20e-005
+  37  3.7320940e+010  3.7798780e+010 6.50e+005 1.08e+004 8.30e+005 2.52e-005
+  38  3.7298269e+010  3.7656866e+010 6.23e+005 1.03e+004 7.13e+005 3.06e-005
+  39  3.7200239e+010  3.7573903e+010 5.14e+005 8.54e+003 6.49e+005 3.47e-005
+  40  3.7130824e+010  3.7536260e+010 4.41e+005 7.32e+003 6.21e+005 3.68e-005
+  41  3.7105991e+010  3.7479432e+010 4.15e+005 6.88e+003 5.78e+005 4.04e-005
+  42  3.7101370e+010  3.7439430e+010 4.10e+005 6.81e+003 5.49e+005 4.32e-005
+  43  3.7025666e+010  3.7346684e+010 3.36e+005 5.58e+003 4.82e+005 5.12e-005
+  44  3.7001823e+010  3.7325120e+010 3.15e+005 5.22e+003 4.67e+005 5.34e-005
+  45  3.6985276e+010  3.7290729e+010 3.00e+005 4.97e+003 4.43e+005 5.72e-005
+  46  3.6924711e+010  3.7229010e+010 2.46e+005 4.09e+003 4.00e+005 6.53e-005
+  47  3.6871325e+010  3.7126488e+010 2.02e+005 3.36e+003 3.32e+005 8.32e-005
+  48  3.6859879e+010  3.7102277e+010 1.94e+005 3.22e+003 3.17e+005 8.83e-005
+  49  3.6848137e+010  3.7095852e+010 1.85e+005 3.08e+003 3.13e+005 8.98e-005
+  50  3.6804092e+010  3.7083204e+010 1.53e+005 2.55e+003 3.05e+005 9.33e-005
+  51  3.6779174e+010  3.6997733e+010 1.35e+005 2.25e+003 2.52e+005 1.20e-004
+  52  3.6775653e+010  3.6968373e+010 1.33e+005 2.21e+003 2.35e+005 1.31e-004
+  53  3.6728799e+010  3.6956599e+010 1.04e+005 1.73e+003 2.28e+005 1.37e-004
+  54  3.6710258e+010  3.6909294e+010 9.23e+004 1.53e+003 2.01e+005 1.62e-004
+  55  3.6686302e+010  3.6876024e+010 7.83e+004 1.30e+003 1.82e+005 1.83e-004
+  56  3.6683111e+010  3.6858344e+010 7.64e+004 1.27e+003 1.72e+005 1.97e-004
+  57  3.6661003e+010  3.6812818e+010 6.44e+004 1.07e+003 1.47e+005 2.41e-004
+  58  3.6638898e+010  3.6778305e+010 5.32e+004 8.83e+002 1.29e+005 2.86e-004
+  59  3.6637106e+010  3.6766023e+010 5.23e+004 8.68e+002 1.23e+005 3.05e-004
+  60  3.6619940e+010  3.6731410e+010 4.42e+004 7.33e+002 1.05e+005 3.72e-004
+  61  3.6593590e+010  3.6719559e+010 3.23e+004 5.36e+002 9.89e+004 4.03e-004
+  62  3.6588995e+010  3.6662056e+010 3.02e+004 5.02e+002 7.01e+004 6.36e-004
+  63  3.6564113e+010  3.6623206e+010 2.07e+004 3.43e+002 5.21e+004 9.34e-004
+  64  3.6558394e+010  3.6607121e+010 1.86e+004 3.09e+002 4.50e+004 1.13e-003
+  65  3.6543430e+010  3.6594821e+010 1.35e+004 2.24e+002 3.96e+004 1.32e-003
+  66  3.6536901e+010  3.6581309e+010 1.12e+004 1.86e+002 3.37e+004 1.62e-003
+  67  3.6528187e+010  3.6573103e+010 8.36e+003 1.39e+002 3.02e+004 1.86e-003
+  68  3.6527345e+010  3.6568284e+010 8.09e+003 1.34e+002 2.81e+004 2.04e-003
+  69  3.6522018e+010  3.6554042e+010 6.39e+003 1.07e+002 2.21e+004 2.77e-003
+  70  3.6517934e+010  3.6543518e+010 5.23e+003 8.68e+001 1.78e+004 3.64e-003
+  71  3.6512950e+010  3.6537146e+010 3.87e+003 6.42e+001 1.53e+004 4.41e-003
+  72  3.6511906e+010  3.6532836e+010 3.59e+003 5.95e+001 1.36e+004 5.10e-003
+  73  3.6508281e+010  3.6524665e+010 2.65e+003 4.40e+001 1.04e+004 7.15e-003
+  74  3.6506186e+010  3.6521178e+010 2.12e+003 3.56e+001 9.06e+003 8.46e-003
+  75  3.6504282e+010  3.6517527e+010 1.74e+003 2.81e+001 7.68e+003 1.04e-002
+  76  3.6502365e+010  3.6514850e+010 1.55e+003 2.08e+001 6.68e+003 1.23e-002
+  77  3.6501435e+010  3.6514408e+010 1.15e+003 1.73e+001 6.52e+003 1.27e-002
+  78  3.6500462e+010  3.6511719e+010 1.04e+003 1.36e+001 5.52e+003 1.56e-002
+  79  3.6499511e+010  3.6510760e+010 1.71e+003 1.02e+001 5.17e+003 1.70e-002
+  80  3.6499234e+010  3.6509084e+010 1.93e+003 9.27e+000 4.56e+003 1.98e-002
+  81  3.6498818e+010  3.6507858e+010 1.59e+003 7.89e+000 4.12e+003 2.25e-002
+  82  3.6498583e+010  3.6506600e+010 2.16e+003 7.13e+000 3.66e+003 2.60e-002
+  83  3.6498231e+010  3.6505512e+010 1.92e+003 6.07e+000 3.28e+003 2.98e-002
+  84  3.6497800e+010  3.6504452e+010 1.64e+003 4.82e+000 2.91e+003 3.45e-002
+  85  3.6497631e+010  3.6504049e+010 8.74e+002 4.36e+000 2.77e+003 3.67e-002
+  86  3.6497442e+010  3.6503619e+010 1.39e+003 3.82e+000 2.62e+003 3.93e-002
+  87  3.6497233e+010  3.6502796e+010 8.46e+002 3.26e+000 2.34e+003 4.52e-002
+  88  3.6497016e+010  3.6502063e+010 7.38e+002 2.70e+000 2.09e+003 5.20e-002
+  89  3.6496661e+010  3.6501428e+010 4.56e+002 1.83e+000 1.87e+003 5.95e-002
+  90  3.6496539e+010  3.6501130e+010 6.23e+002 1.55e+000 1.77e+003 6.37e-002
+  91  3.6496168e+010  3.6500503e+010 1.28e+003 6.81e-001 1.56e+003 7.46e-002
+  92  3.6496135e+010  3.6500026e+010 1.26e+003 6.06e-001 1.40e+003 8.54e-002
+  93  3.6496104e+010  3.6499279e+010 1.21e+003 5.46e-001 1.15e+003 1.09e-001
+  94  3.6495888e+010  3.6497500e+010 7.24e+002 2.24e-001 5.72e+002 2.74e-001
+  95  3.6495863e+010  3.6497231e+010 6.61e+002 2.01e-001 4.89e+002 3.31e-001
+  96  3.6495763e+010  3.6496755e+010 4.16e+002 1.17e-001 3.45e+002 5.12e-001
+  97  3.6495703e+010  3.6496125e+010 2.81e+002 7.57e-002 1.57e+002 1.35e+000
+  98  3.6495653e+010  3.6496042e+010 1.77e+002 4.66e-002 1.34e+002 1.63e+000
+  99  3.6495628e+010  3.6495770e+010 1.21e+002 3.17e-002 5.61e+001 4.88e+000
+ 100  3.6495582e+010  3.6495664e+010 3.37e+001 8.71e-003 2.72e+001 1.06e+001
+ 101  3.6495566e+010  3.6495571e+010 1.92e+000 4.90e-004 1.67e+000 1.76e+002
+ 102  3.6495565e+010  3.6495565e+010 9.61e-002 2.46e-005 8.42e-002 3.50e+003
+ 103  3.6495565e+010  3.6495565e+010 3.39e+001 1.25e-006 4.31e-003 6.89e+004
+Barrier time = 54.86 sec. (17526.41 ticks)
 Parallel mode: deterministic, using up to 4 threads for concurrent optimization.
 
 Dual crossover.
-  Dual:  Fixing 191151 variables.
-   191150 DMoves:  Infeasibility 1.62252835e-006  Objective 3.63323233e+010
-   189408 DMoves:  Infeasibility 1.62253680e-006  Objective 3.63323233e+010
-   188364 DMoves:  Infeasibility 1.62259687e-006  Objective 3.63323233e+010
-   186655 DMoves:  Infeasibility 1.62259482e-006  Objective 3.63323233e+010
-   185789 DMoves:  Infeasibility 1.62257178e-006  Objective 3.63323233e+010
-   185153 DMoves:  Infeasibility 1.62258449e-006  Objective 3.63323233e+010
-   183496 DMoves:  Infeasibility 1.62264291e-006  Objective 3.63323233e+010
-   175692 DMoves:  Infeasibility 1.62264247e-006  Objective 3.63323233e+010
-   170678 DMoves:  Infeasibility 1.62263916e-006  Objective 3.63323233e+010
-   168068 DMoves:  Infeasibility 1.62264472e-006  Objective 3.63323233e+010
-   165714 DMoves:  Infeasibility 1.62259501e-006  Objective 3.63323233e+010
-   162549 DMoves:  Infeasibility 1.62256067e-006  Objective 3.63323233e+010
-   143678 DMoves:  Infeasibility 1.62264479e-006  Objective 3.63323233e+010
-   139904 DMoves:  Infeasibility 1.62256001e-006  Objective 3.63323233e+010
-   136179 DMoves:  Infeasibility 1.62256601e-006  Objective 3.63323233e+010
-   130220 DMoves:  Infeasibility 1.62259189e-006  Objective 3.63323233e+010
-   122624 DMoves:  Infeasibility 1.62260097e-006  Objective 3.63323233e+010
-   120937 DMoves:  Infeasibility 1.62255760e-006  Objective 3.63323233e+010
-    95991 DMoves:  Infeasibility 1.62268892e-006  Objective 3.63323233e+010
-    92347 DMoves:  Infeasibility 1.62265039e-006  Objective 3.63323233e+010
-    88419 DMoves:  Infeasibility 1.62269792e-006  Objective 3.63323233e+010
-    85047 DMoves:  Infeasibility 1.62271103e-006  Objective 3.63323233e+010
-    80212 DMoves:  Infeasibility 1.62270676e-006  Objective 3.63323233e+010
-    71903 DMoves:  Infeasibility 1.62265098e-006  Objective 3.63323233e+010
-    59210 DMoves:  Infeasibility 1.62257098e-006  Objective 3.63323233e+010
-    53629 DMoves:  Infeasibility 1.62255695e-006  Objective 3.63323233e+010
-    39516 DMoves:  Infeasibility 1.62257021e-006  Objective 3.63323233e+010
-    30063 DMoves:  Infeasibility 1.62257306e-006  Objective 3.63323233e+010
-   Elapsed crossover time = 6.36 sec. (10000.08 ticks, 612 DMoves)
-        0 DMoves:  Infeasibility 1.35122749e-010  Objective 3.63323233e+010
-  Dual:  Pushed 148194, exchanged 42957.
-  Primal:  Fixing 8578 variables.
-     8577 PMoves:  Infeasibility 1.05581608e-001  Objective 3.63323233e+010
-     6664 PMoves:  Infeasibility 1.05277123e-001  Objective 3.63323233e+010
-     4453 PMoves:  Infeasibility 7.38772632e-002  Objective 3.63323233e+010
-     2257 PMoves:  Infeasibility 1.43630980e-008  Objective 3.63323233e+010
-        0 PMoves:  Infeasibility 1.48737260e-008  Objective 3.63323233e+010
-  Primal:  Pushed 2625, exchanged 5953.
+  Dual:  Fixing 171691 variables.
+   171690 DMoves:  Infeasibility 2.64310417e-004  Objective 3.64955647e+010
+   170811 DMoves:  Infeasibility 2.64310440e-004  Objective 3.64955647e+010
+   168825 DMoves:  Infeasibility 2.64310624e-004  Objective 3.64955647e+010
+   168103 DMoves:  Infeasibility 2.64310637e-004  Objective 3.64955647e+010
+   166921 DMoves:  Infeasibility 2.64310637e-004  Objective 3.64955647e+010
+   166007 DMoves:  Infeasibility 2.64310633e-004  Objective 3.64955647e+010
+   165237 DMoves:  Infeasibility 2.64310633e-004  Objective 3.64955647e+010
+   155422 DMoves:  Infeasibility 2.64310597e-004  Objective 3.64955647e+010
+   151621 DMoves:  Infeasibility 2.64310593e-004  Objective 3.64955647e+010
+   149830 DMoves:  Infeasibility 2.64310583e-004  Objective 3.64955647e+010
+   146619 DMoves:  Infeasibility 2.64310574e-004  Objective 3.64955647e+010
+   130859 DMoves:  Infeasibility 2.64310578e-004  Objective 3.64955647e+010
+   125539 DMoves:  Infeasibility 2.64310592e-004  Objective 3.64955647e+010
+   122351 DMoves:  Infeasibility 2.64310573e-004  Objective 3.64955647e+010
+   118905 DMoves:  Infeasibility 2.64310573e-004  Objective 3.64955647e+010
+   110004 DMoves:  Infeasibility 2.64310571e-004  Objective 3.64955647e+010
+   103404 DMoves:  Infeasibility 2.64310586e-004  Objective 3.64955647e+010
+    79525 DMoves:  Infeasibility 2.64310531e-004  Objective 3.64955647e+010
+    73046 DMoves:  Infeasibility 2.64310518e-004  Objective 3.64955647e+010
+    70028 DMoves:  Infeasibility 2.64310509e-004  Objective 3.64955647e+010
+    66026 DMoves:  Infeasibility 2.64310514e-004  Objective 3.64955647e+010
+    57962 DMoves:  Infeasibility 2.64310507e-004  Objective 3.64955647e+010
+    50935 DMoves:  Infeasibility 2.64310506e-004  Objective 3.64955647e+010
+    42160 DMoves:  Infeasibility 2.64310499e-004  Objective 3.64955647e+010
+    34061 DMoves:  Infeasibility 2.64310499e-004  Objective 3.64955647e+010
+        4 DMoves:  Infeasibility 5.32871077e-011  Objective 3.64955647e+010
+        0 DMoves:  Infeasibility 5.32871077e-011  Objective 3.64955647e+010
+  Dual:  Pushed 138647, exchanged 33044.
+  Primal:  Fixing 6584 variables.
+     6583 PMoves:  Infeasibility 3.23599865e-009  Objective 3.64955647e+010
+     4785 PMoves:  Infeasibility 3.12683545e-009  Objective 3.64955647e+010
+     2373 PMoves:  Infeasibility 3.17861527e-009  Objective 3.64955647e+010
+        0 PMoves:  Infeasibility 3.64065279e-009  Objective 3.64955647e+010
+  Primal:  Pushed 1283, exchanged 5301.
 Reinitializing dual norms . . .
 
 Dual simplex solved model.
 
-Total crossover time = 25.79 sec. (13641.76 ticks)
+Total crossover time = 18.30 sec. (11785.18 ticks)
 
-Total time on 4 threads = 42.40 sec. (27910.04 ticks)
+Total time on 4 threads = 74.30 sec. (29858.82 ticks)
 LP status(1): optimal
-Cplex Time: 42.40sec (det. 27911.27 ticks)
+Cplex Time: 74.30sec (det. 29859.98 ticks)
 
 Optimal solution found.
-Objective : 36332323331.362358
+Objective : 36495564680.715462
 
 --- Scenario scen1:     Records read:    2
 --- Solution statistics for scenario scen1
 ---   Solver Status    1 Normal Completion         
 ---   Model Status     1 Optimal                   
----   Objective Value  36332323331.3624
----   Resource Usage   43025
----   Total Time (ms)  43165
+---   Objective Value  36495564680.7155
+---   Resource Usage   75219
+---   Total Time (ms)  75406
 --- Restarting execution
---- DIETER.gms(3202) 231 Mb
+--- DIETER.gms(3223) 235 Mb
 --- Reading solution for model DIETER
---- Executing after solve: elapsed 0:01:30.482
---- DIETER.gms(3202) 232 Mb
+--- Executing after solve: elapsed 0:03:08.084
+--- DIETER.gms(3223) 235 Mb
 ---
---- scattering and reading gdx file 
+--- scattering and reading gdx file
 ---
---- DIETER.gms(3202) 232 Mb
+--- DIETER.gms(3223) 236 Mb
 --- marginal Id = con5a_minRES maps to marginal_con5a
 --- marginal Id = con1a_bal maps to marginal_con1a
 --- level    Id = Z maps to lev_Z
@@ -253,9 +291,11 @@ Objective : 36332323331.362358
 --- level    Id = N_STO_P_PRO maps to lev_N_STO_P_PRO
 --- level    Id = N_RES_PRO maps to lev_N_RES_PRO
 --- level    Id = G_INFES maps to lev_G_INFES
---- DIETER.gms(3202) 234 Mb
---- Scatter finished in 156 ms
---- DIETER.gms(4620) 236 Mb
---- GDX File C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\test.gdx
+--- DIETER.gms(3223) 236 Mb
+--- GDXin=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\225a\scenrep.dat
+--- Scatter finished in 109 ms
+--- DIETER.gms(4641) 239 Mb
+--- GDX File C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\results.gdx
+--- GDX File C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\test.gdx
 *** Status: Normal completion
---- Job DIETER.gms Stop 10/26/18 12:09:57 elapsed 0:01:32.151
+--- Job DIETER.gms Stop 11/21/18 09:44:05 elapsed 0:03:10.674

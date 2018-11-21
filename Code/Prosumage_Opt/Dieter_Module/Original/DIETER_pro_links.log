@@ -1,5 +1,5 @@
 
---- Job DIETER_pro_links.gms Start 10/30/18 16:25:13 24.7.4 r58773 WEX-WEI x86 64bit/MS Windows
+--- Job DIETER_pro_links.gms Start 11/21/18 09:35:14 24.7.4 r58773 WEX-WEI x86 64bit/MS Windows
 GAMS 24.7.4   Copyright (C) 1987-2016 GAMS Development. All rights reserved
 Licensee: Medium MUD - 10 User License                   S170316:1123AO-GEN
           Deutsches Institut fuer Wirtschaftsforschung DIW, AbteilungDC3975
@@ -21,21 +21,21 @@ Licensee: Medium MUD - 10 User License                   S170316:1123AO-GEN
 --- DIETER_pro_links.gms(637) 25 Mb
 --- .report.gms(1411) 25 Mb
 --- DIETER_pro_links.gms(668) 26 Mb
---- Starting execution: elapsed 0:00:00.142
+--- Starting execution: elapsed 0:00:00.129
 --- DIETER_pro_links.gms(3224) 214 Mb
 ---
 --- collecting and writing gdx file 
 ---
 --- Generating LP model DIETER
---- DIETER_pro_links.gms(1354) 234 Mb  22 secs
---- DIETER_pro_links.gms(1432) 264 Mb  24 secs
---- DIETER_pro_links.gms(1624) 327 Mb  35 secs
+--- DIETER_pro_links.gms(1354) 234 Mb  21 secs
+--- DIETER_pro_links.gms(1432) 264 Mb  20 secs
+--- DIETER_pro_links.gms(1624) 327 Mb  27 secs
 --- DIETER_pro_links.gms(1650) 329 Mb  3 secs
 --- DIETER_pro_links.gms(3224) 343 Mb
 ---   402,996 rows  429,260 columns  1,718,022 non-zeroes
 ---   131,408 nl-code  96,362 nl-non-zeroes
 --- DIETER_pro_links.gms(3224) 341 Mb
---- Executing CPLEX: elapsed 0:01:35.367
+--- Executing CPLEX: elapsed 0:01:20.321
 
 GUSS             24.7.4 r58773 Released Sep 19, 2016 WEI x86 64bit/MS Windows 
 Reading parameter(s) from scenario dictionary
@@ -62,14 +62,14 @@ Tried aggregator 1 time.
 LP Presolve eliminated 27697 rows and 94306 columns.
 Aggregator did 16020 substitutions.
 Reduced LP has 359279 rows, 318934 columns, and 1119428 nonzeros.
-Presolve time = 0.92 sec. (517.46 ticks)
+Presolve time = 0.86 sec. (517.46 ticks)
 Parallel mode: using up to 4 threads for barrier.
 
 ***NOTE: Found 19 dense columns.
 
 Number of nonzeros in lower triangle of A*A' = 1125053
 Using Approximate Minimum Degree ordering
-Total time for automatic ordering = 0.42 sec. (163.07 ticks)
+Total time for automatic ordering = 0.39 sec. (163.07 ticks)
 Summary statistics for Cholesky factor:
   Threads                   = 4
   Rows in Factor            = 359298
@@ -185,7 +185,7 @@ Summary statistics for Cholesky factor:
  105  3.6495570e+010  3.6495582e+010 4.63e+000 8.17e-004 4.56e+000 8.10e+001
  106  3.6495565e+010  3.6495566e+010 2.35e-001 4.15e-005 2.36e-001 1.57e+003
  107  3.6495565e+010  3.6495565e+010 1.22e-002 2.10e-006 2.14e-002 1.73e+004
-Barrier time = 50.19 sec. (17989.98 ticks)
+Barrier time = 59.44 sec. (17989.98 ticks)
 Parallel mode: deterministic, using up to 4 threads for concurrent optimization.
 
 Dual crossover.
@@ -211,15 +211,16 @@ Dual crossover.
     76151 DMoves:  Infeasibility 3.31872881e-002  Objective 3.64955648e+010
     74547 DMoves:  Infeasibility 3.31872875e-002  Objective 3.64955648e+010
     71667 DMoves:  Infeasibility 3.31872884e-002  Objective 3.64955648e+010
+    67187 DMoves:  Infeasibility 3.31872885e-002  Objective 3.64955648e+010
 Using devex.
 
 Primal simplex solved model.
 
-Total crossover time = 11.66 sec. (7540.49 ticks)
+Total crossover time = 12.23 sec. (7540.49 ticks)
 
-Total time on 4 threads = 62.88 sec. (26061.50 ticks)
+Total time on 4 threads = 72.64 sec. (26061.50 ticks)
 LP status(1): optimal
-Cplex Time: 62.88sec (det. 26062.66 ticks)
+Cplex Time: 72.66sec (det. 26062.66 ticks)
 
 Optimal solution found.
 Objective : 36495564680.712967
@@ -229,12 +230,12 @@ Objective : 36495564680.712967
 ---   Solver Status    1 Normal Completion         
 ---   Model Status     1 Optimal                   
 ---   Objective Value  36495564680.713
----   Resource Usage   63719
----   Total Time (ms)  63890
+---   Resource Usage   73453
+---   Total Time (ms)  73625
 --- Restarting execution
 --- DIETER_pro_links.gms(3224) 235 Mb
 --- Reading solution for model DIETER
---- Executing after solve: elapsed 0:02:41.197
+--- Executing after solve: elapsed 0:02:35.962
 --- DIETER_pro_links.gms(3224) 235 Mb
 ---
 --- scattering and reading gdx file
@@ -283,8 +284,8 @@ Objective : 36495564680.712967
 --- level    Id = G_INFES maps to lev_G_INFES
 --- DIETER_pro_links.gms(3224) 236 Mb
 --- GDXin=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\225a\scenrep.dat
---- Scatter finished in 188 ms
+--- Scatter finished in 203 ms
 --- DIETER_pro_links.gms(4642) 239 Mb
 --- GDX File C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\results.gdx
 *** Status: Normal completion
---- Job DIETER_pro_links.gms Stop 10/30/18 16:27:55 elapsed 0:02:42.379
+--- Job DIETER_pro_links.gms Stop 11/21/18 09:37:51 elapsed 0:02:37.105
