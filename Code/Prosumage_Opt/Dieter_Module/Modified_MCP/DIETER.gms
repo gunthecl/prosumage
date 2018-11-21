@@ -29,9 +29,6 @@ $setglobal GER_only "*"
 
 * Set star to activate options
 
-$setglobal reserves_endogenous ""
-$setglobal reserves_exogenous ""
-
 $setglobal prosumage "*"
 
 * Set star to select run-of-river options either as exogenous parameter or as endogenous variable including reserve provision:
@@ -130,7 +127,6 @@ $include dataload.gms
 d(h) = d_y(%base_year%,h) ;
 phi_res(res,h) = phi_res_y(%base_year%,res,h) ;
 phi_min_res = 0 ;
-ev_quant = 0 ;
 phi_pro_self = 0 ;
 phi_pro_load = 0 ;
 
@@ -299,18 +295,8 @@ G_MARKET_PRO2M   .level          .lev_G_MARKET_PRO2M
 G_MARKET_M2PRO   .level          .lev_G_MARKET_M2PRO
 G_RES_PRO        .level          .lev_G_RES_PRO
 STO_IN_PRO2PRO   .level          .lev_STO_IN_PRO2PRO
-*STO_IN_PRO2M     .level          .lev_STO_IN_PRO2M
-*STO_IN_M2PRO     .level          .lev_STO_IN_M2PRO
-*STO_IN_M2M       .level          .lev_STO_IN_M2M
 STO_OUT_PRO2PRO  .level          .lev_STO_OUT_PRO2PRO
-*STO_OUT_PRO2M    .level          .lev_STO_OUT_PRO2M
-*STO_OUT_M2PRO    .level          .lev_STO_OUT_M2PRO
-*STO_OUT_M2M      .level          .lev_STO_OUT_M2M
-*STO_L_PRO        .level          .lev_STO_L_PRO
 STO_L_PRO2PRO    .level          .lev_STO_L_PRO2PRO
-*STO_L_PRO2M      .level          .lev_STO_L_PRO2M
-*STO_L_M2PRO      .level          .lev_STO_L_M2PRO
-*STO_L_M2M        .level          .lev_STO_L_M2M
 N_STO_E_PRO      .level          .lev_N_STO_E_PRO
 N_STO_P_PRO      .level          .lev_N_STO_P_PRO
 N_RES_PRO        .level          .lev_N_RES_PRO

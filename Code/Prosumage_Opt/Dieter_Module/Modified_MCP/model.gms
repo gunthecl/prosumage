@@ -41,7 +41,6 @@ STO_OUT_PRO2PRO(sto,h)         Prosumage: storage discharging to consumption fro
 STO_L_PRO2PRO(sto,h)           Prosumage: storage level generation to consumption in hour h [MWh]
 N_STO_E_PRO(sto)               Prosumage: installed storage energy [MWh]
 N_STO_P_PRO(sto)               Prosumage: installed storage power [MW]
-STO_L_PRO(sto,h)               Prosumage: overall storage level in hour h [MWh]
 N_RES_PRO(tech)                Prosumage: installed renewables capacities [MW]
 
 ;

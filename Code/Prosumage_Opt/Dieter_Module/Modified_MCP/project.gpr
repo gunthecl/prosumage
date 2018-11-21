@@ -2246,8 +2246,14 @@ PlaneRownr=-1
 [RP:DATALOAD]
 1=
 
-[RP:DIETER_PRO_LINKS]
-1=
+[GDXDISP: report_node Par 3]
+PlaneDim=0
+RowDim=3
+Squeeze=1
+SqTrail0=0
+Order=1,2,3
+Decim=7
+PlaneRownr=-1
 
 [RP:DIETER]
 1=-gdx=test
@@ -2261,32 +2267,31 @@ PlaneRownr=-1
 9=-gdx = pre
 10=-gdx = test
 
-[GDXDISP: report_node Par 3]
-PlaneDim=0
-RowDim=3
-Squeeze=1
-SqTrail0=0
-Order=1,2,3
-Decim=7
-PlaneRownr=-1
+[RP:PROSUMOD]
+1=
 
 [RP:MODEL]
 1=
 
+[RP:DIETER_PRO_LINKS]
+1=
+
 [MRUFILES]
-1=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\DIETER_pro_links.lst
-2=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\model.gms
-3=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\DIETER.gms
-4=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\results.gdx
-5=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
-6=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
-7=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\fix.lst
-8=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\fix.gms
-9=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\DIETER.lst
+1=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\results.gdx
+2=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\DIETER_pro_links.gms
+3=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage_Module\PROSUMOD.gms
+4=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\DIETER_pro_links.lst
+5=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\model.gms
+6=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\DIETER.gms
+7=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\report.gms
+8=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\fix.lst
+9=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\fix.gms
 
 [OPENWINDOW_1]
-FILE0=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\DIETER_pro_links.gms
-FILE1=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\DIETER_pro_links.gms
+FILE0=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\DIETER.gms
+FILE1=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\DIETER.lst
+FILE2=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
+FILE3=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
 MAXIM=0
 TOP=-25
 LEFT=0
