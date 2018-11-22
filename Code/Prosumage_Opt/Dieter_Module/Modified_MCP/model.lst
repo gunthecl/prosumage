@@ -1,4 +1,4 @@
-GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 10/30/18 16:37:15 Page 1
+GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 11/21/18 13:24:07 Page 1
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
@@ -53,476 +53,421 @@ C o m p i l a t i o n
       hour h [MWh]
   39  STO_IN_PRO2PRO(tech,sto,h)     Prosumage: storage loading from generation 
       for discharging to consumption in hour h [MWh]
-  40  *STO_IN_PRO2M(tech,sto,h)       Prosumage: storage loading from generation
-       for discharging to market in hour h [MWh]
-  41  *STO_IN_M2PRO(sto,h)            Prosumage: storage loading from market for
-       discharging to consumption in hour h [MWh]
-  42  *STO_IN_M2M(sto,h)              Prosumage: storage loading from market for
-       discharging to market in hour h [MWh]
-  43  STO_OUT_PRO2PRO(sto,h)         Prosumage: storage discharging to consumpti
+  40  STO_OUT_PRO2PRO(sto,h)         Prosumage: storage discharging to consumpti
       on from generation in hour h [MWh]
-  44  *STO_OUT_PRO2M(sto,h)           Prosumage: storage discharging to market f
-      rom generation in hour h [MWh]
-  45  *STO_OUT_M2PRO(sto,h)           Prosumage: storage discharging to consumpt
-      ion from market in hour h [MWh]
-  46  *STO_OUT_M2M(sto,h)             Prosumage: storage discharging to market f
-      rom market in hour h [MWh]
-  47  STO_L_PRO2PRO(sto,h)           Prosumage: storage level generation to cons
+  41  STO_L_PRO2PRO(sto,h)           Prosumage: storage level generation to cons
       umption in hour h [MWh]
-  48  *STO_L_PRO2M(sto,h)             Prosumage: storage level generation to mar
-      ket in hour h [MWh]
-  49  *STO_L_M2PRO(sto,h)             Prosumage: storage level market to consumo
-      tion in hour h [MWh]
-  50  *STO_L_M2M(sto,h)               Prosumage: storage level market to market 
-      in hour h [MWh]
-  51  N_STO_E_PRO(sto)               Prosumage: installed storage energy [MWh]
-  52  N_STO_P_PRO(sto)               Prosumage: installed storage power [MW]
-  53  STO_L_PRO(sto,h)               Prosumage: overall storage level in hour h 
-      [MWh]
-  54  N_RES_PRO(tech)                Prosumage: installed renewables capacities 
+  42  N_STO_E_PRO(sto)               Prosumage: installed storage energy [MWh]
+  43  N_STO_P_PRO(sto)               Prosumage: installed storage power [MW]
+  44  N_RES_PRO(tech)                Prosumage: installed renewables capacities 
       [MW]
-  55   
-  56  ;
-  57   
-  58   
+  45   
+  46  ;
+  47   
+  48   
+  49   
+  50   
+  51  **************************************************************************
+      ******
+  52   
+  53  Equations
+  54  * Objective
+  55  obj                      Objective cost minimization
+  56   
+  57  * Energy balance
+  58  con1a_bal                Energy Balance
   59   
-  60   
-  61  **************************************************************************
-      ******
-  62   
-  63  Equations
-  64  * Objective
-  65  obj                      Objective cost minimization
-  66   
-  67  * Energy balance
-  68  con1a_bal                Energy Balance
-  69   
-  70  * Load change costs
-  71  con2a_loadlevel          Load change costs: Level
-  72  con2b_loadlevelstart     Load change costs: Level for first period
-  73   
-  74  * Capacity contraints and flexibility constraints
-  75  con3a_maxprod_dispatchable       Capacity Constraint conventionals
-  76  con3e_maxprod_res                Capacity constraints renewables
-  77   
-  78  * Storage constraints
-  79  con4a_stolev_start        Storage Level Dynamics Initial Condition
-  80  con4b_stolev              Storage Level Dynamics
-  81  con4c_stolev_max          Storage Power Capacity
-  82  con4d_maxin_sto           Storage maximum inflow
-  83  con4e_maxout_sto          Storage maximum outflow
-  84  con4j_ending              End level equal to initial level
-  85  con4k_PHS_EtoP            Maximum E to P ratio for PHS
-  86   
-  87  * Minimum restrictions for renewables and biomass
-  88  con5a_minRES             Minimum yearly renewables requirement
-  89  con5b_max_energy         Maximum yearly biomass energy
-  90   
-  91  * Maximum installation conditions
-  92  con8a_max_I_power                Maximum installable capacity: Conventiona
+  60  * Load change costs
+  61  con2a_loadlevel          Load change costs: Level
+  62  con2b_loadlevelstart     Load change costs: Level for first period
+  63   
+  64  * Capacity contraints and flexibility constraints
+  65  con3a_maxprod_dispatchable       Capacity Constraint conventionals
+  66  con3e_maxprod_res                Capacity constraints renewables
+  67   
+  68  * Storage constraints
+  69  con4a_stolev_start        Storage Level Dynamics Initial Condition
+  70  con4b_stolev              Storage Level Dynamics
+  71  con4c_stolev_max          Storage Power Capacity
+  72  con4d_maxin_sto           Storage maximum inflow
+  73  con4e_maxout_sto          Storage maximum outflow
+  74  con4j_ending              End level equal to initial level
+  75  con4k_PHS_EtoP            Maximum E to P ratio for PHS
+  76   
+  77  * Minimum restrictions for renewables and biomass
+  78  con5a_minRES             Minimum yearly renewables requirement
+  79  con5b_max_energy         Maximum yearly biomass energy
+  80   
+  81  * Maximum installation conditions
+  82  con8a_max_I_power                Maximum installable capacity: Conventiona
       ls
-  93  con8b_max_I_sto_e                Maximum installable energy: Storage in MW
+  83  con8b_max_I_sto_e                Maximum installable energy: Storage in MW
       h
-  94  con8c_max_I_sto_p                Maximum installable capacity: Storage inf
+  84  con8c_max_I_sto_p                Maximum installable capacity: Storage inf
       low-outflow in MW
-  95   
-  96  con8f_max_pro_res                Maximum installable capacity: prosumage r
+  85   
+  86  con8f_max_pro_res                Maximum installable capacity: prosumage r
       enewables
-  97  con8g_max_pro_sto_e              Maximum installable capacity: prosumage s
+  87  con8g_max_pro_sto_e              Maximum installable capacity: prosumage s
       torage energy
-  98  con8h_max_sto_pro_p              Maximum installable capacity: prosumage s
+  88  con8h_max_sto_pro_p              Maximum installable capacity: prosumage s
       torage power
-  99   
- 100  * Prosumage
- 101  con11a_pro_distrib                       Prosumage: distribution of genera
+  89   
+  90  * Prosumage
+  91  con11a_pro_distrib                       Prosumage: distribution of genera
       ted energy
- 102  con11b_pro_balance                       Prosumage: energy balance
- 103  con11c_pro_selfcon                       Prosumage: minimum self-generatio
+  92  con11b_pro_balance                       Prosumage: energy balance
+  93  con11c_pro_selfcon                       Prosumage: minimum self-generatio
       n requirement
- 104  con11d_pro_stolev_PRO2PRO                Prosumage: storage level prosumag
+  94  con11d_pro_stolev_PRO2PRO                Prosumage: storage level prosumag
       er-to-prosumagers
- 105  con11e_pro_stolev_PRO2M                  Prosumage: storage level prosumag
-      ers-to-market
- 106  con11f_pro_stolev_M2PRO                  Prosumage: storage level market-t
-      o-prosumagers
- 107  con11g_pro_stolev_M2M                    Prosumage: storage level market-t
-      o-market
- 108  con11h_1_pro_stolev_start_PRO2PRO        Prosumage: storage level initial 
+  95  con11h_1_pro_stolev_start_PRO2PRO        Prosumage: storage level initial 
       conditions
- 109  con11h_2_pro_stolev_start_PRO2M          Prosumage: storage level initial 
-      conditions
- 110  con11h_3_pro_stolev_start_M2PRO          Prosumage: storage level initial 
-      conditions
- 111  con11h_4_pro_stolev_start_M2M            Prosumage: storage level initial 
-      conditions
- 112  con11i_pro_stolev                        Prosumage: storage level total
- 113  con11j_pro_stolev_max                    Prosumage: maximum overall storag
+  96  con11j_pro_stolev_max                    Prosumage: maximum overall storag
       e level
- 114  con11k_pro_maxin_sto                     Prosumage: maximum storage inflow
- 115  con11l_pro_maxout_sto                    Prosumage: maximum storage outflo
+  97  con11k_pro_maxin_sto                     Prosumage: maximum storage inflow
+  98  con11l_pro_maxout_sto                    Prosumage: maximum storage outflo
       w
- 116  con11m_pro_maxout_lev                    Prosumage: maximum storage outflo
-      w linked to level
- 117  con11n_pro_maxin_lev                     Prosumage: maximum storage inflow
-       linked to level
- 118  con11o_pro_ending                        Prosumage: storage ending conditi
+  99  con11o_pro_ending                        Prosumage: storage ending conditi
       on
- 119  ;
- 120   
- 121   
- 122   
- 123   
- 124  **************************************************************************
+ 100  ;
+ 101   
+ 102   
+ 103   
+ 104   
+ 105  **************************************************************************
       ******
- 125   
- 126  * ------------------------------------------------------------------------
+ 106   
+ 107  * ------------------------------------------------------------------------
       ---- *
- 127  ***** Objective function *****
- 128  * ------------------------------------------------------------------------
+ 108  ***** Objective function *****
+ 109  * ------------------------------------------------------------------------
       ---- *
- 129   
- 130  obj..
- 131           Z =E=
- 132                     sum( (h,dis) , c_m(dis)*G_L(dis,h) )
+ 110   
+ 111  obj..
+ 112           Z =E=
+ 113                     sum( (h,dis) , c_m(dis)*G_L(dis,h) )
 ****                               $120   $140
- 133                   + sum( (h,dis)$(ord(h)>1) , c_up(dis)*G_UP(dis,h) )
+ 114                   + sum( (h,dis)$(ord(h)>1) , c_up(dis)*G_UP(dis,h) )
 ****                                                  $140           $171
- 134                   + sum( (h,dis) , c_do(dis)*G_DO(dis,h) )
+ 115                   + sum( (h,dis) , c_do(dis)*G_DO(dis,h) )
 ****                                       $140           $171
- 135                   + sum( (h,nondis) , c_cu(nondis)*CU(nondis,h) )
+ 116                   + sum( (h,nondis) , c_cu(nondis)*CU(nondis,h) )
 ****                                  $120    $140               $171
- 136                   + sum( (h,sto) , c_m_sto(sto) * ( STO_OUT(sto,h) + STO_IN
+ 117                   + sum( (h,sto) , c_m_sto(sto) * ( STO_OUT(sto,h) + STO_IN
 ****                                          $140
       (sto,h) ) )
- 137                   + sum( tech , c_i(tech)*N_TECH(tech) )
+ 118                   + sum( tech , c_i(tech)*N_TECH(tech) )
 ****                                   $140
- 138                   + sum( tech , c_fix(tech)*N_TECH(tech) )
+ 119                   + sum( tech , c_fix(tech)*N_TECH(tech) )
 ****                                     $140
- 139                   + sum( sto , c_i_sto_e(sto)*N_STO_E(sto) )
+ 120                   + sum( sto , c_i_sto_e(sto)*N_STO_E(sto) )
 ****                                        $140
- 140                   + sum( sto , c_fix_sto(sto)/2*(N_STO_P(sto)+ N_STO_E(sto)
+ 121                   + sum( sto , c_fix_sto(sto)/2*(N_STO_P(sto)+ N_STO_E(sto)
 ****                                        $140
       ) )
- 141                   + sum( sto , c_i_sto_p(sto)*N_STO_P(sto) )
+ 122                   + sum( sto , c_i_sto_p(sto)*N_STO_P(sto) )
 ****                                        $140
- 142  %prosumage$ontext
+ 123  %prosumage$ontext
 ****  $409
- 143                   + sum( res , c_i(res)*N_RES_PRO(res) )
- 144                   + sum( res , c_fix(res)*N_RES_PRO(res) )
- 145   
- 146                   + sum( sto , c_i_sto_e(sto)*N_STO_E_PRO(sto) )
- 147                   + sum( sto , c_fix_sto(sto)/2*(N_STO_P_PRO(sto) + N_STO_E
+ 124                   + sum( res , c_i(res)*N_RES_PRO(res) )
+ 125                   + sum( res , c_fix(res)*N_RES_PRO(res) )
+ 126   
+ 127                   + sum( sto , c_i_sto_e(sto)*N_STO_E_PRO(sto) )
+ 128                   + sum( sto , c_fix_sto(sto)/2*(N_STO_P_PRO(sto) + N_STO_E
       _PRO(sto)) )
- 148                   + sum( sto , c_i_sto_p(sto)*N_STO_P_PRO(sto) )
- 149                   + sum( (h,sto) , c_m_sto(sto) * ( STO_OUT_PRO2PRO(sto,h) 
+ 129                   + sum( sto , c_i_sto_p(sto)*N_STO_P_PRO(sto) )
+ 130                   + sum( (h,sto) , c_m_sto(sto) * ( STO_OUT_PRO2PRO(sto,h) 
       + sum( res , STO_IN_PRO2PRO(res,sto,h)) ) )
- 152  ;
- 153   
- 154  * ------------------------------------------------------------------------
+ 133  ;
+ 134   
+ 135  * ------------------------------------------------------------------------
       ---- *
- 155  ***** Energy balance and load levels *****
- 156  * ------------------------------------------------------------------------
+ 136  ***** Energy balance and load levels *****
+ 137  * ------------------------------------------------------------------------
       ---- *
- 157   
- 158  * Energy balance
- 159  con1a_bal(hh)..
+ 138   
+ 139  * Energy balance
+ 140  con1a_bal(hh)..
 ****             $120
- 160           ( 1 - phi_pro_load )* d(hh) + sum( sto , STO_IN(sto,hh) )
+ 141           ( 1 - phi_pro_load )* d(hh) + sum( sto , STO_IN(sto,hh) )
 ****                            $140 $140
- 161  %prosumage$ontext
+ 142  %prosumage$ontext
 ****  $37,409
- 162           + G_MARKET_M2PRO(hh)
- 165   
- 166           =E=
- 167           sum( dis , G_L(dis,hh)) + sum( nondis , G_RES(nondis,hh)) + sum( 
+ 143           + G_MARKET_M2PRO(hh)
+ 146   
+ 147           =E=
+ 148           sum( dis , G_L(dis,hh)) + sum( nondis , G_RES(nondis,hh)) + sum( 
       sto , STO_OUT(sto,hh) )
- 168   
- 169  %prosumage$ontext
- 170           + sum( res , G_MARKET_PRO2M(res,hh) )
- 173   
- 174  ;
- 175   
- 176  con2a_loadlevel(dis,h)$(ord(h) > 1)..
- 177          G_L(dis,h) =E= G_L(dis,h-1) + G_UP(dis,h) - G_DO(dis,h)
+ 149   
+ 150  %prosumage$ontext
+ 151           + sum( res , G_MARKET_PRO2M(res,hh) )
+ 154   
+ 155  ;
+ 156   
+ 157  con2a_loadlevel(dis,h)$(ord(h) > 1)..
+ 158          G_L(dis,h) =E= G_L(dis,h-1) + G_UP(dis,h) - G_DO(dis,h)
 ****                                                $171          $171
- 178  ;
- 179   
- 180  con2b_loadlevelstart(dis,h)$(ord(h) = 1)..
- 181           G_L(dis,h) =E= G_UP(dis,h)
+ 159  ;
+ 160   
+ 161  con2b_loadlevelstart(dis,h)$(ord(h) = 1)..
+ 162           G_L(dis,h) =E= G_UP(dis,h)
 ****                                  $171
- 182  ;
- 183   
- 184  * ------------------------------------------------------------------------
+ 163  ;
+ 164   
+ 165  * ------------------------------------------------------------------------
       ---- *
- 185  ***** Hourly maximum generation caps *****
- 186  * ------------------------------------------------------------------------
+ 166  ***** Hourly maximum generation caps *****
+ 167  * ------------------------------------------------------------------------
       ---- *
- 187   
- 188  con3a_maxprod_dispatchable(dis,h)..
- 189          G_L(dis,h)
- 190   
- 191          =L= N_TECH(dis)
-****                        $171
- 192  ;
- 193   
- 194  con3e_maxprod_res(nondis,h)..
- 195          G_RES(nondis,h) + CU(nondis,h)
+ 168   
+ 169  con3a_maxprod_dispatchable(dis,h)..
+ 170   
+ 171           N_TECH(dis) -  G_L(dis,h)  =G= 0
+****                     $171
+ 172   
+ 173  ;
+ 174   
+ 175  con3e_maxprod_res(nondis,h)..
+ 176          G_RES(nondis,h) + CU(nondis,h)
 ****                      $171           $171
- 196   
- 197          =E= phi_res(nondis,h) * N_TECH(nondis)
+ 177   
+ 178          =E= phi_res(nondis,h) * N_TECH(nondis)
 ****                    $140                       $171
- 198  ;
- 199   
- 200  * ------------------------------------------------------------------------
+ 179  ;
+ 180   
+ 181  * ------------------------------------------------------------------------
       ---- *
- 201  ***** Storage constraints *****
- 202  * ------------------------------------------------------------------------
+ 182  ***** Storage constraints *****
+ 183  * ------------------------------------------------------------------------
       ---- *
- 203   
- 204  con4a_stolev_start(sto,h)$(ord(h) = 1)..
- 205          STO_L(sto,h) =E= phi_sto_ini(sto) * N_STO_E(sto) + STO_IN(sto,h)*(
+ 184   
+ 185  con4a_stolev_start(sto,h)$(ord(h) = 1)..
+ 186          STO_L(sto,h) =E= phi_sto_ini(sto) * N_STO_E(sto) + STO_IN(sto,h)*(
 ****                                     $140                                   
       1+eta_sto(sto))/2 - STO_OUT(sto,h)/(1+eta_sto(sto))*2
               $140
- 206  ;
- 207   
- 208  con4b_stolev(sto,h)..
- 209           STO_L(sto,h) =E= STO_L(sto,h-1) + STO_IN(sto,h)*(1+eta_sto(sto))/
-      2 - STO_OUT(sto,h)/(1+eta_sto(sto))*2
+ 187  ;
+ 188   
+ 189  con4b_stolev(sto,h)$(ord(h)>1)..
+ 190           STO_L(sto,h) =E=  STO_L(sto,h-1) + STO_IN(sto,h)*(1+eta_sto(sto))
+      /2 - STO_OUT(sto,h)/(1+eta_sto(sto))*2
+ 191  ;
+ 192   
+ 193  con4c_stolev_max(sto,h)..
+ 194         N_STO_E(sto) -  STO_L(sto,h) =G= 0
+ 195  ;
+ 196   
+ 197  con4d_maxin_sto(sto,h)..
+ 198   
+ 199          N_STO_P(sto) -  STO_IN(sto,h)   =G= 0
+ 200  ;
+ 201   
+ 202  con4e_maxout_sto(sto,h)..
+ 203   
+ 204          N_STO_P(sto) - STO_OUT(sto,h)   =G= 0
+ 205  ;
+ 206   
+ 207  con4j_ending(sto,h)$(ord(h) = card(h))..
+ 208   
+ 209           STO_L(sto,h) =E= phi_sto_ini(sto) * N_STO_E(sto)
  210  ;
  211   
- 212  con4c_stolev_max(sto,h)..
- 213          STO_L(sto,h) =L= N_STO_E(sto)
- 214  ;
- 215   
- 216  con4d_maxin_sto(sto,h)..
- 217          STO_IN(sto,h)
- 218   
- 219          =L= N_STO_P(sto)
- 220  ;
- 221   
- 222  con4e_maxout_sto(sto,h)..
- 223          STO_OUT(sto,h)
- 224   
- 225          =L= N_STO_P(sto)
- 226  ;
- 227   
- 228  con4j_ending(sto,h)$(ord(h) = card(h))..
- 229           STO_L(sto,h) =E= phi_sto_ini(sto) * N_STO_E(sto)
- 230  ;
- 231   
- 232  con4k_PHS_EtoP(sto)..
- 233          N_STO_E(sto) =L= etop_max(sto) * N_STO_P(sto)
-****                                  $140
- 234  ;
- 235   
- 236  * ------------------------------------------------------------------------
+ 212  con4k_PHS_EtoP(sto)..
+ 213   
+ 214         etop_max(sto) * N_STO_P(sto) - N_STO_E(sto) =G= 0
+****                $140
+ 215  ;
+ 216   
+ 217  * ------------------------------------------------------------------------
       ---- *
- 237  ***** Quotas for renewables and biomass *****
- 238  * ------------------------------------------------------------------------
+ 218  ***** Quotas for renewables and biomass *****
+ 219  * ------------------------------------------------------------------------
       ---- *
- 239   
- 240  con5a_minRES..
- 241  sum( h , G_L('bio',h) + sum( nondis , G_RES(nondis,h))
+ 220   
+ 221  con5a_minRES..
+ 222  sum( h , G_L('bio',h) + sum( nondis , G_RES(nondis,h))
 ****                                                    $171
- 242   
- 243  %prosumage$ontext
+ 223   
+ 224  %prosumage$ontext
 ****  $8,37,409
- 244           + sum( sto , STO_OUT_PRO2PRO(sto,h)) + sum( res , G_MARKET_PRO2M(
+ 225           + sum( sto , STO_OUT_PRO2PRO(sto,h)) + sum( res , G_MARKET_PRO2M(
       res,h) + G_RES_PRO(res,h))
- 247  )
- 248          =G= phi_min_res * phi_min_res_exog * sum( h ,
- 249           sum( dis , G_L(dis,h)) + sum( nondis , G_RES(nondis,h))
- 250   
- 251  %prosumage$ontext
- 252           + sum( res , phi_res(res,h) * N_RES_PRO(res) - CU_PRO(res,h))
- 255           )
- 256  ;
- 257   
- 258  con5b_max_energy(dis)$(m_e(dis))..
+ 228  )
+ 229          =G= phi_min_res * phi_min_res_exog * sum( h ,
+ 230           sum( dis , G_L(dis,h)) + sum( nondis , G_RES(nondis,h))
+ 231   
+ 232  %prosumage$ontext
+ 233           + sum( res , phi_res(res,h) * N_RES_PRO(res) - CU_PRO(res,h))
+ 236           )
+ 237  ;
+ 238   
+ 239  con5b_max_energy(dis)$(m_e(dis))..
 ****                           $140
- 259           sum( h , G_L(dis,h) ) =L= m_e(dis)
- 260  ;
+ 240           m_e(dis) -  sum( h , G_L(dis,h) ) =G= 0
+ 241  ;
+ 242   
+ 243   
+ 244  * ------------------------------------------------------------------------
+      ---- *
+ 245  ***** Maximum installation constraints *****
+ 246  * ------------------------------------------------------------------------
+      ---- *
+ 247   
+ 248  con8a_max_I_power(tech)..
+ 249         m_p(tech) - N_TECH(tech)     =G= 0
+****           $140
+ 250  ;
+ 251   
+ 252  con8b_max_I_sto_e(sto)..
+ 253         m_sto_e(sto) - N_STO_E(sto)  =G= 0
+****               $140
+ 254  ;
+ 255   
+ 256  con8c_max_I_sto_p(sto)..
+ 257         m_sto_p(sto) -  N_STO_P(sto) =G= 0
+****               $140
+ 258  ;
+ 259   
+ 260   
  261   
- 262   
- 263  * ------------------------------------------------------------------------
-      ---- *
- 264  ***** Maximum installation constraints *****
- 265  * ------------------------------------------------------------------------
-      ---- *
- 266   
- 267  con8a_max_I_power(tech)..
- 268           N_TECH(tech) =L= m_p(tech)
-****                              $140
- 269  ;
- 270   
- 271  con8b_max_I_sto_e(sto)..
- 272           N_STO_E(sto) =L= m_sto_e(sto)
-****                                  $140
- 273  ;
- 274   
- 275  con8c_max_I_sto_p(sto)..
- 276           N_STO_P(sto) =L= m_sto_p(sto)
-****                                  $140
- 277  ;
- 278   
- 279   
- 280   
- 281  con8f_max_pro_res(res)..
+ 262  con8f_max_pro_res(res)..
 ****                      $120,340
- 282           N_RES_PRO(res) =L= m_res_pro(res)
-****                        $171          $140
- 283  ;
- 284   
- 285  con8g_max_pro_sto_e(sto)..
- 286           N_STO_E_PRO(sto) =L= m_sto_pro_e(sto)
-****                                          $140
- 287  ;
- 288   
- 289  con8h_max_sto_pro_p(sto)..
- 290           N_STO_P_PRO(sto) =L= m_sto_pro_p(sto)
-****                                          $140
- 291  ;
- 292   
- 293   
- 294   
- 295  * ------------------------------------------------------------------------
+ 263         m_res_pro(res) -  N_RES_PRO(res) =G= 0
+****                 $140                   $171
+ 264  ;
+ 265   
+ 266  con8g_max_pro_sto_e(sto)..
+ 267         m_sto_pro_e(sto) -  N_STO_E_PRO(sto) =G= 0
+****                   $140
+ 268  ;
+ 269   
+ 270  con8h_max_sto_pro_p(sto)..
+ 271          m_sto_pro_p(sto) -  N_STO_P_PRO(sto) =G= 0
+****                    $140
+ 272  ;
+ 273   
+ 274  * ------------------------------------------------------------------------
       ---- *
- 296  ***** Prosumage constraints *****
- 297  * ------------------------------------------------------------------------
+ 275  ***** Prosumage constraints *****
+ 276  * ------------------------------------------------------------------------
       ---- *
- 298   
- 299  con11a_pro_distrib(res,h)..
- 300           phi_res(res,h) * N_RES_PRO(res)
+ 277   
+ 278  con11a_pro_distrib(res,h)..
+ 279           phi_res(res,h) * N_RES_PRO(res)
 ****                                         $171
- 301           =E=
- 302           CU_PRO(res,h) + G_MARKET_PRO2M(res,h) + G_RES_PRO(res,h) + sum( s
+ 280           =E=
+ 281           CU_PRO(res,h) + G_MARKET_PRO2M(res,h) + G_RES_PRO(res,h) + sum( s
 ****                     $171                    $171               $171        
       to , STO_IN_PRO2PRO(res,sto,h) )
                              $171
- 303  ;
- 304   
- 305  con11b_pro_balance(h)..
- 306           phi_pro_load * d(h)
- 307           =E=
- 308           sum( res , G_RES_PRO(res,h)) + sum( sto , STO_OUT_PRO2PRO(sto,h) 
+ 282  ;
+ 283   
+ 284  con11b_pro_balance(h)..
+ 285           phi_pro_load * d(h)
+ 286           =E=
+ 287           sum( res , G_RES_PRO(res,h)) + sum( sto , STO_OUT_PRO2PRO(sto,h) 
 ****                                   $171
       ) + G_MARKET_M2PRO(h)
- 309  ;
- 310   
- 311  con11c_pro_selfcon..
- 312           sum( (h,res) , G_RES_PRO(res,h) ) + sum( (h,sto) , STO_OUT_PRO2PR
+ 288  ;
+ 289   
+ 290  con11c_pro_selfcon..
+ 291           sum( (h,res) , G_RES_PRO(res,h) ) + sum( (h,sto) , STO_OUT_PRO2PR
 ****                                       $171
       O(sto,h) )
- 313           =G=
- 314           phi_pro_self * sum( h , phi_pro_load * d(h))
+ 292           =G=
+ 293           phi_pro_self * sum( h , phi_pro_load * d(h))
 ****                      $140
- 315  ;
- 316   
- 317  con11d_pro_stolev_PRO2PRO(sto,h)$(ord(h) > 1 )..
- 318           STO_L_PRO2PRO(sto,h) =E= STO_L_PRO2PRO(sto,h-1) + sum( res , STO_
+ 294  ;
+ 295   
+ 296  con11d_pro_stolev_PRO2PRO(sto,h)$(ord(h) > 1 )..
+ 297           STO_L_PRO2PRO(sto,h) =E= STO_L_PRO2PRO(sto,h-1) + sum( res , STO_
       IN_PRO2PRO(res,sto,h))*(1+eta_sto(sto))/2 - STO_OUT_PRO2PRO(sto,h)/(1+eta_
 ****                $171
       sto(sto))*2
- 319  ;
- 320   
- 321   
- 322  con11h_1_pro_stolev_start_PRO2PRO(sto,h)$( ord(h) = 1)..
- 323          STO_L_PRO2PRO(sto,h) =E=  * phi_sto_pro_ini(sto) * N_STO_E_PRO(sto
-****                                    $119            $140                    
-      ) + sum( res , STO_IN_PRO2PRO(res,sto,h))*(1+eta_sto(sto))/2 - STO_OUT_PRO
-                                       $171
-      2PRO(sto,h)/(1+eta_sto(sto))*2
- 324  ;
-      con11i_pro_stolev(sto,h)$(ord(h)>1)..
-               STO_L_PRO(sto,h) =E=   STO_L_PRO2PRO(sto,h)
-      ;
- 330   
- 331  con11j_pro_stolev_max(sto,h)..
- 332          STO_L_PRO2PRO(sto,h) =L= N_STO_E_PRO(sto)
- 333  ;
- 334   
- 335  con11k_pro_maxin_sto(sto,h)..
- 336          sum( res , STO_IN_PRO2PRO(res,sto,h) )
-****                                       $171
- 337          =L= N_STO_P_PRO(sto)
- 338  ;
- 339   
- 340  con11l_pro_maxout_sto(sto,h)..
- 341          STO_OUT_PRO2PRO(sto,h)
- 342          =L= N_STO_P_PRO(sto)
- 343  ;
- 344   
- 345  con11m_pro_maxout_lev(sto,h)..
- 346          ( STO_OUT_PRO2PRO(sto,h) ) / (1+eta_sto(sto))*2
- 347          =L= STO_L_PRO2PRO(sto,h-1)
- 348  ;
+ 298  ;
+ 299   
+ 300   
+ 301  con11h_1_pro_stolev_start_PRO2PRO(sto,h)$( ord(h) = 1)..
+ 302          STO_L_PRO2PRO(sto,h) =E=   phi_sto_pro_ini(sto) * N_STO_E_PRO(sto)
+****                                                   $140                     
+       + sum( res , STO_IN_PRO2PRO(res,sto,h))*(1+eta_sto(sto))/2 - STO_OUT_PRO2
+                                      $171
+      PRO(sto,h)/(1+eta_sto(sto))*2
+ 303  ;
+ 304   
+ 305   
+ 306  con11j_pro_stolev_max(sto,h)..
+ 307         N_STO_E_PRO(sto) - STO_L_PRO2PRO(sto,h) =G= 0
+ 308  ;
+ 309   
+ 310  con11k_pro_maxin_sto(sto,h)..
+ 311          N_STO_P_PRO(sto) - sum( res , STO_IN_PRO2PRO(res,sto,h) )
+****                                                          $171
+ 312          =G= 0
+ 313  ;
+ 314   
+ 315  con11l_pro_maxout_sto(sto,h)..
+ 316          N_STO_P_PRO(sto) - STO_OUT_PRO2PRO(sto,h)
+ 317          =G= 0
+ 318  ;
+ 319   
+ 320  con11o_pro_ending(sto,h)$( ord(h) = card(h))..
+ 321           STO_L_PRO2PRO(sto,h) =E= phi_sto_pro_ini(sto) * N_STO_E_PRO(sto)
+ 322  ;
+ 323   
+ 324   
+ 325  **************************************************************************
+      ******
+ 326  ***** MODEL *****
+ 327  **************************************************************************
+      ******
+ 328   
+ 329  model DIETER /
+ 330  obj
+ 331   
+ 332  con1a_bal
+ 333   
+ 334  con2a_loadlevel
+ 335  con2b_loadlevelstart
+ 336   
+ 337  con3a_maxprod_dispatchable
+ 338   
+ 339  con3e_maxprod_res
+ 340   
+ 341  con4a_stolev_start
+ 342  con4b_stolev
+ 343  con4c_stolev_max
+ 344  con4d_maxin_sto
+ 345  con4e_maxout_sto
+ 346   
+ 347  con4j_ending
+ 348  *con4k_PHS_EtoP
  349   
- 350  con11n_pro_maxin_lev(sto,h)..
- 351          ( sum( res , STO_IN_PRO2PRO(res,sto,h)  )) * (1+eta_sto(sto))/2
-****                                         $171
- 352          =L= N_STO_E_PRO(sto) - STO_L_PRO2PRO(sto,h-1)
- 353  ;
- 354   
- 355  con11o_pro_ending(sto,h)$( ord(h) = card(h))..
- 356           STO_L_PRO2PRO(sto,h) =E= phi_sto_pro_ini(sto) * N_STO_E_PRO(sto)
- 357  ;
- 358   
- 359   
- 360  **************************************************************************
-      ******
- 361  ***** MODEL *****
- 362  **************************************************************************
-      ******
- 363   
- 364  model DIETER /
- 365  obj
- 366   
- 367  con1a_bal
- 368   
- 369  con2a_loadlevel
- 370  con2b_loadlevelstart
- 371   
- 372  con3a_maxprod_dispatchable
- 373   
- 374  con3e_maxprod_res
- 375   
- 376  con4a_stolev_start
- 377  con4b_stolev
- 378  con4c_stolev_max
- 379  con4d_maxin_sto
- 380  con4e_maxout_sto
- 381   
- 382  con4j_ending
- 383  con4k_PHS_EtoP
- 384   
- 385  con5a_minRES
- 386  con5b_max_energy
- 387   
- 388  con8a_max_I_power
- 389  con8b_max_I_sto_e
- 390  con8c_max_I_sto_p
- 391   
- 392  %prosumage$ontext
+ 350  con5a_minRES
+ 351  con5b_max_energy
+ 352   
+ 353  con8a_max_I_power
+ 354  con8b_max_I_sto_e
+ 355  con8c_max_I_sto_p
+ 356   
+ 357  %prosumage$ontext
 ****  $2       $140,2 $140
- 393  con8f_max_pro_res
- 394  con8g_max_pro_sto_e
- 395  con8h_max_sto_pro_p
- 396  con11a_pro_distrib
- 397  con11b_pro_balance
- 398  con11c_pro_selfcon
- 399  con11d_pro_stolev_PRO2PRO
- 400  con11h_1_pro_stolev_start_PRO2PRO
- 401  *con11i_pro_stolev
- 402  con11j_pro_stolev_max
- 403  con11k_pro_maxin_sto
- 404  con11l_pro_maxout_sto
- 405  *con11m_pro_maxout_lev
- 406  *con11n_pro_maxin_lev
- 407  con11o_pro_ending
- 410   
- 411  /;
-GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 10/30/18 16:37:15 Page 2
+ 358  con8f_max_pro_res
+ 359  con8g_max_pro_sto_e
+ 360  con8h_max_sto_pro_p
+ 361  con11a_pro_distrib
+ 362  con11b_pro_balance
+ 363  con11c_pro_selfcon
+ 364  con11d_pro_stolev_PRO2PRO
+ 365  con11h_1_pro_stolev_start_PRO2PRO
+ 366  con11j_pro_stolev_max
+ 367  con11k_pro_maxin_sto
+ 368  con11l_pro_maxout_sto
+ 369  con11o_pro_ending
+ 372   
+ 373  /;
+GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 11/21/18 13:24:07 Page 2
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Error Messages
 
@@ -530,7 +475,6 @@ Error Messages
   2  Identifier expected
   8  ')' expected
  37  '=l=' or '=e=' or '=g=' operator expected
-119  Number (primary) expected
 120  Unknown identifier entered as set
 140  Unknown symbol
 171  Domain violation for set
@@ -540,10 +484,10 @@ Error Messages
 409  Unrecognizable item - skip to find a new statement
        looking for a ';' or a key word to get started again
 
-**** 67 ERROR(S)   0 WARNING(S)
+**** 65 ERROR(S)   0 WARNING(S)
 
 
-COMPILATION TIME     =        0.234 SECONDS      3 MB  24.7.4 r58773 WEX-WEI
+COMPILATION TIME     =        0.250 SECONDS      3 MB  24.7.4 r58773 WEX-WEI
 
 
 USER: Medium MUD - 10 User License                   S170316:1123AO-GEN

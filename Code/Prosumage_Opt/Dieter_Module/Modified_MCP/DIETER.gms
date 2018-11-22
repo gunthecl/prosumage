@@ -21,6 +21,7 @@ $offtext
 * Set star to skip Excel upload and load data from gdx
 $setglobal skip_Excel "*"
 
+
 * Choose base year
 $setglobal base_year "'2030'"
 
@@ -29,7 +30,7 @@ $setglobal GER_only "*"
 
 * Set star to activate options
 
-$setglobal prosumage "*"
+$setglobal prosumage ""
 
 * Set star to select run-of-river options either as exogenous parameter or as endogenous variable including reserve provision:
 * if nothing is selected, ROR capacity will be set to zero

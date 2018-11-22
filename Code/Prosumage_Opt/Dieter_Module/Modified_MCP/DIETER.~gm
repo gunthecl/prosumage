@@ -21,6 +21,7 @@ $offtext
 * Set star to skip Excel upload and load data from gdx
 $setglobal skip_Excel "*"
 
+
 * Choose base year
 $setglobal base_year "'2030'"
 
@@ -29,7 +30,7 @@ $setglobal GER_only "*"
 
 * Set star to activate options
 
-$setglobal prosumage "*"
+$setglobal prosumage ""
 
 * Set star to select run-of-river options either as exogenous parameter or as endogenous variable including reserve provision:
 * if nothing is selected, ROR capacity will be set to zero
@@ -65,7 +66,7 @@ $if "%ror_parameter%" == "*" $if "%ror_variable%" == "*" $abort Choose appropria
 
 sets
 %loop_over_renewable_share%$ontext
-loop_res_share   Solution loop for different shares of renewables       /50/
+loop_res_share   Solution loop for different shares of renewables       /10,50,80/
 $ontext
 $offtext
 
@@ -295,18 +296,8 @@ G_MARKET_PRO2M   .level          .lev_G_MARKET_PRO2M
 G_MARKET_M2PRO   .level          .lev_G_MARKET_M2PRO
 G_RES_PRO        .level          .lev_G_RES_PRO
 STO_IN_PRO2PRO   .level          .lev_STO_IN_PRO2PRO
-*STO_IN_PRO2M     .level          .lev_STO_IN_PRO2M
-*STO_IN_M2PRO     .level          .lev_STO_IN_M2PRO
-*STO_IN_M2M       .level          .lev_STO_IN_M2M
 STO_OUT_PRO2PRO  .level          .lev_STO_OUT_PRO2PRO
-*STO_OUT_PRO2M    .level          .lev_STO_OUT_PRO2M
-*STO_OUT_M2PRO    .level          .lev_STO_OUT_M2PRO
-*STO_OUT_M2M      .level          .lev_STO_OUT_M2M
-*STO_L_PRO        .level          .lev_STO_L_PRO
 STO_L_PRO2PRO    .level          .lev_STO_L_PRO2PRO
-*STO_L_PRO2M      .level          .lev_STO_L_PRO2M
-*STO_L_M2PRO      .level          .lev_STO_L_M2PRO
-*STO_L_M2M        .level          .lev_STO_L_M2M
 N_STO_E_PRO      .level          .lev_N_STO_E_PRO
 N_STO_P_PRO      .level          .lev_N_STO_P_PRO
 N_RES_PRO        .level          .lev_N_RES_PRO
