@@ -34,8 +34,10 @@ $setglobal reserves_endogenous ""
 $setglobal reserves_exogenous ""
 
 $setglobal prosumage "*"
-$setglobal prosumage_links_restr "*"
 * Prosumage link restrictions prohibits prosumage storage interaction with market
+$setglobal prosumage_links_restr "*"
+* Storage flow constraints 4h and 4i deactivated
+$setglobal storage_flow_constraint "*"
 
 $setglobal heat ""
 

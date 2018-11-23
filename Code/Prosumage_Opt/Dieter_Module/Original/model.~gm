@@ -897,7 +897,7 @@ con11g_pro_stolev_M2M(n,sto,h)$(ord(h) > 1)..
 
 con11h_1_pro_stolev_start_PRO2PRO(n,sto,h)$(map_n_sto_pro(n,sto) AND ord(h) = 1)..
         STO_L_PRO2PRO(n,sto,h) =E=
-prosumage_links_restr$ontext
+%prosumage_links_restr%$ontext
         4*
 $ontext
 $offtext
@@ -1211,8 +1211,12 @@ con4e_maxout_sto
   con4g_resrv_sto
 $ontext
 $offtext
+
+%storage_flow_constraint%$ontext
 con4h_maxout_lev
 con4i_maxin_lev
+$ontext
+$offtext
 con4j_ending
 con4k_PHS_EtoP
 

@@ -34,7 +34,10 @@ $setglobal reserves_endogenous ""
 $setglobal reserves_exogenous ""
 
 $setglobal prosumage ""
+* Prosumage link restrictions prohibits prosumage storage interaction with market
 $setglobal prosumage_links_restr "*"
+* Storage flow constraints 4h and 4i deactivated
+$setglobal storage_flow_constraint "*"
 
 $setglobal heat ""
 
@@ -96,7 +99,7 @@ $if "%EV_EXOG%" == "*" $if "%EV_DEFAULT%%EV_100RES%%EV_FREE%" == "***" $abort Ch
 
 sets
 %loop_over_renewable_share%$ontext
-loop_res_share   Solution loop for different shares of renewables       /50/
+loop_res_share   Solution loop for different shares of renewables       /10,50,80/
 $ontext
 $offtext
 

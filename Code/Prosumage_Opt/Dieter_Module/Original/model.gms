@@ -1211,8 +1211,9 @@ con4e_maxout_sto
   con4g_resrv_sto
 $ontext
 $offtext
-con4h_maxout_lev
-con4i_maxin_lev
+
+%storage_flow_constraint%con4h_maxout_lev
+%storage_flow_constraint%con4i_maxin_lev
 con4j_ending
 con4k_PHS_EtoP
 

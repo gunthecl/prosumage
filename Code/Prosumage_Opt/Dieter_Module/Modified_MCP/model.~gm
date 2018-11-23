@@ -55,13 +55,16 @@ mu_conv_cap           Dual variable on conventional generation capacity constrai
 mu_bio_cap            Dual variable on storage bio energy constraint (5b)
 mu_dis_max_i          Dual variable on dispatchable installation constraint (8a)
 mu_nondis_max_i       Dual variable on nondispatchable installation constraint (8a)
+mu_tech_max_i         Dual variable on tech installation constraint (8a)
 mu_stop_max_i         Dual variable on storage power installation constraint  (8c)
 mu_stoe_max_i         Dual variable on storage energy installation constraint  (8b)
 mu_minRES             Dual variable on minimum renewable share constraint (5a)
 
 ;
 
-
+Set
+dis_bio(tech)          Subset of dispatchable technology: Bio mass        /bio/
+;
 
 ********************************************************************************
 
@@ -75,7 +78,7 @@ con1a_bal                Energy Balance
 * Load change costs
 con2a_loadlevel          Load change costs: Level
 con2b_loadlevelstart     Load change costs: Level for first period
-
+con2_loadlevel           Load change costs: Level of all periods (2a+2b)
 * Capacity contraints and flexibility constraints
 con3a_maxprod_dispatchable       Capacity Constraint conventionals
 con3e_maxprod_res                Capacity constraints renewables
@@ -83,10 +86,12 @@ con3e_maxprod_res                Capacity constraints renewables
 * Storage constraints
 con4a_stolev_start        Storage Level Dynamics Initial Condition
 con4b_stolev              Storage Level Dynamics
+con4_stolev               Storage Level Dynamics all periods(4a + 4b)
 con4c_stolev_max          Storage Power Capacity
 con4d_maxin_sto           Storage maximum inflow
 con4e_maxout_sto          Storage maximum outflow
 con4j_ending              End level equal to initial level
+con4k_PHS_EtoP            Maximum E-P ratio
 
 * Minimum restrictions for renewables and biomass
 con5a_minRES             Minimum yearly renewables requirement
@@ -122,6 +127,8 @@ KKTCU                    KKT w.r.t. CU
 KKTSTO_IN                KKT w.r.t. STO_IN
 KKTSTO_OUT               KKT w.r.t. STO_OUT
 KKTSTO_L                 KKT w.r.t. STO_L
+KKTN_TECH_NONDIS         KKT w.r.t. N_TECH(nondis)
+KKTN_TECH_DIS            KKT w.r.t. N_TECH(dis)
 KKTN_TECH                KKT w.r.t. N_TECH
 KKTN_STO_E               KKT w.r.t. N_STO_E
 KKTN_STO_P               KKT w.r.t. N_STO_P
@@ -149,7 +156,6 @@ obj..
 %prosumage%$ontext
                  + sum( res , c_i(res)*N_RES_PRO(res) )
                  + sum( res , c_fix(res)*N_RES_PRO(res) )
-
                  + sum( sto , c_i_sto_e(sto)*N_STO_E_PRO(sto) )
                  + sum( sto , c_fix_sto(sto)/2*(N_STO_P_PRO(sto) + N_STO_E_PRO(sto)) )
                  + sum( sto , c_i_sto_p(sto)*N_STO_P_PRO(sto) )
@@ -165,7 +171,7 @@ $offtext
 * Energy balance
 con1a_bal(hh)..
 
-         sum( dis , G_L(dis,hh)) + sum( nondis , G_RES(nondis,hh)) + sum( sto , STO_OUT(sto,hh) )
+           sum( dis , G_L(dis,hh)) + sum( nondis , G_RES(nondis,hh)) + sum( sto , STO_OUT(sto,hh) )
 %prosumage%$ontext
          + sum( res , G_MARKET_PRO2M(res,hh) )
 $ontext
@@ -188,6 +194,16 @@ con2a_loadlevel(dis,h)$(ord(h) > 1)..
 con2b_loadlevelstart(dis,h)$(ord(h) = 1)..
         G_UP(dis,h) - G_L(dis,h) =E= 0
 ;
+
+con2_loadlevel(dis,h)..
+           G_UP(dis,h)  - G_L(dis,h)
+        +  G_L(dis,h-1)$(ord(h) > 1)
+        -  G_DO(dis,h)$(ord(h)  > 1)
+
+         =E= 0
+;
+
+
 
 * ---------------------------------------------------------------------------- *
 ***** Hourly maximum generation caps *****
@@ -217,6 +233,15 @@ con4b_stolev(sto,h)$(ord(h)>1)..
         STO_L(sto,h-1) + STO_IN(sto,h)*(1+eta_sto(sto))/2 - STO_OUT(sto,h)/(1+eta_sto(sto))*2  -  STO_L(sto,h) =E= 0
 ;
 
+con4_stolev(sto,h)..
+
+       + STO_IN(sto,h)*(1+eta_sto(sto))/2 - STO_OUT(sto,h)/(1+eta_sto(sto))*2  -  STO_L(sto,h)
+       + STO_L(sto,h-1)$(ord(h)>1)
+       + phi_sto_ini(sto)*N_STO_E(sto)$(ord(h) = 1)
+       =E= 0
+;
+
+
 con4c_stolev_max(sto,h)..
        N_STO_E(sto) -  STO_L(sto,h) =G= 0
 ;
@@ -237,6 +262,10 @@ con4j_ending(sto,h)$(ord(h) = card(h))..
 ;
 
 
+con4k_PHS_EtoP(sto)..
+        N_STO_E(sto) =L= etop_max(sto) * N_STO_P(sto)
+;
+
 * ---------------------------------------------------------------------------- *
 ***** Quotas for renewables and biomass *****
 * ---------------------------------------------------------------------------- *
@@ -245,7 +274,7 @@ con5a_minRES..
 sum( h , G_L('bio',h) + sum(nondis , G_RES(nondis,h))
 
 %prosumage%$ontext
-         + sum( (sto) , STO_OUT_PRO2PRO(sto,h) + STO_OUT_PRO2M(sto,h)) + sum( (res) , G_MARKET_PRO2M(res,h) + G_RES_PRO(res,h))
+         + sum( (sto) , STO_OUT_PRO2PRO(sto,h) + sum( (res) , G_MARKET_PRO2M(res,h) + G_RES_PRO(res,h))
 $ontext
 $offtext
 )
@@ -259,7 +288,8 @@ $offtext
          )  =G= 0
 ;
 
-con5b_max_energy(dis)$(m_e(dis))..
+*con5b_max_energy(tech)$dis_bio(tech)..
+con5b_max_energy(dis)..
          m_e(dis) -  sum( h , G_L(dis,h) ) =G= 0
 ;
 
@@ -283,7 +313,7 @@ con8c_max_I_sto_p(sto)..
 
 
 con8f_max_pro_res(res)..
-       m_res_pro(res) -  N_RES_PRO(res) =G= 0
+       m_res_pro(res) -  N_RES_PRO(res)     =G= 0
 ;
 
 con8g_max_pro_sto_e(sto)..
@@ -347,45 +377,117 @@ con11o_pro_ending(sto,h)$( ord(h) = card(h))..
 * ---------------------------------------------------------------------------- *
 ***** FOC conditions *****
 * ---------------------------------------------------------------------------- *
-$ontext
-KKTG_L(dis,h)..
+
+KKTG_L(tech,h)$dis(tech)..
+
+    c_m(tech) - lambda_enerbal(h) +  lambda_convgen(tech,h)
+    - lambda_convgen(tech,h+1)$(ord(h) > 1)
+    + mu_conv_cap(tech,h)
+    + mu_minRES*phi_min_res*phi_min_res_exog
+    + mu_bio_cap(tech)$dis_bio(tech)
+    - mu_minRES$dis_bio(tech)
+    =G= 0
+
 ;
 
 KKTG_UP(dis,h)..
+
+     c_up(dis) - lambda_convgen(dis,h) =G= 0
+
 ;
 
 KKTG_DO(dis,h)..
+
+     c_do(dis)
+     + lambda_convgen(dis,h)$(ord(h) > 1)
+     =G= 0
+
 ;
 
 KKTG_RES(nondis,h)..
+
+     - lambda_enerbal(h) + lambda_resgen(nondis,h)
+     + mu_minRES*(phi_min_res*phi_min_res_exog - 1)
+     =G= 0
 ;
 
 KKTCU(nondis,h)..
+
+     c_cu(nondis) + lambda_resgen(nondis,h) =G= 0
+
 ;
 
 KKTSTO_IN(sto,h)..
+
+    c_m_sto(sto)  + lambda_enerbal(h) -  lambda_stolev(sto,h)*(1+eta_sto(sto))/2
+    + mu_stoin_cap(sto,h) =G= 0
 ;
 
 KKTSTO_OUT(sto,h)..
+
+     c_m_sto(sto)  -  lambda_enerbal(h) +  lambda_stolev(sto,h)/(1+eta_sto(sto))*2
+     +  mu_stout_cap(sto,h)
+      =G= 0
 ;
 
 KKTSTO_L(sto,h)..
+
+  + lambda_stolev(sto,h)
+  +  mu_stolev_cap(sto,h)
+  -  lambda_stolev(sto,h+1)$(ord(h) > 1 )
+      =G= 0
+
 ;
 
+$ontext
 KKTN_TECH_NONDIS(nondis)..
+
+    c_i(nondis) +  c_fix(nondis)
+    - sum( h,  lambda_resgen(nondis,h)*phi_res(nondis,h)) + mu_nondis_max_i(nondis)
+    =G= 0
 ;
 
-KKTN_TECH_NDIS(dis)..
+KKTN_TECH_DIS(dis)..
+
+     c_i(dis) +  c_fix(dis) - sum( h,  lambda_convgen(dis,h)) +  mu_dis_max_i(dis)
+     =G= 0
+
 ;
+$offtext
+
+KKTN_TECH(tech)..
+
+          +  c_i(tech)
+          +  c_fix(tech)
+          +  mu_tech_max_i(tech)
+
+          - sum( h,  lambda_convgen(tech,h))$dis(tech)
+          - sum( h,  lambda_resgen(tech,h)*phi_res(tech,h))$nondis(tech)
+
+
+     =G= 0
+
+;
+
+
 
 KKTN_STO_E(sto)..
+
+      + c_fix_sto(sto)/2 +  c_i_sto_e(sto)
+      - sum( h,   mu_stolev_cap(sto,h)) +  mu_stoe_max_i(sto)
+      -  phi_sto_ini(sto)*lambda_stolev(sto,'h1')
+      =G= 0
 ;
 
 KKTN_STO_P(sto)..
+
+
+     c_fix_sto(sto)/2 + c_i_sto_p(sto)
+     - sum( h,   + mu_stoin_cap(sto,h) + mu_stout_cap(sto,h))
+     + mu_stop_max_i(sto)
+     =G= 0
+
 ;
-
-$offtext
-
 
 
 ********************************************************************************
@@ -399,6 +501,7 @@ con1a_bal
 
 con2a_loadlevel
 con2b_loadlevelstart
+*con2_loadlevel
 
 con3a_maxprod_dispatchable
 
@@ -406,6 +509,7 @@ con3e_maxprod_res
 
 con4a_stolev_start
 con4b_stolev
+*con4_stolev
 con4c_stolev_max
 con4d_maxin_sto
 con4e_maxout_sto
@@ -417,6 +521,8 @@ con5b_max_energy
 con8a_max_I_power
 con8b_max_I_sto_e
 con8c_max_I_sto_p
+
+con4k_PHS_EtoP
 
 %prosumage%$ontext
 con8f_max_pro_res
@@ -435,3 +541,39 @@ $ontext
 $offtext
 
 /;
+
+model DIETER_MCP /
+
+
+con1a_bal.lambda_enerbal
+con2_loadlevel.lambda_convgen
+*con2b_loadlevelstart
+con3a_maxprod_dispatchable.mu_conv_cap
+con3e_maxprod_res.lambda_resgen
+*con4a_stolev_start
+con4_stolev.lambda_stolev
+con4c_stolev_max.mu_stolev_cap
+con4d_maxin_sto.mu_stoin_cap
+con4e_maxout_sto.mu_stout_cap
+*con4j_ending
+con5a_minRES.mu_minRES
+con5b_max_energy.mu_bio_cap
+con8a_max_I_power.mu_tech_max_i
+con8b_max_I_sto_e.mu_stoe_max_i
+con8c_max_I_sto_p.mu_stop_max_i
+
+KKTG_L.G_L
+KKTG_UP.G_UP
+KKTG_DO.G_DO
+KKTG_RES.G_RES
+KKTCU.CU
+KKTSTO_IN.STO_IN
+KKTSTO_OUT.STO_OUT
+KKTSTO_L.STO_L
+KKTN_TECH.N_TECH
+KKTN_STO_E.N_STO_E
+KKTN_STO_P.N_STO_P
+
+/
+;
+

@@ -1,4 +1,4 @@
-GAMS 24.2.3  r46072 Released May 22, 2014 WEX-WEI x86_64/MS Windows 10/24/18 16:54:35 Page 1
+GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 11/22/18 09:10:34 Page 1
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
@@ -444,47 +444,32 @@ C o m p i l a t i o n
  405   
  406  *%skip_Excel%
  408   
-GDXIN   C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_
-        Module\Modified_MCP\Data_input.gdx
---- LOAD  tech = 1:tech
---- LOAD  headers_tech = 2:headers_tech
---- LOAD  tech_dispatch = 3:tech_dispatch
---- LOAD  tech_res_con = 4:tech_res_con
---- LOAD  sto = 5:sto
---- LOAD  headers_sto = 6:headers_sto
---- LOAD  rsvr = 7:rsvr
---- LOAD  headers_reservoir = 8:headers_reservoir
---- LOAD  reservoir_data = 32:reservoir_data
---- LOAD  dsm = 9:dsm
---- LOAD  headers_dsm = 10:headers_dsm
---- LOAD  dsm_type = 11:dsm_type
---- LOAD  technology_data_upload = 30:technology_data_upload
---- LOAD  storage_data = 31:storage_data
---- LOAD  dsm_data_upload = 33:dsm_data_upload
+**** File: C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_
+                                              Module\Modified_MCP\Data_input.gdx
+**** Msg : No such file or directory
+ 409  $GDXin Data_input.gdx
+****                      $510
+ 410  $load tech headers_tech tech_dispatch tech_res_con
+****      $502
+ 411  $load sto headers_sto rsvr headers_reservoir reservoir_data dsm headers_ds
+****      $502
+      m dsm_type
+ 412  $load technology_data_upload storage_data dsm_data_upload
+****      $502
  413  *$load l headers_topology topology_data
  414  *$ontext
  415  *$load l headers_topology topology_data
---- LOAD  ev = 14:ev
---- LOAD  headers_ev = 15:headers_ev
---- LOAD  ev_data = 35:ev_data
---- LOAD  headers_prosumage_generation = 16:headers_prosumage_generation
---- LOAD  headers_prosumage_storage = 17:headers_prosumage_storage
---- LOAD  prosumage_data_generation = 36:prosumage_data_generation
---- LOAD  prosumage_data_storage = 37:prosumage_data_storage
---- LOAD  reserves = 18:reserves
---- LOAD  reserves_up_down = 20:reserves_up_down
---- LOAD  reserves_spin_nonspin = 21:reserves_spin_nonspin
---- LOAD  reserves_prim_nonprim = 22:reserves_prim_nonprim
---- LOAD  headers_reserves = 19:headers_reserves
---- LOAD  reserves_data_upload = 38:reserves_data_upload
---- LOAD  bu = 23:bu
---- LOAD  ch = 24:ch
---- LOAD  heat_storage = 25:heat_storage
---- LOAD  heat_hp = 26:heat_hp
---- LOAD  heat_elec = 27:heat_elec
---- LOAD  heat_fossil = 28:heat_fossil
---- LOAD  headers_heat = 29:headers_heat
---- LOAD  heat_data_upload = 39:heat_data_upload
+ 418  $load ev headers_ev ev_data
+****      $502
+ 419  $load headers_prosumage_generation headers_prosumage_storage prosumage_dat
+****      $502
+      a_generation prosumage_data_storage
+ 420  $load reserves reserves_up_down reserves_spin_nonspin reserves_prim_nonpri
+****      $502
+      m headers_reserves reserves_data_upload
+ 421  $load bu ch heat_storage heat_hp heat_elec heat_fossil headers_heat heat_d
+****      $502
+      ata_upload
  422  ;
  423   
       parameter inc ;
@@ -497,13 +482,15 @@ GDXIN   C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_
  432   
  458   
  459   
- 460  *%skip_Excel%
-GDXIN   C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_
-        Module\Modified_MCP\time_series.gdx
---- LOAD  h = 1:h
---- LOAD  headers_time = 2:headers_time
---- LOAD  year = 3:year
---- LOAD  time_data_upload = 4:time_data_upload
+ 460  %skip_Excel%
+****  $409
+**** File: C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_
+                                             Module\Modified_MCP\time_series.gdx
+**** Msg : File not recognized as a GDX file
+ 462  $GDXin time_series.gdx
+****                       $510
+ 463  $load h headers_time year time_data_upload
+****      $502
  464  *$load headers_time_ev ev_time_data_upload
  465  *$load reserves_time_data_activation
  466  *$load reserves_time_data_provision
@@ -531,14 +518,22 @@ GDXIN   C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_
  487   
  488  ***** Derived sets *****
  489  dis(tech)$sum( (tech_res_con,headers_tech), technology_data_upload(tech,te
+****         $352                $352         $352                     $141 $352
       ch_res_con,'dis',headers_tech)) = yes;
+               $352  $116,353     $352
  490  nondis(tech)$sum( (tech_res_con,headers_tech), technology_data_upload(tech
+****            $352                $352         $352                          $
       ,tech_res_con,'nondis',headers_tech)) = yes;
+      352         $352     $116,353     $352
  491   
  492  con(tech)$sum( (tech_dispatch,headers_tech), technology_data_upload(tech,'
+****         $352                 $352         $352                          $35
       con',tech_dispatch,headers_tech)) = yes;
+      2  $116,353      $352         $352
  493  res(tech)$sum( (tech_dispatch,headers_tech), technology_data_upload(tech,'
+****         $352                 $352         $352                          $35
       res',tech_dispatch,headers_tech)) = yes;
+      2  $116,353      $352         $352
  494   
       reserves_up(reserves)$sum( (reserves_spin_nonspin,reserves_prim_nonprim,he
       aders_reserves), reserves_data_upload(reserves,'up',reserves_spin_nonspin,
@@ -591,40 +586,69 @@ GDXIN   C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_
  520   
  521  *--- Generation technologies ---*
  522  technology_data(tech,headers_tech) = sum((tech_res_con,tech_dispatch), tec
+****                     $352         $352                 $352          $352   
       hnology_data_upload(tech,tech_res_con,tech_dispatch,headers_tech)) ;
+                             $352         $352          $352         $352
  523  eta(tech) = technology_data(tech,'eta_con') ;
+****         $352                    $352      $116,353
  524  carbon_content(tech) = technology_data(tech,'carbon_content') ;
+****                    $352                    $352             $116,353
  525  c_up(dis) =technology_data(dis,'load change costs up') ;
+****                                                      $116,353
  526  c_do(dis) = technology_data(dis,'load change costs down') ;
+****                                                         $116,353
  527  c_fix(tech) = technology_data(tech,'fixed_costs') ;
+****           $352                    $352          $116,353
  528  c_vom(tech) = technology_data(tech,'variable_om') ;
+****           $352                    $352          $116,353
  529  CO2price(tech) = technology_data(tech,'CO2_price') ;
+****              $352                    $352        $116,353
  530   
  531  c_inv_overnight(tech) = technology_data(tech,'oc') ;
+****                     $352                    $352 $116,353
  532  lifetime(tech) = technology_data(tech,'lifetime') ;
+****              $352                    $352       $116,353
  533  recovery(tech) = technology_data(tech,'recovery_period') ;
+****              $352                    $352              $116,353
  534  interest_rate(tech) = technology_data(tech,'interest_rate') ;
+****                   $352                    $352            $116,353
  535  m_p(tech) = technology_data(tech,'max_installable') ;
+****         $352                    $352              $116,353
  536  m_e(tech) = technology_data(tech,'max_energy') ;
+****         $352                    $352         $116,353
  537  grad_per_min(dis) = technology_data(dis,'load change flexibility') ;
+****                                                                  $116,353
  538  fuelprice(tech) = technology_data(tech,'fuel costs') ;
+****               $352                    $352         $116,353
  539   
  540  c_cu(res) = technology_data(res,'curtailment_costs') ;
+****                                                    $116,353
  541   
  542   
  543  *--- Storage technologies ---*
  544  c_m_sto(sto) = storage_data(sto,'mc');
+****            $352            $141$352 $116,353
  545  eta_sto(sto) = storage_data(sto,'efficiency');
+****            $352                $352         $116,353
  546  c_fix_sto(sto) = storage_data(sto,'fixed_costs');
+****              $352                $352          $353
  547  phi_sto_ini(sto) = storage_data(sto,'level_start');
+****                $352                $352          $116,353
  548  etop_max(sto) = storage_data(sto,'etop_max') ;
+****             $352                $352       $116,353
  549   
  550  c_inv_overnight_sto_e(sto) = storage_data(sto,'oc_energy');
+****                          $352                $352        $116,353
  551  c_inv_overnight_sto_p(sto) = storage_data(sto,'oc_capacity');
+****                          $352                $352          $116,353
  552  lifetime(sto) = storage_data(sto,'lifetime');
+****             $352                $352       $353
  553  interest_rate(sto) = storage_data(sto,'interest_rate');
+****                  $352                $352            $353
  554  m_sto_e(sto) = storage_data(sto,'max_energy');
+****            $352                $352         $353
  555  m_sto_p(sto) = storage_data(sto,'max_power');
+****            $352                $352        $116,353
  556   
       *--- Reservoir technologies ---*
       c_m_rsvr(rsvr) = reservoir_data(rsvr,'mc');
@@ -672,8 +696,11 @@ GDXIN   C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_
  598   
  599  *--- Temporal data ---*
  600  d_y(year,h) = time_data_upload(h,year,'demand')  ;
+****         $352,352              $141,352,352    $116,353
  601  phi_res_y(year,res,h) = sum(headers_time$(sameas(res,headers_time)), time_
+****               $352  $352                $352                     $352      
       data_upload(h,year,headers_time));
+                  $352 $352         $352
  602   
  603  *rsvr_in_y(year,rsvr,h) = sum(headers_time$(sameas(rsvr,headers_time)), ti
       me_data_upload(h,year,headers_time));
@@ -709,9 +736,13 @@ GDXIN   C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_
  633   
  634  *--- Prosumage ---*
  635  m_res_pro(res) = prosumage_data_generation(res,'max_power') ;
+****                                           $141            $353
  636  m_sto_pro_e(sto) = prosumage_data_storage(sto,'max_energy') ;
+****                $352                      $141$352         $353
  637  m_sto_pro_p(sto) = prosumage_data_storage(sto,'max_power') ;
+****                $352                          $352        $353
  638  phi_sto_pro_ini(sto) = prosumage_data_storage(sto,'level_start') ;
+****                    $352                          $352          $353
  639   
       *--- Reserves ---*
       reserves_data(reserves,headers_reserves) = sum((reserves_up_down,reserves_
@@ -774,23 +805,34 @@ GDXIN   C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_
       ******
  688   
  689  c_m(tech) = fuelprice(tech)/eta(tech) + carbon_content(tech)/eta(tech)*CO2
+****         $352              $352      $352                   $352      $352  
       price(tech) + c_vom(tech)   ;
+               $352          $352
  690   
  691  c_i(tech) = c_inv_overnight(tech)*( interest_rate(tech) * (1+interest_rate
+****         $352                    $352                  $352                 
       (tech))**(lifetime(tech)) )
+          $352              $352
  692                    / ( (1+interest_rate(tech))**(lifetime(tech))-1 )       
+****                                            $352              $352
       ;
  693   
  694  c_i_res(res) = c_i(res) ;
  695  c_fix_res(res) = c_fix(res) ;
  696   
  697  c_i_sto_e(sto) = c_inv_overnight_sto_e(sto)*( interest_rate(sto) * (1+inte
+****              $352                         $352                 $352        
       rest_rate(sto))**(lifetime(sto)) )
+                  $352             $352
  698                   / ( (1+interest_rate(sto))**(lifetime(sto))-1 )       ;
+****                                          $352             $352
  699   
  700  c_i_sto_p(sto) = c_inv_overnight_sto_p(sto)*( interest_rate(sto) * (1+inte
+****              $352                         $352                 $352        
       rest_rate(sto))**(lifetime(sto)) )
+                  $352             $352
  701                   / ( (1+interest_rate(sto))**(lifetime(sto))-1 )       ;
+****                                          $352             $352
       c_i_rsvr_e(rsvr) = c_inv_overnight_rsvr_e(rsvr)*( inv_interest_rsvr(rsvr) 
       * (1+inv_interest_rsvr(rsvr))**(inv_lifetime_rsvr(rsvr)) )
                        / ( (1+inv_interest_rsvr(rsvr))**(inv_lifetime_rsvr(rsvr)
@@ -848,21 +890,28 @@ GDXIN   C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_
       ******
  733   
  734  c_i(tech) = c_i(tech)*card(h)/8760 ;
+****         $352        $352    $141
  735  c_i_res(tech) = c_i_res(tech)*card(h)/8760 ;
+****             $352            $352    $141
  736  c_i_sto_p(sto) = c_i_sto_p(sto)*card(h)/8760 ;
+****              $352             $352    $141
  737  c_i_sto_e(sto) = c_i_sto_e(sto)*card(h)/8760 ;
+****              $352             $352    $141
  738  *c_i_rsvr_e(rsvr) = c_i_rsvr_e(rsvr)*card(h)/8760 ;
  739  *c_i_rsvr_p(rsvr) = c_i_rsvr_p(rsvr)*card(h)/8760 ;
  740  *c_i_dsm_cu(dsm_curt) = c_i_dsm_cu(dsm_curt)*card(h)/8760 ;
  741  *c_i_dsm_shift(dsm_shift) = c_i_dsm_shift(dsm_shift)*card(h)/8760 ;
  742   
  743  c_fix(tech) = c_fix(tech)*card(h)/8760 ;
+****           $352          $352    $141
  744  c_fix_sto(sto) = c_fix_sto(sto)*card(h)/8760 ;
+****              $352             $352    $141
  745  *c_fix_dsm_cu(dsm_curt) = c_fix_dsm_cu(dsm_curt)*card(h)/8760 ;
  746  *c_fix_dsm_shift(dsm_shift) = c_fix_dsm_shift(dsm_shift)*card(h)/8760 ;
  747  *c_fix_rsvr(rsvr) = c_fix_rsvr(rsvr)*card(h)/8760 ;
  748   
  749  m_e('bio') = m_e('bio')*card(h)/8760 ;
+****                               $141
  750   
  751  *c_i_ntc(l) = c_i_ntc(l) * card(h)/8760 ;
  752   
@@ -874,54 +923,52 @@ GDXIN   C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_
  757   
  758   
  759   
- 760  ***************  Check for parameter sanity ******************************
+ 760  **************************************************************************
       ******
  761   
- 762  *Parameter
- 763  *check_heat
- 764  *check_heat_agg ;
- 765  *check_heat(bu) = sum( ch , phi_heat_type(bu,ch)) ;
- 766  *check_heat_agg = smax( (bu) , check_heat(bu) ) ;
- 767  *abort$(check_heat_agg > 1) "DATA: heating technologies for a building typ
-      e do not add up to 100 percent" ;
- 768   
- 769   
- 770   
- 771   
- 772   
- 773   
- 774   
- 775   
- 776   
-GAMS 24.2.3  r46072 Released May 22, 2014 WEX-WEI x86_64/MS Windows 10/24/18 16:54:35 Page 2
+ 762   
+ 763   
+ 764   
+ 765   
+ 766   
+ 767   
+GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 11/22/18 09:10:34 Page 2
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Error Messages
+
+
+116  Label is unknown
+141  Symbol declared but no values have been assigned. Check for missing
+        data definition, assignment, data loading or implicit assignment
+        via a solve statement.
+        A wild shot: You may have spurious commas in the explanatory
+        text of a declaration. Check symbol reference list.
+352  Set has not been initialized
+353  The domain for this index position is unknown and the element
+        cannot be checked at this point. Missing data statement.
+409  Unrecognizable item - skip to find a new statement
+       looking for a ';' or a key word to get started again
+502  GDXIN  file not open - ignore rest of line
+510  Unable to open gdx file for $GDXIN
+
+**** 222 ERROR(S)   0 WARNING(S)
+GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 11/22/18 09:10:34 Page 3
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Include File Summary
 
 
    SEQ   GLOBAL TYPE      PARENT   LOCAL  FILENAME
 
-     1        1 INPUT          0       0  C:\Users\cguenther\Documents\GitHub\pr
-                                          osumage\Code\Prosumage_Opt\Dieter_Modu
-                                          le\Modified_MCP\dataload.gms
+     1        1 INPUT          0       0  C:\Users\Lenovo\Documents\GitHub\prosu
+                                          mage\Code\Prosumage_Opt\Dieter_Module\
+                                          Modified_MCP\dataload.gms
      2      407 CALL           1     407  gdxxrw data_input.xlsx @temp.tmp o=Dat
                                           a_input maxdupeerrors=100
-     3      409 GDXIN          1     409  C:\Users\cguenther\Documents\GitHub\pr
-                                          osumage\Code\Prosumage_Opt\Dieter_Modu
-                                          le\Modified_MCP\Data_input.gdx
-     4      461 CALL           1     461  gdxxrw time_series.xlsx @temp2.tmp o=t
+     3      461 CALL           1     461  gdxxrw time_series.xlsx @temp2.tmp o=t
                                           ime_series
-     5      462 GDXIN          1     462  C:\Users\cguenther\Documents\GitHub\pr
-                                          osumage\Code\Prosumage_Opt\Dieter_Modu
-                                          le\Modified_MCP\time_series.gdx
 
 
-COMPILATION TIME     =       17.269 SECONDS      5 MB  24.2.3 r46072 WEX-WEI
-GAMS 24.2.3  r46072 Released May 22, 2014 WEX-WEI x86_64/MS Windows 10/24/18 16:54:35 Page 3
-G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
-E x e c u t i o n
-
-
-EXECUTION TIME       =        0.016 SECONDS      8 MB  24.2.3 r46072 WEX-WEI
+COMPILATION TIME     =       35.734 SECONDS      3 MB  24.7.4 r58773 WEX-WEI
 
 
 USER: Medium MUD - 10 User License                   S170316:1123AO-GEN
@@ -931,7 +978,9 @@ USER: Medium MUD - 10 User License                   S170316:1123AO-GEN
 
 **** FILE SUMMARY
 
-Input      C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Diet
-           er_Module\Modified_MCP\dataload.gms
-Output     C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Diet
-           er_Module\Modified_MCP\dataload.lst
+Input      C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_
+           Module\Modified_MCP\dataload.gms
+Output     C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_
+           Module\Modified_MCP\dataload.lst
+
+**** USER ERROR(S) ENCOUNTERED

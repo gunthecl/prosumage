@@ -49,6 +49,15 @@ $setglobal no_crossover ""
 $setglobal report_to_excel ""
 
 
+* ----------------- Select if to use MCP or LP format --------------------------
+
+* Set to "*" to select linear program, leave blank to select MCP
+$setglobal LP "*"
+
+* Do not change these two lines
+$if "%LP%" == "" $setglobal MCP "*"
+$if "%LP%" == "*" $setglobal MCP ""
+
 ********************************************************************************
 
 * Definition of strings for report parameters and sanity checks
@@ -66,7 +75,7 @@ $if "%ror_parameter%" == "*" $if "%ror_variable%" == "*" $abort Choose appropria
 
 sets
 %loop_over_renewable_share%$ontext
-loop_res_share   Solution loop for different shares of renewables       /50/
+loop_res_share   Solution loop for different shares of renewables       /10,50,80/
 $ontext
 $offtext
 
@@ -276,7 +285,11 @@ $offtext
 con5a_minRES     .marginal       .marginal_con5a
 con1a_bal        .marginal       .marginal_con1a
 
+
+%LP%$ontext
 Z                .level          .lev_Z
+$ontext
+$offtext
 G_L              .level          .lev_G_L
 G_UP             .level          .lev_G_UP
 G_DO             .level          .lev_G_DO
@@ -306,7 +319,17 @@ $offtext
 /
 ;
 
-solve DIETER using lp min Z scenario dict;
+
+
+%LP%$ontext
+solve  DIETER using lp min Z scenario dict;
+$ontext
+$offtext
+
+%MCP%$ontext
+solve   DIETER_MCP using mcp scenario dict;
+$ontext
+$offtext
 
 
 * Reporting

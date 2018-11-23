@@ -30,8 +30,6 @@ dsm                      DSM technologies
  dsm_curt(dsm)           DSM load curtailment technologies
 year                     Base year for temporal data
 h                        Hours
- h_ini(h)                       First hour  /h1/
- h_end(h)                       Last hour   /h8760/
 n                        Nodes
 l                        Lines
 ev                       EV types
@@ -362,8 +360,6 @@ dset=dsm                                 rng=DSM!B6                      rdim=1 
 dset=headers_dsm                         rng=DSM!D5                      rdim=0 cdim=1
 dset=dsm_type                            rng=DSM!C6                      rdim=1 cdim=0
 
-dset=l                                   rng=spatial!B3                  rdim=1 cdim=0
-dset=headers_topology                    rng=spatial!B2                  rdim=0 cdim=1
 
 dset=ev                                  rng=ev!B6                       rdim=1 cdim=0
 dset=headers_ev                          rng=ev!C5                       rdim=0 cdim=1
@@ -404,6 +400,11 @@ par=prosumage_data_storage       rng=prosumage!H5        rdim=1 cdim=1
 par=reserves_data_upload         rng=reserves!B5         rdim=4 cdim=1
 par=heat_data_upload             rng=heat!B5             rdim=6 cdim=1
 $offecho
+
+$ontext
+dset=l                                   rng=spatial!B3                  rdim=1 cdim=0
+dset=headers_topology                    rng=spatial!B2                  rdim=0 cdim=1
+$offtext
 
 *%skip_Excel%
 $call "gdxxrw data_input.xlsx @temp.tmp o=Data_input maxdupeerrors=100";
