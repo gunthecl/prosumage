@@ -52,7 +52,7 @@ $setglobal report_to_excel ""
 * ----------------- Select if to use MCP or LP format --------------------------
 
 * Set to "*" to select linear program, leave blank to select MCP
-$setglobal LP "*"
+$setglobal LP ""
 
 * Do not change these two lines
 $if "%LP%" == "" $setglobal MCP "*"
@@ -327,6 +327,9 @@ $ontext
 $offtext
 
 %MCP%$ontext
+$onecho > path.opt
+solvelink=2
+$offecho
 solve   DIETER_MCP using mcp scenario dict;
 $ontext
 $offtext
