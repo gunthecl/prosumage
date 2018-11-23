@@ -1,6 +1,6 @@
 se=0
 
-*dset=n                                   rng=spatial!M2                  rdim=0 cdim=1
+dset=n                                   rng=spatial!M2                  rdim=0 cdim=1
 
 dset=tech                                rng=Technologies!B6             rdim=1 cdim=0
 dset=headers_tech                        rng=Technologies!E5             rdim=0 cdim=1
@@ -16,9 +16,6 @@ dset=headers_reservoir                   rng=reservoir!C5                rdim=0 
 dset=dsm                                 rng=DSM!B6                      rdim=1 cdim=0
 dset=headers_dsm                         rng=DSM!D5                      rdim=0 cdim=1
 dset=dsm_type                            rng=DSM!C6                      rdim=1 cdim=0
-
-dset=l                                   rng=spatial!B3                  rdim=1 cdim=0
-dset=headers_topology                    rng=spatial!B2                  rdim=0 cdim=1
 
 dset=ev                                  rng=ev!B6                       rdim=1 cdim=0
 dset=headers_ev                          rng=ev!C5                       rdim=0 cdim=1
@@ -48,7 +45,7 @@ par=technology_data_upload       rng=Technologies!B5     rdim=3 cdim=1
 par=storage_data                 rng=storage!B5          rdim=1 cdim=1
 par=reservoir_data               rng=reservoir!B5        rdim=1 cdim=1
 par=dsm_data_upload              rng=DSM!B5              rdim=2 cdim=1
-par=topology_data                rng=spatial!B2          rdim=0 cdim=1
+
 
 *
 par=inc                          rng=spatial!L2          rdim=1 cdim=1

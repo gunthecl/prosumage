@@ -75,7 +75,7 @@ $if "%ror_parameter%" == "*" $if "%ror_variable%" == "*" $abort Choose appropria
 
 sets
 %loop_over_renewable_share%$ontext
-loop_res_share   Solution loop for different shares of renewables       /10,50,80/
+loop_res_share   Solution loop for different shares of renewables       /50/
 $ontext
 $offtext
 

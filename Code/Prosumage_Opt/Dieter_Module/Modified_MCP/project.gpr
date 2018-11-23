@@ -3774,6 +3774,9 @@ PlaneRownr=-1
 [RP:DATALOAD]
 1=
 
+[RP:MODEL]
+1=
+
 [RP:DIETER]
 1=-gdx=test
 2=-gdx = test5_exo
@@ -3785,9 +3788,6 @@ PlaneRownr=-1
 8=-gdx = post_3
 9=-gdx = pre
 10=-gdx = test
-
-[RP:MODEL]
-1=
 
 [MRUFILES]
 1=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\DIETER.gms
@@ -3801,9 +3801,9 @@ FILE1=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Modul
 FILE2=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
 FILE3=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.lst
 FILE4=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\results.gdx
-FILE5=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\results.gdx
+FILE5=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\DIETER.lst
 MAXIM=0
-TOP=15
+TOP=31
 LEFT=0
 HEIGHT=872
 WIDTH=1291

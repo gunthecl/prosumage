@@ -1,4 +1,4 @@
-GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 11/23/18 09:27:59 Page 1
+GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 11/23/18 09:49:09 Page 1
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
@@ -340,8 +340,8 @@ C o m p i l a t i o n
  263   
  264   
  265  con4k_PHS_EtoP(sto)..
- 266          N_STO_E(sto) =L= etop_max(sto) * N_STO_P(sto)
-****                                  $140
+ 266           etop_max(sto) * N_STO_P(sto) - N_STO_E(sto) =G= 0
+****                  $140
  267  ;
  268   
  269  * ------------------------------------------------------------------------
@@ -510,49 +510,50 @@ C o m p i l a t i o n
  398   
  399  KKTG_DO(dis,h)..
  400   
- 401       c_do(dis)
- 402       + lambda_convgen(dis,h)$(ord(h) > 1)
- 403       =G= 0
- 404   
- 405  ;
- 406   
- 407  KKTG_RES(nondis,h)..
- 408   
- 409       - lambda_enerbal(h) + lambda_resgen(nondis,h)
- 410       + mu_minRES*(phi_min_res*phi_min_res_exog - 1)
- 411       =G= 0
- 412  ;
- 413   
- 414  KKTCU(nondis,h)..
- 415   
- 416       c_cu(nondis) + lambda_resgen(nondis,h) =G= 0
- 417   
- 418  ;
- 419   
- 420  KKTSTO_IN(sto,h)..
- 421   
- 422      c_m_sto(sto)  + lambda_enerbal(h) -  lambda_stolev(sto,h)*(1+eta_sto(s
+ 401       + lambda_convgen(dis,h)$(ord(h) > 1)
+ 402   
+ 403       + c_do(dis)
+ 404       =G= 0
+ 405   
+ 406  ;
+ 407   
+ 408  KKTG_RES(nondis,h)..
+ 409   
+ 410       - lambda_enerbal(h) + lambda_resgen(nondis,h)
+ 411       + mu_minRES*(phi_min_res*phi_min_res_exog - 1)
+ 412       =G= 0
+ 413  ;
+ 414   
+ 415  KKTCU(nondis,h)..
+ 416   
+ 417       c_cu(nondis) + lambda_resgen(nondis,h) =G= 0
+ 418   
+ 419  ;
+ 420   
+ 421  KKTSTO_IN(sto,h)..
+ 422   
+ 423      c_m_sto(sto)  + lambda_enerbal(h) -  lambda_stolev(sto,h)*(1+eta_sto(s
       to))/2
- 423      + mu_stoin_cap(sto,h) =G= 0
- 424  ;
- 425   
- 426  KKTSTO_OUT(sto,h)..
- 427   
- 428       c_m_sto(sto)  -  lambda_enerbal(h) +  lambda_stolev(sto,h)/(1+eta_sto
+ 424      + mu_stoin_cap(sto,h) =G= 0
+ 425  ;
+ 426   
+ 427  KKTSTO_OUT(sto,h)..
+ 428   
+ 429       c_m_sto(sto)  -  lambda_enerbal(h) +  lambda_stolev(sto,h)/(1+eta_sto
       (sto))*2
- 429       +  mu_stout_cap(sto,h)
- 430        =G= 0
- 431  ;
- 432   
- 433  KKTSTO_L(sto,h)..
- 434   
- 435    + lambda_stolev(sto,h)
- 436    +  mu_stolev_cap(sto,h)
- 437    -  lambda_stolev(sto,h+1)$(ord(h) > 1 )
- 438        =G= 0
- 439   
- 440  ;
- 441   
+ 430       +  mu_stout_cap(sto,h)
+ 431        =G= 0
+ 432  ;
+ 433   
+ 434  KKTSTO_L(sto,h)..
+ 435   
+ 436    + lambda_stolev(sto,h)
+ 437    +  mu_stolev_cap(sto,h)
+ 438    -  lambda_stolev(sto,h+1)$(ord(h) > 1 )
+ 439        =G= 0
+ 440   
+ 441  ;
+ 442   
       KKTN_TECH_NONDIS(nondis)..
        
           c_i(nondis) +  c_fix(nondis)
@@ -568,132 +569,132 @@ C o m p i l a t i o n
            =G= 0
        
       ;
- 457   
- 458  KKTN_TECH(tech)..
- 459   
- 460            +  c_i(tech)
- 461            +  c_fix(tech)
- 462            +  mu_tech_max_i(tech)
- 463   
- 464            - sum( h,  lambda_convgen(tech,h))$dis(tech)
- 465            - sum( h,  lambda_resgen(tech,h)*phi_res(tech,h))$nondis(tech)
- 466   
+ 458   
+ 459  KKTN_TECH(tech)..
+ 460   
+ 461            +  c_i(tech)
+ 462            +  c_fix(tech)
+ 463            +  mu_tech_max_i(tech)
+ 464   
+ 465            - sum( h,  lambda_convgen(tech,h))$dis(tech)
+ 466            - sum( h,  lambda_resgen(tech,h)*phi_res(tech,h))$nondis(tech)
  467   
- 468       =G= 0
- 469   
- 470  ;
- 471   
+ 468   
+ 469       =G= 0
+ 470   
+ 471  ;
  472   
  473   
- 474  KKTN_STO_E(sto)..
- 475   
- 476        + c_fix_sto(sto)/2 +  c_i_sto_e(sto)
- 477        - sum( h,   mu_stolev_cap(sto,h)) +  mu_stoe_max_i(sto)
- 478        -  phi_sto_ini(sto)*lambda_stolev(sto,'h1')
- 479        =G= 0
- 480  ;
- 481   
- 482  KKTN_STO_P(sto)..
- 483   
+ 474   
+ 475  KKTN_STO_E(sto)..
+ 476   
+ 477        + c_fix_sto(sto)/2 +  c_i_sto_e(sto)
+ 478        - sum( h,   mu_stolev_cap(sto,h)) +  mu_stoe_max_i(sto)
+ 479        -  phi_sto_ini(sto)*lambda_stolev(sto,'h1')
+ 480        =G= 0
+ 481  ;
+ 482   
+ 483  KKTN_STO_P(sto)..
  484   
- 485       c_fix_sto(sto)/2 + c_i_sto_p(sto)
- 486       - sum( h,   + mu_stoin_cap(sto,h) + mu_stout_cap(sto,h))
- 487       + mu_stop_max_i(sto)
- 488       =G= 0
- 489   
- 490  ;
- 491   
+ 485   
+ 486       c_fix_sto(sto)/2 + c_i_sto_p(sto)
+ 487       - sum( h,   + mu_stoin_cap(sto,h) + mu_stout_cap(sto,h))
+ 488       + mu_stop_max_i(sto)
+ 489       =G= 0
+ 490   
+ 491  ;
  492   
- 493  **************************************************************************
+ 493   
+ 494  **************************************************************************
       ******
- 494  ***** MODEL *****
- 495  **************************************************************************
+ 495  ***** MODEL *****
+ 496  **************************************************************************
       ******
- 496   
- 497  model DIETER /
- 498  obj
- 499   
- 500  con1a_bal
- 501   
- 502  *con2a_loadlevel
- 503  *con2b_loadlevelstart
- 504  con2_loadlevel
- 505   
- 506  con3a_maxprod_dispatchable
- 507   
- 508  con3e_maxprod_res
- 509   
- 510  *con4a_stolev_start
- 511  *con4b_stolev
- 512  con4_stolev
- 513  con4c_stolev_max
- 514  con4d_maxin_sto
- 515  con4e_maxout_sto
- 516  *con4k_PHS_EtoP
- 517  con4j_ending
- 518   
- 519  con5a_minRES
- 520  con5b_max_energy
- 521   
- 522  con8a_max_I_power
- 523  con8b_max_I_sto_e
- 524  con8c_max_I_sto_p
- 525   
+ 497   
+ 498  model DIETER /
+ 499  obj
+ 500   
+ 501  con1a_bal
+ 502   
+ 503  *con2a_loadlevel
+ 504  *con2b_loadlevelstart
+ 505  con2_loadlevel
+ 506   
+ 507  con3a_maxprod_dispatchable
+ 508   
+ 509  con3e_maxprod_res
+ 510   
+ 511  *con4a_stolev_start
+ 512  *con4b_stolev
+ 513  con4_stolev
+ 514  con4c_stolev_max
+ 515  con4d_maxin_sto
+ 516  con4e_maxout_sto
+ 517  *con4k_PHS_EtoP
+ 518  con4j_ending
+ 519   
+ 520  con5a_minRES
+ 521  con5b_max_energy
+ 522   
+ 523  con8a_max_I_power
+ 524  con8b_max_I_sto_e
+ 525  con8c_max_I_sto_p
  526   
  527   
- 528  %prosumage$ontext
+ 528   
+ 529  %prosumage$ontext
 ****  $2       $140,2 $140
- 529  con8f_max_pro_res
- 530  con8g_max_pro_sto_e
- 531  con8h_max_sto_pro_p
- 532  con11a_pro_distrib
- 533  con11b_pro_balance
- 534  con11c_pro_selfcon
- 535  con11d_pro_stolev_PRO2PRO
- 536  con11h_1_pro_stolev_start_PRO2PRO
- 537  con11j_pro_stolev_max
- 538  con11k_pro_maxin_sto
- 539  con11l_pro_maxout_sto
- 540  con11o_pro_ending
- 543   
- 544  /;
- 545   
- 546  model DIETER_MCP /
- 547   
+ 530  con8f_max_pro_res
+ 531  con8g_max_pro_sto_e
+ 532  con8h_max_sto_pro_p
+ 533  con11a_pro_distrib
+ 534  con11b_pro_balance
+ 535  con11c_pro_selfcon
+ 536  con11d_pro_stolev_PRO2PRO
+ 537  con11h_1_pro_stolev_start_PRO2PRO
+ 538  con11j_pro_stolev_max
+ 539  con11k_pro_maxin_sto
+ 540  con11l_pro_maxout_sto
+ 541  con11o_pro_ending
+ 544   
+ 545  /;
+ 546   
+ 547  model DIETER_MCP /
  548   
- 549  con1a_bal.lambda_enerbal
- 550  con2_loadlevel.lambda_convgen
- 551  *con2b_loadlevelstart
- 552  con3a_maxprod_dispatchable.mu_conv_cap
- 553  con3e_maxprod_res.lambda_resgen
- 554  *con4a_stolev_start
- 555  con4_stolev.lambda_stolev
- 556  con4c_stolev_max.mu_stolev_cap
- 557  con4d_maxin_sto.mu_stoin_cap
- 558  con4e_maxout_sto.mu_stout_cap
- 559  *con4j_ending
- 560  con5a_minRES.mu_minRES
- 561  con5b_max_energy.mu_bio_cap
- 562  con8a_max_I_power.mu_tech_max_i
- 563  con8b_max_I_sto_e.mu_stoe_max_i
- 564  con8c_max_I_sto_p.mu_stop_max_i
- 565   
- 566  KKTG_L.G_L
- 567  KKTG_UP.G_UP
- 568  KKTG_DO.G_DO
- 569  KKTG_RES.G_RES
- 570  KKTCU.CU
- 571  KKTSTO_IN.STO_IN
- 572  KKTSTO_OUT.STO_OUT
- 573  KKTSTO_L.STO_L
- 574  KKTN_TECH.N_TECH
- 575  KKTN_STO_E.N_STO_E
- 576  KKTN_STO_P.N_STO_P
- 577   
- 578  /
- 579  ;
- 580   
-GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 11/23/18 09:27:59 Page 2
+ 549   
+ 550  con1a_bal.lambda_enerbal
+ 551  con2_loadlevel.lambda_convgen
+ 552   
+ 553  con3a_maxprod_dispatchable.mu_conv_cap
+ 554  con3e_maxprod_res.lambda_resgen
+ 555   
+ 556  con4_stolev.lambda_stolev
+ 557  con4c_stolev_max.mu_stolev_cap
+ 558  con4d_maxin_sto.mu_stoin_cap
+ 559  con4e_maxout_sto.mu_stout_cap
+ 560  *con4j_ending
+ 561  con5a_minRES.mu_minRES
+ 562  con5b_max_energy.mu_bio_cap
+ 563  con8a_max_I_power.mu_tech_max_i
+ 564  con8b_max_I_sto_e.mu_stoe_max_i
+ 565  con8c_max_I_sto_p.mu_stop_max_i
+ 566   
+ 567  KKTG_L.G_L
+ 568  KKTG_UP.G_UP
+ 569  KKTG_DO.G_DO
+ 570  KKTG_RES.G_RES
+ 571  KKTCU.CU
+ 572  KKTSTO_IN.STO_IN
+ 573  KKTSTO_OUT.STO_OUT
+ 574  KKTSTO_L.STO_L
+ 575  KKTN_TECH.N_TECH
+ 576  KKTN_STO_E.N_STO_E
+ 577  KKTN_STO_P.N_STO_P
+ 578   
+ 579  /
+ 580  ;
+ 581   
+GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 11/23/18 09:49:09 Page 2
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Error Messages
 
@@ -714,7 +715,7 @@ Error Messages
 **** 76 ERROR(S)   0 WARNING(S)
 
 
-COMPILATION TIME     =        0.171 SECONDS      3 MB  24.7.4 r58773 WEX-WEI
+COMPILATION TIME     =        0.265 SECONDS      3 MB  24.7.4 r58773 WEX-WEI
 
 
 USER: Medium MUD - 10 User License                   S170316:1123AO-GEN

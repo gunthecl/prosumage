@@ -288,9 +288,8 @@ $offtext
          )  =G= 0
 ;
 
-*con5b_max_energy(tech)$dis_bio(tech)..
-con5b_max_energy(dis)..
-         m_e(dis) -  sum( h , G_L(dis,h) ) =G= 0
+con5b_max_energy(tech)$dis_bio(tech)..
+         m_e(tech) -  sum( h , G_L(tech,h) ) =G= 0
 ;
 
 
@@ -398,8 +397,8 @@ KKTG_UP(dis,h)..
 
 KKTG_DO(dis,h)..
 
-     c_do(dis)
      + lambda_convgen(dis,h)$(ord(h) > 1)
+     + c_do(dis)
      =G= 0
 
 ;
@@ -489,6 +488,12 @@ KKTN_STO_P(sto)..
 
 ;
 
+
+********************************************************************************
+***** Fix unmatched variables of first period *****
+********************************************************************************
+
+G_DO.fx(dis,'h1') = 0;
 
 ********************************************************************************
 ***** MODEL *****

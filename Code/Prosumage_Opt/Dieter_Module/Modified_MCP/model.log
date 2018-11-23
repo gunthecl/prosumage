@@ -1,5 +1,5 @@
 
---- Job model.gms Start 11/23/18 09:27:59 24.7.4 r58773 WEX-WEI x86 64bit/MS Windows
+--- Job model.gms Start 11/23/18 09:49:09 24.7.4 r58773 WEX-WEI x86 64bit/MS Windows
 GAMS 24.7.4   Copyright (C) 1987-2016 GAMS Development. All rights reserved
 Licensee: Medium MUD - 10 User License                   S170316:1123AO-GEN
           Deutsches Institut fuer Wirtschaftsforschung DIW, AbteilungDC3975
@@ -206,7 +206,7 @@ Licensee: Medium MUD - 10 User License                   S170316:1123AO-GEN
     Unknown symbol
 *** Error 140 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
     Unknown symbol
---- model.gms(528) 3 Mb 76 Errors
+--- model.gms(529) 3 Mb 76 Errors
 *** Error   2 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
     Identifier expected
 *** Error 140 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
@@ -215,7 +215,7 @@ Licensee: Medium MUD - 10 User License                   S170316:1123AO-GEN
     Identifier expected
 *** Error 140 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\model.gms
     Unknown symbol
---- model.gms(580) 3 Mb 76 Errors
+--- model.gms(581) 3 Mb 76 Errors
 *** Status: Compilation error(s)
---- Job model.gms Stop 11/23/18 09:28:00 elapsed 0:00:00.188
+--- Job model.gms Stop 11/23/18 09:49:09 elapsed 0:00:00.274
 Exit code = 2

@@ -343,7 +343,7 @@ temp_source_upload
 $onecho >temp.tmp
 se=0
 
-*dset=n                                   rng=spatial!M2                  rdim=0 cdim=1
+dset=n                                   rng=spatial!M2                  rdim=0 cdim=1
 
 dset=tech                                rng=Technologies!B6             rdim=1 cdim=0
 dset=headers_tech                        rng=Technologies!E5             rdim=0 cdim=1
@@ -359,9 +359,6 @@ dset=headers_reservoir                   rng=reservoir!C5                rdim=0 
 dset=dsm                                 rng=DSM!B6                      rdim=1 cdim=0
 dset=headers_dsm                         rng=DSM!D5                      rdim=0 cdim=1
 dset=dsm_type                            rng=DSM!C6                      rdim=1 cdim=0
-
-dset=l                                   rng=spatial!B3                  rdim=1 cdim=0
-dset=headers_topology                    rng=spatial!B2                  rdim=0 cdim=1
 
 dset=ev                                  rng=ev!B6                       rdim=1 cdim=0
 dset=headers_ev                          rng=ev!C5                       rdim=0 cdim=1
@@ -391,7 +388,7 @@ par=technology_data_upload       rng=Technologies!B5     rdim=3 cdim=1
 par=storage_data                 rng=storage!B5          rdim=1 cdim=1
 par=reservoir_data               rng=reservoir!B5        rdim=1 cdim=1
 par=dsm_data_upload              rng=DSM!B5              rdim=2 cdim=1
-par=topology_data                rng=spatial!B2          rdim=0 cdim=1
+
 
 %GER_only%
 par=inc                          rng=spatial!L2          rdim=1 cdim=1
@@ -410,11 +407,7 @@ $GDXin Data_input.gdx
 $load tech headers_tech tech_dispatch tech_res_con
 $load sto headers_sto rsvr headers_reservoir reservoir_data dsm headers_dsm dsm_type
 $load technology_data_upload storage_data dsm_data_upload
-*$load l headers_topology topology_data
-*$ontext
-*$load l headers_topology topology_data
-$ontext
-$offtext
+
 $load ev headers_ev ev_data
 $load headers_prosumage_generation headers_prosumage_storage prosumage_data_generation prosumage_data_storage
 $load reserves reserves_up_down reserves_spin_nonspin reserves_prim_nonprim headers_reserves reserves_data_upload
