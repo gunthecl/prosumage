@@ -1,4 +1,4 @@
-GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 11/23/18 09:14:34 Page 1
+GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 11/23/18 09:28:04 Page 1
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
@@ -1606,17 +1606,17 @@ INCLUDE    C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_
 1428   
 1429  con1a_bal
 1430   
-1431  con2a_loadlevel
-1432  con2b_loadlevelstart
-1433  *con2_loadlevel
+1431  *con2a_loadlevel
+1432  *con2b_loadlevelstart
+1433  con2_loadlevel
 1434   
 1435  con3a_maxprod_dispatchable
 1436   
 1437  con3e_maxprod_res
 1438   
-1439  con4a_stolev_start
-1440  con4b_stolev
-1441  *con4_stolev
+1439  *con4a_stolev_start
+1440  *con4b_stolev
+1441  con4_stolev
 1442  con4c_stolev_max
 1443  con4d_maxin_sto
 1444  con4e_maxout_sto
@@ -4190,7 +4190,7 @@ INCLUDE    C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_
       ---- *
 2777  * ------------------------------------------------------------------------
       ---- *
-GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 11/23/18 09:14:34 Page 2
+GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 11/23/18 09:28:04 Page 2
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Include File Summary
 
@@ -4227,26 +4227,26 @@ Include File Summary
                                            e\Modified_MCP\report.gms
 
 
-COMPILATION TIME     =       29.922 SECONDS      6 MB  24.7.4 r58773 WEX-WEI
-GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 11/23/18 09:14:34 Page 3
+COMPILATION TIME     =       27.906 SECONDS      6 MB  24.7.4 r58773 WEX-WEI
+GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 11/23/18 09:28:04 Page 3
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Model Statistics    SOLVE DIETER Using LP From line 1977
 
 
 MODEL STATISTICS
 
-BLOCKS OF EQUATIONS          17     SINGLE EQUATIONS      385,486
+BLOCKS OF EQUATIONS          15     SINGLE EQUATIONS      385,486
 BLOCKS OF VARIABLES          13     SINGLE VARIABLES      324,145  5 projected
 NON ZERO ELEMENTS     1,362,738     NON LINEAR N-Z         87,601
 DERIVATIVE POOL              20     CONSTANT POOL              17
 CODE LENGTH             122,646
 
 
-GENERATION TIME      =       91.890 SECONDS    208 MB  24.7.4 r58773 WEX-WEI
+GENERATION TIME      =       74.609 SECONDS    208 MB  24.7.4 r58773 WEX-WEI
 
 
-EXECUTION TIME       =       92.125 SECONDS    208 MB  24.7.4 r58773 WEX-WEI
-GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 11/23/18 09:14:34 Page 4
+EXECUTION TIME       =       74.875 SECONDS    208 MB  24.7.4 r58773 WEX-WEI
+GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 11/23/18 09:28:04 Page 4
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE DIETER Using LP From line 1977
 
@@ -4261,7 +4261,7 @@ Solution Report     SOLVE DIETER Using LP From line 1977
 **** MODEL STATUS      14 No Solution Returned     
 **** OBJECTIVE VALUE                0.0000
 
- RESOURCE USAGE, LIMIT        151.266  10000000.000
+ RESOURCE USAGE, LIMIT        146.984  10000000.000
  ITERATION COUNT, LIMIT         0    2000000000
 
 GUSS             24.7.4 r58773 Released Sep 19, 2016 WEI x86 64bit/MS Windows 
@@ -4282,10 +4282,10 @@ Reading parameter(s) from "C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosu
 >>  epgap 1e-3
 Finished reading from "C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage
                                       _Opt\Dieter_Module\Modified_MCP\cplex.opt"
-Space for names approximately 21.61 Mb
+Space for names approximately 21.53 Mb
 Use option 'names no' to turn use of names off
 LP status(1): optimal
-Cplex Time: 46.00sec (det. 17575.44 ticks)
+Cplex Time: 40.25sec (det. 17575.27 ticks)
 Optimal solution found.
 Objective : 33544542852.728615
 
@@ -4294,8 +4294,8 @@ Objective : 33544542852.728615
 ---   Solver Status    1 Normal Completion         
 ---   Model Status     1 Optimal                   
 ---   Objective Value  33544542852.7286
----   Resource Usage   46703
----   Total Time (ms)  46844
+---   Resource Usage   40875
+---   Total Time (ms)  41000
 
 IBM ILOG CPLEX   24.7.4 r58773 Released Sep 19, 2016 WEI x86 64bit/MS Windows 
 --- GAMS/Cplex licensed for continuous and discrete problems.
@@ -4308,10 +4308,10 @@ Reading parameter(s) from "C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosu
 >>  epgap 1e-3
 Finished reading from "C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage
                                       _Opt\Dieter_Module\Modified_MCP\cplex.opt"
-Space for names approximately 21.61 Mb
+Space for names approximately 21.53 Mb
 Use option 'names no' to turn use of names off
 LP status(1): optimal
-Cplex Time: 45.98sec (det. 17598.58 ticks)
+Cplex Time: 53.56sec (det. 17598.40 ticks)
 Optimal solution found.
 Objective : 33544542852.728615
 
@@ -4320,8 +4320,8 @@ Objective : 33544542852.728615
 ---   Solver Status    1 Normal Completion         
 ---   Model Status     1 Optimal                   
 ---   Objective Value  33544542852.7286
----   Resource Usage   47000
----   Total Time (ms)  47125
+---   Resource Usage   54156
+---   Total Time (ms)  54282
 
 IBM ILOG CPLEX   24.7.4 r58773 Released Sep 19, 2016 WEI x86 64bit/MS Windows 
 --- GAMS/Cplex licensed for continuous and discrete problems.
@@ -4334,10 +4334,10 @@ Reading parameter(s) from "C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosu
 >>  epgap 1e-3
 Finished reading from "C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage
                                       _Opt\Dieter_Module\Modified_MCP\cplex.opt"
-Space for names approximately 21.61 Mb
+Space for names approximately 21.53 Mb
 Use option 'names no' to turn use of names off
 LP status(1): optimal
-Cplex Time: 57.11sec (det. 31190.37 ticks)
+Cplex Time: 51.55sec (det. 31190.19 ticks)
 Optimal solution found.
 Objective : 40093174100.503754
 
@@ -4346,16 +4346,16 @@ Objective : 40093174100.503754
 ---   Solver Status    1 Normal Completion         
 ---   Model Status     1 Optimal                   
 ---   Objective Value  40093174100.5038
----   Resource Usage   57765
----   Total Time (ms)  57921
+---   Resource Usage   52156
+---   Total Time (ms)  52281
 
 No solution returned
-GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 11/23/18 09:14:34 Page 5
+GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 11/23/18 09:28:04 Page 5
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 E x e c u t i o n
 
 
-EXECUTION TIME       =        3.953 SECONDS    139 MB  24.7.4 r58773 WEX-WEI
+EXECUTION TIME       =        3.531 SECONDS    139 MB  24.7.4 r58773 WEX-WEI
 
 
 USER: Medium MUD - 10 User License                   S170316:1123AO-GEN

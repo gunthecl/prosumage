@@ -263,7 +263,7 @@ con4j_ending(sto,h)$(ord(h) = card(h))..
 
 
 con4k_PHS_EtoP(sto)..
-        N_STO_E(sto) =L= etop_max(sto) * N_STO_P(sto)
+         etop_max(sto) * N_STO_P(sto) - N_STO_E(sto) =G= 0
 ;
 
 * ---------------------------------------------------------------------------- *
@@ -499,17 +499,17 @@ obj
 
 con1a_bal
 
-con2a_loadlevel
-con2b_loadlevelstart
-*con2_loadlevel
+*con2a_loadlevel
+*con2b_loadlevelstart
+con2_loadlevel
 
 con3a_maxprod_dispatchable
 
 con3e_maxprod_res
 
-con4a_stolev_start
-con4b_stolev
-*con4_stolev
+*con4a_stolev_start
+*con4b_stolev
+con4_stolev
 con4c_stolev_max
 con4d_maxin_sto
 con4e_maxout_sto
@@ -548,10 +548,10 @@ model DIETER_MCP /
 
 con1a_bal.lambda_enerbal
 con2_loadlevel.lambda_convgen
-*con2b_loadlevelstart
+
 con3a_maxprod_dispatchable.mu_conv_cap
 con3e_maxprod_res.lambda_resgen
-*con4a_stolev_start
+
 con4_stolev.lambda_stolev
 con4c_stolev_max.mu_stolev_cap
 con4d_maxin_sto.mu_stoin_cap

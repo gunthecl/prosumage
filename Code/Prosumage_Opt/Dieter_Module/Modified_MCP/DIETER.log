@@ -1,5 +1,5 @@
 
---- Job DIETER.gms Start 11/23/18 09:14:34 24.7.4 r58773 WEX-WEI x86 64bit/MS Windows
+--- Job DIETER.gms Start 11/23/18 09:28:04 24.7.4 r58773 WEX-WEI x86 64bit/MS Windows
 GAMS 24.7.4   Copyright (C) 1987-2016 GAMS Development. All rights reserved
 Licensee: Medium MUD - 10 User License                   S170316:1123AO-GEN
           Deutsches Institut fuer Wirtschaftsforschung DIW, AbteilungDC3975
@@ -15,7 +15,7 @@ Input file : C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Diete
 Output file: C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\Data_input.gdx
 Value expected in cell: spatial!B3; found l1
 Total number of bad values for symbol topology_data = 1
-Total time = 1969 Ms
+Total time = 1688 Ms
 --- .dataload.gms(409) 3 Mb
 --- GDXin=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\Data_input.gdx
 --- .dataload.gms(461) 3 Mb
@@ -24,7 +24,7 @@ Total time = 1969 Ms
 GDXXRW           24.7.4 r58773 Released Sep 19, 2016 VS8 x86 32bit/MS Windows 
 Input file : C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\time_series.xlsx
 Output file: C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\time_series.gdx
-Total time = 27719 Ms
+Total time = 26016 Ms
 --- .dataload.gms(462) 3 Mb
 --- GDXin=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\time_series.gdx
 --- .dataload.gms(767) 5 Mb
@@ -37,20 +37,20 @@ Total time = 27719 Ms
 --- DIETER.gms(336) 5 Mb
 --- .report.gms(767) 5 Mb
 --- DIETER.gms(358) 6 Mb
---- Starting execution: elapsed 0:00:29.933
+--- Starting execution: elapsed 0:00:27.913
 --- DIETER.gms(1977) 103 Mb
 ---
 --- collecting and writing gdx file 
 ---
 --- Generating LP model DIETER
---- DIETER.gms(1073) 124 Mb  35 secs
---- DIETER.gms(1101) 144 Mb  22 secs
+--- DIETER.gms(1073) 126 Mb  21 secs
+--- DIETER.gms(1101) 144 Mb  20 secs
 --- DIETER.gms(1202) 205 Mb  29 secs
 --- DIETER.gms(1977) 210 Mb
 ---   385,486 rows  324,145 columns  1,362,738 non-zeroes
 ---   122,646 nl-code  87,601 nl-non-zeroes
 --- DIETER.gms(1977) 208 Mb
---- Executing CPLEX: elapsed 0:02:02.059
+--- Executing CPLEX: elapsed 0:01:42.774
 
 GUSS             24.7.4 r58773 Released Sep 19, 2016 WEI x86 64bit/MS Windows 
 Reading parameter(s) from scenario dictionary
@@ -70,20 +70,20 @@ Reading parameter(s) from "C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosu
 Finished reading from "C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\cplex.opt"
 Reading data...
 Starting Cplex...
-Space for names approximately 21.61 Mb
+Space for names approximately 21.53 Mb
 Use option 'names no' to turn use of names off
 Tried aggregator 1 time.
 LP Presolve eliminated 126551 rows and 38923 columns.
 Aggregator did 3 substitutions.
 Reduced LP has 258932 rows, 285219 columns, and 904326 nonzeros.
-Presolve time = 0.58 sec. (357.09 ticks)
+Presolve time = 0.56 sec. (357.07 ticks)
 Parallel mode: using up to 4 threads for barrier.
 
 ***NOTE: Found 16 dense columns.
 
 Number of nonzeros in lower triangle of A*A' = 780622
 Using Approximate Minimum Degree ordering
-Total time for automatic ordering = 0.27 sec. (102.75 ticks)
+Total time for automatic ordering = 0.25 sec. (102.60 ticks)
 Summary statistics for Cholesky factor:
   Threads                   = 4
   Rows in Factor            = 258948
@@ -160,7 +160,7 @@ Summary statistics for Cholesky factor:
   66  3.3544543e+010  3.3544543e+010 3.50e+001 8.48e-004 4.54e-002 1.94e+003
   67  3.3544543e+010  3.3544543e+010 5.32e+002 2.38e-004 1.73e-002 3.19e+003
   68  3.3544543e+010  3.3544543e+010 1.09e+003 1.77e-005 3.65e-003 1.51e+004
-Barrier time = 33.52 sec. (10984.54 ticks)
+Barrier time = 31.94 sec. (10984.39 ticks)
 Parallel mode: deterministic, using up to 4 threads for concurrent optimization.
 
 Dual crossover.
@@ -194,11 +194,11 @@ Using devex.
 
 Primal simplex solved model.
 
-Total crossover time = 11.81 sec. (6221.85 ticks)
+Total crossover time = 7.66 sec. (6221.85 ticks)
 
-Total time on 4 threads = 46.00 sec. (17574.34 ticks)
+Total time on 4 threads = 40.23 sec. (17574.17 ticks)
 LP status(1): optimal
-Cplex Time: 46.00sec (det. 17575.44 ticks)
+Cplex Time: 40.25sec (det. 17575.27 ticks)
 
 Optimal solution found.
 Objective : 33544542852.728615
@@ -208,8 +208,8 @@ Objective : 33544542852.728615
 ---   Solver Status    1 Normal Completion         
 ---   Model Status     1 Optimal                   
 ---   Objective Value  33544542852.7286
----   Resource Usage   46703
----   Total Time (ms)  46844
+---   Resource Usage   40875
+---   Total Time (ms)  41000
 
 IBM ILOG CPLEX   24.7.4 r58773 Released Sep 19, 2016 WEI x86 64bit/MS Windows 
 --- GAMS/Cplex licensed for continuous and discrete problems.
@@ -222,20 +222,20 @@ Reading parameter(s) from "C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosu
 Finished reading from "C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\cplex.opt"
 Reading data...
 Starting Cplex...
-Space for names approximately 21.61 Mb
+Space for names approximately 21.53 Mb
 Use option 'names no' to turn use of names off
 Tried aggregator 1 time.
 LP Presolve eliminated 126551 rows and 38923 columns.
 Aggregator did 3 substitutions.
 Reduced LP has 258932 rows, 285219 columns, and 904326 nonzeros.
-Presolve time = 0.70 sec. (357.09 ticks)
+Presolve time = 0.56 sec. (357.07 ticks)
 Parallel mode: using up to 4 threads for barrier.
 
 ***NOTE: Found 16 dense columns.
 
 Number of nonzeros in lower triangle of A*A' = 780622
 Using Approximate Minimum Degree ordering
-Total time for automatic ordering = 0.30 sec. (102.75 ticks)
+Total time for automatic ordering = 0.27 sec. (102.60 ticks)
 Summary statistics for Cholesky factor:
   Threads                   = 4
   Rows in Factor            = 258948
@@ -311,7 +311,7 @@ Summary statistics for Cholesky factor:
   65  3.3544543e+010  3.3544543e+010 4.50e+001 3.63e-004 3.57e-002 1.08e+003
   66  3.3544543e+010  3.3544543e+010 2.36e+002 2.02e-005 7.91e-003 4.90e+003
   67  3.3544543e+010  3.3544543e+010 1.90e+002 1.10e-006 1.11e-003 3.52e+004
-Barrier time = 36.95 sec. (11067.28 ticks)
+Barrier time = 45.53 sec. (11067.13 ticks)
 Parallel mode: deterministic, using up to 4 threads for concurrent optimization.
 
 Dual crossover.
@@ -341,11 +341,11 @@ Using devex.
 
 Primal simplex solved model.
 
-Total crossover time = 8.23 sec. (6162.24 ticks)
+Total crossover time = 7.38 sec. (6162.24 ticks)
 
-Total time on 4 threads = 45.98 sec. (17597.47 ticks)
+Total time on 4 threads = 53.56 sec. (17597.30 ticks)
 LP status(1): optimal
-Cplex Time: 45.98sec (det. 17598.58 ticks)
+Cplex Time: 53.56sec (det. 17598.40 ticks)
 
 Optimal solution found.
 Objective : 33544542852.728615
@@ -355,8 +355,8 @@ Objective : 33544542852.728615
 ---   Solver Status    1 Normal Completion         
 ---   Model Status     1 Optimal                   
 ---   Objective Value  33544542852.7286
----   Resource Usage   47000
----   Total Time (ms)  47125
+---   Resource Usage   54156
+---   Total Time (ms)  54282
 
 IBM ILOG CPLEX   24.7.4 r58773 Released Sep 19, 2016 WEI x86 64bit/MS Windows 
 --- GAMS/Cplex licensed for continuous and discrete problems.
@@ -369,20 +369,20 @@ Reading parameter(s) from "C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosu
 Finished reading from "C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\cplex.opt"
 Reading data...
 Starting Cplex...
-Space for names approximately 21.61 Mb
+Space for names approximately 21.53 Mb
 Use option 'names no' to turn use of names off
 Tried aggregator 1 time.
 LP Presolve eliminated 126551 rows and 38923 columns.
 Aggregator did 3 substitutions.
 Reduced LP has 258932 rows, 285219 columns, and 904326 nonzeros.
-Presolve time = 0.63 sec. (357.09 ticks)
+Presolve time = 0.56 sec. (357.07 ticks)
 Parallel mode: using up to 4 threads for barrier.
 
 ***NOTE: Found 16 dense columns.
 
 Number of nonzeros in lower triangle of A*A' = 780622
 Using Approximate Minimum Degree ordering
-Total time for automatic ordering = 0.28 sec. (102.75 ticks)
+Total time for automatic ordering = 0.25 sec. (102.60 ticks)
 Summary statistics for Cholesky factor:
   Threads                   = 4
   Rows in Factor            = 258948
@@ -470,7 +470,7 @@ Summary statistics for Cholesky factor:
   77  4.0093174e+010  4.0093175e+010 4.47e-001 3.72e-005 3.15e-001 3.02e+002
   78  4.0093174e+010  4.0093174e+010 5.27e-002 1.89e-006 6.33e-002 1.51e+003
   79  4.0093174e+010  4.0093174e+010 3.53e+000 1.11e-007 6.18e-003 1.69e+004
-Barrier time = 37.36 sec. (10865.94 ticks)
+Barrier time = 33.19 sec. (10865.79 ticks)
 Parallel mode: deterministic, using up to 4 threads for concurrent optimization.
 
 Dual crossover.
@@ -491,7 +491,7 @@ Dual crossover.
      5891 PMoves:  Infeasibility 1.47338142e-010  Objective 4.00931741e+010
      3973 PMoves:  Infeasibility 3.29237082e-010  Objective 4.00931741e+010
      2135 PMoves:  Infeasibility 1.25510269e-010  Objective 4.00931741e+010
-   Elapsed crossover time = 7.83 sec. (10638.79 ticks, 2135 PMoves)
+   Elapsed crossover time = 6.86 sec. (10638.79 ticks, 2135 PMoves)
       389 PMoves:  Infeasibility 3.58340912e-010  Objective 4.00931741e+010
         0 PMoves:  Infeasibility 3.60832919e-010  Objective 4.00931741e+010
   Primal:  Pushed 2731, exchanged 9100.
@@ -499,11 +499,11 @@ Using devex.
 
 Primal simplex solved model.
 
-Total crossover time = 19.02 sec. (19955.37 ticks)
+Total crossover time = 17.70 sec. (19955.37 ticks)
 
-Total time on 4 threads = 57.11 sec. (31189.26 ticks)
+Total time on 4 threads = 51.55 sec. (31189.09 ticks)
 LP status(1): optimal
-Cplex Time: 57.11sec (det. 31190.37 ticks)
+Cplex Time: 51.55sec (det. 31190.19 ticks)
 
 Optimal solution found.
 Objective : 40093174100.503754
@@ -513,12 +513,12 @@ Objective : 40093174100.503754
 ---   Solver Status    1 Normal Completion         
 ---   Model Status     1 Optimal                   
 ---   Objective Value  40093174100.5038
----   Resource Usage   57765
----   Total Time (ms)  57921
+---   Resource Usage   52156
+---   Total Time (ms)  52281
 --- Restarting execution
 --- DIETER.gms(1977) 121 Mb
 --- Reading solution for model DIETER
---- Executing after solve: elapsed 0:04:35.150
+--- Executing after solve: elapsed 0:04:11.537
 --- DIETER.gms(1977) 121 Mb
 ---
 --- scattering and reading gdx file
@@ -540,9 +540,9 @@ Objective : 40093174100.503754
 --- level    Id = N_STO_P maps to lev_N_STO_P
 --- DIETER.gms(1977) 135 Mb
 --- GDXin=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\225a\scenrep.dat
---- Scatter finished in 156 ms
+--- Scatter finished in 125 ms
 --- DIETER.gms(2758) 139 Mb
 --- GDX File C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\results.gdx
 --- GDX File C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\test.gdx
 *** Status: Normal completion
---- Job DIETER.gms Stop 11/23/18 09:19:13 elapsed 0:04:39.675
+--- Job DIETER.gms Stop 11/23/18 09:32:20 elapsed 0:04:15.575

@@ -499,20 +499,21 @@ obj
 
 con1a_bal
 
-con2a_loadlevel
-con2b_loadlevelstart
-*con2_loadlevel
+*con2a_loadlevel
+*con2b_loadlevelstart
+con2_loadlevel
 
 con3a_maxprod_dispatchable
 
 con3e_maxprod_res
 
-con4a_stolev_start
-con4b_stolev
-*con4_stolev
+*con4a_stolev_start
+*con4b_stolev
+con4_stolev
 con4c_stolev_max
 con4d_maxin_sto
 con4e_maxout_sto
+*con4k_PHS_EtoP
 con4j_ending
 
 con5a_minRES
@@ -522,7 +523,7 @@ con8a_max_I_power
 con8b_max_I_sto_e
 con8c_max_I_sto_p
 
-con4k_PHS_EtoP
+
 
 %prosumage%$ontext
 con8f_max_pro_res
