@@ -89,15 +89,15 @@ mu_stoout_cap_PRO(sto_pro,h)         Prosumage: Dual variable of max storing out
 
 Positive variables
 CU_PRO(res_pro,h)                     Prosumage: Curtailment of prosumage pv energy
-N_PV_PRO(res_pro)                     Prosumage: PV generation capacities
+N_RES_PRO(res_pro)                    Prosumage: PV generation capacities
 N_STO_E_PRO(sto_pro)                  Prosumage: Capacity of prosumage storage energy
 N_STO_P_PRO(sto_pro)                  Prosumage: Capacity of prosumage storage power
-E_M2PRO_PRO(h)                        Prosumage: Energy purchased from market for prosumage demand
-G_PRO2M_PRO(res_pro,h)                Prosumage: Energy sold to market from prosumage pv generation
-G_PRO2PRO_PRO(res_pro,h)              Prosumage: Prosumage pv generation direct consumed by household
-STO_IN_PRO2PRO_PRO(sto_pro,res_pro,h) Prosumage: Storage loading from prosumage pv generation
-STO_OUT_PRO2PRO_PRO(sto_pro,h)        Prosumage: Storage discharging to household demand
-STO_L_PRO(sto_pro,h)                  Prosumage: Storage level prosumage household
+G_MARKET_M2PRO(h)                     Prosumage: Energy purchased from market for prosumage demand
+G_MARKET_PRO2M(res_pro,h)             Prosumage: Energy sold to market from prosumage pv generation
+G_RES_PRO(res_pro,h)                  Prosumage: Prosumage pv generation direct consumed by household
+STO_IN_PRO2PRO(sto_pro,res_pro,h)     Prosumage: Storage loading from prosumage pv generation
+STO_OUT_PRO2PRO(sto_pro,h)            Prosumage: Storage discharging to household demand
+STO_L_PRO2PRO(sto_pro,h)              Prosumage: Storage level prosumage household
 
 ;
 
@@ -182,54 +182,54 @@ stoout_max_power_PRO        Prosumage: Storage capacity constraint on maximum po
 * Additional MCP equations and inequalities
 Equations
 KKT_CU_PRO                  Prosumage: FOC w.r.t CU_PRO
-KKT_N_PV_PRO                Prosumage: FOC w.r.t N_PV_PRO
+KKT_N_RES_PRO               Prosumage: FOC w.r.t N_RES_PRO
 KKT_N_STO_E_PRO             Prosumage: FOC w.r.t N_STO_E_PRO
 KKT_N_STO_P_PRO             Prosumage: FOC w.r.t N_STO_P_PRO
-KKT_E_M2PRO_PRO             Prosumage: FOC w.r.t E_M2PRO_PRO
-KKT_G_PRO2M_PRO             Prosumage: FOC w.r.t G_PRO2M_PRO
-KKT_G_PRO2PRO_PRO           Prosumage: FOC w.r.t G_PRO2PRO_PRO
-KKT_STO_IN_PRO2PRO_PRO      Prosumage: FOC w.r.t STO_IN_PRO2PRO_PRO
-KKT_STO_OUT_PRO2PRO_PRO     Prosumage: FOC w.r.t STO_OUT_PRO2PRO_PRO
-KKT_STO_L_PRO               Prosumage: FOC w.r.t STO_L_PRO
+KKT_G_MARKET_M2PRO          Prosumage: FOC w.r.t G_MARKET_M2PRO
+KKT_G_MARKET_PRO2M          Prosumage: FOC w.r.t G_MARKET_PRO2M
+KKT_G_RES_PRO               Prosumage: FOC w.r.t G_RES_PRO
+KKT_STO_IN_PRO2PRO          Prosumage: FOC w.r.t STO_IN_PRO2PRO
+KKT_STO_OUT_PRO2PRO         Prosumage: FOC w.r.t STO_OUT_PRO2PRO
+KKT_STO_L_PRO2PRO           Prosumage: FOC w.r.t STO_L_PRO2PRO
 ;
 
 *** Objective function prosumage household: Minimize total electricity costs
 objective_PRO..
  Z_PRO =E=
-      sum( res_pro , c_i_pv_PRO(res_pro) * N_PV_PRO(res_pro) )
+      sum( res_pro , c_i_pv_PRO(res_pro) * N_RES_PRO(res_pro) )
     + sum( sto_pro , c_i_sto_pro_e_PRO(sto_pro) * N_STO_E_PRO(sto_pro))
     + sum( sto_pro , + c_i_sto_pro_p_PRO(sto_pro) * N_STO_P_PRO(sto_pro) )
     + sum( (sto_pro,res_pro,h) ,
-            c_var_sto_pro_PRO(sto_pro)*(STO_IN_PRO2PRO_PRO(sto_pro,res_pro,h)))
+            c_var_sto_pro_PRO(sto_pro)*(STO_IN_PRO2PRO(sto_pro,res_pro,h)))
     + sum( (sto_pro,h) ,
-            c_var_sto_pro_PRO(sto_pro)*STO_OUT_PRO2PRO_PRO(sto_pro,h) )
-    + sum(  h , price_consume_PRO(h) * (E_M2PRO_PRO(h) ))
-    - sum( (res_pro,h) , price_produce_PRO(h) * G_PRO2M_PRO(res_pro,h) )
+            c_var_sto_pro_PRO(sto_pro)*STO_OUT_PRO2PRO(sto_pro,h) )
+    + sum(  h , price_consume_PRO(h) * (G_MARKET_M2PRO(h) ))
+    - sum( (res_pro,h) , price_produce_PRO(h) * G_MARKET_PRO2M(res_pro,h) )
 ;
 
 *** Household energy balance: Satisfy load with own generation, storage and grid electricity
 energy_balance_PRO(h)..
-          + sum( res_pro , G_PRO2PRO_PRO(res_pro,h))
-          + sum( sto_pro , STO_OUT_PRO2PRO_PRO(sto_pro,h))
-          + E_M2PRO_PRO(h)
+          + sum( res_pro , G_RES_PRO(res_pro,h))
+          + sum( sto_pro , STO_OUT_PRO2PRO(sto_pro,h))
+          + G_MARKET_M2PRO(h)
           - d_PRO(h)
           =E= 0
 ;
 
 *** Household PV generation usage: Directly consumed, curtailed, stored or sold
 pv_generation_PRO(res_pro,h)..
-       +  avail_solar_PRO(h)* N_PV_PRO(res_pro)
+       +  avail_solar_PRO(h)* N_RES_PRO(res_pro)
        -  CU_PRO(res_pro,h)
-       -  G_PRO2M_PRO(res_pro,h)
-       -  G_PRO2PRO_PRO(res_pro,h)
-       -  sum( sto_pro , STO_IN_PRO2PRO_PRO(sto_pro,res_pro,h) )
+       -  G_MARKET_PRO2M(res_pro,h)
+       -  G_RES_PRO(res_pro,h)
+       -  sum( sto_pro , STO_IN_PRO2PRO(sto_pro,res_pro,h) )
        =E= 0
 ;
 
 *** Restrict PV capacity
 pv_install_max_PRO(res_pro)..
 
-       pv_cap_max_PRO(res_pro) - N_PV_PRO(res_pro) =G= 0
+       pv_cap_max_PRO(res_pro) - N_RES_PRO(res_pro) =G= 0
 ;
 
 
@@ -238,38 +238,38 @@ pv_install_max_PRO(res_pro)..
 *Storage level for all hours except first: Prio level plus intake minus outflow
 $ontext
 stolev_init_PRO(sto_pro,'h1')..
-        STO_L_PRO(sto_pro,'h1') =E=  STO_L_PRO(sto_pro,'h8760')
+        STO_L_PRO2PRO(sto_pro,'h1') =E=  STO_L_PRO2PRO(sto_pro,'h8760')
 ;
 $offtext
 
 ** Overall storage level
 stolev_PRO(sto_pro,h)$((ord(h)>1) )..
-        + STO_L_PRO(sto_pro,h-1)
+        + STO_L_PRO2PRO(sto_pro,h-1)
         + sum(res_pro ,
-          STO_IN_PRO2PRO_PRO(sto_pro,res_pro,h))*eta_sto_pro_in_PRO(sto_pro)
-        - STO_OUT_PRO2PRO_PRO(sto_pro,h)/eta_sto_pro_out_PRO(sto_pro)
-        - STO_L_PRO(sto_pro,h)
+          STO_IN_PRO2PRO(sto_pro,res_pro,h))*eta_sto_pro_in_PRO(sto_pro)
+        - STO_OUT_PRO2PRO(sto_pro,h)/eta_sto_pro_out_PRO(sto_pro)
+        - STO_L_PRO2PRO(sto_pro,h)
         =E=   0
 ;
 
 stolev_24h_PRO(sto_pro,h)..
-        - STO_L_PRO(sto_pro,h)$(h24(h)) =E= 0
+        - STO_L_PRO2PRO(sto_pro,h)$(h24(h)) =E= 0
 ;
 
 * Storage maximum energy capacity
 stolev_max_energy_PRO(sto_pro,h)..
-         N_STO_E_PRO(sto_pro) - STO_L_PRO(sto_pro,h) =G= 0
+         N_STO_E_PRO(sto_pro) - STO_L_PRO2PRO(sto_pro,h) =G= 0
 ;
 
 * Storage maximum charging capacity (power in)
 stoin_max_power_PRO(sto_pro,h)..
         N_STO_P_PRO(sto_pro)
-     -  sum(res_pro, STO_IN_PRO2PRO_PRO(sto_pro,res_pro,h)) =G= 0
+     -  sum(res_pro, STO_IN_PRO2PRO(sto_pro,res_pro,h)) =G= 0
 ;
 
 * Storage maximum discharging capacity (power out)
 stoout_max_power_PRO(sto_pro,h)..
-         N_STO_P_PRO(sto_pro) - STO_OUT_PRO2PRO_PRO(sto_pro,h) =G= 0
+         N_STO_P_PRO(sto_pro) - STO_OUT_PRO2PRO(sto_pro,h) =G= 0
 ;
 
 * FOC w.r.t CU_PRO
@@ -278,8 +278,8 @@ KKT_CU_PRO(res_pro,h)..
       =G= 0
 ;
 
-* FOC w.r.t N_PV_PRO
-KKT_N_PV_PRO(res_pro)..
+* FOC w.r.t N_RES_PRO
+KKT_N_RES_PRO(res_pro)..
              c_i_pv_PRO(res_pro)
            - sum(h, lambda_pvgen_PRO(res_pro,h)*avail_solar_PRO(h)  )
            + mu_pv_cap_PRO(res_pro)  =G= 0
@@ -300,25 +300,25 @@ KKT_N_STO_P_PRO(sto_pro)..
           - sum(h, mu_stoout_cap_PRO(sto_pro,h))        =G=  0
 ;
 
-* FOC w.r.t E_M2PRO_PRO
-KKT_E_M2PRO_PRO(h)..
+* FOC w.r.t G_MARKET_M2PRO
+KKT_G_MARKET_M2PRO(h)..
            price_consume_PRO(h) - lambda_enerbal_PRO(h) =G=  0
 ;
 
-* FOC w.r.t G_PRO2M_PRO
-KKT_G_PRO2M_PRO(res_pro,h)..
+* FOC w.r.t G_MARKET_PRO2M
+KKT_G_MARKET_PRO2M(res_pro,h)..
          - price_produce_PRO(h) + lambda_pvgen_PRO(res_pro,h)  =G= 0
 ;
 
-* FOC w.r.t G_PRO2PRO_PRO
-KKT_G_PRO2PRO_PRO(res_pro,h)..
+* FOC w.r.t G_RES_PRO
+KKT_G_RES_PRO(res_pro,h)..
          - lambda_enerbal_PRO(h)
          + lambda_pvgen_PRO(res_pro,h)
         =G= 0
 ;
 
-* FOC w.r.t STO_IN_PRO2PRO_PRO
-KKT_STO_IN_PRO2PRO_PRO(sto_pro,res_pro,h)..
+* FOC w.r.t STO_IN_PRO2PRO
+KKT_STO_IN_PRO2PRO(sto_pro,res_pro,h)..
             c_var_sto_pro_PRO(sto_pro)
          +  lambda_pvgen_PRO(res_pro,h)
          -  lambda_stolev_PRO(sto_pro,h)*eta_sto_pro_in_PRO(sto_pro)
@@ -327,8 +327,8 @@ KKT_STO_IN_PRO2PRO_PRO(sto_pro,res_pro,h)..
 
 ;
 
-* FOC w.r.t STO_OUT_PRO2PRO_PRO
-KKT_STO_OUT_PRO2PRO_PRO(sto_pro,h)..
+* FOC w.r.t STO_OUT_PRO2PRO
+KKT_STO_OUT_PRO2PRO(sto_pro,h)..
          c_var_sto_pro_PRO(sto_pro)
        - lambda_enerbal_PRO(h)
        + lambda_stolev_PRO(sto_pro,h)/eta_sto_pro_out_PRO(sto_pro)
@@ -336,8 +336,8 @@ KKT_STO_OUT_PRO2PRO_PRO(sto_pro,h)..
          =G= 0
 ;
 
-* FOC w.r.t STO_L_PRO
-KKT_STO_L_PRO(sto_pro,h)..
+* FOC w.r.t STO_L_PRO2PRO
+KKT_STO_L_PRO2PRO(sto_pro,h)..
       + lambda_stolev_PRO(sto_pro,h)
       - lambda_stolev_PRO(sto_pro,h+1)
       + mu_stolev_cap_PRO(sto_pro,h)
@@ -382,15 +382,15 @@ stolev_max_energy_PRO.mu_stolev_cap_PRO
 stoin_max_power_PRO.mu_stoin_cap_PRO
 stoout_max_power_PRO.mu_stoout_cap_PRO
 KKT_CU_PRO.CU_PRO
-KKT_N_PV_PRO.N_PV_PRO
+KKT_N_RES_PRO.N_RES_PRO
 KKT_N_STO_E_PRO.N_STO_E_PRO
 KKT_N_STO_P_PRO.N_STO_P_PRO
-KKT_E_M2PRO_PRO.E_M2PRO_PRO
-KKT_G_PRO2M_PRO.G_PRO2M_PRO
-KKT_G_PRO2PRO_PRO.G_PRO2PRO_PRO
-KKT_STO_IN_PRO2PRO_PRO.STO_IN_PRO2PRO_PRO
-KKT_STO_OUT_PRO2PRO_PRO.STO_OUT_PRO2PRO_PRO
-KKT_STO_L_PRO.STO_L_PRO
+KKT_G_MARKET_M2PRO.G_MARKET_M2PRO
+KKT_G_MARKET_PRO2M.G_MARKET_PRO2M
+KKT_G_RES_PRO.G_RES_PRO
+KKT_STO_IN_PRO2PRO.STO_IN_PRO2PRO
+KKT_STO_OUT_PRO2PRO.STO_OUT_PRO2PRO
+KKT_STO_L_PRO2PRO.STO_L_PRO2PRO
 %horizon24%$ontext
 stolev_24h_PRO.lambda_stolev24h_PRO
 $ontext
@@ -461,24 +461,24 @@ mean_price
 full_load
 self_cons_rate;
 
-E_purchased = sum((sto_pro,h), E_M2PRO_PRO.l(h) );
-E_sold      = sum((res_pro,sto_pro,h), G_PRO2M_PRO.l(res_pro,h));
-Z_PRO_mcp   = sum( res_pro , c_i_pv_PRO(res_pro) * N_PV_PRO.l(res_pro) )
+E_purchased = sum((sto_pro,h), G_MARKET_M2PRO.l(h) );
+E_sold      = sum((res_pro,sto_pro,h), G_MARKET_PRO2M.l(res_pro,h));
+Z_PRO_mcp   = sum( res_pro , c_i_pv_PRO(res_pro) * N_RES_PRO.l(res_pro) )
                  + sum( sto_pro , c_i_sto_pro_e_PRO(sto_pro) * N_STO_E_PRO.l(sto_pro) + c_i_sto_pro_p_PRO(sto_pro) * N_STO_P_PRO.l(sto_pro) )
-                 + sum( (sto_pro,res_pro,h) , c_var_sto_pro_PRO(sto_pro) * ( STO_IN_PRO2PRO_PRO.l(sto_pro,res_pro,h)))
-                 + sum( (sto_pro,h) , c_var_sto_pro_PRO(sto_pro) *  STO_OUT_PRO2PRO_PRO.l(sto_pro,h) )
-                 + sum(  h , price_consume_PRO(h) * (E_M2PRO_PRO.l(h) ))
-                 - sum(  (res_pro,h) , price_produce_PRO(h) * G_PRO2M_PRO.l(res_pro,h) )  ;
+                 + sum( (sto_pro,res_pro,h) , c_var_sto_pro_PRO(sto_pro) * ( STO_IN_PRO2PRO.l(sto_pro,res_pro,h)))
+                 + sum( (sto_pro,h) , c_var_sto_pro_PRO(sto_pro) *  STO_OUT_PRO2PRO.l(sto_pro,h) )
+                 + sum(  h , price_consume_PRO(h) * (G_MARKET_M2PRO.l(h) ))
+                 - sum(  (res_pro,h) , price_produce_PRO(h) * G_MARKET_PRO2M.l(res_pro,h) )  ;
 
 mean_price = sum( h,  price_produce_PRO(h))/card(h)*1000;
 full_load  = sum(h, avail_solar_PRO(h));
-self_cons_rate(res_pro) = sum(h, G_PRO2PRO_PRO.l(res_pro,h)
-+ sum(sto_pro, STO_IN_PRO2PRO_PRO.l(sto_pro,res_pro,h)*eta_sto_pro_in_PRO(sto_pro)) ) / sum(h, avail_solar_PRO(h)*N_PV_PRO.l(res_pro));
+self_cons_rate(res_pro) = sum(h, G_RES_PRO.l(res_pro,h)
++ sum(sto_pro, STO_IN_PRO2PRO.l(sto_pro,res_pro,h)*eta_sto_pro_in_PRO(sto_pro)) ) / sum(h, avail_solar_PRO(h)*N_RES_PRO.l(res_pro));
 
 
-display d_PRO , N_PV_PRO.l , N_STO_E_PRO.l, N_STO_P_PRO.l,
-          E_M2PRO_PRO.l , G_PRO2M_PRO.l ,
-        STO_L_PRO.l, price_produce_PRO, energy_balance_PRO.m ,
+display d_PRO , N_RES_PRO.l , N_STO_E_PRO.l, N_STO_P_PRO.l,
+          G_MARKET_M2PRO.l , G_MARKET_PRO2M.l ,
+        STO_L_PRO2PRO.l, price_produce_PRO, energy_balance_PRO.m ,
         E_purchased , E_sold, Z_PRO_mcp , mean_price , full_load, self_cons_rate
 ;
 

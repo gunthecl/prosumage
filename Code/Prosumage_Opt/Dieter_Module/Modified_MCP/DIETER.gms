@@ -21,6 +21,7 @@ $offtext
 * Set star to skip Excel upload and load data from gdx
 $setglobal skip_Excel "*"
 
+
 * Choose base year
 $setglobal base_year "'2030'"
 
@@ -29,10 +30,7 @@ $setglobal GER_only "*"
 
 * Set star to activate options
 
-$setglobal reserves_endogenous ""
-$setglobal reserves_exogenous ""
-
-$setglobal prosumage "*"
+$setglobal prosumage ""
 
 * Set star to select run-of-river options either as exogenous parameter or as endogenous variable including reserve provision:
 * if nothing is selected, ROR capacity will be set to zero
@@ -50,6 +48,15 @@ $setglobal no_crossover ""
 * Set star for reporting to Excel
 $setglobal report_to_excel ""
 
+
+* ----------------- Select if to use MCP or LP format --------------------------
+
+* Set to "*" to select linear program, leave blank to select MCP
+$setglobal LP ""
+
+* Do not change these two lines
+$if "%LP%" == "" $setglobal MCP "*"
+$if "%LP%" == "*" $setglobal MCP ""
 
 ********************************************************************************
 
@@ -130,7 +137,6 @@ $include dataload.gms
 d(h) = d_y(%base_year%,h) ;
 phi_res(res,h) = phi_res_y(%base_year%,res,h) ;
 phi_min_res = 0 ;
-ev_quant = 0 ;
 phi_pro_self = 0 ;
 phi_pro_load = 0 ;
 
@@ -279,7 +285,11 @@ $offtext
 con5a_minRES     .marginal       .marginal_con5a
 con1a_bal        .marginal       .marginal_con1a
 
+
+%LP%$ontext
 Z                .level          .lev_Z
+$ontext
+$offtext
 G_L              .level          .lev_G_L
 G_UP             .level          .lev_G_UP
 G_DO             .level          .lev_G_DO
@@ -299,18 +309,8 @@ G_MARKET_PRO2M   .level          .lev_G_MARKET_PRO2M
 G_MARKET_M2PRO   .level          .lev_G_MARKET_M2PRO
 G_RES_PRO        .level          .lev_G_RES_PRO
 STO_IN_PRO2PRO   .level          .lev_STO_IN_PRO2PRO
-*STO_IN_PRO2M     .level          .lev_STO_IN_PRO2M
-*STO_IN_M2PRO     .level          .lev_STO_IN_M2PRO
-*STO_IN_M2M       .level          .lev_STO_IN_M2M
 STO_OUT_PRO2PRO  .level          .lev_STO_OUT_PRO2PRO
-*STO_OUT_PRO2M    .level          .lev_STO_OUT_PRO2M
-*STO_OUT_M2PRO    .level          .lev_STO_OUT_M2PRO
-*STO_OUT_M2M      .level          .lev_STO_OUT_M2M
-*STO_L_PRO        .level          .lev_STO_L_PRO
 STO_L_PRO2PRO    .level          .lev_STO_L_PRO2PRO
-*STO_L_PRO2M      .level          .lev_STO_L_PRO2M
-*STO_L_M2PRO      .level          .lev_STO_L_M2PRO
-*STO_L_M2M        .level          .lev_STO_L_M2M
 N_STO_E_PRO      .level          .lev_N_STO_E_PRO
 N_STO_P_PRO      .level          .lev_N_STO_P_PRO
 N_RES_PRO        .level          .lev_N_RES_PRO
@@ -319,7 +319,17 @@ $offtext
 /
 ;
 
-solve DIETER using lp min Z scenario dict;
+
+
+%LP%$ontext
+solve  DIETER using lp min Z scenario dict;
+$ontext
+$offtext
+
+%MCP%$ontext
+solve   DIETER_MCP using mcp scenario dict;
+$ontext
+$offtext
 
 
 * Reporting

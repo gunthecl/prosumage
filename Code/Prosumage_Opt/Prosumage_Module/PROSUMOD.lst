@@ -1,4 +1,4 @@
-GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 10/30/18 21:12:05 Page 1
+GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 11/21/18 10:49:58 Page 1
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
@@ -136,22 +136,22 @@ INCLUDE    C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosuma
   93  Positive variables
   94  CU_PRO(res_pro,h)                     Prosumage: Curtailment of prosumage 
       pv energy
-  95  N_PV_PRO(res_pro)                     Prosumage: PV generation capacities
+  95  N_RES_PRO(res_pro)                    Prosumage: PV generation capacities
   96  N_STO_E_PRO(sto_pro)                  Prosumage: Capacity of prosumage sto
       rage energy
   97  N_STO_P_PRO(sto_pro)                  Prosumage: Capacity of prosumage sto
       rage power
-  98  E_M2PRO_PRO(h)                        Prosumage: Energy purchased from mar
+  98  G_MARKET_M2PRO(h)                     Prosumage: Energy purchased from mar
       ket for prosumage demand
-  99  G_PRO2M_PRO(res_pro,h)                Prosumage: Energy sold to market fro
+  99  G_MARKET_PRO2M(res_pro,h)             Prosumage: Energy sold to market fro
       m prosumage pv generation
- 100  G_PRO2PRO_PRO(res_pro,h)              Prosumage: Prosumage pv generation d
+ 100  G_RES_PRO(res_pro,h)                  Prosumage: Prosumage pv generation d
       irect consumed by household
- 101  STO_IN_PRO2PRO_PRO(sto_pro,res_pro,h) Prosumage: Storage loading from pros
+ 101  STO_IN_PRO2PRO(sto_pro,res_pro,h)     Prosumage: Storage loading from pros
       umage pv generation
- 102  STO_OUT_PRO2PRO_PRO(sto_pro,h)        Prosumage: Storage discharging to ho
+ 102  STO_OUT_PRO2PRO(sto_pro,h)            Prosumage: Storage discharging to ho
       usehold demand
- 103  STO_L_PRO(sto_pro,h)                  Prosumage: Storage level prosumage h
+ 103  STO_L_PRO2PRO(sto_pro,h)              Prosumage: Storage level prosumage h
       ousehold
  104   
  105  ;
@@ -255,39 +255,40 @@ GDXIN   C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage_
  185  * Additional MCP equations and inequalities
  186  Equations
  187  KKT_CU_PRO                  Prosumage: FOC w.r.t CU_PRO
- 188  KKT_N_PV_PRO                Prosumage: FOC w.r.t N_PV_PRO
+ 188  KKT_N_RES_PRO               Prosumage: FOC w.r.t N_RES_PRO
  189  KKT_N_STO_E_PRO             Prosumage: FOC w.r.t N_STO_E_PRO
  190  KKT_N_STO_P_PRO             Prosumage: FOC w.r.t N_STO_P_PRO
- 191  KKT_E_M2PRO_PRO             Prosumage: FOC w.r.t E_M2PRO_PRO
- 192  KKT_G_PRO2M_PRO             Prosumage: FOC w.r.t G_PRO2M_PRO
- 193  KKT_G_PRO2PRO_PRO           Prosumage: FOC w.r.t G_PRO2PRO_PRO
- 194  KKT_STO_IN_PRO2PRO_PRO      Prosumage: FOC w.r.t STO_IN_PRO2PRO_PRO
- 195  KKT_STO_OUT_PRO2PRO_PRO     Prosumage: FOC w.r.t STO_OUT_PRO2PRO_PRO
- 196  KKT_STO_L_PRO               Prosumage: FOC w.r.t STO_L_PRO
+ 191  KKT_G_MARKET_M2PRO          Prosumage: FOC w.r.t G_MARKET_M2PRO
+ 192  KKT_G_MARKET_PRO2M          Prosumage: FOC w.r.t G_MARKET_PRO2M
+ 193  KKT_G_RES_PRO               Prosumage: FOC w.r.t G_RES_PRO
+ 194  KKT_STO_IN_PRO2PRO          Prosumage: FOC w.r.t STO_IN_PRO2PRO
+ 195  KKT_STO_OUT_PRO2PRO         Prosumage: FOC w.r.t STO_OUT_PRO2PRO
+ 196  KKT_STO_L_PRO2PRO           Prosumage: FOC w.r.t STO_L_PRO2PRO
  197  ;
  198   
  199  *** Objective function prosumage household: Minimize total electricity cos
       ts
  200  objective_PRO..
  201   Z_PRO =E=
- 202        sum( res_pro , c_i_pv_PRO(res_pro) * N_PV_PRO(res_pro) )
+ 202        sum( res_pro , c_i_pv_PRO(res_pro) * N_RES_PRO(res_pro) )
  203      + sum( sto_pro , c_i_sto_pro_e_PRO(sto_pro) * N_STO_E_PRO(sto_pro))
  204      + sum( sto_pro , + c_i_sto_pro_p_PRO(sto_pro) * N_STO_P_PRO(sto_pro) )
  205      + sum( (sto_pro,res_pro,h) ,
- 206              c_var_sto_pro_PRO(sto_pro)*(STO_IN_PRO2PRO_PRO(sto_pro,res_pro
-      ,h)))
+ 206              c_var_sto_pro_PRO(sto_pro)*(STO_IN_PRO2PRO(sto_pro,res_pro,h))
+      )
  207      + sum( (sto_pro,h) ,
- 208              c_var_sto_pro_PRO(sto_pro)*STO_OUT_PRO2PRO_PRO(sto_pro,h) )
- 209      + sum(  h , price_consume_PRO(h) * (E_M2PRO_PRO(h) ))
- 210      - sum( (res_pro,h) , price_produce_PRO(h) * G_PRO2M_PRO(res_pro,h) )
+ 208              c_var_sto_pro_PRO(sto_pro)*STO_OUT_PRO2PRO(sto_pro,h) )
+ 209      + sum(  h , price_consume_PRO(h) * (G_MARKET_M2PRO(h) ))
+ 210      - sum( (res_pro,h) , price_produce_PRO(h) * G_MARKET_PRO2M(res_pro,h) 
+      )
  211  ;
  212   
  213  *** Household energy balance: Satisfy load with own generation, storage an
       d grid electricity
  214  energy_balance_PRO(h)..
- 215            + sum( res_pro , G_PRO2PRO_PRO(res_pro,h))
- 216            + sum( sto_pro , STO_OUT_PRO2PRO_PRO(sto_pro,h))
- 217            + E_M2PRO_PRO(h)
+ 215            + sum( res_pro , G_RES_PRO(res_pro,h))
+ 216            + sum( sto_pro , STO_OUT_PRO2PRO(sto_pro,h))
+ 217            + G_MARKET_M2PRO(h)
  218            - d_PRO(h)
  219            =E= 0
  220  ;
@@ -295,18 +296,18 @@ GDXIN   C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage_
  222  *** Household PV generation usage: Directly consumed, curtailed, stored or
        sold
  223  pv_generation_PRO(res_pro,h)..
- 224         +  avail_solar_PRO(h)* N_PV_PRO(res_pro)
+ 224         +  avail_solar_PRO(h)* N_RES_PRO(res_pro)
  225         -  CU_PRO(res_pro,h)
- 226         -  G_PRO2M_PRO(res_pro,h)
- 227         -  G_PRO2PRO_PRO(res_pro,h)
- 228         -  sum( sto_pro , STO_IN_PRO2PRO_PRO(sto_pro,res_pro,h) )
+ 226         -  G_MARKET_PRO2M(res_pro,h)
+ 227         -  G_RES_PRO(res_pro,h)
+ 228         -  sum( sto_pro , STO_IN_PRO2PRO(sto_pro,res_pro,h) )
  229         =E= 0
  230  ;
  231   
  232  *** Restrict PV capacity
  233  pv_install_max_PRO(res_pro)..
  234   
- 235         pv_cap_max_PRO(res_pro) - N_PV_PRO(res_pro) =G= 0
+ 235         pv_cap_max_PRO(res_pro) - N_RES_PRO(res_pro) =G= 0
  236  ;
  237   
  238   
@@ -315,38 +316,37 @@ GDXIN   C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage_
  241  *Storage level for all hours except first: Prio level plus intake minus ou
       tflow
       stolev_init_PRO(sto_pro,'h1')..
-              STO_L_PRO(sto_pro,'h1') =E=  STO_L_PRO(sto_pro,'h8760')
+              STO_L_PRO2PRO(sto_pro,'h1') =E=  STO_L_PRO2PRO(sto_pro,'h8760')
       ;
  247   
  248  ** Overall storage level
  249  stolev_PRO(sto_pro,h)$((ord(h)>1) )..
- 250          + STO_L_PRO(sto_pro,h-1)
+ 250          + STO_L_PRO2PRO(sto_pro,h-1)
  251          + sum(res_pro ,
- 252            STO_IN_PRO2PRO_PRO(sto_pro,res_pro,h))*eta_sto_pro_in_PRO(sto_pr
-      o)
- 253          - STO_OUT_PRO2PRO_PRO(sto_pro,h)/eta_sto_pro_out_PRO(sto_pro)
- 254          - STO_L_PRO(sto_pro,h)
+ 252            STO_IN_PRO2PRO(sto_pro,res_pro,h))*eta_sto_pro_in_PRO(sto_pro)
+ 253          - STO_OUT_PRO2PRO(sto_pro,h)/eta_sto_pro_out_PRO(sto_pro)
+ 254          - STO_L_PRO2PRO(sto_pro,h)
  255          =E=   0
  256  ;
  257   
  258  stolev_24h_PRO(sto_pro,h)..
- 259          - STO_L_PRO(sto_pro,h)$(h24(h)) =E= 0
+ 259          - STO_L_PRO2PRO(sto_pro,h)$(h24(h)) =E= 0
  260  ;
  261   
  262  * Storage maximum energy capacity
  263  stolev_max_energy_PRO(sto_pro,h)..
- 264           N_STO_E_PRO(sto_pro) - STO_L_PRO(sto_pro,h) =G= 0
+ 264           N_STO_E_PRO(sto_pro) - STO_L_PRO2PRO(sto_pro,h) =G= 0
  265  ;
  266   
  267  * Storage maximum charging capacity (power in)
  268  stoin_max_power_PRO(sto_pro,h)..
  269          N_STO_P_PRO(sto_pro)
- 270       -  sum(res_pro, STO_IN_PRO2PRO_PRO(sto_pro,res_pro,h)) =G= 0
+ 270       -  sum(res_pro, STO_IN_PRO2PRO(sto_pro,res_pro,h)) =G= 0
  271  ;
  272   
  273  * Storage maximum discharging capacity (power out)
  274  stoout_max_power_PRO(sto_pro,h)..
- 275           N_STO_P_PRO(sto_pro) - STO_OUT_PRO2PRO_PRO(sto_pro,h) =G= 0
+ 275           N_STO_P_PRO(sto_pro) - STO_OUT_PRO2PRO(sto_pro,h) =G= 0
  276  ;
  277   
  278  * FOC w.r.t CU_PRO
@@ -355,8 +355,8 @@ GDXIN   C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage_
  281        =G= 0
  282  ;
  283   
- 284  * FOC w.r.t N_PV_PRO
- 285  KKT_N_PV_PRO(res_pro)..
+ 284  * FOC w.r.t N_RES_PRO
+ 285  KKT_N_RES_PRO(res_pro)..
  286               c_i_pv_PRO(res_pro)
  287             - sum(h, lambda_pvgen_PRO(res_pro,h)*avail_solar_PRO(h)  )
  288             + mu_pv_cap_PRO(res_pro)  =G= 0
@@ -377,25 +377,25 @@ GDXIN   C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage_
  303            - sum(h, mu_stoout_cap_PRO(sto_pro,h))        =G=  0
  304  ;
  305   
- 306  * FOC w.r.t E_M2PRO_PRO
- 307  KKT_E_M2PRO_PRO(h)..
+ 306  * FOC w.r.t G_MARKET_M2PRO
+ 307  KKT_G_MARKET_M2PRO(h)..
  308             price_consume_PRO(h) - lambda_enerbal_PRO(h) =G=  0
  309  ;
  310   
- 311  * FOC w.r.t G_PRO2M_PRO
- 312  KKT_G_PRO2M_PRO(res_pro,h)..
+ 311  * FOC w.r.t G_MARKET_PRO2M
+ 312  KKT_G_MARKET_PRO2M(res_pro,h)..
  313           - price_produce_PRO(h) + lambda_pvgen_PRO(res_pro,h)  =G= 0
  314  ;
  315   
- 316  * FOC w.r.t G_PRO2PRO_PRO
- 317  KKT_G_PRO2PRO_PRO(res_pro,h)..
+ 316  * FOC w.r.t G_RES_PRO
+ 317  KKT_G_RES_PRO(res_pro,h)..
  318           - lambda_enerbal_PRO(h)
  319           + lambda_pvgen_PRO(res_pro,h)
  320          =G= 0
  321  ;
  322   
- 323  * FOC w.r.t STO_IN_PRO2PRO_PRO
- 324  KKT_STO_IN_PRO2PRO_PRO(sto_pro,res_pro,h)..
+ 323  * FOC w.r.t STO_IN_PRO2PRO
+ 324  KKT_STO_IN_PRO2PRO(sto_pro,res_pro,h)..
  325              c_var_sto_pro_PRO(sto_pro)
  326           +  lambda_pvgen_PRO(res_pro,h)
  327           -  lambda_stolev_PRO(sto_pro,h)*eta_sto_pro_in_PRO(sto_pro)
@@ -404,8 +404,8 @@ GDXIN   C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage_
  330   
  331  ;
  332   
- 333  * FOC w.r.t STO_OUT_PRO2PRO_PRO
- 334  KKT_STO_OUT_PRO2PRO_PRO(sto_pro,h)..
+ 333  * FOC w.r.t STO_OUT_PRO2PRO
+ 334  KKT_STO_OUT_PRO2PRO(sto_pro,h)..
  335           c_var_sto_pro_PRO(sto_pro)
  336         - lambda_enerbal_PRO(h)
  337         + lambda_stolev_PRO(sto_pro,h)/eta_sto_pro_out_PRO(sto_pro)
@@ -413,8 +413,8 @@ GDXIN   C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage_
  339           =G= 0
  340  ;
  341   
- 342  * FOC w.r.t STO_L_PRO
- 343  KKT_STO_L_PRO(sto_pro,h)..
+ 342  * FOC w.r.t STO_L_PRO2PRO
+ 343  KKT_STO_L_PRO2PRO(sto_pro,h)..
  344        + lambda_stolev_PRO(sto_pro,h)
  345        - lambda_stolev_PRO(sto_pro,h+1)
  346        + mu_stolev_cap_PRO(sto_pro,h)
@@ -456,15 +456,15 @@ GDXIN   C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage_
  385  stoin_max_power_PRO.mu_stoin_cap_PRO
  386  stoout_max_power_PRO.mu_stoout_cap_PRO
  387  KKT_CU_PRO.CU_PRO
- 388  KKT_N_PV_PRO.N_PV_PRO
+ 388  KKT_N_RES_PRO.N_RES_PRO
  389  KKT_N_STO_E_PRO.N_STO_E_PRO
  390  KKT_N_STO_P_PRO.N_STO_P_PRO
- 391  KKT_E_M2PRO_PRO.E_M2PRO_PRO
- 392  KKT_G_PRO2M_PRO.G_PRO2M_PRO
- 393  KKT_G_PRO2PRO_PRO.G_PRO2PRO_PRO
- 394  KKT_STO_IN_PRO2PRO_PRO.STO_IN_PRO2PRO_PRO
- 395  KKT_STO_OUT_PRO2PRO_PRO.STO_OUT_PRO2PRO_PRO
- 396  KKT_STO_L_PRO.STO_L_PRO
+ 391  KKT_G_MARKET_M2PRO.G_MARKET_M2PRO
+ 392  KKT_G_MARKET_PRO2M.G_MARKET_PRO2M
+ 393  KKT_G_RES_PRO.G_RES_PRO
+ 394  KKT_STO_IN_PRO2PRO.STO_IN_PRO2PRO
+ 395  KKT_STO_OUT_PRO2PRO.STO_OUT_PRO2PRO
+ 396  KKT_STO_L_PRO2PRO.STO_L_PRO2PRO
  397  *$ontext
  398  stolev_24h_PRO.lambda_stolev24h_PRO
  401   
@@ -557,16 +557,16 @@ INCLUDE    C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosuma
  493  full_load_hours(res_pro)     = sum( h , avail_solar_PRO(h));
  494   
  495  * Define market interaction parameters
- 496  energy_to_market                   = sum ( (res_pro,h),  G_PRO2M_PRO.l(res
-      _pro,h) )      ;
- 497  energy_from_market                 = sum ( h, E_M2PRO_PRO.l(h) )          
-           ;
- 498  self_consumption_rate              = sum ( (sto_pro,res_pro,h), G_PRO2PRO_
-      PRO.l(res_pro,h) + STO_IN_PRO2PRO_PRO.l(sto_pro,res_pro,h) ) / sum(res_pro
-      , full_load_hours(res_pro) );
- 499  self_sufficiency_rate              = sum ( (sto_pro,res_pro,h), G_PRO2PRO_
-      PRO.l(res_pro,h) + STO_IN_PRO2PRO_PRO.l(sto_pro,res_pro,h) ) / gross_energ
-      y_demand   ;
+ 496  energy_to_market                   = sum ( (res_pro,h),  G_MARKET_PRO2M.l(
+      res_pro,h) )      ;
+ 497  energy_from_market                 = sum ( h, G_MARKET_M2PRO.l(h) )       
+              ;
+ 498  self_consumption_rate              = sum ( (sto_pro,res_pro,h), G_RES_PRO.
+      l(res_pro,h) + STO_IN_PRO2PRO.l(sto_pro,res_pro,h) ) / sum(res_pro, full_l
+      oad_hours(res_pro) );
+ 499  self_sufficiency_rate              = sum ( (sto_pro,res_pro,h), G_RES_PRO.
+      l(res_pro,h) + STO_IN_PRO2PRO.l(sto_pro,res_pro,h) ) / gross_energy_demand
+         ;
  500   
  501   
  502  ;
@@ -590,20 +590,21 @@ INCLUDE    C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosuma
  516  * REPORT HOURS
  517          report_hours('demand consumers',h)         = d_PRO(h) ;
  518          report_hours('energy generated',h)         =  sum( res_pro, avail_
-      solar_PRO(h)*N_PV_PRO.l(res_pro) ) ;
+      solar_PRO(h)*N_RES_PRO.l(res_pro) ) ;
  519          report_hours('energy curtailed',h)         =  sum( res_pro, CU_PRO
       .l(res_pro, h));
- 520          report_hours('energy directly consumed',h) =  sum( res_pro, G_PRO2
-      PRO_PRO.l(res_pro,h));
- 521          report_hours('energy to market',h)         =  sum( res_pro, G_PRO2
-      M_PRO.l(res_pro,h));
- 522          report_hours('energy from market',h)       =  E_M2PRO_PRO.l(h) ;
+ 520          report_hours('energy directly consumed',h) =  sum( res_pro, G_RES_
+      PRO.l(res_pro,h));
+ 521          report_hours('energy to market',h)         =  sum( res_pro, G_MARK
+      ET_PRO2M.l(res_pro,h));
+ 522          report_hours('energy from market',h)       =  G_MARKET_M2PRO.l(h) 
+      ;
  523          report_hours('energy stored in',h)         =  sum( (sto_pro,res_pr
-      o), STO_IN_PRO2PRO_PRO.l(sto_pro,res_pro,h));
+      o), STO_IN_PRO2PRO.l(sto_pro,res_pro,h));
  524          report_hours('energy stored out',h)        =  sum( (sto_pro), STO_
-      OUT_PRO2PRO_PRO.l(sto_pro,h));
+      OUT_PRO2PRO.l(sto_pro,h));
  525          report_hours('storage level',h)            =  sum( (sto_pro), STO_
-      L_PRO.l(sto_pro,h));
+      L_PRO2PRO.l(sto_pro,h));
  526   
  527  * REPORT TECH HOURS
  528          report_tech_hours('energy curtailed',res_pro,h)=  CU_PRO.l(res_pro
@@ -629,29 +630,30 @@ INCLUDE    C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosuma
  544  full_load
  545  self_cons_rate;
  546   
- 547  E_purchased = sum((sto_pro,h), E_M2PRO_PRO.l(h) );
- 548  E_sold      = sum((res_pro,sto_pro,h), G_PRO2M_PRO.l(res_pro,h));
- 549  Z_PRO_mcp   = sum( res_pro , c_i_pv_PRO(res_pro) * N_PV_PRO.l(res_pro) )
+ 547  E_purchased = sum((sto_pro,h), G_MARKET_M2PRO.l(h) );
+ 548  E_sold      = sum((res_pro,sto_pro,h), G_MARKET_PRO2M.l(res_pro,h));
+ 549  Z_PRO_mcp   = sum( res_pro , c_i_pv_PRO(res_pro) * N_RES_PRO.l(res_pro) )
  550                   + sum( sto_pro , c_i_sto_pro_e_PRO(sto_pro) * N_STO_E_PRO
       .l(sto_pro) + c_i_sto_pro_p_PRO(sto_pro) * N_STO_P_PRO.l(sto_pro) )
  551                   + sum( (sto_pro,res_pro,h) , c_var_sto_pro_PRO(sto_pro) *
-       ( STO_IN_PRO2PRO_PRO.l(sto_pro,res_pro,h)))
+       ( STO_IN_PRO2PRO.l(sto_pro,res_pro,h)))
  552                   + sum( (sto_pro,h) , c_var_sto_pro_PRO(sto_pro) *  STO_OU
-      T_PRO2PRO_PRO.l(sto_pro,h) )
- 553                   + sum(  h , price_consume_PRO(h) * (E_M2PRO_PRO.l(h) ))
- 554                   - sum(  (res_pro,h) , price_produce_PRO(h) * G_PRO2M_PRO.
-      l(res_pro,h) )  ;
+      T_PRO2PRO.l(sto_pro,h) )
+ 553                   + sum(  h , price_consume_PRO(h) * (G_MARKET_M2PRO.l(h) )
+      )
+ 554                   - sum(  (res_pro,h) , price_produce_PRO(h) * G_MARKET_PRO
+      2M.l(res_pro,h) )  ;
  555   
  556  mean_price = sum( h,  price_produce_PRO(h))/card(h)*1000;
  557  full_load  = sum(h, avail_solar_PRO(h));
- 558  self_cons_rate(res_pro) = sum(h, G_PRO2PRO_PRO.l(res_pro,h)
- 559  + sum(sto_pro, STO_IN_PRO2PRO_PRO.l(sto_pro,res_pro,h)*eta_sto_pro_in_PRO(
-      sto_pro)) ) / sum(h, avail_solar_PRO(h)*N_PV_PRO.l(res_pro));
+ 558  self_cons_rate(res_pro) = sum(h, G_RES_PRO.l(res_pro,h)
+ 559  + sum(sto_pro, STO_IN_PRO2PRO.l(sto_pro,res_pro,h)*eta_sto_pro_in_PRO(sto_
+      pro)) ) / sum(h, avail_solar_PRO(h)*N_RES_PRO.l(res_pro));
  560   
  561   
- 562  display d_PRO , N_PV_PRO.l , N_STO_E_PRO.l, N_STO_P_PRO.l,
- 563            E_M2PRO_PRO.l , G_PRO2M_PRO.l ,
- 564          STO_L_PRO.l, price_produce_PRO, energy_balance_PRO.m ,
+ 562  display d_PRO , N_RES_PRO.l , N_STO_E_PRO.l, N_STO_P_PRO.l,
+ 563            G_MARKET_M2PRO.l , G_MARKET_PRO2M.l ,
+ 564          STO_L_PRO2PRO.l, price_produce_PRO, energy_balance_PRO.m ,
  565          E_purchased , E_sold, Z_PRO_mcp , mean_price , full_load, self_con
       s_rate
  566  ;
@@ -678,7 +680,7 @@ INCLUDE    C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosuma
  584  execute 'gdxxrw.exe results_to_excel.gdx par=report_tech rng=a8' ;
  585  execute 'gdxxrw.exe results_to_excel.gdx par=report_hours rng=a14' ;
  586   
-GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 10/30/18 21:12:05 Page 2
+GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 11/21/18 10:49:58 Page 2
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Include File Summary
 
@@ -699,8 +701,8 @@ Include File Summary
                                            dule\report.gms
 
 
-COMPILATION TIME     =        0.125 SECONDS     28 MB  24.7.4 r58773 WEX-WEI
-GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 10/30/18 21:12:05 Page 3
+COMPILATION TIME     =        0.110 SECONDS     28 MB  24.7.4 r58773 WEX-WEI
+GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 11/21/18 10:49:58 Page 3
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Model Statistics    SOLVE prosumod_lp Using LP From line 444
 
@@ -712,11 +714,11 @@ BLOCKS OF VARIABLES          11     SINGLE VARIABLES       61,324
 NON ZERO ELEMENTS       188,653
 
 
-GENERATION TIME      =        0.672 SECONDS     47 MB  24.7.4 r58773 WEX-WEI
+GENERATION TIME      =        0.640 SECONDS     47 MB  24.7.4 r58773 WEX-WEI
 
 
-EXECUTION TIME       =        0.672 SECONDS     47 MB  24.7.4 r58773 WEX-WEI
-GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 10/30/18 21:12:05 Page 4
+EXECUTION TIME       =        0.640 SECONDS     47 MB  24.7.4 r58773 WEX-WEI
+GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 11/21/18 10:49:58 Page 4
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE prosumod_lp Using LP From line 444
 
@@ -731,17 +733,17 @@ Solution Report     SOLVE prosumod_lp Using LP From line 444
 **** MODEL STATUS      1 Optimal                   
 **** OBJECTIVE VALUE             1004.4022
 
- RESOURCE USAGE, LIMIT          2.422  10000000.000
+ RESOURCE USAGE, LIMIT          2.828  10000000.000
  ITERATION COUNT, LIMIT     11403    2000000000
 
 IBM ILOG CPLEX   24.7.4 r58773 Released Sep 19, 2016 WEI x86 64bit/MS Windows 
 --- GAMS/Cplex licensed for continuous and discrete problems.
 Cplex 12.6.3.0
 
-Space for names approximately 4.06 Mb
+Space for names approximately 4.04 Mb
 Use option 'names no' to turn use of names off
 LP status(1): optimal
-Cplex Time: 2.27sec (det. 2000.58 ticks)
+Cplex Time: 2.66sec (det. 2000.57 ticks)
 Optimal solution found.
 Objective :        1004.402229
 
@@ -750,7 +752,7 @@ Objective :        1004.402229
 **** REPORT SUMMARY :        0     NONOPT
                              0 INFEASIBLE
                              0  UNBOUNDED
-GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 10/30/18 21:12:05 Page 5
+GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 11/21/18 10:49:58 Page 5
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 E x e c u t i o n
 
@@ -2511,7 +2513,7 @@ h8751 0.172,    h8752 1.019,    h8753 1.079,    h8754 1.659,    h8755 0.664
 h8756 0.197,    h8757 0.253,    h8758 0.191,    h8759 0.126,    h8760 0.497
 
 
-----    562 VARIABLE N_PV_PRO.L  Prosumage: PV generation capacities
+----    562 VARIABLE N_RES_PRO.L  Prosumage: PV generation capacities
 
 solar 8.157
 
@@ -2528,8 +2530,8 @@ storage 7.916
 storage 1.513
 
 
-----    562 VARIABLE E_M2PRO_PRO.L  Prosumage: Energy purchased from market for 
-                                    prosumage demand
+----    562 VARIABLE G_MARKET_M2PRO.L  Prosumage: Energy purchased from market f
+                                       or prosumage demand
 
 h2               0.651,    h3               0.715,    h4               0.573
 h5               0.641,    h6               0.514,    h7               0.556
@@ -3604,8 +3606,8 @@ h8756            0.197,    h8757            0.253,    h8758            0.191
 h8759            0.126,    h8760            0.497
 
 
-----    562 VARIABLE G_PRO2M_PRO.L  Prosumage: Energy sold to market from prosum
-                                    age pv generation
+----    562 VARIABLE G_MARKET_PRO2M.L  Prosumage: Energy sold to market from pro
+                                       sumage pv generation
 
                   h154             h155             h156             h157
 
@@ -5980,7 +5982,8 @@ solar            0.103            0.681            2.331            2.313
 solar            1.817            0.649
 
 
-----    562 VARIABLE STO_L_PRO.L  Prosumage: Storage level prosumage household
+----    562 VARIABLE STO_L_PRO2PRO.L  Prosumage: Storage level prosumage househo
+                                      ld
 
                      h10              h11              h12              h13
 
@@ -17193,7 +17196,7 @@ solar 0.463
 
 
 
-EXECUTION TIME       =        7.234 SECONDS     37 MB  24.7.4 r58773 WEX-WEI
+EXECUTION TIME       =        9.313 SECONDS     37 MB  24.7.4 r58773 WEX-WEI
 
 
 USER: Medium MUD - 10 User License                   S170316:1123AO-GEN

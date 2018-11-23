@@ -1,0 +1,5 @@
+5b has been changed to only incorporated bio (instead of all dispatchables).
+2a and 2b on load level dispatchables has been summarized into 2.
+4a and 4b has  on storage level been summarized into 4.
+Deleted constraint 4.k (on max E/P ratio).
+Deleted constraint 4h and 4i on max in / max out of storage.

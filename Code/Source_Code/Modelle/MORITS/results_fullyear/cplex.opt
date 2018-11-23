@@ -1,5 +1,0 @@
-lpmethod 4
-threads 4
-epgap 1e-3
-epagap 10
-parallelmode -1

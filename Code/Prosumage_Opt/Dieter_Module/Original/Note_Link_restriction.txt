@@ -1,0 +1,3 @@
+1. The prosumage link restriction option deactivates the market interaction of prosumage household storages. This means that these storages can only be used for storing self-produces and -consumed energy.
+
+2. The storage flow restriction constraints deactivates constraint 4h and 4i on max in / max out of storage at the system level.
