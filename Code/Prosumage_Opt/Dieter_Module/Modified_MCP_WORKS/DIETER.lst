@@ -1,0 +1,579 @@
+GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 11/23/18 23:39:26 Page 1
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+C o m p i l a t i o n
+
+
+   1   
+   2  **************************************************************************
+      ******
+      The Dispatch and Investment Evaluation Tool with Endogenous Renewables (DI
+      ETER).
+      Version 1.3.0, October 2018.
+      Written by Alexander Zerrahn and Wolf-Peter Schill.
+      This work is licensed under the MIT License (MIT).
+      For more information on this license, visit http://opensource.org/licenses
+      /mit-license.php.
+      Whenever you use this code, please refer to http://www.diw.de/dieter.
+      We are happy to receive feedback under azerrahn@diw.de and wschill@diw.de.
+  12  **************************************************************************
+      ******
+  13   
+  14   
+  15   
+  16   
+  17  **************************
+  18  ***** GLOBAL OPTIONS *****
+  19  **************************
+  20   
+  21  * Set star to skip Excel upload and load data from gdx
+  23   
+  24   
+  25  * Choose base year
+  27   
+  28  * Germany only - also adjust Excel inputs!
+  30   
+  31  * Set star to activate options
+  32   
+  34   
+  35  * Set star to select run-of-river options either as exogenous parameter or
+       as endogenous variable including reserve provision:
+  36  * if nothing is selected, ROR capacity will be set to zero
+  37  * if parameter option is selected, set appropriate values in fix.gmx
+  38  * if variable option is selected, set appropriate bound in data_input exce
+      l
+  41   
+  42  * Set star to determine loops, otherwise default 100% renewables
+  44   
+  45  * Set star for no crossover to speed up calculation time by skipping cross
+      over in LP solver
+  47   
+  48  * Set star for reporting to Excel
+  50   
+  51   
+  52  * ----------------- Select if to use MCP or LP format --------------------
+      ------
+  53   
+  54  * Set to "*" to select linear program, leave blank to select MCP
+  56   
+  57  * Do not change these two lines
+  60   
+  61  **************************************************************************
+      ******
+  62   
+  63  * Definition of strings for report parameters and sanity checks
+  64  * (Do not change settings below)
+  66   
+  67  * Sanity checks
+  69   
+  70  **************************************************************************
+      ******
+  71   
+  72  ****************************
+  73  ***** INITIALIZE LOOPS *****
+  74  ****************************
+  75   
+  76  sets
+  77  *$ontext
+  78  loop_res_share   Solution loop for different shares of renewables       /5
+      0/
+  81   
+      loop_prosumage   Solution loop for different prosumer self-consumption lev
+      els    /50/
+      $ontext
+  86   
+  87  *      loop_res_share                          /50/
+  88                        loop_prosumage                          /0/
+  89  ;
+  90   
+  91   
+  92   
+  93   
+  94  **************************************************************************
+      ******
+  95   
+  96  **************************
+  97  ***** SOLVER OPTIONS *****
+  98  **************************
+  99   
+ 100  options
+ 101  optcr = 0.00
+ 102  reslim = 10000000
+ 103  lp = cplex
+ 104  mip = cplex
+ 105  nlp = conopt
+ 106  limrow = 0
+ 107  limcol = 0
+ 108  ;
+ 109   
+ 110  options
+ 111  dispwidth = 15
+ 112  limrow = 0
+ 113  limcol = 0
+ 114  solprint = off
+ 115  sysout = off
+ 116  ;
+ 117   
+ 118   
+ 119   
+ 120   
+ 121  **************************************************************************
+      ******
+ 122   
+ 123  **************************
+ 124  ***** Dataload *****
+ 125  **************************
+ 126   
+INCLUDE    C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_
+           Module\Modified_MCP\dataload.gms
+ 128   
+ 129  **************************************************************************
+      ******
+      The Dispatch and Investment Evaluation Tool with Endogenous Renewables (DI
+      ETER).
+      Version 1.3.0, October 2017.
+      Written by Alexander Zerrahn and Wolf-Peter Schill.
+      This work is licensed under the MIT License (MIT).
+      For more information on this license, visit http://opensource.org/licenses
+      /mit-license.php.
+      Whenever you use this code, please refer to http://www.diw.de/dieter.
+      We are happy to receive feedback under azerrahn@diw.de and wschill@diw.de.
+ 139  **************************************************************************
+      ******
+ 140   
+ 141   
+ 142   
+ 143   
+ 144  ***************  SETS  ***************************************************
+      ******
+ 145   
+ 146  ***** Sets used in the model *****
+ 147  Sets
+ 148  tech                     Generation technologies
+ 149   dis(tech)               Dispatchable generation technologies
+ 150   nondis(tech)            Nondispatchable generation technologies
+ 151   con(tech)               Conventional generation technologies
+ 152   res(tech)               Renewable generation technologies
+ 153  sto                      Storage technologies
+ 154  rsvr                     Reservoir technologies
+ 155  dsm                      DSM technologies
+ 156   dsm_shift(dsm)          DSM load shifting technologies
+ 157   dsm_curt(dsm)           DSM load curtailment technologies
+ 158  year                     Base year for temporal data
+ 159  h                        Hours
+ 160  n                        Nodes
+ 161  l                        Lines
+ 162  ev                       EV types
+ 163  reserves                         Reserve qualities
+ 164   reserves_up(reserves)           Positive reserves
+ 165   reserves_do(reserves)           Negative reserves
+ 166   reserves_spin(reserves)         Spinning reserves
+ 167   reserves_nonspin(reserves)      Nonspinning reserves
+ 168   reserves_prim(reserves)         Primary reserves
+ 169   reserves_nonprim(reserves)      Nonprimary reserves
+ 170   reserves_prim_up(reserves)      Primary positive reserves
+ 171   reserves_nonprim_up(reserves)   Nonprimary positive reserves
+ 172   reserves_prim_do(reserves)      Primary negative reserves
+ 173   reserves_nonprim_do(reserves)   Nonprimary negative reserves
+ 174  bu                       Building archtypes
+ 175  ch                       Heating combination type
+ 176   hst(ch)                 Heating technology that feeds to storage
+ 177   hp(ch)                  Heat pump technologies
+ 178   hel(ch)                 Hybrid electric heating technologies - electric p
+      art
+ 179   hfo(ch)                 Hybrid electric heating technologies - fossil par
+      t
+ 180   
+ 181   
+ 182  ***** Sets used for data upload *****
+ 183  headers_tech                     Generation technologies - upload headers
+ 184   tech_dispatch                   Generation technologies - dispatchable or
+       nondispatchable
+ 185   tech_res_con                    Generation technologies - renewable or "c
+      onventional"
+ 186  headers_sto                      Storage technologies - upload headers
+ 187  headers_reservoir                Reservoir technologies - upload headers
+ 188  headers_dsm                      DSM technologies - upload headers
+ 189   dsm_type                        DSM technologies - shifting or curtailmen
+      t
+ 190  headers_time                     Temporal data - upload headers
+ 191  headers_topology                 Spatial data - upload headers
+ 192  headers_ev                       EV data - upload headers
+ 193  headers_time_ev                  EV temporal data - upload headers
+ 194  headers_prosumage_generation     Prosumage generation data - upload header
+      s
+ 195  headers_prosumage_storage        Prosumage storage data - upload headers
+ 196  headers_reserves                 Reserve data - upload headers
+ 197   reserves_up_down                Reserve data - positive and neagtive rese
+      rves
+ 198   reserves_spin_nonspin           Reserve data - spinning and nonspinning r
+      eserves
+ 199   reserves_prim_nonprim           Reserve data - primary and nonprimary res
+      erves
+ 200  headers_heat                     Heat data - upload headers
+ 201   heat_storage                    Heat data - storage technologies
+ 202   heat_hp                         Heat data - heat pump technologies
+ 203   heat_elec                       Heat data - hybrid heating technologies -
+       electric part
+ 204   heat_fossil                     Heat data - hybrid heating technologies -
+       fossil part
+ 205  headers_time_heat                Heat data - upload headers time data
+ 206  headers_time_dhw                 Heat data - upload headers time data on D
+      HW
+ 207  ;
+ 208   
+ 209   
+ 210   
+ 211   
+ 212  ***************  PARAMETERS  *********************************************
+      ******
+ 213   
+ 214  Parameters
+ 215   
+ 216  ***** Generation technologies *****
+ 217  *--- Variable and fixed costs ---*
+ 218  eta              Efficiency of conventional technologies [0 1]
+ 219  carbon_content   CO2 emissions per fuel unit used [tons per MWh thermal]
+ 220  c_up             Load change costs UP [EUR per MWh]
+ 221  c_do             Load change costs DOWN [EUR per MWh]
+ 222  c_fix            Annual fixed costs [EUR per MW per year]
+ 223  c_vom            Variable O&M costs [EUR per MWh]
+ 224  CO2price         CO2 price in [EUR per ton]
+ 225   
+ 226  *--- Investment ---*
+ 227  c_inv_overnight  Investment costs: Overnight [EUR per MW]
+ 228  lifetime         Investment costs: technical lifetime [a]
+ 229  recovery         Investment costs: Recovery period according to depreciati
+      on tables [a]
+ 230  interest_rate    Investment costs: Interest rate [%]
+ 231  m_p              Investment: maximum installable capacity per technology [
+      MW]
+ 232  m_e              Investment: maximum installable energy [TWh per a]
+ 233   
+ 234  *--- Flexibility ---*
+ 235  grad_per_min     Maximum load change relative to installed capacity [% of 
+      installed capacity per minute]
+ 236   
+ 237   
+ 238  ***** Fuel and CO2 costs *****
+ 239  fuelprice        Fuel price conventionals [EUR per MWh thermal]
+ 240   
+ 241   
+ 242  ***** Renewables *****
+ 243  c_cu             Hourly Curtailment costs for renewables [Euro per MW]
+ 244  phi_min_res      Minimum renewables share [0 1]
+ 245   
+ 246   
+ 247  ***** Storage *****
+ 248  *--- Variable and fixed costs ---*
+ 249  c_m_sto          Marginal costs of storing in or out [EUR per MWh]
+ 250  eta_sto          Storage efficiency [0 1]
+ 251  phi_sto_ini      Initial storage level [0 1]
+ 252  etop_max         Maximum E to P ratio of storage types [#]
+ 253  c_fix_sto        Annual fixed costs [EUR per MW]
+ 254   
+ 255  *--- Investment ---*
+ 256  c_inv_overnight_sto_e       Investment costs for storage energy: Overnight
+       [EUR per MWh]
+ 257  c_inv_overnight_sto_p       Investment costs for storage capacity: Overnig
+      ht [EUR per MW]
+ 258  m_sto_e                     Investment into storage: maximum installable e
+      nergy [MWh]
+ 259  m_sto_p                     Investment into storage: maximum installable p
+      ower [MW]
+ 260   
+ 261   
+ 262  ***** Reservoir*****
+ 263  *--- Variable and fixed costs ---*
+ 264  c_m_rsvr                 Marginal costs of generating energy from reservoi
+      r [EUR per MWh]
+ 265  eta_rsvr                 Generation efficiency [0 1]
+ 266  phi_rsvr_ini             Initial reservoir level [0 1]
+ 267  c_fix_rsvr               Annual fixed costs [EUR per MW per a]
+ 268  phi_rsvr_min             Minimum hourly reservoir outflow as fraction of a
+      nnual energy [0 1]
+ 269  phi_rsvr_lev_min         Minimum filling level [0 1]
+ 270   
+ 271  *--- Investment ---*
+ 272  c_inv_overnight_rsvr_e   Investment costs for reservoir energy: Overnight 
+      [EUR per MWh]
+ 273  c_inv_overnight_rsvr_p   Investment costs for reservoir capacity: Overnigh
+      t [EUR per MW]
+ 274  inv_lifetime_rsvr        Investment costs for reservoir: technical lifetim
+      e [a]
+ 275  inv_interest_rsvr        Investment costs for reservoir: Interest rate [%]
+ 276  m_rsvr_e                 Investment into reservoir: maximum installable en
+      ergy [MWh]
+ 277  m_rsvr_p                 Investment into reservoir: maximum installable ca
+      pacity [MW]
+ 278   
+ 279   
+ 280  ***** DSM *****
+ 281  *--- Variable and fixed costs ---*
+ 282  c_m_dsm_cu       DSM: hourly costs of load curtailment [EUR per MWh]
+ 283  c_m_dsm_shift    DSM: costs for load shifting [EUR per MWh]
+ 284  c_fix_dsm_cu     Annual fixed costs load curtailment capacity [EUR per MW 
+      per a]
+ 285  c_fix_dsm_shift  Annual fixed costs load shifting capacity [EUR per MW per
+       a]
+ 286   
+ 287  *--- Flexibility, efficiency, recovery ---*
+ 288  t_dur_dsm_cu     DSM: Maximum duration load curtailment [h]
+ 289  t_off_dsm_cu     DSM: Minimum recovery time between two load curtailment i
+      nstances [h]
+ 290   
+ 291  t_dur_dsm_shift  DSM: Maximum duration load shifting [h]
+ 292  t_off_dsm_shift  DSM: Minimum recovery time between two granular load upsh
+      ift instances [h]
+ 293  eta_dsm_shift    DSM: Efficiency of load shifting technologies [0 1]
+ 294   
+ 295  *--- Investment ---*
+ 296  c_inv_overnight_dsm_cu           Investment costs for DSM load curtailment
+      : Overnight [EUR per MW]
+ 297  c_inv_overnight_dsm_shift        Investment costs for DSM load shifting: O
+      vernight [EUR per MW]
+ 298  inv_recovery_dsm_cu              Investment costs for DSM load curtailment
+      : Recovery period [a]
+ 299  inv_recovery_dsm_shift           Investment costs for DSM load shifting: R
+      ecovery period [a]
+ 300  inv_interest_dsm_cu              Investment costs for DSM load curtailment
+      : Interest rate [%]
+ 301  inv_interest_dsm_shift           Investment costs for DSM load shifting: I
+      nterest rate [%]
+ 302  m_dsm_cu                         DSM: Maximum installable capacity load cu
+      rtailment [MW]
+ 303  m_dsm_shift                      DSM: Maximum installable capacity load sh
+      ifting [MW]
+ 304   
+ 305   
+ 306  ***** Time Data *****
+ 307  d_y                      Demand hour h for different years [MWh]
+ 308  d                        Demand hour h [MWh]
+ 309  phi_res_y                Renewables availability technology res in hour h 
+      for different years [0 1]
+ 310  phi_res                  Renewables availability technology res in hour h 
+      [0 1]
+ 311  phi_ror_y                Run-of-river availability technology ror in hour 
+      h for different years [0 1]
+ 312  phi_ror                  Run-of-river availability technology ror in hour 
+      h [0 1]
+ 313  rsvr_in_y                Reservoir inflow in hour h for different years [0
+       1]
+ 314  rsvr_in                  Reservoir inflow in hour h [0 1]
+ 315  n_ev_p_upload            Power rating of the charging connection in hour h
+       [MW - 0 when car is in use or parked without grid connection]
+ 316  ev_ed_upload             Electricity demand for mobility vehicle profile e
+      v in hour h [MW]
+ 317  ev_ged_exog_upload       Electricity demand for mobility in case of uncont
+      rolled charging vehicle profile ev in hour h [MW]
+ 318  phi_reserves_call_y      Hourly share of reserve provision that is actuall
+      y activated for different years [0 1]
+ 319  phi_reserves_call        Hourly share of reserve provision that is actuall
+      y activated [0 1]
+ 320  reserves_exogenous_y     Hourly reserve provision for different years [MW]
+ 321  reserves_exogenous       Hourly reserve provision [MW]
+ 322   
+ 323  ***** Transmission *****
+ 324  *--- Investment ---*
+ 325  c_inv_overnight_ntc       Investment costs in: overnight [EUR per MW]
+ 326  c_fix_ntc                 Fixed costs [EUR per MW per a]
+ 327  inv_lifetime_ntc          Investment costs: technical lifetime [a]
+ 328  inv_recovery_ntc          Investment costs: Recovery period in [a]
+ 329  inv_interest_ntc          Investment costs: Interest rate [%]
+ 330  m_ntc                     Investment into NTC: maximum installable capacit
+      y [MW]
+ 331   
+ 332  *--- Topology and distance ---*
+ 333  inc              Incidence index of link l on node n
+ 334  dist             Distance covered by link l [km]
+ 335   
+ 336   
+ 337  ***** Electric vehicles *****
+ 338  *--- Costs and attributes ---*
+ 339  c_m_ev           Marginal costs of discharging V2G [EUR per MWh]
+ 340  pen_phevfuel     Penalty for non-electric PHEV operation mode [EUR per MWh
+      ]
+ 341  eta_ev_in        Electric vehicle efficiency of charging (G2V) [0 1]
+ 342  eta_ev_out       Electric vehicle efficiency of discharging (V2G) [0 1]
+ 343  phi_ev_ini       Electric vehicle charging level in initial period [0 1]
+ 344   
+ 345  n_ev_e           Electric vehicle battery capacity [MWh]
+ 346  ev_quant         Overall number of electirc vehicles [#]
+ 347  phi_ev           Share of electric vehicles per load profile in actual sce
+      nario [0 1]
+ 348  ev_phev          Defines whether an electric vehicle is a PHEV REEV [1 if 
+      yes 0 otherwise]
+ 349   
+ 350  *--- Temporal data ---*
+ 351  n_ev_p           Electric vehicle power rating [MWh]
+ 352  ev_ed            Electric vehicle electricity demand [MWh]
+ 353  ev_ged_exog      Electric vehicle grid electricity demand for exogenous ch
+      arging pattern [MWh]
+ 354   
+ 355   
+ 356  ***** Prosumage *****
+ 357  phi_pro_load             Share of prosumagers among total load [0 1]
+ 358  phi_pro_self             Minimum self-generation shares for prosumagers [0
+       1]
+ 359  m_res_pro                Maximum installable: renewables capacity [MW]
+ 360  m_sto_pro_e              Maximum installable: storage energy [MWh]
+ 361  m_sto_pro_p              Maximum installable: storage capacity [MW]
+ 362  phi_sto_pro_ini          Prosumagers' initial storage loading [0 1]
+ 363   
+ 364   
+ 365  ***** Reserves *****
+ 366  phi_reserves_share       Shares of SRL and MRL up and down [0 1]
+ 367  reserves_intercept       Intercept of regression line determining reserves
+       demand
+ 368  reserves_slope           Slope of regression line determining reserves dem
+      and
+ 369  reserves_reaction        Activation reaction time for reserves qualities [
+      min]
+ 370  phi_reserves_pr_up       Positive primary reserves fraction of total nonpr
+      imary reserves demand [0 1]
+ 371  phi_reserves_pr_do       Negative primary reserves fraction of total nonpr
+      imary reserves demand [0 1]
+ 372  *reserves_exog
+ 373   
+ 374   
+ 375  ***** Heat *****
+ 376  *--- Time data ---*
+ 377  dh_upload                Hourly heat demand per year for upload [MWh per m
+      2]
+ 378  dh_y                     Hourly heat demand per year [MWh per m2]
+ 379  dh                       Hourly heat demand [MWh per m2]
+ 380  temp_source              Heat pumps - source temperature [°Celsius]
+ 381  d_dhw_upload             Hourly DHW demand per year for upload [MWh per m2
+      ]
+ 382  d_dhw_y                  Hourly DHW demand per year [MWh per m2]
+ 383  d_dhw                    Hourly DHW demand [MWh per m2]
+ 384  nets_profile(h)          Hourly exogenous heat demand by nonsmart night-ti
+      me storage heaters [MWh per m2]
+ 385   
+ 386  *--- Technololgy attributes ---*
+ 387  phi_heat_type            Share of heating type ch per building archetype b
+      u [0 1]
+ 388  eta_heat_stat            Static efficiency for heating technologies [0 1]
+ 389  eta_heat_dyn             Static efficiency for heating technologies [0 1]
+ 390  eta_dhw_aux_stat         Static efficiency for auxiliary DHW technologies 
+      [0 1]
+ 391  n_heat_p_in              Maximum power inflow into heating technologies [M
+      W]
+ 392  n_heat_p_out             Maximum power outflow from heating technologies [
+      MW]
+ 393  n_heat_e                 Maximum energy level of heating storage technolog
+      ies [MWh]
+ 394  n_sets_p_in              SETS - Power rating - electricity intake [MW]
+ 395  n_sets_p_out             SETS - Power rating - heat output [MW]
+ 396  n_sets_e                 SETS - Energy storage capacity [MWh]
+ 397  n_sets_dhw_p_in          SETS auxiliary DHW module - power rating - electr
+      icity intake [MW]
+ 398  n_sets_dhw_p_out         SETS auxiliary DHW module - power rating - DHW ou
+      tput [MW]
+ 399  n_sets_dhw_e             SETS auxiliary DHW module - energy storage capaci
+      ty [MWh]
+ 400  phi_heat_ini             Inititial storage level of heating technologies [
+      0 1]
+ 401  temp_sink                Heat pumps - sink temperature [°Celsius]
+ 402  pen_heat_fuel            Penalty term for non-electric fuel usage for hybr
+      id heating technologies [EUR per MWh]
+ 403  area_floor               Floor area subject to specific heating technology
+       in specific building type [m2]
+ 404  theta_night              Indicator for night hours {0 1}
+ 405   
+ 406   
+ 407   
+ 408  ***************  DERIVED PARAMETERS  *************************************
+      ******
+ 409   
+ 410  c_m              Marginal production costs for conventional plants includi
+      ng variable O and M costs [EUR per MWh]
+ 411  c_i              Annualized investment costs by conventioanl plant [EUR pe
+      r MW]
+ 412   
+ 413  c_i_res          Annualized investment costs by renewable plant [EUR per M
+      W]
+ 414  c_fix_res        Annualized fixed costs by renewable plant [EUR per MW per
+       a]
+ 415   
+ 416  c_i_sto_e        Annualized investment costs storage energy [EUR per MWh]
+ 417  c_i_sto_p        Annualized investment costs storage capacity [EUR per MW]
+ 418   
+ 419  c_i_rsvr_e       Annualized investment costs storage energy [EUR per MWh]
+ 420  c_i_rsvr_p       Annualized investment costs storage capacity [EUR per MW]
+ 421   
+ 422  c_i_dsm_cu       DSM: Annualized investment costs load curtailment [EUR pe
+      r MW]
+ 423  c_i_dsm_shift    DSM: Annualized investment costs load shifting [EUR per M
+      W]
+ 424   
+ 425  c_i_ntc          Investment for net transfer capacity [EUR per MW and km]
+ 426   
+ 427  phi_mean_reserves_call_y         Hourly mean of share reserves called per 
+      year [0 1]
+ 428  phi_mean_reserves_call           Hourly mean of share reserves called [0 1
+      ]
+ 429   
+ 430  theta_dir        Dummy equal to 1 if building type bu has direct heating t
+      ype ch [0 1]
+ 431  theta_sets       Dummy equal to 1 if building type bu has SETS heating typ
+      e ch [0 1]
+ 432  theta_hp         Dummy equal to 1 if building type bu has heat pump heatin
+      g type ch [0 1]
+ 433  theta_elec       Dummy equal to 1 if building type bu has hybrif electric 
+      heating - electric part [0 1]
+ 434  theta_fossil     Dummy equal to 1 if building type bu has hybrif electric 
+      heating - fossil part [0 1]
+ 435  theta_storage    Dummy equal to 1 if building type ch has storage heating 
+      type ch [0 1]
+ 436   
+ 437   
+ 438   
+ 439   
+ 440  ***************  PARAMETERS FOR DATA UPLOAD  *****************************
+      ******
+ 441   
+ 442  technology_data_upload(tech,tech_res_con,tech_dispatch,headers_tech)
+ 443  technology_data(tech,headers_tech)
+ 444  storage_data(sto,headers_sto)
+ 445  reservoir_data(rsvr,headers_reservoir)
+ 446  time_data_upload(h,year,headers_time)
+ 447  dsm_data_upload(dsm,dsm_type,headers_dsm)
+ 448  dsm_data(dsm,headers_dsm)
+ 449  topology_data(l,headers_topology)
+ 450  ev_data(ev,headers_ev)
+ 451  ev_time_data_upload(h,headers_time_ev,ev)
+ 452  prosumage_data_generation(tech,headers_prosumage_generation)
+ 453  prosumage_data_storage(sto,headers_prosumage_storage)
+ 454  reserves_time_data_activation(h,year,reserves)
+ 455  reserves_time_data_provision(h,year,reserves)
+ 456  reserves_data_upload(reserves,reserves_up_down,reserves_spin_nonspin,reser
+      ves_prim_nonprim,headers_reserves)
+ 457  reserves_data(reserves,headers_reserves)
+ 458  heat_data_upload(bu,ch,heat_storage,heat_hp,heat_elec,heat_fossil,headers_
+      heat)
+ 459  heat_data(bu,ch,headers_heat)
+ 460  dh_upload(h,year,headers_time_heat,bu)
+ 461  d_dhw_upload(h,year,headers_time_heat,bu)
+ 462  temp_source_upload
+ 463  ;
+ 464   
+ 465   
+ 466   
+ 467   
+ 468  ***************  UPLOAD TIME-CONSTANT SETS AND PARAMETERS  ***************
+      ******
+ 469   
+ 529   
+ 530  *%skip_Excel%
+ 532   
+GDXIN   C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Mod
+        ule\Modified_MCP\Data_input.gdx
+--- LOAD  tech = 2:tech
+--- LOAD  headers_tech = 3:headers_tech
+--- LOAD  tech_dispatch = 4:tech_dispatch
+--- LOAD  tech_res_con = 5:tech_res_con
+--- LOAD  sto = 6:sto
+--- LOAD  headers_sto = 7:headers_sto
+--- LOAD  rsvr = 8:rsvr
+--- LOAD  headers_reservoir = 9:headers_reservoir
+--- LOAD  reser

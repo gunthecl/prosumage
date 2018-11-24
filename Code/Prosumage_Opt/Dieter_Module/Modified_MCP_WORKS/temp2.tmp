@@ -1,0 +1,23 @@
+se=0
+
+dset=h                           rng=basic!A9            rdim=1 cdim=0
+dset=headers_time                rng=basic!B8            rdim=0 cdim=1
+dset=year                        rng=basic!B7            rdim=0 cdim=1
+par=time_data_upload             rng=basic!A7            rdim=1 cdim=2
+
+dset=headers_time_ev             rng=ev!B7               rdim=0 cdim=1
+par=ev_time_data_upload          rng=ev!A7               rdim=1 cdim=2
+
+par=reserves_time_data_activation        rng=reserves_activation!A7      rdim=1 cdim=2
+par=reserves_time_data_provision         rng=reserves_provision!A7       rdim=1 cdim=2
+
+dset=headers_time_heat           rng=heat!D9             rdim=0 cdim=1
+par=dh_upload                    rng=heat!C8             rdim=1 cdim=3
+par=theta_night                  rng=heat!A11            rdim=1 cdim=0
+
+dset=headers_time_dhw            rng=heat_dhw!A8         rdim=0 cdim=1
+par=d_dhw_upload                 rng=heat_dhw!A7         rdim=1 cdim=3
+
+par=nets_profile                 rng=NETS!A7:B8766       rdim=1 cdim=0
+
+par=temp_source_upload           rng=heat_pump!A7        rdim=1 cdim=2

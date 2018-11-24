@@ -29,7 +29,7 @@ dsm                      DSM technologies
  dsm_shift(dsm)          DSM load shifting technologies
  dsm_curt(dsm)           DSM load curtailment technologies
 year                     Base year for temporal data
-h                        Hours
+h                        Hours               /h1h:100/
 n                        Nodes
 l                        Lines
 ev                       EV types
@@ -388,7 +388,7 @@ par=technology_data_upload       rng=Technologies!B5     rdim=3 cdim=1
 par=storage_data                 rng=storage!B5          rdim=1 cdim=1
 par=reservoir_data               rng=reservoir!B5        rdim=1 cdim=1
 par=dsm_data_upload              rng=DSM!B5              rdim=2 cdim=1
-par=topology_data                rng=spatial!B2          rdim=0 cdim=1
+
 
 %GER_only%
 par=inc                          rng=spatial!L2          rdim=1 cdim=1
@@ -423,10 +423,12 @@ $offtext
 
 ***************  UPLOAD TIME-SERIES SETS AND PARAMETERS  ***********************
 
+
+*dset=h                           rng=basic!A9            rdim=1 cdim=0
 $onecho >temp2.tmp
 se=0
 
-dset=h                           rng=basic!A9            rdim=1 cdim=0
+
 dset=headers_time                rng=basic!B8            rdim=0 cdim=1
 dset=year                        rng=basic!B7            rdim=0 cdim=1
 par=time_data_upload             rng=basic!A7            rdim=1 cdim=2
