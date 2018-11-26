@@ -508,9 +508,9 @@ STO_IN.l(sto,h)= 0;
 STO_OUT.l(sto,h)= 0;
 STO_L.l(sto,h) = 0;
 
-N_TECH.l(tech)= 0;
-N_STO_E.l(sto)= 0;
-N_STO_P.l(sto)= 0;
+*N_TECH.l(tech)= 0;
+*N_STO_E.l(sto)= 0;
+*N_STO_P.l(sto)= 0;
 
 
 ********************************************************************************
@@ -541,10 +541,12 @@ con4e_maxout_sto
 con5a_minRES
 con5b_max_energy
 
+%investment_model%$ontext
 con8a_max_I_power
 con8b_max_I_sto_e
 con8c_max_I_sto_p
-
+$ontext
+$offtext
 
 
 %prosumage%$ontext
@@ -581,9 +583,13 @@ con4e_maxout_sto.mu_stout_cap
 *con4j_ending
 *con5a_minRES.mu_minRES
 con5b_max_energy.mu_bio_cap
+
+%investment_model%$ontext
 con8a_max_I_power.mu_tech_max_i
 con8b_max_I_sto_e.mu_stoe_max_i
 con8c_max_I_sto_p.mu_stop_max_i
+$ontext
+$offtext
 
 KKTG_L.G_L
 KKTG_UP.G_UP
@@ -593,8 +599,11 @@ KKTCU.CU
 KKTSTO_IN.STO_IN
 KKTSTO_OUT.STO_OUT
 KKTSTO_L.STO_L
+
+%investment_model%$ontext
 KKTN_TECH.N_TECH
 KKTN_STO_E.N_STO_E
 KKTN_STO_P.N_STO_P
-
+$ontext
+$offtext
 / ;

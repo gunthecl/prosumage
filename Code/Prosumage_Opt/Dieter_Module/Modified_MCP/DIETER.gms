@@ -28,6 +28,10 @@ $setglobal base_year "'2030'"
 * Germany only - also adjust Excel inputs!
 $setglobal GER_only "*"
 
+* Dispatch only - used fixed capacities
+$setglobal dispatch_model "*"
+
+
 * Set star to activate options
 
 $setglobal prosumage ""
@@ -54,9 +58,6 @@ $setglobal report_to_excel ""
 * Set to "*" to select linear program, leave blank to select MCP
 $setglobal LP ""
 
-* Do not change these two lines
-$if "%LP%" == "" $setglobal MCP "*"
-$if "%LP%" == "*" $setglobal MCP ""
 
 ********************************************************************************
 
@@ -67,6 +68,14 @@ $setglobal sec_hour "1"
 * Sanity checks
 $if "%ror_parameter%" == "*" $if "%ror_variable%" == "*" $abort Choose appropriate ROR option! ;
 
+* Do not change these  lines
+$if "%LP%" == "" $setglobal MCP "*"
+$if "%LP%" == "*" $setglobal MCP ""
+
+$if "%dispatch_model%" == "" $setglobal investment_model "*"
+$if "%dispatch_model%" == "*" $setglobal investment_model ""
+
+
 ********************************************************************************
 
 ****************************
@@ -75,7 +84,7 @@ $if "%ror_parameter%" == "*" $if "%ror_variable%" == "*" $abort Choose appropria
 
 sets
 %loop_over_renewable_share%$ontext
-loop_res_share   Solution loop for different shares of renewables       /10,50,80/
+loop_res_share   Solution loop for different shares of renewables       /50/
 $ontext
 $offtext
 
