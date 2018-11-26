@@ -1,22 +1,3 @@
 B 2 C o m p i l a t i o n
-B 2263 Include File Summary
-B 2298 Model Statistics    SOLVE DIETER_MCP Using MCP From line 2025
-B 2316 Solution Report     SOLVE DIETER_MCP Using MCP From line 2025
-B 2375 E x e c u t i o n
-I 2378 Z_MCP
-I 2379 N_TECH
-I 2386 N_STO_E
-I 2391 N_STO_P
-I 2397 G_L
-I 2538 G_UP
-I 2576 G_DO
-I 2605 G_RES
-I 2770 CU
-I 2775 STO_IN
-I 2817 STO_OUT
-I 2875 STO_L
-I 2988 lambda_enerbal
-I 2993 lambda_enerbal
-I 3017 lambda_resgen
-I 3022 lambda_convgen
-I 3028 lambda_stolev
+B 2259 Include File Summary
+B 2294 Model Statistics    SOLVE DIETER_MCP Using MCP From line 2019

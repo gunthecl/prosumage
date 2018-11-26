@@ -34,10 +34,16 @@ $setglobal reserves_endogenous ""
 $setglobal reserves_exogenous ""
 
 $setglobal prosumage ""
+
+**** Activate modifications to replicate MCP results**************************
 * Prosumage link restrictions prohibits prosumage storage interaction with market
 $setglobal prosumage_links_restr "*"
-* Storage flow constraints 4h and 4i deactivated
+* Deacivated storage flow constraints 4h and 4i
 $setglobal storage_flow_constraint "*"
+* Set parameter phi_sto_ini to zero (instead of 0.5)
+$setglobal zero_phi_sto_ini "*"
+
+******************************************************************************
 
 $setglobal heat ""
 
@@ -631,6 +637,10 @@ G_INFES          .level          .lev_G_INFES
 /
 ;
 
+%zero_phi_sto_ini%$ontext
+phi_sto_ini(n,sto) = 0;
+$ontext
+$offtext
 
 solve DIETER using lp min Z scenario dict;
 

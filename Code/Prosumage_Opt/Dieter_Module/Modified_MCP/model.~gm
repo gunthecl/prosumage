@@ -18,7 +18,6 @@ lambda_enerbal     Dual variable on energy balance (1a)
 lambda_resgen      Dual variable on renewable generation (3e)
 lambda_convgen     Dual variable on conventional generation level (2a)
 lambda_stolev      Dual variable on storage level  (4b)
-lambda_stolev_i
 ;
 
 Positive Variables
@@ -224,8 +223,9 @@ con3e_maxprod_res(nondis,h)..
 ***** Storage constraints *****
 * ---------------------------------------------------------------------------- *
 
-con4a_stolev_start(sto,h)$h_ini(h)..
-        phi_sto_ini(sto) * N_STO_E(sto) + STO_IN(sto,h)*(1+eta_sto(sto))/2 - STO_OUT(sto,h)/(1+eta_sto(sto))*2  - STO_L(sto,h)  =E= 0
+con4a_stolev_start(sto,h)$(ord(h) = 1)..
+*        phi_sto_ini(sto) * N_STO_E(sto)
+        + STO_IN(sto,h)*(1+eta_sto(sto))/2 - STO_OUT(sto,h)/(1+eta_sto(sto))*2  - STO_L(sto,h)  =E= 0
 ;
 
 con4b_stolev(sto,h)$(ord(h)>1)..
@@ -235,7 +235,7 @@ con4b_stolev(sto,h)$(ord(h)>1)..
 con4_stolev(sto,h)..
 
        + STO_IN(sto,h)*(1+eta_sto(sto))/2 - STO_OUT(sto,h)/(1+eta_sto(sto))*2  -  STO_L(sto,h)
-*       + (phi_sto_ini(sto)*N_STO_E(sto))$(ord(h) = 1)
+*      + (phi_sto_ini(sto)*N_STO_E(sto))$(ord(h) = 1)
        + (STO_L(sto,h-1))$(ord(h)>1)
        =E= 0
 ;
@@ -421,25 +421,20 @@ KKTCU(nondis,h)..
 
 KKTSTO_IN(sto,h)..
 
-    c_m_sto(sto)  + lambda_enerbal(h)
-    -  (1+eta_sto(sto))/2*lambda_stolev(sto,h)$(ord(h) > 1 )
-    - (1+eta_sto(sto))/2*lambda_stolev_i(sto,h)$h_ini(h)
+    c_m_sto(sto)  + lambda_enerbal(h) -  lambda_stolev(sto,h)*(1+eta_sto(sto))/2
     + mu_stoin_cap(sto,h) =G= 0
 ;
 
 KKTSTO_OUT(sto,h)..
 
-     c_m_sto(sto)  -  lambda_enerbal(h)
-     +  1/(1+eta_sto(sto))*2*lambda_stolev(sto,h)$(ord(h) > 1)
-     +  1/(1+eta_sto(sto))*2*lambda_stolev_i(sto,h)$h_ini(h)
+     c_m_sto(sto)  -  lambda_enerbal(h) +  lambda_stolev(sto,h)/(1+eta_sto(sto))*2
      +  mu_stout_cap(sto,h)
       =G= 0
 ;
 
 KKTSTO_L(sto,h)..
 
-  + lambda_stolev(sto,h)$(ord(h) > 1 )
-  + lambda_stolev_i(sto,h))$h_ini(h)
+  + lambda_stolev(sto,h)
   +  mu_stolev_cap(sto,h)
   -  (lambda_stolev(sto,h+1))$(ord(h) > 1 )
 
@@ -481,7 +476,7 @@ KKTN_STO_E(sto)..
       +  c_fix_sto(sto)/2 +  c_i_sto_e(sto)
       -  sum( h,   mu_stolev_cap(sto,h))
       +  mu_stoe_max_i(sto)
-      -  phi_sto_ini(sto)*lambda_stolev_i(sto,'h1')
+*      -  phi_sto_ini(sto)*lambda_stolev(sto,'h1')
       =G= 0
 ;
 
@@ -534,9 +529,9 @@ con2_loadlevel
 con3a_maxprod_dispatchable
 con3e_maxprod_res
 
-con4a_stolev_start
-con4b_stolev
-*con4_stolev
+*con4a_stolev_start
+*con4b_stolev
+con4_stolev
 con4c_stolev_max
 con4d_maxin_sto
 con4e_maxout_sto
@@ -579,9 +574,7 @@ con2_loadlevel.lambda_convgen
 con3a_maxprod_dispatchable.mu_conv_cap
 con3e_maxprod_res.lambda_resgen
 
-con4b_stolev.lambda_stolev
-con4a_stolev_start.lambda_stolev_i
-
+con4_stolev.lambda_stolev
 con4c_stolev_max.mu_stolev_cap
 con4d_maxin_sto.mu_stoin_cap
 con4e_maxout_sto.mu_stout_cap

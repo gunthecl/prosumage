@@ -1,4 +1,4 @@
-GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 11/24/18 00:00:29 Page 1
+GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 11/24/18 20:02:27 Page 1
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
@@ -74,8 +74,8 @@ C o m p i l a t i o n
   75   
   76  sets
   77  *$ontext
-  78  loop_res_share   Solution loop for different shares of renewables       /5
-      0/
+  78  loop_res_share   Solution loop for different shares of renewables       /1
+      0,50,80/
   81   
       loop_prosumage   Solution loop for different prosumer self-consumption lev
       els    /50/
@@ -1062,180 +1062,179 @@ INCLUDE    C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_
  940  lambda_resgen      Dual variable on renewable generation (3e)
  941  lambda_convgen     Dual variable on conventional generation level (2a)
  942  lambda_stolev      Dual variable on storage level  (4b)
- 943  lambda_stolev_i
- 944  ;
- 945   
- 946  Positive Variables
- 947  G_L(tech,h)            Generation level in hour h [MWh]
- 948  G_UP(tech,h)           Generation upshift in hour h [MWh]
- 949  G_DO(tech,h)           Generation downshift in hour h [MWh]
- 950  G_RES(tech,h)          Generation renewables type res in hour h [MWh]
- 951  CU(tech,h)             Renewables curtailment technology res in hour h [MW
+ 943  ;
+ 944   
+ 945  Positive Variables
+ 946  G_L(tech,h)            Generation level in hour h [MWh]
+ 947  G_UP(tech,h)           Generation upshift in hour h [MWh]
+ 948  G_DO(tech,h)           Generation downshift in hour h [MWh]
+ 949  G_RES(tech,h)          Generation renewables type res in hour h [MWh]
+ 950  CU(tech,h)             Renewables curtailment technology res in hour h [MW
       h]
- 952   
- 953  STO_IN(sto,h)          Storage inflow technology sto hour h [MWh]
- 954  STO_OUT(sto,h)         Storage outflow technology sto hour h [MWh]
- 955  STO_L(sto,h)           Storage level technology sto hour h [MWh]
- 956   
- 957  N_TECH(tech)           Technology tech built [MW]
- 958  N_STO_E(sto)           Storage technology built - Energy [MWh]
- 959  N_STO_P(sto)           Storage loading and discharging capacity built - Ca
+ 951   
+ 952  STO_IN(sto,h)          Storage inflow technology sto hour h [MWh]
+ 953  STO_OUT(sto,h)         Storage outflow technology sto hour h [MWh]
+ 954  STO_L(sto,h)           Storage level technology sto hour h [MWh]
+ 955   
+ 956  N_TECH(tech)           Technology tech built [MW]
+ 957  N_STO_E(sto)           Storage technology built - Energy [MWh]
+ 958  N_STO_P(sto)           Storage loading and discharging capacity built - Ca
       pacity [MW]
- 960   
- 961  CU_PRO(tech,h)                 Prosumage: curtailment of renewable generat
+ 959   
+ 960  CU_PRO(tech,h)                 Prosumage: curtailment of renewable generat
       ion in hour h [MWh]
- 962  G_MARKET_PRO2M(tech,h)         Prosumage. energy sent to market in hour h 
+ 961  G_MARKET_PRO2M(tech,h)         Prosumage. energy sent to market in hour h 
       [MWh]
- 963  G_MARKET_M2PRO(h)              Prosumage: withdrawal of energy from market
+ 962  G_MARKET_M2PRO(h)              Prosumage: withdrawal of energy from market
        in hour h [MWh]
- 964  G_RES_PRO(tech,h)              Prosumage: hourly renewables generation in 
+ 963  G_RES_PRO(tech,h)              Prosumage: hourly renewables generation in 
       hour h [MWh]
- 965  STO_IN_PRO2PRO(tech,sto,h)     Prosumage: storage loading from generation 
+ 964  STO_IN_PRO2PRO(tech,sto,h)     Prosumage: storage loading from generation 
       for discharging to consumption in hour h [MWh]
- 966  STO_OUT_PRO2PRO(sto,h)         Prosumage: storage discharging to consumpti
+ 965  STO_OUT_PRO2PRO(sto,h)         Prosumage: storage discharging to consumpti
       on from generation in hour h [MWh]
- 967  STO_L_PRO2PRO(sto,h)           Prosumage: storage level generation to cons
+ 966  STO_L_PRO2PRO(sto,h)           Prosumage: storage level generation to cons
       umption in hour h [MWh]
- 968  N_STO_E_PRO(sto)               Prosumage: installed storage energy [MWh]
- 969  N_STO_P_PRO(sto)               Prosumage: installed storage power [MW]
- 970  N_RES_PRO(tech)                Prosumage: installed renewables capacities 
+ 967  N_STO_E_PRO(sto)               Prosumage: installed storage energy [MWh]
+ 968  N_STO_P_PRO(sto)               Prosumage: installed storage power [MW]
+ 969  N_RES_PRO(tech)                Prosumage: installed renewables capacities 
       [MW]
+ 970   
  971   
- 972   
- 973  mu_stoin_cap          Dual variable on storage loading capacity constraint
+ 972  mu_stoin_cap          Dual variable on storage loading capacity constraint
        (4d)
- 974  mu_stout_cap          Dual variable on storage discharging capacity constr
+ 973  mu_stout_cap          Dual variable on storage discharging capacity constr
       aint (4e)
- 975  mu_stolev_cap         Dual variable on energy capacity constraint (4c)
- 976  mu_conv_cap           Dual variable on conventional generation capacity co
+ 974  mu_stolev_cap         Dual variable on energy capacity constraint (4c)
+ 975  mu_conv_cap           Dual variable on conventional generation capacity co
       nstraint (3a)
- 977  mu_bio_cap            Dual variable on storage bio energy constraint (5b)
- 978  mu_dis_max_i          Dual variable on dispatchable installation constrain
+ 976  mu_bio_cap            Dual variable on storage bio energy constraint (5b)
+ 977  mu_dis_max_i          Dual variable on dispatchable installation constrain
       t (8a)
- 979  mu_nondis_max_i       Dual variable on nondispatchable installation constr
+ 978  mu_nondis_max_i       Dual variable on nondispatchable installation constr
       aint (8a)
- 980  mu_tech_max_i         Dual variable on tech installation constraint (8a)
- 981  mu_stop_max_i         Dual variable on storage power installation constrai
+ 979  mu_tech_max_i         Dual variable on tech installation constraint (8a)
+ 980  mu_stop_max_i         Dual variable on storage power installation constrai
       nt  (8c)
- 982  mu_stoe_max_i         Dual variable on storage energy installation constra
+ 981  mu_stoe_max_i         Dual variable on storage energy installation constra
       int  (8b)
- 983  mu_minRES             Dual variable on minimum renewable share constraint 
+ 982  mu_minRES             Dual variable on minimum renewable share constraint 
       (5a)
- 984   
- 985  ;
- 986   
- 987  Set
- 988  dis_bio(tech)          Subset of dispatchable technology: Bio mass        
+ 983   
+ 984  ;
+ 985   
+ 986  Set
+ 987  dis_bio(tech)          Subset of dispatchable technology: Bio mass        
       /bio/
- 989  ;
+ 988  ;
+ 989   
  990   
- 991   
- 992  **************************************************************************
+ 991  **************************************************************************
       ******
- 993   
- 994  Equations
- 995  * Objective
- 996  obj                      Objective cost minimization
- 997   
- 998  * Energy balance
- 999  con1a_bal                Energy Balance
-1000   
-1001  * Load change costs
-1002  con2a_loadlevel          Load change costs: Level
-1003  con2b_loadlevelstart     Load change costs: Level for first period
-1004  con2_loadlevel           Load change costs: Level of all periods (2a+2b)
-1005  * Capacity contraints and flexibility constraints
-1006  con3a_maxprod_dispatchable       Capacity Constraint conventionals
-1007  con3e_maxprod_res                Capacity constraints renewables
-1008   
-1009  * Storage constraints
-1010  con4a_stolev_start        Storage Level Dynamics Initial Condition
-1011  con4b_stolev              Storage Level Dynamics
-1012  con4_stolev               Storage Level Dynamics all periods(4a + 4b)
-1013  con4c_stolev_max          Storage Power Capacity
-1014  con4d_maxin_sto           Storage maximum inflow
-1015  con4e_maxout_sto          Storage maximum outflow
-1016  con4j_ending              End level equal to initial level
-1017  con4k_PHS_EtoP            Maximum E-P ratio
-1018   
-1019  * Minimum restrictions for renewables and biomass
-1020  con5a_minRES             Minimum yearly renewables requirement
-1021  con5b_max_energy         Maximum yearly biomass energy
-1022   
-1023  * Maximum installation conditions
-1024  con8a_max_I_power                Maximum installable capacity: Conventiona
+ 992   
+ 993  Equations
+ 994  * Objective
+ 995  obj                      Objective cost minimization
+ 996   
+ 997  * Energy balance
+ 998  con1a_bal                Energy Balance
+ 999   
+1000  * Load change costs
+1001  con2a_loadlevel          Load change costs: Level
+1002  con2b_loadlevelstart     Load change costs: Level for first period
+1003  con2_loadlevel           Load change costs: Level of all periods (2a+2b)
+1004  * Capacity contraints and flexibility constraints
+1005  con3a_maxprod_dispatchable       Capacity Constraint conventionals
+1006  con3e_maxprod_res                Capacity constraints renewables
+1007   
+1008  * Storage constraints
+1009  con4a_stolev_start        Storage Level Dynamics Initial Condition
+1010  con4b_stolev              Storage Level Dynamics
+1011  con4_stolev               Storage Level Dynamics all periods(4a + 4b)
+1012  con4c_stolev_max          Storage Power Capacity
+1013  con4d_maxin_sto           Storage maximum inflow
+1014  con4e_maxout_sto          Storage maximum outflow
+1015  con4j_ending              End level equal to initial level
+1016  con4k_PHS_EtoP            Maximum E-P ratio
+1017   
+1018  * Minimum restrictions for renewables and biomass
+1019  con5a_minRES             Minimum yearly renewables requirement
+1020  con5b_max_energy         Maximum yearly biomass energy
+1021   
+1022  * Maximum installation conditions
+1023  con8a_max_I_power                Maximum installable capacity: Conventiona
       ls
-1025  con8b_max_I_sto_e                Maximum installable energy: Storage energ
+1024  con8b_max_I_sto_e                Maximum installable energy: Storage energ
       y in MWh
-1026  con8c_max_I_sto_p                Maximum installable capacity: Storage inf
+1025  con8c_max_I_sto_p                Maximum installable capacity: Storage inf
       low-outflow in MW
-1027   
-1028  con8f_max_pro_res                Maximum installable capacity: prosumage r
+1026   
+1027  con8f_max_pro_res                Maximum installable capacity: prosumage r
       enewables
-1029  con8g_max_pro_sto_e              Maximum installable capacity: prosumage s
+1028  con8g_max_pro_sto_e              Maximum installable capacity: prosumage s
       torage energy
-1030  con8h_max_sto_pro_p              Maximum installable capacity: prosumage s
+1029  con8h_max_sto_pro_p              Maximum installable capacity: prosumage s
       torage power
-1031   
-1032  * Prosumage
-1033  con11a_pro_distrib                       Prosumage: distribution of genera
+1030   
+1031  * Prosumage
+1032  con11a_pro_distrib                       Prosumage: distribution of genera
       ted energy
-1034  con11b_pro_balance                       Prosumage: energy balance
-1035  con11c_pro_selfcon                       Prosumage: minimum self-generatio
+1033  con11b_pro_balance                       Prosumage: energy balance
+1034  con11c_pro_selfcon                       Prosumage: minimum self-generatio
       n requirement
-1036  con11d_pro_stolev_PRO2PRO                Prosumage: storage level prosumag
+1035  con11d_pro_stolev_PRO2PRO                Prosumage: storage level prosumag
       er-to-prosumagers
-1037  con11h_1_pro_stolev_start_PRO2PRO        Prosumage: storage level initial 
+1036  con11h_1_pro_stolev_start_PRO2PRO        Prosumage: storage level initial 
       conditions
-1038  con11j_pro_stolev_max                    Prosumage: maximum overall storag
+1037  con11j_pro_stolev_max                    Prosumage: maximum overall storag
       e level
-1039  con11k_pro_maxin_sto                     Prosumage: maximum storage inflow
-1040  con11l_pro_maxout_sto                    Prosumage: maximum storage outflo
+1038  con11k_pro_maxin_sto                     Prosumage: maximum storage inflow
+1039  con11l_pro_maxout_sto                    Prosumage: maximum storage outflo
       w
-1041  con11o_pro_ending                        Prosumage: storage ending conditi
+1040  con11o_pro_ending                        Prosumage: storage ending conditi
       on
+1041   
 1042   
-1043   
-1044  * KKT optimality conditions
-1045  KKTG_L                   KKT w.r.t. G_L
-1046  KKTG_UP                  KKT w.r.t. G_UP
-1047  KKTG_DO                  KKT w.r.t. G_DO
-1048  KKTG_RES                 KKT w.r.t. G_RES
-1049  KKTCU                    KKT w.r.t. CU
-1050  KKTSTO_IN                KKT w.r.t. STO_IN
-1051  KKTSTO_OUT               KKT w.r.t. STO_OUT
-1052  KKTSTO_L                 KKT w.r.t. STO_L
-1053  KKTN_TECH_NONDIS         KKT w.r.t. N_TECH(nondis)
-1054  KKTN_TECH_DIS            KKT w.r.t. N_TECH(dis)
-1055  KKTN_TECH                KKT w.r.t. N_TECH
-1056  KKTN_STO_E               KKT w.r.t. N_STO_E
-1057  KKTN_STO_P               KKT w.r.t. N_STO_P
-1058  ;
+1043  * KKT optimality conditions
+1044  KKTG_L                   KKT w.r.t. G_L
+1045  KKTG_UP                  KKT w.r.t. G_UP
+1046  KKTG_DO                  KKT w.r.t. G_DO
+1047  KKTG_RES                 KKT w.r.t. G_RES
+1048  KKTCU                    KKT w.r.t. CU
+1049  KKTSTO_IN                KKT w.r.t. STO_IN
+1050  KKTSTO_OUT               KKT w.r.t. STO_OUT
+1051  KKTSTO_L                 KKT w.r.t. STO_L
+1052  KKTN_TECH_NONDIS         KKT w.r.t. N_TECH(nondis)
+1053  KKTN_TECH_DIS            KKT w.r.t. N_TECH(dis)
+1054  KKTN_TECH                KKT w.r.t. N_TECH
+1055  KKTN_STO_E               KKT w.r.t. N_STO_E
+1056  KKTN_STO_P               KKT w.r.t. N_STO_P
+1057  ;
+1058   
 1059   
-1060   
-1061  **************************************************************************
+1060  **************************************************************************
       ******
-1062   
-1063  * ------------------------------------------------------------------------
+1061   
+1062  * ------------------------------------------------------------------------
       ---- *
-1064  ***** Objective function *****
-1065  * ------------------------------------------------------------------------
+1063  ***** Objective function *****
+1064  * ------------------------------------------------------------------------
       ---- *
-1066   
-1067  obj..
-1068           Z =E=
-1069                     sum( (h,dis) , c_m(dis)*G_L(dis,h) )
-1070                   + sum( (h,dis)$(ord(h)>1) , c_up(dis)*G_UP(dis,h) )
-1071                   + sum( (h,dis) , c_do(dis)*G_DO(dis,h) )
-1072                   + sum( (h,nondis) , c_cu(nondis)*CU(nondis,h) )
-1073                   + sum( (h,sto) , c_m_sto(sto) * ( STO_OUT(sto,h) + STO_IN
+1065   
+1066  obj..
+1067           Z =E=
+1068                     sum( (h,dis) , c_m(dis)*G_L(dis,h) )
+1069                   + sum( (h,dis)$(ord(h)>1) , c_up(dis)*G_UP(dis,h) )
+1070                   + sum( (h,dis) , c_do(dis)*G_DO(dis,h) )
+1071                   + sum( (h,nondis) , c_cu(nondis)*CU(nondis,h) )
+1072                   + sum( (h,sto) , c_m_sto(sto) * ( STO_OUT(sto,h) + STO_IN
       (sto,h) ) )
-1074                   + sum( tech , c_i(tech)*N_TECH(tech) )
-1075                   + sum( tech , c_fix(tech)*N_TECH(tech) )
-1076                   + sum( sto , c_i_sto_e(sto)*N_STO_E(sto) )
-1077                   + sum( sto , c_fix_sto(sto)/2*(N_STO_P(sto)+ N_STO_E(sto)
+1073                   + sum( tech , c_i(tech)*N_TECH(tech) )
+1074                   + sum( tech , c_fix(tech)*N_TECH(tech) )
+1075                   + sum( sto , c_i_sto_e(sto)*N_STO_E(sto) )
+1076                   + sum( sto , c_fix_sto(sto)/2*(N_STO_P(sto)+ N_STO_E(sto)
       ) )
-1078                   + sum( sto , c_i_sto_p(sto)*N_STO_P(sto) )
+1077                   + sum( sto , c_i_sto_p(sto)*N_STO_P(sto) )
                        + sum( res , c_i(res)*N_RES_PRO(res) )
                        + sum( res , c_fix(res)*N_RES_PRO(res) )
                        + sum( sto , c_i_sto_e(sto)*N_STO_E_PRO(sto) )
@@ -1245,74 +1244,75 @@ INCLUDE    C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_
                        + sum( (h,sto) , c_m_sto(sto) * ( STO_OUT_PRO2PRO(sto,h) 
       + sum( res , STO_IN_PRO2PRO(res,sto,h)) ) )
       $ontext
-1088  ;
-1089   
-1090  * ------------------------------------------------------------------------
+1087  ;
+1088   
+1089  * ------------------------------------------------------------------------
       ---- *
-1091  ***** Energy balance and load levels *****
-1092  * ------------------------------------------------------------------------
+1090  ***** Energy balance and load levels *****
+1091  * ------------------------------------------------------------------------
       ---- *
-1093   
-1094  * Energy balance
-1095  con1a_bal(h)..
-1096   
-1097             sum( dis , G_L(dis,h)) + sum( nondis , G_RES(nondis,h)) + sum( 
+1092   
+1093  * Energy balance
+1094  con1a_bal(h)..
+1095   
+1096             sum( dis , G_L(dis,h)) + sum( nondis , G_RES(nondis,h)) + sum( 
       sto , STO_OUT(sto,h) )
                + sum( res , G_MARKET_PRO2M(res,h) )
       $ontext
-1102           -  ( 1 - phi_pro_load )* d(h)
-1103           -   sum( sto , STO_IN(sto,h) )
-1104   
+1101           -  ( 1 - phi_pro_load )* d(h)
+1102           -   sum( sto , STO_IN(sto,h) )
+1103   
                - G_MARKET_M2PRO(h)
       $ontext
-1109   
-1110         =E= 0
-1111  ;
-1112   
-1113  con2a_loadlevel(dis,h)$(ord(h) > 1)..
-1114           G_L(dis,h-1) + G_UP(dis,h) - G_DO(dis,h)  - G_L(dis,h) =E= 0
-1115  ;
-1116   
-1117  con2b_loadlevelstart(dis,h)$(ord(h) = 1)..
-1118          G_UP(dis,h) - G_L(dis,h) =E= 0
-1119  ;
-1120   
-1121  con2_loadlevel(dis,h)..
-1122             G_UP(dis,h)  - G_L(dis,h)
-1123          +  (G_L(dis,h-1) - G_DO(dis,h))$(ord(h) > 1)
-1124          =E= 0
-1125  ;
+1108   
+1109         =E= 0
+1110  ;
+1111   
+1112  con2a_loadlevel(dis,h)$(ord(h) > 1)..
+1113           G_L(dis,h-1) + G_UP(dis,h) - G_DO(dis,h)  - G_L(dis,h) =E= 0
+1114  ;
+1115   
+1116  con2b_loadlevelstart(dis,h)$(ord(h) = 1)..
+1117          G_UP(dis,h) - G_L(dis,h) =E= 0
+1118  ;
+1119   
+1120  con2_loadlevel(dis,h)..
+1121             G_UP(dis,h)  - G_L(dis,h)
+1122          +  (G_L(dis,h-1) - G_DO(dis,h))$(ord(h) > 1)
+1123          =E= 0
+1124  ;
+1125   
 1126   
 1127   
-1128   
-1129  * ------------------------------------------------------------------------
+1128  * ------------------------------------------------------------------------
       ---- *
-1130  ***** Hourly maximum generation caps *****
-1131  * ------------------------------------------------------------------------
+1129  ***** Hourly maximum generation caps *****
+1130  * ------------------------------------------------------------------------
       ---- *
-1132   
-1133  con3a_maxprod_dispatchable(dis,h)..
-1134   
-1135           N_TECH(dis) -  G_L(dis,h)  =G= 0
-1136   
-1137  ;
-1138   
-1139  con3e_maxprod_res(nondis,h)..
+1131   
+1132  con3a_maxprod_dispatchable(dis,h)..
+1133   
+1134           N_TECH(dis) -  G_L(dis,h)  =G= 0
+1135   
+1136  ;
+1137   
+1138  con3e_maxprod_res(nondis,h)..
+1139   
 1140   
-1141   
-1142         phi_res(nondis,h)*N_TECH(nondis) - G_RES(nondis,h) - CU(nondis,h) =
+1141         phi_res(nondis,h)*N_TECH(nondis) - G_RES(nondis,h) - CU(nondis,h) =
       E= 0
-1143  ;
-1144   
-1145  * ------------------------------------------------------------------------
+1142  ;
+1143   
+1144  * ------------------------------------------------------------------------
       ---- *
-1146  ***** Storage constraints *****
-1147  * ------------------------------------------------------------------------
+1145  ***** Storage constraints *****
+1146  * ------------------------------------------------------------------------
       ---- *
-1148   
-1149  con4a_stolev_start(sto,h)$h_ini(h)..
-1150          phi_sto_ini(sto) * N_STO_E(sto) + STO_IN(sto,h)*(1+eta_sto(sto))/2
-       - STO_OUT(sto,h)/(1+eta_sto(sto))*2  - STO_L(sto,h)  =E= 0
+1147   
+1148  con4a_stolev_start(sto,h)$(ord(h) = 1)..
+1149  *        phi_sto_ini(sto) * N_STO_E(sto)
+1150          + STO_IN(sto,h)*(1+eta_sto(sto))/2 - STO_OUT(sto,h)/(1+eta_sto(sto
+      ))*2  - STO_L(sto,h)  =E= 0
 1151  ;
 1152   
 1153  con4b_stolev(sto,h)$(ord(h)>1)..
@@ -1324,7 +1324,7 @@ INCLUDE    C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_
 1158   
 1159         + STO_IN(sto,h)*(1+eta_sto(sto))/2 - STO_OUT(sto,h)/(1+eta_sto(sto)
       )*2  -  STO_L(sto,h)
-1160  *       + (phi_sto_ini(sto)*N_STO_E(sto))$(ord(h) = 1)
+1160  *      + (phi_sto_ini(sto)*N_STO_E(sto))$(ord(h) = 1)
 1161         + (STO_L(sto,h-1))$(ord(h)>1)
 1162         =E= 0
 1163  ;
@@ -1522,32 +1522,29 @@ INCLUDE    C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_
 1343   
 1344  KKTSTO_IN(sto,h)..
 1345   
-1346      c_m_sto(sto)  + lambda_enerbal(h)
-1347      -  (1+eta_sto(sto))/2*lambda_stolev(sto,h)$(ord(h) > 1 )
-1348      - (1+eta_sto(sto))/2*lambda_stolev_i(sto,h)$h_ini(h)
-1349      + mu_stoin_cap(sto,h) =G= 0
-1350  ;
+1346      c_m_sto(sto)  + lambda_enerbal(h) -  lambda_stolev(sto,h)*(1+eta_sto(s
+      to))/2
+1347      + mu_stoin_cap(sto,h) =G= 0
+1348  ;
+1349   
+1350  KKTSTO_OUT(sto,h)..
 1351   
-1352  KKTSTO_OUT(sto,h)..
-1353   
-1354       c_m_sto(sto)  -  lambda_enerbal(h)
-1355       +  1/(1+eta_sto(sto))*2*lambda_stolev(sto,h)$(ord(h) > 1)
-1356       +  1/(1+eta_sto(sto))*2*lambda_stolev_i(sto,h)$h_ini(h)
-1357       +  mu_stout_cap(sto,h)
-1358        =G= 0
-1359  ;
-1360   
-1361  KKTSTO_L(sto,h)..
+1352       c_m_sto(sto)  -  lambda_enerbal(h) +  lambda_stolev(sto,h)/(1+eta_sto
+      (sto))*2
+1353       +  mu_stout_cap(sto,h)
+1354        =G= 0
+1355  ;
+1356   
+1357  KKTSTO_L(sto,h)..
+1358   
+1359    + lambda_stolev(sto,h)
+1360    +  mu_stolev_cap(sto,h)
+1361    -  (lambda_stolev(sto,h+1))$(ord(h) > 1 )
 1362   
-1363    + lambda_stolev(sto,h)$(ord(h) > 1 )
-1364    + lambda_stolev_i(sto,h)$h_ini(h)
-1365    +  mu_stolev_cap(sto,h)
-1366    -  (lambda_stolev(sto,h+1))$(ord(h) > 1 )
-1367   
-1368    =G= 0
-1369   
-1370  ;
-1371   
+1363    =G= 0
+1364   
+1365  ;
+1366   
       KKTN_TECH_NONDIS(nondis)..
        
           c_i(nondis) +  c_fix(nondis)
@@ -1563,100 +1560,100 @@ INCLUDE    C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_
            =G= 0
        
       ;
-1387   
-1388  KKTN_TECH(tech)..
-1389   
-1390            +  c_i(tech)
-1391            +  c_fix(tech)
-1392            +  mu_tech_max_i(tech)
-1393            - sum( h,   mu_conv_cap(tech,h))$dis(tech)
-1394            - sum( h,  lambda_resgen(tech,h)*phi_res(tech,h))$nondis(tech)
-1395       =G= 0
-1396   
-1397  ;
-1398   
-1399   
-1400   
-1401  KKTN_STO_E(sto)..
-1402   
-1403        +  c_fix_sto(sto)/2 +  c_i_sto_e(sto)
-1404        -  sum( h,   mu_stolev_cap(sto,h))
-1405        +  mu_stoe_max_i(sto)
-1406        -  phi_sto_ini(sto)*lambda_stolev_i(sto,'h1')
-1407        =G= 0
-1408  ;
-1409   
-1410  KKTN_STO_P(sto)..
-1411   
+1382   
+1383  KKTN_TECH(tech)..
+1384   
+1385            +  c_i(tech)
+1386            +  c_fix(tech)
+1387            +  mu_tech_max_i(tech)
+1388            - sum( h,   mu_conv_cap(tech,h))$dis(tech)
+1389            - sum( h,  lambda_resgen(tech,h)*phi_res(tech,h))$nondis(tech)
+1390       =G= 0
+1391   
+1392  ;
+1393   
+1394   
+1395   
+1396  KKTN_STO_E(sto)..
+1397   
+1398        +  c_fix_sto(sto)/2 +  c_i_sto_e(sto)
+1399        -  sum( h,   mu_stolev_cap(sto,h))
+1400        +  mu_stoe_max_i(sto)
+1401  *      -  phi_sto_ini(sto)*lambda_stolev(sto,'h1')
+1402        =G= 0
+1403  ;
+1404   
+1405  KKTN_STO_P(sto)..
+1406   
+1407   
+1408       c_fix_sto(sto)/2 + c_i_sto_p(sto)
+1409       - sum( h, (mu_stoin_cap(sto,h) + mu_stout_cap(sto,h)))
+1410       + mu_stop_max_i(sto)
+1411       =G= 0
 1412   
-1413       c_fix_sto(sto)/2 + c_i_sto_p(sto)
-1414       - sum( h, (mu_stoin_cap(sto,h) + mu_stout_cap(sto,h)))
-1415       + mu_stop_max_i(sto)
-1416       =G= 0
-1417   
-1418  ;
+1413  ;
+1414   
+1415   
+1416  **************************************************************************
+      ******
+1417  ***** Fix unmatched variables of first period *****
+1418  **************************************************************************
+      ******
 1419   
-1420   
-1421  **************************************************************************
-      ******
-1422  ***** Fix unmatched variables of first period *****
-1423  **************************************************************************
-      ******
-1424   
-1425  G_DO.fx(dis,'h1') = 0;
-1426   
-1427  * Default for reporting
-1428  G_DO.l(dis,h) = 0;
-1429  G_L.l(dis,h) = 0 ;
-1430  G_UP.l(dis,h) = 0 ;
-1431  G_RES.l(tech,h)= 0;
-1432  CU.l(tech,h) = 0;
-1433   
-1434  STO_IN.l(sto,h)= 0;
-1435  STO_OUT.l(sto,h)= 0;
-1436  STO_L.l(sto,h) = 0;
+1420  G_DO.fx(dis,'h1') = 0;
+1421   
+1422  * Default for reporting
+1423  G_DO.l(dis,h) = 0;
+1424  G_L.l(dis,h) = 0 ;
+1425  G_UP.l(dis,h) = 0 ;
+1426  G_RES.l(tech,h)= 0;
+1427  CU.l(tech,h) = 0;
+1428   
+1429  STO_IN.l(sto,h)= 0;
+1430  STO_OUT.l(sto,h)= 0;
+1431  STO_L.l(sto,h) = 0;
+1432   
+1433  N_TECH.l(tech)= 0;
+1434  N_STO_E.l(sto)= 0;
+1435  N_STO_P.l(sto)= 0;
+1436   
 1437   
-1438  N_TECH.l(tech)= 0;
-1439  N_STO_E.l(sto)= 0;
-1440  N_STO_P.l(sto)= 0;
+1438  **************************************************************************
+      ******
+1439  ***** MODEL *****
+1440  **************************************************************************
+      ******
 1441   
-1442   
-1443  **************************************************************************
-      ******
-1444  ***** MODEL *****
-1445  **************************************************************************
-      ******
+1442  model DIETER /
+1443  obj
+1444   
+1445  con1a_bal
 1446   
-1447  model DIETER /
-1448  obj
-1449   
-1450  con1a_bal
-1451   
-1452  *con2a_loadlevel
-1453  *con2b_loadlevelstart
-1454  con2_loadlevel
-1455   
-1456  con3a_maxprod_dispatchable
-1457  con3e_maxprod_res
-1458   
-1459  con4a_stolev_start
-1460  con4b_stolev
-1461  *con4_stolev
-1462  con4c_stolev_max
-1463  con4d_maxin_sto
-1464  con4e_maxout_sto
-1465  *con4k_PHS_EtoP
-1466  *con4j_ending
-1467   
-1468  con5a_minRES
-1469  con5b_max_energy
+1447  *con2a_loadlevel
+1448  *con2b_loadlevelstart
+1449  con2_loadlevel
+1450   
+1451  con3a_maxprod_dispatchable
+1452  con3e_maxprod_res
+1453   
+1454  *con4a_stolev_start
+1455  *con4b_stolev
+1456  con4_stolev
+1457  con4c_stolev_max
+1458  con4d_maxin_sto
+1459  con4e_maxout_sto
+1460  *con4k_PHS_EtoP
+1461  *con4j_ending
+1462   
+1463  con5a_minRES
+1464  con5b_max_energy
+1465   
+1466  con8a_max_I_power
+1467  con8b_max_I_sto_e
+1468  con8c_max_I_sto_p
+1469   
 1470   
-1471  con8a_max_I_power
-1472  con8b_max_I_sto_e
-1473  con8c_max_I_sto_p
-1474   
-1475   
-1476   
+1471   
       con8f_max_pro_res
       con8g_max_pro_sto_e
       con8h_max_sto_pro_p
@@ -1670,53 +1667,51 @@ INCLUDE    C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_
       con11l_pro_maxout_sto
       con11o_pro_ending
       $ontext
+1487   
+1488  /;
+1489   
+1490  model DIETER_MCP /
+1491   
 1492   
-1493  /;
-1494   
-1495  model DIETER_MCP /
-1496   
-1497   
-1498  con1a_bal.lambda_enerbal
-1499  con2_loadlevel.lambda_convgen
-1500   
-1501  con3a_maxprod_dispatchable.mu_conv_cap
-1502  con3e_maxprod_res.lambda_resgen
-1503   
-1504  con4b_stolev.lambda_stolev
-1505  con4a_stolev_start.lambda_stolev_i
-1506   
-1507  con4c_stolev_max.mu_stolev_cap
-1508  con4d_maxin_sto.mu_stoin_cap
-1509  con4e_maxout_sto.mu_stout_cap
-1510  *con4j_ending
-1511  *con5a_minRES.mu_minRES
-1512  con5b_max_energy.mu_bio_cap
-1513  con8a_max_I_power.mu_tech_max_i
-1514  con8b_max_I_sto_e.mu_stoe_max_i
-1515  con8c_max_I_sto_p.mu_stop_max_i
-1516   
-1517  KKTG_L.G_L
-1518  KKTG_UP.G_UP
-1519  KKTG_DO.G_DO
-1520  KKTG_RES.G_RES
-1521  KKTCU.CU
-1522  KKTSTO_IN.STO_IN
-1523  KKTSTO_OUT.STO_OUT
-1524  KKTSTO_L.STO_L
-1525  KKTN_TECH.N_TECH
-1526  KKTN_STO_E.N_STO_E
-1527  KKTN_STO_P.N_STO_P
-1528   
-1529  / ;
-1530   
-1531  **************************************************************************
+1493  con1a_bal.lambda_enerbal
+1494  con2_loadlevel.lambda_convgen
+1495   
+1496  con3a_maxprod_dispatchable.mu_conv_cap
+1497  con3e_maxprod_res.lambda_resgen
+1498   
+1499  con4_stolev.lambda_stolev
+1500  con4c_stolev_max.mu_stolev_cap
+1501  con4d_maxin_sto.mu_stoin_cap
+1502  con4e_maxout_sto.mu_stout_cap
+1503  *con4j_ending
+1504  *con5a_minRES.mu_minRES
+1505  con5b_max_energy.mu_bio_cap
+1506  con8a_max_I_power.mu_tech_max_i
+1507  con8b_max_I_sto_e.mu_stoe_max_i
+1508  con8c_max_I_sto_p.mu_stop_max_i
+1509   
+1510  KKTG_L.G_L
+1511  KKTG_UP.G_UP
+1512  KKTG_DO.G_DO
+1513  KKTG_RES.G_RES
+1514  KKTCU.CU
+1515  KKTSTO_IN.STO_IN
+1516  KKTSTO_OUT.STO_OUT
+1517  KKTSTO_L.STO_L
+1518  KKTN_TECH.N_TECH
+1519  KKTN_STO_E.N_STO_E
+1520  KKTN_STO_P.N_STO_P
+1521   
+1522  / ;
+1523   
+1524  **************************************************************************
       ******
-1532  ***** Options, fixings, report preparation *****
-1533  **************************************************************************
+1525  ***** Options, fixings, report preparation *****
+1526  **************************************************************************
       ******
+1527   
+1528  * Solver options
 1534   
-1535  * Solver options
-1541   
       $onecho > cplex.opt
       lpmethod 4
       threads 4
@@ -1725,99 +1720,99 @@ INCLUDE    C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_
       barepcomp 1e-8
       $offecho
       $ontext
-1552   
-1553  dieter.OptFile = 1;
-1554  dieter.holdFixed = 1 ;
-1555   
-1556   
-1557  **************************************************************************
+1545   
+1546  dieter.OptFile = 1;
+1547  dieter.holdFixed = 1 ;
+1548   
+1549   
+1550  **************************************************************************
       ******
-1558  ***** Solve *****
-1559  **************************************************************************
+1551  ***** Solve *****
+1552  **************************************************************************
       ******
-1560   
-1561  * Preparation of GUSS tool for scenario analysis
-1562  phi_min_res = eps ;
-1563  phi_pro_self = eps ;
-1564   
-1566   
-1567  Set
-1568  modelstats       model stats collection                  /modelstat, solve
+1553   
+1554  * Preparation of GUSS tool for scenario analysis
+1555  phi_min_res = eps ;
+1556  phi_pro_self = eps ;
+1557   
+1559   
+1560  Set
+1561  modelstats       model stats collection                  /modelstat, solve
       stat, resusd/
-1569  superscen        Scenarios                               /scen1*scen1000/
-1570  map(superscen,loop_res_share,loop_prosumage)    /#superscen:(#loop_res_sha
+1562  superscen        Scenarios                               /scen1*scen1000/
+1563  map(superscen,loop_res_share,loop_prosumage)    /#superscen:(#loop_res_sha
       re.#loop_prosumage)/
-1571  ;
-1572   
-1573  set
-1574  scen(superscen);
-1575  scen(superscen) = yes$( sum((loop_res_share,loop_prosumage) , map(supersce
+1564  ;
+1565   
+1566  set
+1567  scen(superscen);
+1568  scen(superscen) = yes$( sum((loop_res_share,loop_prosumage) , map(supersce
       n,loop_res_share,loop_prosumage)) )    ;
-1576   
-1577  Parameters
-1578  gussoptions                              /Logoption 2, Optfile 1, Skipbase
+1569   
+1570  Parameters
+1571  gussoptions                              /Logoption 2, Optfile 1, Skipbase
       case 1/
-1579  modstats(superscen, modelstats)
-1580  min_res
-1581  pro_selfcon
-1582  ;
-1583   
-1584  min_res(scen)     = sum( (loop_res_share,loop_prosumage)$map(scen,loop_res
+1572  modstats(superscen, modelstats)
+1573  min_res
+1574  pro_selfcon
+1575  ;
+1576   
+1577  min_res(scen)     = sum( (loop_res_share,loop_prosumage)$map(scen,loop_res
       _share,loop_prosumage) , loop_res_share.val/100 ) ;
-1585  pro_selfcon(scen) = sum( (loop_res_share,loop_prosumage)$map(scen,loop_res
+1578  pro_selfcon(scen) = sum( (loop_res_share,loop_prosumage)$map(scen,loop_res
       _share,loop_prosumage) , loop_prosumage.val/100 ) ;
+1579   
+1580  Parameters
+1581  * Equations
+1582  marginal_con5a(superscen)
+1583  marginal_con1a(superscen,*)
+1584  marginal_con9a(superscen,*,*,*)
+1585  marginal_con9b(superscen,*,*,*)
 1586   
-1587  Parameters
-1588  * Equations
-1589  marginal_con5a(superscen)
-1590  marginal_con1a(superscen,*)
-1591  marginal_con9a(superscen,*,*,*)
-1592  marginal_con9b(superscen,*,*,*)
-1593   
-1594  * Basic
-1595  lev_Z(superscen)
-1596  lev_G_L(superscen,tech,h)
-1597  lev_G_UP(superscen,tech,h)
-1598  lev_G_DO(superscen,tech,h)
-1599  lev_G_RES(superscen,tech,h)
-1600  lev_CU(superscen,tech,h)
-1601  lev_STO_IN(superscen,sto,h)
-1602  lev_STO_OUT(superscen,sto,h)
-1603  lev_STO_L(superscen,sto,h)
-1604  lev_N_TECH(superscen,tech)
-1605  lev_N_STO_E(superscen,sto)
-1606  lev_N_STO_P(superscen,sto)
-1607   
-1608   
-1609  * Prosumage
-1610  lev_CU_PRO(superscen,tech,h)
-1611  lev_G_MARKET_PRO2M(superscen,tech,h)
-1612  lev_G_MARKET_M2PRO(superscen,h)
-1613  lev_G_RES_PRO(superscen,tech,h)
-1614  lev_STO_IN_PRO2PRO(superscen,tech,sto,h)
-1615  lev_STO_IN_PRO2M(superscen,tech,sto,h)
-1616  lev_STO_IN_M2PRO(superscen,sto,h)
-1617  lev_STO_IN_M2M(superscen,sto,h)
-1618  lev_STO_OUT_PRO2PRO(superscen,sto,h)
-1619  lev_STO_OUT_PRO2M(superscen,sto,h)
-1620  lev_STO_OUT_M2PRO(superscen,sto,h)
-1621  lev_STO_OUT_M2M(superscen,sto,h)
-1622  lev_STO_L_PRO2PRO(superscen,sto,h)
-1623  lev_STO_L_PRO2M(superscen,sto,h)
-1624  lev_STO_L_M2PRO(superscen,sto,h)
-1625  lev_STO_L_M2M(superscen,sto,h)
-1626  lev_N_STO_E_PRO(superscen,sto)
-1627  lev_N_STO_P_PRO(superscen,sto)
-1628  lev_STO_L_PRO(superscen,sto,h)
-1629  lev_N_RES_PRO(superscen,tech)
-1630  ;
-1631   
-1632   
-1633  * Inclusion of scenario and fixing
+1587  * Basic
+1588  lev_Z(superscen)
+1589  lev_G_L(superscen,tech,h)
+1590  lev_G_UP(superscen,tech,h)
+1591  lev_G_DO(superscen,tech,h)
+1592  lev_G_RES(superscen,tech,h)
+1593  lev_CU(superscen,tech,h)
+1594  lev_STO_IN(superscen,sto,h)
+1595  lev_STO_OUT(superscen,sto,h)
+1596  lev_STO_L(superscen,sto,h)
+1597  lev_N_TECH(superscen,tech)
+1598  lev_N_STO_E(superscen,sto)
+1599  lev_N_STO_P(superscen,sto)
+1600   
+1601   
+1602  * Prosumage
+1603  lev_CU_PRO(superscen,tech,h)
+1604  lev_G_MARKET_PRO2M(superscen,tech,h)
+1605  lev_G_MARKET_M2PRO(superscen,h)
+1606  lev_G_RES_PRO(superscen,tech,h)
+1607  lev_STO_IN_PRO2PRO(superscen,tech,sto,h)
+1608  lev_STO_IN_PRO2M(superscen,tech,sto,h)
+1609  lev_STO_IN_M2PRO(superscen,sto,h)
+1610  lev_STO_IN_M2M(superscen,sto,h)
+1611  lev_STO_OUT_PRO2PRO(superscen,sto,h)
+1612  lev_STO_OUT_PRO2M(superscen,sto,h)
+1613  lev_STO_OUT_M2PRO(superscen,sto,h)
+1614  lev_STO_OUT_M2M(superscen,sto,h)
+1615  lev_STO_L_PRO2PRO(superscen,sto,h)
+1616  lev_STO_L_PRO2M(superscen,sto,h)
+1617  lev_STO_L_M2PRO(superscen,sto,h)
+1618  lev_STO_L_M2M(superscen,sto,h)
+1619  lev_N_STO_E_PRO(superscen,sto)
+1620  lev_N_STO_P_PRO(superscen,sto)
+1621  lev_STO_L_PRO(superscen,sto,h)
+1622  lev_N_RES_PRO(superscen,tech)
+1623  ;
+1624   
+1625   
+1626  * Inclusion of scenario and fixing
 INCLUDE    C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_
            Module\Modified_MCP\fix.gms
-1635   
-1636  **************************************************************************
+1628   
+1629  **************************************************************************
       ******
       The Dispatch and Investment Evaluation Tool with Endogenous Renewables (DI
       ETER).
@@ -1828,88 +1823,88 @@ INCLUDE    C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_
       /mit-license.php.
       Whenever you use this code, please refer to http://www.diw.de/dieter.
       We are happy to receive feedback under azerrahn@diw.de and wschill@diw.de.
-1646  **************************************************************************
+1639  **************************************************************************
       ******
-1647   
-1648   
-1649   
-1650  **************************************************************************
+1640   
+1641   
+1642   
+1643  **************************************************************************
       ******
-1651  **** Run of river  *******************************************************
+1644  **** Run of river  *******************************************************
       ******
-1652  **************************************************************************
+1645  **************************************************************************
       ******
-1653   
-1654  * If $setglobal ror_parameter "*": choose appropriate value for N_CON.fx('
+1646   
+1647  * If $setglobal ror_parameter "*": choose appropriate value for N_CON.fx('
       ror') (but no reserve provision):
-1655   
-1656  *$ontext
-1657  N_TECH.fx('ror') = 5857.47 ;
-1658  G_RES.fx('ror',h) = N_TECH.l('ror') * phi_res('ror',h) ;
-1661   
-1662  * Fix everything to zero in case no ROR option is selected:
-1663  *N_TECH.fx('ror') = 0 ;
-1664  *G_RES.fx('ror',h) = 0 ;
-1665  *%ror_parameter%%ror_variable%RP_NONDIS.fx('ror',h) = 0 ;
-1666   
+1648   
+1649  *$ontext
+1650  N_TECH.fx('ror') = 5857.47 ;
+1651  G_RES.fx('ror',h) = N_TECH.l('ror') * phi_res('ror',h) ;
+1654   
+1655  * Fix everything to zero in case no ROR option is selected:
+1656  *N_TECH.fx('ror') = 0 ;
+1657  *G_RES.fx('ror',h) = 0 ;
+1658  *%ror_parameter%%ror_variable%RP_NONDIS.fx('ror',h) = 0 ;
+1659   
+1660   
+1661  **************************************************************************
+      ******
+1662  **** No storage and DSM in first period  *********************************
+      ******
+1663  **************************************************************************
+      ******
+1664   
+1665  ** No storage inflow in first period **
+1666  STO_IN.fx(sto,h)$(ord(h) = 1) = 0;
 1667   
-1668  **************************************************************************
-      ******
-1669  **** No storage and DSM in first period  *********************************
-      ******
+1668   
+1669   
 1670  **************************************************************************
       ******
-1671   
-1672  ** No storage inflow in first period **
-1673  STO_IN.fx(sto,h)$(ord(h) = 1) = 0;
+1671  **** No primary reserves by heating devices  *****************************
+      ******
+1672  **************************************************************************
+      ******
+1673   
 1674   
-1675   
-1676   
+1675  **************************************************************************
+      ******
+1676  **** Fixing to reduce model size  ****************************************
+      ******
 1677  **************************************************************************
       ******
-1678  **** No primary reserves by heating devices  *****************************
-      ******
-1679  **************************************************************************
-      ******
-1680   
+1678   
+1679  *F.fx(l,h)$(m_ntc(l) = 0) = 0 ;
+1680  *NTC.fx(l)$(m_ntc(l) = 0) = 0 ;
 1681   
-1682  **************************************************************************
-      ******
-1683  **** Fixing to reduce model size  ****************************************
-      ******
-1684  **************************************************************************
-      ******
-1685   
-1686  *F.fx(l,h)$(m_ntc(l) = 0) = 0 ;
-1687  *NTC.fx(l)$(m_ntc(l) = 0) = 0 ;
+1682  G_L.fx(tech,h)$(m_p(tech) = 0) = 0 ;
+1683  G_UP.fx(tech,h)$(m_p(tech) = 0) = 0 ;
+1684  G_DO.fx(tech,h)$(m_p(tech) = 0) = 0 ;
+1685  N_TECH.fx(tech)$(m_p(tech) = 0) = 0 ;
+1686  G_RES.fx(tech,h)$(m_p(tech) = 0) = 0 ;
+1687  CU.fx(tech,h)$(m_p(tech) = 0) = 0 ;
 1688   
-1689  G_L.fx(tech,h)$(m_p(tech) = 0) = 0 ;
-1690  G_UP.fx(tech,h)$(m_p(tech) = 0) = 0 ;
-1691  G_DO.fx(tech,h)$(m_p(tech) = 0) = 0 ;
-1692  N_TECH.fx(tech)$(m_p(tech) = 0) = 0 ;
-1693  G_RES.fx(tech,h)$(m_p(tech) = 0) = 0 ;
-1694  CU.fx(tech,h)$(m_p(tech) = 0) = 0 ;
+1689  N_STO_P.fx(sto)$(m_sto_p(sto) = 0) = 0 ;
+1690  N_STO_E.fx(sto)$(m_sto_e(sto) = 0) = 0 ;
+1691  STO_IN.fx(sto,h)$(m_sto_p(sto) = 0) = 0 ;
+1692  STO_OUT.fx(sto,h)$(m_sto_p(sto) = 0) = 0 ;
+1693  STO_L.fx(sto,h)$(m_sto_p(sto) = 0) = 0 ;
+1694   
 1695   
-1696  N_STO_P.fx(sto)$(m_sto_p(sto) = 0) = 0 ;
-1697  N_STO_E.fx(sto)$(m_sto_e(sto) = 0) = 0 ;
-1698  STO_IN.fx(sto,h)$(m_sto_p(sto) = 0) = 0 ;
-1699  STO_OUT.fx(sto,h)$(m_sto_p(sto) = 0) = 0 ;
-1700  STO_L.fx(sto,h)$(m_sto_p(sto) = 0) = 0 ;
-1701   
-1702   
-1703  Variables
-1704  STO_IN_PRO2M(tech,sto,h)
-1705  STO_IN_M2PRO(sto,h)
-1706  STO_IN_M2M(sto,h)
-1707  STO_OUT_PRO2M(sto,h)
-1708  STO_OUT_M2PRO(sto,h)
-1709  STO_OUT_M2M(sto,h)
-1710  STO_L_PRO(sto,h)
-1711  STO_L_PRO2M(sto,h)
-1712  STO_L_M2PRO(sto,h)
-1713  STO_L_M2M(sto,h)
-1714  ;
-1715   
+1696  Variables
+1697  STO_IN_PRO2M(tech,sto,h)
+1698  STO_IN_M2PRO(sto,h)
+1699  STO_IN_M2M(sto,h)
+1700  STO_OUT_PRO2M(sto,h)
+1701  STO_OUT_M2PRO(sto,h)
+1702  STO_OUT_M2M(sto,h)
+1703  STO_L_PRO(sto,h)
+1704  STO_L_PRO2M(sto,h)
+1705  STO_L_M2PRO(sto,h)
+1706  STO_L_M2M(sto,h)
+1707  ;
+1708   
       CU_PRO.fx(res,h)$(m_res_pro(res) = 0) = 0 ;
       G_MARKET_PRO2M.fx(res,h)$( m_res_pro(res) = 0) = 0 ;
       *G_MARKET_M2PRO.fx(h)$(feat_node('prosumage',n) = 0) = 0 ;
@@ -1931,85 +1926,85 @@ INCLUDE    C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_
       STO_L_PRO.fx(sto,h)$( m_sto_pro_p(sto) = 0) = 0 ;
       N_RES_PRO.fx(res)$( m_res_pro(res) = 0) = 0 ;
       $ontext
-1739   
-1740  * Deactivated market storage links
-1741   
-1742  STO_IN_PRO2M.fx(tech,sto,h) = 0 ;
-1743  STO_IN_M2PRO.fx(sto,h)     = 0 ;
-1744  STO_IN_M2M.fx(sto,h)       = 0 ;
-1745  STO_OUT_PRO2M.fx(sto,h)    = 0 ;
-1746  STO_OUT_M2PRO.fx(sto,h)    = 0 ;
-1747  STO_OUT_M2M.fx(sto,h)      = 0 ;
-1748  STO_L_PRO.fx(sto,h)        = 0 ;
-1749  STO_L_PRO2M.fx(sto,h)      = 0 ;
-1750  STO_L_M2PRO.fx(sto,h)      = 0 ;
-1751  STO_L_M2M.fx(sto,h)        = 0 ;
-1752   
-1753  **************************************************************************
+1732   
+1733  * Deactivated market storage links
+1734   
+1735  STO_IN_PRO2M.fx(tech,sto,h) = 0 ;
+1736  STO_IN_M2PRO.fx(sto,h)     = 0 ;
+1737  STO_IN_M2M.fx(sto,h)       = 0 ;
+1738  STO_OUT_PRO2M.fx(sto,h)    = 0 ;
+1739  STO_OUT_M2PRO.fx(sto,h)    = 0 ;
+1740  STO_OUT_M2M.fx(sto,h)      = 0 ;
+1741  STO_L_PRO.fx(sto,h)        = 0 ;
+1742  STO_L_PRO2M.fx(sto,h)      = 0 ;
+1743  STO_L_M2PRO.fx(sto,h)      = 0 ;
+1744  STO_L_M2M.fx(sto,h)        = 0 ;
+1745   
+1746  **************************************************************************
       ******
-1754  **** DEFAULT LEVELS FOR REPORT PARAMETERS  *******************************
+1747  **** DEFAULT LEVELS FOR REPORT PARAMETERS  *******************************
       ******
-1755  **************************************************************************
+1748  **************************************************************************
       ******
-1756   
-1757  * Default level zero for report parameters
-1758  lev_Z(scen) = 0 ;
-1759  lev_G_L(scen,tech,h) = 0 ;
-1760  lev_G_UP(scen,tech,h) = 0 ;
-1761  lev_G_DO(scen,tech,h) = 0 ;
-1762  lev_G_RES(scen,tech,h) = 0 ;
-1763  lev_CU(scen,tech,h) = 0 ;
-1764  lev_STO_IN(scen,sto,h) = 0 ;
-1765  lev_STO_OUT(scen,sto,h) = 0 ;
-1766  lev_STO_L(scen,sto,h) = 0 ;
-1767  lev_N_TECH(scen,tech) = 0 ;
-1768  lev_N_STO_E(scen,sto) = 0 ;
-1769  lev_N_STO_P(scen,sto) = 0 ;
-1770  marginal_con1a(scen,h) = 0 ;
-1771  marginal_con5a(superscen) = 0 ;
-1772   
-1773  * Prosumage
-1774  lev_CU_PRO(scen,tech,h) = 0 ;
-1775  lev_G_MARKET_PRO2M(scen,tech,h) = 0  ;
-1776  lev_G_MARKET_M2PRO(scen,h) = 0  ;
-1777  lev_G_RES_PRO(scen,tech,h) = 0  ;
-1778  lev_STO_IN_PRO2PRO(scen,tech,sto,h) = 0  ;
-1779  lev_STO_IN_PRO2M(scen,tech,sto,h) = 0  ;
-1780  lev_STO_IN_M2PRO(scen,sto,h) = 0   ;
-1781  lev_STO_IN_M2M(scen,sto,h) = 0  ;
-1782  lev_STO_OUT_PRO2PRO(scen,sto,h) = 0  ;
-1783  lev_STO_OUT_PRO2M(scen,sto,h) = 0  ;
-1784  lev_STO_OUT_M2PRO(scen,sto,h) = 0  ;
-1785  lev_STO_OUT_M2M(scen,sto,h) = 0  ;
-1786  lev_STO_L_PRO2PRO(scen,sto,h) = 0  ;
-1787  lev_STO_L_PRO2M(scen,sto,h) = 0  ;
-1788  lev_STO_L_M2PRO(scen,sto,h) = 0  ;
-1789  lev_STO_L_M2M(scen,sto,h) = 0  ;
-1790  lev_N_STO_E_PRO(scen,sto) = 0  ;
-1791  lev_N_STO_P_PRO(scen,sto) = 0  ;
-1792  lev_STO_L_PRO(scen,sto,h) = 0  ;
-1793  lev_N_RES_PRO(scen,tech) = 0  ;
-1794   
-1795   
-1796  * Fixing of report parameters for run-of-river
-1797  *$ontext
-1798  lev_N_TECH(scen,'ror') = 5857.47 ;
-1799  lev_G_RES(scen,'ror',h) = lev_N_TECH(scen,'ror') * phi_res('ror',h) ;
+1749   
+1750  * Default level zero for report parameters
+1751  lev_Z(scen) = 0 ;
+1752  lev_G_L(scen,tech,h) = 0 ;
+1753  lev_G_UP(scen,tech,h) = 0 ;
+1754  lev_G_DO(scen,tech,h) = 0 ;
+1755  lev_G_RES(scen,tech,h) = 0 ;
+1756  lev_CU(scen,tech,h) = 0 ;
+1757  lev_STO_IN(scen,sto,h) = 0 ;
+1758  lev_STO_OUT(scen,sto,h) = 0 ;
+1759  lev_STO_L(scen,sto,h) = 0 ;
+1760  lev_N_TECH(scen,tech) = 0 ;
+1761  lev_N_STO_E(scen,sto) = 0 ;
+1762  lev_N_STO_P(scen,sto) = 0 ;
+1763  marginal_con1a(scen,h) = 0 ;
+1764  marginal_con5a(superscen) = 0 ;
+1765   
+1766  * Prosumage
+1767  lev_CU_PRO(scen,tech,h) = 0 ;
+1768  lev_G_MARKET_PRO2M(scen,tech,h) = 0  ;
+1769  lev_G_MARKET_M2PRO(scen,h) = 0  ;
+1770  lev_G_RES_PRO(scen,tech,h) = 0  ;
+1771  lev_STO_IN_PRO2PRO(scen,tech,sto,h) = 0  ;
+1772  lev_STO_IN_PRO2M(scen,tech,sto,h) = 0  ;
+1773  lev_STO_IN_M2PRO(scen,sto,h) = 0   ;
+1774  lev_STO_IN_M2M(scen,sto,h) = 0  ;
+1775  lev_STO_OUT_PRO2PRO(scen,sto,h) = 0  ;
+1776  lev_STO_OUT_PRO2M(scen,sto,h) = 0  ;
+1777  lev_STO_OUT_M2PRO(scen,sto,h) = 0  ;
+1778  lev_STO_OUT_M2M(scen,sto,h) = 0  ;
+1779  lev_STO_L_PRO2PRO(scen,sto,h) = 0  ;
+1780  lev_STO_L_PRO2M(scen,sto,h) = 0  ;
+1781  lev_STO_L_M2PRO(scen,sto,h) = 0  ;
+1782  lev_STO_L_M2M(scen,sto,h) = 0  ;
+1783  lev_N_STO_E_PRO(scen,sto) = 0  ;
+1784  lev_N_STO_P_PRO(scen,sto) = 0  ;
+1785  lev_STO_L_PRO(scen,sto,h) = 0  ;
+1786  lev_N_RES_PRO(scen,tech) = 0  ;
+1787   
+1788   
+1789  * Fixing of report parameters for run-of-river
+1790  *$ontext
+1791  lev_N_TECH(scen,'ror') = 5857.47 ;
+1792  lev_G_RES(scen,'ror',h) = lev_N_TECH(scen,'ror') * phi_res('ror',h) ;
       %ror_parameter%%ror_variable%lev_N_TECH(scen'ror') = 0 ;
       %ror_parameter%%ror_variable%lev_G_RES(scen'ror',h) = 0 ;
       %reserves%$ontext
       *%ror_parameter%%ror_variable%lev_RP_CON(scenreserves,'ror',h) = 0 ;
       $ontext
-1809   
-1810   
-1811   
-1812   
-1813   
-1814   
+1802   
+1803   
+1804   
+1805   
+1806   
+1807   
 INCLUDE    C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_
            Module\Modified_MCP\scenario.gms
-1816   
-1817  **************************************************************************
+1809   
+1810  **************************************************************************
       ******
       The Dispatch and Investment Evaluation Tool with Endogenous Renewables (DI
       ETER).
@@ -2020,33 +2015,33 @@ INCLUDE    C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_
       /mit-license.php.
       Whenever you use this code, please refer to http://www.diw.de/dieter.
       We are happy to receive feedback under azerrahn@diw.de and wschill@diw.de.
-1827  **************************************************************************
+1820  **************************************************************************
       ******
-1828   
+1821   
+1822   
+1823   
+1824   
+1825  *****************************************
+1826  **** Scenario file                   ****
+1827  ****                                 ****
+1828  *****************************************
 1829   
-1830   
-1831   
-1832  *****************************************
-1833  **** Scenario file                   ****
-1834  ****                                 ****
-1835  *****************************************
-1836   
-1837  Parameter
-1838  m_exog_p(tech)
-1839  m_exog_sto_e(sto)
-1840  m_exog_sto_p(sto)
-1841  *m_exog_rsvr_p(rsvr)
-1842  *m_exog_ntc(l)
-1843  ;
+1830  Parameter
+1831  m_exog_p(tech)
+1832  m_exog_sto_e(sto)
+1833  m_exog_sto_p(sto)
+1834  *m_exog_rsvr_p(rsvr)
+1835  *m_exog_ntc(l)
+1836  ;
+1837   
+1838  m_exog_p(tech) = technology_data(tech,'fixed_capacities') ;
+1839  m_exog_sto_e(sto) = storage_data(sto,'fixed_capacities_energy');
+1840  m_exog_sto_p(sto) = storage_data(sto,'fixed_capacities_power');
+1841  *m_exog_rsvr_p(rsvr) = reservoir_data(rsvr,'fixed_capacities_power');
+1842  *m_exog_ntc(l) = topology_data(l,'fixed_capacities_ntc') ;
+1843   
 1844   
-1845  m_exog_p(tech) = technology_data(tech,'fixed_capacities') ;
-1846  m_exog_sto_e(sto) = storage_data(sto,'fixed_capacities_energy');
-1847  m_exog_sto_p(sto) = storage_data(sto,'fixed_capacities_power');
-1848  *m_exog_rsvr_p(rsvr) = reservoir_data(rsvr,'fixed_capacities_power');
-1849  *m_exog_ntc(l) = topology_data(l,'fixed_capacities_ntc') ;
-1850   
-1851   
-1852  *** Dispatch model
+1845  *** Dispatch model
       N_TECH.lo(tech) = m_exog_p(tech) ;
       N_STO_P.lo(sto) = m_exog_sto_p(sto) ;
       N_STO_E.lo(sto) = m_exog_sto_e(sto) ;
@@ -2061,48 +2056,48 @@ INCLUDE    C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_
        
       *N_TECH.lo('OCGT') = m_exog_p('OCGT') ;
       *N_TECH.up('OCGT') = inf ;
-1869   
-1870  *** Investment model
-1871  *$ontext
-1872  N_TECH.lo(tech) = 0 ;
-1873  N_TECH.lo('wind_on') = m_exog_p('wind_on') ;
-1874  N_TECH.lo('wind_off') = m_exog_p('wind_off') ;
-1875  N_TECH.lo('pv') = m_exog_p('pv') ;
-1876  N_STO_P.lo(sto) = m_exog_sto_p(sto) ;
-1877  N_STO_E.lo(sto) = m_exog_sto_e(sto) ;
-1878  *N_RSVR_P.lo(rsvr) =  m_exog_rsvr_p(rsvr) ;
-1879  *NTC.lo(l) = m_exog_ntc(l) ;
-1880   
-1881  N_TECH.up(tech) = m_exog_p(tech) + 0.1 ;
-1882  N_TECH.up('wind_on') = inf ;
-1883  N_TECH.up('wind_off') = inf ;
-1884  N_TECH.up('pv') = inf ;
-1885  N_STO_P.up(sto) = m_exog_sto_p(sto) + 0.1 ;
-1886  N_STO_E.up(sto) = m_exog_sto_e(sto) + 0.1 ;
-1887  N_STO_P.up('sto1') = inf ;
-1888  N_STO_P.up('sto5') = inf ;
-1889  N_STO_P.up('sto7') = inf ;
-1890  N_STO_E.up('sto1') = inf ;
-1891  N_STO_E.up('sto5') = inf ;
-1892  N_STO_E.up('sto7') = inf ;
-1893  *N_RSVR_P.up(rsvr) =  m_exog_rsvr_p(rsvr) + 0.1 ;
-1894  *NTC.up(l) = m_exog_ntc(l) + 0.1 ;
-1895  *$offtext
+1862   
+1863  *** Investment model
+1864  *$ontext
+1865  N_TECH.lo(tech) = 0 ;
+1866  N_TECH.lo('wind_on') = m_exog_p('wind_on') ;
+1867  N_TECH.lo('wind_off') = m_exog_p('wind_off') ;
+1868  N_TECH.lo('pv') = m_exog_p('pv') ;
+1869  N_STO_P.lo(sto) = m_exog_sto_p(sto) ;
+1870  N_STO_E.lo(sto) = m_exog_sto_e(sto) ;
+1871  *N_RSVR_P.lo(rsvr) =  m_exog_rsvr_p(rsvr) ;
+1872  *NTC.lo(l) = m_exog_ntc(l) ;
+1873   
+1874  N_TECH.up(tech) = m_exog_p(tech) + 0.1 ;
+1875  N_TECH.up('wind_on') = inf ;
+1876  N_TECH.up('wind_off') = inf ;
+1877  N_TECH.up('pv') = inf ;
+1878  N_STO_P.up(sto) = m_exog_sto_p(sto) + 0.1 ;
+1879  N_STO_E.up(sto) = m_exog_sto_e(sto) + 0.1 ;
+1880  N_STO_P.up('sto1') = inf ;
+1881  N_STO_P.up('sto5') = inf ;
+1882  N_STO_P.up('sto7') = inf ;
+1883  N_STO_E.up('sto1') = inf ;
+1884  N_STO_E.up('sto5') = inf ;
+1885  N_STO_E.up('sto7') = inf ;
+1886  *N_RSVR_P.up(rsvr) =  m_exog_rsvr_p(rsvr) + 0.1 ;
+1887  *NTC.up(l) = m_exog_ntc(l) + 0.1 ;
+1888  *$offtext
+1889   
+1890   
+1891  *** Reservoir assumption - not used here
+1892  *phi_rsvr_lev_min(rsvr) = 0.0 ;
+1893  *%GER_only%N_RSVR_E.lo('FR',rsvr) = 600 * m_exog_rsvr_p('FR',rsvr) ;
+1894  *%GER_only%N_RSVR_E.lo('AT',rsvr) = 1700 * m_exog_rsvr_p('AT',rsvr) ;
+1895  *%GER_only%N_RSVR_E.lo('CH',rsvr) = 3000 * m_exog_rsvr_p('CH',rsvr) ;
 1896   
 1897   
-1898  *** Reservoir assumption - not used here
-1899  *phi_rsvr_lev_min(rsvr) = 0.0 ;
-1900  *%GER_only%N_RSVR_E.lo('FR',rsvr) = 600 * m_exog_rsvr_p('FR',rsvr) ;
-1901  *%GER_only%N_RSVR_E.lo('AT',rsvr) = 1700 * m_exog_rsvr_p('AT',rsvr) ;
-1902  *%GER_only%N_RSVR_E.lo('CH',rsvr) = 3000 * m_exog_rsvr_p('CH',rsvr) ;
+1898  *** Germany only, no infeasibility
+1899  *NTC.fx(l) = 0 ;
+1900  *F.fx(l,h) = 0 ;
+1901  *G_INFES.fx(h) = 0 ;
+1902   
 1903   
-1904   
-1905  *** Germany only, no infeasibility
-1906  *NTC.fx(l) = 0 ;
-1907  *F.fx(l,h) = 0 ;
-1908  *G_INFES.fx(h) = 0 ;
-1909   
-1910   
       *** Heating
       Parameter
       security_margin_n_heat_out /1.0/
@@ -2136,39 +2131,39 @@ INCLUDE    C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_
       *RP_HP.fx(reserves,bu,ch,h) = 0 ;
       *RP_H_ELEC.fx(reserves,bu,ch,h) = 0 ;
        
+1934   
+1935   
+1936  * Definition of dictionary set for GUSS tool
+1937   
+1938  Set dict(*,*,*) /
+1939  scen             .scenario       .''
+1940  gussoptions      .opt            .modstats
 1941   
-1942   
-1943  * Definition of dictionary set for GUSS tool
-1944   
-1945  Set dict(*,*,*) /
-1946  scen             .scenario       .''
-1947  gussoptions      .opt            .modstats
-1948   
-1949  phi_min_res      .param          .min_res
-1950   
+1942  phi_min_res      .param          .min_res
+1943   
       phi_pro_self     .param          .pro_selfcon
       $ontext
-1955   
-1956   
-1957  con5a_minRES     .marginal       .marginal_con5a
-1958  con1a_bal        .marginal       .marginal_con1a
-1959   
-1960   
+1948   
+1949   
+1950  con5a_minRES     .marginal       .marginal_con5a
+1951  con1a_bal        .marginal       .marginal_con1a
+1952   
+1953   
       Z                .level          .lev_Z
       $ontext
-1965  G_L              .level          .lev_G_L
-1966  G_UP             .level          .lev_G_UP
-1967  G_DO             .level          .lev_G_DO
-1968  G_RES            .level          .lev_G_RES
-1969  CU               .level          .lev_CU
-1970  STO_IN           .level          .lev_STO_IN
-1971  STO_OUT          .level          .lev_STO_OUT
-1972  STO_L            .level          .lev_STO_L
-1973  N_TECH           .level          .lev_N_TECH
-1974  N_STO_E          .level          .lev_N_STO_E
-1975  N_STO_P          .level          .lev_N_STO_P
-1976   
-1977   
+1958  G_L              .level          .lev_G_L
+1959  G_UP             .level          .lev_G_UP
+1960  G_DO             .level          .lev_G_DO
+1961  G_RES            .level          .lev_G_RES
+1962  CU               .level          .lev_CU
+1963  STO_IN           .level          .lev_STO_IN
+1964  STO_OUT          .level          .lev_STO_OUT
+1965  STO_L            .level          .lev_STO_L
+1966  N_TECH           .level          .lev_N_TECH
+1967  N_STO_E          .level          .lev_N_STO_E
+1968  N_STO_P          .level          .lev_N_STO_P
+1969   
+1970   
       CU_PRO           .level          .lev_CU_PRO
       G_MARKET_PRO2M   .level          .lev_G_MARKET_PRO2M
       G_MARKET_M2PRO   .level          .lev_G_MARKET_M2PRO
@@ -2180,11 +2175,11 @@ INCLUDE    C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_
       N_STO_P_PRO      .level          .lev_N_STO_P_PRO
       N_RES_PRO        .level          .lev_N_RES_PRO
       $ontext
-1991  /
-1992  ;
-1993   
-1994   
-1995   
+1984  /
+1985  ;
+1986   
+1987   
+1988   
       solve  DIETER using lp min Z scenario dict;
        
        
@@ -2200,66 +2195,67 @@ INCLUDE    C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_
       , report_prosumage, report_prosumage_tech, report_prosumage_tech_hours, re
       port_market, report_market_tech, report_market_tech_hours
       $ontext
-2012  ;
-2013   
-2014   
+2005  ;
+2006   
+2007   
       $include report_to_excel.gms
       $ontext
-2019   
-2020   
-2023   
-2024  *$ontext
-2025  solve   DIETER_MCP using mcp ;
-2026  *scenario dict;
-2027   
-2028   
-2029  Parameters
-2030  Z_MCP
-2031  ;
-2032   
-2033  Z_MCP =            sum( (h,dis) , c_m(dis)*G_L.l(dis,h) )
-2034                   + sum( (h,dis)$(ord(h)>1) , c_up(dis)*G_UP.l(dis,h) )
-2035                   + sum( (h,dis) , c_do(dis)*G_DO.l(dis,h) )
-2036                   + sum( (h,nondis) , c_cu(nondis)*CU.l(nondis,h) )
-2037                   + sum( (h,sto) , c_m_sto(sto) * ( STO_OUT.l(sto,h) + STO_
+2012   
+2013   
+2016   
+2017  *$ontext
+2018   
+2019  solve   DIETER_MCP using mcp ;
+2020  *scenario dict;
+2021   
+2022   
+2023  Parameters
+2024  Z_MCP
+2025  ;
+2026   
+2027  Z_MCP =            sum( (h,dis) , c_m(dis)*G_L.l(dis,h) )
+2028                   + sum( (h,dis)$(ord(h)>1) , c_up(dis)*G_UP.l(dis,h) )
+2029                   + sum( (h,dis) , c_do(dis)*G_DO.l(dis,h) )
+2030                   + sum( (h,nondis) , c_cu(nondis)*CU.l(nondis,h) )
+2031                   + sum( (h,sto) , c_m_sto(sto) * ( STO_OUT.l(sto,h) + STO_
       IN.l(sto,h) ) )
-2038                   + sum( tech , c_i(tech)*N_TECH.l(tech) )
-2039                   + sum( tech , c_fix(tech)*N_TECH.l(tech) )
-2040                   + sum( sto , c_i_sto_e(sto)*N_STO_E.l(sto) )
-2041                   + sum( sto , c_fix_sto(sto)/2*(N_STO_P.l(sto)+ N_STO_E.l(
+2032                   + sum( tech , c_i(tech)*N_TECH.l(tech) )
+2033                   + sum( tech , c_fix(tech)*N_TECH.l(tech) )
+2034                   + sum( sto , c_i_sto_e(sto)*N_STO_E.l(sto) )
+2035                   + sum( sto , c_fix_sto(sto)/2*(N_STO_P.l(sto)+ N_STO_E.l(
       sto)) )
-2042                   + sum( sto , c_i_sto_p(sto)*N_STO_P.l(sto) )
-2043  ;
-2044   
-2045   
-2046  Display
-2047  Z_MCP,
-2048  N_TECH.l,
-2049  N_STO_E.l,
-2050  N_STO_P.l,
-2051  G_L.l,
-2052  G_UP.l,
-2053  G_DO.l,
-2054  G_RES.l,
-2055  CU.l,
-2056  STO_IN.l,
-2057  STO_OUT.l,
-2058  STO_L.l
-2059  lambda_enerbal.m,
-2060  lambda_enerbal.l,
-2061  lambda_resgen.m,
-2062  lambda_convgen.m,
-2063  lambda_stolev.m
-2064  ;
-2065   
-2068   
-2069  * ------------------------------------------------------------------------
+2036                   + sum( sto , c_i_sto_p(sto)*N_STO_P.l(sto) )
+2037  ;
+2038   
+2039   
+2040  Display
+2041  Z_MCP,
+2042  N_TECH.l,
+2043  N_STO_E.l,
+2044  N_STO_P.l,
+2045  G_L.l,
+2046  G_UP.l,
+2047  G_DO.l,
+2048  G_RES.l,
+2049  CU.l,
+2050  STO_IN.l,
+2051  STO_OUT.l,
+2052  STO_L.l
+2053  lambda_enerbal.m,
+2054  lambda_enerbal.l,
+2055  lambda_resgen.m,
+2056  lambda_convgen.m,
+2057  lambda_stolev.m
+2058  ;
+2059   
+2062   
+2063  * ------------------------------------------------------------------------
       ---- *
-2070  * ------------------------------------------------------------------------
+2064  * ------------------------------------------------------------------------
       ---- *
-2071  * ------------------------------------------------------------------------
+2065  * ------------------------------------------------------------------------
       ---- *
-GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 11/24/18 00:00:29 Page 2
+GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 11/24/18 20:02:27 Page 2
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Include File Summary
 
@@ -2285,765 +2281,30 @@ Include File Summary
      7      922 INCLUDE        1     162  .C:\Users\Lenovo\Documents\GitHub\pros
                                            umage\Code\Prosumage_Opt\Dieter_Modul
                                            e\Modified_MCP\model.gms
-     8     1634 INCLUDE        1     267  .C:\Users\Lenovo\Documents\GitHub\pros
+     8     1627 INCLUDE        1     267  .C:\Users\Lenovo\Documents\GitHub\pros
                                            umage\Code\Prosumage_Opt\Dieter_Modul
                                            e\Modified_MCP\fix.gms
-     9     1815 INCLUDE        1     268  .C:\Users\Lenovo\Documents\GitHub\pros
+     9     1808 INCLUDE        1     268  .C:\Users\Lenovo\Documents\GitHub\pros
                                            umage\Code\Prosumage_Opt\Dieter_Modul
                                            e\Modified_MCP\scenario.gms
 
 
-COMPILATION TIME     =       18.671 SECONDS      3 MB  24.7.4 r58773 WEX-WEI
-GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 11/24/18 00:00:29 Page 3
+COMPILATION TIME     =       30.297 SECONDS      6 MB  24.7.4 r58773 WEX-WEI
+GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 11/24/18 20:02:27 Page 3
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
-Model Statistics    SOLVE DIETER_MCP Using MCP From line 2025
+Model Statistics    SOLVE DIETER_MCP Using MCP From line 2019
 
 
 MODEL STATISTICS
 
-BLOCKS OF EQUATIONS          24     SINGLE EQUATIONS       10,143
-BLOCKS OF VARIABLES          24     SINGLE VARIABLES       10,143  5 projected
-NON ZERO ELEMENTS        30,965     NON LINEAR N-Z              0
+BLOCKS OF EQUATIONS          23     SINGLE EQUATIONS      893,565
+BLOCKS OF VARIABLES          23     SINGLE VARIABLES      893,565  5 projected
+NON ZERO ELEMENTS     2,742,917     NON LINEAR N-Z              0
 DERIVATIVE POOL              20     CONSTANT POOL              16
 CODE LENGTH                   0
 
 
-GENERATION TIME      =        0.031 SECONDS      8 MB  24.7.4 r58773 WEX-WEI
+GENERATION TIME      =      101.750 SECONDS    335 MB  24.7.4 r58773 WEX-WEI
 
 
-EXECUTION TIME       =        0.047 SECONDS      8 MB  24.7.4 r58773 WEX-WEI
-GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 11/24/18 00:00:29 Page 4
-G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
-Solution Report     SOLVE DIETER_MCP Using MCP From line 2025
-
-
-               S O L V E      S U M M A R Y
-
-     MODEL   DIETER_MCP          
-     TYPE    MCP                 
-     SOLVER  PATH                FROM LINE  2025
-
-**** SOLVER STATUS     1 Normal Completion         
-**** MODEL STATUS      1 Optimal                   
-
- RESOURCE USAGE, LIMIT          3.641  10000000.000
- ITERATION COUNT, LIMIT     11483    2000000000
- EVALUATION ERRORS              0             0
-8557 row/cols, 22252 non-zeros, 0.03% dense.
-
-Path 4.7.04 (Mon Sep 19 11:18:59 2016)
-Written by Todd Munson, Steven Dirkse, and Michael Ferris
-
-INITIAL POINT STATISTICS
-Maximum of X. . . . . . . . . .  6.3959e+004 var: (N_TECH(pv))
-Maximum of F. . . . . . . . . .  6.0349e+005 eqn: (con5b_max_energy(bio))
-Maximum of Grad F . . . . . . .  1.3736e+000 eqn: (KKTSTO_OUT(Sto7,h2))
-                                            var: (lambda_stolev(Sto7,h2))
-
-INITIAL JACOBIAN NORM STATISTICS
-Maximum Row Norm. . . . . . . .  1.9700e+002 eqn: (KKTN_STO_P(Sto1))
-Minimum Row Norm. . . . . . . .  1.0006e+000 eqn: (con3e_maxprod_res(wind_off,h1
-                                                                               )
-Maximum Column Norm . . . . . .  1.9700e+002 var: (N_STO_P(Sto1))
-Minimum Column Norm . . . . . .  1.0000e+000 var: (lambda_convgen(lig,h2))
-
-FINAL STATISTICS
-Inf-Norm of Complementarity . .  8.2408e-008 eqn: (KKTSTO_L(Sto5,h82))
-Inf-Norm of Normal Map. . . . .  2.5175e-009 eqn: (con3a_maxprod_dispatchable(CC
-                                                                               )
-Inf-Norm of Minimum Map . . . .  2.5175e-009 eqn: (con3a_maxprod_dispatchable(CC
-                                                                               )
-Inf-Norm of Fischer Function. .  2.5175e-009 eqn: (con3a_maxprod_dispatchable(CC
-                                                                               )
-Inf-Norm of Grad Fischer Fcn. .  5.6134e-009 eqn: (KKTG_L(CCGT,h86))
-Two-Norm of Grad Fischer Fcn. .  1.5612e-008
-
-FINAL POINT STATISTICS
-Maximum of X. . . . . . . . . .  6.3959e+004 var: (N_TECH(pv))
-Maximum of F. . . . . . . . . .  4.5500e+004 eqn: (con4c_stolev_max(Sto5,h21))
-Maximum of Grad F . . . . . . .  1.3736e+000 eqn: (KKTSTO_OUT(Sto7,h2))
-                                            var: (lambda_stolev(Sto7,h2))
-
-
-
-**** REPORT SUMMARY :        0     NONOPT
-                             0 INFEASIBLE
-                             0  UNBOUNDED
-                           594  REDEFINED (REDEF)
-                             0     ERRORS
-GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 11/24/18 00:00:29 Page 5
-G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
-E x e c u t i o n
-
-
-----   2047 PARAMETER Z_MCP                =     302530598.678  
-
-----   2047 VARIABLE N_TECH.L  Technology tech built [MW]
-
-ror       5857.470,    lig      14928.521,    CCGT     11154.980
-OCGT      2521.934,    bio       6305.206,    wind_on  55282.481
-wind_off 11931.471,    pv       63959.325
-
-
-----   2047 VARIABLE N_STO_E.L  Storage technology built - Energy [MWh]
-
-Sto1   777.111,    Sto5 45500.000
-
-
-----   2047 VARIABLE N_STO_P.L  Storage loading and discharging capacity built -
-                                Capacity [MW]
-
-Sto1  746.027,    Sto5 7673.343
-
-
-----   2047 VARIABLE G_L.L  Generation level in hour h [MWh]
-
-                    h1               h2               h3               h4
-
-lig                            7242.734         7896.108         9046.179
-bio           2849.560         6305.206         6305.206         6305.206
-
-    +               h5               h6               h7               h8
-
-lig           9383.513        10745.810        14928.517        14928.521
-CCGT                                                              532.117
-bio           6305.206         6305.206         6305.206         6305.206
-
-    +               h9              h10              h11              h12
-
-lig          14928.521        14928.521        14928.521        14928.521
-CCGT          2838.436         5517.930         7313.104         9453.516
-bio           6305.206         6305.206         6305.206         6305.206
-
-    +              h13              h14              h15              h16
-
-lig          14928.521        14928.521        14928.521        14928.521
-CCGT         10417.623        11154.980        11154.980        11154.980
-bio           6305.206         6305.206         6305.206         6305.206
-
-    +              h17              h18              h19              h20
-
-lig          14928.521        14928.521        14928.521        14928.521
-CCGT         11154.980        11154.980        11154.980        11154.980
-OCGT          1105.227         2521.934         2521.934
-bio           6305.206         6305.206         6305.206         6305.206
-
-    +              h21              h22              h23              h24
-
-lig          14928.521        14928.521        14928.521        11927.957
-CCGT         11154.980        10776.565         1451.513
-bio           6305.206         6305.206         6305.206         6305.206
-
-    +              h25              h26              h27              h28
-
-lig           8118.678         3409.775         3409.775         3409.775
-bio           6305.206         6305.206         6305.206         6305.206
-
-    +              h29              h30              h31              h32
-
-lig           3409.775         3409.775         3409.775         3409.775
-bio           6305.206         6305.206         6305.206         6305.206
-
-    +              h33              h34              h35              h36
-
-lig           5694.208         7788.588         8152.169         8152.169
-bio           6305.206         6305.206         6305.206         6305.206
-
-    +              h37              h38              h39              h40
-
-lig           8152.169         8152.169         8152.169         8152.169
-bio           6305.206         6305.206         6305.206         6305.206
-
-    +              h41              h42              h43              h44
-
-lig           8152.169         8152.169         8152.169         8152.169
-bio           6305.206         6305.206         6305.206         6305.206
-
-    +              h45              h46              h47              h48
-
-lig           8152.169         7897.589
-bio           6305.206         6305.206         5469.569         4556.736
-
-    +              h49              h50              h51              h52
-
-bio           4556.736         4514.619         3519.227         3519.227
-
-    +              h53              h54              h55              h56
-
-bio           3519.227         3519.227         6305.201         6305.201
-
-    +              h57              h58              h59              h60
-
-lig           2009.062         5032.283         6925.499         8523.167
-bio           6305.206         6305.206         6305.206         6305.206
-
-    +              h61              h62              h63              h64
-
-lig           8523.167         8523.167         8523.167         8523.167
-bio           6305.206         6305.206         6305.206         6305.206
-
-    +              h65              h66              h67              h68
-
-lig           8523.167         8523.167         8523.167         8523.167
-bio           6305.206         6305.206         6305.206         6305.206
-
-    +              h69              h70              h71              h72
-
-lig           8523.167         8523.167         3137.081         3137.081
-bio           6305.206         6305.206         6305.206         6305.206
-
-    +              h73              h74              h75              h76
-
-lig           3137.081         3137.081         3137.081         3137.081
-bio           6305.206         6305.206         6305.206         6305.206
-
-    +              h77              h78              h79              h80
-
-lig           3137.081         3137.081        14928.521        14928.521
-CCGT                                            2501.623         8786.847
-bio           6305.206         6305.206         6305.206         6305.206
-
-    +              h81              h82              h83              h84
-
-lig          14928.521        14928.521        14928.521        14928.521
-CCGT         11154.980        11154.980        11154.980        11154.980
-OCGT          1415.656         2521.934         2521.934         2521.934
-bio           6305.206         6305.206         6305.206         6305.206
-
-    +              h85              h86              h87              h88
-
-lig          14928.521        14928.521        14928.521        14928.521
-CCGT         11154.980        11154.980        11154.980        11154.980
-OCGT          2521.934         2521.934         2521.934         2521.934
-bio           6305.206         6305.206         6305.206         6305.206
-
-    +              h89              h90              h91              h92
-
-lig          14928.521        14928.521        14928.521        14928.521
-CCGT         11154.980        11154.980        11154.980        11154.980
-OCGT          2521.934         2521.934         2521.934         2521.934
-bio           6305.206         6305.206         6305.206         6305.206
-
-    +              h93              h94              h95              h96
-
-lig          14928.521        14928.521        14928.521        11895.924
-CCGT         11154.980        11154.980          378.966
-OCGT          2521.934         1412.043
-bio           6305.206         6305.206         6305.206         6305.206
-
-    +              h97              h98              h99
-
-lig           9380.748         7902.574         6982.059
-bio           6305.206         6305.206         6305.206
-
-
-----   2047 VARIABLE G_UP.L  Generation upshift in hour h [MWh]
-
-                    h1               h2               h3               h4
-
-lig                            7242.734          653.374         1150.071
-bio           2849.560         3455.646
-
-    +               h5               h6               h7               h8
-
-lig            337.334         1362.298         4182.707            0.004
-CCGT                                                              532.117
-
-    +               h9              h10              h11              h12
-
-CCGT          2306.320         2679.494         1795.173         2140.412
-
-    +              h13              h14              h17              h18
-
-CCGT           964.107          737.357
-OCGT                                            1105.227         1416.707
-
-    +              h33              h34              h35              h55
-
-lig           2284.433         2094.379          363.581
-bio                                                              2785.974
-
-    +              h57              h58              h59              h60
-
-lig           2009.062         3023.221         1893.215         1597.669
-bio              0.005
-
-    +              h79              h80              h81              h82
-
-lig          11791.440
-CCGT          2501.623         6285.224         2368.133
-OCGT                                            1415.656         1106.279
-
-
-----   2047 VARIABLE G_DO.L  Generation downshift in hour h [MWh]
-
-                   h20              h22              h23              h24
-
-lig                                                              3000.564
-CCGT                            378.415         9325.052         1451.513
-OCGT          2521.934
-
-    +              h25              h26              h46              h47
-
-lig           3809.279         4708.903          254.580         7897.589
-bio                                                               835.637
-
-    +              h48              h50              h51              h71
-
-lig                                                              5386.086
-bio            912.832           42.117          995.393
-
-    +              h94              h95              h96              h97
-
-lig                                             3032.596         2515.176
-CCGT                          10776.014          378.966
-OCGT          1109.892         1412.043
-
-    +              h98              h99
-
-lig           1478.174          920.515
-
-
-----   2047 VARIABLE G_RES.L  Generation renewables type res in hour h [MWh]
-
-                       h1               h2               h3               h4
-
-ror              2964.503         2964.503         2964.503         2964.503
-wind_on          8585.369         8474.804         8502.446         8662.765
-wind_off         8269.702         8306.690         8099.082         7310.412
-
-       +               h5               h6               h7               h8
-
-ror              2964.503         2964.503         2964.503         2964.503
-wind_on          8557.728         7728.491         7065.101         6291.146
-wind_off         7061.044         5750.969         4831.053         3458.933
-
-       +               h9              h10              h11              h12
-
-ror              2964.503         2964.503         2964.503         2964.503
-wind_on          5378.985         4433.655         3322.477         2227.884
-wind_off         2367.204         1611.942         1120.365          633.561
-pv                223.858         1586.191         4131.772         6178.471
-
-       +              h13              h14              h15              h16
-
-ror              2964.503         2964.503         2964.503         2964.503
-wind_on          1553.438          950.859          602.579          536.240
-wind_off          482.031          303.059          176.586           23.863
-pv               6754.105         6088.928         4003.854         1381.521
-
-       +              h17              h18              h19              h20
-
-ror              2964.503         2964.503         2964.503         2964.503
-wind_on           895.576         1741.398         2764.124         4179.356
-wind_off            7.159           17.897          342.433          967.642
-pv                 83.147
-
-       +              h21              h22              h23              h24
-
-ror              2964.503         2964.503         2964.503         2964.503
-wind_on          5080.460         6064.488         6722.350         7418.909
-wind_off         2219.254         3296.665         4327.544         5274.903
-
-       +              h25              h26              h27              h28
-
-ror              2964.503         2964.503         2964.503         2964.503
-wind_on          7822.471         8894.951        11050.968        12416.445
-wind_off         6020.620         7850.908         9121.609         9915.052
-
-       +              h29              h30              h31              h32
-
-ror              2964.503         2964.503         2964.503         2964.503
-wind_on         14373.445        15932.411        17065.702        17867.298
-wind_off        10110.728        10210.953        10219.305        10175.158
-
-       +              h33              h34              h35              h36
-
-ror              2964.503         2964.503         2964.503         2964.503
-wind_on         18563.857        19575.527        20360.538        20874.665
-wind_off        10194.249        10142.943        10071.354        10057.037
-pv                172.690          972.182         2200.201         3057.256
-
-       +              h37              h38              h39              h40
-
-ror              2964.503         2964.503         2964.503         2964.503
-wind_on         20963.117        21062.625        21256.114        21526.998
-wind_off        10049.878        10016.470        10031.981        10065.389
-pv               3351.469         3063.652         1931.572          626.801
-
-       +              h41              h42              h43              h44
-
-ror              2964.503         2964.503         2964.503         2964.503
-wind_on         22151.690        23141.247        23555.865        23412.131
-wind_off         9986.641         9923.404         9906.700         9905.507
-pv                 44.772
-
-       +              h45              h46              h47              h48
-
-ror              2964.503         2964.503         2964.503         2964.503
-wind_on         22848.249        22195.916        21200.832        21620.978
-wind_off         9922.211         9900.734         9881.644         9889.996
-
-       +              h49              h50              h51              h52
-
-ror              2964.503         2964.503         2964.503         2964.503
-wind_on         21836.580        21416.433        21444.074        21222.945
-wind_off         9855.395         9799.317         9744.432         9756.364
-
-       +              h53              h54              h55              h56
-
-ror              2964.503         2964.503         2964.503         2964.503
-wind_on         21012.871        21051.569        21222.945        20907.834
-wind_off         9748.012         9712.217         9694.320         9700.286
-
-       +              h57              h58              h59              h60
-
-ror              2964.503         2964.503         2964.503         2964.503
-wind_on         20305.255        19581.055        18895.552        17491.377
-wind_off         9722.956         9685.968         9662.105         9622.731
-pv                108.731         1048.933         2699.084         4298.067
-
-       +              h61              h62              h63              h64
-
-ror              2964.503         2964.503         2964.503         2964.503
-wind_on         16042.976        15749.979        15794.205        16640.027
-wind_off         9658.526         9693.127         9399.613         9186.039
-pv               5001.619         4764.970         3082.839         1074.517
-
-       +              h65              h66              h67              h68
-
-ror              2964.503         2964.503         2964.503         2964.503
-wind_on         17259.191        18469.877        19879.580        20377.123
-wind_off         9312.513         9425.862         9213.482         9155.018
-pv                 76.751
-
-       +              h69              h70              h71              h72
-
-ror              2964.503         2964.503         2964.503         2964.503
-wind_on         20493.216        20266.558        19387.566        19077.984
-wind_off         9201.550         9236.152         9307.740         9378.136
-
-       +              h73              h74              h75              h76
-
-ror              2964.503         2964.503         2964.503         2964.503
-wind_on         18619.140        17635.112        16761.648        15910.298
-wind_off         9425.862         9427.055         9436.600         9440.180
-
-       +              h77              h78              h79              h80
-
-ror              2964.503         2964.503         2964.503         2964.503
-wind_on         14843.346        14229.711        14351.332        14058.335
-wind_off         9466.429         9490.292         9553.529         9643.015
-
-       +              h81              h82              h83              h84
-
-ror              2964.503         2964.503         2964.503         2964.503
-wind_on         13748.753        12858.705        11852.564        10663.991
-wind_off         9685.968         9658.526         9671.650         9685.968
-pv                115.127          876.243         2212.993         3274.717
-
-       +              h85              h86              h87              h88
-
-ror              2964.503         2964.503         2964.503         2964.503
-wind_on         10116.694         9574.926         9536.228         9878.979
-wind_off         9674.036         9684.775         9716.990         9743.239
-pv               3652.077         3287.509         2123.450          876.243
-
-       +              h89              h90              h91              h92
-
-ror              2964.503         2964.503         2964.503         2964.503
-wind_on         10271.485        11100.722        11343.965        11017.799
-wind_off         9701.479         9740.853         9716.990         9746.818
-pv                 95.939
-
-       +              h93              h94              h95              h96
-
-ror              2964.503         2964.503         2964.503         2964.503
-wind_on         10780.084        10232.787         9818.169         9414.607
-wind_off         9762.329         9765.909         9758.750         9764.716
-
-       +              h97              h98              h99
-
-ror              2964.503         2964.503         2964.503
-wind_on          9215.590         8922.592         8778.858
-wind_off         9765.909         9736.080         9762.329
-
-
-----   2047 VARIABLE CU.L  Renewables curtailment technology res in hour h [MWh]
-
-                      ( ALL            0.000 )
-
-
-----   2047 VARIABLE STO_IN.L  Storage inflow technology sto hour h [MWh]
-
-                   h2               h3               h4               h5
-
-Sto1           34.344          167.608          160.231          279.160
-Sto5         4100.102         6118.246         7673.343         7673.343
-
-   +               h6               h7              h26              h27
-
-Sto1          168.145            0.003                            63.375
-Sto5         7673.343         1512.664          118.865         3926.209
-
-   +              h28              h29              h30              h31
-
-Sto1                                            746.027            0.006
-Sto5         5886.503         7315.179         7673.343         1555.772
-
-   +              h32              h47              h48              h49
-
-Sto1            0.084
-Sto5          275.430          410.849         2637.674         5770.675
-
-   +              h50              h51              h52              h53
-
-Sto1                           139.354          277.156
-Sto5         7673.333         7673.343         7673.343         7673.343
-
-   +              h54              h55              h56              h71
-
-Sto1          461.633
-Sto5         7673.343         2512.255          857.397         2941.029
-
-   +              h72              h73              h74              h75
-
-Sto1                                            378.704          430.786
-Sto5         5755.001         7487.882         7673.343         7673.343
-
-   +              h76              h77              h78
-
-Sto5         7138.359         4936.656         1756.883
-
-
-----   2047 VARIABLE STO_OUT.L  Storage outflow technology sto hour h [MWh]
-
-                   h1              h14              h15              h16
-
-Sto1          373.013
-Sto5         7673.343          156.658         2307.720         5514.114
-
-   +              h17              h18              h19              h20
-
-Sto1                           746.027
-Sto5         7673.343         7673.343         7673.343         7019.454
-
-   +              h21              h35              h36              h37
-
-Sto1                             0.098            0.015
-Sto5         2932.025          146.879          641.811          644.085
-
-   +              h38              h39              h40              h41
-
-Sto1                                                               0.004
-Sto5          290.089          641.404         1652.882         3235.677
-
-   +              h42              h43              h44              h45
-
-Sto1                                            507.326          238.584
-Sto5         5174.280         5094.601         3267.820          879.026
-
-   +              h53              h60              h61              h62
-
-Sto1           63.270            0.004            0.003            0.003
-Sto5                          1231.607         1951.426          968.758
-
-   +              h63              h64              h65              h66
-
-Sto1            0.004                                              0.003
-Sto5         1479.411         2879.489         4717.330         6907.191
-
-   +              h67              h68              h69              h70
-
-Sto1                                                             746.010
-Sto5         6942.106         5181.645         3120.306         1364.353
-
-   +              h82              h83              h84              h85
-
-Sto1            0.015            0.007            0.004            0.003
-Sto5          492.316         1340.591         2720.837         3033.471
-
-   +              h86              h87              h88              h89
-
-Sto1            0.002            0.002            0.002            0.002
-Sto5         3193.357         3090.135         3329.341         4478.613
-
-   +              h90              h91              h92              h93
-
-Sto1            0.002                           339.908          406.079
-Sto5         6753.089         6718.945         4865.992          933.312
-
-
-----   2047 VARIABLE STO_L.L  Storage level technology sto hour h [MWh]
-
-                   h1               h2               h3               h4
-
-Sto1                            32.970          193.874          347.696
-Sto5        14224.063        17914.155        23420.577        30326.585
-
-   +               h5               h6               h7               h8
-
-Sto1          615.689          777.108          777.111          777.111
-Sto5        37232.594        44138.603        45500.000        45500.000
-
-   +               h9              h10              h11              h12
-
-Sto1          777.111          777.111          777.111          777.111
-Sto5        45500.000        45500.000        45500.000        45500.000
-
-   +              h13              h14              h15              h16
-
-Sto1          777.111          777.111          777.111          777.111
-Sto5        45500.000        45325.936        42761.802        36635.009
-
-   +              h17              h18              h19              h20
-
-Sto1          777.111
-Sto5        28109.072        19583.136        11057.199         3257.806
-
-   +              h26              h27              h28              h29
-
-Sto1                            60.840           60.840           60.840
-Sto5          106.978         3640.566         8938.419        15522.081
-
-   +              h30              h31              h32              h33
-
-Sto1          777.025          777.031          777.111          777.111
-Sto5        22428.089        23828.284        24076.171        24076.171
-
-   +              h34              h35              h36              h37
-
-Sto1          777.111          777.009          776.993          776.993
-Sto5        24076.171        23912.972        23199.849        22484.198
-
-   +              h38              h39              h40              h41
-
-Sto1          776.993          776.993          776.993          776.990
-Sto5        22161.878        21449.207        19612.671        16017.474
-
-   +              h42              h43              h44              h47
-
-Sto1          776.990          776.990          248.525
-Sto5        10268.274         4607.606          976.695          369.764
-
-   +              h48              h49              h50              h51
-
-Sto1                                                             133.780
-Sto5         2743.671         7937.278        14843.278        21749.287
-
-   +              h52              h53              h54              h55
-
-Sto1          399.849          333.943          777.111          777.111
-Sto5        28655.295        35561.304        42467.313        44728.342
-
-   +              h56              h57              h58              h59
-
-Sto1          777.111          777.111          777.111          777.111
-Sto5        45500.000        45500.000        45500.000        45500.000
-
-   +              h60              h61              h62              h63
-
-Sto1          777.108          777.104          777.101          777.096
-Sto5        44131.548        41963.297        40886.899        39243.110
-
-   +              h64              h65              h66              h67
-
-Sto1          777.096          777.096          777.093          777.093
-Sto5        36043.677        30802.199        23127.543        15414.092
-
-   +              h68              h69              h70              h71
-
-Sto1          777.093          777.093
-Sto5         9656.708         6189.702         4673.754         7320.680
-
-   +              h72              h73              h74              h75
-
-Sto1                                            363.556          777.111
-Sto5        12500.181        19239.275        26145.283        33051.292
-
-   +              h76              h77              h78              h79
-
-Sto1          777.111          777.111          777.111          777.111
-Sto5        39475.815        43918.805        45500.000        45500.000
-
-   +              h80              h81              h82              h83
-
-Sto1          777.111          777.111          777.095          777.088
-Sto5        45500.000        45500.000        44952.982        43463.437
-
-   +              h84              h85              h86              h87
-
-Sto1          777.084          777.080          777.078          777.076
-Sto5        40440.285        37069.761        33521.586        30088.103
-
-   +              h88              h89              h90              h91
-
-Sto1          777.074          777.072          777.070          777.070
-Sto5        26388.835        21412.598        13909.167         6443.672
-
-   +              h92
-
-Sto1          422.999
-Sto5         1037.014
-
-
-----   2047 VARIABLE lambda_enerbal.M  Dual variable on energy balance (1a)
-
-                      ( ALL            0.000 )
-
-
-----   2047 VARIABLE lambda_enerbal.L  Dual variable on energy balance (1a)
-
-h1   32.558,    h2   45.418,    h3   45.418,    h4   45.418,    h5   45.418
-h6   45.418,    h7   45.418,    h8   60.383,    h9   60.383,    h10  60.383
-h11  60.383,    h12  60.383,    h13  60.383,    h14  60.676,    h15  60.676
-h16  60.676,    h17  81.818,    h18 346.165,    h19 205.048,    h20  60.676
-h21  60.676,    h22  60.383,    h23  60.383,    h24  45.418,    h25  45.418
-h26  40.301,    h27  40.301,    h28  40.301,    h29  40.301,    h30  16.114
-h31  40.301,    h32  40.301,    h33  45.418,    h34  45.418,    h35  50.872
-h36  50.872,    h37  50.872,    h38  50.872,    h39  50.872,    h40  50.872
-h41  50.872,    h42  50.872,    h43  50.872,    h44  50.872,    h45  50.872
-h46  45.418,    h47  32.558,    h48  32.558,    h49  32.558,    h50  32.558
-h51  19.385,    h52  19.385,    h53  22.077,    h54  19.385,    h55  32.558
-h56  32.558,    h57  45.418,    h58  45.418,    h59  45.418,    h60  50.872
-h61  50.872,    h62  50.872,    h63  50.872,    h64  50.872,    h65  50.872
-h66  50.872,    h67  50.872,    h68  50.872,    h69  50.872,    h70  50.872
-h71  40.301,    h72  40.301,    h73  40.301,    h74  30.766,    h75  30.766
-h76  40.301,    h77  40.301,    h78  40.301,    h79  60.383,    h80  60.383
-h81  81.818,    h82  92.761,    h83  92.761,    h84  92.761,    h85  92.761
-h86  92.761,    h87  92.761,    h88  92.761,    h89  92.761,    h90  92.761
-h91  92.761,    h92  92.761,    h93  92.761,    h94  81.818,    h95  60.383
-h96  45.418,    h97  45.418,    h98  45.418,    h99  15.418
-
-
-----   2047 VARIABLE lambda_resgen.M  Dual variable on renewable generation (3e)
-
-                      ( ALL            0.000 )
-
-
-----   2047 VARIABLE lambda_convgen.M  Dual variable on conventional generation 
-                                       level (2a)
-
-                      ( ALL            0.000 )
-
-
-----   2047 VARIABLE lambda_stolev.M  Dual variable on storage level  (4b)
-
-                      ( ALL            0.000 )
-
-
-
-EXECUTION TIME       =        0.016 SECONDS      6 MB  24.7.4 r58773 WEX-WEI
-
-
-USER: Medium MUD - 10 User License                   S170316:1123AO-GEN
-      Deutsches Institut fuer Wirtschaftsforschung DIW, AbteilungDC3975
-      License for teaching and research at degree granting institutions
-
-
-**** FILE SUMMARY
-
-Input      C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_
-           Module\Modified_MCP\DIETER.gms
-Output     C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_
-           Module\Modified_MCP\DIETER.lst
+EXECUTION TIME       =      102.016 SECONDS    335 MB  24.7.4 r58773 WEX-WEI
