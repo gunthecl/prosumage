@@ -380,12 +380,12 @@ KKTG_L(tech,h)$dis(tech)..
 
     + c_m(tech)
     - lambda_enerbal(h)
-    +  lambda_convgen(tech,h)
+*    +  lambda_convgen(tech,h)
     + mu_conv_cap(tech,h)
 *    + mu_minRES*phi_min_res*phi_min_res_exog
     + (mu_bio_cap(tech))$dis_bio(tech)
 *    - mu_minRES$dis_bio(tech)
-   - (lambda_convgen(tech,h+1))$(ord(h) > 1)
+*   - (lambda_convgen(tech,h+1))$(ord(h) > 1)
     =G= 0
 
 ;
@@ -508,10 +508,12 @@ STO_IN.l(sto,h)= 0;
 STO_OUT.l(sto,h)= 0;
 STO_L.l(sto,h) = 0;
 
+G_L.fx('lig','h1')= 6462.22606795923;
+
+
 *N_TECH.l(tech)= 0;
 *N_STO_E.l(sto)= 0;
 *N_STO_P.l(sto)= 0;
-
 
 ********************************************************************************
 ***** MODEL *****
@@ -524,7 +526,7 @@ con1a_bal
 
 *con2a_loadlevel
 *con2b_loadlevelstart
-con2_loadlevel
+*con2_loadlevel
 
 con3a_maxprod_dispatchable
 con3e_maxprod_res
@@ -571,7 +573,7 @@ model DIETER_MCP /
 
 
 con1a_bal.lambda_enerbal
-con2_loadlevel.lambda_convgen
+*con2_loadlevel.lambda_convgen
 
 con3a_maxprod_dispatchable.mu_conv_cap
 con3e_maxprod_res.lambda_resgen
@@ -592,8 +594,8 @@ $ontext
 $offtext
 
 KKTG_L.G_L
-KKTG_UP.G_UP
-KKTG_DO.G_DO
+*KKTG_UP.G_UP
+*KKTG_DO.G_DO
 KKTG_RES.G_RES
 KKTCU.CU
 KKTSTO_IN.STO_IN

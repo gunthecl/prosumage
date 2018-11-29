@@ -43,7 +43,7 @@ $setglobal prosumage ""
 $setglobal ror_parameter "*"
 $setglobal ror_variable ""
 
-* Set star to determine loops, otherwise default 100% renewables
+* Set star to determine loops, otherwise default 50% renewables
 $setglobal loop_over_renewable_share "*"
 
 * Set star for no crossover to speed up calculation time by skipping crossover in LP solver
@@ -358,21 +358,35 @@ $offtext
 $ontext
 $offtext
 
-%MCP%$ontext
 
-solve   DIETER_MCP using mcp ;
-*scenario dict;
+
+%MCP%$ontext
+* Reporting
+
+
+
+solve   DIETER_MCP using mcp;
+* scenario dict;
 
 
 Parameters
 Z_MCP
+Z_FIX
+Z_VAR
 ;
 
-Z_MCP =            sum( (h,dis) , c_m(dis)*G_L.l(dis,h) )
+Z_VAR =
+
+
+      sum( (h,dis) , c_m(dis)*G_L.l(dis,h) )
                  + sum( (h,dis)$(ord(h)>1) , c_up(dis)*G_UP.l(dis,h) )
                  + sum( (h,dis) , c_do(dis)*G_DO.l(dis,h) )
                  + sum( (h,nondis) , c_cu(nondis)*CU.l(nondis,h) )
                  + sum( (h,sto) , c_m_sto(sto) * ( STO_OUT.l(sto,h) + STO_IN.l(sto,h) ) )
+
+;
+
+Z_FIX =                 
                  + sum( tech , c_i(tech)*N_TECH.l(tech) )
                  + sum( tech , c_fix(tech)*N_TECH.l(tech) )
                  + sum( sto , c_i_sto_e(sto)*N_STO_E.l(sto) )
@@ -380,8 +394,11 @@ Z_MCP =            sum( (h,dis) , c_m(dis)*G_L.l(dis,h) )
                  + sum( sto , c_i_sto_p(sto)*N_STO_P.l(sto) )
 ;
 
+Z_MCP = Z_VAR + Z_FIX;
 
 Display
+Z_VAR,
+Z_FIX,
 Z_MCP,
 N_TECH.l,
 N_STO_E.l,
@@ -397,9 +414,39 @@ STO_L.l
 lambda_enerbal.m,
 lambda_enerbal.l,
 lambda_resgen.m,
-lambda_convgen.m,
-lambda_stolev.m
-;
+*lambda_convgen.m,
+lambda_stolev.m,
+con1a_bal.m,
+con1a_bal.up,
+con1a_bal.lo,
+con3a_maxprod_dispatchable.m,
+con3a_maxprod_dispatchable.up,
+con3a_maxprod_dispatchable.lo,
+
+con3e_maxprod_res.m,
+con3e_maxprod_res.up,
+con3e_maxprod_res.lo,
+
+con4_stolev.m,
+con4_stolev.up,
+con4_stolev.lo,
+
+con4c_stolev_max.m,
+con4c_stolev_max.up,
+con4c_stolev_max.lo,
+
+con4d_maxin_sto.m,
+con4d_maxin_sto.up,
+con4d_maxin_sto.lo,
+
+con4e_maxout_sto.m,
+con4e_maxout_sto.up,
+con4e_maxout_sto.lo,
+*con4j_ending
+*con5a_minRES.mu_minRES
+con5b_max_energy.m,
+con5b_max_energy.up,
+con5b_max_energy.lo;
 
 $ontext
 $offtext

@@ -1,22 +1,47 @@
 B 2 C o m p i l a t i o n
-B 1906 Include File Summary
-B 1925 Model Statistics    SOLVE DIETER_MCP Using MCP From line 2006
-B 1943 Solution Report     SOLVE DIETER_MCP Using MCP From line 2006
-B 1999 E x e c u t i o n
-I 2002 Z_MCP
-I 2003 N_TECH
-I 2008 N_STO_E
-I 2013 N_STO_P
-I 2018 G_L
-I 2065 G_UP
-I 2084 G_DO
-I 2098 G_RES
-I 2155 CU
-I 2191 STO_IN
-I 2206 STO_OUT
-I 2221 STO_L
-I 2248 lambda_enerbal
-I 2253 lambda_enerbal
-I 2267 lambda_resgen
-I 2272 lambda_convgen
-I 2277 lambda_stolev
+B 1953 Include File Summary
+B 1972 Model Statistics    SOLVE DIETER_MCP Using MCP From line 2011
+B 1990 Solution Report     SOLVE DIETER_MCP Using MCP From line 2011
+B 2046 E x e c u t i o n
+I 2049 Z_VAR
+I 2050 Z_FIX
+I 2051 Z_MCP
+I 2052 N_TECH
+I 2057 N_STO_E
+I 2062 N_STO_P
+I 2067 G_L
+I 5939 G_UP
+I 5944 G_DO
+I 5949 G_RES
+I 10326 CU
+I 12869 STO_IN
+I 13104 STO_OUT
+I 13319 STO_L
+I 15534 lambda_enerbal
+I 15539 lambda_enerbal
+I 16119 lambda_resgen
+I 16124 lambda_stolev
+I 16129 con1a_bal
+I 16709 con1a_bal
+I 17387 con1a_bal
+I 18065 con3a_maxprod_dispatchable
+I 20727 con3a_maxprod_dispatchable
+I 20732 con3a_maxprod_dispatchable
+I 20737 con3e_maxprod_res
+I 24442 con3e_maxprod_res
+I 24447 con3e_maxprod_res
+I 24452 con4_stolev
+I 26961 con4_stolev
+I 26966 con4_stolev
+I 26971 con4c_stolev_max
+I 26990 con4c_stolev_max
+I 26995 con4c_stolev_max
+I 27000 con4d_maxin_sto
+I 27031 con4d_maxin_sto
+I 27036 con4d_maxin_sto
+I 27041 con4e_maxout_sto
+I 30143 con4e_maxout_sto
+I 30148 con4e_maxout_sto
+I 30153 con5b_max_energy
+I 30158 con5b_max_energy
+I 30163 con5b_max_energy
