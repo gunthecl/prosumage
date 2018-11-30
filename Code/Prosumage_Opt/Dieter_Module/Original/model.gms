@@ -1185,8 +1185,8 @@ obj
 
 con1a_bal
 
-con2a_loadlevel
-con2b_loadlevelstart
+%no_load_change_costs%con2a_loadlevel
+%no_load_change_costs%con2b_loadlevelstart
 
 con3a_maxprod_dispatchable
 %reserves%$ontext

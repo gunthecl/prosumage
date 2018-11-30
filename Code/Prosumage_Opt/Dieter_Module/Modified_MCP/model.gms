@@ -117,6 +117,8 @@ con11k_pro_maxin_sto                     Prosumage: maximum storage inflow
 con11l_pro_maxout_sto                    Prosumage: maximum storage outflow
 con11o_pro_ending                        Prosumage: storage ending condition
 
+* Dummy equation for using guss tool
+guss
 
 * KKT optimality conditions
 KKTG_L                   KKT w.r.t. G_L
@@ -133,6 +135,7 @@ KKTN_TECH                KKT w.r.t. N_TECH
 KKTN_STO_E               KKT w.r.t. N_STO_E
 KKTN_STO_P               KKT w.r.t. N_STO_P
 ;
+
 
 
 ********************************************************************************
@@ -224,8 +227,7 @@ con3e_maxprod_res(nondis,h)..
 * ---------------------------------------------------------------------------- *
 
 con4a_stolev_start(sto,h)$(ord(h) = 1)..
-*        phi_sto_ini(sto) * N_STO_E(sto)
-        + STO_IN(sto,h)*(1+eta_sto(sto))/2 - STO_OUT(sto,h)/(1+eta_sto(sto))*2  - STO_L(sto,h)  =E= 0
+        phi_sto_ini(sto) * N_STO_E(sto) + STO_IN(sto,h)*(1+eta_sto(sto))/2 - STO_OUT(sto,h)/(1+eta_sto(sto))*2  - STO_L(sto,h)  =E= 0
 ;
 
 con4b_stolev(sto,h)$(ord(h)>1)..
@@ -235,7 +237,6 @@ con4b_stolev(sto,h)$(ord(h)>1)..
 con4_stolev(sto,h)..
 
        + STO_IN(sto,h)*(1+eta_sto(sto))/2 - STO_OUT(sto,h)/(1+eta_sto(sto))*2  -  STO_L(sto,h)
-*      + (phi_sto_ini(sto)*N_STO_E(sto))$(ord(h) = 1)
        + (STO_L(sto,h-1))$(ord(h)>1)
        =E= 0
 ;
@@ -380,12 +381,19 @@ KKTG_L(tech,h)$dis(tech)..
 
     + c_m(tech)
     - lambda_enerbal(h)
-*    +  lambda_convgen(tech,h)
+%load_change_costs%$ontext    
+    + lambda_convgen(tech,h)
+$ontext
+$offtext    
     + mu_conv_cap(tech,h)
-*    + mu_minRES*phi_min_res*phi_min_res_exog
-    + (mu_bio_cap(tech))$dis_bio(tech)
-*    - mu_minRES$dis_bio(tech)
-*   - (lambda_convgen(tech,h+1))$(ord(h) > 1)
+%investment_model%$ontext      
+    + mu_bio_cap(tech)$dis_bio(tech)
+$ontext
+$offtext
+%load_change_costs%$ontext    
+   - (lambda_convgen(tech,h+1))$(ord(h) > 1)
+$ontext
+$offtext
     =G= 0
 
 ;
@@ -409,7 +417,6 @@ KKTG_DO(dis,h)..
 KKTG_RES(nondis,h)..
 
      - lambda_enerbal(h) + lambda_resgen(nondis,h)
-*     + mu_minRES*(phi_min_res*phi_min_res_exog - 1)
      =G= 0
 ;
 
@@ -462,8 +469,11 @@ KKTN_TECH(tech)..
 
           +  c_i(tech)
           +  c_fix(tech)
-          +  mu_tech_max_i(tech)
-          - sum( h,   mu_conv_cap(tech,h))$dis(tech)
+%investment_model%$ontext
+          +  mu_tech_max_i(tech)       
+$ontext
+$offtext
+          - sum( h,   mu_conv_cap(tech,h))$dis(tech)         
           - sum( h,  lambda_resgen(tech,h)*phi_res(tech,h))$nondis(tech)
      =G= 0
 
@@ -475,8 +485,10 @@ KKTN_STO_E(sto)..
 
       +  c_fix_sto(sto)/2 +  c_i_sto_e(sto)
       -  sum( h,   mu_stolev_cap(sto,h))
+%investment_model%$ontext      
       +  mu_stoe_max_i(sto)
-*      -  phi_sto_ini(sto)*lambda_stolev(sto,'h1')
+$ontext
+$offtext
       =G= 0
 ;
 
@@ -485,7 +497,10 @@ KKTN_STO_P(sto)..
 
      c_fix_sto(sto)/2 + c_i_sto_p(sto)
      - sum( h, (mu_stoin_cap(sto,h) + mu_stout_cap(sto,h)))
+%investment_model%$ontext
      + mu_stop_max_i(sto)
+$ontext
+$offtext
      =G= 0
 
 ;
@@ -498,22 +513,20 @@ KKTN_STO_P(sto)..
 G_DO.fx(dis,'h1') = 0;
 
 * Default for reporting
-G_DO.l(dis,h) = 0;
-G_L.l(dis,h) = 0 ;
-G_UP.l(dis,h) = 0 ;
-G_RES.l(tech,h)= 0;
-CU.l(tech,h) = 0;
+G_DO.l(dis,h)   = 0;
+G_L.l(dis,h)    = 0;
+G_UP.l(dis,h)   = 0;
+G_RES.l(tech,h) = 0;
+CU.l(tech,h)    = 0;
 
-STO_IN.l(sto,h)= 0;
-STO_OUT.l(sto,h)= 0;
-STO_L.l(sto,h) = 0;
+STO_IN.l(sto,h)  = 0;
+STO_OUT.l(sto,h) = 0;
+STO_L.l(sto,h)   = 0;
 
-G_L.fx('lig','h1')= 6462.22606795923;
+N_TECH.l(tech)   = 0;
+N_STO_E.l(sto)   = 0;
+N_STO_P.l(sto)   = 0;
 
-
-*N_TECH.l(tech)= 0;
-*N_STO_E.l(sto)= 0;
-*N_STO_P.l(sto)= 0;
 
 ********************************************************************************
 ***** MODEL *****
@@ -524,32 +537,31 @@ obj
 
 con1a_bal
 
-*con2a_loadlevel
-*con2b_loadlevelstart
-*con2_loadlevel
+%load_change_costs%$ontext
+con2_loadlevel
+$ontext
+$offtext
 
 con3a_maxprod_dispatchable
 con3e_maxprod_res
 
-*con4a_stolev_start
-*con4b_stolev
 con4_stolev
 con4c_stolev_max
 con4d_maxin_sto
 con4e_maxout_sto
-*con4k_PHS_EtoP
-*con4j_ending
 
 con5a_minRES
+%investment_model%$ontext   
 con5b_max_energy
+$ontext
+$offtext
 
-%investment_model%$ontext
+%investment_model%$ontext     
 con8a_max_I_power
 con8b_max_I_sto_e
 con8c_max_I_sto_p
 $ontext
 $offtext
-
 
 %prosumage%$ontext
 con8f_max_pro_res
@@ -571,9 +583,12 @@ $offtext
 
 model DIETER_MCP /
 
-
 con1a_bal.lambda_enerbal
-*con2_loadlevel.lambda_convgen
+
+%load_change_costs%$ontext
+con2_loadlevel.lambda_convgen
+$ontext
+$offtext
 
 con3a_maxprod_dispatchable.mu_conv_cap
 con3e_maxprod_res.lambda_resgen
@@ -582,11 +597,13 @@ con4_stolev.lambda_stolev
 con4c_stolev_max.mu_stolev_cap
 con4d_maxin_sto.mu_stoin_cap
 con4e_maxout_sto.mu_stout_cap
-*con4j_ending
-*con5a_minRES.mu_minRES
-con5b_max_energy.mu_bio_cap
 
-%investment_model%$ontext
+%investment_model%$ontext  
+con5b_max_energy.mu_bio_cap
+$ontext
+$offtext
+
+%investment_model%$ontext     
 con8a_max_I_power.mu_tech_max_i
 con8b_max_I_sto_e.mu_stoe_max_i
 con8c_max_I_sto_p.mu_stop_max_i
@@ -594,18 +611,24 @@ $ontext
 $offtext
 
 KKTG_L.G_L
-*KKTG_UP.G_UP
-*KKTG_DO.G_DO
+
+%load_change_costs%$ontext
+KKTG_UP.G_UP
+KKTG_DO.G_DO
+$ontext
+$offtext
+
 KKTG_RES.G_RES
 KKTCU.CU
 KKTSTO_IN.STO_IN
 KKTSTO_OUT.STO_OUT
 KKTSTO_L.STO_L
 
-%investment_model%$ontext
+%investment_model%$ontext 
 KKTN_TECH.N_TECH
 KKTN_STO_E.N_STO_E
 KKTN_STO_P.N_STO_P
 $ontext
 $offtext
+
 / ;

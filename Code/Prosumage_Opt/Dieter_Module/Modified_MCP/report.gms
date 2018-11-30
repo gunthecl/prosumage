@@ -68,9 +68,65 @@ report_market_tech_hours
 
 report_heat_tech_hours
 report_heat_tech
+
+Z_MCP
+Z_FIX
+Z_VAR
 ;
 
 
+
+* Declare reporting parameters
+
+marginal_con1a(scen,h)  = con1a_bal.m(h)   ;
+%LP%$ontext
+modelstat               = DIETER.modelstat ;
+solvestat               = DIETER.solveStat ;
+resusd                  = DIETER.resusd    ;
+lev_Z(scen)             = Z.l              ;
+marginal_con5a(scen)    = con5a_minRES.m   ;
+$ontext
+$offtext
+lev_G_L(scen,tech,h)    = G_L.l(tech,h)    ;
+lev_G_UP(scen,tech,h)   = G_UP.l(tech,h)   ;
+lev_G_DO(scen,tech,h)   = G_DO.l(tech,h)   ;
+lev_G_RES(scen,tech,h)  = G_RES.l(tech,h)  ;
+lev_CU(scen,tech,h)     = CU.l(tech,h)     ;  
+lev_STO_IN(scen,sto,h)  = STO_IN.l(sto,h)  ;
+lev_STO_OUT(scen,sto,h) = STO_OUT.l(sto,h) ;
+lev_STO_L(scen,sto,h)   = STO_L.l(sto,h)   ;
+lev_N_TECH(scen,tech)   = N_TECH.l(tech)   ;
+lev_N_STO_E(scen,sto)   = N_STO_E.l(sto)   ;
+lev_N_STO_P(scen,sto)   = N_STO_P.l(sto)   ;
+
+
+%MCP%$ontext
+modelstat               = DIETER_MCP.modelstat ;
+solvestat               = DIETER_MCP.solveStat ;
+resusd                  = DIETER_MCP.resusd    ;
+Z_VAR =
+
+
+      sum( (h,dis) , c_m(dis)*G_L.l(dis,h) )
+                 + sum( (h,dis)$(ord(h)>1) , c_up(dis)*G_UP.l(dis,h) )
+                 + sum( (h,dis) , c_do(dis)*G_DO.l(dis,h) )
+                 + sum( (h,nondis) , c_cu(nondis)*CU.l(nondis,h) )
+                 + sum( (h,sto) , c_m_sto(sto) * ( STO_OUT.l(sto,h) + STO_IN.l(sto,h) ) )
+
+;
+
+Z_FIX =                 
+                 + sum( tech , c_i(tech)*N_TECH.l(tech) )
+                 + sum( tech , c_fix(tech)*N_TECH.l(tech) )
+                 + sum( sto , c_i_sto_e(sto)*N_STO_E.l(sto) )
+                 + sum( sto , c_fix_sto(sto)/2*(N_STO_P.l(sto)+ N_STO_E.l(sto)) )
+                 + sum( sto , c_i_sto_p(sto)*N_STO_P.l(sto) )
+;
+
+Z_MCP = Z_VAR + Z_FIX            ;
+lev_Z(scen)    = Z_MCP           ;
+$ontext
+$offtext
 
 
 ********************************************************************************
@@ -96,16 +152,6 @@ calc_minprice = 1000 ;
 corr_fac_dis(scen,dis,h) = 0 ;
 corr_fac_nondis(scen,nondis,h) = 0 ;
 corr_fac_sto(scen,sto,h) = 0 ;
-*corr_fac_dsm_cu(scen,dsm_curt,h) = 0 ;
-*corr_fac_dsm_shift(scen,dsm_shift,h) = 0 ;
-*corr_fac_ev(scen,h) = 0 ;
-*corr_fac_rsvr(scen,rsvr,h) = 0 ;
-*corr_fac_sets(scen,bu,ch,h) = 0 ;
-*corr_fac_sets_aux(scen,bu,ch,h) = 0 ;
-*corr_fac_hp(scen,bu,ch,h) = 0 ;
-*corr_fac_h_elec(scen,bu,ch,h) = 0 ;
-
-*corr_fac_ev_sep(scen,ev,h) = 0 ;
 
 
 * ----------------------------------------------------------------------------
@@ -130,13 +176,6 @@ $offtext
 
 * ----------------------------------------------------------------------------
 
-*Determine balancing correction factors
-
-
-
-
-* ----------------------------------------------------------------------------
-
 * Define gross energy demand for reporting
 gross_energy_demand(scen)= sum( h , d(h) + sum( sto , lev_STO_IN(scen,sto,h) - lev_STO_OUT(scen,sto,h) )
 %prosumage%$ontext
@@ -153,10 +192,11 @@ $offtext
 **** Report  *******************************************************************
 ********************************************************************************
 
-* RPEORT model statistics
-        report('model status',loop_res_share,loop_prosumage) = sum(scen$(map(scen,loop_res_share,loop_prosumage)) , modstats(scen,'modelstat')) ;
-        report('solve time',loop_res_share,loop_prosumage) = sum(scen$(map(scen,loop_res_share,loop_prosumage)) , modstats(scen,'resusd')) ;
-        report('obj value',loop_res_share,loop_prosumage) = sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_Z(scen)* %sec_hour%) ;
+* REPORT model statistics
+        report('model status',loop_res_share,loop_prosumage)  = modelstat ;
+        report('solver status',loop_res_share,loop_prosumage) = solvestat ;
+        report('solve time',loop_res_share,loop_prosumage)    = resusd ;
+        report('obj value',loop_res_share,loop_prosumage)     = sum(scen, lev_Z(scen)* %sec_hour%) ;
 
 
 * ----------------------------------------------------------------------------
@@ -164,10 +204,7 @@ $offtext
 * REPORT HOURS
         report_hours('demand consumers',loop_res_share,loop_prosumage,h)= d(h) ;
         report_hours('energy generated',loop_res_share,loop_prosumage,h)= sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( dis , lev_G_L(scen,dis,h) ) + sum( nondis , lev_G_RES(scen,nondis,h) - corr_fac_nondis(scen,nondis,h)) + sum( sto , lev_STO_OUT(scen,sto,h) - corr_fac_sto(scen,sto,h))
-*+ sum( dsm_shift, lev_DSM_DO_DEMAND(scen,dsm_shift,h)
-*- corr_fac_dsm_shift(scen,dsm_shift,h))
-*+ sum( ev , lev_EV_DISCHARGE(scen,ev,h)) - corr_fac_ev(scen,h) + sum( rsvr , lev_RSVR_OUT(scen,rsvr,h) - corr_fac_rsvr(scen,rsvr,h))
-+ sum( res , lev_G_RES_PRO(scen,res,h) + lev_G_MARKET_PRO2M(scen,res,h) + sum( sto , lev_STO_IN_PRO2PRO(scen,res,sto,h) + lev_STO_IN_PRO2M(scen,res,sto,h))) + sum( sto , lev_STO_OUT_PRO2PRO(scen,sto,h) + lev_STO_OUT_PRO2M(scen,sto,h) + lev_STO_OUT_M2PRO(scen,sto,h) + lev_STO_OUT_M2M(scen,sto,h)) ) ;
+        + sum( res , lev_G_RES_PRO(scen,res,h) + lev_G_MARKET_PRO2M(scen,res,h) + sum( sto , lev_STO_IN_PRO2PRO(scen,res,sto,h) + lev_STO_IN_PRO2M(scen,res,sto,h))) + sum( sto , lev_STO_OUT_PRO2PRO(scen,sto,h) + lev_STO_OUT_PRO2M(scen,sto,h) + lev_STO_OUT_M2PRO(scen,sto,h) + lev_STO_OUT_M2M(scen,sto,h)) ) ;
 *        report_hours('infeasibility',loop_res_share,loop_prosumage,h)=  sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_G_INFES(scen,h));
 *        report_hours('gross exports',loop_res_share,loop_prosumage,h)= sum( l , sum(scen$(map(scen,loop_res_share,loop_prosumage)) , -min(inc(l)* lev_F(scen,l,h),0) )) ;
 *        report_hours('gross imports',loop_res_share,loop_prosumage,h)= sum( l , sum(scen$(map(scen,loop_res_share,loop_prosumage)) , max(inc(l)* lev_F(scen,l,h),0) ) ) ;
@@ -217,9 +254,7 @@ $offtext
 * ----------------------------------------------------------------------------
 
 * REPORT NODE
-        report_node('energy demand total',loop_res_share,loop_prosumage)= (sum( h , d(h) ) + sum( (sto,h) , sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_STO_IN(scen,sto,h) + sum( res , lev_STO_IN_PRO2PRO(scen,res,sto,h) + lev_STO_IN_PRO2M(scen,res,sto,h)) + lev_STO_IN_M2PRO(scen,sto,h) + lev_STO_IN_M2M(scen,sto,h)) )) * %sec_hour%
-
-;
+        report_node('energy demand total',loop_res_share,loop_prosumage)= (sum( h , d(h) ) + sum( (sto,h) , sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_STO_IN(scen,sto,h) + sum( res , lev_STO_IN_PRO2PRO(scen,res,sto,h) + lev_STO_IN_PRO2M(scen,res,sto,h)) + lev_STO_IN_M2PRO(scen,sto,h) + lev_STO_IN_M2M(scen,sto,h)) )) * %sec_hour%;
         report_node('energy demand gross',loop_res_share,loop_prosumage)= sum( scen$(map(scen,loop_res_share,loop_prosumage)) , gross_energy_demand(scen)) ;
         report_node('energy generated net',loop_res_share,loop_prosumage)= sum( h , sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( dis , lev_G_L(scen,dis,h)) + sum( nondis , lev_G_RES(scen,nondis,h) - corr_fac_nondis(scen,nondis,h))
 *        + sum( rsvr , lev_RSVR_OUT(scen,rsvr,h) - corr_fac_rsvr(scen,rsvr,h))
@@ -245,9 +280,9 @@ $offtext
         report_node('curtailment of fluct res relative',loop_res_share,loop_prosumage)$(sum((nondis,h), sum(scen$(map(scen,loop_res_share,loop_prosumage)) , phi_res(nondis,h) * (lev_N_TECH(scen,nondis)))) + sum((res,h), sum(scen$(map(scen,loop_res_share,loop_prosumage)) , phi_res(res,h) * lev_N_RES_PRO(scen,res))) > eps_rep_abs*card(res)*card(h)) = (sum((res,h), sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_CU_PRO(scen,res,h))) + sum((nondis,h), sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_CU(scen,nondis,h)))) * %sec_hour% / (sum((res,h), sum(scen$(map(scen,loop_res_share,loop_prosumage)) , phi_res(res,h) * lev_N_RES_PRO(scen,res))) + sum((nondis,h), sum(scen$(map(scen,loop_res_share,loop_prosumage)) , phi_res(nondis,h) * (lev_N_TECH(scen,nondis))))) ;
         report_node('bio not utilized absolute',loop_res_share,loop_prosumage)$(m_e('bio')) = (m_e('bio') - sum(h, sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_G_L(scen,'bio',h)))) * %sec_hour% ;
         report_node('bio not utilized relative',loop_res_share,loop_prosumage)$(m_e('bio')) = (m_e('bio') - sum(h, sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_G_L(scen,'bio',h)))) / m_e('bio') ;
-        report_node('max price',loop_res_share,loop_prosumage)$sum(h,d(h)) = max( calc_maxprice , smax( h, sum(scen$(map(scen,loop_res_share,loop_prosumage)) , - marginal_con1a(scen,h))) ) ;
-        report_node('min price',loop_res_share,loop_prosumage)$sum(h,d(h)) = min( calc_minprice , smin( h, sum(scen$(map(scen,loop_res_share,loop_prosumage)) , - marginal_con1a(scen,h))) ) ;
-        report_node('mean price',loop_res_share,loop_prosumage)$sum(h,d(h)) = -sum(h, sum(scen$(map(scen,loop_res_share,loop_prosumage)) , marginal_con1a(scen,h)))/card(h) ;
+        report_node('max price',loop_res_share,loop_prosumage)$sum(h,d(h)) = max( calc_maxprice , smax( h, sum(scen$(map(scen,loop_res_share,loop_prosumage)) ,  marginal_con1a(scen,h))) ) ;
+        report_node('min price',loop_res_share,loop_prosumage)$sum(h,d(h)) = min( calc_minprice , smin( h, sum(scen$(map(scen,loop_res_share,loop_prosumage)) ,  marginal_con1a(scen,h))) ) ;
+        report_node('mean price',loop_res_share,loop_prosumage)$sum(h,d(h)) = sum(h, sum(scen$(map(scen,loop_res_share,loop_prosumage)) , marginal_con1a(scen,h)))/card(h) ;
 
                  report_node('energy demand total',loop_res_share,loop_prosumage)$(report_node('energy demand total',loop_res_share,loop_prosumage)< eps_rep_abs) = 0 ;
                  report_node('curtailment of fluct res absolute',loop_res_share,loop_prosumage)$(report_node('curtailment of fluct res absolute',loop_res_share,loop_prosumage)< eps_rep_abs*card(h)*%sec_hour%) = 0 ;
@@ -687,8 +722,6 @@ $offtext
                  report_prosumage_tech('Storage EP-ratio prosumers',loop_res_share,loop_prosumage,sto)$(report_prosumage_tech('Storage EP-ratio prosumers',loop_res_share,loop_prosumage,sto)< eps_rep_rel) = 0 ;
 
                  report_market_tech('capacities renewable market',loop_res_share,loop_prosumage,res)$(report_market_tech('capacities renewable market',loop_res_share,loop_prosumage,res)< eps_rep_abs) =  0 ;
-*                 report_market_tech('capacities reservoir MW market',loop_res_share,loop_prosumage,rsvr)$(report_market_tech('capacities reservoir MW market',loop_res_share,loop_prosumage,rsvr)< eps_rep_ins) = 0 ;
-*                 report_market_tech('capacities reservoir MWh market',loop_res_share,loop_prosumage,rsvr)$(report_market_tech('capacities reservoir MWh market',loop_res_share,loop_prosumage,rsvr)< eps_rep_ins) = 0 ;
                  report_market_tech('capacities storage MW market',loop_res_share,loop_prosumage,sto)$(report_market_tech('capacities storage MW market',loop_res_share,loop_prosumage,sto)< eps_rep_abs) =  0 ;
                  report_market_tech('capacities storage MWh market',loop_res_share,loop_prosumage,sto)$(report_market_tech('capacities storage MWh market',loop_res_share,loop_prosumage,sto)< eps_rep_abs) =  0 ;
                  report_market_tech('curtailment of fluct res absolute market',loop_res_share,loop_prosumage,res)$(report_market_tech('curtailment of fluct res absolute market',loop_res_share,loop_prosumage,res)< eps_rep_abs*card(h)) = 0 ;
@@ -741,27 +774,3 @@ $offtext
                  report_market_tech('Energy share in gross nodal market generation',loop_res_share,loop_prosumage,rsvr)$(report_market_tech('Energy share in gross nodal market generation',loop_res_share,loop_prosumage,rsvr)< eps_rep_rel) = 0 ;
 $ontext
 $offtext
-
-
-* ----------------------------------------------------------------------------
-
-* PROSUMAGE & DSM
-
-
-
-* ----------------------------------------------------------------------------
-
-
-
-* ----------------------------------------------------------------------------
-
-* HEAT
-
-* ----------------------------------------------------------------------------
-
-* Reserves and heat
-
-
-* ---------------------------------------------------------------------------- *
-* ---------------------------------------------------------------------------- *
-* ---------------------------------------------------------------------------- *

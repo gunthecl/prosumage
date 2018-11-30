@@ -49,9 +49,6 @@ STO_IN.fx(sto,h)$(ord(h) = 1) = 0;
 **** Fixing to reduce model size  **********************************************
 ********************************************************************************
 
-*F.fx(l,h)$(m_ntc(l) = 0) = 0 ;
-*NTC.fx(l)$(m_ntc(l) = 0) = 0 ;
-
 G_L.fx(tech,h)$(m_p(tech) = 0) = 0 ;
 G_UP.fx(tech,h)$(m_p(tech) = 0) = 0 ;
 G_DO.fx(tech,h)$(m_p(tech) = 0) = 0 ;
@@ -73,6 +70,7 @@ STO_IN_M2M(sto,h)
 STO_OUT_PRO2M(sto,h)
 STO_OUT_M2PRO(sto,h)
 STO_OUT_M2M(sto,h)
+STO_L_PRO(sto,h)
 STO_L_PRO2M(sto,h)
 STO_L_M2PRO(sto,h)
 STO_L_M2M(sto,h)
@@ -105,18 +103,85 @@ $offtext
 * Deactivated market storage links
 
 STO_IN_PRO2M.fx(tech,sto,h) = 0 ;
-STO_IN_M2PRO.fx(sto,h)     = 0 ;
-STO_IN_M2M.fx(sto,h)       = 0 ;
-STO_OUT_PRO2M.fx(sto,h)    = 0 ;
-STO_OUT_M2PRO.fx(sto,h)    = 0 ;
-STO_OUT_M2M.fx(sto,h)      = 0 ;
-STO_L_PRO2M.fx(sto,h)      = 0 ;
-STO_L_M2PRO.fx(sto,h)      = 0 ;
-STO_L_M2M.fx(sto,h)        = 0 ;
+STO_IN_M2PRO.fx(sto,h)      = 0 ;
+STO_IN_M2M.fx(sto,h)        = 0 ;
+STO_OUT_PRO2M.fx(sto,h)     = 0 ;
+STO_OUT_M2PRO.fx(sto,h)     = 0 ;
+STO_OUT_M2M.fx(sto,h)       = 0 ;
+STO_L_PRO.fx(sto,h)         = 0 ;                  
+STO_L_PRO2M.fx(sto,h)       = 0 ;
+STO_L_M2PRO.fx(sto,h)       = 0 ;
+STO_L_M2M.fx(sto,h)         = 0 ;
 
 ********************************************************************************
 **** DEFAULT LEVELS FOR REPORT PARAMETERS  *************************************
 ********************************************************************************
+
+* Reporting level 
+Set
+loop_res_share  /0/ 
+loop_prosumage  /0/ ; 
+
+$eval superscencount 1000
+
+Set
+modstats       model stats collection                  /modelstat, solvestat, resusd/
+superscen        Scenarios                               /scen1*scen%superscencount%/
+map(superscen,loop_res_share,loop_prosumage)    /#superscen:(#loop_res_share.#loop_prosumage)/
+;
+
+set
+scen(superscen);
+scen(superscen) = yes$( sum((loop_res_share,loop_prosumage) , map(superscen,loop_res_share,loop_prosumage)) ) ;
+
+
+Parameters
+* Equations
+marginal_con5a(superscen)
+marginal_con1a(superscen,h)
+*marginal_con9a(superscen,*,*,*)
+*marginal_con9b(superscen,*,*,*)
+
+* Basic
+modelstat
+solvestat
+resusd
+lev_Z(superscen)
+lev_G_L(superscen,tech,h)
+lev_G_UP(superscen,tech,h)
+lev_G_DO(superscen,tech,h)
+lev_G_RES(superscen,tech,h)
+lev_CU(superscen,tech,h)
+lev_STO_IN(superscen,sto,h)
+lev_STO_OUT(superscen,sto,h)
+lev_STO_L(superscen,sto,h)
+lev_N_TECH(superscen,tech)
+lev_N_STO_E(superscen,sto)
+lev_N_STO_P(superscen,sto)
+
+
+* Prosumage
+lev_CU_PRO(superscen,tech,h)
+lev_G_MARKET_PRO2M(superscen,tech,h)
+lev_G_MARKET_M2PRO(superscen,h)
+lev_G_RES_PRO(superscen,tech,h)
+lev_STO_IN_PRO2PRO(superscen,tech,sto,h)
+lev_STO_IN_PRO2M(superscen,tech,sto,h)
+lev_STO_IN_M2PRO(superscen,sto,h)
+lev_STO_IN_M2M(superscen,sto,h)
+lev_STO_OUT_PRO2PRO(superscen,sto,h)
+lev_STO_OUT_PRO2M(superscen,sto,h)
+lev_STO_OUT_M2PRO(superscen,sto,h)
+lev_STO_OUT_M2M(superscen,sto,h)
+lev_STO_L_PRO2PRO(superscen,sto,h)
+lev_STO_L_PRO2M(superscen,sto,h)
+lev_STO_L_M2PRO(superscen,sto,h)
+lev_STO_L_M2M(superscen,sto,h)
+lev_N_STO_E_PRO(superscen,sto)
+lev_N_STO_P_PRO(superscen,sto)
+lev_STO_L_PRO(superscen,sto,h)
+lev_N_RES_PRO(superscen,tech)
+;
 
 * Default level zero for report parameters
 lev_Z(scen) = 0 ;
@@ -163,13 +228,8 @@ lev_N_TECH(scen,'ror') = 5857.47 ;
 lev_G_RES(scen,'ror',h) = lev_N_TECH(scen,'ror') * phi_res('ror',h) ;
 $ontext
 $offtext
-$ontext
-%ror_parameter%%ror_variable%lev_N_TECH(scen'ror') = 0 ;
-%ror_parameter%%ror_variable%lev_G_RES(scen'ror',h) = 0 ;
-%reserves%$ontext
-*%ror_parameter%%ror_variable%lev_RP_CON(scenreserves,'ror',h) = 0 ;
-$ontext
-$offtext
+
+
 
 
 

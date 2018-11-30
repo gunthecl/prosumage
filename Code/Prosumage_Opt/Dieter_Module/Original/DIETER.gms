@@ -42,6 +42,8 @@ $setglobal prosumage_links_restr "*"
 $setglobal storage_flow_constraint "*"
 * Set parameter phi_sto_ini to zero (instead of 0.5)
 $setglobal zero_phi_sto_ini "*"
+* Deactivate load change costs
+$setglobal no_load_change_costs "*"
 
 ******************************************************************************
 
