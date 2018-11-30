@@ -19,18 +19,24 @@ $offtext
 **************************
 
 * Set star to skip Excel upload and load data from gdx
-$setglobal skip_Excel ""
+$setglobal skip_Excel "*"
 
 
 * Choose base year
 $setglobal base_year "'2030'"
 
+***** Set star to activate options
+
 * Germany only - also adjust Excel inputs!
 $setglobal GER_only "*"
 
-* Set star to activate options
+* Dispatch only - used fixed capacities (also deactivates bio energy restriction)
+$setglobal dispatch_model "*"
 
 $setglobal prosumage ""
+
+* Set to "*" to select linear program, leave blank to select MCP
+$setglobal LP "*"
 
 * Set star to select run-of-river options either as exogenous parameter or as endogenous variable including reserve provision:
 * if nothing is selected, ROR capacity will be set to zero
@@ -49,23 +55,24 @@ $setglobal no_crossover ""
 $setglobal report_to_excel ""
 
 
-* ----------------- Select if to use MCP or LP format --------------------------
+* --------------------- Do not change these lines ------------------------------
 
-* Set to "*" to select linear program, leave blank to select MCP
-$setglobal LP "*"
 
-* Do not change these two lines
-$if "%LP%" == "" $setglobal MCP "*"
-$if "%LP%" == "*" $setglobal MCP ""
-
-********************************************************************************
+******************************Do not change these lines ************************
 
 * Definition of strings for report parameters and sanity checks
-* (Do not change settings below)
 $setglobal sec_hour "1"
 
 * Sanity checks
 $if "%ror_parameter%" == "*" $if "%ror_variable%" == "*" $abort Choose appropriate ROR option! ;
+
+* LP or MCP
+$if "%LP%" == "" $setglobal MCP "*"
+$if "%LP%" == "*" $setglobal MCP ""
+
+* Dispatch or investment
+$if "%dispatch_model%" == "" $setglobal investment_model "*"
+$if "%dispatch_model%" == "*" $setglobal investment_model ""
 
 ********************************************************************************
 
@@ -75,7 +82,7 @@ $if "%ror_parameter%" == "*" $if "%ror_variable%" == "*" $abort Choose appropria
 
 sets
 %loop_over_renewable_share%$ontext
-loop_res_share   Solution loop for different shares of renewables       /50,80/
+loop_res_share   Solution loop for different shares of renewables       /50/
 $ontext
 $offtext
 

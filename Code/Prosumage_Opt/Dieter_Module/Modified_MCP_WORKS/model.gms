@@ -378,9 +378,12 @@ KKTG_L(tech,h)$dis(tech)..
 
     + c_m(tech)
     - lambda_enerbal(h)
-    +  lambda_convgen(tech,h)
+    + lambda_convgen(tech,h)
     + mu_conv_cap(tech,h)
+%investment_model%$ontext      
     + mu_bio_cap(tech)$dis_bio(tech)
+$ontext
+$offtext    
    - (lambda_convgen(tech,h+1))$(ord(h) > 1)
     =G= 0
 
@@ -457,8 +460,11 @@ KKTN_TECH(tech)..
 
           +  c_i(tech)
           +  c_fix(tech)
-          +  mu_tech_max_i(tech)
-          - sum( h,   mu_conv_cap(tech,h))$dis(tech)
+%investment_model%$ontext
+          +  mu_tech_max_i(tech)       
+$ontext
+$offtext
+          - sum( h,   mu_conv_cap(tech,h))$dis(tech)         
           - sum( h,  lambda_resgen(tech,h)*phi_res(tech,h))$nondis(tech)
      =G= 0
 
@@ -470,7 +476,10 @@ KKTN_STO_E(sto)..
 
       +  c_fix_sto(sto)/2 +  c_i_sto_e(sto)
       -  sum( h,   mu_stolev_cap(sto,h))
+%investment_model%$ontext      
       +  mu_stoe_max_i(sto)
+$ontext
+$offtext
       =G= 0
 ;
 
@@ -479,7 +488,10 @@ KKTN_STO_P(sto)..
 
      c_fix_sto(sto)/2 + c_i_sto_p(sto)
      - sum( h, (mu_stoin_cap(sto,h) + mu_stout_cap(sto,h)))
+%investment_model%$ontext
      + mu_stop_max_i(sto)
+$ontext
+$offtext
      =G= 0
 
 ;
@@ -492,19 +504,19 @@ KKTN_STO_P(sto)..
 G_DO.fx(dis,'h1') = 0;
 
 * Default for reporting
-G_DO.l(dis,h) = 0;
-G_L.l(dis,h) = 0 ;
-G_UP.l(dis,h) = 0 ;
-G_RES.l(tech,h)= 0;
-CU.l(tech,h) = 0;
+G_DO.l(dis,h)   = 0;
+G_L.l(dis,h)    = 0;
+G_UP.l(dis,h)   = 0;
+G_RES.l(tech,h) = 0;
+CU.l(tech,h)    = 0;
 
-STO_IN.l(sto,h)= 0;
-STO_OUT.l(sto,h)= 0;
-STO_L.l(sto,h) = 0;
+STO_IN.l(sto,h)  = 0;
+STO_OUT.l(sto,h) = 0;
+STO_L.l(sto,h)   = 0;
 
-N_TECH.l(tech)= 0;
-N_STO_E.l(sto)= 0;
-N_STO_P.l(sto)= 0;
+N_TECH.l(tech)   = 0;
+N_STO_E.l(sto)   = 0;
+N_STO_P.l(sto)   = 0;
 
 
 ********************************************************************************
@@ -515,29 +527,28 @@ model DIETER /
 obj
 
 con1a_bal
-
-*con2a_loadlevel
-*con2b_loadlevelstart
 con2_loadlevel
 
 con3a_maxprod_dispatchable
 con3e_maxprod_res
 
-*con4a_stolev_start
-*con4b_stolev
 con4_stolev
 con4c_stolev_max
 con4d_maxin_sto
 con4e_maxout_sto
-*con4k_PHS_EtoP
-*con4j_ending
 
 con5a_minRES
+%investment_model%$ontext   
 con5b_max_energy
+$ontext
+$offtext
 
+%investment_model%$ontext     
 con8a_max_I_power
 con8b_max_I_sto_e
 con8c_max_I_sto_p
+$ontext
+$offtext
 
 %prosumage%$ontext
 con8f_max_pro_res
@@ -559,7 +570,6 @@ $offtext
 
 model DIETER_MCP /
 
-
 con1a_bal.lambda_enerbal
 con2_loadlevel.lambda_convgen
 
@@ -571,10 +581,17 @@ con4c_stolev_max.mu_stolev_cap
 con4d_maxin_sto.mu_stoin_cap
 con4e_maxout_sto.mu_stout_cap
 
+%investment_model%$ontext  
 con5b_max_energy.mu_bio_cap
+$ontext
+$offtext
+
+%investment_model%$ontext     
 con8a_max_I_power.mu_tech_max_i
 con8b_max_I_sto_e.mu_stoe_max_i
 con8c_max_I_sto_p.mu_stop_max_i
+$ontext
+$offtext
 
 KKTG_L.G_L
 KKTG_UP.G_UP
@@ -584,8 +601,11 @@ KKTCU.CU
 KKTSTO_IN.STO_IN
 KKTSTO_OUT.STO_OUT
 KKTSTO_L.STO_L
+
+%investment_model%$ontext 
 KKTN_TECH.N_TECH
 KKTN_STO_E.N_STO_E
 KKTN_STO_P.N_STO_P
-
+$ontext
+$offtext
 / ;
