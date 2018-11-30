@@ -153,7 +153,7 @@ $offtext
 **** Report  *******************************************************************
 ********************************************************************************
 
-* RPEORT model statistics
+* REPORT model statistics
         report('model status',loop_res_share,loop_prosumage) = sum(scen$(map(scen,loop_res_share,loop_prosumage)) , modstats(scen,'modelstat')) ;
         report('solve time',loop_res_share,loop_prosumage) = sum(scen$(map(scen,loop_res_share,loop_prosumage)) , modstats(scen,'resusd')) ;
         report('obj value',loop_res_share,loop_prosumage) = sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_Z(scen)* %sec_hour%) ;

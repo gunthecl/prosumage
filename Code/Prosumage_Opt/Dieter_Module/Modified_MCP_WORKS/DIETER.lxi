@@ -1,20 +1,2 @@
 B 2 C o m p i l a t i o n
-B 1888 Include File Summary
-B 1907 Model Statistics    SOLVE DIETER_MCP Using MCP From line 2011
-B 1925 Solution Report     SOLVE DIETER_MCP Using MCP From line 2011
-B 1981 E x e c u t i o n
-I 1984 Z_MCP
-I 1985 N_TECH
-I 1990 N_STO_E
-I 1995 N_STO_P
-I 2000 G_L
-I 2047 G_UP
-I 2052 G_DO
-I 2057 G_RES
-I 2114 CU
-I 2149 STO_IN
-I 2160 STO_OUT
-I 2175 STO_L
-I 2198 lambda_enerbal
-I 2203 lambda_enerbal
-I 2213 lambda_stolev
+B 1907 Include File Summary

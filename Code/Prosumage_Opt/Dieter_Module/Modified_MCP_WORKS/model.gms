@@ -117,6 +117,8 @@ con11k_pro_maxin_sto                     Prosumage: maximum storage inflow
 con11l_pro_maxout_sto                    Prosumage: maximum storage outflow
 con11o_pro_ending                        Prosumage: storage ending condition
 
+* Dummy equation for using guss tool
+guss
 
 * KKT optimality conditions
 KKTG_L                   KKT w.r.t. G_L
@@ -133,6 +135,7 @@ KKTN_TECH                KKT w.r.t. N_TECH
 KKTN_STO_E               KKT w.r.t. N_STO_E
 KKTN_STO_P               KKT w.r.t. N_STO_P
 ;
+
 
 
 ********************************************************************************
@@ -627,4 +630,5 @@ KKTN_STO_E.N_STO_E
 KKTN_STO_P.N_STO_P
 $ontext
 $offtext
+
 / ;

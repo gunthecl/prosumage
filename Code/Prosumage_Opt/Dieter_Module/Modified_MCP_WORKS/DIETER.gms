@@ -359,8 +359,7 @@ $ontext
 $offtext
 
 %MCP%$ontext
-solve   DIETER_MCP using mcp ;
-*scenario dict;
+solve   DIETER_MCP using MCP scenario dict;
 
 
 Parameters
