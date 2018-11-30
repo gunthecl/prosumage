@@ -234,7 +234,6 @@ con4b_stolev(sto,h)$(ord(h)>1)..
 con4_stolev(sto,h)..
 
        + STO_IN(sto,h)*(1+eta_sto(sto))/2 - STO_OUT(sto,h)/(1+eta_sto(sto))*2  -  STO_L(sto,h)
-*       + (phi_sto_ini(sto)*N_STO_E(sto))$(ord(h) = 1)
        + (STO_L(sto,h-1))$(ord(h)>1)
        =E= 0
 ;
@@ -381,9 +380,7 @@ KKTG_L(tech,h)$dis(tech)..
     - lambda_enerbal(h)
     +  lambda_convgen(tech,h)
     + mu_conv_cap(tech,h)
-*    + mu_minRES*phi_min_res*phi_min_res_exog
-    + (mu_bio_cap(tech))$dis_bio(tech)
-*    - mu_minRES$dis_bio(tech)
+    + mu_bio_cap(tech)$dis_bio(tech)
    - (lambda_convgen(tech,h+1))$(ord(h) > 1)
     =G= 0
 
@@ -408,7 +405,6 @@ KKTG_DO(dis,h)..
 KKTG_RES(nondis,h)..
 
      - lambda_enerbal(h) + lambda_resgen(nondis,h)
-*     + mu_minRES*(phi_min_res*phi_min_res_exog - 1)
      =G= 0
 ;
 
@@ -475,7 +471,6 @@ KKTN_STO_E(sto)..
       +  c_fix_sto(sto)/2 +  c_i_sto_e(sto)
       -  sum( h,   mu_stolev_cap(sto,h))
       +  mu_stoe_max_i(sto)
-*      -  phi_sto_ini(sto)*lambda_stolev(sto,'h1')
       =G= 0
 ;
 
@@ -544,8 +539,6 @@ con8a_max_I_power
 con8b_max_I_sto_e
 con8c_max_I_sto_p
 
-
-
 %prosumage%$ontext
 con8f_max_pro_res
 con8g_max_pro_sto_e
@@ -577,8 +570,7 @@ con4_stolev.lambda_stolev
 con4c_stolev_max.mu_stolev_cap
 con4d_maxin_sto.mu_stoin_cap
 con4e_maxout_sto.mu_stout_cap
-*con4j_ending
-*con5a_minRES.mu_minRES
+
 con5b_max_energy.mu_bio_cap
 con8a_max_I_power.mu_tech_max_i
 con8b_max_I_sto_e.mu_stoe_max_i

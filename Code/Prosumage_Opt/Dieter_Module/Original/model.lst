@@ -1,0 +1,1758 @@
+GAMS 25.1.2  r67455 Released Aug  1, 2018 WEX-WEI x86 64bit/MS Windows - 11/30/18 09:30:37 Page 1
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+C o m p i l a t i o n
+
+
+   1   
+   2  ********************************************************************************
+      The Dispatch and Investment Evaluation Tool with Endogenous Renewables (DIETER).
+      Version 1.3.0, October 2017.
+      Written by Alexander Zerrahn and Wolf-Peter Schill.
+      This work is licensed under the MIT License (MIT).
+      For more information on this license, visit http://opensource.org/licenses/mit-license.php.
+      Whenever you use this code, please refer to http://www.diw.de/dieter.
+      We are happy to receive feedback under azerrahn@diw.de and wschill@diw.de.
+  12  ********************************************************************************
+  13   
+  14   
+  15  Variables
+  16  Z                Value objective function [Euro]
+  17  F(l,h)           Energy flow over link l in hour h [MWh]
+****    $120,120
+**** 120  Unknown identifier entered as set
+  18  ;
+  19   
+  20  Positive Variables
+  21  G_L(n,tech,h)            Generation level in hour h [MWh]
+****      $120 $120
+**** 120  Unknown identifier entered as set
+  22  G_UP(n,tech,h)           Generation upshift in hour h [MWh]
+  23  G_DO(n,tech,h)           Generation downshift in hour h [MWh]
+  24   
+  25  G_RES(n,tech,h)          Generation renewables type res in hour h [MWh]
+  26  CU(n,tech,h)             Renewables curtailment technology res in hour h [MWh]
+  27   
+  28  STO_IN(n,sto,h)          Storage inflow technology sto hour h [MWh]
+****             $120
+**** 120  Unknown identifier entered as set
+  29  STO_OUT(n,sto,h)         Storage outflow technology sto hour h [MWh]
+  30  STO_L(n,sto,h)           Storage level technology sto hour h [MWh]
+  31   
+  32  EV_CHARGE(n,ev,h)        Electric vehicle charging vehicle profile ev hour h [MWh]
+****               $120
+**** 120  Unknown identifier entered as set
+  33  EV_DISCHARGE(n,ev,h)     Electric vehicle discharging vehicle profile ev hour h [MWh]
+  34  EV_L(n,ev,h)             Electric vehicle charging level vehicle profile ev hour h [MWh]
+  35  EV_PHEVFUEL(n,ev,h)      Plug in hybrid electric vehicle conventional fuel use vehicle profile ev hour h [MWh]
+  36  EV_GED(n,ev,h)           Grid electricity demand for mobility vehicle profile ev hour h [MWh]
+  37   
+  38  N_TECH(n,tech)           Technology tech built [MW]
+  39  N_STO_E(n,sto)           Storage technology built - Energy [MWh]
+  40  N_STO_P(n,sto)           Storage loading and discharging capacity built - Capacity [MW]
+  41   
+  42  DSM_CU(n,dsm,h)          DSM: Load curtailment hour h [MWh]
+****             $120
+**** 120  Unknown identifier entered as set
+  43  DSM_UP(n,dsm,h)          DSM: Load shifting up hour h technology dsm [MWh]
+  44  DSM_DO(n,dsm,h,hh)       DSM: Load shifting down in hour hh to account for upshifts in hour h technology dsm [MWh]
+****                  $120
+**** 120  Unknown identifier entered as set
+  45   
+  46  DSM_UP_DEMAND(n,dsm,h)   DSM: Load shifting up active for wholesale demand in hour h of technology dsm [MWh]
+  47  DSM_DO_DEMAND(n,dsm,h)   DSM: Load shifting down active for wholesale demand in hour h of technology dsm [MWh]
+  48   
+  49  N_DSM_CU(n,dsm)          DSM: Load curtailment capacity [MW]
+  50  N_DSM_SHIFT(n,dsm)       DSM: Load shifting capacity [MWh]
+  51   
+  52  RP_DIS(n,reserves,tech,h)        Reserve provision by conventionals in hour h [MW]
+****                  $120
+**** 120  Unknown identifier entered as set
+  53  RP_NONDIS(n,reserves,tech,h)     Reserve provision by renewables in hour h [MW]
+  54  RP_STO_IN(n,reserves,sto,h)      Reserve provision by storage in in hour h [MW]
+  55  RP_STO_OUT(n,reserves,sto,h)     Reserve provision by storage out in hour h [MW]
+  56  RP_EV_V2G(n,reserves,ev,h)       Reserve provision by electric vehicles V2G hour h [MW]
+  57  RP_EV_G2V(n,reserves,ev,h)       Reserve provision by electric vehicles G2V hour h [MW]
+  58  RP_DSM_CU(n,reserves,dsm,h)      Reserve provision by DSM load curtailment in hour h [MW]
+  59  RP_DSM_SHIFT(n,reserves,dsm,h)   Reserve provision by DSM load shifting in hour h [MW]
+  60  RP_RSVR(n,reserves,rsvr,h)       Reserve provision by reservoirs h [MW]
+****                        $120
+**** 120  Unknown identifier entered as set
+  61  RP_SETS(n,reserves,bu,ch,h)      Reserve provision by SETS [MW]
+****                      $120,120
+**** 120  Unknown identifier entered as set
+  62  RP_SETS_AUX(n,reserves,bu,ch,h)  Reserve provision by SETS auxiliary DHW modules [MW]
+  63  RP_HP(n,reserves,bu,ch,h)        Reserve provision by heat pumps [MW]
+  64  RP_H_ELEC(n,reserves,bu,ch,h)    Reserve provision by hybrid electric heaters [MW]
+  65   
+  66  CU_PRO(n,tech,h)                 Prosumage: curtailment of renewable generation in hour h [MWh]
+  67  G_MARKET_PRO2M(n,tech,h)         Prosumage. energy sent to market in hour h [MWh]
+  68  G_MARKET_M2PRO(n,h)              Prosumage: withdrawal of energy from market in hour h [MWh]
+  69  G_RES_PRO(n,tech,h)              Prosumage: hourly renewables generation in hour h [MWh]
+  70  STO_IN_PRO2PRO(n,tech,sto,h)     Prosumage: storage loading from generation for discharging to consumption in hour h [MWh]
+  71  STO_IN_PRO2M(n,tech,sto,h)       Prosumage: storage loading from generation for discharging to market in hour h [MWh]
+  72  STO_IN_M2PRO(n,sto,h)            Prosumage: storage loading from market for discharging to consumption in hour h [MWh]
+  73  STO_IN_M2M(n,sto,h)              Prosumage: storage loading from market for discharging to market in hour h [MWh]
+  74  STO_OUT_PRO2PRO(n,sto,h)         Prosumage: storage discharging to consumption from generation in hour h [MWh]
+  75  STO_OUT_PRO2M(n,sto,h)           Prosumage: storage discharging to market from generation in hour h [MWh]
+  76  STO_OUT_M2PRO(n,sto,h)           Prosumage: storage discharging to consumption from market in hour h [MWh]
+  77  STO_OUT_M2M(n,sto,h)             Prosumage: storage discharging to market from market in hour h [MWh]
+  78  STO_L_PRO2PRO(n,sto,h)           Prosumage: storage level generation to consumption in hour h [MWh]
+  79  STO_L_PRO2M(n,sto,h)             Prosumage: storage level generation to market in hour h [MWh]
+  80  STO_L_M2PRO(n,sto,h)             Prosumage: storage level market to consumotion in hour h [MWh]
+  81  STO_L_M2M(n,sto,h)               Prosumage: storage level market to market in hour h [MWh]
+  82  N_STO_E_PRO(n,sto)               Prosumage: installed storage energy [MWh]
+  83  N_STO_P_PRO(n,sto)               Prosumage: installed storage power [MW]
+  84  STO_L_PRO(n,sto,h)               Prosumage: overall storage level in hour h [MWh]
+  85  N_RES_PRO(n,tech)                Prosumage: installed renewables capacities [MW]
+  86   
+  87  NTC(l)                           Trade: installed NTC on line l [MW]
+  88   
+  89  RSVR_OUT(n,rsvr,h)               Reservoirs: outflow in hour h [MWh]
+  90  RSVR_L(n,rsvr,h)                 Reservoirs: level in hour h [MWh]
+  91  N_RSVR_E(n,rsvr)                 Reservoirs: installed energy capacity [MWh]
+  92  N_RSVR_P(n,rsvr)                 Reservoirs: installed power capacity [MW]
+  93   
+  94  H_DIR(n,bu,ch,h)                 Heating: direct heating in hour h for building type bu with haeting technology ch [MWh]
+  95  H_SETS_LEV(n,bu,ch,h)            Heating: storage level SETS technologies [MWh]
+  96  H_SETS_IN(n,bu,ch,h)             Heating: storage inflow SETS technologies [MWh]
+  97  H_SETS_OUT(n,bu,ch,h)            Heating: storage outflow SETS technologies [MWh]
+  98  H_HP_IN(n,bu,ch,hh)              Heating: electricity demand heat pump technologies [MWh]
+  99  H_STO_LEV(n,bu,ch,h)             Heating: storage level storage technologies [MWh]
+ 100  H_STO_IN_HP(n,bu,ch,h)           Heating: storage inflow from heat pumps to storage technologies [MWh]
+ 101  H_STO_IN_ELECTRIC(n,bu,ch,h)     Heating: storage inflow from electric heating to storage technologies [MWh]
+ 102  H_ELECTRIC_IN(n,bu,ch,h)         Heating: hybrid electric heaters electricity demand [MWh]
+ 103  H_STO_IN_FOSSIL(n,bu,ch,h)       Heating: storage inflow from nonelectric heating to storage technologies [MWh]
+ 104  H_STO_OUT(n,bu,ch,h)             Heating: storage outflow from storage technologies [MWh]
+ 105   
+ 106  H_DHW_DIR(n,bu,ch,h)             Heating - domestic hot water: provision in case of direct electric heating [MWh]
+ 107  H_DHW_STO_OUT(n,bu,ch,h)         Heating - domestic hot water: DHW storage outflow [MWh]
+ 108   
+ 109  H_DHW_AUX_ELEC_IN(n,bu,ch,h)     Heating - domestic hot water: electrical energy input of auxiliary hot water tank for SETS [MWh]
+ 110  H_DHW_AUX_LEV(n,bu,ch,h)         Heating - domestic hot water: level of auxiliary hot water tank for SETS [MWh]
+ 111  H_DHW_AUX_OUT(n,bu,ch,h)         Heating - domestic hot water: auxiliary DHW provision for SETS [MWh]
+ 112  ;
+ 113   
+ 114   
+ 115   
+ 116   
+ 117  ********************************************************************************
+ 118   
+ 119  Equations
+ 120  * Objective
+ 121  obj                      Objective cost minimization
+ 122   
+ 123  * Energy balance
+ 124  con1a_bal                Energy Balance
+ 125   
+ 126  * Load change costs
+ 127  con2a_loadlevel          Load change costs: Level
+ 128  con2b_loadlevelstart     Load change costs: Level for first period
+ 129   
+ 130  * Capacity contraints and flexibility constraints
+ 131  con3a_maxprod_dispatchable       Capacity Constraint conventionals
+ 132  con3b_minprod_dispatchable       Minimum production conventionals if reserves contracted
+ 133  con3c_flex_reserves_spin         Flexibility of conventionals for reserves provision
+ 134  con3d_flex_reserves_nonspin      Flexibility of conventionals for reserves provision
+ 135  con3e_maxprod_res                Capacity constraints renewables
+ 136  con3f_minprod_res                Minimum production RES if reserves contracted
+ 137   
+ 138  * Storage constraints
+ 139  con4a_stolev_start        Storage Level Dynamics Initial Condition
+ 140  con4b_stolev              Storage Level Dynamics
+ 141  con4c_stolev_max          Storage Power Capacity
+ 142  con4d_maxin_sto           Storage maximum inflow
+ 143  con4e_maxout_sto          Storage maximum outflow
+ 144  con4f_resrv_sto           Constraint on reserves (up)
+ 145  con4g_resrv_sto           Constraint on reserves (down)
+ 146  con4h_maxout_lev          Maximum storage outflow - no more than level of last period
+ 147  con4i_maxin_lev           Maximum storage inflow - no more than ebergy capacity minus level of last period
+ 148  con4j_ending              End level equal to initial level
+ 149  con4k_PHS_EtoP            Maximum E to P ratio for PHS
+ 150   
+ 151  * Minimum restrictions for renewables and biomass
+ 152  con5a_minRES             Minimum yearly renewables requirement
+ 153  con5b_max_energy         Maximum yearly biomass energy
+ 154   
+ 155  * DSM conditions: Load curtailment
+ 156  con6a_DSMcurt_duration_max       Maximum curtailment energy budget per time
+ 157  con6b_DSMcurt_max                Maximum curtailment per period
+ 158   
+ 159  * DSM conditions: Load shifting
+ 160  con7a_DSMshift_upanddown         Equalization of upshifts and downshifts in due time
+ 161  con7b_DSMshift_granular_max      Maximum shifting in either direction per period
+ 162  con7c_DSM_distrib_up             Distribution of upshifts between wholesale and reserves
+ 163  con7d_DSM_distrib_do             Distribution of downshifts between wholesale and reserves
+ 164  con7e_DSMshift_recovery          Recovery times
+ 165   
+ 166  * Maximum installation conditions
+ 167  con8a_max_I_power                Maximum installable capacity: Conventionals
+ 168  con8b_max_I_sto_e                Maximum installable energy: Storage in MWh
+ 169  con8c_max_I_sto_p                Maximum installable capacity: Storage inflow-outflow in MW
+ 170  con8d_max_I_dsm_cu               Maximum installable capacity: DSM load curtailment
+ 171  con8e_max_I_dsm_shift_pos        Maximum installable capacity: DSM load shifting
+ 172  con8f_max_pro_res                Maximum installable capacity: prosumage renewables
+ 173  con8g_max_pro_sto_e              Maximum installable capacity: prosumage storage energy
+ 174  con8h_max_sto_pro_p              Maximum installable capacity: prosumage storage power
+ 175  con8i_max_I_ntc                  Maximum installable NTC
+ 176  con8j_max_I_rsvr_e               Maximum installable energy reservoirs
+ 177  con8k_max_I_rsvr_p               Maximum installable power reservoirs
+ 178   
+ 179  * Reserves
+ 180  con9a_reserve_prov_endogenous    Reserve provision SR and MR (endogenous reserve provision)
+ 181  con9a_reserve_prov_exogenous     Reserve provision SR and MR (exogenous reserve provision)
+ 182  con9b_reserve_prov_PR_endogenous Reserve provision PR (endogenous reserve provision)
+ 183  con9b_reserve_prov_PR_exogenous  Reserve provision PR (exogenous reserve provision)
+ 184   
+ 185  * Electric vehicles
+ 186  con10a_ev_ed                     Energy balance of electric vehicles
+ 187  con10b_ev_chargelev_start        Cumulative charging level in the first hour
+ 188  con10c_ev_chargelev              Cumulative charging level in hour h
+ 189  con10d_ev_chargelev_max          Cumulative maximal charging level
+ 190  con10e_ev_maxin                  Cumulative maximal charging power
+ 191  con10f_ev_maxout                 Cumulative maximal discharging power
+ 192  con10g_ev_chargelev_ending       Cumulative charging level in the last hour
+ 193  con10h_ev_minin                  Cumulative minimal charging power
+ 194  con10i_ev_maxin_lev              Cumulative maximal charging limit
+ 195  con10j_ev_minout                 Cumulative minimal discharging power
+ 196  con10k_ev_maxout_lev             Cumulative maximal discharging limit
+ 197  con10l_ev_exog                   Exogenous EV charging
+ 198   
+ 199  * Prosumage
+ 200  con11a_pro_distrib                       Prosumage: distribution of generated energy
+ 201  con11b_pro_balance                       Prosumage: energy balance
+ 202  con11c_pro_selfcon                       Prosumage: minimum self-generation requirement
+ 203  con11d_pro_stolev_PRO2PRO                Prosumage: storage level prosumager-to-prosumagers
+ 204  con11e_pro_stolev_PRO2M                  Prosumage: storage level prosumagers-to-market
+ 205  con11f_pro_stolev_M2PRO                  Prosumage: storage level market-to-prosumagers
+ 206  con11g_pro_stolev_M2M                    Prosumage: storage level market-to-market
+ 207  con11h_1_pro_stolev_start_PRO2PRO        Prosumage: storage level initial conditions
+ 208  con11h_2_pro_stolev_start_PRO2M          Prosumage: storage level initial conditions
+ 209  con11h_3_pro_stolev_start_M2PRO          Prosumage: storage level initial conditions
+ 210  con11h_4_pro_stolev_start_M2M            Prosumage: storage level initial conditions
+ 211  con11i_pro_stolev                        Prosumage: storage level total
+ 212  con11j_pro_stolev_max                    Prosumage: maximum overall storage level
+ 213  con11k_pro_maxin_sto                     Prosumage: maximum storage inflow
+ 214  con11l_pro_maxout_sto                    Prosumage: maximum storage outflow
+ 215  con11m_pro_maxout_lev                    Prosumage: maximum storage outflow linked to level
+ 216  con11n_pro_maxin_lev                     Prosumage: maximum storage inflow linked to level
+ 217  con11o_pro_ending                        Prosumage: storage ending condition
+ 218   
+ 219  * Cross-nodal trade
+ 220  con12a_max_f                     Maximum energy flow limited to positive NTC
+ 221  con12b_min_f                     Minimum energy flow limited to negative NTC
+ 222   
+ 223  * Resevoirs
+ 224  con13a_rsvrlev_start             Reservoir level law of motion initial condition
+ 225  con13b_rsvrlev                   Reservoir level law of motion
+ 226  con13c_rsvrlev_max               Maximum reservoir energy level
+ 227  con13d_maxout_rsvr               Maximum hourly reservoir outflow in relation to installed power capacity
+ 228  con13e_resrv_rsvr                Minimum hourly reservoir outflow in relation to provided negativr reserves
+ 229  con13f_maxout_lev                Maximum hourly reservoir outflow in relation tom installed energy capacity
+ 230  con13g_ending                    Reservoir level law of motion ending condition
+ 231  con13h_smooth                    Smooth reservoir outflow
+ 232  con13i_min_level                 Reservoir minimum level
+ 233  con13j_min_FLH
+ 234   
+ 235  * Residential heat
+ 236  con14a_heat_balance              Space heating energy balance
+ 237  con14b_dhw_balance               Domestic hot water energy balance
+ 238  con14c_sets_level                SETS - level law of motion
+ 239  con14d_sets_level_start          SETS - storage level initial condition
+ 240  con14e_sets_maxin                SETS - maximum energy inflow
+ 241  con14f_sets_maxout               SETS - maximum energy outflow
+ 242  con14g_sets_minin                SETS - minimum energy inflow if reserves contracted
+ 243  con14h_sets_maxlev               SETS - maximum storage level
+ 244  con14i_sets_aux_dhw_level        SETS auxiliary DHW module - storage level law of motion
+ 245  con14j_sets_aux_dhw_level_start  SETS auxiliary DHW module - storage level initial consition
+ 246  con14k_sets_aux_dhw_maxin        SETS auxiliary DHW module - maximum energy inflow
+ 247  con14l_sets_aux_dhw_minin        SETS auxiliary DHW module - minimum energy inflow if reserves contracted
+ 248  con14m_sets_aux_dhw_maxlev       SETS auxiliary DHW module - maximum storage level
+ 249  con14n_hp_in                     Heat pumps - electricity demand
+ 250  con14o_hp_maxin                  Heat pumps - maximum electricity demand
+ 251  con14p_hp_minin                  Heat pumps - minimum electricity demand if reserves contracted
+ 252  con14q_storage_elec_in           Hybrid electric heating - electricity demand
+ 253  con14r_storage_elec_maxin        Hybrid electric heating - maximum electricity demand
+ 254  con14s_storage_elec_minin        Hybrid electric heating - minimum electricity demand if reserves contracted
+ 255  con14t_storage_level             Storage heating - level law of motion
+ 256  con14u_storage_level_start       Hybrid electric heating - storage level initial condition
+ 257  con14v_storage_maxlev            Hybrid electric heating - maximum storage level
+ 258  ;
+ 259   
+ 260   
+ 261   
+ 262   
+ 263  ********************************************************************************
+ 264   
+ 265  * ---------------------------------------------------------------------------- *
+ 266  ***** Objective function *****
+ 267  * ---------------------------------------------------------------------------- *
+ 268   
+ 269  obj..
+ 270           Z =E=
+ 271                     sum( (h,map_n_tech(n,dis)) , c_m(n,dis)*G_L(n,dis,h) )
+****                                      $120  $120    $140
+**** 120  Unknown identifier entered as set
+**** 140  Unknown symbol
+ 272                   + sum( (h,map_n_tech(n,dis))$(ord(h)>1) , c_up(n,dis)*G_UP(n,dis,h) )
+****                                                                $140               $171
+**** 140  Unknown symbol
+**** 171  Domain violation for set
+ 273                   + sum( (h,map_n_tech(n,dis)) , c_do(n,dis)*G_DO(n,dis,h) )
+****                                                     $140               $171
+**** 140  Unknown symbol
+**** 171  Domain violation for set
+ 274                   + sum( (h,map_n_tech(n,nondis)) , c_cu(n,nondis)*CU(n,nondis,h) )
+****                                               $120     $140                   $171
+**** 120  Unknown identifier entered as set
+**** 140  Unknown symbol
+**** 171  Domain violation for set
+ 275                   + sum( (h,map_n_sto(n,sto)) , c_m_sto(n,sto) * ( STO_OUT(n,sto,h) + STO_IN(n,sto,h) ) )
+****                                     $120              $140
+**** 120  Unknown identifier entered as set
+**** 140  Unknown symbol
+ 276  %DSM$ontext
+****  $409
+**** 409  Unrecognizable item - skip to find a new statement
+****        looking for a ';' or a key word to get started again
+ 277                   + sum( (h,map_n_dsm(n,dsm_curt)) , c_m_dsm_cu(n,dsm_curt)*DSM_CU(n,dsm_curt,h) )
+ 278                   + sum( (h,map_n_dsm(n,dsm_shift)) , c_m_dsm_shift(n,dsm_shift) * DSM_UP_DEMAND(n,dsm_shift,h) )
+ 279                   + sum( (h,map_n_dsm(n,dsm_shift)) , c_m_dsm_shift(n,dsm_shift) * DSM_DO_DEMAND(n,dsm_shift,h) )
+ 282  %EV$ontext
+ 283                   + sum( (h,map_n_ev(n,ev)) , c_m_ev(n,ev) * EV_DISCHARGE(n,ev,h) )
+ 284                   + sum( (h,map_n_ev(n,ev)) , pen_phevfuel(n,ev) * EV_PHEVFUEL(n,ev,h) )
+ 287                   + sum( map_n_tech(n,tech) , c_i(n,tech)*N_TECH(n,tech) )
+ 288                   + sum( map_n_tech(n,tech) , c_fix(n,tech)*N_TECH(n,tech) )
+ 289                   + sum( map_n_sto(n,sto) , c_i_sto_e(n,sto)*N_STO_E(n,sto) )
+ 290                   + sum( map_n_sto(n,sto) , c_fix_sto(n,sto)/2*(N_STO_P(n,sto)+N_STO_E(n,sto)) )
+ 291                   + sum( map_n_sto(n,sto) , c_i_sto_p(n,sto)*N_STO_P(n,sto) )
+ 292  %DSM$ontext
+ 293                   + sum( map_n_dsm(n,dsm_curt) , c_i_dsm_cu(n,dsm_curt)*N_DSM_CU(n,dsm_curt) )
+ 294                   + sum( map_n_dsm(n,dsm_curt) , c_fix_dsm_cu(n,dsm_curt)*N_DSM_CU(n,dsm_curt) )
+ 295                   + sum( map_n_dsm(n,dsm_shift) , c_i_dsm_shift(n,dsm_shift)*N_DSM_SHIFT(n,dsm_shift) )
+ 296                   + sum( map_n_dsm(n,dsm_shift) , c_fix_dsm_shift(n,dsm_shift)*N_DSM_SHIFT(n,dsm_shift) )
+ 299  %reserves$ontext
+ 300                   + sum( (h,map_n_sto(n,sto),reserves_up) , phi_reserves_call(n,reserves_up,h) * c_m_sto(n,sto) * (RP_STO_OUT(n,reserves_up,sto,h) - RP_STO_IN(n,reserves_up,sto,h)) )
+ 301                   - sum( (h,map_n_sto(n,sto),reserves_do) , phi_reserves_call(n,reserves_do,h) * c_m_sto(n,sto) * (RP_STO_OUT(n,reserves_do,sto,h) - RP_STO_IN(n,reserves_do,sto,h)) )
+ 302                   + sum( (h,map_n_rsvr(n,rsvr),reserves_up) , RP_RSVR(n,reserves_up,rsvr,h) * phi_reserves_call(n,reserves_up,h) * c_m_rsvr(n,rsvr) )
+ 303                   - sum( (h,map_n_rsvr(n,rsvr),reserves_do) , RP_RSVR(n,reserves_do,rsvr,h) * phi_reserves_call(n,reserves_do,h) * c_m_rsvr(n,rsvr) )
+ 306  %reserves$ontext
+ 307  %EV$ontext
+ 308  %EV_EXOG%        + sum( (h,map_n_ev(n,ev),reserves_up) , RP_EV_V2G(n,reserves_up,ev,h) * phi_reserves_call(n,reserves_up,h) * c_m_ev(n,ev) )
+ 309  %EV_EXOG%        - sum( (h,map_n_ev(n,ev),reserves_do) , RP_EV_V2G(n,reserves_do,ev,h) * phi_reserves_call(n,reserves_do,h) * c_m_ev(n,ev) )
+ 312  %DSM$ontext
+ 313  %reserves$ontext
+ 314                   + sum( (h,map_n_dsm(n,dsm_curt),reserves_up) , RP_DSM_CU(n,reserves_up,dsm_curt,h) * phi_reserves_call(n,reserves_up,h) * c_m_dsm_cu(n,dsm_curt) )
+ 315                   + sum( (h,map_n_dsm(n,dsm_shift),reserves) , RP_DSM_SHIFT(n,reserves,dsm_shift,h) * phi_reserves_call(n,reserves,h) * c_m_dsm_shift(n,dsm_shift) )
+ 318  %prosumage$ontext
+ 319                   + sum( map_n_res_pro(n,res) , c_i(n,res)*N_RES_PRO(n,res) )
+ 320                   + sum( map_n_res_pro(n,res) , c_fix(n,res)*N_RES_PRO(n,res) )
+ 321   
+ 322                   + sum( map_n_sto_pro(n,sto) , c_i_sto_e(n,sto)*N_STO_E_PRO(n,sto) )
+ 323                   + sum( map_n_sto_pro(n,sto) , c_fix_sto(n,sto)/2*(N_STO_P_PRO(n,sto) + N_STO_E_PRO(n,sto)) )
+ 324                   + sum( map_n_sto_pro(n,sto) , c_i_sto_p(n,sto)*N_STO_P_PRO(n,sto) )
+ 325   
+ 326                   + sum( (h,map_n_sto_pro(n,sto)) , c_m_sto(n,sto) * ( STO_OUT_PRO2PRO(n,sto,h) + STO_OUT_M2PRO(n,sto,h) + STO_OUT_PRO2M(n,sto,h) + STO_OUT_M2M(n,sto,h) + sum( res , STO_IN_PRO2PRO(n,res,sto,h) + STO_IN_PRO2M(n,res,sto,h)) + STO_OUT_P
+      RO2M(n,sto,h) + STO_OUT_M2M(n,sto,h) ) )
+ 329                   + sum( map_l(l) , c_i_ntc(l) * NTC(l)*dist(l) )
+ 330   
+ 331                   + sum( (h,map_n_rsvr(n,rsvr)), c_m_rsvr(n,rsvr) * RSVR_OUT(n,rsvr,h) )
+ 332                   + sum( map_n_rsvr(n,rsvr) , c_i_rsvr_e(n,rsvr) * N_RSVR_E(n,rsvr) )
+ 333                   + sum( map_n_rsvr(n,rsvr) , c_i_rsvr_p(n,rsvr) * N_RSVR_P(n,rsvr) )
+ 334                   + sum( map_n_rsvr(n,rsvr) , c_fix_rsvr(n,rsvr) * N_RSVR_P(n,rsvr) )
+ 335  %heat$ontext
+ 336                   + sum( (h,n,bu,hfo) , pen_heat_fuel(n,bu,hfo) * H_STO_IN_FOSSIL(n,bu,hfo,h))
+ 339                   + sum( (h,n) , c_infes * G_INFES(n,h) )
+ 340  ;
+ 341   
+ 342  * ---------------------------------------------------------------------------- *
+ 343  ***** Energy balance and load levels *****
+ 344  * ---------------------------------------------------------------------------- *
+ 345   
+ 346  * Energy balance
+ 347  con1a_bal(n,hh)..
+ 348           ( 1 - phi_pro_load(n) ) * d(n,hh) + sum( map_n_sto(n,sto) , STO_IN(n,sto,hh) )
+****                            $140     $140
+**** 140  Unknown symbol
+ 349  %DSM$ontext
+****  $37,409
+****  37  '=l=' or '=e=' or '=g=' operator expected
+**** 409  Unrecognizable item - skip to find a new statement
+****        looking for a ';' or a key word to get started again
+ 350           + sum( map_n_dsm(n,dsm_shift) , DSM_UP_DEMAND(n,dsm_shift,hh) )
+ 353  %EV$ontext
+ 354           + sum( map_n_ev(n,ev) , EV_CHARGE(n,ev,hh) )
+ 357  %prosumage$ontext
+ 358           + G_MARKET_M2PRO(n,hh)
+ 359           + sum( map_n_sto_pro(n,sto) , STO_IN_M2PRO(n,sto,hh))
+ 360           + sum( map_n_sto_pro(n,sto) , STO_IN_M2M(n,sto,hh))
+ 363  %heat$ontext
+ 364          + sum( (bu,ch) , theta_dir(n,bu,ch) * (H_DIR(n,bu,ch,hh) + H_DHW_DIR(n,bu,ch,hh)) )
+ 365          + sum( (bu,ch) , theta_sets(n,bu,ch) * (H_SETS_IN(n,bu,ch,hh) + H_DHW_AUX_ELEC_IN(n,bu,ch,hh)) )
+ 366          + sum( (bu,hp) , theta_hp(n,bu,hp) * H_HP_IN(n,bu,hp,hh) )
+ 367          + sum( (bu,hel) , theta_elec(n,bu,hel) * H_ELECTRIC_IN(n,bu,hel,hh) )
+ 370           =E=
+ 371           sum( map_n_tech(n,dis) , G_L(n,dis,hh)) + sum( map_n_tech(n,nondis) , G_RES(n,nondis,hh)) + sum( sto , STO_OUT(n,sto,hh) ) + sum( map_n_rsvr(n,rsvr) , RSVR_OUT(n,rsvr,hh))
+ 372  %GER_only%       + sum( map_l(l) , inc(l,n) * F(l,hh))
+ 373  %reserves$ontext
+ 374  *Balancing Correction Factor
+ 375          + sum( map_n_tech(n,dis) ,
+ 376            sum( reserves_do ,  RP_DIS(n,reserves_do,dis,hh) * phi_reserves_call(n,reserves_do,hh))
+ 377          - sum( reserves_up ,  RP_DIS(n,reserves_up,dis,hh) * phi_reserves_call(n,reserves_up,hh))
+ 378           )
+ 381  %DSM$ontext
+ 382           + sum( map_n_dsm(n,dsm_curt) , DSM_CU(n,dsm_curt,hh))
+ 383           + sum( map_n_dsm(n,dsm_shift) , DSM_DO_DEMAND(n,dsm_shift,hh))
+ 386  %EV$ontext
+ 387          + sum( map_n_ev(n,ev) , EV_DISCHARGE(n,ev,hh) )
+ 390  %prosumage$ontext
+ 391           + sum( map_n_res_pro(n,res) , G_MARKET_PRO2M(n,res,hh) )
+ 392           + sum( map_n_sto_pro(n,sto) , STO_OUT_PRO2M(n,sto,hh))
+ 393           + sum( map_n_sto_pro(n,sto) , STO_OUT_M2M(n,sto,hh))
+ 396           + G_INFES(n,hh)
+ 397  ;
+ 398   
+ 399  con2a_loadlevel(n,dis,h)$(ord(h) > 1 AND map_n_tech(n,dis))..
+ 400          G_L(n,dis,h) =E= G_L(n,dis,h-1) + G_UP(n,dis,h) - G_DO(n,dis,h)
+****                                                      $171            $171
+**** 171  Domain violation for set
+ 401  ;
+ 402   
+ 403  con2b_loadlevelstart(n,dis,h)$(ord(h) = 1 AND map_n_tech(n,dis))..
+ 404           G_L(n,dis,h) =E= G_UP(n,dis,h)
+****                                      $171
+**** 171  Domain violation for set
+ 405  ;
+ 406   
+ 407  * ---------------------------------------------------------------------------- *
+ 408  ***** Hourly maximum generation caps and constraints related to reserves   *****
+ 409  * ---------------------------------------------------------------------------- *
+ 410   
+ 411  con3a_maxprod_dispatchable(n,dis,h)$(map_n_tech(n,dis))..
+ 412          G_L(n,dis,h)
+ 413  %reserves$ontext
+****  $37,409
+****  37  '=l=' or '=e=' or '=g=' operator expected
+**** 409  Unrecognizable item - skip to find a new statement
+****        looking for a ';' or a key word to get started again
+ 414          + sum( reserves_up , RP_DIS(n,reserves_up,dis,h))
+ 415  *Balancing Correction Factor
+ 416          + sum( reserves_do ,  RP_DIS(n,reserves_do,dis,h) * phi_reserves_call(n,reserves_do,h))
+ 417          - sum( reserves_up ,  RP_DIS(n,reserves_up,dis,h) * phi_reserves_call(n,reserves_up,h))
+ 420          =L= N_TECH(n,dis)
+ 421  ;
+ 422   
+ 423  con3b_minprod_dispatchable(n,dis,h)$(map_n_tech(n,dis))..
+ 424          sum( reserves_do , RP_DIS(n,reserves_do,dis,h))
+****                         $120
+**** 120  Unknown identifier entered as set
+ 425          =L= G_L(n,dis,h)
+ 426  * Balancing Correction Factor
+ 427          + sum( reserves_do ,  RP_DIS(n,reserves_do,dis,h) * phi_reserves_call(n,reserves_do,h))
+****                                                                              $140
+**** 140  Unknown symbol
+ 428          - sum( reserves_up ,  RP_DIS(n,reserves_up,dis,h) * phi_reserves_call(n,reserves_up,h))
+****                           $120
+**** 120  Unknown identifier entered as set
+ 429  ;
+ 430   
+ 431  con3c_flex_reserves_spin(n,dis,reserves_spin,h)$(map_n_tech(n,dis))..
+****                                             $120
+**** 120  Unknown identifier entered as set
+ 432          RP_DIS(n,reserves_spin,dis,h)
+ 433          =L= grad_per_min(n,dis) * reserves_reaction(n,reserves_spin) * ( G_L(n,dis,h)
+****                         $140                       $140
+**** 140  Unknown symbol
+ 434  * Balancing Correction Factor
+ 435          + sum( reserves_do ,  RP_DIS(n,reserves_do,dis,h) * phi_reserves_call(n,reserves_do,h))
+ 436          - sum( reserves_up ,  RP_DIS(n,reserves_up,dis,h) * phi_reserves_call(n,reserves_up,h)) )
+ 437  ;
+ 438   
+ 439  con3d_flex_reserves_nonspin(n,dis,reserves_nonspin,h)$(map_n_tech(n,dis))..
+****                                                   $120
+**** 120  Unknown identifier entered as set
+ 440          RP_DIS(n,reserves_nonspin,dis,h)
+ 441          =L= grad_per_min(n,dis) * reserves_reaction(n,reserves_nonspin) * N_TECH(n,dis)
+****                                                                                        $171
+**** 171  Domain violation for set
+ 442  ;
+ 443   
+ 444  con3e_maxprod_res(n,nondis,h)$(map_n_tech(n,nondis))..
+ 445          G_RES(n,nondis,h) + CU(n,nondis,h)
+****                        $171             $171
+**** 171  Domain violation for set
+ 446  %reserves$ontext
+****  $37,409
+****  37  '=l=' or '=e=' or '=g=' operator expected
+**** 409  Unrecognizable item - skip to find a new statement
+****        looking for a ';' or a key word to get started again
+ 447          + sum( reserves_up , RP_NONDIS(n,reserves_up,nondis,h))
+ 450          =E= phi_res(n,nondis,h) * N_TECH(n,nondis)
+ 451  ;
+ 452   
+ 453  con3f_minprod_res(n,nondis,h)$(map_n_tech(n,nondis))..
+ 454          sum( reserves_do , RP_NONDIS(n,reserves_do,nondis,h))
+****                                                    $171   $171
+**** 171  Domain violation for set
+ 455          =L= G_RES(n,nondis,h)
+****                            $171
+**** 171  Domain violation for set
+ 456  ;
+ 457   
+ 458  * ---------------------------------------------------------------------------- *
+ 459  ***** Storage constraints *****
+ 460  * ---------------------------------------------------------------------------- *
+ 461   
+ 462  con4a_stolev_start(n,sto,h)$(map_n_sto(n,sto) AND ord(h) = 1)..
+ 463          STO_L(n,sto,h) =E= phi_sto_ini(n,sto) * N_STO_E(n,sto) + STO_IN(n,sto,h)*(1+eta_sto(n,sto))/2 - STO_OUT(n,sto,h)/(1+eta_sto(n,sto))*2
+****                                       $140                                                 $140
+**** 140  Unknown symbol
+ 464  ;
+ 465   
+ 466  con4b_stolev(n,sto,h)$((ord(h)>1) AND map_n_sto(n,sto))..
+ 467           STO_L(n,sto,h) =E= STO_L(n,sto,h-1) + STO_IN(n,sto,h)*(1+eta_sto(n,sto))/2 - STO_OUT(n,sto,h)/(1+eta_sto(n,sto))*2
+ 468  %reserves$ontext
+****  $409
+**** 409  Unrecognizable item - skip to find a new statement
+****        looking for a ';' or a key word to get started again
+ 469           + sum( reserves_do , phi_reserves_call(n,reserves_do,h) * ( RP_STO_IN(n,reserves_do,sto,h)*(1+eta_sto(n,sto))/2 + RP_STO_OUT(n,reserves_do,sto,h)/(1+eta_sto(n,sto))*2 ))
+ 470           - sum( reserves_up , phi_reserves_call(n,reserves_up,h) * ( RP_STO_IN(n,reserves_up,sto,h)*(1+eta_sto(n,sto))/2 + RP_STO_OUT(n,reserves_up,sto,h)/(1+eta_sto(n,sto))*2 ))
+ 473  ;
+ 474   
+ 475  con4c_stolev_max(n,sto,h)$(map_n_sto(n,sto))..
+ 476          STO_L(n,sto,h) =L= N_STO_E(n,sto)
+ 477  ;
+ 478   
+ 479  con4d_maxin_sto(n,sto,h)$(map_n_sto(n,sto))..
+ 480          STO_IN(n,sto,h)
+ 481  %reserves$ontext
+****  $37,409
+****  37  '=l=' or '=e=' or '=g=' operator expected
+**** 409  Unrecognizable item - skip to find a new statement
+****        looking for a ';' or a key word to get started again
+ 482          + sum( reserves_do , RP_STO_IN(n,reserves_do,sto,h))
+ 485          =L= N_STO_P(n,sto)
+ 486  ;
+ 487   
+ 488  con4e_maxout_sto(n,sto,h)$(map_n_sto(n,sto))..
+ 489          STO_OUT(n,sto,h)
+ 490  %reserves$ontext
+****  $37,409
+****  37  '=l=' or '=e=' or '=g=' operator expected
+**** 409  Unrecognizable item - skip to find a new statement
+****        looking for a ';' or a key word to get started again
+ 491          + sum( reserves_up , RP_STO_OUT(n,reserves_up,sto,h))
+ 494          =L= N_STO_P(n,sto)
+ 495  ;
+ 496   
+ 497  con4f_resrv_sto(n,sto,h)$(map_n_sto(n,sto))..
+ 498          sum( reserves_up , RP_STO_IN(n,reserves_up,sto,h))
+****                                                    $171
+**** 171  Domain violation for set
+ 499          =L= STO_IN(n,sto,h)
+ 500  ;
+ 501   
+ 502  con4g_resrv_sto(n,sto,h)$(map_n_sto(n,sto))..
+ 503          sum( reserves_do , RP_STO_OUT(n,reserves_do,sto,h))
+****                                                     $171
+**** 171  Domain violation for set
+ 504          =L= STO_OUT(n,sto,h)
+ 505  ;
+ 506   
+ 507  con4h_maxout_lev(n,sto,h)$(map_n_sto(n,sto))..
+ 508          ( STO_OUT(n,sto,h)
+ 509  %reserves$ontext
+****  $8,37,409
+****   8  ')' expected
+****  37  '=l=' or '=e=' or '=g=' operator expected
+**** 409  Unrecognizable item - skip to find a new statement
+****        looking for a ';' or a key word to get started again
+ 510          + sum( reserves_up , RP_STO_OUT(n,reserves_up,sto,h))
+ 513          ) /(1+eta_sto(n,sto))*2
+ 514          =L= STO_L(n,sto,h-1)
+ 515  ;
+ 516   
+ 517  con4i_maxin_lev(n,sto,h)$(map_n_sto(n,sto))..
+ 518          ( STO_IN(n,sto,h)
+ 519  %reserves$ontext
+****  $8,37,409
+****   8  ')' expected
+****  37  '=l=' or '=e=' or '=g=' operator expected
+**** 409  Unrecognizable item - skip to find a new statement
+****        looking for a ';' or a key word to get started again
+ 520          + sum( reserves_do , RP_STO_IN(n,reserves_do,sto,h))
+ 523          ) * (1+eta_sto(n,sto))/2
+ 524          =L= N_STO_E(n,sto) - STO_L(n,sto,h-1)
+ 525  ;
+ 526   
+ 527  con4j_ending(n,sto,h)$(ord(h) = card(h) AND map_n_sto(n,sto))..
+ 528           STO_L(n,sto,h) =E= phi_sto_ini(n,sto) * N_STO_E(n,sto)
+ 529  ;
+ 530   
+ 531  con4k_PHS_EtoP(n,sto)$(map_n_sto(n,sto))..
+ 532          N_STO_E(n,sto) =L= etop_max(n,sto) * N_STO_P(n,sto)
+****                                    $140
+**** 140  Unknown symbol
+ 533  ;
+ 534   
+ 535  * ---------------------------------------------------------------------------- *
+ 536  ***** Quotas for renewables and biomass *****
+ 537  * ---------------------------------------------------------------------------- *
+ 538   
+ 539  con5a_minRES(n)..
+ 540  sum( h , G_L(n,'bio',h) + sum( map_n_tech(n,nondis) , G_RES(n,nondis,h)) + sum( map_n_rsvr(n,rsvr) , RSVR_OUT(n,rsvr,h))
+****                                                                      $171                 $120,340
+**** 120  Unknown identifier entered as set
+**** 171  Domain violation for set
+**** 340  A label/element with the same name exist. You may have forgotten
+****         to quote a label/element reference. For example,
+****         set i / a,b,c /; parameter x(i); x('a') = 10;
+ 541  %reserves$ontext
+****  $8,37,409
+****   8  ')' expected
+****  37  '=l=' or '=e=' or '=g=' operator expected
+**** 409  Unrecognizable item - skip to find a new statement
+****        looking for a ';' or a key word to get started again
+ 542           - sum( reserves_do , (sum( map_n_tech(n,nondis) , RP_NONDIS(n,reserves_do,nondis,h)) + sum( map_n_rsvr(n,rsvr) , RP_RSVR(n,reserves_do,rsvr,h))) * phi_reserves_call(n,reserves_do,h))
+ 543           + sum( reserves_up , (sum( map_n_tech(n,nondis) , RP_NONDIS(n,reserves_up,nondis,h)) + sum( map_n_rsvr(n,rsvr) , RP_RSVR(n,reserves_up,rsvr,h))) * phi_reserves_call(n,reserves_up,h))
+ 546  %prosumage$ontext
+ 547           + sum( map_n_sto_pro(n,sto) , STO_OUT_PRO2PRO(n,sto,h) + STO_OUT_PRO2M(n,sto,h)) + sum( map_n_res_pro(n,res) , G_MARKET_PRO2M(n,res,h) + G_RES_PRO(n,res,h))
+ 550  )
+ 551          =G= phi_min_res * phi_min_res_exog(n) * sum( h ,
+ 552           sum( map_n_tech(n,dis) , G_L(n,dis,h)) + sum( map_n_tech(n,nondis) , G_RES(n,nondis,h)) + sum( map_n_rsvr(n,rsvr) , RSVR_OUT(n,rsvr,h))
+ 553  %reserves$ontext
+ 554           - sum( reserves_do , (sum( map_n_tech(n,nondis) , RP_NONDIS(n,reserves_do,nondis,h)) + sum( map_n_rsvr(n,rsvr) , RP_RSVR(n,reserves_do,rsvr,h))) * phi_reserves_call(n,reserves_do,h))
+ 555           + sum( reserves_up , (sum( map_n_tech(n,nondis) , RP_NONDIS(n,reserves_up,nondis,h)) + sum( map_n_rsvr(n,rsvr) , RP_RSVR(n,reserves_up,rsvr,h))) * phi_reserves_call(n,reserves_up,h))
+ 558  %prosumage$ontext
+ 559           + sum( map_n_res_pro(n,res) , phi_res(n,res,h) * N_RES_PRO(n,res) - CU_PRO(n,res,h))
+ 562           )
+ 563  ;
+ 564   
+ 565  con5b_max_energy(n,dis)$(map_n_tech(n,dis) AND m_e(n,dis))..
+****                                                   $140
+**** 140  Unknown symbol
+ 566           sum( h , G_L(n,dis,h) ) =L= m_e(n,dis)
+ 567  ;
+ 568   
+ 569  * ---------------------------------------------------------------------------- *
+ 570  ***** DSM constraints - curtailment *****
+ 571  * ---------------------------------------------------------------------------- *
+ 572   
+ 573  con6a_DSMcurt_duration_max(n,dsm_curt,h)$(map_n_dsm(n,dsm_curt))..
+****                                      $120,340      $140
+**** 120  Unknown identifier entered as set
+**** 140  Unknown symbol
+**** 340  A label/element with the same name exist. You may have forgotten
+****         to quote a label/element reference. For example,
+****         set i / a,b,c /; parameter x(i); x('a') = 10;
+ 574           sum( hh$( ord(hh) >= ord(h) AND ord(hh) < ord(h) + t_off_dsm_cu(n,dsm_curt) ) , DSM_CU(n,dsm_curt,hh)
+****                                                                         $140
+**** 140  Unknown symbol
+ 575  %reserves$ontext
+****  $8,37,409
+****   8  ')' expected
+****  37  '=l=' or '=e=' or '=g=' operator expected
+**** 409  Unrecognizable item - skip to find a new statement
+****        looking for a ';' or a key word to get started again
+ 576          + sum( reserves_up , RP_DSM_CU(n,reserves_up,dsm_curt,hh) * phi_reserves_call(n,reserves_up,hh) )
+ 579           )
+ 580           =L= N_DSM_CU(n,dsm_curt) * t_dur_dsm_cu(n,dsm_curt)
+ 581  ;
+ 582   
+ 583  con6b_DSMcurt_max(n,dsm_curt,h)$(map_n_dsm(n,dsm_curt))..
+ 584          DSM_CU(n,dsm_curt,h)
+ 585  %reserves$ontext
+****  $37,409
+****  37  '=l=' or '=e=' or '=g=' operator expected
+**** 409  Unrecognizable item - skip to find a new statement
+****        looking for a ';' or a key word to get started again
+ 586          + sum( reserves_up , RP_DSM_CU(n,reserves_up,dsm_curt,h) )
+ 589            =L= N_DSM_CU(n,dsm_curt)
+ 590  ;
+ 591   
+ 592  * ---------------------------------------------------------------------------- *
+ 593  ***** DSM constraints - shifting *****
+ 594  * ---------------------------------------------------------------------------- *
+ 595   
+ 596  con7a_DSMshift_upanddown(n,dsm_shift,h)$(map_n_dsm(n,dsm_shift))..
+****                                     $120,340
+**** 120  Unknown identifier entered as set
+**** 340  A label/element with the same name exist. You may have forgotten
+****         to quote a label/element reference. For example,
+****         set i / a,b,c /; parameter x(i); x('a') = 10;
+ 597           DSM_UP(n,dsm_shift,h) * (1 + eta_dsm_shift(n,dsm_shift))/2 =E= 2/(1+eta_dsm_shift(n,dsm_shift)) * sum( hh$( ord(hh) >= ord(h) - t_dur_dsm_shift(n,dsm_shift) AND ord(hh) <= ord(h) + t_dur_dsm_shift(n,dsm_shift) ) , DSM_DO(n,dsm_shift,h,hh))
+****                             $171                   $140                                                                                                 $140
+**** 140  Unknown symbol
+**** 171  Domain violation for set
+ 598  ;
+ 599   
+ 600  con7b_DSMshift_granular_max(n,dsm_shift,h)$(map_n_dsm(n,dsm_shift))..
+ 601           DSM_UP_DEMAND(n,dsm_shift,h) + DSM_DO_DEMAND(n,dsm_shift,h)
+****                                    $171                           $171
+**** 171  Domain violation for set
+ 602  %reserves$ontext
+****  $37,409
+****  37  '=l=' or '=e=' or '=g=' operator expected
+**** 409  Unrecognizable item - skip to find a new statement
+****        looking for a ';' or a key word to get started again
+ 603           + sum( reserves , RP_DSM_SHIFT(n,reserves,dsm_shift,h) )
+ 606           =L= N_DSM_SHIFT(n,dsm_shift)
+ 607  ;
+ 608   
+ 609  con7c_DSM_distrib_up(n,dsm_shift,h)$(map_n_dsm(n,dsm_shift))..
+ 610           DSM_UP(n,dsm_shift,h) =E= DSM_UP_DEMAND(n,dsm_shift,h)
+****                             $171                             $171
+**** 171  Domain violation for set
+ 611  %reserves$ontext
+****  $409
+**** 409  Unrecognizable item - skip to find a new statement
+****        looking for a ';' or a key word to get started again
+ 612           + sum( reserves_do , RP_DSM_SHIFT(n,reserves_do,dsm_shift,h) * phi_reserves_call(n,reserves_do,h))
+ 615  ;
+ 616   
+ 617  con7d_DSM_distrib_do(n,dsm_shift,h)$(map_n_dsm(n,dsm_shift))..
+ 618           sum( hh$( ord(hh) >= ord(h) - t_dur_dsm_shift(n,dsm_shift) AND ord(hh) <= ord(h) + t_dur_dsm_shift(n,dsm_shift) ) , DSM_DO(n,dsm_shift,hh,h) )
+ 619                   =E=
+ 620           DSM_DO_DEMAND(n,dsm_shift,h)
+****                                    $171
+**** 171  Domain violation for set
+ 621  %reserves$ontext
+****  $409
+**** 409  Unrecognizable item - skip to find a new statement
+****        looking for a ';' or a key word to get started again
+ 622           + sum( reserves_up , RP_DSM_SHIFT(n,reserves_up,dsm_shift,h) * phi_reserves_call(n,reserves_up,h))
+ 625  ;
+ 626   
+ 627  con7e_DSMshift_recovery(n,dsm_shift,h)$(map_n_dsm(n,dsm_shift))..
+ 628           sum( hh$( ord(hh) >= ord(h) AND ord(hh) < ord(h) + t_off_dsm_shift(n,dsm_shift) ) , DSM_UP(n,dsm_shift,hh))
+****                                                                            $140                                 $171,171
+**** 140  Unknown symbol
+**** 171  Domain violation for set
+ 629           =L= N_DSM_SHIFT(n,dsm_shift) * t_dur_dsm_shift(n,dsm_shift)
+****                                      $171
+**** 171  Domain violation for set
+ 630  ;
+ 631   
+ 632  * ---------------------------------------------------------------------------- *
+ 633  ***** Maximum installation constraints *****
+ 634  * ---------------------------------------------------------------------------- *
+ 635   
+ 636  con8a_max_I_power(n,tech)$(map_n_tech(n,tech))..
+ 637           N_TECH(n,tech) =L= m_p(n,tech)
+****                                $140
+**** 140  Unknown symbol
+ 638  ;
+ 639   
+ 640  con8b_max_I_sto_e(n,sto)$(map_n_sto(n,sto))..
+ 641           N_STO_E(n,sto) =L= m_sto_e(n,sto)
+****                                    $140
+**** 140  Unknown symbol
+ 642  ;
+ 643   
+ 644  con8c_max_I_sto_p(n,sto)$(map_n_sto(n,sto))..
+ 645           N_STO_P(n,sto) =L= m_sto_p(n,sto)
+****                                    $140
+**** 140  Unknown symbol
+ 646  ;
+ 647   
+ 648  con8d_max_I_dsm_cu(n,dsm_curt)$(map_n_dsm(n,dsm_curt))..
+ 649           N_DSM_CU(n,dsm_curt) =L= m_dsm_cu(n,dsm_curt)
+****                              $171         $140
+**** 140  Unknown symbol
+**** 171  Domain violation for set
+ 650  ;
+ 651   
+ 652  con8e_max_I_dsm_shift_pos(n,dsm_shift)$(map_n_dsm(n,dsm_shift))..
+ 653           N_DSM_SHIFT(n,dsm_shift) =L= m_dsm_shift(n,dsm_shift)
+****                                  $171            $140
+**** 140  Unknown symbol
+**** 171  Domain violation for set
+ 654  ;
+ 655   
+ 656  con8f_max_pro_res(n,res)$(map_n_res_pro(n,res))..
+****                        $120,340        $140
+**** 120  Unknown identifier entered as set
+**** 140  Unknown symbol
+**** 340  A label/element with the same name exist. You may have forgotten
+****         to quote a label/element reference. For example,
+****         set i / a,b,c /; parameter x(i); x('a') = 10;
+ 657           N_RES_PRO(n,res) =L= m_res_pro(n,res)
+****                          $171          $140
+**** 140  Unknown symbol
+**** 171  Domain violation for set
+ 658  ;
+ 659   
+ 660  con8g_max_pro_sto_e(n,sto)$(map_n_sto_pro(n,sto))..
+****                                          $140
+**** 140  Unknown symbol
+ 661           N_STO_E_PRO(n,sto) =L= m_sto_pro_e(n,sto)
+****                                            $140
+**** 140  Unknown symbol
+ 662  ;
+ 663   
+ 664  con8h_max_sto_pro_p(n,sto)$(map_n_sto_pro(n,sto))..
+ 665           N_STO_P_PRO(n,sto) =L= m_sto_pro_p(n,sto)
+****                                            $140
+**** 140  Unknown symbol
+ 666  ;
+ 667   
+ 668  con8i_max_I_ntc(l)$(map_l(l))..
+****                          $140
+**** 140  Unknown symbol
+ 669           NTC(l) =L= m_ntc(l)
+****                          $140
+**** 140  Unknown symbol
+ 670  ;
+ 671   
+ 672  con8j_max_I_rsvr_e(n,rsvr)$(map_n_rsvr(n,rsvr))..
+ 673           N_RSVR_E(n,rsvr) =L= m_rsvr_e(n,rsvr)
+****                                       $140
+**** 140  Unknown symbol
+ 674  ;
+ 675   
+ 676  con8k_max_I_rsvr_p(n,rsvr)$(map_n_rsvr(n,rsvr))..
+ 677           N_RSVR_P(n,rsvr) =L= m_rsvr_p(n,rsvr)
+****                                       $140
+**** 140  Unknown symbol
+ 678  ;
+ 679   
+ 680  * ---------------------------------------------------------------------------- *
+ 681  ***** Reserve constraints *****
+ 682  * ---------------------------------------------------------------------------- *
+ 683   
+ 684  con9a_reserve_prov_endogenous(n,reserves_nonprim,h)..
+****                                                 $120,340
+**** 120  Unknown identifier entered as set
+**** 340  A label/element with the same name exist. You may have forgotten
+****         to quote a label/element reference. For example,
+****         set i / a,b,c /; parameter x(i); x('a') = 10;
+ 685            sum( map_n_tech(n,dis) , RP_DIS(n,reserves_nonprim,dis,h))
+ 686          + sum( map_n_tech(n,nondis) , RP_NONDIS(n,reserves_nonprim,nondis,h))
+****                                                                    $171   $171
+**** 171  Domain violation for set
+ 687          + sum( map_n_rsvr(n,rsvr) , RP_RSVR(n,reserves_nonprim,rsvr,h))
+ 688          + sum( map_n_sto(n,sto) , RP_STO_IN(n,reserves_nonprim,sto,h) + RP_STO_OUT(n,reserves_nonprim,sto,h))
+****                                                                $171                                   $171
+**** 171  Domain violation for set
+ 689  %DSM$ontext
+****  $37,409
+****  37  '=l=' or '=e=' or '=g=' operator expected
+**** 409  Unrecognizable item - skip to find a new statement
+****        looking for a ';' or a key word to get started again
+ 690          + sum( map_n_dsm(n,dsm_curt) , RP_DSM_CU(n,reserves_nonprim,dsm_curt,h))
+ 691          + sum( map_n_dsm(n,dsm_shift) , RP_DSM_SHIFT(n,reserves_nonprim,dsm_shift,h) )
+ 694  %EV$ontext
+ 695  %EV_EXOG%   + sum( map_n_ev(n,ev) , RP_EV_G2V(n,reserves_nonprim,ev,h) + RP_EV_V2G(n,reserves_nonprim,ev,h) )
+ 698  %heat$ontext
+ 699          + sum( (bu,ch) , theta_sets(n,bu,ch) * ( RP_SETS(n,reserves_nonprim,bu,ch,h) + RP_SETS_AUX(n,reserves_nonprim,bu,ch,h)) )
+ 700          + sum( (bu,ch) , theta_hp(n,bu,ch) * RP_HP(n,reserves_nonprim,bu,ch,h) )
+ 701          + sum( (bu,ch) , theta_elec(n,bu,ch) * RP_H_ELEC(n,reserves_nonprim,bu,ch,h) )
+ 704          =E= (
+ 705              feat_node('reserves',n) *
+ 706              1000 * phi_reserves_share(n,reserves_nonprim) * (
+ 707              reserves_intercept(n,reserves_nonprim) + sum( map_n_tech(n,nondis) , reserves_slope(n,reserves_nonprim,nondis) * (N_TECH(n,nondis)
+ 708  %prosumage$ontext
+ 709              + N_RES_PRO(n,nondis)
+ 712              )/1000 ) ) )$(ord(h) > 1)
+ 713  ;
+ 714   
+ 715  con9a_reserve_prov_exogenous(n,reserves_nonprim,h)..
+ 716            sum( map_n_tech(n,dis) , RP_DIS(n,reserves_nonprim,dis,h))
+ 717          + sum( map_n_tech(n,nondis) , RP_NONDIS(n,reserves_nonprim,nondis,h))
+****                                                                    $171   $171
+**** 171  Domain violation for set
+ 718          + sum( map_n_rsvr(n,rsvr) , RP_RSVR(n,reserves_nonprim,rsvr,h))
+ 719          + sum( map_n_sto(n,sto) , RP_STO_IN(n,reserves_nonprim,sto,h) + RP_STO_OUT(n,reserves_nonprim,sto,h))
+****                                                                $171                                   $171
+**** 171  Domain violation for set
+ 720  %DSM$ontext
+****  $37,409
+****  37  '=l=' or '=e=' or '=g=' operator expected
+**** 409  Unrecognizable item - skip to find a new statement
+****        looking for a ';' or a key word to get started again
+ 721          + sum( map_n_dsm(n,dsm_curt) , RP_DSM_CU(n,reserves_nonprim,dsm_curt,h))
+ 722          + sum( map_n_dsm(n,dsm_shift) , RP_DSM_SHIFT(n,reserves_nonprim,dsm_shift,h) )
+ 725  %EV$ontext
+ 726  %EV_EXOG%   + sum( map_n_ev(n,ev) , RP_EV_G2V(n,reserves_nonprim,ev,h) + RP_EV_V2G(n,reserves_nonprim,ev,h) )
+ 729  %heat$ontext
+ 730          + sum( (bu,ch) , theta_sets(n,bu,ch) * ( RP_SETS(n,reserves_nonprim,bu,ch,h) + RP_SETS_AUX(n,reserves_nonprim,bu,ch,h)) )
+ 731          + sum( (bu,ch) , theta_hp(n,bu,ch) * RP_HP(n,reserves_nonprim,bu,ch,h) )
+ 732          + sum( (bu,ch) , theta_elec(n,bu,ch) * RP_H_ELEC(n,reserves_nonprim,bu,ch,h) )
+ 735          =E= feat_node('reserves',n) * reserves_exogenous(n,reserves_nonprim,h)$(ord(h) > 1)
+ 736  ;
+ 737   
+ 738  con9b_reserve_prov_PR_endogenous(n,reserves_prim,h)..
+****                                                 $120,340
+**** 120  Unknown identifier entered as set
+**** 340  A label/element with the same name exist. You may have forgotten
+****         to quote a label/element reference. For example,
+****         set i / a,b,c /; parameter x(i); x('a') = 10;
+ 739            sum( map_n_tech(n,dis) , RP_DIS(n,reserves_prim,dis,h))
+ 740          + sum( map_n_tech(n,nondis) , RP_NONDIS(n,reserves_prim,nondis,h))
+****                                                                 $171   $171
+**** 171  Domain violation for set
+ 741          + sum( map_n_rsvr(n,rsvr) , RP_RSVR(n,reserves_prim,rsvr,h))
+ 742          + sum( map_n_sto(n,sto) , RP_STO_IN(n,reserves_prim,sto,h) + RP_STO_OUT(n,reserves_prim,sto,h) )
+****                                                             $171                                $171
+**** 171  Domain violation for set
+ 743  %EV$ontext
+****  $37,409
+****  37  '=l=' or '=e=' or '=g=' operator expected
+**** 409  Unrecognizable item - skip to find a new statement
+****        looking for a ';' or a key word to get started again
+ 744  %EV_EXOG%   + sum( map_n_ev(n,ev) , RP_EV_G2V(n,reserves_prim,ev,h) + RP_EV_V2G(n,reserves_prim,ev,h) )
+ 747           =E=
+ 748               feat_node('reserves',n) *
+ 749               phi_reserves_pr_up(n)* sum( reserves_nonprim , 1000 * phi_reserves_share(n,reserves_nonprim) * (
+ 750               reserves_intercept(n,reserves_nonprim) + sum( map_n_tech(n,nondis) , reserves_slope(n,reserves_nonprim,nondis) * (N_TECH(n,nondis)
+ 751  %prosumage$ontext
+ 752               + N_RES_PRO(n,nondis)
+ 755               )/1000 ) ) )$(ord(h) > 1)
+ 756  ;
+ 757   
+ 758  con9b_reserve_prov_PR_exogenous(n,reserves_prim,h)..
+ 759            sum( map_n_tech(n,dis) , RP_DIS(n,reserves_prim,dis,h))
+ 760          + sum( map_n_tech(n,nondis) , RP_NONDIS(n,reserves_prim,nondis,h))
+****                                                                 $171   $171
+**** 171  Domain violation for set
+ 761          + sum( map_n_rsvr(n,rsvr) , RP_RSVR(n,reserves_prim,rsvr,h))
+ 762          + sum( map_n_sto(n,sto) , RP_STO_IN(n,reserves_prim,sto,h) + RP_STO_OUT(n,reserves_prim,sto,h) )
+****                                                             $171                                $171
+**** 171  Domain violation for set
+ 763  %EV$ontext
+****  $37,409
+****  37  '=l=' or '=e=' or '=g=' operator expected
+**** 409  Unrecognizable item - skip to find a new statement
+****        looking for a ';' or a key word to get started again
+ 764  %EV_EXOG%   + sum( map_n_ev(n,ev) , RP_EV_G2V(n,reserves_prim,ev,h) + RP_EV_V2G(n,reserves_prim,ev,h) )
+ 767           =E= feat_node('reserves',n) * reserves_exogenous(n,reserves_prim,h)$(ord(h) > 1)
+ 768  ;
+ 769   
+ 770  * ---------------------------------------------------------------------------- *
+ 771  ***** Electric vehicle constraints *****
+ 772  * ---------------------------------------------------------------------------- *
+ 773   
+ 774  con10a_ev_ed(n,ev,h)$(map_n_ev(n,ev))..
+****                               $140
+**** 140  Unknown symbol
+ 775           feat_node('ev',n) *
+****                   $140
+**** 140  Unknown symbol
+ 776           ev_ed(n,ev,h) * phi_ev(n,ev) * ev_quant
+****               $140             $140             $140
+**** 140  Unknown symbol
+ 777           =e= EV_GED(n,ev,h) + EV_PHEVFUEL(n,ev,h)$(ev_phev(n,ev)=1)
+****                                                           $140
+**** 140  Unknown symbol
+ 778  ;
+ 779   
+ 780  con10b_ev_chargelev_start(ev,h,n)$(map_n_ev(n,ev) AND ord(h) = 1 AND feat_node('ev',n))..
+ 781           EV_L(n,ev,h) =E= feat_node('ev',n) * phi_ev_ini(n,ev) * n_ev_e(n,ev) * phi_ev(n,ev) * ev_quant
+****                                                         $140           $140
+**** 140  Unknown symbol
+ 782           + EV_CHARGE(n,ev,h) * eta_ev_in(n,ev)
+****                                         $140
+**** 140  Unknown symbol
+ 783           - EV_DISCHARGE(n,ev,h) / eta_ev_out(n,ev)
+****                                             $140
+**** 140  Unknown symbol
+ 784           - EV_GED(n,ev,h)
+ 785  ;
+ 786   
+ 787  con10c_ev_chargelev(n,ev,h)$(map_n_ev(n,ev) AND ord(h) > 1 AND feat_node('ev',n))..
+ 788           EV_L(n,ev,h) =E= EV_L(n,ev,h-1)
+ 789           + EV_CHARGE(n,ev,h) * eta_ev_in(n,ev)
+ 790           - EV_DISCHARGE(n,ev,h) / eta_ev_out(n,ev)
+ 791  %reserves$ontext
+****  $409
+**** 409  Unrecognizable item - skip to find a new statement
+****        looking for a ';' or a key word to get started again
+ 792  %EV_EXOG%   + sum( reserves_do , phi_reserves_call(n,reserves_do,h) * (RP_EV_G2V(n,reserves_do,ev,h)*eta_ev_in(n,ev) + RP_EV_V2G(n,reserves_do,ev,h)/eta_ev_out(n,ev)) )
+ 793  %EV_EXOG%   - sum( reserves_up , phi_reserves_call(n,reserves_up,h) * (RP_EV_G2V(n,reserves_up,ev,h)*eta_ev_in(n,ev) + RP_EV_V2G(n,reserves_up,ev,h)/eta_ev_out(n,ev)) )
+ 796           - EV_GED(n,ev,h)
+ 797  ;
+ 798   
+ 799  con10d_ev_chargelev_max(n,ev,h)$(map_n_ev(n,ev) AND feat_node('ev',n))..
+ 800           EV_L(n,ev,h)
+ 801           =L= n_ev_e(n,ev) * phi_ev(n,ev) * ev_quant
+ 802               * feat_node('ev',n)
+ 803  ;
+ 804   
+ 805  con10e_ev_maxin(n,ev,h)$(map_n_ev(n,ev) AND feat_node('ev',n))..
+ 806          EV_CHARGE(n,ev,h)
+ 807  %reserves$ontext
+****  $37,409
+****  37  '=l=' or '=e=' or '=g=' operator expected
+**** 409  Unrecognizable item - skip to find a new statement
+****        looking for a ';' or a key word to get started again
+ 808          + sum( reserves_do , RP_EV_G2V(n,reserves_do,ev,h))
+ 811          =L= n_ev_p(n,ev,h) * phi_ev(n,ev) * ev_quant
+ 812              * feat_node('ev',n)
+ 813  ;
+ 814   
+ 815  con10f_ev_maxout(n,ev,h)$(map_n_ev(n,ev) AND feat_node('ev',n))..
+ 816          EV_DISCHARGE(n,ev,h)
+ 817  %reserves$ontext
+****  $37,409
+****  37  '=l=' or '=e=' or '=g=' operator expected
+**** 409  Unrecognizable item - skip to find a new statement
+****        looking for a ';' or a key word to get started again
+ 818          + sum( reserves_up , RP_EV_V2G(n,reserves_up,ev,h))
+ 821          =L= n_ev_p(n,ev,h) * phi_ev(n,ev) * ev_quant
+ 822              * feat_node('ev',n)
+ 823  ;
+ 824   
+ 825  con10g_ev_chargelev_ending(n,ev,h)$(map_n_ev(n,ev) AND ord(h) = card(h) AND feat_node('ev',n))..
+ 826           EV_L(n,ev,h) =E= phi_ev_ini(n,ev) * n_ev_e(n,ev) * phi_ev(n,ev) * ev_quant * feat_node('ev',n)
+ 827  ;
+ 828   
+ 829  con10h_ev_minin(n,ev,h)$(map_n_ev(n,ev) AND feat_node('ev',n))..
+ 830           0 =L= EV_CHARGE(n,ev,h)
+ 831          - sum( reserves_up , RP_EV_G2V(n,reserves_up,ev,h))
+****                                                      $171
+**** 171  Domain violation for set
+ 832  ;
+ 833   
+ 834  con10i_ev_maxin_lev(n,ev,h)$(map_n_ev(n,ev))..
+ 835          ( EV_CHARGE(n,ev,h)
+ 836          + sum( reserves_do , RP_EV_G2V(n,reserves_do,ev,h))
+****                                                      $171
+**** 171  Domain violation for set
+ 837          ) * eta_ev_in(n,ev)
+ 838          =L= n_ev_e(n,ev) * phi_ev(n,ev) * ev_quant - EV_L(n,ev,h-1)
+ 839  ;
+ 840   
+ 841  con10j_ev_minout(n,ev,h)$(map_n_ev(n,ev) AND feat_node('ev',n))..
+ 842           0 =L= EV_DISCHARGE(n,ev,h)
+ 843          - sum( reserves_do , RP_EV_V2G(n,reserves_do,ev,h))
+****                                                      $171
+**** 171  Domain violation for set
+ 844  ;
+ 845   
+ 846  con10k_ev_maxout_lev(n,ev,h)$(map_n_ev(n,ev) AND feat_node('ev',n))..
+ 847          ( EV_DISCHARGE(n,ev,h)
+ 848          + sum( reserves_up , RP_EV_V2G(n,reserves_up,ev,h))
+****                                                      $171
+**** 171  Domain violation for set
+ 849  ) / eta_ev_out(n,ev)
+ 850          =L= EV_L(n,ev,h-1)
+ 851  ;
+ 852   
+ 853  con10l_ev_exog(n,ev,h)$(map_n_ev(n,ev) AND feat_node('ev',n))..
+ 854           EV_CHARGE(n,ev,h)
+ 855           =E=
+ 856           ev_ged_exog(n,ev,h) * phi_ev(n,ev) * ev_quant
+****                     $140
+**** 140  Unknown symbol
+ 857           * feat_node('ev',n)
+ 858  ;
+ 859   
+ 860  * ---------------------------------------------------------------------------- *
+ 861  ***** Prosumage constraints *****
+ 862  * ---------------------------------------------------------------------------- *
+ 863   
+ 864  con11a_pro_distrib(n,res,h)$(map_n_res_pro(n,res))..
+ 865           phi_res(n,res,h) * N_RES_PRO(n,res)
+****                 $140                        $171
+**** 140  Unknown symbol
+**** 171  Domain violation for set
+ 866           =E=
+ 867           CU_PRO(n,res,h) + G_MARKET_PRO2M(n,res,h) + G_RES_PRO(n,res,h) + sum( map_n_sto_pro(n,sto) , STO_IN_PRO2PRO(n,res,sto,h) + STO_IN_PRO2M(n,res,sto,h) )
+****                       $171                      $171                 $171                                                  $171                        $171
+**** 171  Domain violation for set
+ 868  ;
+ 869   
+ 870  con11b_pro_balance(n,h)..
+ 871           phi_pro_load(n) * d(n,h)
+ 872           =E=
+ 873           sum( map_n_res_pro(n,res) , G_RES_PRO(n,res,h)) + sum( map_n_sto_pro(n,sto) , STO_OUT_PRO2PRO(n,sto,h) + STO_OUT_M2PRO(n,sto,h) ) + G_MARKET_M2PRO(n,h)
+****                                                      $171
+**** 171  Domain violation for set
+ 874  ;
+ 875   
+ 876  con11c_pro_selfcon(n)..
+ 877           sum( (h,map_n_res_pro(n,res)) , G_RES_PRO(n,res,h) ) + sum( (h,sto) , STO_OUT_PRO2PRO(n,sto,h) )
+****                                                          $171
+**** 171  Domain violation for set
+ 878           =G=
+ 879           phi_pro_self * sum( h , phi_pro_load(n) * d(n,h))
+****                      $140
+**** 140  Unknown symbol
+ 880  ;
+ 881   
+ 882  con11d_pro_stolev_PRO2PRO(n,sto,h)$(map_n_sto_pro(n,sto) AND ord(h) > 1 )..
+ 883           STO_L_PRO2PRO(n,sto,h) =E= STO_L_PRO2PRO(n,sto,h-1) + sum( map_n_res_pro(n,res) , STO_IN_PRO2PRO(n,res,sto,h))*(1+eta_sto(n,sto))/2 - STO_OUT_PRO2PRO(n,sto,h)/(1+eta_sto(n,sto))*2
+****                                                                                                                 $171
+**** 171  Domain violation for set
+ 884  ;
+ 885   
+ 886  con11e_pro_stolev_PRO2M(n,sto,h)$(map_n_sto_pro(n,sto) AND ord(h) > 1)..
+ 887           STO_L_PRO2M(n,sto,h) =E= STO_L_PRO2M(n,sto,h-1) + sum( map_n_res_pro(n,res) , STO_IN_PRO2M(n,res,sto,h))*(1+eta_sto(n,sto))/2 - STO_OUT_PRO2M(n,sto,h)/(1+eta_sto(n,sto))*2
+****                                                                                                           $171
+**** 171  Domain violation for set
+ 888  ;
+ 889   
+ 890  con11f_pro_stolev_M2PRO(n,sto,h)$(map_n_sto_pro(n,sto) AND ord(h) > 1)..
+ 891           STO_L_M2PRO(n,sto,h) =E= STO_L_M2PRO(n,sto,h-1) + STO_IN_M2PRO(n,sto,h)*(1+eta_sto(n,sto))/2 - STO_OUT_M2PRO(n,sto,h)/(1+eta_sto(n,sto))*2
+ 892  ;
+ 893   
+ 894  con11g_pro_stolev_M2M(n,sto,h)$(ord(h) > 1)..
+ 895           STO_L_M2M(n,sto,h) =E= STO_L_M2M(n,sto,h-1) + STO_IN_M2M(n,sto,h)*(1+eta_sto(n,sto))/2 - STO_OUT_M2M(n,sto,h)/(1+eta_sto(n,sto))*2
+ 896  ;
+ 897   
+ 898  con11h_1_pro_stolev_start_PRO2PRO(n,sto,h)$(map_n_sto_pro(n,sto) AND ord(h) = 1)..
+ 899          STO_L_PRO2PRO(n,sto,h) =E=
+ 900  %prosumage_links_restr$ontext
+****  $119                 $140   $140
+**** 119  Number (primary) expected
+**** 140  Unknown symbol
+ 901          4*
+****          $409
+**** 409  Unrecognizable item - skip to find a new statement
+****        looking for a ';' or a key word to get started again
+ 904           0.25 * phi_sto_pro_ini(n,sto) * N_STO_E_PRO(n,sto)
+ 905           + sum( map_n_res_pro(n,res) , STO_IN_PRO2PRO(n,res,sto,h))*(1+eta_sto(n,sto))/2 - STO_OUT_PRO2PRO(n,sto,h)/(1+eta_sto(n,sto))*2
+ 906  ;
+ 907   
+ 908  con11h_2_pro_stolev_start_PRO2M(n,sto,h)$(map_n_sto_pro(n,sto) AND ord(h) = 1)..
+ 909          STO_L_PRO2M(n,sto,h) =E= 0.25 * phi_sto_pro_ini(n,sto) * N_STO_E_PRO(n,sto) + sum( map_n_res_pro(n,res) , STO_IN_PRO2M(n,res,sto,h))*(1+eta_sto(n,sto))/2 - STO_OUT_PRO2M(n,sto,h)/(1+eta_sto(n,sto))*2
+****                                                        $140                                                                          $171
+**** 140  Unknown symbol
+**** 171  Domain violation for set
+ 910  ;
+ 911   
+ 912  con11h_3_pro_stolev_start_M2PRO(n,sto,h)$(map_n_sto_pro(n,sto) AND ord(h) = 1)..
+ 913          STO_L_M2PRO(n,sto,h) =E= 0.25 * phi_sto_pro_ini(n,sto) * N_STO_E_PRO(n,sto) + STO_IN_M2PRO(n,sto,h)*(1+eta_sto(n,sto))/2 - STO_OUT_M2PRO(n,sto,h)/(1+eta_sto(n,sto))*2
+ 914  ;
+ 915   
+ 916  con11h_4_pro_stolev_start_M2M(n,sto,h)$(map_n_sto_pro(n,sto) AND ord(h) = 1)..
+ 917          STO_L_M2M(n,sto,h) =E= 0.25 * phi_sto_pro_ini(n,sto) * N_STO_E_PRO(n,sto) + STO_IN_M2M(n,sto,h)*(1+eta_sto(n,sto))/2 - STO_OUT_M2M(n,sto,h)/(1+eta_sto(n,sto))*2
+ 918  ;
+ 919   
+ 920  con11i_pro_stolev(n,sto,h)$(map_n_sto_pro(n,sto) AND ord(h)>1)..
+ 921           STO_L_PRO(n,sto,h) =E=   STO_L_PRO2PRO(n,sto,h) +  STO_L_PRO2M(n,sto,h) + STO_L_M2PRO(n,sto,h) + STO_L_M2M(n,sto,h)
+ 922  ;
+ 923   
+ 924  con11j_pro_stolev_max(n,sto,h)..
+ 925          STO_L_PRO(n,sto,h) =L= N_STO_E_PRO(n,sto)
+ 926  ;
+ 927   
+ 928  con11k_pro_maxin_sto(n,sto,h)$(map_n_sto_pro(n,sto))..
+ 929          sum( map_n_res_pro(n,res) , STO_IN_PRO2PRO(n,res,sto,h) + STO_IN_PRO2M(n,res,sto,h) ) + STO_IN_M2PRO(n,sto,h) + STO_IN_M2M(n,sto,h)
+****                                                          $171                        $171
+**** 171  Domain violation for set
+ 930          =L= N_STO_P_PRO(n,sto)
+ 931  ;
+ 932   
+ 933  con11l_pro_maxout_sto(n,sto,h)$(map_n_sto_pro(n,sto))..
+ 934          STO_OUT_PRO2PRO(n,sto,h) + STO_OUT_PRO2M(n,sto,h) + STO_OUT_M2PRO(n,sto,h) + STO_OUT_M2M(n,sto,h)
+ 935          =L= N_STO_P_PRO(n,sto)
+ 936  ;
+ 937   
+ 938  con11m_pro_maxout_lev(n,sto,h)$(map_n_sto_pro(n,sto))..
+ 939          ( STO_OUT_PRO2PRO(n,sto,h) + STO_OUT_M2PRO(n,sto,h) + STO_OUT_PRO2M(n,sto,h) + STO_OUT_M2M(n,sto,h) ) / (1+eta_sto(n,sto))*2
+ 940          =L= STO_L_PRO(n,sto,h-1)
+ 941  ;
+ 942   
+ 943  con11n_pro_maxin_lev(n,sto,h)$(map_n_sto_pro(n,sto))..
+ 944          ( sum( map_n_res_pro(n,res) , STO_IN_PRO2PRO(n,res,sto,h) + STO_IN_PRO2M(n,res,sto,h) ) + STO_IN_M2PRO(n,sto,h) + STO_IN_M2M(n,sto,h) ) * (1+eta_sto(n,sto))/2
+****                                                            $171                        $171
+**** 171  Domain violation for set
+ 945          =L= N_STO_E_PRO(n,sto) - STO_L_PRO(n,sto,h-1)
+ 946  ;
+ 947   
+ 948  con11o_pro_ending(n,sto,h)$(map_n_sto_pro(n,sto) AND ord(h) = card(h))..
+ 949           STO_L_PRO(n,sto,h) =E= phi_sto_pro_ini(n,sto) * N_STO_E_PRO(n,sto)
+ 950  ;
+ 951   
+ 952  * ---------------------------------------------------------------------------- *
+ 953  ***** NTC constraints *****
+ 954  * ---------------------------------------------------------------------------- *
+ 955   
+ 956  ***** Constraint on energy flow between nodes ******
+ 957  con12a_max_f(l,h)$(map_l(l))..
+ 958           F(l,h) =L= NTC(l)
+ 959  ;
+ 960   
+ 961  con12b_min_f(l,h)$(map_l(l))..
+ 962           F(l,h) =G= -NTC(l)
+ 963  ;
+ 964   
+ 965  * ---------------------------------------------------------------------------- *
+ 966  ***** Reservoir constraints *****
+ 967  * ---------------------------------------------------------------------------- *
+ 968   
+ 969  con13a_rsvrlev_start(n,rsvr,h)$(map_n_rsvr(n,rsvr) AND ord(h) = 1)..
+ 970          RSVR_L(n,rsvr,h) =E= phi_rsvr_ini(n,rsvr) * N_RSVR_E(n,rsvr) + rsvr_in(n,rsvr,h)/1000 * N_RSVR_E(n,rsvr) - RSVR_OUT(n,rsvr,h)
+****                                          $140                                 $140
+**** 140  Unknown symbol
+ 971  ;
+ 972   
+ 973  con13b_rsvrlev(rsvr,h,n)$(ord(h) > 1 AND map_n_rsvr(n,rsvr))..
+ 974           RSVR_L(n,rsvr,h) =E= RSVR_L(n,rsvr,h-1) + rsvr_in(n,rsvr,h)/1000 * N_RSVR_E(n,rsvr) - RSVR_OUT(n,rsvr,h)
+ 975  %reserves$ontext
+****  $409
+**** 409  Unrecognizable item - skip to find a new statement
+****        looking for a ';' or a key word to get started again
+ 976                  - sum( reserves_up , RP_RSVR(n,reserves_up,rsvr,h) * phi_reserves_call(n,reserves_up,h) )
+ 977                  + sum( reserves_do , RP_RSVR(n,reserves_do,rsvr,h) * phi_reserves_call(n,reserves_do,h) )
+ 980  ;
+ 981   
+ 982  con13c_rsvrlev_max(n,rsvr,h)$(map_n_rsvr(n,rsvr))..
+ 983          RSVR_L(n,rsvr,h) =L= N_RSVR_E(n,rsvr)
+ 984  ;
+ 985   
+ 986  con13d_maxout_rsvr(rsvr,h,n)$(map_n_rsvr(n,rsvr))..
+ 987          RSVR_OUT(n,rsvr,h)
+ 988  %reserves$ontext
+****  $37,409
+****  37  '=l=' or '=e=' or '=g=' operator expected
+**** 409  Unrecognizable item - skip to find a new statement
+****        looking for a ';' or a key word to get started again
+ 989          + sum( reserves_up , RP_RSVR(n,reserves_up,rsvr,h))
+ 992          =L= N_RSVR_P(n,rsvr)
+ 993  ;
+ 994   
+ 995  con13e_resrv_rsvr(n,rsvr,h)$(map_n_rsvr(n,rsvr))..
+ 996          sum( reserves_do , RP_RSVR(n,reserves_do,rsvr,h))
+ 997          =L= RSVR_OUT(n,rsvr,h)
+ 998  ;
+ 999   
+1000  con13f_maxout_lev(n,rsvr,h)$(map_n_rsvr(n,rsvr))..
+1001          RSVR_OUT(n,rsvr,h)
+1002  %reserves$ontext
+****  $37,409
+****  37  '=l=' or '=e=' or '=g=' operator expected
+**** 409  Unrecognizable item - skip to find a new statement
+****        looking for a ';' or a key word to get started again
+1003          + sum( reserves_up , RP_RSVR(n,reserves_up,rsvr,h))
+1006          =L= RSVR_L(n,rsvr,h-1)
+1007  ;
+1008   
+1009  con13g_ending(n,rsvr,h)$(map_n_rsvr(n,rsvr) AND ord(h) = card(h))..
+1010           RSVR_L(n,rsvr,h) =E= phi_rsvr_ini(n,rsvr) * N_RSVR_E(n,rsvr)
+1011  ;
+1012   
+1013  con13h_smooth(n,rsvr,h)$(map_n_rsvr(n,rsvr) AND feat_node('rsvr_outflow',n))..
+1014           RSVR_OUT(n,rsvr,h) =G= phi_rsvr_min(n) * sum( hh , rsvr_in(n,rsvr,hh)/1000/card(hh)) * N_RSVR_E(n,rsvr)
+****                                             $140
+**** 140  Unknown symbol
+1015  ;
+1016   
+1017  con13i_min_level(n,rsvr,h)$(map_n_rsvr(n,rsvr))..
+1018           RSVR_L(n,rsvr,h) =G= phi_rsvr_lev_min(n,rsvr) * N_RSVR_E(n,rsvr)
+****                                               $140
+**** 140  Unknown symbol
+1019  ;
+1020   
+1021  con13j_min_FLH(n,rsvr)$(map_n_rsvr(n,rsvr))..
+1022           sum( h , RSVR_OUT(n,rsvr,h) ) =G= min_flh(n,rsvr) * N_RSVR_P(n,rsvr)
+****                                                   $140
+**** 140  Unknown symbol
+1023  ;
+1024   
+1025   
+1026  * ---------------------------------------------------------------------------- *
+1027  ***** Heating constraints *****
+1028  * ---------------------------------------------------------------------------- *
+1029   
+1030  * Energy balances
+1031  con14a_heat_balance(n,bu,ch,h)$feat_node('heat',n)..
+1032           theta_dir(n,bu,ch) * H_DIR(n,bu,ch,h) + theta_sets(n,bu,ch) * H_SETS_OUT(n,bu,ch,h)+ theta_storage(n,bu,ch) * H_STO_OUT(n,bu,ch,h)
+****                   $140                                     $140                                            $140
+**** 140  Unknown symbol
+1033           + theta_sets(n,bu,ch) * (1-eta_heat_stat(n,bu,ch)) * H_SETS_LEV(n,bu,ch,h-1)$(theta_sets(n,bu,ch) AND ord(h) > 1)
+****                                                  $140
+**** 140  Unknown symbol
+1034           =G= dh(n,bu,ch,h)
+****                $140
+**** 140  Unknown symbol
+1035  ;
+1036   
+1037  con14b_dhw_balance(n,bu,ch,h)$feat_node('heat',n)..
+1038           theta_storage(n,bu,ch) * H_DHW_STO_OUT(n,bu,ch,h) + theta_dir(n,bu,ch) * H_DHW_DIR(n,bu,ch,h) + theta_sets(n,bu,ch) * H_DHW_AUX_OUT(n,bu,ch,h)
+1039           =E=
+1040           d_dhw(n,bu,ch,h)
+****               $140
+**** 140  Unknown symbol
+1041  ;
+1042   
+1043  * SETS
+1044  con14c_sets_level(n,bu,ch,h)$(feat_node('heat',n) AND theta_sets(n,bu,ch) AND ord(h) > 1)..
+1045           H_SETS_LEV(n,bu,ch,h) =E= eta_heat_stat(n,bu,ch) * H_SETS_LEV(n,bu,ch,h-1) + eta_heat_dyn(n,bu,ch) * H_SETS_IN(n,bu,ch,h) - H_SETS_OUT(n,bu,ch,h)
+****                                                                                                   $140
+**** 140  Unknown symbol
+1046  %reserves$ontext
+****  $409
+**** 409  Unrecognizable item - skip to find a new statement
+****        looking for a ';' or a key word to get started again
+1047           - theta_sets(n,bu,ch) * eta_heat_dyn(n,bu,ch) * (sum( reserves_up , RP_SETS(n,reserves_up,bu,ch,h) * phi_reserves_call(n,reserves_up,h) )
+1048           - sum( reserves_do , RP_SETS(n,reserves_do,bu,ch,h) * phi_reserves_call(n,reserves_do,h) ))
+1051  ;
+1052   
+1053  con14d_sets_level_start(n,bu,ch,h)$(feat_node('heat',n) AND theta_sets(n,bu,ch) AND (ord(h) = 1 OR ord(h) = card(h)))..
+1054           H_SETS_LEV(n,bu,ch,h) =E= phi_heat_ini(n,bu,ch) * n_sets_e(n,bu,ch)
+****                                                $140                $140
+**** 140  Unknown symbol
+1055  ;
+1056   
+1057  con14e_sets_maxin(n,bu,ch,h)$(feat_node('heat',n) AND theta_sets(n,bu,ch))..
+1058           H_SETS_IN(n,bu,ch,h)
+1059  %reserves$ontext
+****  $37,409
+****  37  '=l=' or '=e=' or '=g=' operator expected
+**** 409  Unrecognizable item - skip to find a new statement
+****        looking for a ';' or a key word to get started again
+1060           + theta_sets(n,bu,ch) * sum( reserves_do , RP_SETS(n,reserves_do,bu,ch,h) )
+1063           =L= n_sets_p_in(n,bu,ch)
+1064  ;
+1065   
+1066  con14f_sets_maxout(n,bu,ch,h)$(feat_node('heat',n) AND theta_sets(n,bu,ch))..
+1067           H_SETS_OUT(n,bu,ch,h) =L= n_sets_p_out(n,bu,ch)
+****                                                $140
+**** 140  Unknown symbol
+1068  ;
+1069   
+1070  con14g_sets_minin(n,bu,ch,h)$(feat_node('heat',n) AND theta_sets(n,bu,ch))..
+1071          sum( reserves_up , RP_SETS(n,reserves_up,bu,ch,h))
+1072          =L= H_SETS_IN(n,bu,ch,h)
+1073  ;
+1074   
+1075  con14h_sets_maxlev(n,bu,ch,h)$(feat_node('heat',n) AND theta_sets(n,bu,ch))..
+1076           H_SETS_LEV(n,bu,ch,h) =L= n_sets_e(n,bu,ch)
+1077  ;
+1078   
+1079  * SETS and DHW
+1080  con14i_sets_aux_dhw_level(n,bu,ch,h)$(feat_node('heat',n) AND theta_sets(n,bu,ch) AND ord(h) > 1)..
+1081           H_DHW_AUX_LEV(n,bu,ch,h) =E= eta_dhw_aux_stat(n,bu,ch) * H_DHW_AUX_LEV(n,bu,ch,h-1) + H_DHW_AUX_ELEC_IN(n,bu,ch,h) - H_DHW_AUX_OUT(n,bu,ch,h)
+****                                                       $140
+**** 140  Unknown symbol
+1082  %reserves$ontext
+****  $409
+**** 409  Unrecognizable item - skip to find a new statement
+****        looking for a ';' or a key word to get started again
+1083           - theta_sets(n,bu,ch) * (sum( reserves_up , RP_SETS_AUX(n,reserves_up,bu,ch,h) * phi_reserves_call(n,reserves_up,h) )
+1084           - sum( reserves_do , RP_SETS_AUX(n,reserves_do,bu,ch,h) * phi_reserves_call(n,reserves_do,h) ))
+1087  ;
+1088   
+1089  con14j_sets_aux_dhw_level_start(n,bu,ch,h)$(feat_node('heat',n) AND theta_sets(n,bu,ch) AND (ord(h) = 1 OR ord(h) = card(h)) )..
+1090           H_DHW_AUX_LEV(n,bu,ch,h) =E= phi_heat_ini(n,bu,ch) * n_sets_dhw_e(n,bu,ch)
+****                                                                           $140
+**** 140  Unknown symbol
+1091  ;
+1092   
+1093  con14k_sets_aux_dhw_maxin(n,bu,ch,h)$(feat_node('heat',n) AND theta_sets(n,bu,ch) )..
+1094           H_DHW_AUX_ELEC_IN(n,bu,ch,h)
+1095  %reserves$ontext
+****  $37,409
+****  37  '=l=' or '=e=' or '=g=' operator expected
+**** 409  Unrecognizable item - skip to find a new statement
+****        looking for a ';' or a key word to get started again
+1096           + theta_sets(n,bu,ch) * sum( reserves_do , RP_SETS_AUX(n,reserves_do,bu,ch,h) )
+1099           =L= n_sets_dhw_p_in(n,bu,ch)
+1100  ;
+1101   
+1102  con14l_sets_aux_dhw_minin(n,bu,ch,h)$(feat_node('heat',n) AND feat_node('reserves',n) AND theta_sets(n,bu,ch)  )..
+1103          sum( reserves_up , RP_SETS_AUX(n,reserves_up,bu,ch,h))
+****                                                      $171
+**** 171  Domain violation for set
+1104          =L= H_DHW_AUX_ELEC_IN(n,bu,ch,h)
+1105  ;
+1106   
+1107  con14m_sets_aux_dhw_maxlev(n,bu,ch,h)$(feat_node('heat',n) AND theta_sets(n,bu,ch) )..
+1108           H_DHW_AUX_LEV(n,bu,ch,h) =L= n_sets_dhw_e(n,bu,ch)
+1109  ;
+1110   
+1111  * HEAT PUMPS
+1112  con14n_hp_in(n,bu,hp,h)$(feat_node('heat',n) AND theta_hp(n,bu,hp))..
+****                     $120,340                             $140
+**** 120  Unknown identifier entered as set
+**** 140  Unknown symbol
+**** 340  A label/element with the same name exist. You may have forgotten
+****         to quote a label/element reference. For example,
+****         set i / a,b,c /; parameter x(i); x('a') = 10;
+1113           H_STO_IN_HP(n,bu,hp,h) =E= (H_HP_IN(n,bu,hp,h)
+****                              $171                    $171,171
+**** 171  Domain violation for set
+1114  %reserves$ontext
+****  $8,409
+****   8  ')' expected
+**** 409  Unrecognizable item - skip to find a new statement
+****        looking for a ';' or a key word to get started again
+1115           - theta_hp(n,bu,hp) * (sum( reserves_up , RP_HP(n,reserves_up,bu,hp,h) * phi_reserves_call(n,reserves_up,h) )
+1116           - sum( reserves_do , RP_HP(n,reserves_do,bu,hp,h) * phi_reserves_call(n,reserves_do,h) ))
+1119           ) * eta_heat_dyn(n,bu,hp) * ((temp_sink(n,bu,hp)+273.15)/(temp_sink(n,bu,hp) - temp_source(n,bu,hp,h)))
+1120  ;
+1121   
+1122  con14o_hp_maxin(n,bu,hp,h)$(feat_node('heat',n) AND theta_hp(n,bu,hp))..
+1123           H_HP_IN(n,bu,hp,h)
+****                          $171,171
+**** 171  Domain violation for set
+1124  %reserves$ontext
+****  $37,409
+****  37  '=l=' or '=e=' or '=g=' operator expected
+**** 409  Unrecognizable item - skip to find a new statement
+****        looking for a ';' or a key word to get started again
+1125           + sum( reserves_do , RP_HP(n,reserves_do,bu,hp,h) )
+1128           =L= n_heat_p_in(n,bu,hp)
+1129  ;
+1130   
+1131  con14p_hp_minin(n,bu,hp,h)$(feat_node('heat',n) AND theta_hp(n,bu,hp))..
+1132          sum( reserves_up , RP_HP(n,reserves_up,bu,hp,h))
+****                                                $171  $171
+**** 171  Domain violation for set
+1133          =L= H_HP_IN(n,bu,hp,h)
+****                             $171,171
+**** 171  Domain violation for set
+1134  ;
+1135   
+1136  * (Hybrid) ELECTRIC HEATING
+1137  con14q_storage_elec_in(n,bu,hel,h)$(feat_node('heat',n) AND theta_storage(n,bu,hel) AND theta_elec(n,bu,hel) )..
+****                                $120,340                                                           $140
+**** 120  Unknown identifier entered as set
+**** 140  Unknown symbol
+**** 340  A label/element with the same name exist. You may have forgotten
+****         to quote a label/element reference. For example,
+****         set i / a,b,c /; parameter x(i); x('a') = 10;
+1138           H_STO_IN_ELECTRIC(n,bu,hel,h) =E= H_ELECTRIC_IN(n,bu,hel,h)
+****                                     $171                          $171
+**** 171  Domain violation for set
+1139  %reserves$ontext
+****  $409
+**** 409  Unrecognizable item - skip to find a new statement
+****        looking for a ';' or a key word to get started again
+1140           - theta_elec(n,bu,hel) * (sum( reserves_up , RP_H_ELEC(n,reserves_up,bu,hel,h) * phi_reserves_call(n,reserves_up,h) )
+1141           - sum( reserves_do , RP_H_ELEC(n,reserves_do,bu,hel,h) * phi_reserves_call(n,reserves_do,h) ))
+1144  ;
+1145   
+1146  con14r_storage_elec_maxin(n,bu,hel,h)$(feat_node('heat',n) AND theta_storage(n,bu,hel) AND theta_elec(n,bu,hel ))..
+1147           H_ELECTRIC_IN(n,bu,hel,h)
+****                                 $171
+**** 171  Domain violation for set
+1148  %reserves$ontext
+****  $37,409
+****  37  '=l=' or '=e=' or '=g=' operator expected
+**** 409  Unrecognizable item - skip to find a new statement
+****        looking for a ';' or a key word to get started again
+1149           + sum( reserves_do , RP_H_ELEC(n,reserves_do,bu,hel,h) )
+1152           =L= n_heat_p_in(n,bu,hel)
+1153  ;
+1154   
+1155  con14s_storage_elec_minin(n,bu,hel,h)$(feat_node('heat',n) AND feat_node('reserves',n) AND theta_storage(n,bu,hel) AND theta_elec(n,bu,hel) )..
+1156          sum( reserves_up , RP_H_ELEC(n,reserves_up,bu,hel,h))
+****                                                    $171   $171
+**** 171  Domain violation for set
+1157          =L= H_ELECTRIC_IN(n,bu,hel,h)
+****                                    $171
+**** 171  Domain violation for set
+1158  ;
+1159   
+1160  * HEAT STORAGE
+1161  con14t_storage_level(n,bu,hst,h)$(feat_node('heat',n) AND theta_storage(n,bu,hst) AND ord(h) > 1)..
+****                              $120,340
+**** 120  Unknown identifier entered as set
+**** 340  A label/element with the same name exist. You may have forgotten
+****         to quote a label/element reference. For example,
+****         set i / a,b,c /; parameter x(i); x('a') = 10;
+1162           H_STO_LEV(n,bu,hst,h)
+****                             $171
+**** 171  Domain violation for set
+1163           =E=
+1164           eta_heat_stat(n,bu,hst) * H_STO_LEV(n,bu,hst,h-1) + theta_hp(n,bu,hst)*H_STO_IN_HP(n,bu,hst,h) + theta_elec(n,bu,hst)*H_STO_IN_ELECTRIC(n,bu,hst,h) + theta_fossil(n,bu,hst) * H_STO_IN_FOSSIL(n,bu,hst,h)
+****                                                       $171                                           $171                                                 $171             $140                                  $171
+**** 140  Unknown symbol
+**** 171  Domain violation for set
+1165           - H_STO_OUT(n,bu,hst,h) - H_DHW_STO_OUT(n,bu,hst,h)
+****                               $171                        $171
+**** 171  Domain violation for set
+1166  ;
+1167   
+1168  con14u_storage_level_start(n,bu,hst,h)$(feat_node('heat',n) AND theta_storage(n,bu,hst) AND (ord(h) = 1 OR ord(h) = card(h)))..
+1169           H_STO_LEV(n,bu,hst,h) =E= phi_heat_ini(n,bu,hst) * theta_storage(n,bu,hst)*n_heat_e(n,bu,hst)
+****                             $171                                                            $140
+**** 140  Unknown symbol
+**** 171  Domain violation for set
+1170  ;
+1171   
+1172  con14v_storage_maxlev(n,bu,hst,h)$(feat_node('heat',n) AND theta_storage(n,bu,hst))..
+1173           H_STO_LEV(n,bu,hst,h) =L= n_heat_e(n,bu,hst)
+****                             $171
+**** 171  Domain violation for set
+1174  ;
+1175   
+1176   
+1177   
+1178   
+1179  ********************************************************************************
+1180  ***** MODEL *****
+1181  ********************************************************************************
+1182   
+1183  model DIETER /
+1184  obj
+1185   
+1186  con1a_bal
+1187   
+1188  con2a_loadlevel
+1189  con2b_loadlevelstart
+1190   
+1191  con3a_maxprod_dispatchable
+1192  %reserves$ontext
+****  $2      $234,2 $234
+****   2  Identifier expected
+**** 234  Illegal type in model list - equation or equation.variable
+****        or another model list
+1193    con3b_minprod_dispatchable
+1194    con3c_flex_reserves_spin
+1195    con3d_flex_reserves_nonspin
+1198  con3e_maxprod_res
+1199  %reserves$ontext
+****  $2      $234,2 $234
+****   2  Identifier expected
+**** 234  Illegal type in model list - equation or equation.variable
+****        or another model list
+1200    con3f_minprod_res
+1203   
+1204  con4a_stolev_start
+1205  con4b_stolev
+1206  con4c_stolev_max
+1207  con4d_maxin_sto
+1208  con4e_maxout_sto
+1209  %reserves$ontext
+****  $2      $234,2 $234
+****   2  Identifier expected
+**** 234  Illegal type in model list - equation or equation.variable
+****        or another model list
+1210    con4f_resrv_sto
+1211    con4g_resrv_sto
+1214   
+1215  %storage_flow_constraint%con4h_maxout_lev
+****  $2                     $140,2
+****   2  Identifier expected
+**** 140  Unknown symbol
+1216  %storage_flow_constraint%con4i_maxin_lev
+****  $2                     $236,2
+****   2  Identifier expected
+**** 236  Duplicate identifier(s) in model definition
+1217  %storage_flow_constraint%con4j_ending
+****  $2                     $236,2
+****   2  Identifier expected
+**** 236  Duplicate identifier(s) in model definition
+1218  %storage_flow_constraint%con4k_PHS_EtoP
+****  $2                     $236,2
+****   2  Identifier expected
+**** 236  Duplicate identifier(s) in model definition
+1219   
+1220  con5a_minRES
+1221  con5b_max_energy
+1222   
+1223  %DSM$ontext
+****  $2 $234,2 $234
+****   2  Identifier expected
+**** 234  Illegal type in model list - equation or equation.variable
+****        or another model list
+1224  con6a_DSMcurt_duration_max
+1225  con6b_DSMcurt_max
+1226   
+1227  con7a_DSMshift_upanddown
+1228  con7b_DSMshift_granular_max
+1229  con7c_DSM_distrib_up
+1230  con7d_DSM_distrib_do
+1231  *con_7e_DSMshift_recovery
+1234   
+1235  con8a_max_I_power
+1236  con8b_max_I_sto_e
+1237  con8c_max_I_sto_p
+1238  %DSM$ontext
+****  $2 $234,2 $234
+****   2  Identifier expected
+**** 234  Illegal type in model list - equation or equation.variable
+****        or another model list
+1239    con8d_max_I_dsm_cu
+1240    con8e_max_I_dsm_shift_pos
+1243  con8i_max_I_ntc
+1244  con8j_max_I_rsvr_e
+1245  con8k_max_I_rsvr_p
+1246   
+1247  %reserves_endogenous$ontext
+****  $2                 $140,2 $234
+****   2  Identifier expected
+**** 140  Unknown symbol
+**** 234  Illegal type in model list - equation or equation.variable
+****        or another model list
+1248   con9a_reserve_prov_endogenous
+1249   con9b_reserve_prov_PR_endogenous
+1252   
+1253  %reserves_exogenous$ontext
+****  $2                $140,2 $234
+****   2  Identifier expected
+**** 140  Unknown symbol
+**** 234  Illegal type in model list - equation or equation.variable
+****        or another model list
+1254   con9a_reserve_prov_exogenous
+1255   con9b_reserve_prov_PR_exogenous
+1258   
+1259  %EV$ontext
+****  $2$234,2 $234
+****   2  Identifier expected
+**** 234  Illegal type in model list - equation or equation.variable
+****        or another model list
+1260   con10a_ev_ed
+1261  %EV_EXOG% con10b_ev_chargelev_start
+****  $2     $140,2
+****   2  Identifier expected
+**** 140  Unknown symbol
+1262   con10c_ev_chargelev
+1263   con10d_ev_chargelev_max
+1264  %EV_EXOG% con10e_ev_maxin
+****  $2     $236,2
+****   2  Identifier expected
+**** 236  Duplicate identifier(s) in model definition
+1265  %EV_EXOG% con10f_ev_maxout
+****  $2     $236,2
+****   2  Identifier expected
+**** 236  Duplicate identifier(s) in model definition
+1266  %EV_EXOG% con10g_ev_chargelev_ending
+****  $2     $236,2
+****   2  Identifier expected
+**** 236  Duplicate identifier(s) in model definition
+1269  %EV$ontext
+****  $2$234,2 $234
+****   2  Identifier expected
+**** 234  Illegal type in model list - equation or equation.variable
+****        or another model list
+1270  %reserves$ontext
+****  $2      $234,2 $234
+****   2  Identifier expected
+**** 234  Illegal type in model list - equation or equation.variable
+****        or another model list
+1271  %EV_EXOG% con10h_ev_minin
+****  $2     $236,2
+****   2  Identifier expected
+**** 236  Duplicate identifier(s) in model definition
+1272  %EV_EXOG% con10i_ev_maxin_lev
+****  $2     $236,2
+****   2  Identifier expected
+**** 236  Duplicate identifier(s) in model definition
+1273  %EV_EXOG% con10j_ev_minout
+****  $2     $236,2
+****   2  Identifier expected
+**** 236  Duplicate identifier(s) in model definition
+1274  %EV_EXOG% con10k_ev_maxout_lev
+****  $2     $236,2
+****   2  Identifier expected
+**** 236  Duplicate identifier(s) in model definition
+1277  %EV$ontext
+****  $2$234,2 $234
+****   2  Identifier expected
+**** 234  Illegal type in model list - equation or equation.variable
+****        or another model list
+1278  %EV_EXOG$ontext
+****  $2     $236,2 $234
+****   2  Identifier expected
+**** 234  Illegal type in model list - equation or equation.variable
+****        or another model list
+**** 236  Duplicate identifier(s) in model definition
+1279   con10l_ev_exog
+1282   
+1283  %prosumage$ontext
+****  $2       $140,2 $234
+****   2  Identifier expected
+**** 140  Unknown symbol
+**** 234  Illegal type in model list - equation or equation.variable
+****        or another model list
+1284  con8f_max_pro_res
+1285  con8g_max_pro_sto_e
+1286  con8h_max_sto_pro_p
+1287  con11a_pro_distrib
+1288  con11b_pro_balance
+1289  con11c_pro_selfcon
+1290  con11d_pro_stolev_PRO2PRO
+1291  con11e_pro_stolev_PRO2M
+1292  con11f_pro_stolev_M2PRO
+1293  con11g_pro_stolev_M2M
+1294  con11h_1_pro_stolev_start_PRO2PRO
+1295  con11h_2_pro_stolev_start_PRO2M
+1296  con11h_3_pro_stolev_start_M2PRO
+1297  con11h_4_pro_stolev_start_M2M
+1298  con11i_pro_stolev
+1299  con11j_pro_stolev_max
+1300  con11k_pro_maxin_sto
+1301  con11l_pro_maxout_sto
+1302  con11m_pro_maxout_lev
+1303  con11n_pro_maxin_lev
+1304  con11o_pro_ending
+1307   
+1308  con12a_max_f
+1309  con12b_min_f
+1310   
+1311  con13a_rsvrlev_start
+1312  con13b_rsvrlev
+1313  con13c_rsvrlev_max
+1314  con13d_maxout_rsvr
+1315  con13e_resrv_rsvr
+1316  con13f_maxout_lev
+1317  con13g_ending
+1318  *con13h_smooth
+1319  con13i_min_level
+1320  *con13j_min_FLH
+1321   
+1322  %heat$ontext
+****  $2  $140,2 $234
+****   2  Identifier expected
+**** 140  Unknown symbol
+**** 234  Illegal type in model list - equation or equation.variable
+****        or another model list
+1323  con14a_heat_balance
+1324  con14b_dhw_balance
+1325  con14c_sets_level
+1326  con14d_sets_level_start
+1327  con14e_sets_maxin
+1328  con14f_sets_maxout
+1329  con14h_sets_maxlev
+1330   
+1331  con14i_sets_aux_dhw_level
+1332  con14j_sets_aux_dhw_level_start
+1333  con14k_sets_aux_dhw_maxin
+1334  con14l_sets_aux_dhw_minin
+1335  con14m_sets_aux_dhw_maxlev
+1336   
+1337  con14n_hp_in
+1338  con14o_hp_maxin
+1339  con14q_storage_elec_in
+1340  con14r_storage_elec_maxin
+1341  con14t_storage_level
+1342  con14u_storage_level_start
+1343  con14v_storage_maxlev
+1346   
+1347  %heat$ontext
+****  $2  $236,2 $234
+****   2  Identifier expected
+**** 234  Illegal type in model list - equation or equation.variable
+****        or another model list
+**** 236  Duplicate identifier(s) in model definition
+1348  %reserves$ontext
+****  $2      $234,2 $234
+****   2  Identifier expected
+**** 234  Illegal type in model list - equation or equation.variable
+****        or another model list
+1349  con14g_sets_minin
+1350  con14p_hp_minin
+1351  con14s_storage_elec_minin
+1354  /;
+
+**** 358 ERROR(S)   0 WARNING(S)
+
+
+COMPILATION TIME     =        0.032 SECONDS      3 MB  25.1.2 r67455 WEX-WEI
+
+
+USER: Medium MUD - 10 User License                   S180308:0349AO-GEN
+      Deutsches Institut fuer Wirtschaftsforschung DIW, AbteilungDC3975
+      License for teaching and research at degree granting institutions
+
+
+**** FILE SUMMARY
+
+Input      C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\model.gms
+Output     C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\model.lst
+
+**** USER ERROR(S) ENCOUNTERED

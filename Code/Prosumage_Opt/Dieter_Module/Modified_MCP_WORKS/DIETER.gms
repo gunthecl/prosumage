@@ -19,7 +19,7 @@ $offtext
 **************************
 
 * Set star to skip Excel upload and load data from gdx
-$setglobal skip_Excel "*"
+$setglobal skip_Excel ""
 
 
 * Choose base year
@@ -75,7 +75,7 @@ $if "%ror_parameter%" == "*" $if "%ror_variable%" == "*" $abort Choose appropria
 
 sets
 %loop_over_renewable_share%$ontext
-loop_res_share   Solution loop for different shares of renewables       /50/
+loop_res_share   Solution loop for different shares of renewables       /50,80/
 $ontext
 $offtext
 
