@@ -33,10 +33,12 @@ $setglobal GER_only "*"
 * Dispatch only - used fixed capacities (also deactivates bio energy restriction)
 $setglobal dispatch_model "*"
 
+$setglobal load_change_costs ""
+
 $setglobal prosumage ""
 
 * Set to "*" to select linear program, leave blank to select MCP
-$setglobal LP "*"
+$setglobal LP ""
 
 * Set star to select run-of-river options either as exogenous parameter or as endogenous variable including reserve provision:
 * if nothing is selected, ROR capacity will be set to zero
@@ -391,11 +393,6 @@ CU.l,
 STO_IN.l,
 STO_OUT.l,
 STO_L.l
-lambda_enerbal.m,
-lambda_enerbal.l,
-lambda_resgen.m,
-lambda_convgen.m,
-lambda_stolev.m
 ;
 
 $ontext

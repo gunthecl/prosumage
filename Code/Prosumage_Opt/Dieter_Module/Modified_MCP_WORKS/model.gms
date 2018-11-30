@@ -378,13 +378,19 @@ KKTG_L(tech,h)$dis(tech)..
 
     + c_m(tech)
     - lambda_enerbal(h)
+%load_change_costs%$ontext    
     + lambda_convgen(tech,h)
+$ontext
+$offtext    
     + mu_conv_cap(tech,h)
 %investment_model%$ontext      
     + mu_bio_cap(tech)$dis_bio(tech)
 $ontext
-$offtext    
+$offtext
+%load_change_costs%$ontext    
    - (lambda_convgen(tech,h+1))$(ord(h) > 1)
+$ontext
+$offtext
     =G= 0
 
 ;
@@ -527,7 +533,11 @@ model DIETER /
 obj
 
 con1a_bal
+
+%load_change_costs%$ontext
 con2_loadlevel
+$ontext
+$offtext
 
 con3a_maxprod_dispatchable
 con3e_maxprod_res
@@ -571,7 +581,11 @@ $offtext
 model DIETER_MCP /
 
 con1a_bal.lambda_enerbal
+
+%load_change_costs%$ontext
 con2_loadlevel.lambda_convgen
+$ontext
+$offtext
 
 con3a_maxprod_dispatchable.mu_conv_cap
 con3e_maxprod_res.lambda_resgen
@@ -594,8 +608,13 @@ $ontext
 $offtext
 
 KKTG_L.G_L
+
+%load_change_costs%$ontext
 KKTG_UP.G_UP
 KKTG_DO.G_DO
+$ontext
+$offtext
+
 KKTG_RES.G_RES
 KKTCU.CU
 KKTSTO_IN.STO_IN
