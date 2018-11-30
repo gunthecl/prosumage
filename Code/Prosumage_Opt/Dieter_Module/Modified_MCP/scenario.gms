@@ -37,7 +37,7 @@ N_TECH.fx(tech)  = m_exog_p(tech) + 0.1 ;
 N_STO_P.fx(sto)  = m_exog_sto_p(sto) ;
 N_STO_E.fx(sto)  = m_exog_sto_e(sto) ;
 
-N_TECH.fx('nuc')     = no  ;     
+N_TECH.fx('nuc')     = no  ;
 N_STO_E.fx('sto1')   = no ;
 N_STO_E.fx('sto2')   = no ;
 N_STO_E.fx('sto3')   = no ;
@@ -55,7 +55,7 @@ $ontext
 $offtext
 
 *** Investment model
-%investment_model%$ontext  
+%investment_model%$ontext
 N_TECH.lo(tech)        = 0 ;
 N_TECH.lo('wind_on')   = m_exog_p('wind_on') ;
 N_TECH.lo('wind_off')  = m_exog_p('wind_off') ;
@@ -76,4 +76,7 @@ N_STO_E.up('sto5')     = inf ;
 N_STO_E.up('sto7')     = inf ;
 $ontext
 $offtext
+
+
+
 

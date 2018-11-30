@@ -20,7 +20,7 @@ $offtext
 ***** Set star to activate options
 
 * Set star to skip Excel upload and load data from gdx
-$setglobal skip_Excel ""
+$setglobal skip_Excel "*"
 
 
 * Choose base year
@@ -30,10 +30,10 @@ $setglobal base_year "'2030'"
 $setglobal GER_only "*"
 
 * Dispatch only - used fixed capacities (also deactivates bio energy restriction)                 
-$setglobal dispatch_model ""
+$setglobal dispatch_model "*"
 
 * Select if you want to use load change costs
-$setglobal load_change_costs ""
+$setglobal load_change_costs "*"
 
 $setglobal prosumage ""
 

@@ -29,7 +29,7 @@ dsm                      DSM technologies
  dsm_shift(dsm)          DSM load shifting technologies
  dsm_curt(dsm)           DSM load curtailment technologies
 year                     Base year for temporal data
-h                        Hours               /h1h:100/
+h                        Hours
 n                        Nodes
 l                        Lines
 ev                       EV types
@@ -400,7 +400,7 @@ par=reserves_data_upload         rng=reserves!B5         rdim=4 cdim=1
 par=heat_data_upload             rng=heat!B5             rdim=6 cdim=1
 $offecho
 
-*%skip_Excel%
+%skip_Excel%
 $call "gdxxrw data_input.xlsx @temp.tmp o=Data_input maxdupeerrors=100";
 
 $GDXin Data_input.gdx
@@ -415,20 +415,16 @@ $load bu ch heat_storage heat_hp heat_elec heat_fossil headers_heat heat_data_up
 ;
 
 $ontext
-parameter inc ;
-inc(l,n) = 1 ;
 $ontext
 $offtext
 
 
 ***************  UPLOAD TIME-SERIES SETS AND PARAMETERS  ***********************
 
-
-*dset=h                           rng=basic!A9            rdim=1 cdim=0
 $onecho >temp2.tmp
 se=0
 
-
+dset=h                           rng=basic!A9            rdim=1 cdim=0
 dset=headers_time                rng=basic!B8            rdim=0 cdim=1
 dset=year                        rng=basic!B7            rdim=0 cdim=1
 par=time_data_upload             rng=basic!A7            rdim=1 cdim=2

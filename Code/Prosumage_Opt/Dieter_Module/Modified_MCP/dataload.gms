@@ -400,7 +400,7 @@ par=reserves_data_upload         rng=reserves!B5         rdim=4 cdim=1
 par=heat_data_upload             rng=heat!B5             rdim=6 cdim=1
 $offecho
 
-*%skip_Excel%
+%skip_Excel%
 $call "gdxxrw data_input.xlsx @temp.tmp o=Data_input maxdupeerrors=100";
 
 $GDXin Data_input.gdx
@@ -415,8 +415,6 @@ $load bu ch heat_storage heat_hp heat_elec heat_fossil headers_heat heat_data_up
 ;
 
 $ontext
-parameter inc ;
-inc(l,n) = 1 ;
 $ontext
 $offtext
 
