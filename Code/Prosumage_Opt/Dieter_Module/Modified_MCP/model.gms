@@ -11,7 +11,6 @@ We are happy to receive feedback under azerrahn@diw.de and wschill@diw.de.
 $offtext
 ********************************************************************************
 
-
 Variables
 Z                  Value objective function [Euro]
 lambda_enerbal     Dual variable on energy balance (1a)
@@ -414,7 +413,8 @@ KKTG_DO(dis,h)..
 
 ;
 
-KKTG_RES(nondis,h)..
+* Note: Fixed generation from ror is excluded since this is a parameter
+KKTG_RES(nondis,h)$(not fx(nondis))..
 
      - lambda_enerbal(h) + lambda_resgen(nondis,h)
      =G= 0

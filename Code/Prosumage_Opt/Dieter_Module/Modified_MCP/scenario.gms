@@ -37,20 +37,6 @@ N_TECH.fx(tech)  = m_exog_p(tech) + 0.1 ;
 N_STO_P.fx(sto)  = m_exog_sto_p(sto) ;
 N_STO_E.fx(sto)  = m_exog_sto_e(sto) ;
 
-N_TECH.fx('nuc')     = no  ;
-N_STO_E.fx('sto1')   = no ;
-N_STO_E.fx('sto2')   = no ;
-N_STO_E.fx('sto3')   = no ;
-N_STO_E.fx('sto4')   = no ;
-N_STO_E.fx('sto6')   = no ;
-N_STO_E.fx('sto7')   = no ;
-N_STO_P.fx('sto1')   = no ;
-N_STO_P.fx('sto2')   = no ;
-N_STO_P.fx('sto3')   = no ;
-N_STO_P.fx('sto4')   = no ;
-N_STO_P.fx('sto6')   = no ;
-N_STO_P.fx('sto7')   = no ;
-
 $ontext
 $offtext
 
@@ -68,12 +54,8 @@ N_TECH.up('wind_off')  = inf ;
 N_TECH.up('pv')        = inf ;
 N_STO_P.up(sto)        = m_exog_sto_p(sto) + 0.1 ;
 N_STO_E.up(sto)        = m_exog_sto_e(sto) + 0.1 ;
-N_STO_P.up('sto1')     = inf ;
 N_STO_P.up('sto5')     = inf ;
-N_STO_P.up('sto7')     = inf ;
-N_STO_E.up('sto1')     = inf ;
-N_STO_E.up('sto5')     = inf ;
-N_STO_E.up('sto7')     = inf ;
+
 $ontext
 $offtext
 

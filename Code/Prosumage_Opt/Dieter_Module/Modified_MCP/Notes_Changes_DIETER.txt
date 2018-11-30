@@ -7,3 +7,4 @@ Change set index hh to h in energy blanace.
 No binding minRes restriction. 
 Storage level in t=0 must be zero, i.e. phi_sto_ini(sto) = 0.
 Use dispatch version with different fixed values.
+Deleted nuc and all storages without fixed capacities.

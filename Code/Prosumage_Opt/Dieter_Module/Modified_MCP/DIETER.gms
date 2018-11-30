@@ -53,7 +53,7 @@ $setglobal report_to_excel ""
 * ----------------- Select if to use MCP or LP format --------------------------
 
 * Set to "*" to select linear program, leave blank to select MCP
-$setglobal LP "*"
+$setglobal LP ""
 
 
 ********************************************************************************
@@ -175,12 +175,13 @@ $include fix.gms
 $include scenario.gms
 
 %LP%$ontext
+option limrow = 10, limcol = 10, solprint = on ;
 solve  DIETER using lp min Z ;
 $ontext
 $offtext
 
 %MCP%$ontext
-
+option limrow = 10, limcol = 10, solprint = on ;
 solve   DIETER_MCP using mcp;
 $ontext
 $offtext

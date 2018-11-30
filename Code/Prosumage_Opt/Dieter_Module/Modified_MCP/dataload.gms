@@ -750,9 +750,17 @@ m_e('bio') = m_e('bio')*card(h)/8760 ;
 
 ********************************************************************************
 
+* Define set of fixed generation technologies
+%ror_parameter%$ontext
+
+Set
+fx(tech) /ror/
+;
 
 
+$ontext
+$offtext
 
-
+********************************************************************************
 
 

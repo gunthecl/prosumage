@@ -22,6 +22,12 @@ $offtext
 %ror_parameter%$ontext
 N_TECH.fx('ror') = 5857.47 ;
 G_RES.fx('ror',h) = N_TECH.l('ror') * phi_res('ror',h) ;
+
+* Define set of fixed generation technologies
+Set
+fx(tech) /ror/
+;
+
 $ontext
 $offtext
 
@@ -108,7 +114,7 @@ STO_IN_M2M.fx(sto,h)        = 0 ;
 STO_OUT_PRO2M.fx(sto,h)     = 0 ;
 STO_OUT_M2PRO.fx(sto,h)     = 0 ;
 STO_OUT_M2M.fx(sto,h)       = 0 ;
-STO_L_PRO.fx(sto,h)         = 0 ;                  
+STO_L_PRO.fx(sto,h)         = 0 ;
 STO_L_PRO2M.fx(sto,h)       = 0 ;
 STO_L_M2PRO.fx(sto,h)       = 0 ;
 STO_L_M2M.fx(sto,h)         = 0 ;
@@ -117,10 +123,10 @@ STO_L_M2M.fx(sto,h)         = 0 ;
 **** DEFAULT LEVELS FOR REPORT PARAMETERS  *************************************
 ********************************************************************************
 
-* Reporting level 
+* Reporting level
 Set
-loop_res_share  /0/ 
-loop_prosumage  /0/ ; 
+loop_res_share  /0/
+loop_prosumage  /0/ ;
 
 $eval superscencount 1000
 

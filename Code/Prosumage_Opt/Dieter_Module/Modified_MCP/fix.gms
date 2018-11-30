@@ -22,6 +22,7 @@ $offtext
 %ror_parameter%$ontext
 N_TECH.fx('ror') = 5857.47 ;
 G_RES.fx('ror',h) = N_TECH.l('ror') * phi_res('ror',h) ;
+
 $ontext
 $offtext
 
