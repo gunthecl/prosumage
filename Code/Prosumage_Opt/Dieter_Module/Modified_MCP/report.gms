@@ -105,7 +105,7 @@ lev_CU_PRO(scen,tech,h)              = CU_PRO.l(tech,h)                ;
 lev_G_MARKET_PRO2M(scen,tech,h)      = G_MARKET_PRO2M.l(tech,h)        ;
 lev_G_MARKET_M2PRO(scen,h)           = G_MARKET_M2PRO.l(h)             ;
 lev_G_RES_PRO(scen,tech,h)           = G_RES_PRO.l(tech,h)             ;
-lev_STO_IN_PRO2PRO(scen,tech,sto,h)  = STO_IN_PRO2PRO.l(tech,sto,h)    ;
+lev_STO_IN_PRO2PRO(scen,tech,sto,h)  = STO_IN_PRO2PRO.l(sto,tech,h)    ;
 lev_STO_IN_PRO2M(scen,tech,sto,h)    = STO_IN_PRO2M.l(tech,sto,h)      ;
 lev_STO_IN_M2PRO(scen,sto,h)         = STO_IN_M2PRO.l(sto,h)           ;
 lev_STO_IN_M2M(scen,sto,h)           = STO_IN_M2M.l(sto,h)             ;
@@ -132,22 +132,44 @@ resusd                  = DIETER_MCP.resusd    ;
 Z_VAR =
 
 
-      sum( (h,dis) , c_m(dis)*G_L.l(dis,h) )
+                   sum( (h,dis) , c_m(dis)*G_L.l(dis,h) )
                  + sum( (h,dis)$(ord(h)>1) , c_up(dis)*G_UP.l(dis,h) )
                  + sum( (h,dis) , c_do(dis)*G_DO.l(dis,h) )
                  + sum( (h,nondis) , c_cu(nondis)*CU.l(nondis,h) )
                  + sum( (h,sto) , c_m_sto(sto) * ( STO_OUT.l(sto,h) + STO_IN.l(sto,h) ) )
+%prosumage%$ontext
+                 + sum( (h,sto) , c_m_sto(sto) * ( STO_OUT_PRO2PRO.l(sto,h)
+                 + sum( res , STO_IN_PRO2PRO.l(sto,res,h)) ))
+
+               
+
+$ontext
+$offtext
+
+                 
 
 ;
 
+%MCP%$ontext
 Z_FIX =                 
                  + sum( tech , c_i(tech)*N_TECH.l(tech) )
                  + sum( tech , c_fix(tech)*N_TECH.l(tech) )
                  + sum( sto , c_i_sto_e(sto)*N_STO_E.l(sto) )
                  + sum( sto , c_fix_sto(sto)/2*(N_STO_P.l(sto)+ N_STO_E.l(sto)) )
                  + sum( sto , c_i_sto_p(sto)*N_STO_P.l(sto) )
+%prosumage%$ontext
+                 + sum( res , c_i(res)*N_RES_PRO.l(res) )
+                 + sum( res , c_fix(res)*N_RES_PRO.l(res) )
+                 + sum( sto , c_i_sto_e(sto)*N_STO_E_PRO.l(sto) )
+                 + sum( sto , c_fix_sto(sto)/2*(N_STO_P_PRO.l(sto) + N_STO_E_PRO.l(sto)) )
+                 + sum( sto , c_i_sto_p(sto)*N_STO_P_PRO.l(sto) )
+$ontext
+$offtext
+
+                 
 ;
 
+%MCP%$ontext
 Z_MCP = Z_VAR + Z_FIX            ;
 lev_Z(scen)    = Z_MCP           ;
 $ontext

@@ -37,7 +37,7 @@ $offtext
 ********************************************************************************
 
 ** No storage inflow in first period **
-STO_IN.fx(sto,h)$(ord(h) = 1) = 0;
+*STO_IN.fx(sto,h)$(ord(h) = 1) = 0;
 
 
 
@@ -82,7 +82,7 @@ CU_PRO.fx(res,h)$(m_res_pro(res) = 0) = 0 ;
 G_MARKET_PRO2M.fx(res,h)$( m_res_pro(res) = 0) = 0 ;
 *G_MARKET_M2PRO.fx(h)$(feat_node('prosumage',n) = 0) = 0 ;
 G_RES_PRO.fx(res,h)$( m_res_pro(res) = 0) = 0 ;
-STO_IN_PRO2PRO.fx(res,sto,h)$( m_sto_pro_p(sto) = 0) = 0 ;
+STO_IN_PRO2PRO.fx(sto,res,h)$( m_sto_pro_p(sto) = 0) = 0 ;
 STO_IN_PRO2M.fx(res,sto,h)$( m_sto_pro_p(sto) = 0) = 0 ;
 STO_IN_M2PRO.fx(sto,h)$( m_sto_pro_p(sto) = 0) = 0 ;
 STO_IN_M2M.fx(sto,h)$( m_sto_pro_p(sto) = 0) = 0 ;
