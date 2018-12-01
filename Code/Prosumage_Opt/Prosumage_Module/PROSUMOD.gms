@@ -103,8 +103,7 @@ STO_L_PRO2PRO(sto_pro,h)              Prosumage: Storage level prosumage househo
 
 Parameters
 sto_pro_ini_last_PRO(sto_pro)        Prosumage: Level of storage in initial and last period
-eta_sto_pro_in_PRO(sto_pro)          Prosumage: Efficiency: storage in
-eta_sto_pro_out_PRO(sto_pro)         Prosumage: Efficiency: storage out
+eta_sto(sto_pro)                     Prosumage: Roundtrip efficiency 
 d_PRO(h)                             Prosumage: Household load
 d_upload(h,hh_profile)               Prosumage: Household load - upload parameter
 avail_solar_PRO(h)                   Prosumage: Hourly capacity factor for pv
@@ -122,9 +121,8 @@ c_var_sto_pro_PRO(sto_pro)           Prosumage: Cost: variable generation costs 
 
 
 * Declare efficiency parameters
-sto_pro_ini_last_PRO(sto_pro)  =  0.5    ;
-eta_sto_pro_in_PRO(sto_pro)    =  0.81   ;
-eta_sto_pro_out_PRO(sto_pro)   =  0.926  ;
+sto_pro_ini_last_PRO(sto_pro)  =  0.5   ;
+eta_sto(sto_pro)               =  0.9   ;
 
 * Declare cost parameters
 c_i_sto_pro_e_PRO(sto_pro)  =  5418.14/1000 ;
@@ -246,8 +244,8 @@ $offtext
 stolev_PRO(sto_pro,h)$((ord(h)>1) )..
         + STO_L_PRO2PRO(sto_pro,h-1)
         + sum(res_pro ,
-          STO_IN_PRO2PRO(sto_pro,res_pro,h))*eta_sto_pro_in_PRO(sto_pro)
-        - STO_OUT_PRO2PRO(sto_pro,h)/eta_sto_pro_out_PRO(sto_pro)
+          STO_IN_PRO2PRO(sto_pro,res_pro,h))*(1+eta_sto(sto_pro))/2
+        - STO_OUT_PRO2PRO(sto_pro,h)*2/(1+eta_sto(sto_pro))
         - STO_L_PRO2PRO(sto_pro,h)
         =E=   0
 ;
@@ -321,7 +319,7 @@ KKT_G_RES_PRO(res_pro,h)..
 KKT_STO_IN_PRO2PRO(sto_pro,res_pro,h)..
             c_var_sto_pro_PRO(sto_pro)
          +  lambda_pvgen_PRO(res_pro,h)
-         -  lambda_stolev_PRO(sto_pro,h)*eta_sto_pro_in_PRO(sto_pro)
+         -  lambda_stolev_PRO(sto_pro,h)*(1+eta_sto(sto_pro))/2
          +  mu_stoin_cap_PRO(sto_pro,h)
         =G= 0
 
@@ -331,7 +329,7 @@ KKT_STO_IN_PRO2PRO(sto_pro,res_pro,h)..
 KKT_STO_OUT_PRO2PRO(sto_pro,h)..
          c_var_sto_pro_PRO(sto_pro)
        - lambda_enerbal_PRO(h)
-       + lambda_stolev_PRO(sto_pro,h)/eta_sto_pro_out_PRO(sto_pro)
+       + lambda_stolev_PRO(sto_pro,h)*2/(1+eta_sto(sto_pro))
        + mu_stoout_cap_PRO(sto_pro,h)
          =G= 0
 ;
@@ -473,7 +471,7 @@ Z_PRO_mcp   = sum( res_pro , c_i_pv_PRO(res_pro) * N_RES_PRO.l(res_pro) )
 mean_price = sum( h,  price_produce_PRO(h))/card(h)*1000;
 full_load  = sum(h, avail_solar_PRO(h));
 self_cons_rate(res_pro) = sum(h, G_RES_PRO.l(res_pro,h)
-+ sum(sto_pro, STO_IN_PRO2PRO.l(sto_pro,res_pro,h)*eta_sto_pro_in_PRO(sto_pro)) ) / sum(h, avail_solar_PRO(h)*N_RES_PRO.l(res_pro));
++ sum(sto_pro, STO_IN_PRO2PRO.l(sto_pro,res_pro,h)*(1+eta_sto(sto_pro))/2) ) / sum(h, avail_solar_PRO(h)*N_RES_PRO.l(res_pro));
 
 
 display d_PRO , N_RES_PRO.l , N_STO_E_PRO.l, N_STO_P_PRO.l,
