@@ -1,77 +1,45 @@
 B 2 C o m p i l a t i o n
 B 2614 Include File Summary
-B 2634 Equation Listing    SOLVE DIETER_MCP Using MCP From line 1888
-D 2635 con1a_bal
-D 2680 con2_loadlevel
-D 2705 con3a_maxprod_dispatchable
-D 2730 con3e_maxprod_res
-D 2755 con4_stolev
-D 2780 con4c_stolev_max
-D 2805 con4d_maxin_sto
-D 2830 con4e_maxout_sto
-D 2855 KKTG_L
-D 2880 KKTG_UP
-D 2905 KKTG_DO
-D 2930 KKTG_RES
-D 2955 KKTCU
-D 2980 KKTSTO_IN
-D 3005 KKTSTO_OUT
-D 3030 KKTSTO_L
-B 3057 Column Listing      SOLVE DIETER_MCP Using MCP From line 1888
-E 3058 lambda_enerbal
-E 3213 lambda_resgen
-E 3257 lambda_convgen
-E 3328 lambda_stolev
-E 3400 G_L
-E 3474 G_UP
+B 2634 Equation Listing    SOLVE DIETER Using LP From line 1882
+D 2635 obj
+D 3087 con1a_bal
+D 3130 con2_loadlevel
+D 3155 con3a_maxprod_dispatchable
+D 3180 con3e_maxprod_res
+D 3205 con4_stolev
+D 3230 con4c_stolev_max
+D 3255 con4d_maxin_sto
+D 3280 con4e_maxout_sto
+D 3305 con5a_minRES
+B 3372 Column Listing      SOLVE DIETER Using LP From line 1882
+E 3373 Z
+E 3381 G_L
+E 3465 G_UP
 E 3518 G_DO
-E 3562 G_RES
-E 3616 CU
-E 3660 STO_IN
-E 3724 STO_OUT
-E 3788 STO_L
-E 3852 N_TECH
-E 4876 N_STO_E
-E 4981 N_STO_P
-E 5185 mu_stoin_cap
-E 5229 mu_stout_cap
-E 5273 mu_stolev_cap
-E 5317 mu_conv_cap
-B 5363 Model Statistics    SOLVE DIETER_MCP Using MCP From line 1888
-B 5381 Solution Report     SOLVE DIETER_MCP Using MCP From line 1888
-F 5432 con1a_bal
-F 5536 con2_loadlevel
-F 6234 con3a_maxprod_dispatchable
-F 6932 con3e_maxprod_res
-F 7333 con4_stolev
-F 7437 con4c_stolev_max
-F 7541 con4d_maxin_sto
-F 7645 con4e_maxout_sto
-F 7749 KKTG_L
-F 8447 KKTG_UP
-F 9145 KKTG_DO
-F 9836 KKTG_RES
-F 10138 KKTCU
-F 10539 KKTSTO_IN
-F 10643 KKTSTO_OUT
-F 10747 KKTSTO_L
-G 10846 lambda_enerbal
-G 10950 lambda_resgen
-G 11351 lambda_convgen
-G 12049 lambda_stolev
-G 12153 G_L
-G 12851 G_UP
-G 13549 G_DO
-G 14240 G_RES
-G 14641 CU
-G 15042 STO_IN
-G 15146 STO_OUT
-G 15250 STO_L
-G 15354 N_TECH
-G 15370 N_STO_E
-G 15376 N_STO_P
-G 15382 mu_stoin_cap
-G 15486 mu_stout_cap
-G 15590 mu_stolev_cap
-G 15694 mu_conv_cap
-B 16402 E x e c u t i o n
+E 3572 G_RES
+E 3636 CU
+E 3680 STO_IN
+E 3754 STO_OUT
+E 3828 STO_L
+B 3894 Model Statistics    SOLVE DIETER Using LP From line 1882
+B 3910 Solution Report     SOLVE DIETER Using LP From line 1882
+F 3945 obj
+F 3953 con1a_bal
+F 4057 con2_loadlevel
+F 4755 con3a_maxprod_dispatchable
+F 5453 con3e_maxprod_res
+F 5854 con4_stolev
+F 5958 con4c_stolev_max
+F 6062 con4d_maxin_sto
+F 6165 con4e_maxout_sto
+F 6267 con5a_minRES
+G 6270 Z
+G 6276 G_L
+G 6974 G_UP
+G 7672 G_DO
+G 8363 G_RES
+G 8665 CU
+G 9066 STO_IN
+G 9169 STO_OUT
+G 9273 STO_L
+B 9384 E x e c u t i o n

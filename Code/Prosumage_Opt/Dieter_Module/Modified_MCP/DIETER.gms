@@ -53,7 +53,7 @@ $setglobal report_to_excel ""
 * ----------------- Select if to use MCP or LP format --------------------------
 
 * Set to "*" to select linear program, leave blank to select MCP
-$setglobal LP ""
+$setglobal LP "*"
 
 
 ********************************************************************************

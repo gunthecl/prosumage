@@ -25,7 +25,7 @@ $setglobal base_year "2014"
 * ----------------- Select if to use MCP or LP format --------------------------
 
 * Set to "*" to select linear program, leave blank to select MCP
-$setglobal LP "*"
+$setglobal LP ""
 
 * Do not change these two lines
 $if "%LP%" == "" $setglobal MCP "*"
@@ -40,7 +40,7 @@ $setglobal horizon24 "*"
 * mark offXcel with a star to turn off excel import and import gdx file
 * mark modelkill to create a gdx file only without model run
 
-$setglobal offXcel "*"
+$setglobal offXcel ""
 $setglobal modelkill ""
 
 * Set column index (alphabetic) in excel file furthest to the right
@@ -76,7 +76,6 @@ Z_PRO                        Prosumage: Objective value
 lambda_enerbal_PRO(h)        Prosumage: Dual variable of energy balance equation
 lambda_pvgen_PRO(res_pro,h)  Prosumage: Dual variable of pv generation equation
 lambda_stolev_PRO(sto_pro,h) Prosumage: Dual variable of storage level equation
-lambda_stolev1_PRO           Prosumage: Dual variable of storage initial level equation
 lambda_stolev24h_PRO(sto_pro,h) Prosumage: Dual variable of storage 24h horizon
 ;
 
@@ -102,7 +101,6 @@ STO_L_PRO2PRO(sto_pro,h)              Prosumage: Storage level prosumage househo
 ;
 
 Parameters
-sto_pro_ini_last_PRO(sto_pro)        Prosumage: Level of storage in initial and last period
 eta_sto(sto_pro)                     Prosumage: Roundtrip efficiency 
 d_PRO(h)                             Prosumage: Household load
 d_upload(h,hh_profile)               Prosumage: Household load - upload parameter
@@ -121,7 +119,6 @@ c_var_sto_pro_PRO(sto_pro)           Prosumage: Cost: variable generation costs 
 
 
 * Declare efficiency parameters
-sto_pro_ini_last_PRO(sto_pro)  =  0.5   ;
 eta_sto(sto_pro)               =  0.9   ;
 
 * Declare cost parameters
@@ -169,7 +166,6 @@ objective_PRO               Prosumage: Household objective function
 energy_balance_PRO          Prosumage: Household energy balance (lambda_enerbal_PRO )
 pv_generation_PRO           Prosumage: Household use of pv energy generation (lambda_pvgen_PRO)
 stolev_PRO                  Prosumage: Storage level dynamics (lambda_stolev_PRO)
-stolev_init_PRO             Prosumage: Storage level in initial and last period  (lambda_stolev1_PRO)
 pv_install_max_PRO          Prosumage: Household PV installation capacity constraint (mu_pv_cap_PRO)
 stolev_max_energy_PRO       Prosumage: Storage capacity constraint on maximum energy (mu_stolev_cap_PRO)
 stolev_24h_PRO              Prosumage: Storage optimization time horizon constraint
@@ -233,20 +229,13 @@ pv_install_max_PRO(res_pro)..
 
 *** Technical constraints on storage
 
-*Storage level for all hours except first: Prio level plus intake minus outflow
-$ontext
-stolev_init_PRO(sto_pro,'h1')..
-        STO_L_PRO2PRO(sto_pro,'h1') =E=  STO_L_PRO2PRO(sto_pro,'h8760')
-;
-$offtext
-
 ** Overall storage level
-stolev_PRO(sto_pro,h)$((ord(h)>1) )..
-        + STO_L_PRO2PRO(sto_pro,h-1)
+stolev_PRO(sto_pro,h)..
         + sum(res_pro ,
           STO_IN_PRO2PRO(sto_pro,res_pro,h))*(1+eta_sto(sto_pro))/2
         - STO_OUT_PRO2PRO(sto_pro,h)*2/(1+eta_sto(sto_pro))
         - STO_L_PRO2PRO(sto_pro,h)
+        + STO_L_PRO2PRO(sto_pro,h-1)$((ord(h)>1) )
         =E=   0
 ;
 
@@ -365,7 +354,7 @@ stolev_PRO
 stolev_24h_PRO
 $ontext
 $offtext
-*stolev_init_PRO
+
 /
 
 
@@ -374,7 +363,6 @@ Model prosumod_mcp /
 energy_balance_PRO.lambda_enerbal_PRO
 pv_generation_PRO.lambda_pvgen_PRO
 stolev_PRO.lambda_stolev_PRO
-*stolev_init_PRO.lambda_stolev1_PRO
 pv_install_max_PRO.mu_pv_cap_PRO
 stolev_max_energy_PRO.mu_stolev_cap_PRO
 stoin_max_power_PRO.mu_stoin_cap_PRO
@@ -422,10 +410,6 @@ epgap 1e-3
 epagap 10
 parallelmode -1
 $offecho
-
-* Fix first storage level dual
-lambda_stolev_PRO.fx(sto_pro,'h1') = 100;
-;
 
 
 Set dict /
