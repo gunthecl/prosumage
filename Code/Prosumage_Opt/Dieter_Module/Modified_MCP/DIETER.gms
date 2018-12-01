@@ -20,7 +20,7 @@ $offtext
 ***** Set star to activate options
 
 * Set star to skip Excel upload and load data from gdx
-$setglobal skip_Excel "*"
+$setglobal skip_Excel ""
 
 
 * Choose base year
@@ -30,12 +30,12 @@ $setglobal base_year "'2030'"
 $setglobal GER_only "*"
 
 * Dispatch only - used fixed capacities (also deactivates bio energy restriction)                 
-$setglobal dispatch_model "*"
+$setglobal dispatch_model ""
 
 * Select if you want to use load change costs
 $setglobal load_change_costs "*"
 
-$setglobal prosumage ""
+$setglobal prosumage "*"
 
 * Set star to select run-of-river options either as exogenous parameter or as endogenous variable including reserve provision:
 * if nothing is selected, ROR capacity will be set to zero
@@ -119,9 +119,9 @@ $include dataload.gms
 * Parameters for default base year
 d(h) = d_y(%base_year%,h) ;
 phi_res(res,h) = phi_res_y(%base_year%,res,h) ;
-phi_min_res  = 0 ;
-phi_pro_self = 0 ;
-phi_pro_load = 0 ;
+phi_min_res  = 0   ;
+phi_pro_self = 0.5 ;
+phi_pro_load = 0   ;
 
 %prosumage%$ontext
 phi_pro_load = 0.2 ;
@@ -130,8 +130,10 @@ $offtext
 
 
 Parameter
-phi_min_res_exog     ;
+phi_min_res_exog
+pv_cap_max_PRO       ;
 phi_min_res_exog = 1 ;
+
 
 
 ********************************************************************************

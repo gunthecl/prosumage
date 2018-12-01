@@ -33,7 +33,7 @@ $setglobal DSM ""
 $setglobal reserves_endogenous ""
 $setglobal reserves_exogenous ""
 
-$setglobal prosumage ""
+$setglobal prosumage "*"
 
 **** Activate modifications to replicate MCP results**************************
 * Prosumage link restrictions prohibits prosumage storage interaction with market
@@ -43,7 +43,7 @@ $setglobal storage_flow_constraint "*"
 * Set parameter phi_sto_ini to zero (instead of 0.5)
 $setglobal zero_phi_sto_ini "*"
 * Deactivate load change costs
-$setglobal no_load_change_costs "*"
+$setglobal no_load_change_costs ""
 
 ******************************************************************************
 
@@ -640,7 +640,8 @@ G_INFES          .level          .lev_G_INFES
 ;
 
 %zero_phi_sto_ini%$ontext
-phi_sto_ini(n,sto) = 0;
+phi_sto_ini(n,sto)     = 0 ;
+phi_sto_pro_ini(n,sto) = 0 ;
 $ontext
 $offtext
 

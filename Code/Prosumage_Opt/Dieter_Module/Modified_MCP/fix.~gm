@@ -23,11 +23,6 @@ $offtext
 N_TECH.fx('ror') = 5857.47 ;
 G_RES.fx('ror',h) = N_TECH.l('ror') * phi_res('ror',h) ;
 
-* Define set of fixed generation technologies
-Set
-fx(tech) /ror/
-;
-
 $ontext
 $offtext
 

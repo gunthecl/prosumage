@@ -628,7 +628,7 @@ ev_ged_exog(n,ev,h) = ev_time_data_upload(h,'ev_ged_exog',ev) ;
 m_res_pro(n,res) = prosumage_data_generation(n,res,'max_power') ;
 m_sto_pro_e(n,sto) = prosumage_data_storage(n,sto,'max_energy') ;
 m_sto_pro_p(n,sto) = prosumage_data_storage(n,sto,'max_power') ;
-phi_sto_pro_ini(n,sto) = prosumage_data_storage(n,sto,'level_start') ;
+phi_sto_pro_ini(n,sto) = 0 ;
 
 
 *--- Reserves ---*

@@ -25,7 +25,7 @@ $setglobal base_year "2014"
 * ----------------- Select if to use MCP or LP format --------------------------
 
 * Set to "*" to select linear program, leave blank to select MCP
-$setglobal LP ""
+$setglobal LP "*"
 
 * Do not change these two lines
 $if "%LP%" == "" $setglobal MCP "*"
@@ -40,7 +40,7 @@ $setglobal horizon24 "*"
 * mark offXcel with a star to turn off excel import and import gdx file
 * mark modelkill to create a gdx file only without model run
 
-$setglobal offXcel ""
+$setglobal offXcel "*"
 $setglobal modelkill ""
 
 * Set column index (alphabetic) in excel file furthest to the right
@@ -104,7 +104,7 @@ Parameters
 eta_sto(sto_pro)                     Prosumage: Roundtrip efficiency 
 d_PRO(h)                             Prosumage: Household load
 d_upload(h,hh_profile)               Prosumage: Household load - upload parameter
-avail_solar_PRO(h)                   Prosumage: Hourly capacity factor for pv
+phi_res(h)                   Prosumage: Hourly capacity factor for pv
 avail_solar_upload(h,year)           Prosumage: Hourly capacity factor pv - upload parameter
 pv_cap_max_PRO(res_pro)              Prosumage: PV capacity maximum
 price_produce_PRO(h)                 Prosumage: Price for selling energy per kWh
@@ -150,7 +150,7 @@ $load d_upload avail_solar_upload price_produce_upload
 
 * Load data for specific household and base year
 d_PRO(h)                   = d_upload(h,'%household_profile%') ;
-avail_solar_PRO(h)         = avail_solar_upload(h,'%base_year%') ;
+phi_res(h)                 = avail_solar_upload(h,'%base_year%') ;
 
 *Load market price as price per kWh
 price_produce_PRO(h)        = price_produce_upload(h,'%base_year%')/1000 ;
@@ -212,7 +212,7 @@ energy_balance_PRO(h)..
 
 *** Household PV generation usage: Directly consumed, curtailed, stored or sold
 pv_generation_PRO(res_pro,h)..
-       +  avail_solar_PRO(h)* N_RES_PRO(res_pro)
+       +  phi_res(h)* N_RES_PRO(res_pro)
        -  CU_PRO(res_pro,h)
        -  G_MARKET_PRO2M(res_pro,h)
        -  G_RES_PRO(res_pro,h)
@@ -268,7 +268,7 @@ KKT_CU_PRO(res_pro,h)..
 * FOC w.r.t N_RES_PRO
 KKT_N_RES_PRO(res_pro)..
              c_i_pv_PRO(res_pro)
-           - sum(h, lambda_pvgen_PRO(res_pro,h)*avail_solar_PRO(h)  )
+           - sum(h, lambda_pvgen_PRO(res_pro,h)*phi_res(h)  )
            + mu_pv_cap_PRO(res_pro)  =G= 0
 
 ;
@@ -453,9 +453,9 @@ Z_PRO_mcp   = sum( res_pro , c_i_pv_PRO(res_pro) * N_RES_PRO.l(res_pro) )
                  - sum(  (res_pro,h) , price_produce_PRO(h) * G_MARKET_PRO2M.l(res_pro,h) )  ;
 
 mean_price = sum( h,  price_produce_PRO(h))/card(h)*1000;
-full_load  = sum(h, avail_solar_PRO(h));
+full_load  = sum(h, phi_res(h));
 self_cons_rate(res_pro) = sum(h, G_RES_PRO.l(res_pro,h)
-+ sum(sto_pro, STO_IN_PRO2PRO.l(sto_pro,res_pro,h)*(1+eta_sto(sto_pro))/2) ) / sum(h, avail_solar_PRO(h)*N_RES_PRO.l(res_pro));
++ sum(sto_pro, STO_IN_PRO2PRO.l(sto_pro,res_pro,h)*(1+eta_sto(sto_pro))/2) ) / sum(h, phi_res(h)*N_RES_PRO.l(res_pro));
 
 
 display d_PRO , N_RES_PRO.l , N_STO_E_PRO.l, N_STO_P_PRO.l,

@@ -100,6 +100,31 @@ lev_N_STO_E(scen,sto)   = N_STO_E.l(sto)   ;
 lev_N_STO_P(scen,sto)   = N_STO_P.l(sto)   ;
 
 
+%prosumage%$ontext
+lev_CU_PRO(scen,tech,h)              = CU_PRO.l(tech,h)                ;
+lev_G_MARKET_PRO2M(scen,tech,h)      = G_MARKET_PRO2M.l(tech,h)        ;
+lev_G_MARKET_M2PRO(scen,h)           = G_MARKET_M2PRO.l(h)             ;
+lev_G_RES_PRO(scen,tech,h)           = G_RES_PRO.l(tech,h)             ;
+lev_STO_IN_PRO2PRO(scen,tech,sto,h)  = STO_IN_PRO2PRO.l(tech,sto,h)    ;
+lev_STO_IN_PRO2M(scen,tech,sto,h)    = STO_IN_PRO2M.l(tech,sto,h)      ;
+lev_STO_IN_M2PRO(scen,sto,h)         = STO_IN_M2PRO.l(sto,h)           ;
+lev_STO_IN_M2M(scen,sto,h)           = STO_IN_M2M.l(sto,h)             ;
+lev_STO_OUT_PRO2PRO(scen,sto,h)      = STO_OUT_PRO2PRO.l(sto,h)        ;
+lev_STO_OUT_PRO2M(scen,sto,h)        = STO_OUT_PRO2M.l(sto,h)          ;
+lev_STO_OUT_M2PRO(scen,sto,h)        = STO_OUT_M2PRO.l(sto,h)          ;
+lev_STO_OUT_M2M(scen,sto,h)          = STO_OUT_M2M.l(sto,h)            ;
+lev_STO_L_PRO2PRO(scen,sto,h)        = STO_L_PRO2PRO.l(sto,h)          ;
+lev_STO_L_PRO2M(scen,sto,h)          = STO_L_PRO2M.l(sto,h)            ;
+lev_STO_L_M2PRO(scen,sto,h)          = STO_L_M2PRO.l(sto,h)            ;
+lev_STO_L_M2M(scen,sto,h)            = STO_L_M2M.l(sto,h)              ;
+lev_N_STO_E_PRO(scen,sto)            = N_STO_E_PRO.l(sto)              ;
+lev_N_STO_P_PRO(scen,sto)            = N_STO_P_PRO.l(sto)              ;
+lev_STO_L_PRO(scen,sto,h)            = N_STO_P_PRO.l(sto)              ; 
+lev_N_RES_PRO(scen,tech)             = N_RES_PRO.l(tech)               ;
+$ontext
+$offtext
+
+
 %MCP%$ontext
 modelstat               = DIETER_MCP.modelstat ;
 solvestat               = DIETER_MCP.solveStat ;
@@ -476,31 +501,6 @@ $offtext
                  report('conshare total',loop_res_share,loop_prosumage)$(report('conshare total',loop_res_share,loop_prosumage) < eps_rep_rel ) = 0 ;
                  report('Energy total',loop_res_share,loop_prosumage)$(report('Energy total',loop_res_share,loop_prosumage) < eps_rep_abs) = 0 ;
 
-
-* ----------------------------------------------------------------------------
-
-* DSM
-
-
-* ----------------------------------------------------------------------------
-
-* EV
-
-
-
-* ----------------------------------------------------------------------------
-
-* Reserves
-
-
-
-
-* ----------------------------------------------------------------------------
-
-* Reserves and DSM
-
-
-* ----------------------------------------------------------------------------
 
 * ----------------------------------------------------------------------------
 

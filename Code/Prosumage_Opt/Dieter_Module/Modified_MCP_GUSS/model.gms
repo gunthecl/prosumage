@@ -274,7 +274,7 @@ con5a_minRES..
 sum( h , G_L('bio',h) + sum(nondis , G_RES(nondis,h))
 
 %prosumage%$ontext
-         + sum( (sto) , STO_OUT_PRO2PRO(sto,h) + sum( (res) , G_MARKET_PRO2M(res,h) + G_RES_PRO(res,h))
+         + sum( (sto) , STO_OUT_PRO2PRO(sto,h)) + sum( (res) , G_MARKET_PRO2M(res,h) + G_RES_PRO(res,h))
 $ontext
 $offtext
 )
@@ -381,16 +381,16 @@ KKTG_L(tech,h)$dis(tech)..
 
     + c_m(tech)
     - lambda_enerbal(h)
-%load_change_costs%$ontext    
+%load_change_costs%$ontext
     + lambda_convgen(tech,h)
 $ontext
-$offtext    
+$offtext
     + mu_conv_cap(tech,h)
-%investment_model%$ontext      
+%investment_model%$ontext
     + mu_bio_cap(tech)$dis_bio(tech)
 $ontext
 $offtext
-%load_change_costs%$ontext    
+%load_change_costs%$ontext
    - (lambda_convgen(tech,h+1))$(ord(h) > 1)
 $ontext
 $offtext
@@ -470,10 +470,10 @@ KKTN_TECH(tech)..
           +  c_i(tech)
           +  c_fix(tech)
 %investment_model%$ontext
-          +  mu_tech_max_i(tech)       
+          +  mu_tech_max_i(tech)
 $ontext
 $offtext
-          - sum( h,   mu_conv_cap(tech,h))$dis(tech)         
+          - sum( h,   mu_conv_cap(tech,h))$dis(tech)
           - sum( h,  lambda_resgen(tech,h)*phi_res(tech,h))$nondis(tech)
      =G= 0
 
@@ -485,7 +485,7 @@ KKTN_STO_E(sto)..
 
       +  c_fix_sto(sto)/2 +  c_i_sto_e(sto)
       -  sum( h,   mu_stolev_cap(sto,h))
-%investment_model%$ontext      
+%investment_model%$ontext
       +  mu_stoe_max_i(sto)
 $ontext
 $offtext
@@ -551,12 +551,12 @@ con4d_maxin_sto
 con4e_maxout_sto
 
 con5a_minRES
-%investment_model%$ontext   
+%investment_model%$ontext
 con5b_max_energy
 $ontext
 $offtext
 
-%investment_model%$ontext     
+%investment_model%$ontext
 con8a_max_I_power
 con8b_max_I_sto_e
 con8c_max_I_sto_p
@@ -598,12 +598,12 @@ con4c_stolev_max.mu_stolev_cap
 con4d_maxin_sto.mu_stoin_cap
 con4e_maxout_sto.mu_stout_cap
 
-%investment_model%$ontext  
+%investment_model%$ontext
 con5b_max_energy.mu_bio_cap
 $ontext
 $offtext
 
-%investment_model%$ontext     
+%investment_model%$ontext
 con8a_max_I_power.mu_tech_max_i
 con8b_max_I_sto_e.mu_stoe_max_i
 con8c_max_I_sto_p.mu_stop_max_i
@@ -624,7 +624,7 @@ KKTSTO_IN.STO_IN
 KKTSTO_OUT.STO_OUT
 KKTSTO_L.STO_L
 
-%investment_model%$ontext 
+%investment_model%$ontext
 KKTN_TECH.N_TECH
 KKTN_STO_E.N_STO_E
 KKTN_STO_P.N_STO_P

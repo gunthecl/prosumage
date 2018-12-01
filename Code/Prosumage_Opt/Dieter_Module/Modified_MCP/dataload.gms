@@ -22,8 +22,8 @@ tech                     Generation technologies
  dis(tech)               Dispatchable generation technologies
  nondis(tech)            Nondispatchable generation technologies
  con(tech)               Conventional generation technologies
- res(tech)               Renewable generation technologies
-sto                      Storage technologies
+ res(tech)               Renewable generation technologies 
+ sto                     Storage technologies
 rsvr                     Reservoir technologies
 dsm                      DSM technologies
  dsm_shift(dsm)          DSM load shifting technologies
@@ -483,29 +483,6 @@ nondis(tech)$sum( (tech_res_con,headers_tech), technology_data_upload(tech,tech_
 con(tech)$sum( (tech_dispatch,headers_tech), technology_data_upload(tech,'con',tech_dispatch,headers_tech)) = yes;
 res(tech)$sum( (tech_dispatch,headers_tech), technology_data_upload(tech,'res',tech_dispatch,headers_tech)) = yes;
 
-$ontext
-reserves_up(reserves)$sum( (reserves_spin_nonspin,reserves_prim_nonprim,headers_reserves), reserves_data_upload(reserves,'up',reserves_spin_nonspin,reserves_prim_nonprim,headers_reserves)) = yes;
-reserves_do(reserves)$sum( (reserves_spin_nonspin,reserves_prim_nonprim,headers_reserves), reserves_data_upload(reserves,'do',reserves_spin_nonspin,reserves_prim_nonprim,headers_reserves)) = yes;
-
-reserves_spin(reserves)$sum( (reserves_up_down,reserves_prim_nonprim,headers_reserves), reserves_data_upload(reserves,reserves_up_down,'spin',reserves_prim_nonprim,headers_reserves)) = yes;
-reserves_nonspin(reserves)$sum( (reserves_up_down,reserves_prim_nonprim,headers_reserves), reserves_data_upload(reserves,reserves_up_down,'nonspin',reserves_prim_nonprim,headers_reserves)) = yes;
-
-reserves_prim(reserves)$sum( (reserves_up_down,reserves_spin_nonspin,headers_reserves), reserves_data_upload(reserves,reserves_up_down,reserves_spin_nonspin,'prim',headers_reserves)) = yes;
-reserves_nonprim(reserves)$sum( (reserves_up_down,reserves_spin_nonspin,headers_reserves), reserves_data_upload(reserves,reserves_up_down,reserves_spin_nonspin,'nonprim',headers_reserves)) = yes;
-
-reserves_prim_up(reserves)$sum( (reserves_spin_nonspin,headers_reserves), reserves_data_upload(reserves,'up',reserves_spin_nonspin,'prim',headers_reserves)) = yes;
-reserves_prim_do(reserves)$sum( (reserves_spin_nonspin,headers_reserves), reserves_data_upload(reserves,'do',reserves_spin_nonspin,'prim',headers_reserves)) = yes;
-reserves_nonprim_up(reserves)$sum( (reserves_spin_nonspin,headers_reserves), reserves_data_upload(reserves,'up',reserves_spin_nonspin,'nonprim',headers_reserves)) = yes;
-reserves_nonprim_do(reserves)$sum( (reserves_spin_nonspin,headers_reserves), reserves_data_upload(reserves,'do',reserves_spin_nonspin,'nonprim',headers_reserves)) = yes;
-
-hst(ch)$sum( (bu,heat_hp,heat_elec,heat_fossil,headers_heat), heat_data_upload(bu,ch,'yes',heat_hp,heat_elec,heat_fossil,headers_heat)) = yes;
-hp(ch)$sum( (bu,heat_storage,heat_elec,heat_fossil,headers_heat), heat_data_upload(bu,ch,heat_storage,'yes',heat_elec,heat_fossil,headers_heat)) = yes;
-
-hel(ch)$sum( (bu,heat_storage,heat_hp,heat_fossil,headers_heat), heat_data_upload(bu,ch,heat_storage,heat_hp,'yes',heat_fossil,headers_heat)) = yes;
-hfo(ch)$sum( (bu,heat_storage,heat_hp,heat_elec,headers_heat), heat_data_upload(bu,ch,heat_storage,heat_hp,heat_elec,'yes',headers_heat)) = yes;
-$offtext
-
-
 
 ***** Parameters *****
 
@@ -545,134 +522,17 @@ interest_rate(sto) = storage_data(sto,'interest_rate');
 m_sto_e(sto) = storage_data(sto,'max_energy');
 m_sto_p(sto) = storage_data(sto,'max_power');
 
-$ontext
-*--- Reservoir technologies ---*
-c_m_rsvr(rsvr) = reservoir_data(rsvr,'mc');
-eta_rsvr(rsvr) = reservoir_data(rsvr,'efficiency');
-c_fix_rsvr(rsvr) = reservoir_data(rsvr,'fixed_costs');
-phi_rsvr_ini(rsvr) = reservoir_data(rsvr,'level_start');
-phi_rsvr_lev_min(rsvr) = reservoir_data(rsvr,'level_min');
-
-c_inv_overnight_rsvr_e(rsvr) = reservoir_data(rsvr,'oc_energy');
-c_inv_overnight_rsvr_p(rsvr) = reservoir_data(rsvr,'oc_capacity');
-inv_lifetime_rsvr(rsvr) = reservoir_data(rsvr,'lifetime');
-inv_interest_rsvr(rsvr) = reservoir_data(rsvr,'interest_rate');
-m_rsvr_e(rsvr) = reservoir_data(rsvr,'max_energy');
-m_rsvr_p(rsvr) = reservoir_data(rsvr,'max_power');
-
-
-*--- DSM technologies ---*
-dsm_curt(dsm)$sum( (dsm_type,headers_dsm), dsm_data_upload(dsm,'curt',headers_dsm)) = yes;
-dsm_shift(dsm)$sum( (dsm_type,headers_dsm), dsm_data_upload(dsm,'shift',headers_dsm)) = yes;
-dsm_data(dsm,headers_dsm) = sum(dsm_type, dsm_data_upload(dsm,dsm_type,headers_dsm) ) ;
-
-c_m_dsm_cu(dsm_curt) = dsm_data(dsm_curt,'mc')     ;
-c_m_dsm_shift(dsm_shift) = dsm_data(dsm_shift,'mc')  ;
-c_fix_dsm_cu(dsm_curt) = dsm_data(dsm_curt,'fc')  ;
-c_fix_dsm_shift(dsm_shift) = dsm_data(dsm_shift,'fc') ;
-
-t_dur_dsm_cu(dsm_curt) = dsm_data(dsm_curt,'max_duration')   ;
-t_off_dsm_cu(dsm_curt) = dsm_data(dsm_curt,'recovery_time')   ;
-t_dur_dsm_shift(dsm_shift) = dsm_data(dsm_shift,'max_duration')   ;
-t_off_dsm_shift(dsm_shift) = dsm_data(dsm_shift,'recovery_time')   ;
-eta_dsm_shift(dsm_shift)  = dsm_data(dsm_shift,'efficiency')   ;
-
-c_inv_overnight_dsm_cu(dsm_curt) =  dsm_data(dsm_curt,'oc')   ;
-c_inv_overnight_dsm_shift(dsm_shift)  =  dsm_data(dsm_shift,'oc')   ;
-inv_recovery_dsm_cu(dsm_curt)  =  dsm_data(dsm_curt,'lifetime')   ;
-inv_recovery_dsm_shift(dsm_shift)   =  dsm_data(dsm_shift,'lifetime')   ;
-inv_interest_dsm_cu(dsm_curt)   =  dsm_data(dsm_curt,'interest_rate')   ;
-inv_interest_dsm_shift(dsm_shift)  =  dsm_data(dsm_shift,'interest_rate')   ;
-m_dsm_cu(dsm_curt) =  dsm_data(dsm_curt,'max_installable')   ;
-m_dsm_shift(dsm_shift) =  dsm_data(dsm_shift,'max_installable')   ;
-$offtext
 
 *--- Temporal data ---*
 d_y(year,h) = time_data_upload(h,year,'demand')  ;
 phi_res_y(year,res,h) = sum(headers_time$(sameas(res,headers_time)), time_data_upload(h,year,headers_time));
 
-*rsvr_in_y(year,rsvr,h) = sum(headers_time$(sameas(rsvr,headers_time)), time_data_upload(h,year,headers_time));
-*phi_reserves_call_y(year,reserves,h) = reserves_time_data_activation(h,year,reserves) ;
-*reserves_exogenous_y(year,reserves,h) = reserves_time_data_provision(h,year,reserves) ;
-
-
-*--- Spatial data ---*
-*inv_lifetime_ntc(l) = topology_data(l,'lifetime') ;
-*inv_recovery_ntc(l) = topology_data(l,'recovery_period') ;
-*inv_interest_ntc(l) = topology_data(l,'interest_rate') ;
-*c_inv_overnight_ntc(l) = topology_data(l,'overnight_costs') ;
-*c_fix_ntc(l) = topology_data(l,'fixed_costs') ;
-*m_ntc(l) = topology_data(l,'max_installable') ;
-*dist(l) = topology_data(l,'distance') ;
-
-$ontext
-*--- Electric vehicles ---*
-c_m_ev(ev) = ev_data(ev,'mc') ;
-pen_phevfuel(ev) = ev_data(ev,'penalty_fuel') ;
-eta_ev_in(ev) = ev_data(ev,'efficiency_charge') ;
-eta_ev_out(ev) = ev_data(ev,'efficiency_discharge') ;
-phi_ev_ini(ev) = ev_data(ev,'ev_start') ;
-
-n_ev_e(ev) = ev_data(ev,'ev_capacity') ;
-phi_ev(ev) = ev_data(ev,'share_ev') ;
-ev_phev(ev) = ev_data(ev,'ev_type') ;
-
-n_ev_p(ev,h) = ev_time_data_upload(h,'n_ev_p',ev) ;
-ev_ed(ev,h) = ev_time_data_upload(h,'ev_ed',ev) ;
-ev_ged_exog(ev,h) = ev_time_data_upload(h,'ev_ged_exog',ev) ;
-$offtext
-
 *--- Prosumage ---*
-m_res_pro(res) = prosumage_data_generation(res,'max_power') ;
-m_sto_pro_e(sto) = prosumage_data_storage(sto,'max_energy') ;
-m_sto_pro_p(sto) = prosumage_data_storage(sto,'max_power') ;
+m_res_pro(res)       = prosumage_data_generation(res,'max_power') ;
+m_sto_pro_e(sto)     = prosumage_data_storage(sto,'max_energy') ;
+m_sto_pro_p(sto)     = prosumage_data_storage(sto,'max_power') ;
 phi_sto_pro_ini(sto) = prosumage_data_storage(sto,'level_start') ;
 
-$ontext
-*--- Reserves ---*
-reserves_data(reserves,headers_reserves) = sum((reserves_up_down,reserves_spin_nonspin,reserves_prim_nonprim), reserves_data_upload(reserves,reserves_up_down,reserves_spin_nonspin,reserves_prim_nonprim,headers_reserves)) ;
-phi_reserves_share(reserves) = reserves_data(reserves,'share_sr_mr') ;
-reserves_intercept(reserves) = reserves_data(reserves,'intercept') ;
-reserves_slope(reserves,'wind_on') = reserves_data(reserves,'slope_wind_on') ;
-reserves_slope(reserves,'wind_off') = reserves_data(reserves,'slope_wind_off') ;
-reserves_slope(reserves,'pv') = reserves_data(reserves,'slope_pv') ;
-reserves_reaction(reserves) = reserves_data(reserves,'reaction_time') ;
-phi_reserves_pr_up(n) = reserves_data('PR_up','fraction_pr') ;
-phi_reserves_pr_do(n) = reserves_data('PR_do','fraction_pr') ;
-
-
-*--- Heat ---*
-heat_data(bu,ch,headers_heat) = sum((heat_storage,heat_hp,heat_elec,heat_fossil), heat_data_upload(bu,ch,heat_storage,heat_hp,heat_elec,heat_fossil,headers_heat)) ;
-phi_heat_type(bu,ch) = heat_data(bu,ch,'share') ;
-dh_y(year,bu,ch,h) = phi_heat_type(bu,ch) * dh_upload(h,year,'demand',bu) ;
-d_dhw_y(year,bu,ch,h) = phi_heat_type(bu,ch) * d_dhw_upload(h,year,'demand',bu) ;
-
-eta_heat_stat(bu,ch) = heat_data(bu,ch,'static_efficiency') ;
-eta_heat_dyn(bu,ch) = heat_data(bu,ch,'dynamic_efficiency') ;
-eta_dhw_aux_stat(bu,ch) = heat_data(bu,ch,'static_efficiency_sets_aux_dhw') ;
-* currently not used
-n_heat_p_in(bu,ch) = heat_data(bu,ch,'max_power') ;
-n_heat_p_out(bu,ch) = heat_data(bu,ch,'max_outflow') ;
-n_heat_e(bu,ch) = heat_data(bu,ch,'max_level') ;
-n_sets_p_in(bu,ch) = heat_data(bu,ch,'max_power') ;
-n_sets_p_out(bu,ch) = heat_data(bu,ch,'max_outflow') ;
-n_sets_e(bu,ch) = heat_data(bu,ch,'max_level') ;
-n_sets_dhw_p_in(bu,ch) = heat_data(bu,ch,'max_power_in_sets_aux_dhw') ;
-n_sets_dhw_p_out(bu,ch) = heat_data(bu,ch,'max_power_out_sets_aux_dhw') ;
-n_sets_dhw_e(bu,ch) = heat_data(bu,ch,'max_energy_sets_aux_dhw') ;
-phi_heat_ini(bu,ch) = heat_data(bu,ch,'level_ini') ;
-temp_sink(bu,ch) = heat_data(bu,ch,'temperature_sink') ;
-
-temp_source(bu,'hp_as',h) = temp_source_upload(h,'hp_as') ;
-temp_source(bu,'hp_gs',h) = heat_data(bu,'hp_gs','temperature_source') ;
-
-temp_source(bu,'gas_hp_gs',h) = heat_data(bu,'gas_hp_gs','temperature_source') ;
-temp_source(bu,'hp_gs_elec',h) = heat_data(bu,'hp_gs_elec','temperature_source') ;
-
-pen_heat_fuel(bu,ch) = heat_data(bu,ch,'penalty_non-electric_heat_supply') ;
-
-area_floor(bu,ch) = heat_data(bu,ch,'area_floor') ;
-$offtext
 
 
 ***************  CALCULATE DERIVED PARAMETERS  *********************************
@@ -690,35 +550,6 @@ c_i_sto_e(sto) = c_inv_overnight_sto_e(sto)*( interest_rate(sto) * (1+interest_r
 
 c_i_sto_p(sto) = c_inv_overnight_sto_p(sto)*( interest_rate(sto) * (1+interest_rate(sto))**(lifetime(sto)) )
                  / ( (1+interest_rate(sto))**(lifetime(sto))-1 )       ;
-$ontext
-c_i_rsvr_e(rsvr) = c_inv_overnight_rsvr_e(rsvr)*( inv_interest_rsvr(rsvr) * (1+inv_interest_rsvr(rsvr))**(inv_lifetime_rsvr(rsvr)) )
-                 / ( (1+inv_interest_rsvr(rsvr))**(inv_lifetime_rsvr(rsvr))-1 )       ;
-
-c_i_rsvr_p(rsvr) = c_inv_overnight_rsvr_p(rsvr)*( inv_interest_rsvr(rsvr) * (1+inv_interest_rsvr(rsvr))**(inv_lifetime_rsvr(rsvr)) )
-                 / ( (1+inv_interest_rsvr(rsvr))**(inv_lifetime_rsvr(rsvr))-1 )       ;
-
-c_i_dsm_cu(dsm_curt) =c_inv_overnight_dsm_cu(dsm_curt)*( inv_interest_dsm_cu(dsm_curt) * (1+inv_interest_dsm_cu(dsm_curt))**(inv_recovery_dsm_cu(dsm_curt)) )
-                 / ( (1+inv_interest_dsm_cu(dsm_curt))**(inv_recovery_dsm_cu(dsm_curt))-1 )       ;
-
-c_i_dsm_shift(dsm_shift) = c_inv_overnight_dsm_shift(dsm_shift)*( inv_interest_dsm_shift(dsm_shift) * (1+inv_interest_dsm_shift(dsm_shift))**(inv_recovery_dsm_shift(dsm_shift)) )
-                 / ( (1+inv_interest_dsm_shift(dsm_shift))**(inv_recovery_dsm_shift(dsm_shift))-1 )       ;
-
-c_i_ntc(l) = c_inv_overnight_ntc(l) * (inv_interest_ntc(l) * (1 + inv_interest_ntc(l))**(inv_lifetime_ntc(l)) )
-                 / ((1 + inv_interest_ntc(l)) ** (inv_lifetime_ntc(l))-1 ) ;
-
-phi_mean_reserves_call_y(year,reserves) = sum(h, phi_reserves_call_y(year,reserves,h) ) / card(h) + eps ;
-
-
-theta_sets(bu,'setsh')$(smax( (heat_storage,heat_hp,heat_elec,heat_fossil,headers_heat) , heat_data_upload(bu,'setsh',heat_storage,heat_hp,heat_elec,heat_fossil,headers_heat)) > 0 AND phi_heat_type(bu,'setsh')) = 1;
-theta_dir(bu,'dir')$(smax((heat_storage,heat_hp,heat_elec,heat_fossil,headers_heat) , heat_data_upload(bu,'dir',heat_storage,heat_hp,heat_elec,heat_fossil,headers_heat)) > 0 AND phi_heat_type(bu,'dir')) = 1;
-
-theta_storage(bu,ch)$(sum((heat_hp,heat_elec,heat_fossil,headers_heat), heat_data_upload(bu,ch,'yes',heat_hp,heat_elec,heat_fossil,headers_heat)) AND phi_heat_type(bu,ch)) = 1;
-theta_hp(bu,ch)$sum( (heat_storage,heat_elec,heat_fossil,headers_heat), heat_data_upload(bu,ch,heat_storage,'yes',heat_elec,heat_fossil,headers_heat) AND phi_heat_type(bu,ch)) = 1;
-
-theta_elec(bu,ch)$sum( (heat_storage,heat_hp,heat_fossil,headers_heat), heat_data_upload(bu,ch,heat_storage,heat_hp,'yes',heat_fossil,headers_heat) AND phi_heat_type(bu,ch)) = 1;
-theta_fossil(bu,ch)$sum( (heat_storage,heat_hp,heat_elec,headers_heat), heat_data_upload(bu,ch,heat_storage,heat_hp,heat_elec,'yes',headers_heat) AND phi_heat_type(bu,ch)) = 1;
-$offtext
-
 
 ***************  Adjust costs to model's hourly basis **************************
 
@@ -726,25 +557,12 @@ c_i(tech) = c_i(tech)*card(h)/8760 ;
 c_i_res(tech) = c_i_res(tech)*card(h)/8760 ;
 c_i_sto_p(sto) = c_i_sto_p(sto)*card(h)/8760 ;
 c_i_sto_e(sto) = c_i_sto_e(sto)*card(h)/8760 ;
-*c_i_rsvr_e(rsvr) = c_i_rsvr_e(rsvr)*card(h)/8760 ;
-*c_i_rsvr_p(rsvr) = c_i_rsvr_p(rsvr)*card(h)/8760 ;
-*c_i_dsm_cu(dsm_curt) = c_i_dsm_cu(dsm_curt)*card(h)/8760 ;
-*c_i_dsm_shift(dsm_shift) = c_i_dsm_shift(dsm_shift)*card(h)/8760 ;
+
 
 c_fix(tech) = c_fix(tech)*card(h)/8760 ;
 c_fix_sto(sto) = c_fix_sto(sto)*card(h)/8760 ;
-*c_fix_dsm_cu(dsm_curt) = c_fix_dsm_cu(dsm_curt)*card(h)/8760 ;
-*c_fix_dsm_shift(dsm_shift) = c_fix_dsm_shift(dsm_shift)*card(h)/8760 ;
-*c_fix_rsvr(rsvr) = c_fix_rsvr(rsvr)*card(h)/8760 ;
 
 m_e('bio') = m_e('bio')*card(h)/8760 ;
-
-*c_i_ntc(l) = c_i_ntc(l) * card(h)/8760 ;
-
-*t_dur_dsm_cu(dsm_curt) = t_dur_dsm_cu(dsm_curt) ;
-*t_off_dsm_cu(dsm_curt) = t_off_dsm_cu(dsm_curt) ;
-*t_dur_dsm_shift(dsm_shift)$(ord(dsm_shift)=2 or ord(dsm_shift)=4 or ord(dsm_shift)=5) = t_dur_dsm_shift(dsm_shift) / 2 ;
-*t_dur_dsm_shift(dsm_shift)$(ord(dsm_shift)=1 or ord(dsm_shift)=3) = 2 ;
 
 
 

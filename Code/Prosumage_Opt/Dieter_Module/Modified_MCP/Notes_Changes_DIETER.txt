@@ -1,3 +1,5 @@
+
+#### System Section ####
 5b has been changed to only incorporated bio (instead of all dispatchables).
 2a and 2b on load level dispatchables has been summarized into 2.
 4a and 4b has  on storage level been summarized into 4.
@@ -8,3 +10,8 @@ No binding minRes restriction.
 Storage level in t=0 must be zero, i.e. phi_sto_ini(sto) = 0.
 Use dispatch version with different fixed values.
 Deleted nuc and all storages without fixed capacities.
+
+#### Prosumage Section #####
+Constraint con11c on self-consumption rate not used.
+Equation con11d and 11h on storage level summarized into one.
+Initial storage level is zero (phi_sto_pro_ini(sto) = 0 ).
