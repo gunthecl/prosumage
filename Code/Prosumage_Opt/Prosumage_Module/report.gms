@@ -35,7 +35,7 @@ self_sufficiency_rate
 gross_energy_demand = sum( h , d_PRO(h)  )   ;
 
 * Define full load hours of PV
-full_load_hours(res_pro)     = sum( h , avail_solar_PRO(h));
+full_load_hours(res_pro)     = sum( h , phi_res(h));
 
 * Define market interaction parameters
 energy_to_market                   = sum ( (res_pro,h),  G_MARKET_PRO2M.l(res_pro,h) )      ;
@@ -60,7 +60,7 @@ self_sufficiency_rate              = sum ( (sto_pro,res_pro,h), G_RES_PRO.l(res_
 
 * REPORT HOURS
         report_hours('demand consumers',h)         = d_PRO(h) ;
-        report_hours('energy generated',h)         =  sum( res_pro, avail_solar_PRO(h)*N_RES_PRO.l(res_pro) ) ;
+        report_hours('energy generated',h)         =  sum( res_pro, phi_res(h)*N_RES_PRO.l(res_pro) ) ;
         report_hours('energy curtailed',h)         =  sum( res_pro, CU_PRO.l(res_pro, h));
         report_hours('energy directly consumed',h) =  sum( res_pro, G_RES_PRO.l(res_pro,h));
         report_hours('energy to market',h)         =  sum( res_pro, G_MARKET_PRO2M.l(res_pro,h));

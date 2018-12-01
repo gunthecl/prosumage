@@ -25,7 +25,7 @@ $setglobal base_year "2014"
 * ----------------- Select if to use MCP or LP format --------------------------
 
 * Set to "*" to select linear program, leave blank to select MCP
-$setglobal LP ""
+$setglobal LP "*"
 
 * Do not change these two lines
 $if "%LP%" == "" $setglobal MCP "*"
@@ -76,7 +76,6 @@ Z_PRO                        Prosumage: Objective value
 lambda_enerbal_PRO(h)        Prosumage: Dual variable of energy balance equation
 lambda_pvgen_PRO(res_pro,h)  Prosumage: Dual variable of pv generation equation
 lambda_stolev_PRO(sto_pro,h) Prosumage: Dual variable of storage level equation
-lambda_stolev1_PRO           Prosumage: Dual variable of storage initial level equation
 lambda_stolev24h_PRO(sto_pro,h) Prosumage: Dual variable of storage 24h horizon
 ;
 
@@ -102,12 +101,10 @@ STO_L_PRO2PRO(sto_pro,h)              Prosumage: Storage level prosumage househo
 ;
 
 Parameters
-sto_pro_ini_last_PRO(sto_pro)        Prosumage: Level of storage in initial and last period
-eta_sto_pro_in_PRO(sto_pro)          Prosumage: Efficiency: storage in
-eta_sto_pro_out_PRO(sto_pro)         Prosumage: Efficiency: storage out
+eta_sto(sto_pro)                     Prosumage: Roundtrip efficiency 
 d_PRO(h)                             Prosumage: Household load
 d_upload(h,hh_profile)               Prosumage: Household load - upload parameter
-avail_solar_PRO(h)                   Prosumage: Hourly capacity factor for pv
+phi_res(h)                   Prosumage: Hourly capacity factor for pv
 avail_solar_upload(h,year)           Prosumage: Hourly capacity factor pv - upload parameter
 pv_cap_max_PRO(res_pro)              Prosumage: PV capacity maximum
 price_produce_PRO(h)                 Prosumage: Price for selling energy per kWh
@@ -122,9 +119,7 @@ c_var_sto_pro_PRO(sto_pro)           Prosumage: Cost: variable generation costs 
 
 
 * Declare efficiency parameters
-sto_pro_ini_last_PRO(sto_pro)  =  0.5    ;
-eta_sto_pro_in_PRO(sto_pro)    =  0.81   ;
-eta_sto_pro_out_PRO(sto_pro)   =  0.926  ;
+eta_sto(sto_pro)               =  0.9   ;
 
 * Declare cost parameters
 c_i_sto_pro_e_PRO(sto_pro)  =  5418.14/1000 ;
@@ -155,7 +150,7 @@ $load d_upload avail_solar_upload price_produce_upload
 
 * Load data for specific household and base year
 d_PRO(h)                   = d_upload(h,'%household_profile%') ;
-avail_solar_PRO(h)         = avail_solar_upload(h,'%base_year%') ;
+phi_res(h)                 = avail_solar_upload(h,'%base_year%') ;
 
 *Load market price as price per kWh
 price_produce_PRO(h)        = price_produce_upload(h,'%base_year%')/1000 ;
@@ -171,7 +166,6 @@ objective_PRO               Prosumage: Household objective function
 energy_balance_PRO          Prosumage: Household energy balance (lambda_enerbal_PRO )
 pv_generation_PRO           Prosumage: Household use of pv energy generation (lambda_pvgen_PRO)
 stolev_PRO                  Prosumage: Storage level dynamics (lambda_stolev_PRO)
-stolev_init_PRO             Prosumage: Storage level in initial and last period  (lambda_stolev1_PRO)
 pv_install_max_PRO          Prosumage: Household PV installation capacity constraint (mu_pv_cap_PRO)
 stolev_max_energy_PRO       Prosumage: Storage capacity constraint on maximum energy (mu_stolev_cap_PRO)
 stolev_24h_PRO              Prosumage: Storage optimization time horizon constraint
@@ -218,7 +212,7 @@ energy_balance_PRO(h)..
 
 *** Household PV generation usage: Directly consumed, curtailed, stored or sold
 pv_generation_PRO(res_pro,h)..
-       +  avail_solar_PRO(h)* N_RES_PRO(res_pro)
+       +  phi_res(h)* N_RES_PRO(res_pro)
        -  CU_PRO(res_pro,h)
        -  G_MARKET_PRO2M(res_pro,h)
        -  G_RES_PRO(res_pro,h)
@@ -235,20 +229,13 @@ pv_install_max_PRO(res_pro)..
 
 *** Technical constraints on storage
 
-*Storage level for all hours except first: Prio level plus intake minus outflow
-$ontext
-stolev_init_PRO(sto_pro,'h1')..
-        STO_L_PRO2PRO(sto_pro,'h1') =E=  STO_L_PRO2PRO(sto_pro,'h8760')
-;
-$offtext
-
 ** Overall storage level
-stolev_PRO(sto_pro,h)$((ord(h)>1) )..
-        + STO_L_PRO2PRO(sto_pro,h-1)
+stolev_PRO(sto_pro,h)..
         + sum(res_pro ,
-          STO_IN_PRO2PRO(sto_pro,res_pro,h))*eta_sto_pro_in_PRO(sto_pro)
-        - STO_OUT_PRO2PRO(sto_pro,h)/eta_sto_pro_out_PRO(sto_pro)
+          STO_IN_PRO2PRO(sto_pro,res_pro,h))*(1+eta_sto(sto_pro))/2
+        - STO_OUT_PRO2PRO(sto_pro,h)*2/(1+eta_sto(sto_pro))
         - STO_L_PRO2PRO(sto_pro,h)
+        + STO_L_PRO2PRO(sto_pro,h-1)$((ord(h)>1) )
         =E=   0
 ;
 
@@ -281,7 +268,7 @@ KKT_CU_PRO(res_pro,h)..
 * FOC w.r.t N_RES_PRO
 KKT_N_RES_PRO(res_pro)..
              c_i_pv_PRO(res_pro)
-           - sum(h, lambda_pvgen_PRO(res_pro,h)*avail_solar_PRO(h)  )
+           - sum(h, lambda_pvgen_PRO(res_pro,h)*phi_res(h)  )
            + mu_pv_cap_PRO(res_pro)  =G= 0
 
 ;
@@ -321,7 +308,7 @@ KKT_G_RES_PRO(res_pro,h)..
 KKT_STO_IN_PRO2PRO(sto_pro,res_pro,h)..
             c_var_sto_pro_PRO(sto_pro)
          +  lambda_pvgen_PRO(res_pro,h)
-         -  lambda_stolev_PRO(sto_pro,h)*eta_sto_pro_in_PRO(sto_pro)
+         -  lambda_stolev_PRO(sto_pro,h)*(1+eta_sto(sto_pro))/2
          +  mu_stoin_cap_PRO(sto_pro,h)
         =G= 0
 
@@ -331,7 +318,7 @@ KKT_STO_IN_PRO2PRO(sto_pro,res_pro,h)..
 KKT_STO_OUT_PRO2PRO(sto_pro,h)..
          c_var_sto_pro_PRO(sto_pro)
        - lambda_enerbal_PRO(h)
-       + lambda_stolev_PRO(sto_pro,h)/eta_sto_pro_out_PRO(sto_pro)
+       + lambda_stolev_PRO(sto_pro,h)*2/(1+eta_sto(sto_pro))
        + mu_stoout_cap_PRO(sto_pro,h)
          =G= 0
 ;
@@ -367,7 +354,7 @@ stolev_PRO
 stolev_24h_PRO
 $ontext
 $offtext
-*stolev_init_PRO
+
 /
 
 
@@ -376,7 +363,6 @@ Model prosumod_mcp /
 energy_balance_PRO.lambda_enerbal_PRO
 pv_generation_PRO.lambda_pvgen_PRO
 stolev_PRO.lambda_stolev_PRO
-*stolev_init_PRO.lambda_stolev1_PRO
 pv_install_max_PRO.mu_pv_cap_PRO
 stolev_max_energy_PRO.mu_stolev_cap_PRO
 stoin_max_power_PRO.mu_stoin_cap_PRO
@@ -425,10 +411,6 @@ epagap 10
 parallelmode -1
 $offecho
 
-* Fix first storage level dual
-lambda_stolev_PRO.fx(sto_pro,'h1') = 100;
-;
-
 
 Set dict /
 gussoptions      .opt            .modstats
@@ -471,9 +453,9 @@ Z_PRO_mcp   = sum( res_pro , c_i_pv_PRO(res_pro) * N_RES_PRO.l(res_pro) )
                  - sum(  (res_pro,h) , price_produce_PRO(h) * G_MARKET_PRO2M.l(res_pro,h) )  ;
 
 mean_price = sum( h,  price_produce_PRO(h))/card(h)*1000;
-full_load  = sum(h, avail_solar_PRO(h));
+full_load  = sum(h, phi_res(h));
 self_cons_rate(res_pro) = sum(h, G_RES_PRO.l(res_pro,h)
-+ sum(sto_pro, STO_IN_PRO2PRO.l(sto_pro,res_pro,h)*eta_sto_pro_in_PRO(sto_pro)) ) / sum(h, avail_solar_PRO(h)*N_RES_PRO.l(res_pro));
++ sum(sto_pro, STO_IN_PRO2PRO.l(sto_pro,res_pro,h)*(1+eta_sto(sto_pro))/2) ) / sum(h, phi_res(h)*N_RES_PRO.l(res_pro));
 
 
 display d_PRO , N_RES_PRO.l , N_STO_E_PRO.l, N_STO_P_PRO.l,

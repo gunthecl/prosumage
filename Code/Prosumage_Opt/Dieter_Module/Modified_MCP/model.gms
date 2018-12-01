@@ -16,7 +16,11 @@ Z                  Value objective function [Euro]
 lambda_enerbal     Dual variable on energy balance (1a)
 lambda_resgen      Dual variable on renewable generation (3e)
 lambda_convgen     Dual variable on conventional generation level (2a)
-lambda_stolev      Dual variable on storage level  (4b)
+lambda_stolev      Dual variable on storage level  (4a-4b)
+
+lambda_enerbal_pro     Prosumage: Dual variable on prosumage energy balance (11b)
+lambda_resgen_pro      Prosumage: Dual variable on renewable generation (11a)
+lambda_stolev_pro      Prosumage: Dual variable on storage level  (11d-11h)
 ;
 
 Positive Variables
@@ -58,6 +62,13 @@ mu_stop_max_i         Dual variable on storage power installation constraint  (8
 mu_stoe_max_i         Dual variable on storage energy installation constraint  (8b)
 mu_minRES             Dual variable on minimum renewable share constraint (5a)
 
+mu_stoin_cap_pro          Prosumage: Dual variable on storage loading capacity constraint (11k)
+mu_stout_cap_pro          Prosumage: Dual variable on storage discharging capacity constraint (11l)
+mu_stolev_cap_pro         Prosumage: Dual variable on energy capacity constraint (11j)
+mu_tech_max_i_pro         Prosumage: Dual variable on res installation constraint (8f)
+mu_stop_max_i_pro         Prosumage: Dual variable on storage power installation constraint  (8g)
+mu_stoe_max_i_pro         Prosumage: Dual variable on storage energy installation constraint  (8h)
+mu_self_con_pro           Prosumage: Constraint on miminum self-consumption level (8c)
 ;
 
 Set
@@ -117,7 +128,6 @@ con11j_pro_stolev_max                    Prosumage: maximum overall storage leve
 con11k_pro_maxin_sto                     Prosumage: maximum storage inflow
 con11l_pro_maxout_sto                    Prosumage: maximum storage outflow
 con11o_pro_ending                        Prosumage: storage ending condition
-con11x_pro_pv_i_max                      Prosumage: Maximum investment capacity pv
 
 * KKT optimality conditions
 KKTG_L                   KKT w.r.t. G_L
@@ -133,6 +143,18 @@ KKTN_TECH_DIS            KKT w.r.t. N_TECH(dis)
 KKTN_TECH                KKT w.r.t. N_TECH
 KKTN_STO_E               KKT w.r.t. N_STO_E
 KKTN_STO_P               KKT w.r.t. N_STO_P
+
+KKT_CU_PRO                  Prosumage: FOC w.r.t CU_PRO
+KKT_N_RES_PRO               Prosumage: FOC w.r.t N_RES_PRO
+KKT_N_STO_E_PRO             Prosumage: FOC w.r.t N_STO_E_PRO
+KKT_N_STO_P_PRO             Prosumage: FOC w.r.t N_STO_P_PRO
+KKT_G_MARKET_M2PRO          Prosumage: FOC w.r.t G_MARKET_M2PRO
+KKT_G_MARKET_PRO2M          Prosumage: FOC w.r.t G_MARKET_PRO2M
+KKT_G_RES_PRO               Prosumage: FOC w.r.t G_RES_PRO
+KKT_STO_IN_PRO2PRO          Prosumage: FOC w.r.t STO_IN_PRO2PRO
+KKT_STO_OUT_PRO2PRO         Prosumage: FOC w.r.t STO_OUT_PRO2PRO
+KKT_STO_L_PRO2PRO           Prosumage: FOC w.r.t STO_L_PRO2PRO
+
 ;
 
 
@@ -311,7 +333,7 @@ con8c_max_I_sto_p(sto)..
 
 
 con8f_max_pro_res(res_pro)..
-       m_res_pro(res_pro) -  N_RES_PRO(res_pro)     =G= 0
+       m_res_pro(res_pro)   -  N_RES_PRO(res_pro)   =G= 0
 ;
 
 con8g_max_pro_sto_e(sto_pro)..
@@ -599,8 +621,8 @@ $offtext
 
 %investment_model%$ontext     
 con8a_max_I_power.mu_tech_max_i
-con8b_max_I_sto_e.mu_stoe_max_i
-con8c_max_I_sto_p.mu_stop_max_i
+*con8b_max_I_sto_e.mu_stoe_max_i
+*con8c_max_I_sto_p.mu_stop_max_i
 $ontext
 $offtext
 

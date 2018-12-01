@@ -15,3 +15,4 @@ Deleted nuc and all storages without fixed capacities.
 Constraint con11c on self-consumption rate not used.
 Equation con11d and 11h on storage level summarized into one.
 Initial storage level is zero (phi_sto_pro_ini(sto) = 0 ).
+Introduce subset set res_pro and sto_pro for prosumage household technologies and storages.
