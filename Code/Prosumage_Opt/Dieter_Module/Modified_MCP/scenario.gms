@@ -54,7 +54,10 @@ N_TECH.up('wind_off')  = inf ;
 N_TECH.up('pv')        = inf ;
 N_STO_P.up(sto)        = m_exog_sto_p(sto) + 0.1 ;
 N_STO_E.up(sto)        = m_exog_sto_e(sto) + 0.1 ;
+N_STO_E.up('sto5')     = inf ;     
 N_STO_P.up('sto5')     = inf ;
+N_STO_E.up('sto1')     = inf ;
+N_STO_P.up('sto1')     = inf ;
 
 $ontext
 $offtext

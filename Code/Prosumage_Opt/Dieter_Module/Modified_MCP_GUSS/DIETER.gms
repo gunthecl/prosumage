@@ -33,9 +33,9 @@ $setglobal GER_only "*"
 * Dispatch only - used fixed capacities (also deactivates bio energy restriction)
 $setglobal dispatch_model ""
 
-$setglobal load_change_costs ""
+$setglobal load_change_costs "*"
 
-$setglobal prosumage ""
+$setglobal prosumage "*"
 
 * Set to "*" to select linear program, leave blank to select MCP
 $setglobal LP "*"

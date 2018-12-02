@@ -641,7 +641,7 @@ G_INFES          .level          .lev_G_INFES
 
 %zero_phi_sto_ini%$ontext
 phi_sto_ini(n,sto)     = 0 ;
-phi_sto_pro_ini(,nsto) = 0 ;
+phi_sto_pro_ini(n,sto) = 0 ;
 $ontext
 $offtext
 

@@ -20,7 +20,7 @@ $offtext
 ***** Set star to activate options
 
 * Set star to skip Excel upload and load data from gdx
-$setglobal skip_Excel "*"
+$setglobal skip_Excel ""
 
 
 * Choose base year
@@ -53,7 +53,7 @@ $setglobal report_to_excel ""
 * ----------------- Select if to use MCP or LP format --------------------------
 
 * Set to "*" to select linear program, leave blank to select MCP
-$setglobal LP ""
+$setglobal LP "*"
 
 
 ********************************************************************************
@@ -125,7 +125,7 @@ phi_pro_load = 0   ;
 
 %prosumage%$ontext
 phi_pro_load = 0.2 ;
-$setglobal minimum_SC "*";
+$setglobal minimum_SC "*"
 
 $ontext
 $offtext
@@ -194,7 +194,6 @@ $offtext
 * Reporting
 $include report.gms
 
-
 execute_unload "results", report, report_tech, report_node,
 *report_line,
 report_tech_hours, report_hours, report_cost
@@ -203,7 +202,6 @@ report_tech_hours, report_hours, report_cost
 $ontext
 $offtext
 ;
-
 
 %report_to_excel%$ontext
 $include report_to_excel.gms
