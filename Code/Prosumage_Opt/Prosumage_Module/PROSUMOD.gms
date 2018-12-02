@@ -349,12 +349,12 @@ $offtext
 * FOC w.r.t STO_L_PRO2PRO
 KKT_STO_L_PRO2PRO(sto_pro,h)..
       + lambda_stolev_pro(sto_pro,h)
-      - lambda_stolev_pro(sto_pro,h+1)
       + mu_stolev_cap_pro(sto_pro,h)
 %horizon24%$ontext
       + (lambda_stolev24h_PRO(sto_pro,h))$h24(h)
 $ontext
 $offtext
+      - lambda_stolev_pro(sto_pro,h+1)$(ord(h) > 1 )   
       =G= 0
 ;
 
