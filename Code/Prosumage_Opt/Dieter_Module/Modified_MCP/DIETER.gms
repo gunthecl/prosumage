@@ -17,6 +17,7 @@ $offtext
 **************************
 ***** GLOBAL OPTIONS *****
 **************************
+***** Set star to activate options
 
 * Set star to skip Excel upload and load data from gdx
 $setglobal skip_Excel "*"
@@ -28,19 +29,19 @@ $setglobal base_year "'2030'"
 * Germany only - also adjust Excel inputs!
 $setglobal GER_only "*"
 
-* Set star to activate options
+* Dispatch only - used fixed capacities (also deactivates bio energy restriction)                 
+$setglobal dispatch_model "*"
 
-$setglobal prosumage ""
+* Select if you want to use load change costs
+$setglobal load_change_costs ""
+
+$setglobal prosumage "*"
 
 * Set star to select run-of-river options either as exogenous parameter or as endogenous variable including reserve provision:
 * if nothing is selected, ROR capacity will be set to zero
 * if parameter option is selected, set appropriate values in fix.gmx
 * if variable option is selected, set appropriate bound in data_input excel
 $setglobal ror_parameter "*"
-$setglobal ror_variable ""
-
-* Set star to determine loops, otherwise default 100% renewables
-$setglobal loop_over_renewable_share "*"
 
 * Set star for no crossover to speed up calculation time by skipping crossover in LP solver
 $setglobal no_crossover ""
@@ -54,9 +55,6 @@ $setglobal report_to_excel ""
 * Set to "*" to select linear program, leave blank to select MCP
 $setglobal LP ""
 
-* Do not change these two lines
-$if "%LP%" == "" $setglobal MCP "*"
-$if "%LP%" == "*" $setglobal MCP ""
 
 ********************************************************************************
 
@@ -67,31 +65,16 @@ $setglobal sec_hour "1"
 * Sanity checks
 $if "%ror_parameter%" == "*" $if "%ror_variable%" == "*" $abort Choose appropriate ROR option! ;
 
-********************************************************************************
+* Do not change these  lines
+$if "%LP%" == "" $setglobal MCP "*"
+$if "%LP%" == "*" $setglobal MCP ""
 
-****************************
-***** INITIALIZE LOOPS *****
-****************************
-
-sets
-%loop_over_renewable_share%$ontext
-loop_res_share   Solution loop for different shares of renewables       /50/
-$ontext
-$offtext
-
-%prosumage%$ontext
-loop_prosumage   Solution loop for different prosumer self-consumption levels    /50/
-$ontext
-$offtext
-
-%loop_over_renewable_share%      loop_res_share                          /50/
-%prosumage%                      loop_prosumage                          /0/
-;
-
-
+$if "%dispatch_model%" == "" $setglobal investment_model "*"
+$if "%dispatch_model%" == "*" $setglobal investment_model ""
 
 
 ********************************************************************************
+
 
 **************************
 ***** SOLVER OPTIONS *****
@@ -136,24 +119,24 @@ $include dataload.gms
 * Parameters for default base year
 d(h) = d_y(%base_year%,h) ;
 phi_res(res,h) = phi_res_y(%base_year%,res,h) ;
-phi_min_res = 0 ;
-phi_pro_self = 0 ;
-phi_pro_load = 0 ;
+phi_min_res  = 0   ;
+phi_pro_self = 0.5 ;
+phi_pro_load = 0   ;
 
 %prosumage%$ontext
 phi_pro_load = 0.2 ;
+$setglobal minimum_SC "*"
+
 $ontext
 $offtext
 
 
 Parameter
-phi_min_res_exog;
+phi_min_res_exog
+pv_cap_max_PRO       ;
 phi_min_res_exog = 1 ;
 
-Sets
-h_ini(h)                       First hour  /h1/
-h_end(h)                       Last hour   /h8760/
-;
+
 
 ********************************************************************************
 ***** Model *****
@@ -191,150 +174,25 @@ dieter.holdFixed = 1 ;
 ***** Solve *****
 ********************************************************************************
 
-* Preparation of GUSS tool for scenario analysis
-phi_min_res = eps ;
-phi_pro_self = eps ;
-
-$eval superscencount 1000
-
-Set
-modelstats       model stats collection                  /modelstat, solvestat, resusd/
-superscen        Scenarios                               /scen1*scen%superscencount%/
-map(superscen,loop_res_share,loop_prosumage)    /#superscen:(#loop_res_share.#loop_prosumage)/
-;
-
-set
-scen(superscen);
-scen(superscen) = yes$( sum((loop_res_share,loop_prosumage) , map(superscen,loop_res_share,loop_prosumage)) )    ;
-
-Parameters
-gussoptions                              /Logoption 2, Optfile 1, Skipbasecase 1/
-modstats(superscen, modelstats)
-min_res
-pro_selfcon
-;
-
-min_res(scen)     = sum( (loop_res_share,loop_prosumage)$map(scen,loop_res_share,loop_prosumage) , loop_res_share.val/100 ) ;
-pro_selfcon(scen) = sum( (loop_res_share,loop_prosumage)$map(scen,loop_res_share,loop_prosumage) , loop_prosumage.val/100 ) ;
-
-Parameters
-* Equations
-marginal_con5a(superscen)
-marginal_con1a(superscen,*)
-marginal_con9a(superscen,*,*,*)
-marginal_con9b(superscen,*,*,*)
-
-* Basic
-lev_Z(superscen)
-lev_G_L(superscen,tech,h)
-lev_G_UP(superscen,tech,h)
-lev_G_DO(superscen,tech,h)
-lev_G_RES(superscen,tech,h)
-lev_CU(superscen,tech,h)
-lev_STO_IN(superscen,sto,h)
-lev_STO_OUT(superscen,sto,h)
-lev_STO_L(superscen,sto,h)
-lev_N_TECH(superscen,tech)
-lev_N_STO_E(superscen,sto)
-lev_N_STO_P(superscen,sto)
-
-
-* Prosumage
-lev_CU_PRO(superscen,tech,h)
-lev_G_MARKET_PRO2M(superscen,tech,h)
-lev_G_MARKET_M2PRO(superscen,h)
-lev_G_RES_PRO(superscen,tech,h)
-lev_STO_IN_PRO2PRO(superscen,tech,sto,h)
-lev_STO_IN_PRO2M(superscen,tech,sto,h)
-lev_STO_IN_M2PRO(superscen,sto,h)
-lev_STO_IN_M2M(superscen,sto,h)
-lev_STO_OUT_PRO2PRO(superscen,sto,h)
-lev_STO_OUT_PRO2M(superscen,sto,h)
-lev_STO_OUT_M2PRO(superscen,sto,h)
-lev_STO_OUT_M2M(superscen,sto,h)
-lev_STO_L_PRO2PRO(superscen,sto,h)
-lev_STO_L_PRO2M(superscen,sto,h)
-lev_STO_L_M2PRO(superscen,sto,h)
-lev_STO_L_M2M(superscen,sto,h)
-lev_N_STO_E_PRO(superscen,sto)
-lev_N_STO_P_PRO(superscen,sto)
-lev_STO_L_PRO(superscen,sto,h)
-lev_N_RES_PRO(superscen,tech)
-;
-
-
 * Inclusion of scenario and fixing
 $include fix.gms
 $include scenario.gms
 
-
-* Definition of dictionary set for GUSS tool
-
-Set dict(*,*,*) /
-scen             .scenario       .''
-gussoptions      .opt            .modstats
-
-phi_min_res      .param          .min_res
-
-%prosumage%$ontext
-phi_pro_self     .param          .pro_selfcon
-$ontext
-$offtext
-
-
-con5a_minRES     .marginal       .marginal_con5a
-con1a_bal        .marginal       .marginal_con1a
-
-
 %LP%$ontext
-Z                .level          .lev_Z
-$ontext
-$offtext
-G_L              .level          .lev_G_L
-G_UP             .level          .lev_G_UP
-G_DO             .level          .lev_G_DO
-G_RES            .level          .lev_G_RES
-CU               .level          .lev_CU
-STO_IN           .level          .lev_STO_IN
-STO_OUT          .level          .lev_STO_OUT
-STO_L            .level          .lev_STO_L
-N_TECH           .level          .lev_N_TECH
-N_STO_E          .level          .lev_N_STO_E
-N_STO_P          .level          .lev_N_STO_P
-
-
-%prosumage%$ontext
-CU_PRO           .level          .lev_CU_PRO
-G_MARKET_PRO2M   .level          .lev_G_MARKET_PRO2M
-G_MARKET_M2PRO   .level          .lev_G_MARKET_M2PRO
-G_RES_PRO        .level          .lev_G_RES_PRO
-STO_IN_PRO2PRO   .level          .lev_STO_IN_PRO2PRO
-STO_OUT_PRO2PRO  .level          .lev_STO_OUT_PRO2PRO
-STO_L_PRO2PRO    .level          .lev_STO_L_PRO2PRO
-N_STO_E_PRO      .level          .lev_N_STO_E_PRO
-N_STO_P_PRO      .level          .lev_N_STO_P_PRO
-N_RES_PRO        .level          .lev_N_RES_PRO
-$ontext
-$offtext
-/
-;
-
-
-
-%LP%$ontext
-solve  DIETER using lp min Z scenario dict;
+option limrow = 10, limcol = 10, solprint = on ;
+solve  DIETER using lp min Z ;
 $ontext
 $offtext
 
 %MCP%$ontext
-solve   DIETER_MCP using mcp scenario dict;
+option limrow = 10, limcol = 10, solprint = on ;
+solve   DIETER_MCP using mcp;
 $ontext
 $offtext
 
 
 * Reporting
 $include report.gms
-
 
 execute_unload "results", report, report_tech, report_node,
 *report_line,
@@ -345,14 +203,10 @@ $ontext
 $offtext
 ;
 
-
 %report_to_excel%$ontext
 $include report_to_excel.gms
 $ontext
 $offtext
 
 
-
-* ---------------------------------------------------------------------------- *
-* ---------------------------------------------------------------------------- *
 * ---------------------------------------------------------------------------- *

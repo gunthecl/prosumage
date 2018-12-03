@@ -388,7 +388,7 @@ par=technology_data_upload       rng=Technologies!B5     rdim=3 cdim=1
 par=storage_data                 rng=storage!B5          rdim=1 cdim=1
 par=reservoir_data               rng=reservoir!B5        rdim=1 cdim=1
 par=dsm_data_upload              rng=DSM!B5              rdim=2 cdim=1
-par=topology_data                rng=spatial!B2          rdim=0 cdim=1
+
 
 %GER_only%
 par=inc                          rng=spatial!L2          rdim=1 cdim=1
@@ -400,7 +400,7 @@ par=reserves_data_upload         rng=reserves!B5         rdim=4 cdim=1
 par=heat_data_upload             rng=heat!B5             rdim=6 cdim=1
 $offecho
 
-*%skip_Excel%
+%skip_Excel%
 $call "gdxxrw data_input.xlsx @temp.tmp o=Data_input maxdupeerrors=100";
 
 $GDXin Data_input.gdx
@@ -415,8 +415,6 @@ $load bu ch heat_storage heat_hp heat_elec heat_fossil headers_heat heat_data_up
 ;
 
 $ontext
-parameter inc ;
-inc(l,n) = 1 ;
 $ontext
 $offtext
 
@@ -752,7 +750,7 @@ m_e('bio') = m_e('bio')*card(h)/8760 ;
 
 ********************************************************************************
 
-
+sto('sto1') = no;
 
 
 

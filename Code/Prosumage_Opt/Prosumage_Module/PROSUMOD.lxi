@@ -1,20 +1,21 @@
 B 2 C o m p i l a t i o n
-B 684 Include File Summary
-B 706 Model Statistics    SOLVE prosumod_lp Using LP From line 444
-B 722 Solution Report     SOLVE prosumod_lp Using LP From line 444
-B 756 E x e c u t i o n
-I 757 d_PRO
-I 2514 N_RES_PRO
-I 2519 N_STO_E_PRO
-I 2525 N_STO_P_PRO
-I 2531 G_MARKET_M2PRO
-I 3607 G_MARKET_PRO2M
-I 5983 STO_L_PRO2PRO
-I 11335 price_produce_PRO
-I 14260 energy_balance_PRO
-I 17186 E_purchased
-I 17187 E_sold
-I 17188 Z_PRO_mcp
-I 17189 mean_price
-I 17190 full_load
-I 17191 self_cons_rate
+B 574 Include File Summary
+B 588 Model Statistics    SOLVE prosumod_lp Using LP From line 455
+B 604 Solution Report     SOLVE prosumod_lp Using LP From line 455
+B 638 E x e c u t i o n
+I 639 d_PRO
+I 1192 N_RES_PRO
+I 1197 N_STO_E_PRO
+I 1202 N_STO_P_PRO
+I 1207 G_MARKET_M2PRO
+I 1406 G_MARKET_PRO2M
+I 2081 STO_L_PRO2PRO
+I 4356 price_produce_PRO
+I 5334 energy_balance_PRO
+I 6313 E_purchased
+I 6314 E_sold
+I 6315 Z_PRO_mcp
+I 6316 mean_price
+I 6317 full_load
+I 6318 self_cons_rate
+I 6319 self_gen_rate

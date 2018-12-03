@@ -1185,8 +1185,8 @@ obj
 
 con1a_bal
 
-con2a_loadlevel
-con2b_loadlevelstart
+%no_load_change_costs%con2a_loadlevel
+%no_load_change_costs%con2b_loadlevelstart
 
 con3a_maxprod_dispatchable
 %reserves%$ontext
@@ -1214,8 +1214,8 @@ $offtext
 
 %storage_flow_constraint%con4h_maxout_lev
 %storage_flow_constraint%con4i_maxin_lev
-con4j_ending
-con4k_PHS_EtoP
+%storage_flow_constraint%con4j_ending
+%storage_flow_constraint%con4k_PHS_EtoP
 
 con5a_minRES
 con5b_max_energy

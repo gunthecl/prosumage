@@ -75,7 +75,7 @@ $if "%ror_parameter%" == "*" $if "%ror_variable%" == "*" $abort Choose appropria
 
 sets
 %loop_over_renewable_share%$ontext
-loop_res_share   Solution loop for different shares of renewables       /50/
+loop_res_share   Solution loop for different shares of renewables       /10,50,80/
 $ontext
 $offtext
 
@@ -152,7 +152,7 @@ phi_min_res_exog = 1 ;
 
 Sets
 h_ini(h)                       First hour  /h1/
-h_end(h)                       Last hour   /h8760/
+*h_end(h)                       Last hour   /h8760/
 ;
 
 ********************************************************************************
@@ -323,16 +323,7 @@ $offtext
 
 %LP%$ontext
 solve  DIETER using lp min Z scenario dict;
-$ontext
-$offtext
 
-%MCP%$ontext
-$onecho > path.opt
-solvelink=2
-$offecho
-solve   DIETER_MCP using mcp scenario dict;
-$ontext
-$offtext
 
 
 * Reporting
@@ -355,6 +346,54 @@ $ontext
 $offtext
 
 
+$ontext
+$offtext
+
+%MCP%$ontext
+phi_sto_ini.fx(sto) = 0;
+solve   DIETER_MCP using mcp ;
+*scenario dict;
+
+
+Parameters
+Z_MCP
+;
+
+Z_MCP =            sum( (h,dis) , c_m(dis)*G_L.l(dis,h) )
+                 + sum( (h,dis)$(ord(h)>1) , c_up(dis)*G_UP.l(dis,h) )
+                 + sum( (h,dis) , c_do(dis)*G_DO.l(dis,h) )
+                 + sum( (h,nondis) , c_cu(nondis)*CU.l(nondis,h) )
+                 + sum( (h,sto) , c_m_sto(sto) * ( STO_OUT.l(sto,h) + STO_IN.l(sto,h) ) )
+                 + sum( tech , c_i(tech)*N_TECH.l(tech) )
+                 + sum( tech , c_fix(tech)*N_TECH.l(tech) )
+                 + sum( sto , c_i_sto_e(sto)*N_STO_E.l(sto) )
+                 + sum( sto , c_fix_sto(sto)/2*(N_STO_P.l(sto)+ N_STO_E.l(sto)) )
+                 + sum( sto , c_i_sto_p(sto)*N_STO_P.l(sto) )
+;
+
+
+Display
+Z_MCP,
+N_TECH.l,
+N_STO_E.l,
+N_STO_P.l,
+G_L.l,
+G_UP.l,
+G_DO.l,
+G_RES.l,
+CU.l,
+STO_IN.l,
+STO_OUT.l,
+STO_L.l
+lambda_enerbal.m,
+lambda_enerbal.l,
+lambda_resgen.m,
+lambda_convgen.m,
+lambda_stolev.m
+;
+
+$ontext
+$offtext
 
 * ---------------------------------------------------------------------------- *
 * ---------------------------------------------------------------------------- *

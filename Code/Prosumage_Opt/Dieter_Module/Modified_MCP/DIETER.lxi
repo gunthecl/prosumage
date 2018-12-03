@@ -1,5 +1,95 @@
 B 2 C o m p i l a t i o n
-B 4199 Include File Summary
-B 4237 Model Statistics    SOLVE DIETER_MCP Using MCP From line 1983
-B 4255 Solution Report     SOLVE DIETER_MCP Using MCP From line 1983
-B 4285 E x e c u t i o n
+B 2590 Include File Summary
+B 2610 Equation Listing    SOLVE DIETER Using LP From line 1839
+D 2611 obj
+D 55073 con1a_bal
+D 55117 con2_loadlevel
+D 55142 con3a_maxprod_dispatchable
+D 55167 con3e_maxprod_res
+D 55192 con4_stolev
+D 55217 con4c_stolev_max
+D 55242 con4d_maxin_sto
+D 55267 con4e_maxout_sto
+D 55292 con5a_minRES
+D 67081 con5b_max_energy
+D 68326 con8a_max_I_power
+D 68351 con8b_max_I_sto_e
+D 68358 con8c_max_I_sto_p
+D 68365 con8f_max_pro_res
+D 68370 con11a_pro_distrib
+D 68395 con11b_pro_balance
+D 68420 con11c_pro_selfcon
+D 72205 con11d_pro_stolev_PRO2PRO
+D 72230 con11j_pro_stolev_max
+D 72255 con11k_pro_maxin_sto
+D 72280 con11l_pro_maxout_sto
+B 72307 Column Listing      SOLVE DIETER Using LP From line 1839
+E 72308 Z
+E 72316 G_L
+E 72400 G_UP
+E 72453 G_DO
+E 72507 G_RES
+E 72571 CU
+E 72615 STO_IN
+E 72689 STO_OUT
+E 72763 STO_L
+E 72827 N_TECH
+E 160477 N_STO_E
+E 178011 N_STO_P
+E 213065 CU_PRO
+E 213109 G_MARKET_PRO2M
+E 213173 G_MARKET_M2PRO
+E 213227 G_RES_PRO
+E 213301 STO_IN_PRO2PRO
+E 213375 STO_OUT_PRO2PRO
+E 213469 STO_L_PRO2PRO
+E 213533 N_STO_E_PRO
+E 222300 N_STO_P_PRO
+E 239827 N_RES_PRO
+B 244746 Model Statistics    SOLVE DIETER Using LP From line 1839
+B 244762 Solution Report     SOLVE DIETER Using LP From line 1839
+F 244797 obj
+F 244805 con1a_bal
+F 253570 con2_loadlevel
+F 314895 con3a_maxprod_dispatchable
+F 376220 con3e_maxprod_res
+F 411265 con4_stolev
+F 428790 con4c_stolev_max
+F 446315 con4d_maxin_sto
+F 463840 con4e_maxout_sto
+F 481363 con5a_minRES
+F 481371 con5b_max_energy
+F 481377 con8a_max_I_power
+F 481393 con8b_max_I_sto_e
+F 481400 con8c_max_I_sto_p
+F 481407 con8f_max_pro_res
+F 481413 con11a_pro_distrib
+F 490178 con11b_pro_balance
+F 498941 con11c_pro_selfcon
+F 498949 con11d_pro_stolev_PRO2PRO
+F 507714 con11j_pro_stolev_max
+F 516479 con11k_pro_maxin_sto
+F 525244 con11l_pro_maxout_sto
+G 534004 Z
+G 534010 G_L
+G 595335 G_UP
+G 656660 G_DO
+G 717978 G_RES
+G 744263 CU
+G 779308 STO_IN
+G 796831 STO_OUT
+G 814356 STO_L
+G 831881 N_TECH
+G 831897 N_STO_E
+G 831904 N_STO_P
+G 831911 CU_PRO
+G 840676 G_MARKET_PRO2M
+G 849441 G_MARKET_M2PRO
+G 858206 G_RES_PRO
+G 866971 STO_IN_PRO2PRO
+G 875736 STO_OUT_PRO2PRO
+G 884501 STO_L_PRO2PRO
+G 893266 N_STO_E_PRO
+G 893272 N_STO_P_PRO
+G 893278 N_RES_PRO
+B 893292 E x e c u t i o n

@@ -33,11 +33,19 @@ $setglobal DSM ""
 $setglobal reserves_endogenous ""
 $setglobal reserves_exogenous ""
 
-$setglobal prosumage ""
+$setglobal prosumage "*"
+
+**** Activate modifications to replicate MCP results**************************
 * Prosumage link restrictions prohibits prosumage storage interaction with market
 $setglobal prosumage_links_restr "*"
-* Storage flow constraints 4h and 4i deactivated
+* Deacivated storage flow constraints 4h,4i,4j,4k
 $setglobal storage_flow_constraint "*"
+* Set parameter phi_sto_ini to zero (instead of 0.5)
+$setglobal zero_phi_sto_ini "*"
+* Deactivate load change costs
+$setglobal no_load_change_costs ""
+
+******************************************************************************
 
 $setglobal heat ""
 
@@ -99,7 +107,7 @@ $if "%EV_EXOG%" == "*" $if "%EV_DEFAULT%%EV_100RES%%EV_FREE%" == "***" $abort Ch
 
 sets
 %loop_over_renewable_share%$ontext
-loop_res_share   Solution loop for different shares of renewables       /10,50,80/
+loop_res_share   Solution loop for different shares of renewables       /50/
 $ontext
 $offtext
 
@@ -631,6 +639,11 @@ G_INFES          .level          .lev_G_INFES
 /
 ;
 
+%zero_phi_sto_ini%$ontext
+phi_sto_ini(n,sto)     = 0 ;
+phi_sto_pro_ini(n,sto) = 0 ;
+$ontext
+$offtext
 
 solve DIETER using lp min Z scenario dict;
 
