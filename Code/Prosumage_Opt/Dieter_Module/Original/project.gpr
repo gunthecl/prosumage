@@ -1608,13 +1608,6 @@ SqTrail0=0
 [RP:PROSUMOD]
 1=
 
-[OPENWINDOW_1]
-MAXIM=1
-TOP=3
-LEFT=84
-HEIGHT=876
-WIDTH=852
-
 [GDXDISP: m_sto_e Par 2]
 PlaneDim=0
 RowDim=2
@@ -1623,9 +1616,6 @@ SqTrail0=0
 Order=1,2
 Decim=7
 PlaneRownr=-1
-
-[RP:REPORT]
-1=
 
 [RP:SCENARIO]
 1=
@@ -1642,13 +1632,24 @@ PlaneRownr=-1
 9=-gdx = pre
 10=-gdx = test
 
+[RP:REPORT]
+1=
+
 [MRUFILES]
-1=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\test.gdx
-2=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\results.gdx
-3=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\DIETER.lst
-4=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\DIETER.gms
-5=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\scenario.gms
-6=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\scenario.gms
-7=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\report.gms
-8=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Prosumage_Module\PROSUMOD.gms
-9=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\results.gdx
+1=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_MCP_version\results.gdx
+2=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\DIETER.gms
+3=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\test.gdx
+4=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\results.gdx
+5=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\DIETER.lst
+6=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\DIETER.gms
+7=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\scenario.gms
+8=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\scenario.gms
+
+[OPENWINDOW_1]
+FILE0=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\report.gms
+FILE1=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\report.gms
+MAXIM=1
+TOP=3
+LEFT=84
+HEIGHT=876
+WIDTH=852

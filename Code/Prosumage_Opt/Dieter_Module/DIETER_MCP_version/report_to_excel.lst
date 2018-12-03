@@ -1,0 +1,182 @@
+GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 10/25/18 09:52:38 Page 1
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+C o m p i l a t i o n
+
+
+   1   
+   2  **************************************************************************
+      ******
+      The Dispatch and Investment Evaluation Tool with Endogenous Renewables DIE
+      TER).
+      Version 1.3.0, October 2018.
+      Written by Alexander Zerrahn and Wolf-Peter Schill.
+      This work is licensed under the MIT License MIT).
+      For more information on this license, visit http://opensource.org/licenses
+      /mit-license.php.
+      Whenever you use this code, please refer to http://www.diw.de/dieter.
+      We are happy to receive feedback under azerrahn@diw.de and wschill@diw.de.
+  12  **************************************************************************
+      ******
+  13   
+  14   
+  15   
+  16   
+  17  *****************************************
+  18  **** Reporting to Excel              ****
+  19  *****************************************
+  20   
+  21   
+  22  Parameter
+  23  excel_cost
+  24  excel_capacities
+  25  excel_capacities_storage
+  26  excel_res_curt
+  27  excel_prices
+  28  excel_dispatch
+  29  ;
+  30   
+  31   
+  32   
+  33   
+  34  excel_cost('Nodal cost: dispatch & investment') = sum( (loop_res_share,loo
+****                                                                       $120,
+      p_ev,loop_prosumage) , report_cost('Nodal cost: dispatch',loop_res_share,l
+      340$120,340       $120,340       $140                   $116              
+      oop_ev,loop_prosumage) + report_cost('Nodal cost: investment & fix',loop_r
+                                                                        $116
+      es_share,loop_ev,loop_prosumage)
+  35  * + report_cost('Nodal cost: infeasibility',loop_res_share,loop_ev,loop_pr
+      osumage)
+  36  );
+  37  excel_cost('Nodal cost: dispatch') = sum( (loop_res_share,loop_ev,loop_pro
+      sumage) , report_cost('Nodal cost: dispatch',loop_res_share,loop_ev,loop_p
+      rosumage) + report_cost('Nodal cost: infeasibility',loop_res_share,loop_ev
+****                                                    $116
+      ,loop_prosumage)) ;
+  38  excel_cost('Nodal cost: investment and fix') = sum( (loop_res_share,loop_e
+      v,loop_prosumage) , report_cost('Nodal cost: investment & fix',loop_res_sh
+      are,loop_ev,loop_prosumage)) ;
+  39  excel_cost('Energy generated net') = sum( (loop_res_share,loop_ev,loop_pro
+      sumage) , report'energy generated net',loop_res_share,loop_ev,loop_prosuma
+****                 $140,8,409
+      ge)) ;
+  40  excel_cost('Average cost') = excel_cost('Nodal cost: dispatch & investment
+      ')/excel_cost'Energy generated net') ;
+****               $148,409
+  41   
+  42   
+  43   
+  44  excel_capacities('Capacities',tech) = sum( (loop_res_share,loop_ev,loop_pr
+****                                   $120,340                                 
+      osumage) , report_tech('capacities conventional',loop_res_share,loop_ev,lo
+                           $140                      $116                       
+      op_prosumage,tech) + report_tech('capacities renewable',loop_res_share,loo
+                                                            $116
+      p_ev,loop_prosumage,tech)) ;
+  45  excel_capacities('Capacities',rsvr) = sum( (loop_res_share,loop_ev,loop_pr
+****                                   $120,340                                 
+      osumage) , report_tech('capacities reservoir MW',loop_res_share,loop_ev,lo
+                                                     $116
+      op_prosumage,rsvr) ) ;
+  46  excel_capacities('Capacities',sto) = sum( (loop_res_share,loop_ev,loop_pro
+****                                  $120,340                                  
+      sumage) , report_tech('capacities storage MW',loop_res_share,loop_ev,loop_
+                                                  $116
+      prosumage,sto) ) ;
+  47   
+  48  excel_res_curt('res share') = sum( (loop_res_share,loop_ev,loop_prosumage)
+       , report_node('renshare in nodal gross demand',loop_res_share,loop_ev,loo
+****               $140                             $116
+      p_prosumage) ) ;
+  49  excel_res_curt('curtailment absolute') = sum( (loop_res_share,loop_ev,loop
+      _prosumage) , report('curtailment of fluct res absolute',loop_res_share,lo
+****                                                         $116               
+      op_ev,loop_prosumage) ) ;
+                          $148
+  50  excel_res_curt('curtailment relative') = sum( (loop_res_share,loop_ev,loop
+      _prosumage) , report('curtailment of fluct res relative',loop_res_share,lo
+****                                                         $116               
+      op_ev,loop_prosumage) ) ;
+                          $148
+  51   
+  52  excel_prices('max price') = sum( (loop_res_share,loop_ev,loop_prosumage) ,
+       report_node('max price',loop_res_share,loop_ev,loop_prosumage) ) ;
+  53  excel_prices('mean price') = sum( (loop_res_share,loop_ev,loop_prosumage) 
+      , report_node('mean price',loop_res_share,loop_ev,loop_prosumage) ) ;
+  54  excel_prices('min price') = sum( (loop_res_share,loop_ev,loop_prosumage) ,
+       report_node('min price',loop_res_share,loop_ev,loop_prosumage) ) ;
+  55   
+  56  excel_dispatch('technology shares in nodal gross demand',res) = sum (loop_
+****                                                             $120,340       
+      res_share,loop_ev,loop_prosumage) , report_tech('renshares in nodal gross 
+                       $148,8,409
+      demand',loop_res_share,loop_ev,loop_prosumage,res) ) ;
+  57  excel_dispatch('technology shares in nodal gross demand',rsvr) = sum(loop_
+      res_share,loop_ev,loop_prosumage) , report_tech('renshares in nodal gross 
+****                   $148,8,409
+      demand',loop_res_share,loop_ev,loop_prosumage,rsvr) ) ;
+  58  excel_dispatch('technology shares in nodal gross demand',con) = sum (loop_
+****                                                             $120,340       
+      res_share,loop_ev,loop_prosumage) , report_tech('conshares in nodal gross 
+                       $148,8,409
+      demand',loop_res_share,loop_ev,loop_prosumage,con) ) ;
+  59   
+  60  excel_dispatch('yearly energy',tech) = sum( (loop_res_share,loop_ev,loop_p
+      rosumage) , report_tech('Yearly energy',loop_res_share,loop_ev,loop_prosum
+      age,tech) ) ;
+  61  excel_dispatch('yearly energy',sto) = sum( (loop_res_share,loop_ev,loop_pr
+      osumage) , report_tech('Yearly energy',loop_res_share,loop_ev,loop_prosuma
+      ge,sto) ) ;
+  62  *excel_dispatch('yearly energy',dsm) = sum( (loop_res_share,loop_ev,loop_p
+      rosumage) , report_tech('Yearly energy',loop_res_share,loop_ev,loop_prosum
+      age,dsm) ) ;
+  63   
+  64  execute_unload "results_to_excel", excel_cost excel_capacities excel_res_c
+      urt excel_prices excel_dispatch
+  65   
+  66  ;
+  67   
+  68   
+  69  execute 'gdxxrw.exe results_to_excel.gdx par=excel_cost rng=a2 rdim=1' ;
+  70  execute 'gdxxrw.exe results_to_excel.gdx par=excel_capacities rng=a52' ;
+  71  execute 'gdxxrw.exe results_to_excel.gdx par=excel_res_curt rng=a56 rdim=1
+      ' ;
+  72  execute 'gdxxrw.exe results_to_excel.gdx par=excel_prices rng=a60 cdim=1' 
+      ;
+  73  execute 'gdxxrw.exe results_to_excel.gdx par=excel_dispatch rng=a82' ;
+GAMS 24.7.4  r58773 Released Sep 19, 2016 WEX-WEI x86 64bit/MS Windows 10/25/18 09:52:38 Page 2
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Error Messages
+
+
+  8  ')' expected
+116  Label is unknown
+120  Unknown identifier entered as set
+140  Unknown symbol
+148  Dimension different - The symbol is referenced with more/less
+        indices as declared
+340  A label/element with the same name exist. You may have forgotten
+        to quote a label/element reference. For example,
+        set i / a,b,c /; parameter x(i); x('a') = 10;
+409  Unrecognizable item - skip to find a new statement
+       looking for a ';' or a key word to get started again
+
+**** 45 ERROR(S)   0 WARNING(S)
+
+
+COMPILATION TIME     =        0.188 SECONDS      3 MB  24.7.4 r58773 WEX-WEI
+
+
+USER: Medium MUD - 10 User License                   S170316:1123AO-GEN
+      Deutsches Institut fuer Wirtschaftsforschung DIW, AbteilungDC3975
+      License for teaching and research at degree granting institutions
+
+
+**** FILE SUMMARY
+
+Input      C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_
+           Module\Modified_MCP\report_to_excel.gms
+Output     C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_
+           Module\Modified_MCP\report_to_excel.lst
+
+**** USER ERROR(S) ENCOUNTERED

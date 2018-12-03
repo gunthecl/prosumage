@@ -1,0 +1,20 @@
+
+#### System Section ####
+5b has been changed to only incorporated bio (instead of all dispatchables).
+2a and 2b on load level dispatchables has been summarized into 2.
+4a and 4b has  on storage level been summarized into 4.
+Deleted constraint 4.k (on max E/P ratio) and 4j (storage ending).
+Deleted constraint 4h and 4i on max in / max out of storage.
+Change set index hh to h in energy blanace.
+No binding minRes restriction. 
+Storage level in t=0 must be zero, i.e. phi_sto_ini(sto) = 0.
+Use dispatch version with different fixed values.
+Deleted nuc and all storages without fixed capacities.
+
+#### Prosumage Section #####
+Constraint con11c on self-consumption rate not used.
+Equation con11d and 11h on storage level summarized into one.
+Initial storage level is zero (phi_sto_pro_ini(sto) = 0 ).
+Introduce subset set res_pro and sto_pro for prosumage household technologies and storages.
+Changed ordering of res_pro and sto_pro in variables.
+Changed indices sto and res in objective variable to sto_pro and res_pro.
