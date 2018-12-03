@@ -405,6 +405,8 @@ con11o_pro_ending(sto_pro,h)$( ord(h) = card(h))..
 ***** FOC conditions *****
 * ---------------------------------------------------------------------------- *
 
+
+*** System FOC ***
 KKTG_L(tech,h)$dis(tech)..
 
     + c_m(tech)
@@ -518,7 +520,7 @@ $offtext
 
 ;
 
-
+*** Prosumage FOC ***
 * FOC w.r.t CU_PRO
 KKT_CU_PRO(res_pro,h)..
         lambda_resgen_pro(res_pro,h)
@@ -555,12 +557,18 @@ KKT_N_STO_P_PRO(sto_pro)..
 * FOC w.r.t G_MARKET_M2PRO
 KKT_G_MARKET_M2PRO(h)..
 *           price_consume_PRO(h)
+           + lambda_enerbal(h)
+*
+*
            - lambda_enerbal_pro(h) =G=  0
 ;
 
 * FOC w.r.t G_MARKET_PRO2M
 KKT_G_MARKET_PRO2M(res_pro,h)..
 *         - price_produce_PRO(h)
+           - lambda_enerbal(h)
+*
+*
          + lambda_resgen_pro(res_pro,h)  =G= 0
 ;
 
@@ -579,7 +587,7 @@ $offtext
 * FOC w.r.t STO_IN_PRO2PRO
 KKT_STO_IN_PRO2PRO(sto_pro,res_pro,h)..
 *            c_var_sto_pro_PRO(sto_pro)
-         +   c_m_sto(sto_pro)
+         +  c_m_sto(sto_pro)
          +  lambda_resgen_pro(res_pro,h)
          -  lambda_stolev_pro(sto_pro,h)*(1+eta_sto(sto_pro))/2
          +  mu_stoin_cap_pro(sto_pro,h)
@@ -605,8 +613,8 @@ $offtext
 * FOC w.r.t STO_L_PRO2PRO
 KKT_STO_L_PRO2PRO(sto_pro,h)..
       + lambda_stolev_pro(sto_pro,h)
-      - lambda_stolev_pro(sto_pro,h+1)
       + mu_stolev_cap_pro(sto_pro,h)
+      - lambda_stolev_pro(sto_pro,h+1)$(ord(h) > 1 )
       =G= 0
 ;
 
