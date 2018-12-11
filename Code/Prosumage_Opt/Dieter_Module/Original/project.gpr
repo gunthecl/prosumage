@@ -1418,9 +1418,6 @@ PlaneRownr=-1
 [RP:MORITS_MCP]
 1=
 
-[RP:MORITS_MCP_ONLINE]
-1=
-
 [RP:24H_FIRSTHOURS]
 1=
 
@@ -1599,9 +1596,6 @@ Decim=7
 PlaneRownr=-1
 SqTrail0=0
 
-[RP:DATALOAD]
-1=
-
 [RP:FIX]
 1=
 
@@ -1617,9 +1611,6 @@ Order=1,2
 Decim=7
 PlaneRownr=-1
 
-[RP:SCENARIO]
-1=
-
 [RP:DIETER]
 1=-gdx=test
 2=-gdx = test5_exo
@@ -1632,7 +1623,16 @@ PlaneRownr=-1
 9=-gdx = pre
 10=-gdx = test
 
+[RP:MORITS_MCP_ONLINE]
+1=
+
+[RP:DATALOAD]
+1=
+
 [RP:REPORT]
+1=
+
+[RP:SCENARIO]
 1=
 
 [MRUFILES]
@@ -1646,8 +1646,11 @@ PlaneRownr=-1
 8=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\scenario.gms
 
 [OPENWINDOW_1]
-FILE0=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\report.gms
+FILE0=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\dataload.gms
 FILE1=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\report.gms
+FILE2=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\scenario.gms
+FILE3=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\MORITS_MCP_online.gms
+FILE4=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\dataload.gms
 MAXIM=1
 TOP=3
 LEFT=84

@@ -558,7 +558,8 @@ FOC_N_STO_P_PRO(sto_pro)..
 FOC_G_MARKET_M2PRO(h)..
 %selfish_prosumage%$ontext
 *           price_consume_PRO(h)
-          sum( hh, lambda_enerbal(hh))/card(h) + 250
+*          sum( hh, lambda_enerbal(hh))/card(h) + 250
+           + 300
 
 $ontext
 $offtext
@@ -637,7 +638,7 @@ FOC_STO_L_PRO2PRO(sto_pro,h)..
 ***** Fix unmatched variables of first period *****
 ********************************************************************************
 
-G_DO.fx(dis,'h1') = 0;
+G_DO.fx(dis,'h3001') = 0;
 
 * Default for reporting
 G_DO.l(dis,h)   = 0;
