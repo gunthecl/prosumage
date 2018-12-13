@@ -27,15 +27,15 @@ m_exog_sto_p(sto)
 ;
 
 m_exog_p(tech)    = technology_data(tech,'fixed_capacities') ;
-m_exog_sto_e(sto) = storage_data(sto,'fixed_capacities_energy');
-m_exog_sto_p(sto) = storage_data(sto,'fixed_capacities_power');
+m_exog_sto_e(sto)= storage_data(sto,'fixed_capacities_energy');
+m_exog_sto_p(sto)= storage_data(sto,'fixed_capacities_power');
 
 
 *** Dispatch model
 %dispatch_model%$ontext
 N_TECH.fx(tech)  = m_exog_p(tech) + 0.1 ;
-N_STO_P.fx(sto)  = m_exog_sto_p(sto) ;
-N_STO_E.fx(sto)  = m_exog_sto_e(sto) ;
+N_STO_P.fx(sto_sys) = m_exog_sto_p(sto_sys);
+N_STO_E.fx(sto_sys) = m_exog_sto_e(sto_sys);
 
 $ontext
 $offtext
@@ -46,14 +46,14 @@ N_TECH.lo(tech)        = 0 ;
 N_TECH.lo('wind_on')   = m_exog_p('wind_on') ;
 N_TECH.lo('wind_off')  = m_exog_p('wind_off') ;
 N_TECH.lo('pv')        = m_exog_p('pv') ;
-N_STO_P.lo(sto)        = m_exog_sto_p(sto) ;
-N_STO_E.lo(sto)        = m_exog_sto_e(sto) ;
+N_STO_P.lo(sto_sys)    = m_exog_sto_p(sto_sys);
+N_STO_E.lo(sto_sys)    = m_exog_sto_e(sto_sys);
 N_TECH.up(tech)        = m_exog_p(tech) + 0.1 ;
 N_TECH.up('wind_on')   = inf ;
 N_TECH.up('wind_off')  = inf ;
 N_TECH.up('pv')        = inf ;
-N_STO_P.up(sto)        = m_exog_sto_p(sto) + 0.1 ;
-N_STO_E.up(sto)        = m_exog_sto_e(sto) + 0.1 ;
+N_STO_P.up(sto_sys)    = m_exog_sto_p(sto_sys)+ 0.1 ;
+N_STO_E.up(sto_sys)    = m_exog_sto_e(sto_sys)+ 0.1 ;
 N_STO_E.up('sto5')     = inf ;     
 N_STO_P.up('sto5')     = inf ;
 N_STO_E.up('sto1')     = inf ;

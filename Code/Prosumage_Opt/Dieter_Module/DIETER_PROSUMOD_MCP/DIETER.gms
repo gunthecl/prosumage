@@ -130,7 +130,7 @@ phi_pro_self = 0.5 ;
 phi_pro_load = 0   ;
 
 %prosumage%$ontext
-phi_pro_load = 0.01 ;
+phi_pro_load = 0.001 ;
 $ontext
 $offtext
 

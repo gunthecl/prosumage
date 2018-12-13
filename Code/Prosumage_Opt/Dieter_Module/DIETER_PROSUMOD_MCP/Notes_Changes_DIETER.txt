@@ -18,3 +18,4 @@ Initial storage level is zero (phi_sto_pro_ini(sto) = 0 ).
 Introduce subset set res_pro and sto_pro for prosumage household technologies and storages.
 Changed ordering of res_pro and sto_pro in variables.
 Changed indices sto and res in objective variable to sto_pro and res_pro.
+Introduced subset sto_sys for storages, which are built in system.

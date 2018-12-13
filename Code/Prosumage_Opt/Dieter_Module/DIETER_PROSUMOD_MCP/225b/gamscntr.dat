@@ -1,11 +1,11 @@
 48
-5 2312 0 0 251  0.00000000000000E+0000 5  0.00000000000000E+0000 0 1
-53004 0 0 0 16004 10000 43004 0 0 0 0 0
-58019 0 0 0 0 0 0 0
-1144223 0
-58019 0 0 0 0 0 0 48019 0 10000
-5017 0 0 0 0 0 0
-0 2000 0
+5 3312 0 0 251  0.00000000000000E+0000 5  0.00000000000000E+0000 0 1
+92004 0 0 0 30004 16000 76004 0 0 0 0 0
+102017 0 0 0 0 0 0 0
+244741 0
+102017 0 0 0 0 0 0 86017 0 16000
+10014 0 0 0 0 0 0
+0 4000 0
 0 16 20
  0.00000000000000E+0000  0.00000000000000E+0000 0
 0  0.00000000000000E+0000 0  0.00000000000000E+0000
@@ -23,13 +23,13 @@ C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\D
 
 C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\225b\gamsdict.dat
 3
-09:39:15
-12/03/18
+13:23:07
+12/13/18
 C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\
 C:\GAMS\win64\25.1\
 C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\225b\
 255 2147483647
-0 0 270 43436 43166 60883
+0 0 280 43446 43166 61884
 Medium MUD - 10 User License                   S180308:0349AO-GEN0
 Deutsches Institut fuer Wirtschaftsforschung DIW, Abteilung Energ0
 2008917801COCPPT                                             00000
@@ -296,7 +296,7 @@ DC3975       l 5, m 1, b 1, q 1, p 4, g 3      A Invoice         0
 C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\DIETER.dat
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0 0  1.00000000000000E+0000 0 0
-53004 0 0
+92004 0 0
 0 0 0 1 0
 C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\DIETER_MCP.dll
 C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\225b\sbbinfo.dat

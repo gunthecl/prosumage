@@ -13,7 +13,6 @@ $offtext
 
 Variables
 Z                  Value objective function [Euro]
-lambda_enerbal     Dual variable on energy balance (1a)
 lambda_resgen      Dual variable on renewable generation (3e)
 lambda_convgen     Dual variable on conventional generation level (2a)
 lambda_stolev      Dual variable on storage level  (4a-4b)
@@ -24,6 +23,7 @@ lambda_stolev_pro      Prosumage: Dual variable on storage level  (11d-11h)
 ;
 
 Positive Variables
+lambda_enerbal     Dual variable on energy balance (1a)
 G_L(tech,h)            Generation level in hour h [MWh]
 G_UP(tech,h)           Generation upshift in hour h [MWh]
 G_DO(tech,h)           Generation downshift in hour h [MWh]
@@ -45,8 +45,8 @@ G_RES_PRO(tech,h)              Prosumage: hourly renewables generation in hour h
 STO_IN_PRO2PRO(sto,tech,h)     Prosumage: storage loading from generation for discharging to consumption in hour h [MWh]
 STO_OUT_PRO2PRO(sto,h)         Prosumage: storage discharging to consumption from generation in hour h [MWh]
 STO_L_PRO2PRO(sto,h)           Prosumage: storage level generation to consumption in hour h [MWh]
-N_STO_E_PRO(sto)               Prosumage: installed storage energy [MWh]
-N_STO_P_PRO(sto)               Prosumage: installed storage power [MW]
+N_STO_E_PRO(sto)              Prosumage: installed storage energy [MWh]
+N_STO_P_PRO(sto)              Prosumage: installed storage power [MW]
 N_RES_PRO(tech)                Prosumage: installed renewables capacities [MW]
 
 
@@ -74,7 +74,8 @@ mu_self_con_pro           Prosumage: Constraint on miminum self-consumption leve
 Set
 dis_bio(tech)          Subset of dispatchable technology: Bio mass        /bio/
 res_pro(tech)          Prosumage renewable generation technologies        /pv/
-sto_pro(sto)           Storage technologies                               /sto1/
+sto_pro(sto)          Storage technologies prosumager                    /sto1/
+sto_sys(sto)           Storage technologies system                        /sto5/
 ;
 
 
@@ -171,12 +172,12 @@ obj..
                  + sum( (h,dis)$(ord(h)>1) , c_up(dis)*G_UP(dis,h) )
                  + sum( (h,dis) , c_do(dis)*G_DO(dis,h) )
                  + sum( (h,nondis) , c_cu(nondis)*CU(nondis,h) )
-                 + sum( (h,sto) , c_m_sto(sto) * ( STO_OUT(sto,h) + STO_IN(sto,h) ) )
+                 + sum( (h,sto_sys) , c_m_sto(sto_sys)* ( STO_OUT(sto_sys,h) + STO_IN(sto_sys,h) ) )
                  + sum( tech , c_i(tech)*N_TECH(tech) )
                  + sum( tech , c_fix(tech)*N_TECH(tech) )
-                 + sum( sto , c_i_sto_e(sto)*N_STO_E(sto) )
-                 + sum( sto , c_fix_sto(sto)/2*(N_STO_P(sto)+ N_STO_E(sto)) )
-                 + sum( sto , c_i_sto_p(sto)*N_STO_P(sto) )
+                 + sum( sto_sys , c_i_sto_e(sto_sys)*N_STO_E(sto_sys))
+                 + sum( sto_sys , c_fix_sto(sto_sys)/2*(N_STO_P(sto_sys)+ N_STO_E(sto_sys)) )
+                 + sum( sto_sys , c_i_sto_p(sto_sys)*N_STO_P(sto_sys))
 %prosumage%$ontext
                  + sum( res_pro , c_i(res_pro)*N_RES_PRO(res_pro) )
                  + sum( res_pro , c_fix(res_pro)*N_RES_PRO(res_pro) )
@@ -185,7 +186,7 @@ obj..
                  + sum( sto_pro , c_i_sto_p(sto_pro)*N_STO_P_PRO(sto_pro) )
                  + sum( (h,sto_pro) , c_m_sto(sto_pro) * ( STO_OUT_PRO2PRO(sto_pro,h) + sum( res_pro , STO_IN_PRO2PRO(sto_pro,res_pro,h)) ) )
 $ontext
-$offtext  
+$offtext
 ;
 
 * ---------------------------------------------------------------------------- *
@@ -195,20 +196,20 @@ $offtext
 * Energy balance
 con1a_bal(h)..
 
-           sum( dis , G_L(dis,h)) + sum( nondis , G_RES(nondis,h)) + sum( sto , STO_OUT(sto,h) )
+           sum( dis , G_L(dis,h)) + sum( nondis , G_RES(nondis,h)) + sum( sto_sys , STO_OUT(sto_sys,h) )
 %prosumage%$ontext
          + sum( res , G_MARKET_PRO2M(res,h) )
 $ontext
 $offtext
          -  ( 1 - phi_pro_load )* d(h)
-         -   sum( sto , STO_IN(sto,h) )
+         -   sum( sto_sys , STO_IN(sto_sys,h) )
 
 %prosumage%$ontext
          - G_MARKET_M2PRO(h)
 $ontext
 $offtext
 
-       =E= 0
+       =G= 0
 ;
 
 con2a_loadlevel(dis,h)$(ord(h) > 1)..
@@ -247,44 +248,44 @@ con3e_maxprod_res(nondis,h)..
 ***** Storage constraints *****
 * ---------------------------------------------------------------------------- *
 
-con4a_stolev_start(sto,h)$(ord(h) = 1)..
-        phi_sto_ini(sto) * N_STO_E(sto) + STO_IN(sto,h)*(1+eta_sto(sto))/2 - STO_OUT(sto,h)/(1+eta_sto(sto))*2  - STO_L(sto,h)  =E= 0
+con4a_stolev_start(sto_sys,h)$(ord(h) = 1)..
+        phi_sto_ini(sto_sys)* N_STO_E(sto_sys)+ STO_IN(sto_sys,h)*(1+eta_sto(sto_sys))/2 - STO_OUT(sto_sys,h)/(1+eta_sto(sto_sys))*2  - STO_L(sto_sys,h)  =E= 0
 ;
 
-con4b_stolev(sto,h)$(ord(h)>1)..
-        STO_L(sto,h-1) + STO_IN(sto,h)*(1+eta_sto(sto))/2 - STO_OUT(sto,h)/(1+eta_sto(sto))*2  -  STO_L(sto,h) =E= 0
+con4b_stolev(sto_sys,h)$(ord(h)>1)..
+        STO_L(sto_sys,h-1) + STO_IN(sto_sys,h)*(1+eta_sto(sto_sys))/2 - STO_OUT(sto_sys,h)/(1+eta_sto(sto_sys))*2  -  STO_L(sto_sys,h) =E= 0
 ;
 
-con4_stolev(sto,h)..
+con4_stolev(sto_sys,h)..
 
-       + STO_IN(sto,h)*(1+eta_sto(sto))/2 - STO_OUT(sto,h)/(1+eta_sto(sto))*2  -  STO_L(sto,h)
-       + (STO_L(sto,h-1))$(ord(h)>1)
+       + STO_IN(sto_sys,h)*(1+eta_sto(sto_sys))/2 - STO_OUT(sto_sys,h)/(1+eta_sto(sto_sys))*2  -  STO_L(sto_sys,h)
+       + (STO_L(sto_sys,h-1))$(ord(h)>1)
        =E= 0
 ;
 
 
-con4c_stolev_max(sto,h)..
-       N_STO_E(sto) -  STO_L(sto,h) =G= 0
+con4c_stolev_max(sto_sys,h)..
+       N_STO_E(sto_sys)-  STO_L(sto_sys,h) =G= 0
 ;
 
-con4d_maxin_sto(sto,h)..
+con4d_maxin_sto(sto_sys,h)..
 
-        N_STO_P(sto) -  STO_IN(sto,h)   =G= 0
+        N_STO_P(sto_sys)-  STO_IN(sto_sys,h)   =G= 0
 ;
 
-con4e_maxout_sto(sto,h)..
+con4e_maxout_sto(sto_sys,h)..
 
-        N_STO_P(sto) - STO_OUT(sto,h)   =G= 0
+        N_STO_P(sto_sys)- STO_OUT(sto_sys,h)   =G= 0
 ;
 
-con4j_ending(sto,h)$(ord(h) = card(h))..
+con4j_ending(sto_sys,h)$(ord(h) = card(h))..
 
-        phi_sto_ini(sto) * N_STO_E(sto) -  STO_L(sto,h) =E= 0
+        phi_sto_ini(sto_sys)* N_STO_E(sto_sys)-  STO_L(sto_sys,h) =E= 0
 ;
 
 
-con4k_PHS_EtoP(sto)..
-         etop_max(sto) * N_STO_P(sto) - N_STO_E(sto) =G= 0
+con4k_PHS_EtoP(sto_sys)..
+         etop_max(sto_sys)* N_STO_P(sto_sys)- N_STO_E(sto_sys)=G= 0
 ;
 
 * ---------------------------------------------------------------------------- *
@@ -295,7 +296,7 @@ con5a_minRES..
 sum( h , G_L('bio',h) + sum(nondis , G_RES(nondis,h))
 
 %prosumage%$ontext
-         + sum( sto , STO_OUT_PRO2PRO(sto,h)) + sum( res , G_MARKET_PRO2M(res,h) + G_RES_PRO(res,h))
+         + sum( sto_pro , STO_OUT_PRO2PRO(sto_pro,h)) + sum( res , G_MARKET_PRO2M(res,h) + G_RES_PRO(res,h))
 $ontext
 $offtext
 )
@@ -322,12 +323,12 @@ con8a_max_I_power(tech)..
        m_p(tech) - N_TECH(tech)     =G= 0
 ;
 
-con8b_max_I_sto_e(sto)..
-       m_sto_e(sto) - N_STO_E(sto)  =G= 0
+con8b_max_I_sto_e(sto_sys)..
+       m_sto_e(sto_sys)- N_STO_E(sto_sys) =G= 0
 ;
 
-con8c_max_I_sto_p(sto)..
-       m_sto_p(sto) -  N_STO_P(sto) =G= 0
+con8c_max_I_sto_p(sto_sys)..
+       m_sto_p(sto_sys)-  N_STO_P(sto_sys)=G= 0
 ;
 
 
@@ -351,10 +352,10 @@ con8h_max_sto_pro_p(sto_pro)..
 con11a_pro_distrib(res_pro,h)..
          phi_res(res_pro,h) * N_RES_PRO(res_pro)
          - CU_PRO(res_pro,h) - G_MARKET_PRO2M(res_pro,h) - G_RES_PRO(res_pro,h) - sum( sto_pro , STO_IN_PRO2PRO(sto_pro,res_pro,h) )
-         =E= 0         
+         =E= 0
 ;
 
-con11b_pro_balance(h).. 
+con11b_pro_balance(h)..
          sum( res_pro , G_RES_PRO(res_pro,h)) + sum( sto_pro , STO_OUT_PRO2PRO(sto_pro,h) ) + G_MARKET_M2PRO(h)
          - phi_pro_load * d(h)
          =E= 0
@@ -368,7 +369,7 @@ con11c_pro_selfcon..
 ;
 
 con11d_pro_stolev_PRO2PRO(sto_pro,h)..
-        
+
          + sum( res_pro , STO_IN_PRO2PRO(sto_pro,res_pro,h))*(1+eta_sto(sto_pro))/2
          - STO_OUT_PRO2PRO(sto_pro,h)/(1+eta_sto(sto_pro))*2
          - STO_L_PRO2PRO(sto_pro,h)
@@ -411,16 +412,16 @@ FOCG_L(tech,h)$dis(tech)..
 
     + c_m(tech)
     - lambda_enerbal(h)
-%load_change_costs%$ontext    
+%load_change_costs%$ontext
     + lambda_convgen(tech,h)
 $ontext
-$offtext    
+$offtext
     + mu_conv_cap(tech,h)
-%investment_model%$ontext      
+%investment_model%$ontext
     + mu_bio_cap(tech)$dis_bio(tech)
 $ontext
 $offtext
-%load_change_costs%$ontext    
+%load_change_costs%$ontext
    - (lambda_convgen(tech,h+1))$(ord(h) > 1)
 $ontext
 $offtext
@@ -457,24 +458,24 @@ FOCCU(nondis,h)..
 
 ;
 
-FOCSTO_IN(sto,h)..
+FOCSTO_IN(sto_sys,h)..
 
-    c_m_sto(sto)  + lambda_enerbal(h) -  lambda_stolev(sto,h)*(1+eta_sto(sto))/2
-    + mu_stoin_cap(sto,h) =G= 0
+    c_m_sto(sto_sys) + lambda_enerbal(h) -  lambda_stolev(sto_sys,h)*(1+eta_sto(sto_sys))/2
+    + mu_stoin_cap(sto_sys,h) =G= 0
 ;
 
-FOCSTO_OUT(sto,h)..
+FOCSTO_OUT(sto_sys,h)..
 
-     c_m_sto(sto)  -  lambda_enerbal(h) +  lambda_stolev(sto,h)/(1+eta_sto(sto))*2
-     +  mu_stout_cap(sto,h)
+     c_m_sto(sto_sys) -  lambda_enerbal(h) +  lambda_stolev(sto_sys,h)/(1+eta_sto(sto_sys))*2
+     +  mu_stout_cap(sto_sys,h)
       =G= 0
 ;
 
-FOCSTO_L(sto,h)..
+FOCSTO_L(sto_sys,h)..
 
-  + lambda_stolev(sto,h)
-  +  mu_stolev_cap(sto,h)
-  -  (lambda_stolev(sto,h+1))$(ord(h) > 1 )
+  + lambda_stolev(sto_sys,h)
+  +  mu_stolev_cap(sto_sys,h)
+  -  (lambda_stolev(sto_sys,h+1))$(ord(h) > 1 )
 
   =G= 0
 
@@ -485,10 +486,10 @@ FOCN_TECH(tech)..
           +  c_i(tech)
           +  c_fix(tech)
 %investment_model%$ontext
-          +  mu_tech_max_i(tech)       
+          +  mu_tech_max_i(tech)
 $ontext
 $offtext
-          - sum( h,   mu_conv_cap(tech,h))$dis(tech)         
+          - sum( h,   mu_conv_cap(tech,h))$dis(tech)
           - sum( h,  lambda_resgen(tech,h)*phi_res(tech,h))$nondis(tech)
      =G= 0
 
@@ -496,24 +497,24 @@ $offtext
 
 
 
-FOCN_STO_E(sto)..
+FOCN_STO_E(sto_sys)..
 
-      +  c_fix_sto(sto)/2 +  c_i_sto_e(sto)
-      -  sum( h,   mu_stolev_cap(sto,h))
-%investment_model%$ontext      
-      +  mu_stoe_max_i(sto)
+      +  c_fix_sto(sto_sys)/2 +  c_i_sto_e(sto_sys)
+      -  sum( h,   mu_stolev_cap(sto_sys,h))
+%investment_model%$ontext
+      +  mu_stoe_max_i(sto_sys)
 $ontext
 $offtext
       =G= 0
 ;
 
-FOCN_STO_P(sto)..
+FOCN_STO_P(sto_sys)..
 
 
-     c_fix_sto(sto)/2 + c_i_sto_p(sto)
-     - sum( h, (mu_stoin_cap(sto,h) + mu_stout_cap(sto,h)))
+     c_fix_sto(sto_sys)/2 + c_i_sto_p(sto_sys)
+     - sum( h, (mu_stoin_cap(sto_sys,h) + mu_stout_cap(sto_sys,h)))
 %investment_model%$ontext
-     + mu_stop_max_i(sto)
+     + mu_stop_max_i(sto_sys)
 $ontext
 $offtext
      =G= 0
@@ -551,7 +552,7 @@ FOC_N_STO_P_PRO(sto_pro)..
           - sum(h, mu_stoin_cap_pro(sto_pro,h))
           - sum(h, mu_stout_cap_pro(sto_pro,h))
           =G=  0
-          
+
 ;
 
 * FOC w.r.t G_MARKET_M2PRO
@@ -559,7 +560,7 @@ FOC_G_MARKET_M2PRO(h)..
 %selfish_prosumage%$ontext
 *           price_consume_PRO(h)
 *          sum( hh, lambda_enerbal(hh))/card(h) + 250
-           + 300
+ + 300
 
 $ontext
 $offtext
@@ -638,7 +639,7 @@ FOC_STO_L_PRO2PRO(sto_pro,h)..
 ***** Fix unmatched variables of first period *****
 ********************************************************************************
 
-G_DO.fx(dis,'h3001') = 0;
+G_DO.fx(dis,'h1') = 0;
 
 * Default for reporting
 G_DO.l(dis,h)   = 0;
@@ -647,13 +648,13 @@ G_UP.l(dis,h)   = 0;
 G_RES.l(tech,h) = 0;
 CU.l(tech,h)    = 0;
 
-STO_IN.l(sto,h)  = 0;
-STO_OUT.l(sto,h) = 0;
-STO_L.l(sto,h)   = 0;
+STO_IN.l(sto_sys,h)  = 0;
+STO_OUT.l(sto_sys,h) = 0;
+STO_L.l(sto_sys,h)   = 0;
 
 N_TECH.l(tech)   = 0;
-N_STO_E.l(sto)   = 0;
-N_STO_P.l(sto)   = 0;
+N_STO_E.l(sto_sys)  = 0;
+N_STO_P.l(sto_sys)  = 0;
 
 
 ********************************************************************************
@@ -679,12 +680,12 @@ con4d_maxin_sto
 con4e_maxout_sto
 
 con5a_minRES
-%investment_model%$ontext   
+%investment_model%$ontext
 con5b_max_energy
 $ontext
 $offtext
 
-%investment_model%$ontext     
+%investment_model%$ontext
 con8a_max_I_power
 con8b_max_I_sto_e
 con8c_max_I_sto_p
@@ -724,12 +725,12 @@ con4c_stolev_max.mu_stolev_cap
 con4d_maxin_sto.mu_stoin_cap
 con4e_maxout_sto.mu_stout_cap
 
-%investment_model%$ontext  
+%investment_model%$ontext
 con5b_max_energy.mu_bio_cap
 $ontext
 $offtext
 
-%investment_model%$ontext     
+%investment_model%$ontext
 con8a_max_I_power.mu_tech_max_i
 con8b_max_I_sto_e.mu_stoe_max_i
 con8c_max_I_sto_p.mu_stop_max_i
@@ -750,7 +751,7 @@ FOCSTO_IN.STO_IN
 FOCSTO_OUT.STO_OUT
 FOCSTO_L.STO_L
 
-%investment_model%$ontext 
+%investment_model%$ontext
 FOCN_TECH.N_TECH
 FOCN_STO_E.N_STO_E
 FOCN_STO_P.N_STO_P

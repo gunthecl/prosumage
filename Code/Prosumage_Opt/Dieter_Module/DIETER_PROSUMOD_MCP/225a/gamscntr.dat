@@ -1,11 +1,11 @@
 48
-5 10072 0 0 251  0.00000000000000E+0000 5  0.00000000000000E+0000 0 1
-464285 0 0 0 131405 87600 376685 0 0 0 0 0
-508100 0 0 0 0 0 0 0
-1311194 0
-508100 0 0 0 0 0 0 420500 0 87600
-43817 0 0 0 0 0 0
-0 17520 0
+5 5312 0 0 251  0.00000000000000E+0000 5  0.00000000000000E+0000 0 1
+212004 0 0 0 68004 36000 176004 0 0 0 0 0
+232019 0 0 0 0 0 0 0
+574761 0
+232019 0 0 0 0 0 0 196019 0 36000
+20017 0 0 0 0 0 0
+0 8000 0
 0 16 20
  0.00000000000000E+0000  0.00000000000000E+0000 0
 0  0.00000000000000E+0000 0  0.00000000000000E+0000
@@ -15,21 +15,21 @@
 0 100
 0 0 0 0 0
  0.00000000000000E+0000  0.00000000000000E+0000  0.00000000000000E+0000  0.00000000000000E+0000  0.00000000000000E+0000
-C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\225a\gamsmatr.dat
-C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\225a\gamsinst.dat
-C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\path.opt
-C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\225a\gamsstat.dat
-C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\225a\gamssolu.dat
+C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\225a\gamsmatr.dat
+C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\225a\gamsinst.dat
+C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\path.opt
+C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\225a\gamsstat.dat
+C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\225a\gamssolu.dat
 
-C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\225a\gamsdict.dat
+C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\225a\gamsdict.dat
 3
-13:46:02
-12/02/18
-C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\
+09:29:21
+12/13/18
+C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\
 C:\GAMS\win64\25.1\
-C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\225a\
+C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\225a\
 255 2147483647
-0 0 269 43435 43166 68643
+0 0 280 43446 43166 63884
 Medium MUD - 10 User License                   S180308:0349AO-GEN0
 Deutsches Institut fuer Wirtschaftsforschung DIW, Abteilung Energ0
 2008917801COCPPT                                             00000
@@ -293,17 +293,17 @@ gmsgennt.cmd
 gmsgennx.exe
 1021958612121212                               G180308:00  AO   00
 DC3975       l 5, m 1, b 1, q 1, p 4, g 3      A Invoice         0
-C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\DIETER.dat
+C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\DIETER.dat
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0 0  1.00000000000000E+0000 0 0
-464285 0 0
+212004 0 0
 0 0 0 1 0
-C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\DIETER_MCP.dll
-C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\225a\sbbinfo.dat
-C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\225a\gamscntr.dat
-C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\
+C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\DIETER_MCP.dll
+C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\225a\sbbinfo.dat
+C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\225a\gamscntr.dat
+C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\
 dat
  1.00000000000000E+0299
 
 
-C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Modified_MCP\DIETER.gms
+C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\DIETER.gms
