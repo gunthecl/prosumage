@@ -230,6 +230,7 @@ ev_ged_exog      Electric vehicle grid electricity demand for exogenous charging
 
 ***** Prosumage *****
 phi_pro_load             Share of prosumagers among total load [0 1]
+numb_pro_load            Number of prosumagers in thousands
 phi_pro_self             Minimum self-generation shares for prosumagers [0 1]
 m_res_pro                Maximum installable: renewables capacity [MW]
 m_sto_pro_e              Maximum installable: storage energy [MWh]
@@ -417,8 +418,6 @@ $load headers_pro d_pro_upload
 
 ***** Aliases *****
 alias (h,hh) ;
-*alias (res,resres) ;
-*alias (reserves,reservesreserves) ;
 alias (nondis,nondisnondis) ;
 
 
@@ -473,7 +472,7 @@ m_sto_p(sto) = storage_data(sto,'max_power');
 *--- Temporal data ---*
 d_y(year,h) = time_data_upload(h,year,'demand')  ;
 phi_res_y(year,res,h) = sum(headers_time$(sameas(res,headers_time)), time_data_upload(h,year,headers_time));
-d_pro(year,h)   = d_pro_upload(h,year,'demand_pro');
+d_pro(h)   = d_pro_upload(h,'2030','demand_pro');
 *--- Prosumage ---*
 m_res_pro(res)       = prosumage_data_generation(res,'max_power') ;
 m_sto_pro_e(sto)     = prosumage_data_storage(sto,'max_energy') ;

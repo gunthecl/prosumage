@@ -203,7 +203,7 @@ con1a_bal(h)..
          + sum( res , G_MARKET_PRO2M(res,h) )
 $ontext
 $offtext
-         -  ( 1 - phi_pro_load )* d(h)
+         -   d(h)
          -   sum( sto_sys , STO_IN(sto_sys,h) )
 
 %prosumage%$ontext
@@ -267,7 +267,7 @@ con4_stolev(sto_sys,h)..
 
 
 con4c_stolev_max(sto_sys,h)..
-       N_STO_E(sto_sys)-  STO_L(sto_sys,h) =G= 0
+       N_STO_E(sto_sys)-  STO_L(sto_sys,h)     =G= 0
 ;
 
 con4d_maxin_sto(sto_sys,h)..
@@ -336,15 +336,15 @@ con8c_max_I_sto_p(sto_sys)..
 
 
 con8f_max_pro_res(res_pro)..
-       m_res_pro(res_pro)   -  N_RES_PRO(res_pro)   =G= 0
+       m_res_pro(res_pro)*numb_pro_load   -  N_RES_PRO(res_pro)   =G= 0
 ;
 
 con8g_max_pro_sto_e(sto_pro)..
-       m_sto_pro_e(sto_pro) -  N_STO_E_PRO(sto_pro) =G= 0
+       m_sto_pro_e(sto_pro)*numb_pro_load -  N_STO_E_PRO(sto_pro) =G= 0
 ;
 
 con8h_max_sto_pro_p(sto_pro)..
-        m_sto_pro_p(sto_pro) -  N_STO_P_PRO(sto_pro) =G= 0
+        m_sto_pro_p(sto_pro)*numb_pro_load -  N_STO_P_PRO(sto_pro) =G= 0
 ;
 
 * ---------------------------------------------------------------------------- *
@@ -359,14 +359,14 @@ con11a_pro_distrib(res_pro,h)..
 
 con11b_pro_balance(h)..
          sum( res_pro , G_RES_PRO(res_pro,h)) + sum( sto_pro , STO_OUT_PRO2PRO(sto_pro,h) ) + G_MARKET_M2PRO(h)
-         - phi_pro_load * d(h)
+         - numb_pro_load * d_pro(h)
          =G= 0
 ;
 
 *** Not used in MCP model
 con11c_pro_selfcon..
          sum( (h,res_pro) , G_RES_PRO(res_pro,h) ) + sum( (h,sto_pro) , STO_OUT_PRO2PRO(sto_pro,h) )
-         -  phi_pro_self * sum( h , phi_pro_load * d(h))
+         -  phi_pro_self * sum( h , numb_pro_load * d_pro(h))
          =G=     0
 ;
 
@@ -560,7 +560,6 @@ FOC_N_STO_P_PRO(sto_pro)..
 * FOC w.r.t G_MARKET_M2PRO
 FOC_G_MARKET_M2PRO(h)..
 %selfish_prosumage%$ontext
-*           price_consume_PRO(h)
 *          sum( hh, lambda_enerbal(hh))/card(h) + 250
  + 300
 
@@ -577,7 +576,6 @@ $offtext
 * FOC w.r.t G_MARKET_PRO2M
 FOC_G_MARKET_PRO2M(res_pro,h)..
 %selfish_prosumage%$ontext
-*         - price_produce_PRO(h)
           - 120
 $ontext
 $offtext

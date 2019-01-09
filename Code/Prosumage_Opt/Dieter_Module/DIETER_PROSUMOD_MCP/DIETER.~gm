@@ -42,7 +42,6 @@ $setglobal prosumage_system_version ""
 * Set star to select run-of-river options either as exogenous parameter or as endogenous variable including reserve provision:
 * if nothing is selected, ROR capacity will be set to zero
 * if parameter option is selected, set appropriate values in fix.gmx
-* if variable option is selected, set appropriate bound in data_input excel
 $setglobal ror_parameter "*"
 
 * Set star for reporting to Excel
@@ -120,14 +119,13 @@ $include dataload.gms
 ***************************
 
 * Parameters for default base year
-d(h) = d_y(%base_year%,h) ;
-phi_res(res,h) = phi_res_y(%base_year%,res,h) ;
-phi_min_res  = 0   ;
-phi_pro_self = 0.5 ;
-phi_pro_load = 0   ;
+phi_min_res    = 0   ;
+phi_pro_self   = 0.5 ;
+numb_pro_load  = 0   ;
+
 
 %prosumage%$ontext
-phi_pro_load = 0.00005 ;
+numb_pro_load = 1000 ;
 $ontext
 $offtext
 
@@ -143,10 +141,13 @@ $setglobal minimum_SC ""
 $ontext
 $offtext
 
+* Load demand
+d(h)           = d_y(%base_year%,h) - numb_pro_load*d_pro(h) ;
+phi_res(res,h) = phi_res_y(%base_year%,res,h)  ;
+
 
 Parameter
-phi_min_res_exog
-pv_cap_max_PRO       ;
+phi_min_res_exog     ;
 phi_min_res_exog = 1 ;
 
 
