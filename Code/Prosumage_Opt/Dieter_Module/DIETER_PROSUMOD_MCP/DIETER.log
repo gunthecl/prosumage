@@ -1,5 +1,5 @@
 
---- Job DIETER.gms Start 01/09/19 15:18:13 25.1.2 r67455 WEX-WEI x86 64bit/MS Windows
+--- Job DIETER.gms Start 01/09/19 16:39:13 25.1.2 r67455 WEX-WEI x86 64bit/MS Windows
 GAMS 25.1.2   Copyright (C) 1987-2018 GAMS Development. All rights reserved
 Licensee: Medium MUD - 10 User License                   S180308:0349AO-GEN
           Deutsches Institut fuer Wirtschaftsforschung DIW, AbteilungDC3975
@@ -13,7 +13,7 @@ Licensee: Medium MUD - 10 User License                   S180308:0349AO-GEN
 GDXXRW           25.1.2 r67455 Released Aug  1, 2018 VS8 x86 32bit/MS Windows 
 Input file : C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\data_input.xlsx
 Output file: C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\Data_input.gdx
-Total time = 811 Ms
+Total time = 702 Ms
 --- . dataload.gms(377) 2 Mb
 --- GDXin=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\Data_input.gdx
 --- . dataload.gms(406) 3 Mb
@@ -22,7 +22,7 @@ Total time = 811 Ms
 GDXXRW           25.1.2 r67455 Released Aug  1, 2018 VS8 x86 32bit/MS Windows 
 Input file : C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\time_series.xlsx
 Output file: C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\time_series.gdx
-Total time = 5975 Ms
+Total time = 5913 Ms
 --- . dataload.gms(407) 3 Mb
 --- GDXin=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\time_series.gdx
 --- . dataload.gms(530) 3 Mb
@@ -35,16 +35,16 @@ Total time = 5975 Ms
 --- DIETER.gms(207) 3 Mb
 --- . report.gms(827) 3 Mb
 --- DIETER.gms(224) 4 Mb
---- Starting execution: elapsed 0:00:07.905
+--- Starting execution: elapsed 0:00:07.784
 --- DIETER.gms(1824) 9 Mb
 --- GDXin=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\DIETER_MCP_p.gdx
 --- DIETER.gms(1826) 15 Mb
 --- Generating MCP model DIETER_MCP
 --- DIETER.gms(1828) 28 Mb
----   46,004 rows  51,017 columns  122,394 non-zeroes
+---   46,005 rows  51,018 columns  128,268 non-zeroes
 ---   0 nl-code  0 nl-non-zeroes
 --- DIETER.gms(1828) 26 Mb
---- Executing PATH: elapsed 0:00:08.210
+--- Executing PATH: elapsed 0:00:08.085
 Reading dictionary...
 Reading row data...
 Evaluating functions...
@@ -53,7 +53,7 @@ Calculating Jacobian...
 
 PATH             25.1.2 r67420 Released Jul 31, 2018 WEI x86 64bit/MS Windows 
 
-46003 row/cols, 102922 non-zeros, 0.00% dense.
+46004 row/cols, 108838 non-zeros, 0.01% dense.
 
 Reading parameter(s) from "C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\path.opt"
 >>  solvelink=2
@@ -62,142 +62,233 @@ Finished reading from "C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosum
 Path 4.7.04 (Tue Jul 31 15:20:37 2018)
 Written by Todd Munson, Steven Dirkse, and Michael Ferris
 
-Zero:  1003 Single: 14466 Double:  6004
-Forced:  2139 Redundant:   536
-Zero:     0 Single:    10 Double:     9
-MCPR: One:    0 Two:    0 Thr:    0 Qua:    0 WBd:    0 Fix:    4 IFx:    0
-Preprocessed size   : 21298
+Zero:  1003 Single: 14424 Double:  6004
+Forced:  2307 Redundant:   578
+Zero:     0 Single:    11 Double:    12
+Preprocessed size   : 21089
 
 INITIAL POINT STATISTICS
 Maximum of X. . . . . . . . . .  4.5500e+04 var: (STO_L(Sto5,h225))
-Maximum of F. . . . . . . . . .  4.8769e+04 eqn: (con1a_bal(h1999))
+Maximum of F. . . . . . . . . .  7.1869e+04 eqn: (con11c_pro_selfcon)
 Maximum of Grad F . . . . . . .  1.1111e+00 eqn: (FOCSTO_OUT(Sto5,h3))
                                             var: (lambda_stolev(Sto5,h3))
 
 INITIAL JACOBIAN NORM STATISTICS
-Maximum Row Norm. . . . . . . .  1.4620e+03 eqn: (FOC_N_STO_P_PRO(Sto1))
+Maximum Row Norm. . . . . . . .  1.4200e+03 eqn: (con11c_pro_selfcon)
 Minimum Row Norm. . . . . . . .  1.0000e+00 eqn: (FOCG_L(lig,h1))
-Maximum Column Norm . . . . . .  1.4620e+03 var: (N_STO_P_PRO(Sto1))
+Maximum Column Norm . . . . . .  1.4200e+03 var: (mu_self_con_pro)
 Minimum Column Norm . . . . . .  1.0000e+00 var: (G_L(lig,h1))
 
 Crash Log
 major  func  diff  size  residual    step       prox   (label)
-    0     0             1.0362e+05             0.0e+00 (con1a_bal(h1999))
-    1     1  5248  8288 1.0061e+05  1.0e+00    1.0e+01 (con1a_bal(h1999))
-    2     2  4088  9179 8.5253e+04  1.0e+00    9.0e+00 (con1a_bal(h1999))
-    3     3  2341  9697 6.6801e+04  1.0e+00    8.1e+00 (con1a_bal(h1999))
-    4     4  2006 10614 4.7304e+04  1.0e+00    7.3e+00 (con1a_bal(h1999))
-    5     5  1056 10983 3.5513e+04  1.0e+00    6.6e+00 (FOCG_L(hc,h1999))
-    6     6   694 11250 3.1411e+04  1.0e+00    5.9e+00 (FOCG_L(hc,h1999))
-    7     7   547 11400 2.9094e+04  1.0e+00    5.3e+00 (con4_stolev(Sto5,h1999))
-    8     8   628 11598 2.6217e+04  1.0e+00    4.8e+00 (con1a_bal(h1999))
-    9     9   638 11691 2.3535e+04  1.0e+00    4.3e+00 (FOCSTO_L(Sto5,h1997))
-   10    10   798 11811 2.0250e+04  1.0e+00    3.9e+00 (FOCSTO_L(Sto5,h1997))
-   11    11  1419 11953 1.7365e+04  1.0e+00    3.5e+00 (FOCSTO_IN(Sto5,h1999))
-   12    12  1059 11714 1.4611e+04  1.0e+00    3.1e+00 (FOC_N_RES_PRO(pv))
-   13    13  1841 12103 1.1779e+04  1.0e+00    2.8e+00 (FOC_N_RES_PRO(pv))
-   14    14  2528 12754 9.5727e+03  1.0e+00    2.5e+00 (FOC_N_STO_P_PRO(Sto1))
-   15    15  2424 12824 8.3999e+03  1.0e+00    2.3e+00 (FOC_N_STO_P_PRO(Sto1))
-   16    16  2303 12692 7.1593e+03  1.0e+00    2.1e+00 (FOC_N_STO_P_PRO(Sto1))
-   17    17  2001 12532 6.2317e+03  1.0e+00    1.9e+00 (FOC_N_STO_E_PRO(Sto1))
-   18    18  1851 12920 5.0242e+03  1.0e+00    1.7e+00 (FOC_N_STO_E_PRO(Sto1))
-   19    19  1639 12899 4.2936e+03  1.0e+00    1.5e+00 (FOC_STO_L_PRO2PRO(Sto1,)
-   20    20  1492 12397 3.8743e+03  1.0e+00    1.4e+00 (FOC_STO_L_PRO2PRO(Sto1,)
-   21    21  1449 11861 3.5834e+03  1.0e+00    1.2e+00 (FOC_STO_L_PRO2PRO(Sto1,)
-   22    22  1707 11820 3.2052e+03  1.0e+00    1.1e+00 (con1a_bal(h613))
-   23    23  1817 12053 2.8010e+03  1.0e+00    9.8e-01 (con1a_bal(h1955))
-   24    24  1451 12064 2.3929e+03  1.0e+00    8.9e-01 (con1a_bal(h1885))
-   25    25  1024 11979 1.9203e+03  1.0e+00    8.0e-01 (con4_stolev(Sto5,h1993))
-   26    26   843 11879 1.5254e+03  1.0e+00    7.2e-01 (con4_stolev(Sto5,h1995))
-   27    27   684 11683 1.3021e+03  1.0e+00    6.5e-01 (FOC_STO_OUT_PRO2PRO(Sto)
-   28    28   621 11647 1.1611e+03  1.0e+00    5.8e-01 (con1a_bal(h1811))
-   29    29   505 11580 9.9504e+02  1.0e+00    5.2e-01 (con1a_bal(h1379))
-   30    30   420 11403 8.6657e+02  1.0e+00    4.7e-01 (con1a_bal(h1525))
-   31    32   151 11274 7.8934e+02  8.0e-01    4.2e-01 (con4_stolev(Sto5,h1997))
-   32    35    88 11301 7.7364e+02  6.4e-01    3.8e-01 (con11d_pro_stolev_PRO2P)
-   33    42    42 11321 7.7128e+02  6.9e-02    3.4e-01 (con11d_pro_stolev_PRO2P)
+    0     0             1.4471e+06             0.0e+00 (con1a_bal(h935))
+    1     1  6270 10103 1.3819e+06  1.0e+00    1.0e+01 (con1a_bal(h935))
+    2     2  5469 14100 1.1705e+06  1.0e+00    9.0e+00 (con1a_bal(h935))
+    3     3   650 13251 9.2470e+05  1.0e+00    8.1e+00 (con1a_bal(h933))
+    4     4   435 12747 6.8046e+05  1.0e+00    7.3e+00 (con1a_bal(h933))
+    5     5   354 12426 5.0730e+05  1.0e+00    6.6e+00 (FOC_G_MARKET_PRO2M(pv,h)
+    6     6   424 12157 4.2702e+05  1.0e+00    5.9e+00 (con4_stolev(Sto5,h771))
+    7     7   427 11813 3.7257e+05  1.0e+00    5.3e+00 (con4_stolev(Sto5,h771))
+    8     8   582 11491 3.1610e+05  1.0e+00    4.8e+00 (con4_stolev(Sto5,h1059))
+    9     9  1105 11468 2.5209e+05  1.0e+00    4.3e+00 (con11a_pro_distrib(pv,h)
+   10    10  2076 11856 1.7383e+05  1.0e+00    3.9e+00 (con4_stolev(Sto5,h1053))
+   11    11  3024 12553 1.1728e+05  1.0e+00    3.5e+00 (con4_stolev(Sto5,h933))
+   12    12  2296 13313 1.0073e+05  1.0e+00    3.1e+00 (con1a_bal(h203))
+   13    13  1464 13155 8.6641e+04  1.0e+00    2.8e+00 (con1a_bal(h1045))
+   14    14   967 12572 7.5030e+04  1.0e+00    2.5e+00 (con11c_pro_selfcon)
+   15    15  1506 12385 5.0439e+04  1.0e+00    2.3e+00 (FOCSTO_L(Sto5,h569))
+   16    16  1795 12544 3.9136e+04  1.0e+00    2.1e+00 (FOCSTO_L(Sto5,h565))
+   17    17  2183 12487 3.0360e+04  1.0e+00    1.9e+00 (FOCSTO_L(Sto5,h565))
+   18    18  1972 12672 2.2622e+04  1.0e+00    1.7e+00 (FOCSTO_L(Sto5,h565))
+   19    19  1393 12836 1.7780e+04  1.0e+00    1.5e+00 (FOCSTO_L(Sto5,h565))
+   20    20  1174 12813 1.4848e+04  1.0e+00    1.4e+00 (FOC_STO_IN_PRO2PRO(Sto1)
+   21    21  1074 12711 1.1794e+04  1.0e+00    1.2e+00 (FOCSTO_OUT(Sto5,h573))
+   22    22   897 12456 9.8227e+03  1.0e+00    1.1e+00 (FOC_G_MARKET_M2PRO(h105)
+   23    23   917 12109 8.3080e+03  1.0e+00    9.8e-01 (con1a_bal(h573))
+   24    25   406 11819 7.7046e+03  8.0e-01    8.9e-01 (FOC_G_MARKET_M2PRO(h573)
+   25    26   960 11995 6.6721e+03  1.0e+00    8.0e-01 (FOC_G_MARKET_M2PRO(h573)
+   26    28   592 11704 5.9732e+03  8.0e-01    7.2e-01 (FOC_STO_L_PRO2PRO(Sto1,)
+   27    29  1032 12051 5.2505e+03  1.0e+00    6.5e-01 (FOC_STO_L_PRO2PRO(Sto1,)
+   28    30   868 11990 5.1582e+03  1.0e+00    5.8e-01 (FOC_STO_L_PRO2PRO(Sto1,)
+   29    32   627 12022 4.6166e+03  8.0e-01    5.2e-01 (con11c_pro_selfcon)
+   30    34   892 12349 4.3968e+03  8.0e-01    4.7e-01 (FOC_STO_L_PRO2PRO(Sto1,)
+   31    37   829 12899 4.0547e+03  6.4e-01    4.2e-01 (con1a_bal(h1901))
+   32    41   452 13151 3.7341e+03  4.1e-01    3.8e-01 (con1a_bal(h1219))
+   33    45   366 13320 3.6675e+03  4.1e-01    3.4e-01 (con1a_bal(h1221))
+   34    50   319 13509 3.6409e+03  2.6e-01    3.1e-01 (con11d_pro_stolev_PRO2P)
+   35    55   213 13631 3.6209e+03  2.6e-01    2.8e-01 (con1a_bal(h571))
+   36    61   152 13718 3.5764e+03  1.7e-01    2.5e-01 (con1a_bal(h571))
+   37    67   104 13782 3.5636e+03  1.7e-01    2.3e-01 (con1a_bal(h571))
+   38    74    58 13821 3.5534e+03  6.9e-02    2.0e-01 (con11d_pro_stolev_PRO2P)
+   39    82    32 13839 3.5526e+03  2.8e-02    1.8e-01 (con11d_pro_stolev_PRO2P)
 pn_search terminated: no progress.
 
 Major Iteration Log
 major minor  func  grad  residual    step  type prox    inorm  (label)
-    0     0    55    34 7.7128e+02           I 3.1e-01 2.0e+02 (con11d_pro_stol)
+    0     0    95    40 3.5526e+03           I 1.6e-01 5.8e+02 (con11d_pro_stol)
 
 Minor Iteration Log
 minor      t          z     w     v   art ckpts  enter    leave
-  500  3.9451e-01 10893  9060  1344     0     9 w[10482] w[ 9259]
+  500  6.3913e-03 13403  6810   875     0     9 w[17857] z[ 6281]
+ 1000  1.8340e-01 13238  6894   956     0    19 z[13045] w[18488]
+ 1500  6.1871e-01 13230  6840  1018     0    29 w[ 9758] w[15352]
 
 Major Iteration Log
 major minor  func  grad  residual    step  type prox    inorm  (label)
-    1   762    56    35 4.7621e+02  1.0e+00 SM 1.2e-01 8.3e+01 (FOCG_L(OCGT,h19)
+    1  1863    96    41 2.0066e+03  1.0e+00 SM 6.6e-02 1.3e+02 (con11a_pro_dist)
 
 Minor Iteration Log
 minor      t          z     w     v   art ckpts  enter    leave
-  500  8.7752e-01 10458  9342  1497     0     9 w[ 9136] w[18784]
+  500  2.7510e-01 13067  6862  1159     0     9 v[ 8601] z[ 8829]
+ 1000  5.9382e-01 12935  6863  1290     0    19 v[ 3464] z[17264]
+ 1500  9.6412e-01 12847  6843  1398     0    29 v[ 3190] z[ 2022]
 
 Major Iteration Log
 major minor  func  grad  residual    step  type prox    inorm  (label)
-    2   568    57    36 3.7925e+02  1.0e+00 SO 4.9e-02 7.3e+01 (FOCG_L(OCGT,h19)
+    2  1546    97    42 1.4730e+03  1.0e+00 SO 2.6e-02 6.7e+01 (con11a_pro_dist)
 
 Minor Iteration Log
 minor      t          z     w     v   art ckpts  enter    leave
-  500  7.1186e-01 10166  9550  1581     0     9 w[11680] z[10111]
+  500  2.0105e-01 12656  6921  1511     0     9 w[ 9258] z[ 9500]
+ 1000  5.1244e-01 12455  7002  1631     0    19 v[ 3393] w[12646]
+ 1500  8.4843e-01 12261  7125  1702     0    29 w[19883] w[  653]
 
 Major Iteration Log
 major minor  func  grad  residual    step  type prox    inorm  (label)
-    3   659    58    37 2.8510e+02  1.0e+00 SO 2.0e-02 3.5e+01 (FOCG_L(OCGT,h19)
+    3  1766    98    43 9.5273e+02  1.0e+00 SO 1.1e-02 6.0e+01 (FOCG_L(CCGT,h46)
 
 Minor Iteration Log
 minor      t          z     w     v   art ckpts  enter    leave
-  500  6.8948e-01  9786  9732  1779     0     9 v[ 2765] z[15430]
+  500  2.0985e-01 11917  7365  1806     0     9 z[  155] z[10002]
+ 1000  4.2776e-01 11699  7507  1882     0    19 v[ 3518] z[10196]
+ 1500  6.5275e-01 11443  7707  1938     0    29 w[ 5801] z[15430]
+ 2000  8.8977e-01 11175  7900  2013     0    39 w[10457] z[12626]
 
 Major Iteration Log
 major minor  func  grad  residual    step  type prox    inorm  (label)
-    4   754    59    38 8.7773e+01  1.0e+00 SO 7.9e-03 2.4e+01 (FOCG_L(OCGT,h19)
-    5   375    60    39 2.2215e+01  1.0e+00 SO 3.2e-03 1.0e+01 (FOCG_L(hc,h1999)
-    6   298    61    40 1.0306e+01  1.0e+00 SO 1.3e-03 5.8e+00 (FOCG_L(hc,h1999)
-    7   145    62    41 3.6351e+00  1.0e+00 SO 5.1e-04 8.5e-01 (FOCG_L(CCGT,h19)
-    8    67    63    42 1.6738e+00  1.0e+00 SO 2.0e-04 5.2e-01 (FOCSTO_L(Sto5,h)
-    9    11    64    43 8.1758e-01  1.0e+00 SO 8.1e-05 1.5e-01 (FOCSTO_L(Sto5,h)
-   10     5    65    44 5.7688e-01  1.0e+00 SO 3.2e-05 7.9e-02 (FOCSTO_L(Sto5,h)
-   11     3    66    45 5.3132e-02  1.0e+00 SO 1.3e-05 8.2e-03 (FOCG_L(lig,h138)
-   12     3    67    46 1.0449e-05  1.0e+00 SO 5.2e-06 1.9e-06 (con4_stolev(Sto)
-   13     1    68    47 4.1209e-10  1.0e+00 SO 1.0e-06 2.0e-10 (FOCG_L(CCGT,h14)
+    4  2278    99    44 4.8268e+02  1.0e+00 SO 4.2e-03 3.6e+01 (FOCG_L(hc,h497))
+
+Minor Iteration Log
+minor      t          z     w     v   art ckpts  enter    leave
+  500  1.8228e-01 10639  8306  2143     0     9 w[ 5952] w[19435]
+ 1000  4.0694e-01 10308  8534  2246     0    19 z[16642] z[ 3124]
+ 1500  7.4471e-01 10118  8655  2315     0    29 w[21064] z[ 3303]
+
+Major Iteration Log
+major minor  func  grad  residual    step  type prox    inorm  (label)
+    5  1930   100    45 1.5435e+02  1.0e+00 SO 1.7e-03 9.4e+00 (FOCG_L(hc,h557))
+
+Minor Iteration Log
+minor      t          z     w     v   art ckpts  enter    leave
+  500  4.3325e-01  9698  8885  2505     0     9 w[ 4882] w[18334]
+ 1000  7.7639e-01  9511  8997  2580     0    19 w[20280] z[19501]
+ 1500  9.7168e-01  9225  9253  2610     0    29 z[ 9435] z[20286]
+
+Major Iteration Log
+major minor  func  grad  residual    step  type prox    inorm  (label)
+    6  1589   101    46 6.2511e+01  1.0e+00 SO 6.7e-04 4.5e+00 (FOCG_L(hc,h875))
+
+Minor Iteration Log
+minor      t          z     w     v   art ckpts  enter    leave
+  500  5.9658e-01  8939  9455  2694     0     9 z[ 9103] z[20140]
+ 1000  9.4746e-01  8750  9615  2723     0    19 z[15363] w[14847]
+
+Major Iteration Log
+major minor  func  grad  residual    step  type prox    inorm  (label)
+    7  1167   102    47 2.6691e+01  1.0e+00 SO 2.7e-04 2.8e+00 (FOCSTO_L(Sto5,h)
+
+Minor Iteration Log
+minor      t          z     w     v   art ckpts  enter    leave
+  500  7.9493e-01  8768  9567  2753     0     9 z[ 3359] w[19039]
+
+Major Iteration Log
+major minor  func  grad  residual    step  type prox    inorm  (label)
+    8   654   103    48 1.5239e+01  1.0e+00 SO 1.1e-04 1.6e+00 (FOCSTO_L(Sto5,h)
+    9   196   104    49 1.5128e+01  1.0e+00 SO 1.5e+00 1.6e+00 (FOCSTO_L(Sto5,h)
+   10    65   105    50 1.4863e+01  1.0e+00 SO 6.1e-01 1.6e+00 (FOCSTO_L(Sto5,h)
+   11   189   106    51 1.4406e+01  1.0e+00 SO 2.4e-01 1.5e+00 (FOCSTO_L(Sto5,h)
+   12   142   107    52 1.3823e+01  1.0e+00 SO 9.8e-02 1.4e+00 (FOCSTO_L(Sto5,h)
+   13   157   108    53 1.3411e+01  1.0e+00 SO 3.9e-02 1.4e+00 (FOCSTO_L(Sto5,h)
+
+Minor Iteration Log
+minor      t          z     w     v   art ckpts  enter    leave
+  500  9.7234e-01  8653  9708  2727     0     9 z[15814] w[15584]
+
+Major Iteration Log
+major minor  func  grad  residual    step  type prox    inorm  (label)
+   14   931   109    54 1.3378e+01  1.0e+00 SO 1.6e-02 1.4e+00 (FOCSTO_L(Sto5,h)
+   15   157   110    55 1.3244e+01  1.0e+00 SO 6.2e-03 1.3e+00 (FOCSTO_L(Sto5,h)
+   16   112   111    56 1.3110e+01  1.0e+00 SO 2.5e-03 1.1e+00 (FOCSTO_L(Sto5,h)
+
+Minor Iteration Log
+minor      t          z     w     v   art ckpts  enter    leave
+  500  6.8920e-01  8718  9642  2728     0     9 z[20726] w[20324]
+
+Major Iteration Log
+major minor  func  grad  residual    step  type prox    inorm  (label)
+   17   600   112    57 1.2695e+01  1.0e+00 SO 1.0e-03 1.1e+00 (FOCSTO_L(Sto5,h)
+   18   292   113    58 1.1226e+01  1.0e+00 SO 4.0e-04 1.1e+00 (FOCSTO_L(Sto5,h)
+   19   193   114    59 9.6834e+00  1.0e+00 SO 1.6e-04 9.9e-01 (FOCSTO_L(Sto5,h)
+   20   467   115    60 6.8761e+00  1.0e+00 SM 6.4e-05 6.1e-01 (FOCSTO_L(Sto5,h)
+   21   234   116    61 3.5363e+00  1.0e+00 SM 2.6e-05 4.3e-01 (FOCSTO_IN(Sto5,)
+   22   231   117    62 9.9860e-01  1.0e+00 SM 1.0e-05 1.4e-01 (FOCSTO_L(Sto5,h)
+   23   222   118    63 9.2301e-01  1.0e+00 SO 1.0e-01 1.3e-01 (FOCSTO_L(Sto5,h)
+   24    62   119    64 8.4159e-01  1.0e+00 SO 4.0e-02 1.2e-01 (FOCSTO_L(Sto5,h)
+   25   168   120    65 8.0488e-01  1.0e+00 SO 1.6e-02 1.2e-01 (FOCSTO_L(Sto5,h)
+
+Minor Iteration Log
+minor      t          z     w     v   art ckpts  enter    leave
+  500  9.7626e-01  8837  9504  2747     0     9 w[14714] z[18776]
+
+Major Iteration Log
+major minor  func  grad  residual    step  type prox    inorm  (label)
+   26   690   121    66 8.0327e-01  1.0e+00 SO 6.4e-03 1.2e-01 (FOCSTO_L(Sto5,h)
+   27    25   122    67 8.0327e-01  1.0e+00 SO 2.6e-03 1.2e-01 (FOCSTO_L(Sto5,h)
+   28     1   123    68 8.0327e-01  1.0e+00 SO 1.0e-03 1.2e-01 (FOCSTO_L(Sto5,h)
+   29    20   124    69 8.0132e-01  1.0e+00 SO 4.1e-04 1.2e-01 (FOCSTO_L(Sto5,h)
+   30   106   125    70 7.9165e-01  1.0e+00 SO 1.6e-04 1.2e-01 (FOCSTO_L(Sto5,h)
+   31   195   126    71 7.1665e-01  1.0e+00 SO 6.5e-05 9.5e-02 (FOCSTO_L(Sto5,h)
+   32    50   127    72 4.3708e-01  1.0e+00 SO 2.6e-05 7.7e-02 (FOCSTO_L(Sto5,h)
+   33    29   128    73 1.0777e-01  1.0e+00 SO 1.0e-05 2.3e-02 (FOCSTO_L(Sto5,h)
+   34     7   129    74 7.0864e-06  1.0e+00 SO 4.2e-06 2.3e-06 (con11b_pro_bala)
+   35     1   130    75 1.2557e-05  1.0e+00 SO 7.1e-07 9.3e-06 (con1a_bal(h719))
+   36     2   131    76 6.6473e-09  1.0e+00 SO 2.8e-07 6.5e-09 (con11c_pro_self)
 
 FINAL STATISTICS
-Inf-Norm of Complementarity . .  5.5685e-07 eqn: (FOCSTO_L(Sto5,h1433))
-Inf-Norm of Normal Map. . . . .  1.0217e-10 eqn: (FOCG_L(CCGT,h1449))
-Inf-Norm of Minimum Map . . . .  1.0217e-10 eqn: (FOCG_L(CCGT,h1449))
-Inf-Norm of Fischer Function. .  2.0434e-10 eqn: (FOCG_L(CCGT,h1449))
-Inf-Norm of Grad Fischer Fcn. .  4.0946e-10 eqn: (con1a_bal(h1449))
-Two-Norm of Grad Fischer Fcn. .  9.9483e-10
+Inf-Norm of Complementarity . .  4.9869e-07 eqn: (con11c_pro_selfcon)
+Inf-Norm of Normal Map. . . . .  6.4611e-09 eqn: (con11c_pro_selfcon)
+Inf-Norm of Minimum Map . . . .  6.4611e-09 eqn: (con11c_pro_selfcon)
+Inf-Norm of Fischer Function. .  6.4611e-09 eqn: (con11c_pro_selfcon)
+Inf-Norm of Grad Fischer Fcn. .  6.7318e-09 eqn: (FOC_STO_OUT_PRO2PRO(Sto1,h174)
+Two-Norm of Grad Fischer Fcn. .  2.4378e-07
 
 FINAL POINT STATISTICS
-Maximum of X. . . . . . . . . .  4.5500e+04 var: (STO_L(Sto5,h225))
-Maximum of F. . . . . . . . . .  8.6916e+03 eqn: (con1a_bal(h1251))
+Maximum of X. . . . . . . . . .  4.5500e+04 var: (STO_L(Sto5,h127))
+Maximum of F. . . . . . . . . .  1.5860e+03 eqn: (con1a_bal(h99))
 Maximum of Grad F . . . . . . .  1.1111e+00 eqn: (FOCSTO_OUT(Sto5,h3))
                                             var: (lambda_stolev(Sto5,h3))
 
  ** EXIT - solution found.
 
-Major Iterations. . . . 13
-Minor Iterations. . . . 3651
+Major Iterations. . . . 36
+Minor Iterations. . . . 18439
 Restarts. . . . . . . . 0
-Crash Iterations. . . . 33
+Crash Iterations. . . . 39
 Gradient Steps. . . . . 0
-Function Evaluations. . 68
-Gradient Evaluations. . 47
-Basis Time. . . . . . . 5.835000
-Total Time. . . . . . . 6.552000
-Residual. . . . . . . . 4.120880e-10
-Postsolved residual: 4.0939e-10
+Function Evaluations. . 131
+Gradient Evaluations. . 76
+Basis Time. . . . . . . 37.583000
+Total Time. . . . . . . 40.513000
+Residual. . . . . . . . 6.647275e-09
+Postsolved residual: 6.6473e-09
 
 --- Restarting execution
 --- DIETER.gms(1828) 15 Mb
 --- Reading solution for model DIETER_MCP
 --- GDX Point C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\DIETER_MCP_p.gdx
---- Executing after solve: elapsed 0:00:16.082
+--- Executing after solve: elapsed 0:00:50.029
 --- DIETER.gms(2662) 16 Mb
 --- GDX File C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\results.gdx
 --- GDX File C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\test.gdx
 *** Status: Normal completion
---- Job DIETER.gms Stop 01/09/19 15:18:29 elapsed 0:00:16.217
+--- Job DIETER.gms Stop 01/09/19 16:40:03 elapsed 0:00:50.154
