@@ -22,7 +22,7 @@ tech                     Generation technologies
  dis(tech)               Dispatchable generation technologies
  nondis(tech)            Nondispatchable generation technologies
  con(tech)               Conventional generation technologies
- res(tech)               Renewable generation technologies 
+ res(tech)               Renewable generation technologies
  sto                     Storage technologies
 rsvr                     Reservoir technologies
 dsm                      DSM technologies
@@ -77,6 +77,7 @@ headers_heat                     Heat data - upload headers
  heat_fossil                     Heat data - hybrid heating technologies - fossil part
 headers_time_heat                Heat data - upload headers time data
 headers_time_dhw                 Heat data - upload headers time data on DHW
+headers_pro                      Prosumage data - upload headers
 ;
 
 
@@ -179,6 +180,7 @@ m_dsm_shift                      DSM: Maximum installable capacity load shifting
 ***** Time Data *****
 d_y                      Demand hour h for different years [MWh]
 d                        Demand hour h [MWh]
+d_pro                    Prosumage demand hour h [MWh] for 1000 households
 phi_res_y                Renewables availability technology res in hour h for different years [0 1]
 phi_res                  Renewables availability technology res in hour h [0 1]
 phi_ror_y                Run-of-river availability technology ror in hour h for different years [0 1]
@@ -333,6 +335,7 @@ heat_data(bu,ch,headers_heat)
 dh_upload(h,year,headers_time_heat,bu)
 d_dhw_upload(h,year,headers_time_heat,bu)
 temp_source_upload
+d_pro_upload(h,year,headers_pro)
 ;
 
 
@@ -424,10 +427,13 @@ $offtext
 $onecho >temp2.tmp
 se=0
 
-dset=h                           rng=basic!A9            rdim=1 cdim=0
+dset=h                           rng=hours!A1            rdim=1 cdim=0
 dset=headers_time                rng=basic!B8            rdim=0 cdim=1
 dset=year                        rng=basic!B7            rdim=0 cdim=1
 par=time_data_upload             rng=basic!A7            rdim=1 cdim=2
+
+dset=headers_pro                 rng=prosumage!B8        rdim=0 cdim=1
+par= d_pro_upload                rng=prosumage!A7        rdim=1 cdim=2
 
 dset=headers_time_ev             rng=ev!B7               rdim=0 cdim=1
 par=ev_time_data_upload          rng=ev!A7               rdim=1 cdim=2
@@ -452,6 +458,7 @@ $offecho
 $call "gdxxrw time_series.xlsx @temp2.tmp o=time_series";
 $GDXin time_series.gdx
 $load h headers_time year time_data_upload
+$load headers_pro d_pro_upload
 *$load headers_time_ev ev_time_data_upload
 *$load reserves_time_data_activation
 *$load reserves_time_data_provision
@@ -526,7 +533,7 @@ m_sto_p(sto) = storage_data(sto,'max_power');
 *--- Temporal data ---*
 d_y(year,h) = time_data_upload(h,year,'demand')  ;
 phi_res_y(year,res,h) = sum(headers_time$(sameas(res,headers_time)), time_data_upload(h,year,headers_time));
-
+d_pro(year,h)   = d_pro_upload(h,year,'demand_pro');
 *--- Prosumage ---*
 m_res_pro(res)       = prosumage_data_generation(res,'max_power') ;
 m_sto_pro_e(sto)     = prosumage_data_storage(sto,'max_energy') ;

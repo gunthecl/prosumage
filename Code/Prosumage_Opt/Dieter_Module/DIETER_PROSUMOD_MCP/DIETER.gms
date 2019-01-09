@@ -55,7 +55,7 @@ $setglobal report_to_excel ""
 * ----------------- Select if to use MCP or LP format --------------------------
 
 * Set to "*" to select linear program, leave blank to select MCP
-$setglobal LP "*"
+$setglobal LP ""
 
 
 ********************************************************************************
@@ -130,7 +130,7 @@ phi_pro_self = 0.5 ;
 phi_pro_load = 0   ;
 
 %prosumage%$ontext
-phi_pro_load = 0.0001 ;
+phi_pro_load = 0.00005 ;
 $ontext
 $offtext
 
@@ -195,13 +195,19 @@ $include fix.gms
 $include scenario.gms
 
 %LP%$ontext
+DIETER.savepoint=1;
+$if exist DIETER_p.gdx execute_loadpoint "DIETER_p";
 option limrow = 10, limcol = 10, solprint = on ;
 solve  DIETER using lp min Z ;
 $ontext
 $offtext
 
 %MCP%$ontext
+DIETER_MCP.savepoint=1;
+$if exist DIETER_p.gdx execute_loadpoint "DIETER_p";
+$if exist DIETER_MCP_p.gdx execute_loadpoint "DIETER_MCP_p";
 option limrow = 10, limcol = 10, solprint = on ;
+DIETER_MCP.optfile= 1;
 solve   DIETER_MCP using mcp;
 $ontext
 $offtext

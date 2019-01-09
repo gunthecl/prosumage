@@ -13,6 +13,10 @@ $offtext
 
 Variables
 Z                  Value objective function [Euro]
+;
+
+Positive Variables
+lambda_enerbal     Dual variable on energy balance (1a)
 lambda_resgen      Dual variable on renewable generation (3e)
 lambda_convgen     Dual variable on conventional generation level (2a)
 lambda_stolev      Dual variable on storage level  (4a-4b)
@@ -20,10 +24,7 @@ lambda_stolev      Dual variable on storage level  (4a-4b)
 lambda_enerbal_pro     Prosumage: Dual variable on prosumage energy balance (11b)
 lambda_resgen_pro      Prosumage: Dual variable on renewable generation (11a)
 lambda_stolev_pro      Prosumage: Dual variable on storage level  (11d-11h)
-;
 
-Positive Variables
-lambda_enerbal     Dual variable on energy balance (1a)
 G_L(tech,h)            Generation level in hour h [MWh]
 G_UP(tech,h)           Generation upshift in hour h [MWh]
 G_DO(tech,h)           Generation downshift in hour h [MWh]
@@ -72,13 +73,14 @@ mu_self_con_pro           Prosumage: Constraint on miminum self-consumption leve
 ;
 
 Set
+*$onempty
 dis_bio(tech)          Subset of dispatchable technology: Bio mass        /bio/
 res_pro(tech)          Prosumage renewable generation technologies        /pv/
-sto_pro(sto)          Storage technologies prosumager                    /sto1/
+sto_pro(sto)          Storage technologies prosumager                     /sto1/
 sto_sys(sto)           Storage technologies system                        /sto5/
+dis_sys(tech)                                                             /lig,hc,CCGT,OCGT,oil,other,bio/
+nondis_sys(tech)                                                          /ror,wind_on,wind_off,pv/
 ;
-
-
 ********************************************************************************
 
 Equations
@@ -168,10 +170,10 @@ FOC_STO_L_PRO2PRO           Prosumage: FOC w.r.t STO_L_PRO2PRO
 
 obj..
          Z =E=
-                   sum( (h,dis) , c_m(dis)*G_L(dis,h) )
-                 + sum( (h,dis)$(ord(h)>1) , c_up(dis)*G_UP(dis,h) )
-                 + sum( (h,dis) , c_do(dis)*G_DO(dis,h) )
-                 + sum( (h,nondis) , c_cu(nondis)*CU(nondis,h) )
+                   sum( (h,dis_sys) , c_m(dis_sys)*G_L(dis_sys,h) )
+                 + sum( (h,dis_sys)$(ord(h)>1) , c_up(dis_sys)*G_UP(dis_sys,h) )
+                 + sum( (h,dis_sys) , c_do(dis_sys)*G_DO(dis_sys,h) )
+                 + sum( (h,nondis_sys) , c_cu(nondis_sys)*CU(nondis_sys,h) )
                  + sum( (h,sto_sys) , c_m_sto(sto_sys)* ( STO_OUT(sto_sys,h) + STO_IN(sto_sys,h) ) )
                  + sum( tech , c_i(tech)*N_TECH(tech) )
                  + sum( tech , c_fix(tech)*N_TECH(tech) )
@@ -196,7 +198,7 @@ $offtext
 * Energy balance
 con1a_bal(h)..
 
-           sum( dis , G_L(dis,h)) + sum( nondis , G_RES(nondis,h)) + sum( sto_sys , STO_OUT(sto_sys,h) )
+           sum( dis_sys , G_L(dis_sys,h)) + sum( nondis_sys , G_RES(nondis_sys,h)) + sum( sto_sys , STO_OUT(sto_sys,h) )
 %prosumage%$ontext
          + sum( res , G_MARKET_PRO2M(res,h) )
 $ontext
@@ -212,18 +214,18 @@ $offtext
        =G= 0
 ;
 
-con2a_loadlevel(dis,h)$(ord(h) > 1)..
-         G_L(dis,h-1) + G_UP(dis,h) - G_DO(dis,h)  - G_L(dis,h) =E= 0
+con2a_loadlevel(dis_sys,h)$(ord(h) > 1)..
+         G_L(dis_sys,h-1) + G_UP(dis_sys,h) - G_DO(dis_sys,h)  - G_L(dis_sys,h) =G= 0
 ;
 
-con2b_loadlevelstart(dis,h)$(ord(h) = 1)..
-        G_UP(dis,h) - G_L(dis,h) =E= 0
+con2b_loadlevelstart(dis_sys,h)$(ord(h) = 1)..
+        G_UP(dis_sys,h) - G_L(dis_sys,h) =G= 0
 ;
 
-con2_loadlevel(dis,h)..
-           G_UP(dis,h)  - G_L(dis,h)
-        +  (G_L(dis,h-1) - G_DO(dis,h))$(ord(h) > 1)
-        =E= 0
+con2_loadlevel(dis_sys,h)..
+           G_UP(dis_sys,h)  - G_L(dis_sys,h)
+        +  (G_L(dis_sys,h-1) - G_DO(dis_sys,h))$(ord(h) > 1)
+        =G= 0
 ;
 
 
@@ -232,16 +234,16 @@ con2_loadlevel(dis,h)..
 ***** Hourly maximum generation caps *****
 * ---------------------------------------------------------------------------- *
 
-con3a_maxprod_dispatchable(dis,h)..
+con3a_maxprod_dispatchable(dis_sys,h)..
 
-         N_TECH(dis) -  G_L(dis,h)  =G= 0
+         N_TECH(dis_sys) -  G_L(dis_sys,h)  =G= 0
 
 ;
 
-con3e_maxprod_res(nondis,h)..
+con3e_maxprod_res(nondis_sys,h)..
 
 
-       phi_res(nondis,h)*N_TECH(nondis) - G_RES(nondis,h) - CU(nondis,h) =E= 0
+       phi_res(nondis_sys,h)*N_TECH(nondis_sys) - G_RES(nondis_sys,h) - CU(nondis_sys,h) =G= 0
 ;
 
 * ---------------------------------------------------------------------------- *
@@ -249,18 +251,18 @@ con3e_maxprod_res(nondis,h)..
 * ---------------------------------------------------------------------------- *
 
 con4a_stolev_start(sto_sys,h)$(ord(h) = 1)..
-        phi_sto_ini(sto_sys)* N_STO_E(sto_sys)+ STO_IN(sto_sys,h)*(1+eta_sto(sto_sys))/2 - STO_OUT(sto_sys,h)/(1+eta_sto(sto_sys))*2  - STO_L(sto_sys,h)  =E= 0
+        phi_sto_ini(sto_sys)* N_STO_E(sto_sys)+ STO_IN(sto_sys,h)*(1+eta_sto(sto_sys))/2 - STO_OUT(sto_sys,h)/(1+eta_sto(sto_sys))*2  - STO_L(sto_sys,h)  =G= 0
 ;
 
 con4b_stolev(sto_sys,h)$(ord(h)>1)..
-        STO_L(sto_sys,h-1) + STO_IN(sto_sys,h)*(1+eta_sto(sto_sys))/2 - STO_OUT(sto_sys,h)/(1+eta_sto(sto_sys))*2  -  STO_L(sto_sys,h) =E= 0
+        STO_L(sto_sys,h-1) + STO_IN(sto_sys,h)*(1+eta_sto(sto_sys))/2 - STO_OUT(sto_sys,h)/(1+eta_sto(sto_sys))*2  -  STO_L(sto_sys,h) =G= 0
 ;
 
 con4_stolev(sto_sys,h)..
 
        + STO_IN(sto_sys,h)*(1+eta_sto(sto_sys))/2 - STO_OUT(sto_sys,h)/(1+eta_sto(sto_sys))*2  -  STO_L(sto_sys,h)
        + (STO_L(sto_sys,h-1))$(ord(h)>1)
-       =E= 0
+       =G= 0
 ;
 
 
@@ -280,7 +282,7 @@ con4e_maxout_sto(sto_sys,h)..
 
 con4j_ending(sto_sys,h)$(ord(h) = card(h))..
 
-        phi_sto_ini(sto_sys)* N_STO_E(sto_sys)-  STO_L(sto_sys,h) =E= 0
+        phi_sto_ini(sto_sys)* N_STO_E(sto_sys)-  STO_L(sto_sys,h) =G= 0
 ;
 
 
@@ -293,7 +295,7 @@ con4k_PHS_EtoP(sto_sys)..
 * ---------------------------------------------------------------------------- *
 
 con5a_minRES..
-sum( h , G_L('bio',h) + sum(nondis , G_RES(nondis,h))
+sum( h , G_L('bio',h) + sum(nondis_sys , G_RES(nondis_sys,h))
 
 %prosumage%$ontext
          + sum( sto_pro , STO_OUT_PRO2PRO(sto_pro,h)) + sum( res , G_MARKET_PRO2M(res,h) + G_RES_PRO(res,h))
@@ -301,10 +303,10 @@ $ontext
 $offtext
 )
         - phi_min_res * phi_min_res_exog * sum( h ,
-         sum( (dis) , G_L(dis,h)) + sum( (nondis) , G_RES(nondis,h))
+         sum( (dis_sys) , G_L(dis_sys,h)) + sum( (nondis_sys) , G_RES(nondis_sys,h))
 
 %prosumage%$ontext
-         + sum( (res) , phi_res(res,h) * N_RES_PRO(res) - CU_PRO(res,h))
+         + sum( (res_pro) , phi_res(res_pro,h) * N_RES_PRO(res_pro) - CU_PRO(res_pro,h))
 $ontext
 $offtext
          )  =G= 0
@@ -352,13 +354,13 @@ con8h_max_sto_pro_p(sto_pro)..
 con11a_pro_distrib(res_pro,h)..
          phi_res(res_pro,h) * N_RES_PRO(res_pro)
          - CU_PRO(res_pro,h) - G_MARKET_PRO2M(res_pro,h) - G_RES_PRO(res_pro,h) - sum( sto_pro , STO_IN_PRO2PRO(sto_pro,res_pro,h) )
-         =E= 0
+         =G= 0
 ;
 
 con11b_pro_balance(h)..
          sum( res_pro , G_RES_PRO(res_pro,h)) + sum( sto_pro , STO_OUT_PRO2PRO(sto_pro,h) ) + G_MARKET_M2PRO(h)
          - phi_pro_load * d(h)
-         =E= 0
+         =G= 0
 ;
 
 *** Not used in MCP model
@@ -374,12 +376,12 @@ con11d_pro_stolev_PRO2PRO(sto_pro,h)..
          - STO_OUT_PRO2PRO(sto_pro,h)/(1+eta_sto(sto_pro))*2
          - STO_L_PRO2PRO(sto_pro,h)
          + STO_L_PRO2PRO(sto_pro,h-1)$((ord(h)>1) )
-         =E= 0
+         =G= 0
 ;
 
 *** Not used in MCP model
 con11h_1_pro_stolev_start_PRO2PRO(sto_pro,h)$( ord(h) = 1)..
-        STO_L_PRO2PRO(sto_pro,h) =E=  sum( res_pro , STO_IN_PRO2PRO(sto_pro,res_pro,h))*(1+eta_sto(sto_pro))/2 - STO_OUT_PRO2PRO(sto_pro,h)/(1+eta_sto(sto_pro))*2
+        STO_L_PRO2PRO(sto_pro,h) =N=  sum( res_pro , STO_IN_PRO2PRO(sto_pro,res_pro,h))*(1+eta_sto(sto_pro))/2 - STO_OUT_PRO2PRO(sto_pro,h)/(1+eta_sto(sto_pro))*2
 ;
 
 
@@ -399,7 +401,7 @@ con11l_pro_maxout_sto(sto_pro,h)..
 
 *** Not used in MCP model
 con11o_pro_ending(sto_pro,h)$( ord(h) = card(h))..
-         STO_L_PRO2PRO(sto_pro,h) =E= phi_sto_pro_ini(sto_pro) * N_STO_E_PRO(sto_pro)
+         STO_L_PRO2PRO(sto_pro,h) =G= phi_sto_pro_ini(sto_pro) * N_STO_E_PRO(sto_pro)
 ;
 
 * ---------------------------------------------------------------------------- *
@@ -408,7 +410,7 @@ con11o_pro_ending(sto_pro,h)$( ord(h) = card(h))..
 
 
 *** System FOC ***
-FOCG_L(tech,h)$dis(tech)..
+FOCG_L(tech,h)$dis_sys(tech)..
 
     + c_m(tech)
     - lambda_enerbal(h)
@@ -429,32 +431,32 @@ $offtext
 
 ;
 
-FOCG_UP(dis,h)..
+FOCG_UP(dis_sys,h)..
 
-     - lambda_convgen(dis,h)
-     + (c_up(dis))$(ord(h)> 1)
+     - lambda_convgen(dis_sys,h)
+     + (c_up(dis_sys))$(ord(h)> 1)
    =G= 0
 
 ;
 
-FOCG_DO(dis,h)..
+FOCG_DO(dis_sys,h)..
 
-     + c_do(dis)
-     + (lambda_convgen(dis,h))$(ord(h) > 1)
+     + c_do(dis_sys)
+     + (lambda_convgen(dis_sys,h))$(ord(h) > 1)
      =G= 0
 
 ;
 
 * Note: Fixed generation from ror is excluded since this is a parameter
-FOCG_RES(nondis,h)$(not fx(nondis))..
+FOCG_RES(nondis_sys,h)$(not fx(nondis_sys))..
 
-     - lambda_enerbal(h) + lambda_resgen(nondis,h)
+     - lambda_enerbal(h) + lambda_resgen(nondis_sys,h)
      =G= 0
 ;
 
-FOCCU(nondis,h)..
+FOCCU(nondis_sys,h)..
 
-     c_cu(nondis) + lambda_resgen(nondis,h) =G= 0
+     c_cu(nondis_sys) + lambda_resgen(nondis_sys,h) =G= 0
 
 ;
 
@@ -489,8 +491,8 @@ FOCN_TECH(tech)..
           +  mu_tech_max_i(tech)
 $ontext
 $offtext
-          - sum( h,   mu_conv_cap(tech,h))$dis(tech)
-          - sum( h,  lambda_resgen(tech,h)*phi_res(tech,h))$nondis(tech)
+          - sum( h,   mu_conv_cap(tech,h))$dis_sys(tech)
+          - sum( h,  lambda_resgen(tech,h)*phi_res(tech,h))$nondis_sys(tech)
      =G= 0
 
 ;
@@ -639,12 +641,12 @@ FOC_STO_L_PRO2PRO(sto_pro,h)..
 ***** Fix unmatched variables of first period *****
 ********************************************************************************
 
-G_DO.fx(dis,'h1') = 0;
+G_DO.fx(dis_sys,'h1') = 0;
 
 * Default for reporting
-G_DO.l(dis,h)   = 0;
-G_L.l(dis,h)    = 0;
-G_UP.l(dis,h)   = 0;
+G_DO.l(dis_sys,h)   = 0;
+G_L.l(dis_sys,h)    = 0;
+G_UP.l(dis_sys,h)   = 0;
 G_RES.l(tech,h) = 0;
 CU.l(tech,h)    = 0;
 
