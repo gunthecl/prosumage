@@ -37,7 +37,7 @@ $offtext
 ********************************************************************************
 
 ** No storage inflow in first period **
-*STO_IN.fx(sto,h)$(ord(h) = 1) = 0;
+STO_IN.fx(sto,h)$(ord(h) = 1) = 0;
 
 
 
