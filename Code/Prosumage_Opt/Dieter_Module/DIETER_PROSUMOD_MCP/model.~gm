@@ -73,7 +73,7 @@ mu_self_con_pro           Prosumage: Constraint on miminum self-consumption leve
 ;
 
 Set
-$onempty
+*$onempty
 dis_bio(tech)          Subset of dispatchable technology: Bio mass        /bio/
 res_pro(tech)          Prosumage renewable generation technologies        /pv/
 sto_pro(sto)          Storage technologies prosumager                     /sto1/
@@ -81,11 +81,6 @@ sto_sys(sto)           Storage technologies system                        /sto5/
 dis_sys(tech)                                                             /lig,hc,CCGT,OCGT,oil,other,bio/
 nondis_sys(tech)                                                          /ror,wind_on,wind_off,pv/
 ;
-
-
-
-
-
 ********************************************************************************
 
 Equations
@@ -583,7 +578,7 @@ $offtext
 FOC_G_MARKET_PRO2M(res_pro,h)..
 %selfish_prosumage%$ontext
 *         - price_produce_PRO(h)
-          - 120
+          - 140
 $ontext
 $offtext
 %prosumage_system_version%$ontext

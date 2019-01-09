@@ -37,16 +37,13 @@ $setglobal load_change_costs ""
 $setglobal prosumage "*"
 
 * Select system-friendly prosumage or selfish prosumage
-$setglobal prosumage_system_version "*"
+$setglobal prosumage_system_version ""
 
 * Set star to select run-of-river options either as exogenous parameter or as endogenous variable including reserve provision:
 * if nothing is selected, ROR capacity will be set to zero
 * if parameter option is selected, set appropriate values in fix.gmx
 * if variable option is selected, set appropriate bound in data_input excel
 $setglobal ror_parameter "*"
-
-* Set star for no crossover to speed up calculation time by skipping crossover in LP solver
-$setglobal no_crossover ""
 
 * Set star for reporting to Excel
 $setglobal report_to_excel ""
@@ -55,7 +52,7 @@ $setglobal report_to_excel ""
 * ----------------- Select if to use MCP or LP format --------------------------
 
 * Set to "*" to select linear program, leave blank to select MCP
-$setglobal LP "*"
+$setglobal LP ""
 
 
 ********************************************************************************
@@ -162,7 +159,17 @@ $include model.gms
 
 ********************************************************************************
 ***** Options, fixings, report preparation *****
+
+* Inclusion of scenario and fixing
+$include fix.gms
+$include scenario.gms
+
 ********************************************************************************
+***** Solve *****
+********************************************************************************
+
+
+%LP%$ontext
 
 * Solver options
 $onecho > cplex.opt
@@ -170,44 +177,27 @@ lpmethod 4
 threads 4
 epgap 1e-3
 $offecho
-
-%no_crossover%$ontext
-$onecho > cplex.opt
-lpmethod 4
-threads 4
-epgap 1e-3
-barcrossalg -1
-barepcomp 1e-8
-$offecho
-$ontext
-$offtext
-
 dieter.OptFile = 1;
 dieter.holdFixed = 1 ;
 
-
-********************************************************************************
-***** Solve *****
-********************************************************************************
-
-* Inclusion of scenario and fixing
-$include fix.gms
-$include scenario.gms
-
-%LP%$ontext
+* Save and load solution points
 DIETER.savepoint=1;
 $if exist DIETER_p.gdx execute_loadpoint "DIETER_p";
 option limrow = 10, limcol = 10, solprint = on ;
+
 solve  DIETER using lp min Z ;
 $ontext
 $offtext
 
 %MCP%$ontext
+
+* Save and load solution points
 DIETER_MCP.savepoint=1;
 *$if exist DIETER_p.gdx execute_loadpoint "DIETER_p";
 $if exist DIETER_MCP_p.gdx execute_loadpoint "DIETER_MCP_p";
 option limrow = 10, limcol = 10, solprint = on ;
 DIETER_MCP.optfile= 1;
+
 solve   DIETER_MCP using mcp;
 $ontext
 $offtext

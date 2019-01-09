@@ -459,13 +459,6 @@ $call "gdxxrw time_series.xlsx @temp2.tmp o=time_series";
 $GDXin time_series.gdx
 $load h headers_time year time_data_upload
 $load headers_pro d_pro_upload
-*$load headers_time_ev ev_time_data_upload
-*$load reserves_time_data_activation
-*$load reserves_time_data_provision
-*$load headers_time_heat dh_upload
-*$load theta_night
-*$load temp_source_upload
-*$load headers_time_dhw d_dhw_upload nets_profile
 ;
 
 
