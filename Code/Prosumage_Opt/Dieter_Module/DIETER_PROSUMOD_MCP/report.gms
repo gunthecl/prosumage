@@ -795,3 +795,33 @@ $offtext
                  report_market_tech('Energy share in gross nodal market generation',loop_res_share,loop_prosumage,rsvr)$(report_market_tech('Energy share in gross nodal market generation',loop_res_share,loop_prosumage,rsvr)< eps_rep_rel) = 0 ;
 $ontext
 $offtext
+
+
+
+
+$onecho >results.tmp
+par=report            rng=report!A1             rdim=1 cdim=2
+par=report_cost       rng=report_cost!A1        rdim=1 cdim=2
+par=report_hours      rng=report_hours!A1       rdim=2 cdim=2
+par=report_node       rng=report_node!A1        rdim=1 cdim=2
+par=report_tech       rng=report_tech!A1        rdim=2 cdim=2
+par=report_tech_hours rng=report_tech_hours!A1  rdim=3 cdim=2
+$offecho
+
+%prosumage%$ontext
+
+$onecho >results.tmp
+par=report_prosumage            rng=report_prosumage!A1               rdim=1 cdim=2
+par=report_prosumage_tech       rng=report_prosumage_tech!A1          rdim=2 cdim=2
+par=report_prosumage_tech_hours rng=report_prosumage_tech_hours!A1    rdim=3 cdim=2
+par=report_market               rng=report_market!A1                  rdim=1 cdim=2
+par=report_market_tech          rng=report_market_tech!A1             rdim=2 cdim=2
+par=report_market_tech_hours    rng=report_market_tech_hours!A1       rdim=3 cdim=2
+$offecho
+
+$ontext
+$offtext
+
+
+
+

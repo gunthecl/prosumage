@@ -55,7 +55,7 @@ $setglobal report_to_excel ""
 * ----------------- Select if to use MCP or LP format --------------------------
 
 * Set to "*" to select linear program, leave blank to select MCP
-$setglobal LP ""
+$setglobal LP "*"
 
 
 ********************************************************************************
@@ -70,7 +70,7 @@ $if "%ror_parameter%" == "*" $if "%ror_variable%" == "*" $abort Choose appropria
 * Do not change these  lines
 $if "%LP%" == ""  $setglobal MCP "*"
 $if "%LP%" == "*" $setglobal MCP ""
-$if "%LP%" == "*" $if "%prosumage_system_version%" == "" $abort Switch on system version of LP or choose MCP format ;
+$if "%LP%" == "*"  $if "%prosumage%" == "*" $if "%prosumage_system_version%" == "" $abort Switch on system version of LP or choose MCP format ;
 
 $if "%dispatch_model%" == ""  $setglobal investment_model "*"
 $if "%dispatch_model%" == "*" $setglobal investment_model ""
@@ -204,7 +204,7 @@ $offtext
 
 %MCP%$ontext
 DIETER_MCP.savepoint=1;
-$if exist DIETER_p.gdx execute_loadpoint "DIETER_p";
+*$if exist DIETER_p.gdx execute_loadpoint "DIETER_p";
 $if exist DIETER_MCP_p.gdx execute_loadpoint "DIETER_MCP_p";
 option limrow = 10, limcol = 10, solprint = on ;
 DIETER_MCP.optfile= 1;
@@ -217,8 +217,8 @@ $offtext
 $include report.gms
 
 execute_unload "results", report, report_tech, report_node,
-*report_line,
 report_tech_hours, report_hours, report_cost
+
 %prosumage%$ontext
 , report_prosumage, report_prosumage_tech, report_prosumage_tech_hours, report_market, report_market_tech, report_market_tech_hours
 $ontext
@@ -226,7 +226,7 @@ $offtext
 ;
 
 %report_to_excel%$ontext
-$include report_to_excel.gms
+execute "gdxxrw i=results.gdx o=results.xlsx @results.tmp squeeze=N";
 $ontext
 $offtext
 
