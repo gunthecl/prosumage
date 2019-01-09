@@ -792,7 +792,7 @@ $offtext
                  report_market_tech('Energy share in gross nodal market generation',loop_res_share,loop_prosumage,con)$(report_market_tech('Energy share in gross nodal market generation',loop_res_share,loop_prosumage,con)< eps_rep_rel) = 0 ;
                  report_market_tech('Energy share in gross nodal market generation',loop_res_share,loop_prosumage,res)$(report_market_tech('Energy share in gross nodal market generation',loop_res_share,loop_prosumage,res)< eps_rep_rel) = 0 ;
                  report_market_tech('Energy share in gross nodal market generation',loop_res_share,loop_prosumage,sto)$(report_market_tech('Energy share in gross nodal market generation',loop_res_share,loop_prosumage,sto)< eps_rep_rel) = 0 ;
-                 report_market_tech('Energy share in gross nodal market generation',loop_res_share,loop_prosumage,rsvr)$(report_market_tech('Energy share in gross nodal market generation',loop_res_share,loop_prosumage,rsvr)< eps_rep_rel) = 0 ;
+*                 report_market_tech('Energy share in gross nodal market generation',loop_res_share,loop_prosumage,rsvr)$(report_market_tech('Energy share in gross nodal market generation',loop_res_share,loop_prosumage,rsvr)< eps_rep_rel) = 0 ;
 $ontext
 $offtext
 

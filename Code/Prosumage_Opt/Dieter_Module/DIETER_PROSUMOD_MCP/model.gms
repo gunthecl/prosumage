@@ -560,7 +560,6 @@ FOC_N_STO_P_PRO(sto_pro)..
 * FOC w.r.t G_MARKET_M2PRO
 FOC_G_MARKET_M2PRO(h)..
 %selfish_prosumage%$ontext
-*           price_consume_PRO(h)
 *          sum( hh, lambda_enerbal(hh))/card(h) + 250
  + 300
 
@@ -577,7 +576,6 @@ $offtext
 * FOC w.r.t G_MARKET_PRO2M
 FOC_G_MARKET_PRO2M(res_pro,h)..
 %selfish_prosumage%$ontext
-*         - price_produce_PRO(h)
           - 120
 $ontext
 $offtext

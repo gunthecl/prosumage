@@ -356,51 +356,18 @@ dset=tech_res_con                        rng=Technologies!C6             rdim=1 
 dset=sto                                 rng=storage!B6                  rdim=1 cdim=0
 dset=headers_sto                         rng=storage!C5                  rdim=0 cdim=1
 
-dset=rsvr                                rng=reservoir!B6                rdim=1 cdim=0
-dset=headers_reservoir                   rng=reservoir!C5                rdim=0 cdim=1
-
-dset=dsm                                 rng=DSM!B6                      rdim=1 cdim=0
-dset=headers_dsm                         rng=DSM!D5                      rdim=0 cdim=1
-dset=dsm_type                            rng=DSM!C6                      rdim=1 cdim=0
-
-dset=ev                                  rng=ev!B6                       rdim=1 cdim=0
-dset=headers_ev                          rng=ev!C5                       rdim=0 cdim=1
-
 dset=headers_prosumage_generation        rng=prosumage!C5                rdim=0 cdim=1
 dset=headers_prosumage_storage           rng=prosumage!I5                rdim=0 cdim=1
 
-dset=reserves                            rng=reserves!B6                 rdim=1 cdim=0
-dset=headers_reserves                    rng=reserves!F5                 rdim=0 cdim=1
-dset=reserves_up_down                    rng=reserves!C6                 rdim=1 cdim=0
-dset=reserves_spin_nonspin               rng=reserves!D6                 rdim=1 cdim=0
-dset=reserves_prim_nonprim               rng=reserves!E6                 rdim=1 cdim=0
-
-dset=bu                                  rng=heat!B6                     rdim=1 cdim=0
-dset=ch                                  rng=heat!C6                     rdim=1 cdim=0
-dset=heat_storage                        rng=heat!D6                     rdim=1 cdim=0
-dset=heat_hp                             rng=heat!E6                     rdim=1 cdim=0
-
-
-dset=heat_elec                           rng=heat!F6                     rdim=1 cdim=0
-dset=heat_fossil                         rng=heat!G6                     rdim=1 cdim=0
-
-
-dset=headers_heat                        rng=heat!H5                     rdim=0 cdim=1
-
 par=technology_data_upload       rng=Technologies!B5     rdim=3 cdim=1
 par=storage_data                 rng=storage!B5          rdim=1 cdim=1
-par=reservoir_data               rng=reservoir!B5        rdim=1 cdim=1
-par=dsm_data_upload              rng=DSM!B5              rdim=2 cdim=1
-
 
 %GER_only%
 par=inc                          rng=spatial!L2          rdim=1 cdim=1
 
-par=ev_data                      rng=ev!B5               rdim=1 cdim=1
 par=prosumage_data_generation    rng=prosumage!B5        rdim=1 cdim=1
 par=prosumage_data_storage       rng=prosumage!H5        rdim=1 cdim=1
-par=reserves_data_upload         rng=reserves!B5         rdim=4 cdim=1
-par=heat_data_upload             rng=heat!B5             rdim=6 cdim=1
+
 $offecho
 
 %skip_Excel%
@@ -408,13 +375,10 @@ $call "gdxxrw data_input.xlsx @temp.tmp o=Data_input maxdupeerrors=100";
 
 $GDXin Data_input.gdx
 $load tech headers_tech tech_dispatch tech_res_con
-$load sto headers_sto rsvr headers_reservoir reservoir_data dsm headers_dsm dsm_type
-$load technology_data_upload storage_data dsm_data_upload
+$load sto headers_sto
+$load technology_data_upload storage_data
 
-$load ev headers_ev ev_data
 $load headers_prosumage_generation headers_prosumage_storage prosumage_data_generation prosumage_data_storage
-$load reserves reserves_up_down reserves_spin_nonspin reserves_prim_nonprim headers_reserves reserves_data_upload
-$load bu ch heat_storage heat_hp heat_elec heat_fossil headers_heat heat_data_upload
 ;
 
 $ontext
@@ -434,23 +398,6 @@ par=time_data_upload             rng=basic!A7            rdim=1 cdim=2
 
 dset=headers_pro                 rng=prosumage!B8        rdim=0 cdim=1
 par= d_pro_upload                rng=prosumage!A7        rdim=1 cdim=2
-
-dset=headers_time_ev             rng=ev!B7               rdim=0 cdim=1
-par=ev_time_data_upload          rng=ev!A7               rdim=1 cdim=2
-
-par=reserves_time_data_activation        rng=reserves_activation!A7      rdim=1 cdim=2
-par=reserves_time_data_provision         rng=reserves_provision!A7       rdim=1 cdim=2
-
-dset=headers_time_heat           rng=heat!D9             rdim=0 cdim=1
-par=dh_upload                    rng=heat!C8             rdim=1 cdim=3
-par=theta_night                  rng=heat!A11            rdim=1 cdim=0
-
-dset=headers_time_dhw            rng=heat_dhw!A8         rdim=0 cdim=1
-par=d_dhw_upload                 rng=heat_dhw!A7         rdim=1 cdim=3
-
-par=nets_profile                 rng=NETS!A7:B8766       rdim=1 cdim=0
-
-par=temp_source_upload           rng=heat_pump!A7        rdim=1 cdim=2
 $offecho
 
 
@@ -470,8 +417,8 @@ $load headers_pro d_pro_upload
 
 ***** Aliases *****
 alias (h,hh) ;
-alias (res,resres) ;
-alias (reserves,reservesreserves) ;
+*alias (res,resres) ;
+*alias (reserves,reservesreserves) ;
 alias (nondis,nondisnondis) ;
 
 

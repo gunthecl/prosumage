@@ -37,7 +37,7 @@ $setglobal load_change_costs ""
 $setglobal prosumage "*"
 
 * Select system-friendly prosumage or selfish prosumage
-$setglobal prosumage_system_version ""
+$setglobal prosumage_system_version "*"
 
 * Set star to select run-of-river options either as exogenous parameter or as endogenous variable including reserve provision:
 * if nothing is selected, ROR capacity will be set to zero
@@ -201,7 +201,6 @@ DIETER_MCP.optfile= 1;
 solve   DIETER_MCP using mcp;
 $ontext
 $offtext
-
 
 * Reporting
 $include report.gms
