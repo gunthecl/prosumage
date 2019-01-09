@@ -28,7 +28,7 @@ $setglobal base_year "'2030'"
 * Germany only - also adjust Excel inputs!
 $setglobal GER_only "*"
 
-* Dispatch only - used fixed capacities (also deactivates bio energy restriction)                 
+* Dispatch only - used fixed capacities (also deactivates bio energy restriction)
 $setglobal dispatch_model "*"
 
 * Select if you want to use load change costs
@@ -37,7 +37,7 @@ $setglobal load_change_costs ""
 $setglobal prosumage "*"
 
 * Select system-friendly prosumage or selfish prosumage
-$setglobal prosumage_system_version ""
+$setglobal prosumage_system_version "*"
 
 * Set star to select run-of-river options either as exogenous parameter or as endogenous variable including reserve provision:
 * if nothing is selected, ROR capacity will be set to zero
@@ -55,7 +55,7 @@ $setglobal report_to_excel ""
 * ----------------- Select if to use MCP or LP format --------------------------
 
 * Set to "*" to select linear program, leave blank to select MCP
-$setglobal LP ""
+$setglobal LP "*"
 
 
 ********************************************************************************
@@ -70,7 +70,7 @@ $if "%ror_parameter%" == "*" $if "%ror_variable%" == "*" $abort Choose appropria
 * Do not change these  lines
 $if "%LP%" == ""  $setglobal MCP "*"
 $if "%LP%" == "*" $setglobal MCP ""
-$if "%LP%" == "*" $if "%prosumage_system_version%" == "" $abort Switch on system version of LP or choose MCP format ;  
+$if "%LP%" == "*" $if "%prosumage_system_version%" == "" $abort Switch on system version of LP or choose MCP format ;
 
 $if "%dispatch_model%" == ""  $setglobal investment_model "*"
 $if "%dispatch_model%" == "*" $setglobal investment_model ""
@@ -130,7 +130,7 @@ phi_pro_self = 0.5 ;
 phi_pro_load = 0   ;
 
 %prosumage%$ontext
-phi_pro_load = 0.001 ;
+phi_pro_load = 0.0001 ;
 $ontext
 $offtext
 

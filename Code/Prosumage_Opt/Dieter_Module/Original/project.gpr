@@ -1608,18 +1608,6 @@ Order=1,2
 Decim=7
 PlaneRownr=-1
 
-[RP:DIETER]
-1=-gdx=test
-2=-gdx = test5_exo
-3=-gdx = test4_exo
-4=-gdx = test3_exo
-5=-gdx = test3_endo
-6=-gdx = test2
-7=-gdx = test1
-8=-gdx = post_3
-9=-gdx = pre
-10=-gdx = test
-
 [RP:MORITS_MCP_ONLINE]
 1=
 
@@ -1632,23 +1620,36 @@ PlaneRownr=-1
 [RP:SCENARIO]
 1=
 
+[RP:MODEL]
+1=
+
+[RP:DIETER]
+1=-gdx=test
+2=-gdx = test5_exo
+3=-gdx = test4_exo
+4=-gdx = test3_exo
+5=-gdx = test3_endo
+6=-gdx = test2
+7=-gdx = test1
+8=-gdx = post_3
+9=-gdx = pre
+10=-gdx = test
+
+[MRUFILES]
+1=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\DIETER.gms
+2=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\MORITS_MCP_online.gms
+3=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\scenario.gms
+4=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\report.gms
+5=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\model.gms
+6=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\dataload.gms
+7=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_MCP_version\results.gdx
+8=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\DIETER.gms
+
 [OPENWINDOW_1]
+FILE0=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\project.gpr
+FILE1=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\project.gpr
 MAXIM=1
 TOP=3
 LEFT=84
 HEIGHT=876
 WIDTH=852
-
-[RP:MODEL]
-1=
-
-[MRUFILES]
-1=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Source_Code\Modelle\MORITS\MORITS_MCP_online.gms
-2=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\scenario.gms
-3=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\report.gms
-4=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\model.gms
-5=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\dataload.gms
-6=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_MCP_version\results.gdx
-7=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\DIETER.gms
-8=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\test.gdx
-9=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\results.gdx
