@@ -45,6 +45,8 @@ reserves_activated
 
 calc_maxprice
 calc_minprice
+calc_maxdemand
+calc_mindemand
 
 report
 report_tech
@@ -72,6 +74,9 @@ report_heat_tech
 Z_MCP
 Z_FIX
 Z_VAR
+
+lev_demand
+lev_gross_demand
 ;
 
 
@@ -98,7 +103,8 @@ lev_STO_L(scen,sto,h)   = STO_L.l(sto,h)   ;
 lev_N_TECH(scen,tech)   = N_TECH.l(tech)   ;
 lev_N_STO_E(scen,sto)   = N_STO_E.l(sto)   ;
 lev_N_STO_P(scen,sto)   = N_STO_P.l(sto)   ;
-
+lev_demand(scen,h)      = d(h)   ;
+lev_gross_demand(scen,h)= lev_demand(scen,h)  ;
 
 %prosumage%$ontext
 lev_CU_PRO(scen,tech,h)              = CU_PRO.l(tech,h)                ;
@@ -121,6 +127,9 @@ lev_N_STO_E_PRO(scen,sto)            = N_STO_E_PRO.l(sto)              ;
 lev_N_STO_P_PRO(scen,sto)            = N_STO_P_PRO.l(sto)              ;
 lev_STO_L_PRO(scen,sto,h)            = N_STO_P_PRO.l(sto)              ;
 lev_N_RES_PRO(scen,tech)             = N_RES_PRO.l(tech)               ;
+lev_gross_demand(scen,h)             = lev_demand(scen,h)
+                                     + lev_G_MARKET_M2PRO(scen,h)
+                                     - sum (tech, lev_G_MARKET_PRO2M(scen,tech,h));
 $ontext
 $offtext
 
@@ -191,6 +200,11 @@ Scalar eps_rep_ins Sensitivity for absolute values - e.g. installed MW   / 1 /  
 * Min and max for prices
 calc_maxprice = 0 ;
 calc_minprice = 1000 ;
+
+
+* Min and max for demand
+calc_maxdemand = 0 ;
+calc_mindemand = 100000 ;
 
 
 * ----------------------------------------------------------------------------
@@ -330,6 +344,8 @@ $offtext
         report_node('max price',loop_res_share,loop_prosumage)$sum(h,d(h)) = max( calc_maxprice , smax( h, sum(scen$(map(scen,loop_res_share,loop_prosumage)) ,  marginal_con1a(scen,h))) ) ;
         report_node('min price',loop_res_share,loop_prosumage)$sum(h,d(h)) = min( calc_minprice , smin( h, sum(scen$(map(scen,loop_res_share,loop_prosumage)) ,  marginal_con1a(scen,h))) ) ;
         report_node('mean price',loop_res_share,loop_prosumage)$sum(h,d(h)) = sum(h, sum(scen$(map(scen,loop_res_share,loop_prosumage)) , marginal_con1a(scen,h)))/card(h) ;
+        report_node('max demand',loop_res_share,loop_prosumage)$sum(h,d(h)) = max( calc_maxdemand , smax( h, sum(scen$(map(scen,loop_res_share,loop_prosumage)) ,  lev_gross_demand(scen,h)  )) ) ;
+        report_node('min demand',loop_res_share,loop_prosumage)$sum(h,d(h)) = min( calc_mindemand , smin( h, sum(scen$(map(scen,loop_res_share,loop_prosumage)) ,    lev_gross_demand(scen,h)       )) ) ;
 
                  report_node('energy demand total',loop_res_share,loop_prosumage)$(report_node('energy demand total',loop_res_share,loop_prosumage)< eps_rep_abs) = 0 ;
                  report_node('curtailment of fluct res absolute',loop_res_share,loop_prosumage)$(report_node('curtailment of fluct res absolute',loop_res_share,loop_prosumage)< eps_rep_abs*card(h)*%sec_hour%) = 0 ;
