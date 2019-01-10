@@ -77,6 +77,7 @@ Z_VAR
 
 lev_demand
 lev_gross_demand
+lev_residual_load
 ;
 
 
@@ -105,6 +106,7 @@ lev_N_STO_E(scen,sto)   = N_STO_E.l(sto)   ;
 lev_N_STO_P(scen,sto)   = N_STO_P.l(sto)   ;
 lev_demand(scen,h)      = d(h)   ;
 lev_gross_demand(scen,h)= lev_demand(scen,h)  ;
+
 
 %prosumage%$ontext
 lev_CU_PRO(scen,tech,h)              = CU_PRO.l(tech,h)                ;
@@ -185,6 +187,9 @@ $ontext
 $offtext
 
 
+
+
+
 ********************************************************************************
 **** Initialize reporting paremetrs  *******************************************
 ********************************************************************************
@@ -248,6 +253,14 @@ $offtext
 )
 ;
 
+lev_residual_load(h) =     d(h)  - sum( nondis_sys , G_RES.l(nondis_sys,h))
+%prosumage%$ontext
+         - sum( res , G_MARKET_PRO2M.l(res,h) )
+         + G_MARKET_M2PRO.l(h)
+$ontext
+$offtext
+;
+
 
 ********************************************************************************
 **** Report  *******************************************************************
@@ -278,6 +291,7 @@ $offtext
                  report_hours('demand consumers',loop_res_share,loop_prosumage,h)$(report_hours('demand consumers',loop_res_share,loop_prosumage,h)< eps_rep_abs) = 0 ;
                  report_hours('price',loop_res_share,loop_prosumage,h)$(report_hours('price',loop_res_share,loop_prosumage,h)< eps_rep_abs AND report_hours('price',loop_res_share,loop_prosumage,h)> -eps_rep_abs) = eps ;
 *                 report_hours('infeasibility',loop_res_share,loop_prosumage,h)$(report_hours('infeasibility',loop_res_share,loop_prosumage,h)< eps_rep_abs) = 0 ;
+                 report_hours('residual load',loop_res_share,loop_prosumage,h) = lev_residual_load(h) ;
 
 
 * ----------------------------------------------------------------------------
@@ -344,8 +358,8 @@ $offtext
         report_node('max price',loop_res_share,loop_prosumage)$sum(h,d(h)) = max( calc_maxprice , smax( h, sum(scen$(map(scen,loop_res_share,loop_prosumage)) ,  marginal_con1a(scen,h))) ) ;
         report_node('min price',loop_res_share,loop_prosumage)$sum(h,d(h)) = min( calc_minprice , smin( h, sum(scen$(map(scen,loop_res_share,loop_prosumage)) ,  marginal_con1a(scen,h))) ) ;
         report_node('mean price',loop_res_share,loop_prosumage)$sum(h,d(h)) = sum(h, sum(scen$(map(scen,loop_res_share,loop_prosumage)) , marginal_con1a(scen,h)))/card(h) ;
-        report_node('max demand',loop_res_share,loop_prosumage)$sum(h,d(h)) = max( calc_maxdemand , smax( h, sum(scen$(map(scen,loop_res_share,loop_prosumage)) ,  lev_gross_demand(scen,h)  )) ) ;
-        report_node('min demand',loop_res_share,loop_prosumage)$sum(h,d(h)) = min( calc_mindemand , smin( h, sum(scen$(map(scen,loop_res_share,loop_prosumage)) ,    lev_gross_demand(scen,h)       )) ) ;
+        report_node('max res demand',loop_res_share,loop_prosumage)$sum(h,d(h)) = max( calc_maxdemand , smax( h, sum(scen$(map(scen,loop_res_share,loop_prosumage)) ,  lev_residual_load(h)  )) ) ;
+        report_node('min res demand',loop_res_share,loop_prosumage)$sum(h,d(h)) = min( calc_mindemand , smin( h, sum(scen$(map(scen,loop_res_share,loop_prosumage)) ,    lev_residual_load(h)       )) ) ;
 
                  report_node('energy demand total',loop_res_share,loop_prosumage)$(report_node('energy demand total',loop_res_share,loop_prosumage)< eps_rep_abs) = 0 ;
                  report_node('curtailment of fluct res absolute',loop_res_share,loop_prosumage)$(report_node('curtailment of fluct res absolute',loop_res_share,loop_prosumage)< eps_rep_abs*card(h)*%sec_hour%) = 0 ;
