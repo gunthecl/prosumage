@@ -125,6 +125,7 @@ numb_pro_load  = 0   ;
 
 
 %prosumage%$ontext
+* Number of prosumage households in thousands
 numb_pro_load = 1000 ;
 $ontext
 $offtext
