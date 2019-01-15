@@ -134,12 +134,12 @@ lev_STO_L_PRO(scen,sto,h)            = N_STO_P_PRO.l(sto)              ;
 lev_N_RES_PRO(scen,tech)             = N_RES_PRO.l(tech)               ;
 lev_gross_demand(scen,h)             = lev_demand(scen,h)
                                      + lev_G_MARKET_M2PRO(scen,h)
-                                     - sum (tech, lev_G_MARKET_PRO2M(scen,tech,h))
+                                     - sum (tech, lev_G_MARKET_PRO2M(scen,tech,h)) ;
 lev_CU_energybal(scen,tech,h)        =
 
-           sum( dis_sys , G_L(dis_sys,h)) + sum( nondis_sys , G_RES(nondis_sys,h))
-         + sum( sto_sys , STO_OUT(sto_sys,h) ) + sum( res , G_MARKET_PRO2M(res,h) )
-         -   d(h)  -   sum( sto_sys , STO_IN(sto_sys,h) ) - G_MARKET_M2PRO(h)
+           sum( dis_sys , G_L.l(dis_sys,h)) + sum( nondis_sys , G_RES.l(nondis_sys,h))
+         + sum( sto_sys , STO_OUT.l(sto_sys,h) ) + sum( res , G_MARKET_PRO2M.l(res,h) )
+         -   d(h)  -   sum( sto_sys , STO_IN.l(sto_sys,h) ) - G_MARKET_M2PRO.l(h)
 
 ;
 $ontext
