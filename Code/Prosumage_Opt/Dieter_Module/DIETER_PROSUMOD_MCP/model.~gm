@@ -13,17 +13,18 @@ $offtext
 
 Variables
 Z                  Value objective function [Euro]
-;
-
-Positive Variables
-lambda_enerbal     Dual variable on energy balance (1a)
 lambda_resgen      Dual variable on renewable generation (3e)
-lambda_convgen     Dual variable on conventional generation level (2a)
+lambda_convgen     Dual variable on conventional generation level (2)
 lambda_stolev      Dual variable on storage level  (4a-4b)
 
 lambda_enerbal_pro     Prosumage: Dual variable on prosumage energy balance (11b)
 lambda_resgen_pro      Prosumage: Dual variable on renewable generation (11a)
 lambda_stolev_pro      Prosumage: Dual variable on storage level  (11d-11h)
+
+;
+
+Positive Variables
+lambda_enerbal     Dual variable on energy balance (1a)
 
 G_L(tech,h)            Generation level in hour h [MWh]
 G_UP(tech,h)           Generation upshift in hour h [MWh]
@@ -215,17 +216,17 @@ $offtext
 ;
 
 con2a_loadlevel(dis_sys,h)$(ord(h) > 1)..
-         G_L(dis_sys,h-1) + G_UP(dis_sys,h) - G_DO(dis_sys,h)  - G_L(dis_sys,h) =G= 0
+         G_L(dis_sys,h-1) + G_UP(dis_sys,h) - G_DO(dis_sys,h)  - G_L(dis_sys,h) =E= 0
 ;
 
 con2b_loadlevelstart(dis_sys,h)$(ord(h) = 1)..
-        G_UP(dis_sys,h) - G_L(dis_sys,h) =G= 0
+        G_UP(dis_sys,h) - G_L(dis_sys,h) =E= 0
 ;
 
 con2_loadlevel(dis_sys,h)..
            G_UP(dis_sys,h)  - G_L(dis_sys,h)
         +  (G_L(dis_sys,h-1) - G_DO(dis_sys,h))$(ord(h) > 1)
-        =G= 0
+        =E= 0
 ;
 
 
@@ -243,7 +244,7 @@ con3a_maxprod_dispatchable(dis_sys,h)..
 con3e_maxprod_res(nondis_sys,h)..
 
 
-       phi_res(nondis_sys,h)*N_TECH(nondis_sys) - G_RES(nondis_sys,h) - CU(nondis_sys,h) =G= 0
+       phi_res(nondis_sys,h)*N_TECH(nondis_sys) - G_RES(nondis_sys,h) - CU(nondis_sys,h) =E= 0
 ;
 
 * ---------------------------------------------------------------------------- *
@@ -251,18 +252,18 @@ con3e_maxprod_res(nondis_sys,h)..
 * ---------------------------------------------------------------------------- *
 
 con4a_stolev_start(sto_sys,h)$(ord(h) = 1)..
-        phi_sto_ini(sto_sys)* N_STO_E(sto_sys)+ STO_IN(sto_sys,h)*(1+eta_sto(sto_sys))/2 - STO_OUT(sto_sys,h)/(1+eta_sto(sto_sys))*2  - STO_L(sto_sys,h)  =G= 0
+        phi_sto_ini(sto_sys)* N_STO_E(sto_sys)+ STO_IN(sto_sys,h)*(1+eta_sto(sto_sys))/2 - STO_OUT(sto_sys,h)/(1+eta_sto(sto_sys))*2  - STO_L(sto_sys,h)  =E= 0
 ;
 
 con4b_stolev(sto_sys,h)$(ord(h)>1)..
-        STO_L(sto_sys,h-1) + STO_IN(sto_sys,h)*(1+eta_sto(sto_sys))/2 - STO_OUT(sto_sys,h)/(1+eta_sto(sto_sys))*2  -  STO_L(sto_sys,h) =G= 0
+        STO_L(sto_sys,h-1) + STO_IN(sto_sys,h)*(1+eta_sto(sto_sys))/2 - STO_OUT(sto_sys,h)/(1+eta_sto(sto_sys))*2  -  STO_L(sto_sys,h) =E= 0
 ;
 
 con4_stolev(sto_sys,h)..
 
        + STO_IN(sto_sys,h)*(1+eta_sto(sto_sys))/2 - STO_OUT(sto_sys,h)/(1+eta_sto(sto_sys))*2  -  STO_L(sto_sys,h)
        + (STO_L(sto_sys,h-1))$(ord(h)>1)
-       =G= 0
+       =E= 0
 ;
 
 
@@ -354,13 +355,13 @@ con8h_max_sto_pro_p(sto_pro)..
 con11a_pro_distrib(res_pro,h)..
          phi_res(res_pro,h) * N_RES_PRO(res_pro)
          - CU_PRO(res_pro,h) - G_MARKET_PRO2M(res_pro,h) - G_RES_PRO(res_pro,h) - sum( sto_pro , STO_IN_PRO2PRO(sto_pro,res_pro,h) )
-         =G= 0
+         =E= 0
 ;
 
 con11b_pro_balance(h)..
          sum( res_pro , G_RES_PRO(res_pro,h)) + sum( sto_pro , STO_OUT_PRO2PRO(sto_pro,h) ) + G_MARKET_M2PRO(h)
          - numb_pro_load * d_pro(h)
-         =G= 0
+         =E= 0
 ;
 
 *** Not used in MCP model
@@ -376,7 +377,7 @@ con11d_pro_stolev_PRO2PRO(sto_pro,h)..
          - STO_OUT_PRO2PRO(sto_pro,h)/(1+eta_sto(sto_pro))*2
          - STO_L_PRO2PRO(sto_pro,h)
          + STO_L_PRO2PRO(sto_pro,h-1)$((ord(h)>1) )
-         =G= 0
+         =E= 0
 ;
 
 *** Not used in MCP model
