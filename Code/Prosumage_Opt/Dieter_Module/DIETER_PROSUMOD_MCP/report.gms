@@ -78,6 +78,7 @@ Z_VAR
 lev_demand
 lev_gross_demand
 lev_residual_load
+CU_energybal
 lev_CU_energybal
 ;
 
@@ -108,7 +109,13 @@ lev_N_STO_P(scen,sto)   = N_STO_P.l(sto)   ;
 lev_demand(scen,h)      = d(h)   ;
 lev_gross_demand(scen,h)= lev_demand(scen,h)  ;
 * Curtailment at energy balance level
-lev_CU_energybal(scen,tech,h) = 0;
+CU_energybal(tech,h) =
+           sum( dis_sys , G_L.l(dis_sys,h))
+         + sum( nondis_sys , G_RES.l(nondis_sys,h))
+         + sum( sto_sys , STO_OUT.l(sto_sys,h) )
+         -   d(h)  -   sum( sto_sys , STO_IN.l(sto_sys,h) );
+
+;
 
 
 %prosumage%$ontext
@@ -135,15 +142,17 @@ lev_N_RES_PRO(scen,tech)             = N_RES_PRO.l(tech)               ;
 lev_gross_demand(scen,h)             = lev_demand(scen,h)
                                      + lev_G_MARKET_M2PRO(scen,h)
                                      - sum (tech, lev_G_MARKET_PRO2M(scen,tech,h)) ;
-lev_CU_energybal(scen,tech,h)        =
+CU_energybal(tech,h)                 =
 
            sum( dis_sys , G_L.l(dis_sys,h)) + sum( nondis_sys , G_RES.l(nondis_sys,h))
          + sum( sto_sys , STO_OUT.l(sto_sys,h) ) + sum( res , G_MARKET_PRO2M.l(res,h) )
-         -   d(h)  -   sum( sto_sys , STO_IN.l(sto_sys,h) ) - G_MARKET_M2PRO.l(h)
+         -   d(h)  -   sum( sto_sys , STO_IN.l(sto_sys,h) ) - G_MARKET_M2PRO.l(h) ;
 
-;
+
 $ontext
 $offtext
+
+lev_CU_energybal(scen,tech,h)        =   CU_energybal(tech,h)        ;
 
 
 %MCP%$ontext
@@ -263,7 +272,8 @@ $offtext
 )
 ;
 
-lev_residual_load(h) =     d(h)  - sum( nondis_sys , G_RES.l(nondis_sys,h))
+lev_residual_load(h) =     d(h) + sum( sto, STO_IN.l(sto,h) - STO_OUT.l(sto,h))
+   - sum( nondis_sys , G_RES.l(nondis_sys,h) - CU_energybal(nondis_sys,h))
 %prosumage%$ontext
          - sum( res , G_MARKET_PRO2M.l(res,h) )
          + G_MARKET_M2PRO.l(h)
