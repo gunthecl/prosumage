@@ -577,7 +577,7 @@ $offtext
 * FOC w.r.t G_MARKET_PRO2M
 FOC_G_MARKET_PRO2M(res_pro,h)..
 %selfish_prosumage%$ontext
-          - 120
+          - 90
 $ontext
 $offtext
 %prosumage_system_version%$ontext
