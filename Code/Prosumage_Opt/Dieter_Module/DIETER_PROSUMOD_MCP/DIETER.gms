@@ -147,10 +147,13 @@ d(h)           = d_y(%base_year%,h) - numb_pro_load*d_pro(h) ;
 phi_res(res,h) = phi_res_y(%base_year%,res,h)  ;
 
 
-Parameter
-phi_min_res_exog     ;
+Parameters
+phi_min_res_exog
+price_consumption_pro(h)
+price_production_pro(h)
+retail_price
+FIT ;
 phi_min_res_exog = 1 ;
-
 
 
 ********************************************************************************
@@ -158,6 +161,18 @@ phi_min_res_exog = 1 ;
 ********************************************************************************
 
 $include model.gms
+
+********************************************************************************
+***** Scenario 2030 *****
+********************************************************************************
+
+* Define tariffs per MWh
+retail_price = 300 ;
+FIT          = 90  ;
+
+* Define what prices prosumage households see
+price_consumption_pro(h)  =            retail_price ;
+price_production_pro(h)   =                     FIT ;
 
 ********************************************************************************
 ***** Options, fixings, report preparation *****

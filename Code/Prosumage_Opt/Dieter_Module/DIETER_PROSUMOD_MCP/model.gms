@@ -82,6 +82,8 @@ sto_sys(sto)           Storage technologies system                        /sto5/
 dis_sys(tech)                                                             /lig,hc,CCGT,OCGT,oil,other,bio/
 nondis_sys(tech)                                                          /ror,wind_on,wind_off,pv/
 ;
+
+
 ********************************************************************************
 
 Equations
@@ -562,7 +564,8 @@ FOC_N_STO_P_PRO(sto_pro)..
 FOC_G_MARKET_M2PRO(h)..
 %selfish_prosumage%$ontext
 *          sum( hh, lambda_enerbal(hh))/card(h) + 250
- + 300
+
+ + price_consumption_pro(h)
 
 $ontext
 $offtext
@@ -577,7 +580,9 @@ $offtext
 * FOC w.r.t G_MARKET_PRO2M
 FOC_G_MARKET_PRO2M(res_pro,h)..
 %selfish_prosumage%$ontext
-          - 90
+          - price_production_pro(h)
+*           - lambda_enerbal(h)
+
 $ontext
 $offtext
 %prosumage_system_version%$ontext
