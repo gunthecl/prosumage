@@ -13,6 +13,11 @@ $offtext
 
 Variables
 Z                  Value objective function [Euro]
+
+
+;
+Positive Variables
+lambda_enerbal         Dual variable on energy balance (1a)
 lambda_resgen      Dual variable on renewable generation (3e)
 lambda_convgen     Dual variable on conventional generation level (2)
 lambda_stolev      Dual variable on storage level  (4a-4b)
@@ -21,10 +26,6 @@ lambda_enerbal_pro     Prosumage: Dual variable on prosumage energy balance (11b
 lambda_resgen_pro      Prosumage: Dual variable on renewable generation (11a)
 lambda_stolev_pro      Prosumage: Dual variable on storage level  (11d-11h)
 
-;
-
-Positive Variables
-lambda_enerbal     Dual variable on energy balance (1a)
 
 G_L(tech,h)            Generation level in hour h [MWh]
 G_UP(tech,h)           Generation upshift in hour h [MWh]
@@ -71,6 +72,8 @@ mu_tech_max_i_pro         Prosumage: Dual variable on res installation constrain
 mu_stop_max_i_pro         Prosumage: Dual variable on storage power installation constraint  (8g)
 mu_stoe_max_i_pro         Prosumage: Dual variable on storage energy installation constraint  (8h)
 mu_self_con_pro           Prosumage: Constraint on miminum self-consumption level (8c)
+
+G_INFES(h)              Infeasibility variable
 ;
 
 Set
@@ -161,6 +164,7 @@ FOC_STO_IN_PRO2PRO          Prosumage: FOC w.r.t STO_IN_PRO2PRO
 FOC_STO_OUT_PRO2PRO         Prosumage: FOC w.r.t STO_OUT_PRO2PRO
 FOC_STO_L_PRO2PRO           Prosumage: FOC w.r.t STO_L_PRO2PRO
 
+FOC_G_INFES               Infeasibility: FOC w.r.t G_INFES
 ;
 
 
@@ -183,6 +187,7 @@ obj..
                  + sum( sto_sys , c_i_sto_e(sto_sys)*N_STO_E(sto_sys))
                  + sum( sto_sys , c_fix_sto(sto_sys)/2*(N_STO_P(sto_sys)+ N_STO_E(sto_sys)) )
                  + sum( sto_sys , c_i_sto_p(sto_sys)*N_STO_P(sto_sys))
+                 + sum( h, G_INFES(h))*10000
 %prosumage%$ontext
                  + sum( res_pro , c_i(res_pro)*N_RES_PRO(res_pro) )
                  + sum( res_pro , c_fix(res_pro)*N_RES_PRO(res_pro) )
@@ -202,6 +207,7 @@ $offtext
 con1a_bal(h)..
 
            sum( dis_sys , G_L(dis_sys,h)) + sum( nondis_sys , G_RES(nondis_sys,h)) + sum( sto_sys , STO_OUT(sto_sys,h) )
+            +  G_INFES(h)
 %prosumage%$ontext
          + sum( res , G_MARKET_PRO2M(res,h) )
 $ontext
@@ -228,7 +234,7 @@ con2b_loadlevelstart(dis_sys,h)$(ord(h) = 1)..
 con2_loadlevel(dis_sys,h)..
            G_UP(dis_sys,h)  - G_L(dis_sys,h)
         +  (G_L(dis_sys,h-1) - G_DO(dis_sys,h))$(ord(h) > 1)
-        =E= 0
+        =G= 0
 ;
 
 
@@ -246,7 +252,7 @@ con3a_maxprod_dispatchable(dis_sys,h)..
 con3e_maxprod_res(nondis_sys,h)..
 
 
-       phi_res(nondis_sys,h)*N_TECH(nondis_sys) - G_RES(nondis_sys,h) - CU(nondis_sys,h) =E= 0
+       phi_res(nondis_sys,h)*N_TECH(nondis_sys) - G_RES(nondis_sys,h) - CU(nondis_sys,h) =G= 0
 ;
 
 * ---------------------------------------------------------------------------- *
@@ -265,7 +271,7 @@ con4_stolev(sto_sys,h)..
 
        + STO_IN(sto_sys,h)*(1+eta_sto(sto_sys))/2 - STO_OUT(sto_sys,h)/(1+eta_sto(sto_sys))*2  -  STO_L(sto_sys,h)
        + (STO_L(sto_sys,h-1))$(ord(h)>1)
-       =E= 0
+       =G= 0
 ;
 
 
@@ -357,13 +363,13 @@ con8h_max_sto_pro_p(sto_pro)..
 con11a_pro_distrib(res_pro,h)..
          phi_res(res_pro,h) * N_RES_PRO(res_pro)
          - CU_PRO(res_pro,h) - G_MARKET_PRO2M(res_pro,h) - G_RES_PRO(res_pro,h) - sum( sto_pro , STO_IN_PRO2PRO(sto_pro,res_pro,h) )
-         =E= 0
+         =G= 0
 ;
 
 con11b_pro_balance(h)..
          sum( res_pro , G_RES_PRO(res_pro,h)) + sum( sto_pro , STO_OUT_PRO2PRO(sto_pro,h) ) + G_MARKET_M2PRO(h)
          - numb_pro_load * d_pro(h)
-         =E= 0
+         =G= 0
 ;
 
 *** Not used in MCP model
@@ -379,7 +385,7 @@ con11d_pro_stolev_PRO2PRO(sto_pro,h)..
          - STO_OUT_PRO2PRO(sto_pro,h)/(1+eta_sto(sto_pro))*2
          - STO_L_PRO2PRO(sto_pro,h)
          + STO_L_PRO2PRO(sto_pro,h-1)$((ord(h)>1) )
-         =E= 0
+         =G= 0
 ;
 
 *** Not used in MCP model
@@ -465,13 +471,13 @@ FOCCU(nondis_sys,h)..
 
 FOCSTO_IN(sto_sys,h)..
 
-    c_m_sto(sto_sys) + lambda_enerbal(h) -  lambda_stolev(sto_sys,h)*(1+eta_sto(sto_sys))/2
+  lambda_enerbal(h) -  lambda_stolev(sto_sys,h)*(1+eta_sto(sto_sys))/2
     + mu_stoin_cap(sto_sys,h) =G= 0
 ;
 
 FOCSTO_OUT(sto_sys,h)..
 
-     c_m_sto(sto_sys) -  lambda_enerbal(h) +  lambda_stolev(sto_sys,h)/(1+eta_sto(sto_sys))*2
+     -  lambda_enerbal(h) +  lambda_stolev(sto_sys,h)/(1+eta_sto(sto_sys))*2
      +  mu_stout_cap(sto_sys,h)
       =G= 0
 ;
@@ -609,7 +615,6 @@ $offtext
 * FOC w.r.t STO_IN_PRO2PRO
 FOC_STO_IN_PRO2PRO(sto_pro,res_pro,h)..
 *            c_var_sto_pro_PRO(sto_pro)
-         +  c_m_sto(sto_pro)
          +  lambda_resgen_pro(res_pro,h)
          -  lambda_stolev_pro(sto_pro,h)*(1+eta_sto(sto_pro))/2
          +  mu_stoin_cap_pro(sto_pro,h)
@@ -620,7 +625,6 @@ FOC_STO_IN_PRO2PRO(sto_pro,res_pro,h)..
 * FOC w.r.t STO_OUT_PRO2PRO
 FOC_STO_OUT_PRO2PRO(sto_pro,h)..
 *         c_var_sto_pro_PRO(sto_pro)
-       + c_m_sto(sto_pro)
        - lambda_enerbal_pro(h)
        + lambda_stolev_pro(sto_pro,h)*2/(1+eta_sto(sto_pro))
        + mu_stout_cap_pro(sto_pro,h)
@@ -640,12 +644,16 @@ FOC_STO_L_PRO2PRO(sto_pro,h)..
       =G= 0
 ;
 
+FOC_G_INFES(h)..
 
+         10000   - lambda_enerbal(h)   =G= 0
+
+;
 ********************************************************************************
 ***** Fix unmatched variables of first period *****
 ********************************************************************************
 
-G_DO.fx(dis_sys,'h1') = 0;
+*G_DO.fx(dis_sys,'h1') = 0;
 
 * Default for reporting
 G_DO.l(dis_sys,h)   = 0;
@@ -789,7 +797,7 @@ FOC_STO_L_PRO2PRO.STO_L_PRO2PRO
 $ontext
 $offtext
 
-
+FOC_G_INFES.G_INFES
 
 
 / ;

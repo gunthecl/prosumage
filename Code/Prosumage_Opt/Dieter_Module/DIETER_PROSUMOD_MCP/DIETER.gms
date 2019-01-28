@@ -45,7 +45,7 @@ $setglobal prosumage_system_version ""
 $setglobal ror_parameter "*"
 
 * Set star for reporting to Excel
-$setglobal report_to_excel ""
+$setglobal report_to_excel "*"
 
 
 * ----------------- Select if to use MCP or LP format --------------------------
@@ -126,7 +126,7 @@ numb_pro_load  = 0   ;
 
 %prosumage%$ontext
 * Number of prosumage households in thousands
-numb_pro_load = 1500 ;
+numb_pro_load = 1000 ;
 $ontext
 $offtext
 
@@ -167,8 +167,8 @@ $include model.gms
 ********************************************************************************
 
 * Define tariffs per MWh
-retail_price = 300 ;
-FIT          = 90  ;
+retail_price = 15 ;
+FIT          = 0  ;
 
 * Define what prices prosumage households see
 price_consumption_pro(h)  =            retail_price ;
@@ -210,8 +210,15 @@ $offtext
 
 * Save and load solution points
 DIETER_MCP.savepoint=1;
+DIETER_MCP.workspace = 20;
 *$if exist DIETER_p.gdx execute_loadpoint "DIETER_p";
-$if exist DIETER_MCP_p.gdx execute_loadpoint "DIETER_MCP_p";
+*$if exist DIETER_MCP_p.gdx execute_loadpoint "DIETER_MCP_p";
+*$if exist DIETER_MCP_p.gdx execute_loadpoint "DIETER_MCP_p_1";
+*$if exist DIETER_MCP_p.gdx execute_loadpoint "DIETER_MCP_p_2";
+*$if exist DIETER_MCP_p.gdx execute_loadpoint "DIETER_MCP_p_3";
+*$if exist DIETER_MCP_p.gdx execute_loadpoint "DIETER_MCP_p_a";
+*$if exist DIETER_MCP_p.gdx execute_loadpoint "DIETER_MCP_p_b";
+*$if exist DIETER_MCP_p.gdx execute_loadpoint "DIETER_MCP_p";
 option limrow = 10, limcol = 10, solprint = on ;
 DIETER_MCP.optfile= 1;
 
