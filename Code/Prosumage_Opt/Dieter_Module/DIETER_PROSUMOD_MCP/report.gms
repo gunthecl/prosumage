@@ -328,7 +328,7 @@ $offtext
         report_tech_hours('curtailment of fluct res at energy balance',loop_res_share,loop_prosumage,'market',h)=  sum(scen$(map(scen,loop_res_share,loop_prosumage)) ,   lev_CU_energybal(scen,h)  ) ;
         report_tech_hours('generation storage',loop_res_share,loop_prosumage,sto,h)=  sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_STO_OUT(scen,sto,h) + lev_STO_OUT_PRO2M(scen,sto,h) + lev_STO_OUT_PRO2PRO(scen,sto,h) + lev_STO_OUT_M2PRO(scen,sto,h) + lev_STO_OUT_M2M(scen,sto,h) ) ;
         report_tech_hours('storage loading',loop_res_share,loop_prosumage,sto,h)=  sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_STO_IN(scen,sto,h) + sum( res , lev_STO_IN_PRO2PRO(scen,res,sto,h) + lev_STO_IN_PRO2M(scen,res,sto,h)) + lev_STO_IN_M2PRO(scen,sto,h) + lev_STO_IN_M2M(scen,sto,h) ) ;
-        report_tech_hours('storage level',loop_res_share,loop_prosumage,sto,h)=  sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_STO_L(scen,sto,h) + lev_STO_L_PRO(scen,sto,h) ) ;
+        report_tech_hours('storage level',loop_res_share,loop_prosumage,sto,h)=  sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_STO_L(scen,sto,h) + lev_STO_L_PRO2PRO(scen,sto,h) ) ;
 
         report_tech_hours('generation conventional',loop_res_share,loop_prosumage,con,h)$(report_tech_hours('generation conventional',loop_res_share,loop_prosumage,con,h)< eps_rep_abs) = 0 ;
         report_tech_hours('generation renewable',loop_res_share,loop_prosumage,res,h)$(report_tech_hours('generation renewable',loop_res_share,loop_prosumage,res,h)< eps_rep_abs) = 0 ;
@@ -511,11 +511,11 @@ $offtext
         report_hours('demand market',loop_res_share,loop_prosumage,h)=  d(h) ;
         gross_energy_demand_market(scen)= gross_energy_demand(scen)- gross_energy_demand_prosumers_selfgen(scen);
 
-        report_prosumage_tech_hours('generation prosumers',loop_res_share,loop_prosumage,res,h)= sum(scen$(map(scen,loop_res_share,loop_prosumage)) , phi_res(res,h) * lev_N_RES_PRO(scen,res) ) ;
+        report_prosumage_tech_hours('possible total generation prosumers',loop_res_share,loop_prosumage,res,h)= sum(scen$(map(scen,loop_res_share,loop_prosumage)) , phi_res(res,h) * lev_N_RES_PRO(scen,res) ) ;
         report_prosumage_tech_hours('curtailment of fluct res prosumers',loop_res_share,loop_prosumage,res,h)=  sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_CU_PRO(scen,res,h)) ;
         report_prosumage_tech_hours('generation prosumers self-consumption',loop_res_share,loop_prosumage,res,h)= sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_G_RES_PRO(scen,res,h) ) ;
-        report_prosumage_tech_hours('generation prosumers to market',loop_res_share,loop_prosumage,res,h)= (sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_G_MARKET_PRO2M(scen,res,h))/card(h)*8760) ;
-        report_prosumage_tech_hours('withdrawal prosumers from market',loop_res_share,loop_prosumage,'',h)= (sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_G_MARKET_M2PRO(scen,h))/card(h)*8760) ;
+        report_prosumage_tech_hours('generation prosumers to market',loop_res_share,loop_prosumage,res,h)= sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_G_MARKET_PRO2M(scen,res,h));
+        report_prosumage_tech_hours('withdrawal prosumers from market',loop_res_share,loop_prosumage,'',h)= sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_G_MARKET_M2PRO(scen,h)) ;
         report_prosumage_tech_hours('storage loading prosumers PRO2PRO',loop_res_share,loop_prosumage,sto,h)=  sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( res , lev_STO_IN_PRO2PRO(scen,res,sto,h))) ;
         report_prosumage_tech_hours('storage loading prosumers PRO2M',loop_res_share,loop_prosumage,sto,h)=  sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( res , lev_STO_IN_PRO2M(scen,res,sto,h))) ;
         report_prosumage_tech_hours('storage loading prosumers M2PRO',loop_res_share,loop_prosumage,sto,h)=  sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_STO_IN_M2PRO(scen,sto,h)) ;
@@ -524,7 +524,6 @@ $offtext
         report_prosumage_tech_hours('storage generation prosumers PRO2M',loop_res_share,loop_prosumage,sto,h)=  sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_STO_OUT_PRO2M(scen,sto,h)) ;
         report_prosumage_tech_hours('storage generation prosumers M2PRO',loop_res_share,loop_prosumage,sto,h)=  sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_STO_OUT_M2PRO(scen,sto,h)) ;
         report_prosumage_tech_hours('storage generation prosumers M2M',loop_res_share,loop_prosumage,sto,h)=  sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_STO_OUT_M2M(scen,sto,h)) ;
-        report_prosumage_tech_hours('storage level prosumers',loop_res_share,loop_prosumage,sto,h)=  sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_STO_L_PRO(scen,sto,h)) ;
         report_prosumage_tech_hours('storage level prosumers PRO2PRO',loop_res_share,loop_prosumage,sto,h)=  sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_STO_L_PRO2PRO(scen,sto,h)) ;
         report_prosumage_tech_hours('storage level prosumers PRO2M',loop_res_share,loop_prosumage,sto,h)=  sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_STO_L_PRO2M(scen,sto,h)) ;
         report_prosumage_tech_hours('storage level prosumers M2PRO',loop_res_share,loop_prosumage,sto,h)=  sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_STO_L_M2PRO(scen,sto,h)) ;
@@ -674,7 +673,6 @@ $offtext
                  report_prosumage_tech_hours('storage generation prosumers PRO2M',loop_res_share,loop_prosumage,sto,h)$(report_prosumage_tech_hours('storage generation prosumers PRO2M',loop_res_share,loop_prosumage,sto,h)< eps_rep_abs) = 0 ;
                  report_prosumage_tech_hours('storage generation prosumers M2PRO',loop_res_share,loop_prosumage,sto,h)$(report_prosumage_tech_hours('storage generation prosumers M2PRO',loop_res_share,loop_prosumage,sto,h)< eps_rep_abs) = 0 ;
                  report_prosumage_tech_hours('storage generation prosumers M2M',loop_res_share,loop_prosumage,sto,h)$(report_prosumage_tech_hours('storage generation prosumers M2M',loop_res_share,loop_prosumage,sto,h)< eps_rep_abs) = 0 ;
-                 report_prosumage_tech_hours('storage level prosumers',loop_res_share,loop_prosumage,sto,h)$(report_prosumage_tech_hours('storage level prosumers',loop_res_share,loop_prosumage,sto,h)< eps_rep_abs) = 0 ;
                  report_prosumage_tech_hours('storage level prosumers PRO2PRO',loop_res_share,loop_prosumage,sto,h)$(report_prosumage_tech_hours('storage level prosumers PRO2PRO',loop_res_share,loop_prosumage,sto,h)< eps_rep_abs) = 0 ;
                  report_prosumage_tech_hours('storage level prosumers PRO2M',loop_res_share,loop_prosumage,sto,h)$(report_prosumage_tech_hours('storage level prosumers PRO2M',loop_res_share,loop_prosumage,sto,h)< eps_rep_abs) = 0 ;
                  report_prosumage_tech_hours('storage level prosumers M2PRO',loop_res_share,loop_prosumage,sto,h)$(report_prosumage_tech_hours('storage level prosumers M2PRO',loop_res_share,loop_prosumage,sto,h)< eps_rep_abs) = 0 ;
