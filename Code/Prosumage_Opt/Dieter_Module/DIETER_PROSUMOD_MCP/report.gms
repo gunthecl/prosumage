@@ -122,9 +122,9 @@ lev_electr_bill_con(scen) = ((sum(h, d_pro(h))/1000)*retail_price)/card(h)*8760 
 
 %prosumage%$ontext
 lev_CU_PRO(scen,tech,h)              = CU_PRO.l(tech,h)                ;
-lev_G_MARKET_PRO2M(scen,res_pro,h)   = G_MARKET_PRO2M.l(res_pro,h)        ;
+lev_G_MARKET_PRO2M(scen,res_pro,h)   = G_MARKET_PRO2M.l(res_pro,h)     ;
 lev_G_MARKET_M2PRO(scen,h)           = G_MARKET_M2PRO.l(h)             ;
-lev_G_RES_PRO(scen,tech,h)           = G_RES_PRO.l(tech,h)             ;
+lev_G_RES_PRO(scen,res_pro,h)           = G_RES_PRO.l(res_pro,h)       ;
 lev_STO_IN_PRO2PRO(scen,tech,sto,h)  = STO_IN_PRO2PRO.l(sto,tech,h)    ;
 lev_STO_IN_PRO2M(scen,tech,sto,h)    = STO_IN_PRO2M.l(tech,sto,h)      ;
 lev_STO_IN_M2PRO(scen,sto,h)         = STO_IN_M2PRO.l(sto,h)           ;
@@ -140,7 +140,7 @@ lev_STO_L_M2M(scen,sto,h)            = STO_L_M2M.l(sto,h)              ;
 lev_N_STO_E_PRO(scen,sto)            = N_STO_E_PRO.l(sto)              ;
 lev_N_STO_P_PRO(scen,sto)            = N_STO_P_PRO.l(sto)              ;
 lev_STO_L_PRO(scen,sto,h)            = N_STO_P_PRO.l(sto)              ;
-lev_N_RES_PRO(scen,tech)             = N_RES_PRO.l(tech)               ;
+lev_N_RES_PRO(scen,res_pro)             = N_RES_PRO.l(res_pro)            ;
 lev_gross_demand(scen,h)             = lev_demand(scen,h)
                                      + lev_G_MARKET_M2PRO(scen,h)
                                      - sum (res_pro, lev_G_MARKET_PRO2M(scen,res_pro,h)) ;
@@ -198,8 +198,8 @@ Z_FIX =
                  + sum( sto  , c_fix_sto(sto)/2*(N_STO_P.l(sto)+ N_STO_E.l(sto)) )
                  + sum( sto  , c_i_sto_p(sto)*N_STO_P.l(sto) )
 %prosumage%$ontext
-                 + sum( res  , c_i(res)*N_RES_PRO.l(res) )
-                 + sum( res  , c_fix(res)*N_RES_PRO.l(res) )
+                 + sum( res_pro  , c_i(res_pro)*N_RES_PRO.l(res_pro) )
+                 + sum( res_pro  , c_fix(res_pro)*N_RES_PRO.l(res_pro) )
                  + sum( sto  , c_i_sto_e(sto)*N_STO_E_PRO.l(sto) )
                  + sum( sto  , c_fix_sto(sto)/2*(N_STO_P_PRO.l(sto) + N_STO_E_PRO.l(sto)) )
                  + sum( sto  , c_i_sto_p(sto)*N_STO_P_PRO.l(sto) )
