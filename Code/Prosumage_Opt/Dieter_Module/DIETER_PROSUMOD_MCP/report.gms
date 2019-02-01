@@ -118,11 +118,11 @@ CU_energybal(h) =
          + sum( sto_sys , STO_OUT.l(sto_sys,h) )
          -   d(h)  -   sum( sto_sys , STO_IN.l(sto_sys,h) );
 
-lev_electr_bill_con(scen) = (sum(h, d_pro(h))/1000)*retail_price/card(h)*8760 ;
+lev_electr_bill_con(scen) = ((sum(h, d_pro(h))/1000)*retail_price)/card(h)*8760 ;
 
 %prosumage%$ontext
 lev_CU_PRO(scen,tech,h)              = CU_PRO.l(tech,h)                ;
-lev_G_MARKET_PRO2M(scen,tech,h)      = G_MARKET_PRO2M.l(tech,h)        ;
+lev_G_MARKET_PRO2M(scen,res_pro,h)   = G_MARKET_PRO2M.l(res_pro,h)        ;
 lev_G_MARKET_M2PRO(scen,h)           = G_MARKET_M2PRO.l(h)             ;
 lev_G_RES_PRO(scen,tech,h)           = G_RES_PRO.l(tech,h)             ;
 lev_STO_IN_PRO2PRO(scen,tech,sto,h)  = STO_IN_PRO2PRO.l(sto,tech,h)    ;
@@ -143,24 +143,24 @@ lev_STO_L_PRO(scen,sto,h)            = N_STO_P_PRO.l(sto)              ;
 lev_N_RES_PRO(scen,tech)             = N_RES_PRO.l(tech)               ;
 lev_gross_demand(scen,h)             = lev_demand(scen,h)
                                      + lev_G_MARKET_M2PRO(scen,h)
-                                     - sum (tech, lev_G_MARKET_PRO2M(scen,tech,h)) ;
+                                     - sum (res_pro, lev_G_MARKET_PRO2M(scen,res_pro,h)) ;
 
 CU_energybal(h)                         =  sum( dis_sys , G_L.l(dis_sys,h))
                                          + sum( nondis_sys , G_RES.l(nondis_sys,h))
                                          + sum( sto_sys , STO_OUT.l(sto_sys,h) )
-                                         + sum( res , G_MARKET_PRO2M.l(res,h) )
+                                         + sum( res_pro , G_MARKET_PRO2M.l(res_pro,h) )
                                          - d(h)
                                          - sum( sto_sys , STO_IN.l(sto_sys,h) )
                                          - G_MARKET_M2PRO.l(h) ;
 
-lev_electr_bill_pro(scen)            = ( sum(h, lev_G_MARKET_M2PRO(scen,h)*price_consumption_pro(h) )
+lev_electr_bill_pro(scen)            = (( sum(h, lev_G_MARKET_M2PRO(scen,h)*price_consumption_pro(h) )
                                        - sum( (res_pro,h), lev_G_MARKET_PRO2M(scen,res_pro,h )* price_production_pro(h))
                                        + sum( res_pro , c_i(res_pro)*lev_N_RES_PRO(scen,res_pro) )
                                        + sum( res_pro , c_fix(res_pro)*lev_N_RES_PRO(scen,res_pro) )
                                        + sum( sto_pro , c_i_sto_e(sto_pro)*lev_N_STO_E_PRO(scen,sto_pro) )
                                        + sum( sto_pro , c_fix_sto(sto_pro)/2*(lev_N_STO_P_PRO(scen,sto_pro) + lev_N_STO_E_PRO(scen,sto_pro)) )
                                        + sum( sto_pro , c_i_sto_p(sto_pro)*lev_N_STO_P_PRO(scen,sto_pro))
-                                       ) /((1000*numb_pro_load) + 1e-9 )/card(h)*8760 ;
+                                       ) /((1000*numb_pro_load) + 1e-9 ))/card(h)*8760 ;
 
 $ontext
 $offtext
@@ -262,9 +262,9 @@ reserves_activated(scen,h) = 0 ;
 
 * Prepare prosumage reporting parameters
 %prosumage%$ontext
-gross_energy_demand_prosumers(scen)= sum( h , numb_pro_load * d_pro(h))/card(h)*8760;
-gross_energy_demand_prosumers_selfgen(scen)= sum( (h,res) , lev_G_RES_PRO(scen,res,h)) + sum( (sto,h) , lev_STO_OUT_PRO2PRO(scen,sto,h) )/card(h)*8760 ;
-gross_energy_demand_prosumers_market(scen)= sum( h , lev_G_MARKET_M2PRO(scen,h))/card(h)*8760 ;
+gross_energy_demand_prosumers(scen)= (sum( h , numb_pro_load * d_pro(h)))/card(h)*8760;
+gross_energy_demand_prosumers_selfgen(scen)= (sum( (h,res) , lev_G_RES_PRO(scen,res,h)) + sum( (sto,h) , lev_STO_OUT_PRO2PRO(scen,sto,h) ))/card(h)*8760 ;
+gross_energy_demand_prosumers_market(scen)= (sum( h , lev_G_MARKET_M2PRO(scen,h)))/card(h)*8760 ;
 $ontext
 $offtext
 
@@ -285,7 +285,7 @@ $offtext
 lev_residual_load(h) =  d(h)
                        - sum( nondis_sys , G_RES.l(nondis_sys,h)) - CU_energybal(h)
 %prosumage%$ontext
-         - sum( res , G_MARKET_PRO2M.l(res,h) )
+         - sum( res_pro , G_MARKET_PRO2M.l(res_pro,h) )
          + G_MARKET_M2PRO.l(h)
 $ontext
 $offtext
@@ -308,7 +308,8 @@ $offtext
 * REPORT HOURS
         report_hours('demand consumers',loop_res_share,loop_prosumage,h)= d(h) ;
         report_hours('energy generated',loop_res_share,loop_prosumage,h)=  sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( dis , lev_G_L(scen,dis,h) ) + sum( nondis , lev_G_RES(scen,nondis,h) - corr_fac_nondis(scen,nondis,h)) + sum( sto , lev_STO_OUT(scen,sto,h) - corr_fac_sto(scen,sto,h))
-                                                                         + sum( res , lev_G_RES_PRO(scen,res,h) + lev_G_MARKET_PRO2M(scen,res,h) + sum( sto , lev_STO_IN_PRO2PRO(scen,res,sto,h) + lev_STO_IN_PRO2M(scen,res,sto,h))) + sum( sto , lev_STO_OUT_PRO2PRO(scen,sto,h) + lev_STO_OUT_PRO2M(scen,sto,h) + lev_STO_OUT_M2PRO(scen,sto,h) + lev_STO_OUT_M2M(scen,sto,h)) ) ;
+                                                                         + sum( res_pro, lev_G_MARKET_PRO2M(scen,res_pro,h))
+                                                                         + sum( res , lev_G_RES_PRO(scen,res,h)  + sum( sto , lev_STO_IN_PRO2PRO(scen,res,sto,h) + lev_STO_IN_PRO2M(scen,res,sto,h))) + sum( sto , lev_STO_OUT_PRO2PRO(scen,sto,h) + lev_STO_OUT_PRO2M(scen,sto,h) + lev_STO_OUT_M2PRO(scen,sto,h) + lev_STO_OUT_M2M(scen,sto,h)) ) ;
         report_hours('price',loop_res_share,loop_prosumage,h)= - sum(scen$(map(scen,loop_res_share,loop_prosumage)) , marginal_con1a(scen,h)) ;
 
         report_hours('energy generated',loop_res_share,loop_prosumage,h)$(report_hours('energy generated',loop_res_share,loop_prosumage,h)< eps_rep_abs ) = 0 ;
@@ -513,8 +514,8 @@ $offtext
         report_prosumage_tech_hours('generation prosumers',loop_res_share,loop_prosumage,res,h)= sum(scen$(map(scen,loop_res_share,loop_prosumage)) , phi_res(res,h) * lev_N_RES_PRO(scen,res) ) ;
         report_prosumage_tech_hours('curtailment of fluct res prosumers',loop_res_share,loop_prosumage,res,h)=  sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_CU_PRO(scen,res,h)) ;
         report_prosumage_tech_hours('generation prosumers self-consumption',loop_res_share,loop_prosumage,res,h)= sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_G_RES_PRO(scen,res,h) ) ;
-        report_prosumage_tech_hours('generation prosumers to market',loop_res_share,loop_prosumage,res,h)= sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_G_MARKET_PRO2M(scen,res,h)/card(h)*8760) ;
-        report_prosumage_tech_hours('withdrawal prosumers from market',loop_res_share,loop_prosumage,'',h)= sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_G_MARKET_M2PRO(scen,h)/card(h)*8760) ;
+        report_prosumage_tech_hours('generation prosumers to market',loop_res_share,loop_prosumage,res,h)= (sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_G_MARKET_PRO2M(scen,res,h))/card(h)*8760) ;
+        report_prosumage_tech_hours('withdrawal prosumers from market',loop_res_share,loop_prosumage,'',h)= (sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_G_MARKET_M2PRO(scen,h))/card(h)*8760) ;
         report_prosumage_tech_hours('storage loading prosumers PRO2PRO',loop_res_share,loop_prosumage,sto,h)=  sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( res , lev_STO_IN_PRO2PRO(scen,res,sto,h))) ;
         report_prosumage_tech_hours('storage loading prosumers PRO2M',loop_res_share,loop_prosumage,sto,h)=  sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( res , lev_STO_IN_PRO2M(scen,res,sto,h))) ;
         report_prosumage_tech_hours('storage loading prosumers M2PRO',loop_res_share,loop_prosumage,sto,h)=  sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_STO_IN_M2PRO(scen,sto,h)) ;
@@ -542,7 +543,7 @@ $offtext
         report_market_tech_hours('prosumer storage to market PRO2M',loop_res_share,loop_prosumage,'Interaction with prosumers',h)=  sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( sto , lev_STO_OUT_PRO2M(scen,sto,h)) ) ;
         report_market_tech_hours('prosumer storage to market M2M',loop_res_share,loop_prosumage,'Interaction with prosumers',h)=  sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( sto , lev_STO_OUT_M2M(scen,sto,h)) ) ;
         report_market_tech_hours('energy market to prosumer',loop_res_share,loop_prosumage,'Interaction with prosumers',h)=  sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_G_MARKET_M2PRO(scen,h) )   ;
-        report_market_tech_hours('energy prosumer to market',loop_res_share,loop_prosumage,'Interaction with prosumers',h)=  sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( res , lev_G_MARKET_PRO2M(scen,res,h)) )  ;
+        report_market_tech_hours('energy prosumer to market',loop_res_share,loop_prosumage,'Interaction with prosumers',h)=  sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( res_pro , lev_G_MARKET_PRO2M(scen,res_pro,h)) )  ;
 
         report_node('gross energy demand market',loop_res_share,loop_prosumage)= sum( scen$(map(scen,loop_res_share,loop_prosumage)) , gross_energy_demand_market(scen)) ;
         report_node('gross energy demand prosumers self generation',loop_res_share,loop_prosumage)= sum( scen$(map(scen,loop_res_share,loop_prosumage)) , gross_energy_demand_prosumers_selfgen(scen)) ;
@@ -581,7 +582,7 @@ $offtext
         report_prosumage_tech('average market value storage out PRO2M',loop_res_share,loop_prosumage,sto)$(report_prosumage_tech('Storage out total prosumers PRO2M',loop_res_share,loop_prosumage,sto)> eps_rep_abs*card(h)) = sum( h , report_hours('price',loop_res_share,loop_prosumage,h)* sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_STO_OUT_PRO2M(scen,sto,h))) / report_prosumage_tech('Storage in total prosumers PRO2M',loop_res_share,loop_prosumage,sto);
         report_prosumage_tech('average market value storage out M2PRO',loop_res_share,loop_prosumage,sto)$(report_prosumage_tech('Storage out total prosumers M2PRO',loop_res_share,loop_prosumage,sto)> eps_rep_abs*card(h)) = sum( h , report_hours('price',loop_res_share,loop_prosumage,h)* sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_STO_OUT_M2PRO(scen,sto,h))) / report_prosumage_tech('Storage in total prosumers M2PRO',loop_res_share,loop_prosumage,sto);
         report_prosumage_tech('average market value storage out M2M',loop_res_share,loop_prosumage,sto)$(report_prosumage_tech('Storage out total prosumers M2M',loop_res_share,loop_prosumage,sto)> eps_rep_abs*card(h)) = sum( h , report_hours('price',loop_res_share,loop_prosumage,h)* sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_STO_OUT_M2M(scen,sto,h))) / report_prosumage_tech('Storage in total prosumers M2M',loop_res_share,loop_prosumage,sto);
-        report_prosumage_tech('average market value generation PRO2M',loop_res_share,loop_prosumage,'')$(report_prosumage_tech('Generation total prosumers PRO2M',loop_res_share,loop_prosumage,'')> eps_rep_abs*card(h)) = sum( h , report_hours('price',loop_res_share,loop_prosumage,h)* sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( res , lev_G_MARKET_PRO2M(scen,res,h)))) / report_prosumage_tech('Generation total prosumers PRO2M',loop_res_share,loop_prosumage,'');
+        report_prosumage_tech('average market value generation PRO2M',loop_res_share,loop_prosumage,'')$(report_prosumage_tech('Generation total prosumers PRO2M',loop_res_share,loop_prosumage,'')> eps_rep_abs*card(h)) = sum( h , report_hours('price',loop_res_share,loop_prosumage,h)* sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( res_pro , lev_G_MARKET_PRO2M(scen,res_pro,h)))) / report_prosumage_tech('Generation total prosumers PRO2M',loop_res_share,loop_prosumage,'');
         report_prosumage_tech('average market value withdrawal M2PRO',loop_res_share,loop_prosumage,'')$(report_prosumage_tech('Withdrawal total prosumers M2PRO',loop_res_share,loop_prosumage,'')> eps_rep_abs*card(h)) = sum( h , report_hours('price',loop_res_share,loop_prosumage,h)* sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_G_MARKET_M2PRO(scen,h))) / report_prosumage_tech('Withdrawal total prosumers M2PRO',loop_res_share,loop_prosumage,'');
         report_prosumage_tech('average market value generation PRO2PRO',loop_res_share,loop_prosumage,'')$(report_prosumage_tech('generation prosumers self-consumption',loop_res_share,loop_prosumage,'')> eps_rep_abs*card(h)) = sum( h , report_hours('price',loop_res_share,loop_prosumage,h)* sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( res , lev_G_RES_PRO(scen,res,h)))) / report_prosumage_tech('generation prosumers self-consumption',loop_res_share,loop_prosumage,'');
         report_prosumage_tech('FLH prosumers',loop_res_share,loop_prosumage,res)$(sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_N_RES_PRO(scen,res) > eps_rep_ins)) = sum( h , sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_G_MARKET_PRO2M(scen,res,h) + sum( sto , lev_STO_IN_PRO2PRO(scen,res,sto,h)) + lev_G_RES_PRO(scen,res,h) )) / sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_N_RES_PRO(scen,res) ) ;
@@ -615,7 +616,7 @@ $offtext
         report_prosumage('share self-generation curtailed',loop_res_share,loop_prosumage)$(sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( (res,h) , phi_res(res,h) * lev_N_RES_PRO(scen,res)) )) = sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( (h,res) , lev_CU_PRO(scen,res,h) )) / sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( (res,h) , phi_res(res,h) * lev_N_RES_PRO(scen,res)) ) ;
         report_prosumage('share self-generation direct consumption',loop_res_share,loop_prosumage)$(sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( (res,h) , phi_res(res,h) * lev_N_RES_PRO(scen,res)) )) = sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( (h,res) , lev_G_RES_PRO(scen,res,h) )) / sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( (res,h) , phi_res(res,h) * lev_N_RES_PRO(scen,res)) ) ;
         report_prosumage('self-consumption rate',loop_res_share,loop_prosumage)$(sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( (res,h) , phi_res(res,h) * lev_N_RES_PRO(scen,res)) )) = sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( (h,res) , lev_G_RES_PRO(scen,res,h) )  + sum( (res,sto,h), lev_STO_IN_PRO2PRO(scen,res,sto,h)) ) / sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( (res,h) , phi_res(res,h) * lev_N_RES_PRO(scen,res)) ) ;
-        report_prosumage('share self-generation to market',loop_res_share,loop_prosumage)$(sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( (res,h) , phi_res(res,h) * lev_N_RES_PRO(scen,res))) ) = sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( (h,res) , lev_G_MARKET_PRO2M(scen,res,h) )) / sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( (res,h) , phi_res(res,h) * lev_N_RES_PRO(scen,res)) ) ;
+        report_prosumage('share self-generation to market',loop_res_share,loop_prosumage)$(sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( (res,h) , phi_res(res,h) * lev_N_RES_PRO(scen,res))) ) = sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( (h,res_pro) , lev_G_MARKET_PRO2M(scen,res_pro,h) )) / sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( (res,h) , phi_res(res,h) * lev_N_RES_PRO(scen,res)) ) ;
         report_prosumage('share self-generation stored PRO2PRO',loop_res_share,loop_prosumage)$(sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( (res,h) , phi_res(res,h) * lev_N_RES_PRO(scen,res))) ) = sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( (h,sto,res) , lev_STO_IN_PRO2PRO(scen,res,sto,h) )) / sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( (res,h) , phi_res(res,h) * lev_N_RES_PRO(scen,res)) ) ;
         report_prosumage('share self-generation stored PRO2M',loop_res_share,loop_prosumage)$(sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( (res,h) , phi_res(res,h) * lev_N_RES_PRO(scen,res))) ) = sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( (h,sto,res) , lev_STO_IN_PRO2M(scen,res,sto,h) )) / sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( (res,h) , phi_res(res,h) * lev_N_RES_PRO(scen,res)) ) ;
         report_prosumage('Capacity total prosumers',loop_res_share,loop_prosumage)= sum( res , sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_N_RES_PRO(scen,res)) ) + sum( sto , sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_N_STO_P_PRO(scen,sto)) ) ;
@@ -640,7 +641,7 @@ $offtext
         report_market('Share market energy transferred to prosumer consumption',loop_res_share,loop_prosumage)= sum( h, sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_G_MARKET_M2PRO(scen,h)) ) / sum( scen$(map(scen,loop_res_share,loop_prosumage)) , gross_energy_demand_market(scen)) ;
         report_market('Share market energy transferred to prosumer storage M2PRO',loop_res_share,loop_prosumage)= sum( h, sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( sto , lev_STO_IN_M2PRO(scen,sto,h))) ) / sum( scen$(map(scen,loop_res_share,loop_prosumage)) , gross_energy_demand_market(scen)) ;
         report_market('Share market energy transferred to prosumer storage M2M',loop_res_share,loop_prosumage)= sum( h, sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( sto , lev_STO_IN_M2M(scen,sto,h))) ) / sum( scen$(map(scen,loop_res_share,loop_prosumage)) , gross_energy_demand_market(scen)) ;
-        report_market('Share market energy tranferred from prosumer generation',loop_res_share,loop_prosumage)= sum( h, sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( res , lev_G_MARKET_PRO2M(scen,res,h))) ) / sum( scen$(map(scen,loop_res_share,loop_prosumage)) , gross_energy_demand_market(scen)) ;
+        report_market('Share market energy tranferred from prosumer generation',loop_res_share,loop_prosumage)= sum( h, sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( res_pro , lev_G_MARKET_PRO2M(scen,res_pro,h))) ) / sum( scen$(map(scen,loop_res_share,loop_prosumage)) , gross_energy_demand_market(scen)) ;
         report_market('Share market energy transferred from prosumer storage PRO2M',loop_res_share,loop_prosumage)= sum( h, sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( sto , lev_STO_OUT_PRO2M(scen,sto,h))) ) / sum( scen$(map(scen,loop_res_share,loop_prosumage)) , gross_energy_demand_market(scen)) ;
         report_market('Share market energy transferred from prosumer storage M2M',loop_res_share,loop_prosumage)= sum( h, sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( sto , lev_STO_OUT_M2M(scen,sto,h))) ) / sum( scen$(map(scen,loop_res_share,loop_prosumage)) , gross_energy_demand_market(scen)) ;
 * line below changed
@@ -648,7 +649,7 @@ $offtext
         report_market('Energy demand total market',loop_res_share,loop_prosumage)= (sum( h , d(h) ) + sum( h , sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_G_MARKET_M2PRO(scen,h))) + sum( (sto,h) , sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_STO_IN(scen,sto,h) + lev_STO_IN_M2M(scen,sto,h) + lev_STO_IN_M2PRO(scen,sto,h) ) )) * %sec_hour%
 %prosumage%$ontext
 ;
-        report_market('energy generated gross market',loop_res_share,loop_prosumage)= sum( h , sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( dis ,lev_G_L(scen,dis,h)) + sum( nondis ,lev_G_RES(scen,nondis,h)) + sum( res , lev_G_MARKET_PRO2M(scen,res,h) - corr_fac_nondis(scen,res,h))
+        report_market('energy generated gross market',loop_res_share,loop_prosumage)= sum( h , sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( dis ,lev_G_L(scen,dis,h)) + sum( nondis ,lev_G_RES(scen,nondis,h)) + sum( res_pro , lev_G_MARKET_PRO2M(scen,res_pro,h) - corr_fac_nondis(scen,res_pro,h))
          + sum( sto , lev_STO_OUT_M2M(scen,sto,h) + lev_STO_OUT(scen,sto,h) - corr_fac_sto(scen,sto,h))  )) ;
 
         report_market_tech('Capacity share market',loop_res_share,loop_prosumage,tech)$(report_market('Capacity total market',loop_res_share,loop_prosumage)) = sum( scen$(map(scen,loop_res_share,loop_prosumage)) , lev_N_TECH(scen,tech) ) / report_market('Capacity total market',loop_res_share,loop_prosumage)+ 1e-9 ;

@@ -49,7 +49,7 @@ N_STO_E(sto)           Storage technology built - Energy [MWh]
 N_STO_P(sto)           Storage loading and discharging capacity built - Capacity [MW]
 
 CU_PRO(tech,h)                 Prosumage: curtailment of renewable generation in hour h [MWh]
-G_MARKET_PRO2M(tech,h)         Prosumage. energy sent to market in hour h [MWh]
+G_MARKET_PRO2M(res_pro,h)         Prosumage. energy sent to market in hour h [MWh]
 G_MARKET_M2PRO(h)              Prosumage: withdrawal of energy from market in hour h [MWh]
 G_RES_PRO(tech,h)              Prosumage: hourly renewables generation in hour h [MWh]
 STO_IN_PRO2PRO(sto,tech,h)     Prosumage: storage loading from generation for discharging to consumption in hour h [MWh]
@@ -308,7 +308,7 @@ con5a_minRES..
 sum( h , G_L('bio',h) + sum(nondis_sys , G_RES(nondis_sys,h))
 
 %prosumage%$ontext
-         + sum( sto_pro , STO_OUT_PRO2PRO(sto_pro,h)) + sum( res_pro , G_MARKET_PRO2M(res_pro,h) + G_RES_PRO(res_pro,h))
+         + sum( sto_pro , STO_OUT_PRO2PRO(sto_pro,h)) + sum( res_pro , G_MARKET_PRO2M(res_pro,h)) + sum( res, G_RES_PRO(res,h))
 $ontext
 $offtext
 )

@@ -20,7 +20,7 @@ $offtext
 * If $setglobal ror_parameter "*": choose appropriate value for N_CON.fx('ror') (but no reserve provision):
 
 %ror_parameter%$ontext
-N_TECH.fx('ror') = 5857.47 ;
+N_TECH.fx('ror') = 5600 ;
 G_RES.fx('ror',h) = N_TECH.l('ror') * phi_res('ror',h) ;
 
 $ontext
@@ -79,7 +79,7 @@ STO_L_M2M(sto,h)
 
 %prosumage%$ontext
 CU_PRO.fx(res,h)$(m_res_pro(res) = 0) = 0 ;
-G_MARKET_PRO2M.fx(res,h)$( m_res_pro(res) = 0) = 0 ;
+G_MARKET_PRO2M.fx(res_pro,h)$( m_res_pro(res) = 0) = 0 ;
 *G_MARKET_M2PRO.fx(h)$(feat_node('prosumage',n) = 0) = 0 ;
 G_RES_PRO.fx(res,h)$( m_res_pro(res) = 0) = 0 ;
 STO_IN_PRO2PRO.fx(sto,res,h)$( m_sto_pro_p(sto) = 0) = 0 ;
@@ -225,7 +225,7 @@ lev_N_RES_PRO(scen,tech) = 0  ;
 
 * Fixing of report parameters for run-of-river
 %ror_parameter%$ontext
-lev_N_TECH(scen,'ror') = 5857.47 ;
+lev_N_TECH(scen,'ror') = 5600 ;
 lev_G_RES(scen,'ror',h) = lev_N_TECH(scen,'ror') * phi_res('ror',h) ;
 $ontext
 $offtext
