@@ -221,7 +221,7 @@ $offtext
 $ontext
 $offtext
 
-       =G= 0
+       =E= 0
 ;
 
 con2a_loadlevel(dis_sys,h)$(ord(h) > 1)..
