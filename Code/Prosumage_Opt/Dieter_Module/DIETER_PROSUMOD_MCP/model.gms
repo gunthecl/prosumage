@@ -13,19 +13,16 @@ $offtext
 
 Variables
 Z                  Value objective function [Euro]
-
-
-;
-Positive Variables
-lambda_enerbal         Dual variable on energy balance (1a)
-lambda_resgen      Dual variable on renewable generation (3e)
-lambda_convgen     Dual variable on conventional generation level (2)
-lambda_stolev      Dual variable on storage level  (4a-4b)
-
 lambda_enerbal_pro     Prosumage: Dual variable on prosumage energy balance (11b)
 lambda_resgen_pro      Prosumage: Dual variable on renewable generation (11a)
 lambda_stolev_pro      Prosumage: Dual variable on storage level  (11d-11h)
+lambda_resgen      Dual variable on renewable generation (3e)
+lambda_convgen     Dual variable on conventional generation level (2)
+lambda_stolev      Dual variable on storage level  (4a-4b)
+lambda_enerbal         Dual variable on energy balance (1a)
 
+;
+Positive Variables
 
 G_L(tech,h)            Generation level in hour h [MWh]
 G_UP(tech,h)           Generation upshift in hour h [MWh]
@@ -72,6 +69,7 @@ mu_tech_max_i_pro         Prosumage: Dual variable on res installation constrain
 mu_stop_max_i_pro         Prosumage: Dual variable on storage power installation constraint  (8g)
 mu_stoe_max_i_pro         Prosumage: Dual variable on storage energy installation constraint  (8h)
 mu_self_con_pro           Prosumage: Constraint on miminum self-consumption level (8c)
+mu_feed_in_max_pro        Prosumage: Dual variable on feed-in capacity constraint (11p)
 
 G_INFES(h)              Infeasibility variable
 ;
@@ -137,6 +135,7 @@ con11j_pro_stolev_max                    Prosumage: maximum overall storage leve
 con11k_pro_maxin_sto                     Prosumage: maximum storage inflow
 con11l_pro_maxout_sto                    Prosumage: maximum storage outflow
 con11o_pro_ending                        Prosumage: storage ending condition
+con11p_pro_feedin_max                    Prosumage: maximum feed-in limited
 
 * FOC optimality conditions
 FOCG_L                   FOC w.r.t. G_L
@@ -234,7 +233,7 @@ con2b_loadlevelstart(dis_sys,h)$(ord(h) = 1)..
 con2_loadlevel(dis_sys,h)..
            G_UP(dis_sys,h)  - G_L(dis_sys,h)
         +  (G_L(dis_sys,h-1) - G_DO(dis_sys,h))$(ord(h) > 1)
-        =G= 0
+        =E= 0
 ;
 
 
@@ -252,7 +251,7 @@ con3a_maxprod_dispatchable(dis_sys,h)..
 con3e_maxprod_res(nondis_sys,h)..
 
 
-       phi_res(nondis_sys,h)*N_TECH(nondis_sys) - G_RES(nondis_sys,h) - CU(nondis_sys,h) =G= 0
+       phi_res(nondis_sys,h)*N_TECH(nondis_sys) - G_RES(nondis_sys,h) - CU(nondis_sys,h) =E= 0
 ;
 
 * ---------------------------------------------------------------------------- *
@@ -271,7 +270,7 @@ con4_stolev(sto_sys,h)..
 
        + STO_IN(sto_sys,h)*(1+eta_sto(sto_sys))/2 - STO_OUT(sto_sys,h)/(1+eta_sto(sto_sys))*2  -  STO_L(sto_sys,h)
        + (STO_L(sto_sys,h-1))$(ord(h)>1)
-       =G= 0
+       =E= 0
 ;
 
 
@@ -363,13 +362,13 @@ con8h_max_sto_pro_p(sto_pro)..
 con11a_pro_distrib(res_pro,h)..
          phi_res(res_pro,h) * N_RES_PRO(res_pro)
          - CU_PRO(res_pro,h) - G_MARKET_PRO2M(res_pro,h) - G_RES_PRO(res_pro,h) - sum( sto_pro , STO_IN_PRO2PRO(sto_pro,res_pro,h) )
-         =G= 0
+         =E= 0
 ;
 
 con11b_pro_balance(h)..
          sum( res_pro , G_RES_PRO(res_pro,h)) + sum( sto_pro , STO_OUT_PRO2PRO(sto_pro,h) ) + G_MARKET_M2PRO(h)
          - numb_pro_load * d_pro(h)
-         =G= 0
+         =E= 0
 ;
 
 *** Not used in MCP model
@@ -385,7 +384,7 @@ con11d_pro_stolev_PRO2PRO(sto_pro,h)..
          - STO_OUT_PRO2PRO(sto_pro,h)/(1+eta_sto(sto_pro))*2
          - STO_L_PRO2PRO(sto_pro,h)
          + STO_L_PRO2PRO(sto_pro,h-1)$((ord(h)>1) )
-         =G= 0
+         =E= 0
 ;
 
 *** Not used in MCP model
@@ -412,6 +411,13 @@ con11l_pro_maxout_sto(sto_pro,h)..
 con11o_pro_ending(sto_pro,h)$( ord(h) = card(h))..
          STO_L_PRO2PRO(sto_pro,h) =G= phi_sto_pro_ini(sto_pro) * N_STO_E_PRO(sto_pro)
 ;
+
+con11p_pro_feedin_max(res_pro,h)..
+
+         N_RES_PRO(res_pro)*0.5 - G_MARKET_PRO2M(res_pro,h)    =G= 0
+
+;
+
 
 * ---------------------------------------------------------------------------- *
 ***** FOC conditions *****
@@ -544,7 +550,9 @@ FOC_N_RES_PRO(res_pro)..
 *             c_i_pv_PRO(res_pro)
            + c_i(res_pro) + c_fix(res_pro)
            - sum(h, lambda_resgen_pro(res_pro,h)*phi_res(res_pro,h)  )
-           + mu_tech_max_i_pro(res_pro)  =G= 0
+           + mu_tech_max_i_pro(res_pro)
+           - sum(h, mu_feed_in_max_pro(res_pro,h)*0.5)
+  =G= 0
 
 ;
 
@@ -586,9 +594,9 @@ $offtext
 * FOC w.r.t G_MARKET_PRO2M
 FOC_G_MARKET_PRO2M(res_pro,h)..
 %selfish_prosumage%$ontext
-          - price_production_pro(h)
+           - price_production_pro(h)
 *           - lambda_enerbal(h)
-
+          + mu_feed_in_max_pro(res_pro,h)
 $ontext
 $offtext
 %prosumage_system_version%$ontext
@@ -799,6 +807,7 @@ $offtext
 
 FOC_G_INFES.G_INFES
 
+con11p_pro_feedin_max.mu_feed_in_max_pro
 
 / ;
 

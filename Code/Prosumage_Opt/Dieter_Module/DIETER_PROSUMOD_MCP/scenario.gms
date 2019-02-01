@@ -33,7 +33,7 @@ m_exog_sto_p(sto)= storage_data(sto,'fixed_capacities_power');
 
 *** Dispatch model
 %dispatch_model%$ontext
-N_TECH.fx(tech)  = m_exog_p(tech) + 0.1 ;
+N_TECH.fx(tech)  = m_exog_p(tech) ;
 N_STO_P.fx(sto_sys) = m_exog_sto_p(sto_sys);
 N_STO_E.fx(sto_sys) = m_exog_sto_e(sto_sys);
 
@@ -54,7 +54,7 @@ N_TECH.up('wind_off')  = inf ;
 N_TECH.up('pv')        = inf ;
 N_STO_P.up(sto_sys)    = m_exog_sto_p(sto_sys)+ 0.1 ;
 N_STO_E.up(sto_sys)    = m_exog_sto_e(sto_sys)+ 0.1 ;
-N_STO_E.up('sto5')     = inf ;     
+N_STO_E.up('sto5')     = inf ;
 N_STO_P.up('sto5')     = inf ;
 N_STO_E.up('sto1')     = inf ;
 N_STO_P.up('sto1')     = inf ;
