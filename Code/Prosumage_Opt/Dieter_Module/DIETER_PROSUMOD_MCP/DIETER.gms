@@ -167,9 +167,9 @@ $include model.gms
 ********************************************************************************
 
 * Define tariffs per MWh
-*RTP pricing +  retail
+
 retail_price = 300 ;
-* RTP pricing
+
 FIT          = 90  ;
 
 * Define what prices prosumage households see
