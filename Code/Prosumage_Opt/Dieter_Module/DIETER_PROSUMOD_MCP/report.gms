@@ -78,6 +78,7 @@ Z_VAR
 lev_demand
 lev_gross_demand
 lev_residual_load
+lev_residual_load_pro
 CU_energybal
 lev_CU_energybal
 lev_electr_bill_pro
@@ -291,6 +292,13 @@ $ontext
 $offtext
 ;
 
+%prosumage%$ontext
+lev_residual_load_pro(h) = 0 - sum( res_pro , G_MARKET_PRO2M.l(res_pro,h) )
+                           + G_MARKET_M2PRO.l(h)
+$ontext
+$offtext
+;
+
 
 ********************************************************************************
 **** Report  *******************************************************************
@@ -317,7 +325,7 @@ $offtext
         report_hours('demand consumers',loop_res_share,loop_prosumage,h)$(report_hours('demand consumers',loop_res_share,loop_prosumage,h)< eps_rep_abs) = 0 ;
         report_hours('price',loop_res_share,loop_prosumage,h)$(report_hours('price',loop_res_share,loop_prosumage,h)< eps_rep_abs AND report_hours('price',loop_res_share,loop_prosumage,h)> -eps_rep_abs) = eps ;
         report_hours('residual load',loop_res_share,loop_prosumage,h) = lev_residual_load(h) ;
-
+        report_hours('residual load prosumers',loop_res_share,loop_prosumage,h) = lev_residual_load_pro(h) ;
 
 * ----------------------------------------------------------------------------
 
