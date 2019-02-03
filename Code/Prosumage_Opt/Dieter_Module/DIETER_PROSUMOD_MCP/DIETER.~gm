@@ -45,7 +45,7 @@ $setglobal prosumage_system_version ""
 $setglobal ror_parameter "*"
 
 * Set star for reporting to Excel
-$setglobal report_to_excel ""
+$setglobal report_to_excel "*"
 
 
 * ----------------- Select if to use MCP or LP format --------------------------
@@ -147,10 +147,13 @@ d(h)           = d_y(%base_year%,h) - numb_pro_load*d_pro(h) ;
 phi_res(res,h) = phi_res_y(%base_year%,res,h)  ;
 
 
-Parameter
-phi_min_res_exog     ;
+Parameters
+phi_min_res_exog
+price_consumption_pro(h)
+price_production_pro(h)
+retail_price
+FIT ;
 phi_min_res_exog = 1 ;
-
 
 
 ********************************************************************************
@@ -158,6 +161,20 @@ phi_min_res_exog = 1 ;
 ********************************************************************************
 
 $include model.gms
+
+********************************************************************************
+***** Scenario 2030 *****
+********************************************************************************
+
+* Define tariffs per MWh
+
+retail_price = 300 ;
+
+FIT          = 90  ;
+
+* Define what prices prosumage households see
+price_consumption_pro(h)  =            retail_price ;
+price_production_pro(h)   =                     FIT ;
 
 ********************************************************************************
 ***** Options, fixings, report preparation *****
@@ -195,7 +212,14 @@ $offtext
 
 * Save and load solution points
 DIETER_MCP.savepoint=1;
+DIETER_MCP.workspace = 20;
 *$if exist DIETER_p.gdx execute_loadpoint "DIETER_p";
+*$if exist DIETER_MCP_p.gdx execute_loadpoint "DIETER_MCP_p";
+*$if exist DIETER_MCP_p.gdx execute_loadpoint "DIETER_MCP_p_1";
+*$if exist DIETER_MCP_p.gdx execute_loadpoint "DIETER_MCP_p_2";
+*$if exist DIETER_MCP_p.gdx execute_loadpoint "DIETER_MCP_p_3";
+*$if exist DIETER_MCP_p.gdx execute_loadpoint "DIETER_MCP_a";
+*$if exist DIETER_MCP_p.gdx execute_loadpoint "DIETER_MCP_b";
 $if exist DIETER_MCP_p.gdx execute_loadpoint "DIETER_MCP_p";
 option limrow = 10, limcol = 10, solprint = on ;
 DIETER_MCP.optfile= 1;

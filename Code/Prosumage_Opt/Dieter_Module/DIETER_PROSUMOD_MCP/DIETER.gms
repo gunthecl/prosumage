@@ -170,7 +170,7 @@ $include model.gms
 
 retail_price = 300 ;
 
-FIT          = 90  ;
+FIT          = 80  ;
 
 * Define what prices prosumage households see
 price_consumption_pro(h)  =            retail_price ;
