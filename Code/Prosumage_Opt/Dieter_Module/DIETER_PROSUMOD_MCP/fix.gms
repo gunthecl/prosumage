@@ -78,12 +78,12 @@ STO_L_M2M(sto,h)
 ;
 
 %prosumage%$ontext
-CU_PRO.fx(res,h)$(m_res_pro(res) = 0) = 0 ;
+CU_PRO.fx(res_pro,h)$(m_res_pro(res_pro) = 0) = 0 ;
 G_MARKET_PRO2M.fx(res_pro,h)$( m_res_pro(res_pro) = 0) = 0 ;
 *G_MARKET_M2PRO.fx(h)$(feat_node('prosumage',n) = 0) = 0 ;
 G_RES_PRO.fx(res_pro,h)$( m_res_pro(res_pro) = 0) = 0 ;
-STO_IN_PRO2PRO.fx(sto,res,h)$( m_sto_pro_p(sto) = 0) = 0 ;
-STO_IN_PRO2M.fx(res,sto,h)$( m_sto_pro_p(sto) = 0) = 0 ;
+STO_IN_PRO2PRO.fx(sto,res_pro,h)$( m_sto_pro_p(sto) = 0) = 0 ;
+STO_IN_PRO2M.fx(res_pro,sto,h)$( m_sto_pro_p(sto) = 0) = 0 ;
 STO_IN_M2PRO.fx(sto,h)$( m_sto_pro_p(sto) = 0) = 0 ;
 STO_IN_M2M.fx(sto,h)$( m_sto_pro_p(sto) = 0) = 0 ;
 STO_OUT_PRO2PRO.fx(sto,h)$( m_sto_pro_p(sto) = 0) = 0 ;

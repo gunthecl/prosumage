@@ -126,7 +126,7 @@ lev_CU_PRO(scen,res_pro,h)              = CU_PRO.l(res_pro,h)                ;
 lev_G_MARKET_PRO2M(scen,res_pro,h)   = G_MARKET_PRO2M.l(res_pro,h)     ;
 lev_G_MARKET_M2PRO(scen,h)           = G_MARKET_M2PRO.l(h)             ;
 lev_G_RES_PRO(scen,res_pro,h)           = G_RES_PRO.l(res_pro,h)       ;
-lev_STO_IN_PRO2PRO(scen,tech,sto,h)  = STO_IN_PRO2PRO.l(sto,tech,h)    ;
+lev_STO_IN_PRO2PRO(scen,res_pro,sto,h)  = STO_IN_PRO2PRO.l(sto,res_pro,h)    ;
 lev_STO_IN_PRO2M(scen,tech,sto,h)    = STO_IN_PRO2M.l(tech,sto,h)      ;
 lev_STO_IN_M2PRO(scen,sto,h)         = STO_IN_M2PRO.l(sto,h)           ;
 lev_STO_IN_M2M(scen,sto,h)           = STO_IN_M2M.l(sto,h)             ;
@@ -182,7 +182,7 @@ Z_VAR =
                  + sum( (h,nondis) , c_cu(nondis)*CU.l(nondis,h) )
                  + sum( (h,sto) , c_m_sto(sto) * ( STO_OUT.l(sto,h) + STO_IN.l(sto,h) ) )
 %prosumage%$ontext
-                 + sum( (h,sto) , c_m_sto(sto) * ( STO_OUT_PRO2PRO.l(sto,h) + sum( res , STO_IN_PRO2PRO.l(sto,res,h)) ))
+                 + sum( (h,sto) , c_m_sto(sto) * ( STO_OUT_PRO2PRO.l(sto,h) + sum( res_pro , STO_IN_PRO2PRO.l(sto,res_pro,h)) ))
 
 $ontext
 $offtext
