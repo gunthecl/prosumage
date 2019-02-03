@@ -122,7 +122,7 @@ CU_energybal(h) =
 lev_electr_bill_con(scen) = ((sum(h, d_pro(h))/1000)*retail_price)/card(h)*8760 ;
 
 %prosumage%$ontext
-lev_CU_PRO(scen,tech,h)              = CU_PRO.l(tech,h)                ;
+lev_CU_PRO(scen,res_pro,h)              = CU_PRO.l(res_pro,h)                ;
 lev_G_MARKET_PRO2M(scen,res_pro,h)   = G_MARKET_PRO2M.l(res_pro,h)     ;
 lev_G_MARKET_M2PRO(scen,h)           = G_MARKET_M2PRO.l(h)             ;
 lev_G_RES_PRO(scen,res_pro,h)           = G_RES_PRO.l(res_pro,h)       ;
