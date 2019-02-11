@@ -52,11 +52,11 @@ CU_PRO(res_pro,h)                 Prosumage: curtailment of renewable generation
 G_MARKET_PRO2M(res_pro,h)         Prosumage. energy sent to market in hour h [MWh]
 G_MARKET_M2PRO(h)              Prosumage: withdrawal of energy from market in hour h [MWh]
 G_RES_PRO(res_pro,h)              Prosumage: hourly renewables generation in hour h [MWh]
-STO_IN_PRO2PRO(sto,tech,h)     Prosumage: storage loading from generation for discharging to consumption in hour h [MWh]
-STO_OUT_PRO2PRO(sto,h)         Prosumage: storage discharging to consumption from generation in hour h [MWh]
-STO_L_PRO2PRO(sto,h)           Prosumage: storage level generation to consumption in hour h [MWh]
-N_STO_E_PRO(sto)              Prosumage: installed storage energy [MWh]
-N_STO_P_PRO(sto)              Prosumage: installed storage power [MW]
+STO_IN_PRO2PRO(sto_pro,tech,h)     Prosumage: storage loading from generation for discharging to consumption in hour h [MWh]
+STO_OUT_PRO2PRO(sto_pro,h)         Prosumage: storage discharging to consumption from generation in hour h [MWh]
+STO_L_PRO2PRO(sto_pro,h)           Prosumage: storage level generation to consumption in hour h [MWh]
+N_STO_E_PRO(sto_pro)              Prosumage: installed storage energy [MWh]
+N_STO_P_PRO(sto_pro)              Prosumage: installed storage power [MW]
 N_RES_PRO(res_pro)                Prosumage: installed renewables capacities [MW]
 
 

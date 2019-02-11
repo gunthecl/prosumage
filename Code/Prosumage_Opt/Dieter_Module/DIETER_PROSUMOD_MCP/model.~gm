@@ -11,20 +11,28 @@ We are happy to receive feedback under azerrahn@diw.de and wschill@diw.de.
 $offtext
 ********************************************************************************
 
-Variables
-Z                  Value objective function [Euro]
-lambda_resgen      Dual variable on renewable generation (3e)
-lambda_convgen     Dual variable on conventional generation level (2)
-lambda_stolev      Dual variable on storage level  (4a-4b)
-
-lambda_enerbal_pro     Prosumage: Dual variable on prosumage energy balance (11b)
-lambda_resgen_pro      Prosumage: Dual variable on renewable generation (11a)
-lambda_stolev_pro      Prosumage: Dual variable on storage level  (11d-11h)
-
+Set
+*$onempty
+dis_bio(tech)          Subset of dispatchable technology: Bio mass        /bio/
+res_pro(tech)          Prosumage renewable generation technologies        /pv/
+sto_pro(sto)          Storage technologies prosumager                     /sto1/
+sto_sys(sto)           Storage technologies system                        /sto5/
+dis_sys(tech)                                                             /lig,hc,CCGT,OCGT,oil,other,bio/
+nondis_sys(tech)                                                          /ror,wind_on,wind_off,pv/
 ;
 
+Variables
+Z                  Value objective function [Euro]
+lambda_enerbal_pro     Prosumage: Dual variable on prosumage energy balance (11b)
+lambda_resgen_pro      Prosumage: Dual variable on renewable generation (11a)
+lambda_resgen      Dual variable on renewable generation (3e)
+lambda_convgen     Dual variable on conventional generation level (2)
+lambda_stolev_pro      Prosumage: Dual variable on storage level  (11d-11h)
+lambda_enerbal         Dual variable on energy balance (1a)
+lambda_stolev      Dual variable on storage level  (4a-4b)
+;
 Positive Variables
-lambda_enerbal     Dual variable on energy balance (1a)
+
 
 G_L(tech,h)            Generation level in hour h [MWh]
 G_UP(tech,h)           Generation upshift in hour h [MWh]
@@ -40,16 +48,16 @@ N_TECH(tech)           Technology tech built [MW]
 N_STO_E(sto)           Storage technology built - Energy [MWh]
 N_STO_P(sto)           Storage loading and discharging capacity built - Capacity [MW]
 
-CU_PRO(tech,h)                 Prosumage: curtailment of renewable generation in hour h [MWh]
-G_MARKET_PRO2M(tech,h)         Prosumage. energy sent to market in hour h [MWh]
+CU_PRO(res_pro,h)                 Prosumage: curtailment of renewable generation in hour h [MWh]
+G_MARKET_PRO2M(res_pro,h)         Prosumage. energy sent to market in hour h [MWh]
 G_MARKET_M2PRO(h)              Prosumage: withdrawal of energy from market in hour h [MWh]
-G_RES_PRO(tech,h)              Prosumage: hourly renewables generation in hour h [MWh]
+G_RES_PRO(res_pro,h)              Prosumage: hourly renewables generation in hour h [MWh]
 STO_IN_PRO2PRO(sto,tech,h)     Prosumage: storage loading from generation for discharging to consumption in hour h [MWh]
 STO_OUT_PRO2PRO(sto,h)         Prosumage: storage discharging to consumption from generation in hour h [MWh]
 STO_L_PRO2PRO(sto,h)           Prosumage: storage level generation to consumption in hour h [MWh]
 N_STO_E_PRO(sto)              Prosumage: installed storage energy [MWh]
 N_STO_P_PRO(sto)              Prosumage: installed storage power [MW]
-N_RES_PRO(tech)                Prosumage: installed renewables capacities [MW]
+N_RES_PRO(res_pro)                Prosumage: installed renewables capacities [MW]
 
 
 mu_stoin_cap          Dual variable on storage loading capacity constraint (4d)
@@ -71,17 +79,14 @@ mu_tech_max_i_pro         Prosumage: Dual variable on res installation constrain
 mu_stop_max_i_pro         Prosumage: Dual variable on storage power installation constraint  (8g)
 mu_stoe_max_i_pro         Prosumage: Dual variable on storage energy installation constraint  (8h)
 mu_self_con_pro           Prosumage: Constraint on miminum self-consumption level (8c)
+mu_feed_in_max_pro        Prosumage: Dual variable on feed-in capacity constraint (11p)
+
+G_INFES(h)              Infeasibility variable
 ;
 
-Set
-*$onempty
-dis_bio(tech)          Subset of dispatchable technology: Bio mass        /bio/
-res_pro(tech)          Prosumage renewable generation technologies        /pv/
-sto_pro(sto)          Storage technologies prosumager                     /sto1/
-sto_sys(sto)           Storage technologies system                        /sto5/
-dis_sys(tech)                                                             /lig,hc,CCGT,OCGT,oil,other,bio/
-nondis_sys(tech)                                                          /ror,wind_on,wind_off,pv/
-;
+
+
+
 ********************************************************************************
 
 Equations
@@ -132,6 +137,7 @@ con11j_pro_stolev_max                    Prosumage: maximum overall storage leve
 con11k_pro_maxin_sto                     Prosumage: maximum storage inflow
 con11l_pro_maxout_sto                    Prosumage: maximum storage outflow
 con11o_pro_ending                        Prosumage: storage ending condition
+con11p_pro_feedin_max                    Prosumage: maximum feed-in limited
 
 * FOC optimality conditions
 FOCG_L                   FOC w.r.t. G_L
@@ -159,6 +165,7 @@ FOC_STO_IN_PRO2PRO          Prosumage: FOC w.r.t STO_IN_PRO2PRO
 FOC_STO_OUT_PRO2PRO         Prosumage: FOC w.r.t STO_OUT_PRO2PRO
 FOC_STO_L_PRO2PRO           Prosumage: FOC w.r.t STO_L_PRO2PRO
 
+FOC_G_INFES               Infeasibility: FOC w.r.t G_INFES
 ;
 
 
@@ -181,6 +188,7 @@ obj..
                  + sum( sto_sys , c_i_sto_e(sto_sys)*N_STO_E(sto_sys))
                  + sum( sto_sys , c_fix_sto(sto_sys)/2*(N_STO_P(sto_sys)+ N_STO_E(sto_sys)) )
                  + sum( sto_sys , c_i_sto_p(sto_sys)*N_STO_P(sto_sys))
+                 + sum( h, G_INFES(h))*10000
 %prosumage%$ontext
                  + sum( res_pro , c_i(res_pro)*N_RES_PRO(res_pro) )
                  + sum( res_pro , c_fix(res_pro)*N_RES_PRO(res_pro) )
@@ -200,8 +208,9 @@ $offtext
 con1a_bal(h)..
 
            sum( dis_sys , G_L(dis_sys,h)) + sum( nondis_sys , G_RES(nondis_sys,h)) + sum( sto_sys , STO_OUT(sto_sys,h) )
+            +  G_INFES(h)
 %prosumage%$ontext
-         + sum( res , G_MARKET_PRO2M(res,h) )
+         + sum( res_pro , G_MARKET_PRO2M(res_pro,h) )
 $ontext
 $offtext
          -   d(h)
@@ -212,7 +221,7 @@ $offtext
 $ontext
 $offtext
 
-       =G= 0
+       =E= 0
 ;
 
 con2a_loadlevel(dis_sys,h)$(ord(h) > 1)..
@@ -299,7 +308,7 @@ con5a_minRES..
 sum( h , G_L('bio',h) + sum(nondis_sys , G_RES(nondis_sys,h))
 
 %prosumage%$ontext
-         + sum( sto_pro , STO_OUT_PRO2PRO(sto_pro,h)) + sum( res , G_MARKET_PRO2M(res,h) + G_RES_PRO(res,h))
+         + sum( sto_pro , STO_OUT_PRO2PRO(sto_pro,h)) + sum( res_pro , G_MARKET_PRO2M(res_pro,h) + G_RES_PRO(res_pro,h))
 $ontext
 $offtext
 )
@@ -405,6 +414,13 @@ con11o_pro_ending(sto_pro,h)$( ord(h) = card(h))..
          STO_L_PRO2PRO(sto_pro,h) =G= phi_sto_pro_ini(sto_pro) * N_STO_E_PRO(sto_pro)
 ;
 
+con11p_pro_feedin_max(res_pro,h)..
+
+         N_RES_PRO(res_pro)*0.5 - G_MARKET_PRO2M(res_pro,h)    =G= 0
+
+;
+
+
 * ---------------------------------------------------------------------------- *
 ***** FOC conditions *****
 * ---------------------------------------------------------------------------- *
@@ -463,13 +479,13 @@ FOCCU(nondis_sys,h)..
 
 FOCSTO_IN(sto_sys,h)..
 
-    c_m_sto(sto_sys) + lambda_enerbal(h) -  lambda_stolev(sto_sys,h)*(1+eta_sto(sto_sys))/2
+  lambda_enerbal(h) -  lambda_stolev(sto_sys,h)*(1+eta_sto(sto_sys))/2
     + mu_stoin_cap(sto_sys,h) =G= 0
 ;
 
 FOCSTO_OUT(sto_sys,h)..
 
-     c_m_sto(sto_sys) -  lambda_enerbal(h) +  lambda_stolev(sto_sys,h)/(1+eta_sto(sto_sys))*2
+     -  lambda_enerbal(h) +  lambda_stolev(sto_sys,h)/(1+eta_sto(sto_sys))*2
      +  mu_stout_cap(sto_sys,h)
       =G= 0
 ;
@@ -536,7 +552,9 @@ FOC_N_RES_PRO(res_pro)..
 *             c_i_pv_PRO(res_pro)
            + c_i(res_pro) + c_fix(res_pro)
            - sum(h, lambda_resgen_pro(res_pro,h)*phi_res(res_pro,h)  )
-           + mu_tech_max_i_pro(res_pro)  =G= 0
+           + mu_tech_max_i_pro(res_pro)
+*           - sum(h, mu_feed_in_max_pro(res_pro,h)*0.5)
+  =G= 0
 
 ;
 
@@ -562,28 +580,41 @@ FOC_N_STO_P_PRO(sto_pro)..
 FOC_G_MARKET_M2PRO(h)..
 %selfish_prosumage%$ontext
 *          sum( hh, lambda_enerbal(hh))/card(h) + 250
- + 300
+
+ + price_consumption_pro(h)
+
+%RTP_cons%$ontext
+           + lambda_enerbal(h)
 
 $ontext
 $offtext
+
 %prosumage_system_version%$ontext
            + lambda_enerbal(h)
 $ontext
 $offtext
-*
+
            - lambda_enerbal_pro(h) =G=  0
 ;
 
 * FOC w.r.t G_MARKET_PRO2M
 FOC_G_MARKET_PRO2M(res_pro,h)..
 %selfish_prosumage%$ontext
-          - 120
+           - price_production_pro(h)
+
+*          + mu_feed_in_max_pro(res_pro,h)
+
+%RTP_prod%$ontext
+           - lambda_enerbal(h)
 $ontext
 $offtext
+
+
 %prosumage_system_version%$ontext
            - lambda_enerbal(h)
 $ontext
 $offtext
+
 
          + lambda_resgen_pro(res_pro,h)  =G= 0
 ;
@@ -604,7 +635,6 @@ $offtext
 * FOC w.r.t STO_IN_PRO2PRO
 FOC_STO_IN_PRO2PRO(sto_pro,res_pro,h)..
 *            c_var_sto_pro_PRO(sto_pro)
-         +  c_m_sto(sto_pro)
          +  lambda_resgen_pro(res_pro,h)
          -  lambda_stolev_pro(sto_pro,h)*(1+eta_sto(sto_pro))/2
          +  mu_stoin_cap_pro(sto_pro,h)
@@ -615,7 +645,6 @@ FOC_STO_IN_PRO2PRO(sto_pro,res_pro,h)..
 * FOC w.r.t STO_OUT_PRO2PRO
 FOC_STO_OUT_PRO2PRO(sto_pro,h)..
 *         c_var_sto_pro_PRO(sto_pro)
-       + c_m_sto(sto_pro)
        - lambda_enerbal_pro(h)
        + lambda_stolev_pro(sto_pro,h)*2/(1+eta_sto(sto_pro))
        + mu_stout_cap_pro(sto_pro,h)
@@ -635,12 +664,16 @@ FOC_STO_L_PRO2PRO(sto_pro,h)..
       =G= 0
 ;
 
+FOC_G_INFES(h)..
 
+         10000   - lambda_enerbal(h)   =G= 0
+
+;
 ********************************************************************************
 ***** Fix unmatched variables of first period *****
 ********************************************************************************
 
-G_DO.fx(dis_sys,'h1') = 0;
+*G_DO.fx(dis_sys,'h1') = 0;
 
 * Default for reporting
 G_DO.l(dis_sys,h)   = 0;
@@ -784,8 +817,9 @@ FOC_STO_L_PRO2PRO.STO_L_PRO2PRO
 $ontext
 $offtext
 
+FOC_G_INFES.G_INFES
 
-
+*con11p_pro_feedin_max.mu_feed_in_max_pro
 
 / ;
 

@@ -28,7 +28,7 @@ $setglobal base_year "'2030'"
 * Germany only - also adjust Excel inputs!
 $setglobal GER_only "*"
 
-* Dispatch only - used fixed capacities (also deactivates bio energy restriction)
+* Dispatch only - use fixed capacities (also deactivates bio energy restriction)
 $setglobal dispatch_model "*"
 
 * Select if you want to use load change costs

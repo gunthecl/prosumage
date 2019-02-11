@@ -121,25 +121,25 @@ CU_energybal(h) =
 lev_electr_bill_con(scen) = ((sum(h, d_pro(h))/1000)*retail_price)*%sec_hour% ;
 
 %prosumage%$ontext
-lev_CU_PRO(scen,res_pro,h)              = CU_PRO.l(res_pro,h)                ;
-lev_G_MARKET_PRO2M(scen,res_pro,h)   = G_MARKET_PRO2M.l(res_pro,h)     ;
-lev_G_MARKET_M2PRO(scen,h)           = G_MARKET_M2PRO.l(h)             ;
-lev_G_RES_PRO(scen,res_pro,h)           = G_RES_PRO.l(res_pro,h)       ;
-lev_STO_IN_PRO2PRO(scen,tech,sto,h)  = STO_IN_PRO2PRO.l(sto,tech,h)    ;
-lev_STO_IN_PRO2M(scen,tech,sto,h)    = STO_IN_PRO2M.l(tech,sto,h)      ;
-lev_STO_IN_M2PRO(scen,sto,h)         = STO_IN_M2PRO.l(sto,h)           ;
-lev_STO_IN_M2M(scen,sto,h)           = STO_IN_M2M.l(sto,h)             ;
-lev_STO_OUT_PRO2PRO(scen,sto,h)      = STO_OUT_PRO2PRO.l(sto,h)        ;
-lev_STO_OUT_PRO2M(scen,sto,h)        = STO_OUT_PRO2M.l(sto,h)          ;
-lev_STO_OUT_M2PRO(scen,sto,h)        = STO_OUT_M2PRO.l(sto,h)          ;
-lev_STO_OUT_M2M(scen,sto,h)          = STO_OUT_M2M.l(sto,h)            ;
-lev_STO_L_PRO2PRO(scen,sto,h)        = STO_L_PRO2PRO.l(sto,h)          ;
-lev_STO_L_PRO2M(scen,sto,h)          = STO_L_PRO2M.l(sto,h)            ;
-lev_STO_L_M2PRO(scen,sto,h)          = STO_L_M2PRO.l(sto,h)            ;
-lev_STO_L_M2M(scen,sto,h)            = STO_L_M2M.l(sto,h)              ;
-lev_N_STO_E_PRO(scen,sto)            = N_STO_E_PRO.l(sto)              ;
-lev_N_STO_P_PRO(scen,sto)            = N_STO_P_PRO.l(sto)              ;
-lev_STO_L_PRO(scen,sto,h)            = N_STO_P_PRO.l(sto)              ;
+lev_CU_PRO(scen,res_pro,h)               = CU_PRO.l(res_pro,h)                ;
+lev_G_MARKET_PRO2M(scen,res_pro,h)       = G_MARKET_PRO2M.l(res_pro,h)     ;
+lev_G_MARKET_M2PRO(scen,h)               = G_MARKET_M2PRO.l(h)             ;
+lev_G_RES_PRO(scen,res_pro,h)            = G_RES_PRO.l(res_pro,h)       ;
+lev_STO_IN_PRO2PRO(scen,tech,sto_pro,h)  = STO_IN_PRO2PRO.l(sto_pro,tech,h)    ;
+lev_STO_IN_PRO2M(scen,tech,sto_pro,h)    = STO_IN_PRO2M.l(tech,sto_pro,h)      ;
+lev_STO_IN_M2PRO(scen,sto_pro,h)         = STO_IN_M2PRO.l(sto_pro,h)           ;
+lev_STO_IN_M2M(scen,sto_pro,h)           = STO_IN_M2M.l(sto_pro,h)             ;
+lev_STO_OUT_PRO2PRO(scen,sto_pro,h)      = STO_OUT_PRO2PRO.l(sto_pro,h)        ;
+lev_STO_OUT_PRO2M(scen,sto_pro,h)        = STO_OUT_PRO2M.l(sto_pro,h)          ;
+lev_STO_OUT_M2PRO(scen,sto_pro,h)        = STO_OUT_M2PRO.l(sto_pro,h)          ;
+lev_STO_OUT_M2M(scen,sto_pro,h)          = STO_OUT_M2M.l(sto_pro,h)            ;
+lev_STO_L_PRO2PRO(scen,sto_pro,h)        = STO_L_PRO2PRO.l(sto_pro,h)          ;
+lev_STO_L_PRO2M(scen,sto_pro,h)          = STO_L_PRO2M.l(sto_pro,h)            ;
+lev_STO_L_M2PRO(scen,sto_pro,h)          = STO_L_M2PRO.l(sto_pro,h)            ;
+lev_STO_L_M2M(scen,sto_pro,h)            = STO_L_M2M.l(sto_pro,h)              ;
+lev_N_STO_E_PRO(scen,sto_pro)            = N_STO_E_PRO.l(sto_pro)              ;
+lev_N_STO_P_PRO(scen,sto_pro)            = N_STO_P_PRO.l(sto_pro)              ;
+lev_STO_L_PRO(scen,sto_pro,h)            = N_STO_P_PRO.l(sto_pro)              ;
 lev_N_RES_PRO(scen,res_pro)             = N_RES_PRO.l(res_pro)            ;
 lev_gross_demand(scen,h)             = lev_demand(scen,h)
                                      + lev_G_MARKET_M2PRO(scen,h)
@@ -181,7 +181,7 @@ Z_VAR =
                  + sum( (h,nondis) , c_cu(nondis)*CU.l(nondis,h) )
                  + sum( (h,sto) , c_m_sto(sto) * ( STO_OUT.l(sto,h) + STO_IN.l(sto,h) ) )
 %prosumage%$ontext
-                 + sum( (h,sto) , c_m_sto(sto) * ( STO_OUT_PRO2PRO.l(sto,h) + sum( res , STO_IN_PRO2PRO.l(sto,res,h)) ))
+                 + sum( (h,sto_pro) , c_m_sto(sto_pro) * ( STO_OUT_PRO2PRO.l(sto_pro,h) + sum( res , STO_IN_PRO2PRO.l(sto_pro,res,h)) ))
 
 $ontext
 $offtext
@@ -200,9 +200,9 @@ Z_FIX =
 %prosumage%$ontext
                  + sum( res_pro  , c_i(res_pro)*N_RES_PRO.l(res_pro) )
                  + sum( res_pro  , c_fix(res_pro)*N_RES_PRO.l(res_pro) )
-                 + sum( sto  , c_i_sto_e(sto)*N_STO_E_PRO.l(sto) )
-                 + sum( sto  , c_fix_sto(sto)/2*(N_STO_P_PRO.l(sto) + N_STO_E_PRO.l(sto)) )
-                 + sum( sto  , c_i_sto_p(sto)*N_STO_P_PRO.l(sto) )
+                 + sum( sto_pro  , c_i_sto_e(sto_pro)*N_STO_E_PRO.l(sto_pro) )
+                 + sum( sto_pro  , c_fix_sto(sto_pro)/2*(N_STO_P_PRO.l(sto_pro) + N_STO_E_PRO.l(sto_pro)) )
+                 + sum( sto_pro  , c_i_sto_p(sto_pro)*N_STO_P_PRO.l(sto_pro) )
 $ontext
 $offtext
 
