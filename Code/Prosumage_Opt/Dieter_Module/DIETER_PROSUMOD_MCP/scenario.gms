@@ -27,8 +27,15 @@ m_exog_sto_p(sto)
 ;
 
 m_exog_p(tech)    = technology_data(tech,'fixed_capacities') ;
-m_exog_sto_e(sto)= storage_data(sto,'fixed_capacities_energy');
+%second_hour%m_exog_sto_e(sto)= storage_data(sto,'fixed_capacities_energy');
 m_exog_sto_p(sto)= storage_data(sto,'fixed_capacities_power');
+
+
+%second_hour%$ontext
+m_exog_sto_e(sto)= storage_data(sto,'fixed_capacities_energy')/2;
+
+$ontext
+$offtext
 
 
 *** Dispatch model

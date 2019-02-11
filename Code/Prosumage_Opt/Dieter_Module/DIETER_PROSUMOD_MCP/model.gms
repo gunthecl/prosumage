@@ -25,14 +25,14 @@ Variables
 Z                  Value objective function [Euro]
 lambda_enerbal_pro     Prosumage: Dual variable on prosumage energy balance (11b)
 lambda_resgen_pro      Prosumage: Dual variable on renewable generation (11a)
-lambda_stolev_pro      Prosumage: Dual variable on storage level  (11d-11h)
 lambda_resgen      Dual variable on renewable generation (3e)
 lambda_convgen     Dual variable on conventional generation level (2)
-lambda_stolev      Dual variable on storage level  (4a-4b)
+lambda_stolev_pro      Prosumage: Dual variable on storage level  (11d-11h)
 lambda_enerbal         Dual variable on energy balance (1a)
-
+lambda_stolev      Dual variable on storage level  (4a-4b)
 ;
 Positive Variables
+
 
 G_L(tech,h)            Generation level in hour h [MWh]
 G_UP(tech,h)           Generation upshift in hour h [MWh]
@@ -48,7 +48,7 @@ N_TECH(tech)           Technology tech built [MW]
 N_STO_E(sto)           Storage technology built - Energy [MWh]
 N_STO_P(sto)           Storage loading and discharging capacity built - Capacity [MW]
 
-CU_PRO(tech,h)                 Prosumage: curtailment of renewable generation in hour h [MWh]
+CU_PRO(res_pro,h)                 Prosumage: curtailment of renewable generation in hour h [MWh]
 G_MARKET_PRO2M(res_pro,h)         Prosumage. energy sent to market in hour h [MWh]
 G_MARKET_M2PRO(h)              Prosumage: withdrawal of energy from market in hour h [MWh]
 G_RES_PRO(res_pro,h)              Prosumage: hourly renewables generation in hour h [MWh]
@@ -583,13 +583,17 @@ FOC_G_MARKET_M2PRO(h)..
 
  + price_consumption_pro(h)
 
+%RTP_cons%$ontext
+           + lambda_enerbal(h)
+
 $ontext
 $offtext
+
 %prosumage_system_version%$ontext
            + lambda_enerbal(h)
 $ontext
 $offtext
-*
+
            - lambda_enerbal_pro(h) =G=  0
 ;
 
@@ -597,14 +601,20 @@ $offtext
 FOC_G_MARKET_PRO2M(res_pro,h)..
 %selfish_prosumage%$ontext
            - price_production_pro(h)
-*           - lambda_enerbal(h)
+
 *          + mu_feed_in_max_pro(res_pro,h)
+
+%RTP_prod%$ontext
+           - lambda_enerbal(h)
 $ontext
 $offtext
+
+
 %prosumage_system_version%$ontext
            - lambda_enerbal(h)
 $ontext
 $offtext
+
 
          + lambda_resgen_pro(res_pro,h)  =G= 0
 ;

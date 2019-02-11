@@ -47,6 +47,9 @@ $setglobal ror_parameter "*"
 * Set star for reporting to Excel
 $setglobal report_to_excel "*"
 
+* Set star if only second hour is used
+
+$setglobal second_hour "*"
 
 * ----------------- Select if to use MCP or LP format --------------------------
 
@@ -58,7 +61,6 @@ $setglobal LP ""
 
 * Definition of strings for report parameters and sanity checks
 * (Do not change settings below)
-$setglobal sec_hour "1"
 
 * Sanity checks
 $if "%ror_parameter%" == "*" $if "%ror_variable%" == "*" $abort Choose appropriate ROR option! ;
@@ -75,6 +77,8 @@ $if "%dispatch_model%" == "*" $setglobal investment_model ""
 $if "%prosumage_system_version%" == ""  $setglobal selfish_prosumage "*"
 $if "%prosumage_system_version%" == "*" $setglobal selfish_prosumage ""
 
+$if "%second_hour%" == ""  $setglobal sec_hour "1"
+$if "%second_hour%" == "*"  $setglobal sec_hour "2"
 ********************************************************************************
 
 
@@ -157,6 +161,17 @@ phi_min_res_exog = 1 ;
 
 
 ********************************************************************************
+***** Scenario 2030 *****
+********************************************************************************
+** Consumption side
+* Choose that real-time pricing is added on consumption side by setting "*"
+$setglobal  RTP_cons ""   ;
+
+** Production side
+* Choose that real-time pricing is added on consumption side by setting "*"
+$setglobal  RTP_prod ""  ;
+
+********************************************************************************
 ***** Model *****
 ********************************************************************************
 
@@ -166,16 +181,19 @@ $include model.gms
 ***** Scenario 2030 *****
 ********************************************************************************
 
-* Define tariffs per MWh
+* Define tariffs per MWh (additive)
 
+** Consumption side
+* Time-invariant retail price
 retail_price = 300 ;
 
+** Production side
+* Time-invariant FIT
 FIT          = 80  ;
 
 * Define what prices prosumage households see
 price_consumption_pro(h)  =            retail_price ;
 price_production_pro(h)   =                     FIT ;
-
 ********************************************************************************
 ***** Options, fixings, report preparation *****
 
@@ -213,16 +231,11 @@ $offtext
 * Save and load solution points
 DIETER_MCP.savepoint=1;
 DIETER_MCP.workspace = 20;
-*$if exist DIETER_p.gdx execute_loadpoint "DIETER_p";
-*$if exist DIETER_MCP_p.gdx execute_loadpoint "DIETER_MCP_p";
-*$if exist DIETER_MCP_p.gdx execute_loadpoint "DIETER_MCP_p_1";
-*$if exist DIETER_MCP_p.gdx execute_loadpoint "DIETER_MCP_p_2";
-*$if exist DIETER_MCP_p.gdx execute_loadpoint "DIETER_MCP_p_3";
 *$if exist DIETER_MCP_p.gdx execute_loadpoint "DIETER_MCP_a";
 *$if exist DIETER_MCP_p.gdx execute_loadpoint "DIETER_MCP_b";
 $if exist DIETER_MCP_p.gdx execute_loadpoint "DIETER_MCP_p";
 option limrow = 10, limcol = 10, solprint = on ;
-DIETER_MCP.optfile= 1;
+*DIETER_MCP.optfile= 1;
 
 solve   DIETER_MCP using mcp;
 $ontext
@@ -244,6 +257,5 @@ $offtext
 execute "gdxxrw i=results.gdx o=results.xlsx @results.tmp squeeze=N";
 $ontext
 $offtext
-
 
 * ---------------------------------------------------------------------------- *

@@ -502,7 +502,15 @@ c_i_sto_p(sto) = c_inv_overnight_sto_p(sto)*( interest_rate(sto) * (1+interest_r
 c_i(tech) = c_i(tech)*card(h)/8760 ;
 c_i_res(tech) = c_i_res(tech)*card(h)/8760 ;
 c_i_sto_p(sto) = c_i_sto_p(sto)*card(h)/8760 ;
-c_i_sto_e(sto) = c_i_sto_e(sto)*card(h)/8760 ;
+
+%second_hour%c_i_sto_e(sto) = c_i_sto_e(sto)*card(h)/8760 ;
+
+%second_hour%$ontext
+
+c_i_sto_e(sto) = c_i_sto_e(sto)*card(h)/8760*%sec_hour%;
+
+$ontext
+$offtext
 
 
 c_fix(tech) = c_fix(tech)*card(h)/8760 ;
