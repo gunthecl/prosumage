@@ -158,7 +158,7 @@ lev_electr_bill_pro(scen)            = (( sum(h, lev_G_MARKET_M2PRO(scen,h)*pric
                                        + sum( res_pro , c_i(res_pro)*lev_N_RES_PRO(scen,res_pro) )
                                        + sum( res_pro , c_fix(res_pro)*lev_N_RES_PRO(scen,res_pro) )
                                        + sum( sto_pro , c_i_sto_e(sto_pro)*lev_N_STO_E_PRO(scen,sto_pro) )
-                                       + sum( sto_pro , c_fix_sto(sto_pro)/2*(lev_N_STO_P_PRO(scen,sto_pro) + lev_N_STO_E_PRO(scen,sto_pro)) )
+                                       + sum( sto_pro , c_fix_sto(sto_pro)/2*(lev_N_STO_P_PRO(scen,sto_pro) + lev_N_STO_E_PRO(scen,sto_pro)*%sec_hour%) )
                                        + sum( sto_pro , c_i_sto_p(sto_pro)*lev_N_STO_P_PRO(scen,sto_pro))
                                        ) /((1000*numb_pro_load) + 1e-9 ))*%sec_hour% ;
 
