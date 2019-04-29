@@ -5,7 +5,10 @@
 *** Define tariffs per MWh (additive)
 
 * Time-invariant retail price
-retail_price = 300 ;
+energy_component      =  50  ;
+non_energy_component  = 250  ;
+retail_price          = energy_component + non_energy_component ;
+
 * Time-invariant FIT
 FIT          =  80 ;
 
@@ -40,5 +43,10 @@ $setglobal no_feed_in_max "*"
 *** Allow no feed-in from prosumage households
 * Remove star to prevent feed-in from prosumage households (i.e. FIT = 0)
 $setglobal allow_feed_in "*"
+
+
+*** Define annual fixed network fee
+
+flat_network_fee  = 0 ;
 
 ********************************************************************************

@@ -167,7 +167,10 @@ retail_price
 FIT
 SC_tax
 alpha_max
-max_solar_avail     ;
+max_solar_avail
+flat_network_fee
+energy_component
+non_energy_component;
 phi_min_res_exog = 1;
 
 

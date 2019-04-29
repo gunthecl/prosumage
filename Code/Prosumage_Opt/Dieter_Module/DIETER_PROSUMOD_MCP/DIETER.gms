@@ -105,8 +105,6 @@ sysout = off
 ;
 
 
-
-
 ********************************************************************************
 
 **************************
@@ -159,7 +157,10 @@ retail_price
 FIT
 SC_tax
 alpha_max
-max_solar_avail     ;
+max_solar_avail
+flat_network_fee
+energy_component
+non_energy_component;
 phi_min_res_exog = 1;
 
 
@@ -225,7 +226,8 @@ execute_unload "results", report, report_tech, report_node,
 report_tech_hours, report_hours, report_cost
 
 %prosumage%$ontext
-, report_prosumage, report_prosumage_tech, report_prosumage_tech_hours, report_market, report_market_tech, report_market_tech_hours
+, report_prosumage, report_prosumage_tech, report_prosumage_tech_hours, report_market, report_market_tech, report_market_tech_hours,
+  report_cost_prosumage
 $ontext
 $offtext
 ;
@@ -236,3 +238,4 @@ $ontext
 $offtext
 
 * ---------------------------------------------------------------------------- *
+

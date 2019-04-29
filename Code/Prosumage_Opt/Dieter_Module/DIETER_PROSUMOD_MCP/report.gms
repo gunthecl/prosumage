@@ -54,6 +54,7 @@ report_hours
 report_node
 report_line
 report_cost
+report_cost_prosumage
 
 report_reserves
 report_reserves_hours
@@ -82,6 +83,15 @@ CU_energybal
 lev_CU_energybal
 lev_electr_bill_pro
 lev_electr_bill_con
+
+total_bill
+expenses_pv
+expenses_storage
+expenses_grid_consumption_energy
+expenses_grid_consumption_other
+income_feedin
+expenses_sc_tax
+
 ;
 
 
@@ -118,7 +128,8 @@ CU_energybal(h) =
          + sum( sto_sys , STO_OUT.l(sto_sys,h) )
          -   d(h)  -   sum( sto_sys , STO_IN.l(sto_sys,h) );
 
-lev_electr_bill_con(scen) = ((sum(h, d_pro(h))/1000)*retail_price)*%sec_hour% ;
+lev_electr_bill_con(scen) = ((sum(h, d_pro(h))/1000)*retail_price)*%sec_hour%
+                              + flat_network_fee ;
 
 %prosumage%$ontext
 lev_CU_PRO(scen,res_pro,h)               = CU_PRO.l(res_pro,h)                ;
@@ -140,10 +151,10 @@ lev_STO_L_M2M(scen,sto_pro,h)            = STO_L_M2M.l(sto_pro,h)              ;
 lev_N_STO_E_PRO(scen,sto_pro)            = N_STO_E_PRO.l(sto_pro)              ;
 lev_N_STO_P_PRO(scen,sto_pro)            = N_STO_P_PRO.l(sto_pro)              ;
 lev_STO_L_PRO(scen,sto_pro,h)            = N_STO_P_PRO.l(sto_pro)              ;
-lev_N_RES_PRO(scen,res_pro)             = N_RES_PRO.l(res_pro)            ;
-lev_gross_demand(scen,h)             = lev_demand(scen,h)
-                                     + lev_G_MARKET_M2PRO(scen,h)
-                                     - sum (res_pro, lev_G_MARKET_PRO2M(scen,res_pro,h)) ;
+lev_N_RES_PRO(scen,res_pro)              = N_RES_PRO.l(res_pro)            ;
+lev_gross_demand(scen,h)                 = lev_demand(scen,h)
+                                           + lev_G_MARKET_M2PRO(scen,h)
+                                           - sum (res_pro, lev_G_MARKET_PRO2M(scen,res_pro,h)) ;
 
 CU_energybal(h)                         =  sum( dis_sys , G_L.l(dis_sys,h))
                                          + sum( nondis_sys , G_RES.l(nondis_sys,h))
@@ -153,7 +164,8 @@ CU_energybal(h)                         =  sum( dis_sys , G_L.l(dis_sys,h))
                                          - sum( sto_sys , STO_IN.l(sto_sys,h) )
                                          - G_MARKET_M2PRO.l(h) ;
 
-lev_electr_bill_pro(scen)            = (( sum(h, lev_G_MARKET_M2PRO(scen,h)*price_consumption_pro(h) )
+lev_electr_bill_pro(scen)            = flat_network_fee +
+                                         (( sum(h, lev_G_MARKET_M2PRO(scen,h)*price_consumption_pro(h) )
                                        - sum( (res_pro,h), lev_G_MARKET_PRO2M(scen,res_pro,h )* price_production_pro(h))
                                        + sum( res_pro , c_i(res_pro)*lev_N_RES_PRO(scen,res_pro) )
                                        + sum( res_pro , c_fix(res_pro)*lev_N_RES_PRO(scen,res_pro) )
@@ -265,9 +277,38 @@ reserves_activated(scen,h) = 0 ;
 gross_energy_demand_prosumers(scen)= (sum( h , numb_pro_load * d_pro(h)))*%sec_hour%;
 gross_energy_demand_prosumers_selfgen(scen)= (sum( (h,res) , lev_G_RES_PRO(scen,res,h)) + sum( (sto,h) , lev_STO_OUT_PRO2PRO(scen,sto,h) ))*%sec_hour% ;
 gross_energy_demand_prosumers_market(scen)= (sum( h , lev_G_MARKET_M2PRO(scen,h)))*%sec_hour% ;
+
+total_bill(scen)                    =  lev_electr_bill_pro(scen) ;
+expenses_pv(scen)                   =  sum( res_pro, lev_N_RES_PRO(scen,res_pro)*(c_i(res_pro) + c_fix(res_pro)))/(numb_pro_load*1000)*%sec_hour%;
+expenses_storage(scen)              =  sum( sto_pro,  c_i_sto_e(sto_pro)*lev_N_STO_E_PRO(scen,sto_pro)
+                                                    + c_fix_sto(sto_pro)/2*(lev_N_STO_P_PRO(scen,sto_pro) + lev_N_STO_E_PRO(scen,sto_pro))
+                                                    + c_i_sto_p(sto_pro)*lev_N_STO_P_PRO(scen,sto_pro))/(numb_pro_load*1000)*%sec_hour%  ;
+* Note: check whether fix costs for storage must be adjusted
+expenses_grid_consumption_energy(scen) =  sum(h, lev_G_MARKET_M2PRO(scen,h)*(energy_component
+%RTP_cons%$ontext
+                                              + lambda_enerbal(h)
 $ontext
 $offtext
+%prosumage%$ontext
+                                                 ))/(numb_pro_load*1000)*%sec_hour%;
 
+expenses_sc_tax(scen)                  =  sum(h,
+                                                  sum( res_pro, lev_G_RES_PRO(scen,res_pro,h))
+                                                + sum( sto_pro, lev_STO_OUT_PRO2PRO(scen,sto_pro,h)))*SC_tax/(numb_pro_load*1000)*%sec_hour%;
+
+expenses_grid_consumption_other(scen)  = flat_network_fee + expenses_sc_tax(scen) +
+                                         sum(h, lev_G_MARKET_M2PRO(scen,h)*(non_energy_component
+                                                 ))/(numb_pro_load*1000)*%sec_hour%;
+
+income_feedin(scen)                    = sum( (res_pro,h), lev_G_MARKET_PRO2M(scen,res_pro,h)* price_production_pro(h)
+%RTP_cons%$ontext
+                                              + lambda_enerbal(h)
+$ontext
+$offtext
+%prosumage%$ontext
+                                                 )/(numb_pro_load*1000)*%sec_hour%;
+$ontext
+$offtext
 
 * ----------------------------------------------------------------------------
 
@@ -324,7 +365,10 @@ $offtext
         report_hours('demand consumers',loop_res_share,loop_prosumage,h)$(report_hours('demand consumers',loop_res_share,loop_prosumage,h)< eps_rep_abs) = 0 ;
         report_hours('price',loop_res_share,loop_prosumage,h)$(report_hours('price',loop_res_share,loop_prosumage,h)< eps_rep_abs AND report_hours('price',loop_res_share,loop_prosumage,h)> -eps_rep_abs) = eps ;
         report_hours('residual load',loop_res_share,loop_prosumage,h) = lev_residual_load(h) ;
+%prosumage%$ontext
         report_hours('residual load prosumers',loop_res_share,loop_prosumage,h) = lev_residual_load_pro(h) ;
+$ontext
+$offtext
 
 * ----------------------------------------------------------------------------
 
@@ -785,6 +829,15 @@ $offtext
                  report_market_tech('Energy share in gross nodal market generation',loop_res_share,loop_prosumage,con)$(report_market_tech('Energy share in gross nodal market generation',loop_res_share,loop_prosumage,con)< eps_rep_rel) = 0 ;
                  report_market_tech('Energy share in gross nodal market generation',loop_res_share,loop_prosumage,res)$(report_market_tech('Energy share in gross nodal market generation',loop_res_share,loop_prosumage,res)< eps_rep_rel) = 0 ;
                  report_market_tech('Energy share in gross nodal market generation',loop_res_share,loop_prosumage,sto)$(report_market_tech('Energy share in gross nodal market generation',loop_res_share,loop_prosumage,sto)< eps_rep_rel) = 0 ;
+
+                 report_cost_prosumage('Annualized pv expenditure prosumer',loop_res_share,loop_prosumage)=  sum( scen$(map(scen,loop_res_share,loop_prosumage)) , expenses_pv(scen) )           ;
+                 report_cost_prosumage('Annualized storage expenditure prosumer',loop_res_share,loop_prosumage)=  sum( scen$(map(scen,loop_res_share,loop_prosumage)) ,expenses_storage(scen) )  ;
+                 report_cost_prosumage('Annual expenses grid_consumption energy prosumer',loop_res_share,loop_prosumage)=  sum( scen$(map(scen,loop_res_share,loop_prosumage)) , expenses_grid_consumption_energy(scen) )  ;
+                 report_cost_prosumage('Annual contribution non-energy prosumer',loop_res_share,loop_prosumage)=  sum( scen$(map(scen,loop_res_share,loop_prosumage)) , expenses_grid_consumption_other(scen) )  ;
+                 report_cost_prosumage('Annual income feedin prosumer',loop_res_share,loop_prosumage)=  sum( scen$(map(scen,loop_res_share,loop_prosumage)) , income_feedin(scen)  )        ;
+                 report_cost_prosumage('Annual electricity expenditure prosumer',loop_res_share,loop_prosumage)=  sum( scen$(map(scen,loop_res_share,loop_prosumage)) , total_bill(scen) )  ;
+                 report_cost_prosumage('Annual expenditure SC tax prosumer',loop_res_share,loop_prosumage)=  sum( scen$(map(scen,loop_res_share,loop_prosumage)) , expenses_SC_tax(scen) )  ;
+
 $ontext
 $offtext
 
@@ -808,6 +861,7 @@ par=report_prosumage_tech       rng=report_prosumage_tech!A1          rdim=2 cdi
 par=report_prosumage_tech_hours rng=report_prosumage_tech_hours!A1    rdim=3 cdim=2
 par=report_market               rng=report_market!A1                  rdim=1 cdim=2
 par=report_market_tech          rng=report_market_tech!A1             rdim=2 cdim=2
+par=report_cost_prosumage       rng=report_cost_prosumage!A1          rdim=1 cdim=2
 $offecho
 
 $ontext
