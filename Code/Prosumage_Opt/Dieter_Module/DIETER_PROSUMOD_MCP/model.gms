@@ -22,18 +22,17 @@ nondis_sys(tech)                                                          /ror,w
 ;
 
 Variables
-Z                  Value objective function [Euro]
+Z                      Value objective function [Euro]
+lambda_resgen          Dual variable on renewable generation (3e)
+lambda_convgen         Dual variable on conventional generation level (2)
+lambda_enerbal         Dual variable on energy balance (1a)
+lambda_stolev          Dual variable on storage level  (4a-4b)
 lambda_enerbal_pro     Prosumage: Dual variable on prosumage energy balance (11b)
 lambda_resgen_pro      Prosumage: Dual variable on renewable generation (11a)
-lambda_resgen      Dual variable on renewable generation (3e)
-lambda_convgen     Dual variable on conventional generation level (2)
 lambda_stolev_pro      Prosumage: Dual variable on storage level  (11d-11h)
-lambda_enerbal         Dual variable on energy balance (1a)
-lambda_stolev      Dual variable on storage level  (4a-4b)
 ;
+
 Positive Variables
-
-
 G_L(tech,h)            Generation level in hour h [MWh]
 G_UP(tech,h)           Generation upshift in hour h [MWh]
 G_DO(tech,h)           Generation downshift in hour h [MWh]
@@ -48,16 +47,16 @@ N_TECH(tech)           Technology tech built [MW]
 N_STO_E(sto)           Storage technology built - Energy [MWh]
 N_STO_P(sto)           Storage loading and discharging capacity built - Capacity [MW]
 
-CU_PRO(res_pro,h)                 Prosumage: curtailment of renewable generation in hour h [MWh]
-G_MARKET_PRO2M(res_pro,h)         Prosumage. energy sent to market in hour h [MWh]
-G_MARKET_M2PRO(h)              Prosumage: withdrawal of energy from market in hour h [MWh]
-G_RES_PRO(res_pro,h)              Prosumage: hourly renewables generation in hour h [MWh]
-STO_IN_PRO2PRO(sto_pro,tech,h)     Prosumage: storage loading from generation for discharging to consumption in hour h [MWh]
-STO_OUT_PRO2PRO(sto_pro,h)         Prosumage: storage discharging to consumption from generation in hour h [MWh]
-STO_L_PRO2PRO(sto_pro,h)           Prosumage: storage level generation to consumption in hour h [MWh]
-N_STO_E_PRO(sto_pro)              Prosumage: installed storage energy [MWh]
-N_STO_P_PRO(sto_pro)              Prosumage: installed storage power [MW]
-N_RES_PRO(res_pro)                Prosumage: installed renewables capacities [MW]
+CU_PRO(res_pro,h)                Prosumage: curtailment of renewable generation in hour h [MWh]
+G_MARKET_PRO2M(res_pro,h)        Prosumage. energy sent to market in hour h [MWh]
+G_MARKET_M2PRO(h)                Prosumage: withdrawal of energy from market in hour h [MWh]
+G_RES_PRO(res_pro,h)             Prosumage: hourly renewables generation in hour h [MWh]
+STO_IN_PRO2PRO(sto_pro,tech,h)   Prosumage: storage loading from generation for discharging to consumption in hour h [MWh]
+STO_OUT_PRO2PRO(sto_pro,h)       Prosumage: storage discharging to consumption from generation in hour h [MWh]
+STO_L_PRO2PRO(sto_pro,h)         Prosumage: storage level generation to consumption in hour h [MWh]
+N_STO_E_PRO(sto_pro)             Prosumage: installed storage energy [MWh]
+N_STO_P_PRO(sto_pro)             Prosumage: installed storage power [MW]
+N_RES_PRO(res_pro)               Prosumage: installed renewables capacities [MW]
 
 
 mu_stoin_cap          Dual variable on storage loading capacity constraint (4d)
@@ -81,7 +80,7 @@ mu_stoe_max_i_pro         Prosumage: Dual variable on storage energy installatio
 mu_self_con_pro           Prosumage: Constraint on miminum self-consumption level (8c)
 mu_feed_in_max_pro        Prosumage: Dual variable on feed-in capacity constraint (11p)
 
-G_INFES(h)              Infeasibility variable
+G_INFES(h)                Infeasibility variable
 ;
 
 
@@ -100,6 +99,7 @@ con1a_bal                Energy Balance
 con2a_loadlevel          Load change costs: Level
 con2b_loadlevelstart     Load change costs: Level for first period
 con2_loadlevel           Load change costs: Level of all periods (2a+2b)
+
 * Capacity contraints and flexibility constraints
 con3a_maxprod_dispatchable       Capacity Constraint conventionals
 con3e_maxprod_res                Capacity constraints renewables
@@ -550,7 +550,6 @@ FOC_CU_PRO(res_pro,h)..
 
 * FOC w.r.t N_RES_PRO
 FOC_N_RES_PRO(res_pro)..
-*             c_i_pv_PRO(res_pro)
            + c_i(res_pro) + c_fix(res_pro)
            - sum(h, lambda_resgen_pro(res_pro,h)*phi_res(res_pro,h)  )
            + mu_tech_max_i_pro(res_pro)
@@ -561,10 +560,8 @@ FOC_N_RES_PRO(res_pro)..
 
 * FOC w.r.t N_STO_E_PRO
 FOC_N_STO_E_PRO(sto_pro)..
-*            c_i_sto_pro_e_PRO(sto_pro)
           + c_i_sto_e(sto_pro) + c_fix_sto(sto_pro)/2
           - sum(h, mu_stolev_cap_pro(sto_pro,h) )       =G=  0
-
 ;
 
 * FOC w.r.t N_STO_P_PRO
@@ -580,7 +577,6 @@ FOC_N_STO_P_PRO(sto_pro)..
 * FOC w.r.t G_MARKET_M2PRO
 FOC_G_MARKET_M2PRO(h)..
 %selfish_prosumage%$ontext
-*          sum( hh, lambda_enerbal(hh))/card(h) + 250
 
  + price_consumption_pro(h)
 
@@ -636,7 +632,6 @@ $offtext
 
 * FOC w.r.t STO_IN_PRO2PRO
 FOC_STO_IN_PRO2PRO(sto_pro,res_pro,h)..
-*            c_var_sto_pro_PRO(sto_pro)
          +  lambda_resgen_pro(res_pro,h)
          -  lambda_stolev_pro(sto_pro,h)*(1+eta_sto(sto_pro))/2
          +  mu_stoin_cap_pro(sto_pro,h)
@@ -646,7 +641,6 @@ FOC_STO_IN_PRO2PRO(sto_pro,res_pro,h)..
 
 * FOC w.r.t STO_OUT_PRO2PRO
 FOC_STO_OUT_PRO2PRO(sto_pro,h)..
-*         c_var_sto_pro_PRO(sto_pro)
        - lambda_enerbal_pro(h)
        + lambda_stolev_pro(sto_pro,h)*2/(1+eta_sto(sto_pro))
        + mu_stout_cap_pro(sto_pro,h)
@@ -673,10 +667,9 @@ FOC_G_INFES(h)..
 
 ;
 ********************************************************************************
-***** Fix unmatched variables of first period *****
+***** Set default values *****
 ********************************************************************************
 
-*G_DO.fx(dis_sys,'h1') = 0;
 
 * Default for reporting
 G_DO.l(dis_sys,h)   = 0;
@@ -693,6 +686,8 @@ N_TECH.l(tech)   = 0;
 N_STO_E.l(sto_sys)  = 0;
 N_STO_P.l(sto_sys)  = 0;
 
+* Potentially prevent feed-in from prosumers
+%allow_feed_in% G_MARKET_PRO2M.fx(res_pro,h) = 0 ;
 
 ********************************************************************************
 ***** MODEL *****
@@ -825,5 +820,3 @@ FOC_G_INFES.G_INFES
 /
 ;
 
-* Potentially prevent feed-in from prosumers
-%allow_feed_in% G_MARKET_PRO2M.fx(res_pro,h) = 0 ;
