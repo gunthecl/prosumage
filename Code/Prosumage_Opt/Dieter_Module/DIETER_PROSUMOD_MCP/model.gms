@@ -623,6 +623,7 @@ $offtext
 FOC_G_RES_PRO(res_pro,h)..
          - lambda_enerbal_pro(h)
          + lambda_resgen_pro(res_pro,h)
+         + SC_tax
 %prosumage%$ontext
 %minimum_SC%$ontext
          - mu_self_con_pro
@@ -648,6 +649,7 @@ FOC_STO_OUT_PRO2PRO(sto_pro,h)..
        - lambda_enerbal_pro(h)
        + lambda_stolev_pro(sto_pro,h)*2/(1+eta_sto(sto_pro))
        + mu_stout_cap_pro(sto_pro,h)
+       + SC_tax
 %prosumage%$ontext
 %minimum_SC%$ontext
         - mu_self_con_pro

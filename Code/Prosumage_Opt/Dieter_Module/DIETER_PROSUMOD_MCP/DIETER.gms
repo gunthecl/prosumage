@@ -156,20 +156,9 @@ phi_min_res_exog
 price_consumption_pro(h)
 price_production_pro(h)
 retail_price
-FIT ;
-phi_min_res_exog = 1 ;
-
-
-********************************************************************************
-***** Scenario 2030 *****
-********************************************************************************
-** Consumption side
-* Choose that real-time pricing is added on consumption side by setting "*"
-$setglobal  RTP_cons ""   ;
-
-** Production side
-* Choose that real-time pricing is added on consumption side by setting "*"
-$setglobal  RTP_prod ""  ;
+FIT
+SC_tax;
+phi_min_res_exog = 1;
 
 
 ********************************************************************************
@@ -178,17 +167,29 @@ $setglobal  RTP_prod ""  ;
 
 * Define tariffs per MWh (additive)
 
-** Consumption side
 * Time-invariant retail price
 retail_price = 300 ;
-
-** Production side
 * Time-invariant FIT
 FIT          = 80  ;
 
-* Define what prices prosumage households see
-price_consumption_pro(h)  =            retail_price ;
-price_production_pro(h)   =                     FIT ;
+* Define volumetric prices for prosumage households (additivie tariffs per MWh)
+
+** Consumption side
+price_consumption_pro(h)  =   retail_price ;
+
+* Choose that real-time pricing is added on consumption side by setting "*"
+$setglobal  RTP_cons ""   ;
+
+* Self-consumption tariff  (applies to G_RES_PRO and STO_OUT_PRO2PRO)
+SC_tax                    =  50 ;
+
+** Production side
+price_production_pro(h)   =   FIT ;
+
+* Choose that real-time pricing is added on consumption side by setting "*"
+$setglobal  RTP_prod ""  ;
+
+
 ********************************************************************************
 
 ***** Model *****
@@ -196,7 +197,7 @@ price_production_pro(h)   =                     FIT ;
 
 $include model.gms
 
-******************************************************************************** 
+********************************************************************************
 ***** Options, fixings, report preparation *****
 
 * Inclusion of scenario and fixing
@@ -233,11 +234,8 @@ $offtext
 * Save and load solution points
 DIETER_MCP.savepoint=1;
 DIETER_MCP.workspace = 20;
-*$if exist DIETER_MCP_p.gdx execute_loadpoint "DIETER_MCP_a";
-*$if exist DIETER_MCP_p.gdx execute_loadpoint "DIETER_MCP_b";
 $if exist DIETER_MCP_p.gdx execute_loadpoint "DIETER_MCP_p";
 option limrow = 10, limcol = 10, solprint = on ;
-*DIETER_MCP.optfile= 1;
 
 solve   DIETER_MCP using mcp;
 $ontext
