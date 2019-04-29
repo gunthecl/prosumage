@@ -808,7 +808,6 @@ par=report_prosumage_tech       rng=report_prosumage_tech!A1          rdim=2 cdi
 par=report_prosumage_tech_hours rng=report_prosumage_tech_hours!A1    rdim=3 cdim=2
 par=report_market               rng=report_market!A1                  rdim=1 cdim=2
 par=report_market_tech          rng=report_market_tech!A1             rdim=2 cdim=2
-par=report_market_tech_hours    rng=report_market_tech_hours!A1       rdim=3 cdim=2
 $offecho
 
 $ontext
