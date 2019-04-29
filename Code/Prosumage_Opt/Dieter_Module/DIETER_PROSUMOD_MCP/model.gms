@@ -822,5 +822,8 @@ $ontext
 $offtext
 
 FOC_G_INFES.G_INFES
-/ ;
+/
+;
 
+* Potentially prevent feed-in from prosumers
+%allow_feed_in% G_MARKET_PRO2M.fx(res_pro,h) = 0 ;

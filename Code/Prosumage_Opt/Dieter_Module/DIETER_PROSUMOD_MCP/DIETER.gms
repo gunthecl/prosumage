@@ -172,7 +172,7 @@ phi_min_res_exog = 1;
 * Time-invariant retail price
 retail_price = 300 ;
 * Time-invariant FIT
-FIT          = 80  ;
+FIT          =  80 ;
 
 * Define volumetric prices for prosumage households (additivie tariffs per MWh)
 
@@ -201,6 +201,10 @@ max_solar_avail = 0.7067 ;
 
 * Remove star to select the feed-in restriction
 $setglobal no_feed_in_max "*"
+
+*** Allow no feed-in from prosumage households
+* Remove star to prevent feed-in from prosumage households (i.e. FIT = 0)
+$setglobal allow_feed_in "*"
 
 ********************************************************************************
 
@@ -245,7 +249,6 @@ $offtext
 
 * Save and load solution points
 DIETER_MCP.savepoint=1;
-DIETER_MCP.workspace = 20;
 $if exist DIETER_MCP_p.gdx execute_loadpoint "DIETER_MCP_p";
 option limrow = 10, limcol = 10, solprint = on ;
 
