@@ -208,7 +208,7 @@ dieter.holdFixed = 1 ;
 
 * Save and load solution points
 DIETER.savepoint=1;
-$if exist DIETER_p.gdx execute_loadpoint "DIETER_p";
+
 option limrow = 10, limcol = 10, solprint = on ;
 
 solve  DIETER using lp min Z ;
@@ -219,7 +219,7 @@ $offtext
 
 * Save and load solution points
 DIETER_MCP.savepoint=1;
-*$if exist DIETER_MCP_p.gdx execute_loadpoint "DIETER_MCP_p";
+
 option limrow = 10, limcol = 10, solprint = on ;
 
 * Step 1: Solve first set of 1500 hours
@@ -241,24 +241,6 @@ DIETER_MCP.savepoint=1
 
 solve   DIETER_MCP using mcp;
 
-$ontext
-$offtext
-
-
-* Reporting
-$include report.gms
-
-execute_unload "results", report, report_tech, report_node,
-report_tech_hours, report_hours, report_cost
-
-%prosumage%$ontext
-, report_prosumage, report_prosumage_tech, report_prosumage_tech_hours, report_market, report_market_tech, report_market_tech_hours
-$ontext
-$offtext
-;
-
-%report_to_excel%$ontext
-execute "gdxxrw i=results.gdx o=results.xlsx @results.tmp squeeze=N";
 $ontext
 $offtext
 
