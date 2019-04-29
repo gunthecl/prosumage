@@ -113,8 +113,16 @@ sysout = off
 ***** Dataload *****
 **************************
 
+set h ;
+set h_small(h) ;
+
+$offorder
+
 $include dataload.gms
 
+* Define first subset of hours
+h_small(h) = yes$(ord(h) < 1500) ;
+display h_small ;
 
 ********************************************************************************
 
@@ -173,7 +181,7 @@ $include tariff_scenario.gms
 ***** Model *****
 ********************************************************************************
 
-$include model.gms
+$include model_prerun.gms
 
 ********************************************************************************
 ***** Options, fixings, report preparation *****
@@ -211,12 +219,31 @@ $offtext
 
 * Save and load solution points
 DIETER_MCP.savepoint=1;
-$if exist DIETER_MCP_p.gdx execute_loadpoint "DIETER_MCP_p";
+*$if exist DIETER_MCP_p.gdx execute_loadpoint "DIETER_MCP_p";
 option limrow = 10, limcol = 10, solprint = on ;
 
+* Step 1: Solve first set of 1500 hours
 solve   DIETER_MCP using mcp;
+
+* Step 2: Loop for solving set of remaining sets of 1500 hours
+scalar count /1/ ;
+for (count = 1 to 2,
+         h_small(h) = yes$(ord(h) >= 1500*count and ord(h) < 1500*(count+1));
+         solve   DIETER_MCP using mcp;
+     );
+
+* Step 3: Solve entire set of hours
+h_small(h) = yes
+
+display h_small ;
+
+DIETER_MCP.savepoint=1
+
+solve   DIETER_MCP using mcp;
+
 $ontext
 $offtext
+
 
 * Reporting
 $include report.gms
