@@ -181,7 +181,7 @@ price_consumption_pro(h)  =   retail_price ;
 $setglobal  RTP_cons ""   ;
 
 * Self-consumption tariff  (applies to G_RES_PRO and STO_OUT_PRO2PRO)
-SC_tax                    =  50 ;
+SC_tax                    =  0 ;
 
 ** Production side
 price_production_pro(h)   =   FIT ;
