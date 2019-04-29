@@ -4037,9 +4037,6 @@ PlaneRownr=-1
 [RP:FIX]
 1=
 
-[RP:REPORT]
-1=
-
 [OPENWINDOW_1]
 MAXIM=0
 TOP=-29
@@ -4047,7 +4044,16 @@ LEFT=0
 HEIGHT=872
 WIDTH=1132
 
+[RP:MODEL_PRERUN]
+1=
+
 [RP:MODEL]
+1=
+
+[RP:REPORT]
+1=
+
+[RP:DIETER_PRERUN]
 1=
 
 [RP:~$REPORT_TO_EXCEL]
@@ -4065,13 +4071,16 @@ WIDTH=1132
 9=-gdx = pre
 10=-gdx = test
 
+[RP:TARIFF_SCENARIO]
+1=
+
 [MRUFILES]
-1=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\model.gms
-2=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\DIETER.gms
-3=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\~$report_to_excel.gms
-4=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\results.gdx
+1=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\DIETER.gms
+2=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\DIETER.lst
+3=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\DIETER_prerun.gms
+4=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\model.gms
 5=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\report.gms
-6=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\fix.gms
-7=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\DIETER.lst
-8=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\Original\DIETER.gms
-9=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\test.gdx
+6=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\report.lst
+7=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\tariff_scenario.gms
+8=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\~$report_to_excel.gms
+9=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\model_prerun.gms
