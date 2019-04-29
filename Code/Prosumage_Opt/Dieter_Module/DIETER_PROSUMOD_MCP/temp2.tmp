@@ -1,9 +1,0 @@
-se=0
-
-dset=h                           rng=hours!A1            rdim=1 cdim=0
-dset=headers_time                rng=basic!B8            rdim=0 cdim=1
-dset=year                        rng=basic!B7            rdim=0 cdim=1
-par=time_data_upload             rng=basic!A7            rdim=1 cdim=2
-
-dset=headers_pro                 rng=prosumage!B8        rdim=0 cdim=1
-par= d_pro_upload                rng=prosumage!A7        rdim=1 cdim=2
