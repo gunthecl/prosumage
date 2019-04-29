@@ -416,7 +416,8 @@ con11o_pro_ending(sto_pro,h)$( ord(h) = card(h))..
 
 con11p_pro_feedin_max(res_pro,h)..
 
-         N_RES_PRO(res_pro)*0.5 - G_MARKET_PRO2M(res_pro,h)    =G= 0
+         N_RES_PRO(res_pro)*alpha_max*max_solar_avail
+         - G_MARKET_PRO2M(res_pro,h)    =G= 0
 
 ;
 
@@ -553,7 +554,7 @@ FOC_N_RES_PRO(res_pro)..
            + c_i(res_pro) + c_fix(res_pro)
            - sum(h, lambda_resgen_pro(res_pro,h)*phi_res(res_pro,h)  )
            + mu_tech_max_i_pro(res_pro)
-*           - sum(h, mu_feed_in_max_pro(res_pro,h)*0.5)
+%no_feed_in_max% - sum(h, mu_feed_in_max_pro(res_pro,h)*alpha_max*max_solar_avail)
   =G= 0
 
 ;
@@ -602,7 +603,7 @@ FOC_G_MARKET_PRO2M(res_pro,h)..
 %selfish_prosumage%$ontext
            - price_production_pro(h)
 
-*          + mu_feed_in_max_pro(res_pro,h)
+%no_feed_in_max%  + mu_feed_in_max_pro(res_pro,h)
 
 %RTP_prod%$ontext
            - lambda_enerbal(h)
@@ -805,6 +806,7 @@ con11d_pro_stolev_PRO2PRO.lambda_stolev_pro
 con11j_pro_stolev_max.mu_stolev_cap_pro
 con11k_pro_maxin_sto.mu_stoin_cap_pro
 con11l_pro_maxout_sto.mu_stout_cap_pro
+%no_feed_in_max%con11p_pro_feedin_max.mu_feed_in_max_pro
 
 FOC_CU_PRO.CU_PRO
 FOC_N_RES_PRO.N_RES_PRO
@@ -820,8 +822,5 @@ $ontext
 $offtext
 
 FOC_G_INFES.G_INFES
-
-*con11p_pro_feedin_max.mu_feed_in_max_pro
-
 / ;
 

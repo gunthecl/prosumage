@@ -157,7 +157,9 @@ price_consumption_pro(h)
 price_production_pro(h)
 retail_price
 FIT
-SC_tax;
+SC_tax
+alpha_max
+max_solar_avail     ;
 phi_min_res_exog = 1;
 
 
@@ -165,7 +167,7 @@ phi_min_res_exog = 1;
 ***** Scenario 2030 *****
 ********************************************************************************
 
-* Define tariffs per MWh (additive)
+*** Define tariffs per MWh (additive)
 
 * Time-invariant retail price
 retail_price = 300 ;
@@ -189,6 +191,16 @@ price_production_pro(h)   =   FIT ;
 * Choose that real-time pricing is added on consumption side by setting "*"
 $setglobal  RTP_prod ""  ;
 
+
+*** Further options
+* Limit feed-in of prosumage feed-in to alpha_max of maximum PV energy
+* Note: Maximum PV energy referes to installed PV capacity multiplied by maximum
+*       solar availability (determined by time series)
+alpha_max       = 0.5    ;
+max_solar_avail = 0.7067 ;
+
+* Remove star to select the feed-in restriction
+$setglobal no_feed_in_max "*"
 
 ********************************************************************************
 
