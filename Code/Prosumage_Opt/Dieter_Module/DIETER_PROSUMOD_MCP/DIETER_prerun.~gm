@@ -220,6 +220,9 @@ $offtext
 
 %MCP%$ontext
 
+
+
+
 option limrow = 10, limcol = 10, solprint = on ;
 
 * Step 1: Solve first set of 1500 hours
@@ -237,7 +240,7 @@ h_small(h) = yes
 
 display h_small ;
 
-* Save solution points
+* Save solution points  
 DIETER_MCP.savepoint=1
 
 solve   DIETER_MCP using mcp;

@@ -4037,13 +4037,6 @@ PlaneRownr=-1
 [RP:FIX]
 1=
 
-[OPENWINDOW_1]
-MAXIM=0
-TOP=-29
-LEFT=0
-HEIGHT=872
-WIDTH=1132
-
 [RP:MODEL_PRERUN]
 1=
 
@@ -4084,3 +4077,12 @@ WIDTH=1132
 7=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\tariff_scenario.gms
 8=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\~$report_to_excel.gms
 9=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\model_prerun.gms
+
+[OPENWINDOW_1]
+FILE0=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\DIETER_prerun.gms
+FILE1=C:\Users\cguenther\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\DIETER_prerun.gms
+MAXIM=0
+TOP=-29
+LEFT=0
+HEIGHT=872
+WIDTH=1132
