@@ -226,8 +226,9 @@ execute_unload "results", report, report_tech, report_node,
 report_tech_hours, report_hours, report_cost
 
 %prosumage%$ontext
-, report_prosumage, report_prosumage_tech, report_prosumage_tech_hours, report_market, report_market_tech, report_market_tech_hours,
-  report_cost_prosumage
+, report_tariff_scenario, report_prosumage, report_prosumage_tech,
+  report_prosumage_tech_hours, report_market, report_market_tech,
+  report_market_tech_hours, report_cost_prosumage
 $ontext
 $offtext
 ;
