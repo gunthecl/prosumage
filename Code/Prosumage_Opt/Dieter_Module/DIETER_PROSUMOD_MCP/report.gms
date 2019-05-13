@@ -173,7 +173,18 @@ lev_electr_bill_pro(scen)            = flat_network_fee +
                                        + sum( sto_pro , c_i_sto_e(sto_pro)*lev_N_STO_E_PRO(scen,sto_pro) )
                                        + sum( sto_pro , c_fix_sto(sto_pro)/2*(lev_N_STO_P_PRO(scen,sto_pro) + lev_N_STO_E_PRO(scen,sto_pro)*%sec_hour%) )
                                        + sum( sto_pro , c_i_sto_p(sto_pro)*lev_N_STO_P_PRO(scen,sto_pro))
-                                       ) /((1000*numb_pro_load) + 1e-9 ))*%sec_hour% ;
+%RTP_cons%$ontext
+                                       + sum(h, lev_G_MARKET_M2PRO(scen,h)* lambda_enerbal.l(h)
+$ontext
+$offtext
+%prosumage%$ontext
+%RTP_prod%$ontext
+                                      - sum( (res_pro,h), lev_G_MARKET_PRO2M(scen,res_pro,h )* lambda_enerbal.l(h) )
+$ontext
+$offtext
+%prosumage%$ontext
+
+                                         ) /((1000*numb_pro_load) + 1e-9 ))*%sec_hour% ;
 
 $ontext
 $offtext
@@ -301,11 +312,12 @@ expenses_grid_consumption_other(scen)  = flat_network_fee + expenses_sc_tax(scen
                                          sum(h, lev_G_MARKET_M2PRO(scen,h)*(non_energy_component
                                                  ))/(numb_pro_load*1000)*%sec_hour%;
 
-income_feedin(scen)                    = sum( (res_pro,h), lev_G_MARKET_PRO2M(scen,res_pro,h)* price_production_pro(h)
-%RTP_cons%$ontext
+income_feedin(scen)                    = sum( (res_pro,h), lev_G_MARKET_PRO2M(scen,res_pro,h)*(price_production_pro(h)
+%RTP_prod%$ontext
                                               + lambda_enerbal.l(h)
 $ontext
 $offtext
+)
 %prosumage%$ontext
                                                  )/(numb_pro_load*1000)*%sec_hour%;
 $ontext
