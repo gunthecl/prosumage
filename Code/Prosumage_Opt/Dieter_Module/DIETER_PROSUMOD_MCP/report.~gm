@@ -61,6 +61,7 @@ report_reserves_hours
 report_reserves_tech
 report_reserves_tech_hours
 
+report_tariff_scenario
 report_prosumage
 report_prosumage_tech
 report_prosumage_tech_hours
@@ -286,7 +287,7 @@ expenses_storage(scen)              =  sum( sto_pro,  c_i_sto_e(sto_pro)*lev_N_S
 * Note: check whether fix costs for storage must be adjusted
 expenses_grid_consumption_energy(scen) =  sum(h, lev_G_MARKET_M2PRO(scen,h)*(energy_component
 %RTP_cons%$ontext
-                                              + lambda_enerbal(h)
+                                              + lambda_enerbal.l(h)
 $ontext
 $offtext
 %prosumage%$ontext
@@ -302,7 +303,7 @@ expenses_grid_consumption_other(scen)  = flat_network_fee + expenses_sc_tax(scen
 
 income_feedin(scen)                    = sum( (res_pro,h), lev_G_MARKET_PRO2M(scen,res_pro,h)* price_production_pro(h)
 %RTP_cons%$ontext
-                                              + lambda_enerbal(h)
+                                              + lambda_enerbal.l(h)
 $ontext
 $offtext
 %prosumage%$ontext
@@ -600,7 +601,6 @@ $offtext
 
 
         report_prosumage_tech('capacities renewable prosumers',loop_res_share,loop_prosumage,res)=  sum( scen$(map(scen,loop_res_share,loop_prosumage)) , lev_N_RES_PRO(scen,res) ) ;
-        report_prosumage_tech('Mean capacities kW renewable prosumers',loop_res_share,loop_prosumage,res)=  sum( scen$(map(scen,loop_res_share,loop_prosumage)) , lev_N_RES_PRO(scen,res) / (numb_pro_load*1000/1000 + 1e-9 )) ;
         report_prosumage_tech('capacities storage MW prosumers',loop_res_share,loop_prosumage,sto)=  sum( scen$(map(scen,loop_res_share,loop_prosumage)) , lev_N_STO_P_PRO(scen,sto)) ;
         report_prosumage_tech('capacities storage MWh prosumers',loop_res_share,loop_prosumage,sto)=  sum( scen$(map(scen,loop_res_share,loop_prosumage)) , lev_N_STO_E_PRO(scen,sto)) * %sec_hour% ;
         report_prosumage_tech('Mean capacities storage kW prosumers',loop_res_share,loop_prosumage,sto)=  sum( scen$(map(scen,loop_res_share,loop_prosumage)) , lev_N_STO_P_PRO(scen,sto)/ (numb_pro_load*1000/1000  + 1e-9)) ;
@@ -635,10 +635,14 @@ $offtext
         report_prosumage_tech('average market value generation PRO2M',loop_res_share,loop_prosumage,'')$(report_prosumage_tech('Generation total prosumers PRO2M',loop_res_share,loop_prosumage,'')> eps_rep_abs*card(h)) = sum( h , report_hours('price',loop_res_share,loop_prosumage,h)* sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( res_pro , lev_G_MARKET_PRO2M(scen,res_pro,h)))) / report_prosumage_tech('Generation total prosumers PRO2M',loop_res_share,loop_prosumage,'');
         report_prosumage_tech('average market value withdrawal M2PRO',loop_res_share,loop_prosumage,'')$(report_prosumage_tech('Withdrawal total prosumers M2PRO',loop_res_share,loop_prosumage,'')> eps_rep_abs*card(h)) = sum( h , report_hours('price',loop_res_share,loop_prosumage,h)* sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_G_MARKET_M2PRO(scen,h))) / report_prosumage_tech('Withdrawal total prosumers M2PRO',loop_res_share,loop_prosumage,'');
         report_prosumage_tech('average market value generation PRO2PRO',loop_res_share,loop_prosumage,'')$(report_prosumage_tech('generation prosumers self-consumption',loop_res_share,loop_prosumage,'')> eps_rep_abs*card(h)) = sum( h , report_hours('price',loop_res_share,loop_prosumage,h)* sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( res , lev_G_RES_PRO(scen,res,h)))) / report_prosumage_tech('generation prosumers self-consumption',loop_res_share,loop_prosumage,'');
+
+
+        report_prosumage_tech('Mean capacities kW renewable prosumers',loop_res_share,loop_prosumage,res)=  sum( scen$(map(scen,loop_res_share,loop_prosumage)) , lev_N_RES_PRO(scen,res) / (numb_pro_load*1000/1000 + 1e-9 )) ;
         report_prosumage_tech('FLH prosumers',loop_res_share,loop_prosumage,res)$(sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_N_RES_PRO(scen,res) > eps_rep_ins)) = (sum( h , sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_G_MARKET_PRO2M(scen,res,h) + sum( sto , lev_STO_IN_PRO2PRO(scen,res,sto,h)) + lev_G_RES_PRO(scen,res,h) )) / sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_N_RES_PRO(scen,res) ))*%sec_hour%  ;
         report_prosumage_tech('FLH prosumers',loop_res_share,loop_prosumage,sto)$(sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_N_STO_P_PRO(scen,sto)) > eps_rep_ins) = report_prosumage_tech('Storage out total prosumers',loop_res_share,loop_prosumage,sto)/ (sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_N_STO_P_PRO(scen,sto))) ;
         report_prosumage_tech('Storage cycles prosumers',loop_res_share,loop_prosumage,sto)$(sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_N_STO_E_PRO(scen,sto)) > eps_rep_ins) = report_prosumage_tech('Storage out total prosumers',loop_res_share,loop_prosumage,sto)/ (sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_N_STO_E_PRO(scen,sto)) * %sec_hour%) ;
         report_prosumage_tech('Storage EP-ratio prosumers',loop_res_share,loop_prosumage,sto)$(sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_N_STO_P_PRO(scen,sto) ) > eps_rep_ins AND sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_N_STO_E_PRO(scen,sto) ) * %sec_hour% > eps_rep_ins ) = sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_N_STO_E_PRO(scen,sto) ) * %sec_hour% / sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_N_STO_P_PRO(scen,sto) ) ;
+
 
         report_market_tech('capacities renewable market',loop_res_share,loop_prosumage,res)=  sum( scen$(map(scen,loop_res_share,loop_prosumage)) , lev_N_TECH(scen,res) ) ;
         report_market_tech('capacities storage MW market',loop_res_share,loop_prosumage,sto)=  sum( scen$(map(scen,loop_res_share,loop_prosumage)) , lev_N_STO_P(scen,sto)) ;
@@ -656,27 +660,30 @@ $offtext
         report_market_tech('Storage cycles market non-reserves',loop_res_share,loop_prosumage,sto)$(sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_N_STO_E(scen,sto)) > eps_rep_ins) = report_market_tech('Storage out total market non-reserves',loop_res_share,loop_prosumage,sto)/ (sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_N_STO_E(scen,sto)) * %sec_hour%);
         report_market_tech('Storage EP-ratio market',loop_res_share,loop_prosumage,sto)$(sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_N_STO_P(scen,sto) ) > eps_rep_ins AND sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_N_STO_E(scen,sto) ) * %sec_hour% > eps_rep_ins ) = sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_N_STO_E(scen,sto) ) * %sec_hour% / sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_N_STO_P(scen,sto) + 1e-9  ) ;
 
-        report_prosumage('gross energy demand prosumers',loop_res_share,loop_prosumage)= sum( scen$(map(scen,loop_res_share,loop_prosumage)) , gross_energy_demand_prosumers(scen)) ;
-        report_prosumage('gross energy demand prosumers from market',loop_res_share,loop_prosumage)= sum( scen$(map(scen,loop_res_share,loop_prosumage)) , gross_energy_demand_prosumers_market(scen)) ;
-        report_prosumage('gross energy demand prosumers self generation',loop_res_share,loop_prosumage)= sum( scen$(map(scen,loop_res_share,loop_prosumage)) , gross_energy_demand_prosumers_selfgen(scen)) ;
+
         report_prosumage('self-generation share (autarky rate)',loop_res_share,loop_prosumage)$(sum(scen$(map(scen,loop_res_share,loop_prosumage)) , gross_energy_demand_prosumers(scen))) = sum(scen$(map(scen,loop_res_share,loop_prosumage)) , gross_energy_demand_prosumers_selfgen(scen)) / sum( scen$(map(scen,loop_res_share,loop_prosumage)) , gross_energy_demand_prosumers(scen) ) ;
-        report_prosumage('market share prosumers',loop_res_share,loop_prosumage)$(sum(scen$(map(scen,loop_res_share,loop_prosumage)) , gross_energy_demand_prosumers(scen))) = sum(scen$(map(scen,loop_res_share,loop_prosumage)) , gross_energy_demand_prosumers_market(scen)) / sum( scen$(map(scen,loop_res_share,loop_prosumage)) , gross_energy_demand_prosumers(scen)) ;
-        report_prosumage('curtailment of fluct res absolute prosumers',loop_res_share,loop_prosumage)= sum((res,h), sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_CU_PRO(scen,res,h))) * %sec_hour% ;
-        report_prosumage('curtailment of fluct res relative prosumers',loop_res_share,loop_prosumage)$(sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( (res,h) , phi_res(res,h) * lev_N_RES_PRO(scen,res))))  = sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( (h,res) , lev_CU_PRO(scen,res,h) )) / sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( (res,h) , phi_res(res,h) * lev_N_RES_PRO(scen,res)) ) ;
+        report_prosumage('self-consumption rate',loop_res_share,loop_prosumage)$(sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( (res,h) , phi_res(res,h) * lev_N_RES_PRO(scen,res)) )) = sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( (h,res) , lev_G_RES_PRO(scen,res,h) )  + sum( (res,sto,h), lev_STO_IN_PRO2PRO(scen,res,sto,h)) ) / sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( (res,h) , phi_res(res,h) * lev_N_RES_PRO(scen,res)) ) ;
         report_prosumage('share self-generation curtailed',loop_res_share,loop_prosumage)$(sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( (res,h) , phi_res(res,h) * lev_N_RES_PRO(scen,res)) )) = sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( (h,res) , lev_CU_PRO(scen,res,h) )) / sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( (res,h) , phi_res(res,h) * lev_N_RES_PRO(scen,res)) ) ;
         report_prosumage('share self-generation direct consumption',loop_res_share,loop_prosumage)$(sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( (res,h) , phi_res(res,h) * lev_N_RES_PRO(scen,res)) )) = sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( (h,res) , lev_G_RES_PRO(scen,res,h) )) / sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( (res,h) , phi_res(res,h) * lev_N_RES_PRO(scen,res)) ) ;
-        report_prosumage('self-consumption rate',loop_res_share,loop_prosumage)$(sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( (res,h) , phi_res(res,h) * lev_N_RES_PRO(scen,res)) )) = sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( (h,res) , lev_G_RES_PRO(scen,res,h) )  + sum( (res,sto,h), lev_STO_IN_PRO2PRO(scen,res,sto,h)) ) / sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( (res,h) , phi_res(res,h) * lev_N_RES_PRO(scen,res)) ) ;
         report_prosumage('share self-generation to market',loop_res_share,loop_prosumage)$(sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( (res,h) , phi_res(res,h) * lev_N_RES_PRO(scen,res))) ) = sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( (h,res_pro) , lev_G_MARKET_PRO2M(scen,res_pro,h) )) / sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( (res,h) , phi_res(res,h) * lev_N_RES_PRO(scen,res)) ) ;
         report_prosumage('share self-generation stored PRO2PRO',loop_res_share,loop_prosumage)$(sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( (res,h) , phi_res(res,h) * lev_N_RES_PRO(scen,res))) ) = sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( (h,sto,res) , lev_STO_IN_PRO2PRO(scen,res,sto,h) )) / sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( (res,h) , phi_res(res,h) * lev_N_RES_PRO(scen,res)) ) ;
         report_prosumage('share self-generation stored PRO2M',loop_res_share,loop_prosumage)$(sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( (res,h) , phi_res(res,h) * lev_N_RES_PRO(scen,res))) ) = sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( (h,sto,res) , lev_STO_IN_PRO2M(scen,res,sto,h) )) / sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( (res,h) , phi_res(res,h) * lev_N_RES_PRO(scen,res)) ) ;
-        report_prosumage('Capacity total prosumers',loop_res_share,loop_prosumage)= sum( res , sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_N_RES_PRO(scen,res)) ) + sum( sto , sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_N_STO_P_PRO(scen,sto)) ) ;
-        report_prosumage('Annual electricity expenditure consumer',loop_res_share,loop_prosumage)=  sum( scen$(map(scen,loop_res_share,loop_prosumage)) ,  lev_electr_bill_con(scen) )  ;
-        report_prosumage('Annual electricity expenditure prosumer',loop_res_share,loop_prosumage)=  sum( scen$(map(scen,loop_res_share,loop_prosumage)) ,  lev_electr_bill_pro(scen) )  ;
         report_prosumage('Annual load MWh prosumer',loop_res_share,loop_prosumage)=  sum( scen$(map(scen,loop_res_share,loop_prosumage)) ,  sum(h, d_pro(h))/1000*%sec_hour% ) ;
         report_prosumage('Annual load defection MWh prosumer',loop_res_share,loop_prosumage)=  sum( scen$(map(scen,loop_res_share,loop_prosumage)) , eps )  ;
         report_prosumage('Annual load defection MWh prosumer',loop_res_share,loop_prosumage)=  sum( scen$(map(scen,loop_res_share,loop_prosumage)) , ((sum(h, d_pro(h)) - sum(h, lev_G_MARKET_M2PRO(scen,h)/(numb_pro_load + 1e-9)))/1000*%sec_hour% ))$(numb_pro_load>0)   ;
         report_prosumage('Annual load from grid MWh prosumer',loop_res_share,loop_prosumage)=  sum( scen$(map(scen,loop_res_share,loop_prosumage)) , (sum(h, lev_G_MARKET_M2PRO(scen,h)/(numb_pro_load + 1e-9))) /1000*%sec_hour% )$(numb_pro_load>0)   ;
         report_prosumage('Annual load to grid MWh prosumer',loop_res_share,loop_prosumage)=  sum( scen$(map(scen,loop_res_share,loop_prosumage)) , (sum( (h,res_pro), lev_G_MARKET_PRO2M(scen,res_pro,h)/(numb_pro_load + 1e-9)))/1000*%sec_hour% )$(numb_pro_load>0)   ;
+
+
+        report_prosumage('gross energy demand prosumers',loop_res_share,loop_prosumage)= sum( scen$(map(scen,loop_res_share,loop_prosumage)) , gross_energy_demand_prosumers(scen)) ;
+        report_prosumage('gross energy demand prosumers from market',loop_res_share,loop_prosumage)= sum( scen$(map(scen,loop_res_share,loop_prosumage)) , gross_energy_demand_prosumers_market(scen)) ;
+        report_prosumage('gross energy demand prosumers self generation',loop_res_share,loop_prosumage)= sum( scen$(map(scen,loop_res_share,loop_prosumage)) , gross_energy_demand_prosumers_selfgen(scen)) ;
+        report_prosumage('market share prosumers',loop_res_share,loop_prosumage)$(sum(scen$(map(scen,loop_res_share,loop_prosumage)) , gross_energy_demand_prosumers(scen))) = sum(scen$(map(scen,loop_res_share,loop_prosumage)) , gross_energy_demand_prosumers_market(scen)) / sum( scen$(map(scen,loop_res_share,loop_prosumage)) , gross_energy_demand_prosumers(scen)) ;
+        report_prosumage('curtailment of fluct res absolute prosumers',loop_res_share,loop_prosumage)= sum((res,h), sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_CU_PRO(scen,res,h))) * %sec_hour% ;
+        report_prosumage('curtailment of fluct res relative prosumers',loop_res_share,loop_prosumage)$(sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( (res,h) , phi_res(res,h) * lev_N_RES_PRO(scen,res))))  = sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( (h,res) , lev_CU_PRO(scen,res,h) )) / sum(scen$(map(scen,loop_res_share,loop_prosumage)) , sum( (res,h) , phi_res(res,h) * lev_N_RES_PRO(scen,res)) ) ;
+        report_prosumage('Capacity total prosumers',loop_res_share,loop_prosumage)= sum( res , sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_N_RES_PRO(scen,res)) ) + sum( sto , sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_N_STO_P_PRO(scen,sto)) ) ;
+        report_prosumage('Annual electricity expenditure consumer',loop_res_share,loop_prosumage)=  sum( scen$(map(scen,loop_res_share,loop_prosumage)) ,  lev_electr_bill_con(scen) )  ;
+        report_prosumage('Annual electricity expenditure prosumer',loop_res_share,loop_prosumage)=  sum( scen$(map(scen,loop_res_share,loop_prosumage)) ,  lev_electr_bill_pro(scen) )  ;
 
         report_prosumage_tech('Capacity share prosumers',loop_res_share,loop_prosumage,res)$report_prosumage('Capacity total prosumers',loop_res_share,loop_prosumage)= sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_N_RES_PRO(scen,res) ) / report_prosumage('Capacity total prosumers',loop_res_share,loop_prosumage)+ 1e-9 ;
         report_prosumage_tech('Capacity share prosumers',loop_res_share,loop_prosumage,sto)$report_prosumage('Capacity total prosumers',loop_res_share,loop_prosumage)= sum(scen$(map(scen,loop_res_share,loop_prosumage)) , lev_N_STO_P_PRO(scen,sto) ) / report_prosumage('Capacity total prosumers',loop_res_share,loop_prosumage)+ 1e-9 ;
@@ -741,6 +748,8 @@ $offtext
                  report_market_tech_hours('prosumer storage to market M2M',loop_res_share,loop_prosumage,'Interaction with prosumers',h)$(report_market_tech_hours('prosumer storage to market M2M',loop_res_share,loop_prosumage,'Interaction with prosumers',h)< eps_rep_abs) = 0 ;
                  report_market_tech_hours('energy market to prosumer',loop_res_share,loop_prosumage,'Interaction with prosumers',h)$(report_market_tech_hours('energy market to prosumer',loop_res_share,loop_prosumage,'Interaction with prosumers',h)< eps_rep_abs) = 0 ;
                  report_market_tech_hours('energy prosumer to market',loop_res_share,loop_prosumage,'Interaction with prosumers',h)$(report_market_tech_hours('energy prosumer to market',loop_res_share,loop_prosumage,'Interaction with prosumers',h)< eps_rep_abs) = 0 ;
+
+
 
                  report_prosumage_tech('capacities renewable prosumers',loop_res_share,loop_prosumage,res)$(report_prosumage_tech('capacities renewable prosumers',loop_res_share,loop_prosumage,res)< eps_rep_ins) =  0 ;
                  report_prosumage_tech('capacities storage MW prosumers',loop_res_share,loop_prosumage,sto)$(report_prosumage_tech('capacities storage MW prosumers',loop_res_share,loop_prosumage,sto)< eps_rep_ins) =  0 ;
@@ -838,6 +847,35 @@ $offtext
                  report_cost_prosumage('Annual electricity expenditure prosumer',loop_res_share,loop_prosumage)=  sum( scen$(map(scen,loop_res_share,loop_prosumage)) , total_bill(scen) )  ;
                  report_cost_prosumage('Annual expenditure SC tax prosumer',loop_res_share,loop_prosumage)=  sum( scen$(map(scen,loop_res_share,loop_prosumage)) , expenses_SC_tax(scen) )  ;
 
+                 report_tariff_scenario('Fixed energy charge prosumer Euro/kWh',loop_res_share,loop_prosumage)=  sum( scen$(map(scen,loop_res_share,loop_prosumage)) , energy_component )/1000;
+%RTP_cons%$ontext
+                 report_tariff_scenario('RTP energy charge (mean) prosumer Euro/kWh',loop_res_share,loop_prosumage)= report_prosumage('average market value withdrawal M2PRO',loop_res_share,loop_prosumage)/1000;
+
+$ontext
+$offtext
+%prosumage%$ontext
+                 ;
+                 report_tariff_scenario('Non-energy charge prosumer Euro/kWh',loop_res_share,loop_prosumage)=  sum( scen$(map(scen,loop_res_share,loop_prosumage)) , non_energy_component )/1000  ;
+                 report_tariff_scenario('Self-consumption charge prosumer Euro/kWh',loop_res_share,loop_prosumage)=  sum( scen$(map(scen,loop_res_share,loop_prosumage)) , SC_tax ) /1000 ;
+                 report_tariff_scenario('Fixed feed-in tariff prosumer Euro/kWh',loop_res_share,loop_prosumage)=  sum( scen$(map(scen,loop_res_share,loop_prosumage)) , FIT )/1000  ;
+%RTP_prod%$ontext
+
+                 report_tariff_scenario('RTP feed-in tariff prosumer Euro/kWh',loop_res_share,loop_prosumage)=  report_prosumage('average market value generation PRO2PRO',loop_res_share,loop_prosumage)/1000;
+$ontext
+$offtext
+%prosumage%$ontext
+                 report_tariff_scenario('Annual flat fee prosumer in EUR',loop_res_share,loop_prosumage)=  sum( scen$(map(scen,loop_res_share,loop_prosumage)) , flat_network_fee )/1000  ;
+
+                 report_tariff_scenario('Fixed energy charge prosumer Euro/kWh',loop_res_share,loop_prosumage)$(report_tariff_scenario('Fixed energy charge prosumer Euro/kWh',loop_res_share,loop_prosumage) = 0) = EPS;
+                 report_tariff_scenario('RTP energy charge (mean) prosumer Euro/kWh',loop_res_share,loop_prosumage)$(report_tariff_scenario('RTP energy charge (mean) prosumer Euro/kWh',loop_res_share,loop_prosumage)=0)=EPS;
+                 report_tariff_scenario('Non-energy charge prosumer Euro/kWh',loop_res_share,loop_prosumage)$(report_tariff_scenario('Non-energy charge prosumer Euro/kWh',loop_res_share,loop_prosumage)= 0) = EPS  ;
+                 report_tariff_scenario('Self-consumption charge prosumer Euro/kWh',loop_res_share,loop_prosumage)$(report_tariff_scenario('Self-consumption charge prosumer Euro/kWh',loop_res_share,loop_prosumage)= 0) =EPS ;
+                 report_tariff_scenario('Fixed feed-in tariff prosumer Euro/kWh',loop_res_share,loop_prosumage)$(report_tariff_scenario('Fixed feed-in tariff prosumer Euro/kWh',loop_res_share,loop_prosumage)= 0) =EPS  ;
+                 report_tariff_scenario('RTP feed-in tariff prosumer Euro/kWh',loop_res_share,loop_prosumage)$(report_tariff_scenario('RTP feed-in tariff prosumer Euro/kWh',loop_res_share,loop_prosumage)=0)=EPS ;
+                 report_tariff_scenario('Annual flat fee prosumer in EUR',loop_res_share,loop_prosumage)$(report_tariff_scenario('Annual flat fee prosumer in EUR',loop_res_share,loop_prosumage)=0) =EPS  ;
+
+
+
 $ontext
 $offtext
 
@@ -856,6 +894,7 @@ $offecho
 %prosumage%$ontext
 
 $onecho >results.tmp
+par=report_tariff_scenario      rng=report_tariff_scenario!A1         rdim=1 cdim=2
 par=report_prosumage            rng=report_prosumage!A1               rdim=1 cdim=2
 par=report_prosumage_tech       rng=report_prosumage_tech!A1          rdim=2 cdim=2
 par=report_prosumage_tech_hours rng=report_prosumage_tech_hours!A1    rdim=3 cdim=2
