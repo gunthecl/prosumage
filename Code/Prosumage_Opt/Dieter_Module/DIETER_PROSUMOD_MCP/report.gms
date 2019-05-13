@@ -879,7 +879,7 @@ $offtext
 $ontext
 $offtext
 %prosumage%$ontext
-                 report_tariff_scenario('Annual flat fee prosumer in EUR',loop_res_share,loop_prosumage)=  sum( scen$(map(scen,loop_res_share,loop_prosumage)) , flat_network_fee )/1000  ;
+                 report_tariff_scenario('Annual flat fee prosumer in EUR',loop_res_share,loop_prosumage)=  sum( scen$(map(scen,loop_res_share,loop_prosumage)) , flat_network_fee )  ;
 
                  report_tariff_scenario('Fixed energy charge prosumer Euro/kWh',loop_res_share,loop_prosumage)$(report_tariff_scenario('Fixed energy charge prosumer Euro/kWh',loop_res_share,loop_prosumage) = 0) = EPS;
                  report_tariff_scenario('RTP energy charge (mean) prosumer Euro/kWh',loop_res_share,loop_prosumage)$(report_tariff_scenario('RTP energy charge (mean) prosumer Euro/kWh',loop_res_share,loop_prosumage)=0)=EPS;
