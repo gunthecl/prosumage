@@ -1,0 +1,24 @@
+se=0
+
+dset=n                                   rng=spatial!M2                  rdim=0 cdim=1
+
+dset=tech                                rng=Technologies!B6             rdim=1 cdim=0
+dset=headers_tech                        rng=Technologies!E5             rdim=0 cdim=1
+dset=tech_dispatch                       rng=Technologies!D6             rdim=1 cdim=0
+dset=tech_res_con                        rng=Technologies!C6             rdim=1 cdim=0
+
+dset=sto                                 rng=storage!B6                  rdim=1 cdim=0
+dset=headers_sto                         rng=storage!C5                  rdim=0 cdim=1
+
+dset=headers_prosumage_generation        rng=prosumage!C5                rdim=0 cdim=1
+dset=headers_prosumage_storage           rng=prosumage!I5                rdim=0 cdim=1
+
+par=technology_data_upload       rng=Technologies!B5     rdim=3 cdim=1
+par=storage_data                 rng=storage!B5          rdim=1 cdim=1
+
+*
+par=inc                          rng=spatial!L2          rdim=1 cdim=1
+
+par=prosumage_data_generation    rng=prosumage!B5        rdim=1 cdim=1
+par=prosumage_data_storage       rng=prosumage!H5        rdim=1 cdim=1
+

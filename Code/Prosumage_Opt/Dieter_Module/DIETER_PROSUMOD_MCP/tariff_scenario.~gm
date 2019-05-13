@@ -5,12 +5,12 @@
 *** Define tariffs per MWh (additive)
 
 * Time-invariant retail price
-energy_component      =  0  ;
+energy_component      =  50  ;
 non_energy_component  = 250  ;
 retail_price          = energy_component + non_energy_component ;
 
 * Time-invariant FIT
-FIT          =  0 ;
+FIT          =  80 ;
 
 * Define volumetric prices for prosumage households (additivie tariffs per MWh)
 
@@ -18,7 +18,7 @@ FIT          =  0 ;
 price_consumption_pro(h)  =   retail_price ;
 
 * Choose that real-time pricing is added on consumption side by setting "*"
-$setglobal  RTP_cons "*"   ;
+$setglobal  RTP_cons ""   ;
 
 * Self-consumption tariff  (applies to G_RES_PRO and STO_OUT_PRO2PRO)
 SC_tax                    =  0 ;
@@ -27,7 +27,7 @@ SC_tax                    =  0 ;
 price_production_pro(h)   =   FIT ;
 
 * Choose that real-time pricing is added on consumption side by setting "*"
-$setglobal  RTP_prod "*"  ;
+$setglobal  RTP_prod ""  ;
 
 
 *** Further options

@@ -1,0 +1,50 @@
+
+--- Job DIETER.gms Start 05/13/19 10:42:49 24.7.4 r58773 WEX-WEI x86 64bit/MS Windows
+GAMS 24.7.4   Copyright (C) 1987-2016 GAMS Development. All rights reserved
+Licensee: Medium MUD - 10 User License                   S180308:0349AO-GEN
+          Deutsches Institut fuer Wirtschaftsforschung DIW, AbteilungDC3975
+          License for teaching and research at degree granting institutions
+          License Admin: Claudia Kemfert, bbibra@diw.de                    
+--- Starting compilation
+--- DIETER.gms(114) 2 Mb
+--- .dataload.gms(375) 2 Mb
+--- call gdxxrw data_input.xlsx @temp.tmp o=Data_input maxdupeerrors=100
+
+GDXXRW           24.7.4 r58773 Released Sep 19, 2016 VS8 x86 32bit/MS Windows 
+Input file : C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\data_input.xlsx
+Output file: C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\Data_input.gdx
+Total time = 8844 Ms
+--- .dataload.gms(377) 2 Mb
+--- GDXin=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\Data_input.gdx
+--- .dataload.gms(406) 3 Mb
+--- call gdxxrw time_series.xlsx @temp2.tmp o=time_series
+
+GDXXRW           24.7.4 r58773 Released Sep 19, 2016 VS8 x86 32bit/MS Windows 
+Input file : C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\time_series.xlsx
+Output file: C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\time_series.gdx
+Total time = 22078 Ms
+--- .dataload.gms(407) 3 Mb
+--- GDXin=C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\time_series.gdx
+--- .dataload.gms(538) 4 Mb
+--- DIETER.gms(171) 4 Mb
+--- .tariff_scenario.gms(52) 4 Mb
+--- DIETER.gms(177) 4 Mb
+--- .model.gms(822) 4 Mb
+--- DIETER.gms(183) 4 Mb
+--- .fix.gms(239) 5 Mb
+--- DIETER.gms(184) 5 Mb
+--- .scenario.gms(74) 5 Mb
+--- DIETER.gms(223) 5 Mb
+--- .report.gms(289) 5 Mb 1 Error
+*** Error 143 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\report.gms
+    A suffix is missing
+--- .report.gms(305) 5 Mb 2 Errors
+*** Error 143 in C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\report.gms
+    A suffix is missing
+--- .report.gms(872) 5 Mb
+--- DIETER.gms(241) 5 Mb
+--- GDX File C:\Users\Lenovo\Documents\GitHub\prosumage\Code\Prosumage_Opt\Dieter_Module\DIETER_PROSUMOD_MCP\test.gdx
+--- DIETER.gms(241) 5 Mb 2 Errors
+*** Status: Compilation error(s)
+--- Job DIETER.gms Stop 05/13/19 10:43:21 elapsed 0:00:32.094
+Exit code = 2

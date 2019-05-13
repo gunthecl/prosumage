@@ -286,7 +286,7 @@ expenses_storage(scen)              =  sum( sto_pro,  c_i_sto_e(sto_pro)*lev_N_S
 * Note: check whether fix costs for storage must be adjusted
 expenses_grid_consumption_energy(scen) =  sum(h, lev_G_MARKET_M2PRO(scen,h)*(energy_component
 %RTP_cons%$ontext
-                                              + lambda_enerbal.l(h)
+                                              + lambda_enerbal(h)
 $ontext
 $offtext
 %prosumage%$ontext
@@ -302,7 +302,7 @@ expenses_grid_consumption_other(scen)  = flat_network_fee + expenses_sc_tax(scen
 
 income_feedin(scen)                    = sum( (res_pro,h), lev_G_MARKET_PRO2M(scen,res_pro,h)* price_production_pro(h)
 %RTP_cons%$ontext
-                                              + lambda_enerbal.l(h)
+                                              + lambda_enerbal(h)
 $ontext
 $offtext
 %prosumage%$ontext

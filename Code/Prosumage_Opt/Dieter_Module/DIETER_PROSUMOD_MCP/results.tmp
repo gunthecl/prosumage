@@ -1,0 +1,6 @@
+par=report_prosumage            rng=report_prosumage!A1               rdim=1 cdim=2
+par=report_prosumage_tech       rng=report_prosumage_tech!A1          rdim=2 cdim=2
+par=report_prosumage_tech_hours rng=report_prosumage_tech_hours!A1    rdim=3 cdim=2
+par=report_market               rng=report_market!A1                  rdim=1 cdim=2
+par=report_market_tech          rng=report_market_tech!A1             rdim=2 cdim=2
+par=report_cost_prosumage       rng=report_cost_prosumage!A1          rdim=1 cdim=2
