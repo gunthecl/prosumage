@@ -174,7 +174,7 @@ lev_electr_bill_pro(scen)            = flat_network_fee +
                                        + sum( sto_pro , c_fix_sto(sto_pro)/2*(lev_N_STO_P_PRO(scen,sto_pro) + lev_N_STO_E_PRO(scen,sto_pro)*%sec_hour%) )
                                        + sum( sto_pro , c_i_sto_p(sto_pro)*lev_N_STO_P_PRO(scen,sto_pro))
 %RTP_cons%$ontext
-                                       + sum(h, lev_G_MARKET_M2PRO(scen,h)* lambda_enerbal.l(h)
+                                       + sum(h, lev_G_MARKET_M2PRO(scen,h)* lambda_enerbal.l(h))
 $ontext
 $offtext
 %prosumage%$ontext
